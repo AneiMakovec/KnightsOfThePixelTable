@@ -25,9 +25,6 @@
 #import "IDice.h"
 #import "Dice.h"
 
-#import "Ally.h"
-#import "Enemy.h"
-
 #import "Level.h"
 #import "FarmlandsLevel.h"
 #import "PinewoodsLevel.h"
