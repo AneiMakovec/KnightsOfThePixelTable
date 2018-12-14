@@ -39,6 +39,7 @@
     [humanPlayer setCamera:renderer.camera];
     
     //[self reset];
+    // hello
     [super initialize];
 }
 
