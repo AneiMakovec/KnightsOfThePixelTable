@@ -10,7 +10,7 @@
 #import "KOTPTEnums.h"
 
 // Graphics
-@class Renderer, TextureStretcher;
+@class Renderer;
 
 // Physics
 @class Physics;

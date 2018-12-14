@@ -12,7 +12,6 @@
 
 // Graphics
 #import "Renderer.h"
-#import "TextureStretcher.h"
 
 
 // Physics
