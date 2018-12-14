@@ -6,6 +6,13 @@
 //  Copyright © 2018 Anei Makovec. All rights reserved.
 //
 
+// entities
+typedef enum {
+    KnightTypeLancelot,
+    KnightTypes
+} KnightType;
+
+// combat positions
 typedef enum {
     FirstAlly,
     SecondAlly,
@@ -22,6 +29,7 @@ typedef enum {
     EnemyPositions
 } EnemyPosition;
 
+// level types
 typedef enum {
     LevelTypeFarmlands,
     LevelTypePinewoods,
@@ -31,6 +39,7 @@ typedef enum {
     LevelTypes
 } LevelType;
 
+// dices
 typedef enum {
     DiceTypeStrength,
     DiceTypeAgility,
@@ -49,6 +58,7 @@ typedef enum {
     DiceStates
 } DiceState;
 
+// sounds
 typedef enum {
     SoundEffectTypeDice,
     SoundEffectTypeBackground,
