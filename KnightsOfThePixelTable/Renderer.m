@@ -108,51 +108,51 @@
     diceEvilAnimTexture = [self.game.content load:DICE_ANIM_EVIL];
     
     // Dice symbols
-    diceSymbols[DiceTypeGoodFrame] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeGoodFrame].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeGoodFrame].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
-    diceSymbols[DiceTypeGoodFrame].origin = [Vector2 vectorWithX:16 y:16];
+    diceFrames[DiceFrameTypeGood] =[[Sprite alloc] init];
+    diceFrames[DiceFrameTypeGood].texture = diceSymbolTexture;
+    diceFrames[DiceFrameTypeGood].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
+    diceFrames[DiceFrameTypeGood].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeEvilFrame] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeEvilFrame].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeEvilFrame].sourceRectangle = [Rectangle rectangleWithX:32 y:0 width:32 height:32];
-    diceSymbols[DiceTypeEvilFrame].origin = [Vector2 vectorWithX:16 y:16];
+    diceFrames[DiceFrameTypeEvil] =[[Sprite alloc] init];
+    diceFrames[DiceFrameTypeEvil].texture = diceSymbolTexture;
+    diceFrames[DiceFrameTypeEvil].sourceRectangle = [Rectangle rectangleWithX:32 y:0 width:32 height:32];
+    diceFrames[DiceFrameTypeEvil].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeAgility] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeAgility].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeAgility].sourceRectangle = [Rectangle rectangleWithX:64 y:0 width:32 height:32];
-    diceSymbols[DiceTypeAgility].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Agility] =[[Sprite alloc] init];
+    diceSymbols[Agility].texture = diceSymbolTexture;
+    diceSymbols[Agility].sourceRectangle = [Rectangle rectangleWithX:64 y:0 width:32 height:32];
+    diceSymbols[Agility].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeCunning] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeCunning].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeCunning].sourceRectangle = [Rectangle rectangleWithX:96 y:0 width:32 height:32];
-    diceSymbols[DiceTypeCunning].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Cunning] =[[Sprite alloc] init];
+    diceSymbols[Cunning].texture = diceSymbolTexture;
+    diceSymbols[Cunning].sourceRectangle = [Rectangle rectangleWithX:96 y:0 width:32 height:32];
+    diceSymbols[Cunning].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeInsight] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeInsight].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeInsight].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
-    diceSymbols[DiceTypeInsight].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Insight] =[[Sprite alloc] init];
+    diceSymbols[Insight].texture = diceSymbolTexture;
+    diceSymbols[Insight].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
+    diceSymbols[Insight].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeIntelligence] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeIntelligence].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeIntelligence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
-    diceSymbols[DiceTypeIntelligence].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Intelligence] =[[Sprite alloc] init];
+    diceSymbols[Intelligence].texture = diceSymbolTexture;
+    diceSymbols[Intelligence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
+    diceSymbols[Intelligence].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeStrength] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeStrength].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeStrength].sourceRectangle = [Rectangle rectangleWithX:64 y:32 width:32 height:32];
-    diceSymbols[DiceTypeStrength].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Strength] =[[Sprite alloc] init];
+    diceSymbols[Strength].texture = diceSymbolTexture;
+    diceSymbols[Strength].sourceRectangle = [Rectangle rectangleWithX:64 y:32 width:32 height:32];
+    diceSymbols[Strength].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[DiceTypeSturdiness] =[[Sprite alloc] init];
-    diceSymbols[DiceTypeSturdiness].texture = diceSymbolTexture;
-    diceSymbols[DiceTypeSturdiness].sourceRectangle = [Rectangle rectangleWithX:96 y:32 width:32 height:32];
-    diceSymbols[DiceTypeSturdiness].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Sturdiness] =[[Sprite alloc] init];
+    diceSymbols[Sturdiness].texture = diceSymbolTexture;
+    diceSymbols[Sturdiness].sourceRectangle = [Rectangle rectangleWithX:96 y:32 width:32 height:32];
+    diceSymbols[Sturdiness].origin = [Vector2 vectorWithX:16 y:16];
     
     // Dice good animation
     diceGoodAnim = [[AnimatedSprite alloc] initWithDuration:1];
     diceGoodAnim.looping = NO;
     
-    for (int i = 0; i < DiceTypes; i++) {
+    for (int i = 0; i < 8; i++) {
         int x = i % 4;
         int y = i / 4;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
@@ -160,7 +160,7 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameSprite.origin = [Vector2 vectorWithX:16 y:16];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceGoodAnim.duration * (float) i / DiceTypes];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceGoodAnim.duration * (float) i / 8];
         [diceGoodAnim addFrame:frame];
     }
     
@@ -170,7 +170,7 @@
     diceEvilAnim = [[AnimatedSprite alloc] initWithDuration:1];
     diceEvilAnim.looping = NO;
     
-    for (int i = 0; i < DiceTypes; i++) {
+    for (int i = 0; i < 8; i++) {
         int x = i % 4;
         int y = i / 4;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
@@ -178,7 +178,7 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameSprite.origin = [Vector2 vectorWithX:16 y:16];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceEvilAnim.duration * (float) i / DiceTypes];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceEvilAnim.duration * (float) i / 8];
         [diceEvilAnim addFrame:frame];
     }
     
@@ -313,7 +313,7 @@
                 diceAnim = diceGoodAnim;
             } else {
                 diceSymbol = diceSymbols[dice.type];
-                diceBorder = diceSymbols[dice.frameType];
+                diceBorder = diceFrames[dice.frameType];
             }
         }
         
@@ -344,11 +344,7 @@
         [allyPositions[i] release];
         [portraitPositions[i] release];
     }
-    /*
-    for (int i = 0; i < EnemyPositions; i++) {
-        [enemySprites[i] release];
-     */
-
+    
     for (int i = 0; i < LevelTypes; i++) {
         [levelBackgrounds[i] release];
     }
@@ -358,8 +354,12 @@
     [diceGoodAnimTexture release];
     [diceEvilAnimTexture release];
     
-    for (int i = 0; i < DiceTypes; i++) {
+    for (int i = 0; i < StatTypes; i++) {
         [diceSymbols[i] release];
+    }
+    
+    for (int i = 0; i < DiceFrameTypes; i++) {
+        [diceFrames[i] release];
     }
     
     [diceGoodAnim release];

@@ -12,6 +12,33 @@ typedef enum {
     KnightTypes
 } KnightType;
 
+typedef enum {
+    Strength,
+    Agility,
+    Intelligence,
+    Insight,
+    Cunning,
+    Sturdiness,
+    StatTypes
+} StatType;
+
+typedef enum {
+    BasicAttack,
+    FirstCombo,
+    SecondCombo,
+    ThirdCombo,
+    AttackTypes
+} AttackType;
+
+typedef enum {
+    EntityStateIdle,
+    EntityStateAttacking,
+    EntityStateDefending,
+    EntityStateApproaching,
+    EntityStateRetreating,
+    EntityStates
+} EntityState;
+
 // combat positions
 typedef enum {
     FirstAlly,
@@ -41,16 +68,10 @@ typedef enum {
 
 // dices
 typedef enum {
-    DiceTypeStrength,
-    DiceTypeAgility,
-    DiceTypeIntelligence,
-    DiceTypeInsight,
-    DiceTypeCunning,
-    DiceTypeSturdiness,
-    DiceTypeGoodFrame,
-    DiceTypeEvilFrame,
-    DiceTypes
-} DiceType;
+    DiceFrameTypeGood,
+    DiceFrameTypeEvil,
+    DiceFrameTypes
+} DiceFrameType;
 
 typedef enum {
     DiceStateMoving,

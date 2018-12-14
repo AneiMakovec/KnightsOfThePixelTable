@@ -25,6 +25,12 @@
 #import "IDice.h"
 #import "Dice.h"
 
+#import "ICombatEntity.h"
+
+#import "Knight.h"
+
+#import "Monster.h"
+
 #import "Level.h"
 #import "FarmlandsLevel.h"
 #import "PinewoodsLevel.h"

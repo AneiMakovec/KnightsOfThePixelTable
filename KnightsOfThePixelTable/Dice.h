@@ -27,8 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
     float altitude;
     float altitudeVelocity;
     DiceState state;
-    DiceType type;
-    DiceType frameType;
+    StatType type;
+    DiceFrameType frameType;
 }
 
 - (void) updateRadius;

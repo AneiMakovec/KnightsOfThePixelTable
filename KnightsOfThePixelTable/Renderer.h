@@ -42,7 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *diceEvilAnimTexture;
     
     // dice animations and sprites
-    Sprite *diceSymbols[DiceTypes];
+    Sprite *diceSymbols[StatTypes];
+    Sprite *diceFrames[DiceFrameTypes];
     AnimatedSprite *diceGoodAnim;
     AnimatedSprite *diceEvilAnim;
     

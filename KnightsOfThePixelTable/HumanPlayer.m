@@ -44,14 +44,14 @@
                     dice.velocity.x = [Random intGreaterThanOrEqual:-700 lessThan:700];
                     dice.velocity.y = [Random intGreaterThanOrEqual:-700 lessThan:700];
                     dice.state = DiceStateMoving;
-                    dice.type = [Random intLessThan:DiceTypeGoodFrame];
-                    dice.frameType = DiceTypeGoodFrame;
+                    dice.type = [Random intLessThan:StatTypes];
+                    dice.frameType = DiceFrameTypeGood;
                     [level.scene addItem:dice];
                 }
             } else {
                 for (id item in level.scene) {
                     Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice*)item : nil;
-                    if (dice && dice.frameType == DiceTypeGoodFrame) {
+                    if (dice && dice.frameType == DiceFrameTypeGood) {
                         [level.scene removeItem:item];
                     }
                 }

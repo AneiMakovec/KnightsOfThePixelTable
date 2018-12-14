@@ -24,6 +24,8 @@
 		B57B0D0C21A5F8720064B91F /* FinalLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0B21A5F8720064B91F /* FinalLevel.m */; };
 		B57B0D0F21A5FCA80064B91F /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0E21A5FCA80064B91F /* Level.m */; };
 		B57B0D1A21A602530064B91F /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D1921A602530064B91F /* Renderer.m */; };
+		B58869A521C4430900CE4C0E /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869A421C4430900CE4C0E /* Monster.m */; };
+		B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869AF21C4675200CE4C0E /* CombatEntity.m */; };
 		B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AE501421BEEE2800FC5CBF /* SoundEngine.m */; };
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
@@ -103,6 +105,11 @@
 		B57B0D0E21A5FCA80064B91F /* Level.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		B57B0D1821A602530064B91F /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		B57B0D1921A602530064B91F /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		B58869A321C4430900CE4C0E /* Monster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
+		B58869A421C4430900CE4C0E /* Monster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
+		B58869A621C44DA400CE4C0E /* ICombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICombatEntity.h; sourceTree = "<group>"; };
+		B58869AE21C4675200CE4C0E /* CombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombatEntity.h; sourceTree = "<group>"; };
+		B58869AF21C4675200CE4C0E /* CombatEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CombatEntity.m; sourceTree = "<group>"; };
 		B5AE501321BEEE2800FC5CBF /* SoundEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundEngine.h; sourceTree = "<group>"; };
 		B5AE501421BEEE2800FC5CBF /* SoundEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundEngine.m; sourceTree = "<group>"; };
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
@@ -222,6 +229,9 @@
 		B57B0D1021A5FDD50064B91F /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B58869A621C44DA400CE4C0E /* ICombatEntity.h */,
+				B58869AE21C4675200CE4C0E /* CombatEntity.h */,
+				B58869AF21C4675200CE4C0E /* CombatEntity.m */,
 				B5D0A42521C411EC005EF3C6 /* Allies */,
 				B5D0A42621C411F4005EF3C6 /* Enemies */,
 			);
@@ -285,6 +295,8 @@
 		B5D0A42621C411F4005EF3C6 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				B58869A321C4430900CE4C0E /* Monster.h */,
+				B58869A421C4430900CE4C0E /* Monster.m */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -654,9 +666,11 @@
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B57B0D1A21A602530064B91F /* Renderer.m in Sources */,
+				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
 				B57B0D0C21A5F8720064B91F /* FinalLevel.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,
+				B58869A521C4430900CE4C0E /* Monster.m in Sources */,
 				B57B0CFD21A5F72C0064B91F /* Physics.m in Sources */,
 				B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */,
 				B537666721AF36E40098C44C /* Constants.m in Sources */,

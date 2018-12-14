@@ -1,5 +1,5 @@
 //
-//  Knight.h
+//  CombatEntity.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 14/12/2018.
@@ -14,11 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Knight : DamageDealer<IExperienceGainer, ICombatEntity> {
-    int currentLevel;
-    int maxLevel;
-    int exp;
-    
+@interface CombatEntity : DamageDealer<ICombatEntity> {
     float radius;
     
     EntityState state;
@@ -27,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSArray *stats;
     NSArray *attackDamage;
     NSArray *attackDuration;
-    //NSArray *targets;
+    
+    Entity *target;
 }
 
 - (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength;

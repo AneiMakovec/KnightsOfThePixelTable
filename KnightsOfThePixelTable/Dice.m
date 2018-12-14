@@ -24,8 +24,6 @@
         mass = 16.0f * 16.0f * M_PI;
         coefficientOfRestitution = 0.1f;
         coefficientOfFriction = 0.05f;
-        type = DiceTypes;
-        frameType = DiceTypes;
     }
     return self;
 }

@@ -16,7 +16,7 @@
 @property (nonatomic) float altitude;
 @property (nonatomic) float altitudeVelocity;
 @property (nonatomic) DiceState state;
-@property (nonatomic) DiceType type;
-@property (nonatomic) DiceType frameType;
+@property (nonatomic) StatType type;
+@property (nonatomic) DiceFrameType frameType;
 
 @end
