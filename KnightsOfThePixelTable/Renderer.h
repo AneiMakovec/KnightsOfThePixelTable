@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     // core
     SpriteBatch *spriteBatch;
     Gameplay *gameplay;
+    Battlefield *battlefield;
     Matrix *camera;
     
     // texture stretchers
@@ -66,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) Matrix *camera;
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay;
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay battlefield:(Battlefield *)theBattlefield;
 
 @end
 

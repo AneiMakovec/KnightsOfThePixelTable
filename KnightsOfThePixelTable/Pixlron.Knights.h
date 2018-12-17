@@ -22,6 +22,8 @@
 #import "GroundPlane.h"
 #import "DicepoolLimit.h"
 
+#import "Battlefield.h"
+
 #import "IDice.h"
 #import "Dice.h"
 

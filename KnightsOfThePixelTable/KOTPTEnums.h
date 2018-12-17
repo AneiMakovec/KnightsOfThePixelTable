@@ -9,8 +9,14 @@
 // entities
 typedef enum {
     KnightTypeLancelot,
+    KnightTypeEnemy,
     KnightTypes
 } KnightType;
+
+typedef enum {
+    MonsterTypeWarrior,
+    MonsterTypes
+} MonsterType;
 
 typedef enum {
     Strength,
@@ -36,6 +42,7 @@ typedef enum {
     EntityStateDefending,
     EntityStateApproaching,
     EntityStateRetreating,
+    EntityStateJustAttacked,
     EntityStates
 } EntityState;
 

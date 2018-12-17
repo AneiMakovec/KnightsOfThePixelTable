@@ -24,7 +24,7 @@
     return self;
 }
 
-@synthesize maxLevel, currentLevel, exp;
+@synthesize maxLevel, currentLevel, exp, type;
 
 
 - (void) gainExperience:(int)theExp {

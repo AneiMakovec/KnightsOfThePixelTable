@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HumanPlayer : GameComponent {
     Matrix *inverseView;
     Level *level;
+    
+    Rectangle *ally;
 }
 
 - (id) initWithGame:(Game*)theGame level:(Level*)theLevel;
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setCamera:(Matrix *)camera;
 
 - (void) updateWithGameTime:(GameTime*)gameTime;
+
+- (BOOL) checkIfCanAttack;
 
 @end
 

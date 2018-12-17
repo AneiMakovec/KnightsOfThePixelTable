@@ -31,6 +31,7 @@
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
 		B5AE502021BEF47300FC5CBF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501D21BEF47300FC5CBF /* click.wav */; };
+		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
@@ -118,6 +119,8 @@
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
 		B5AE501C21BEF47300FC5CBF /* background_sounds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background_sounds.wav; sourceTree = "<group>"; };
 		B5AE501D21BEF47300FC5CBF /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		B5D01C5521C8291B00A007DC /* Battlefield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Battlefield.h; sourceTree = "<group>"; };
+		B5D01C5621C8291B00A007DC /* Battlefield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Battlefield.m; sourceTree = "<group>"; };
 		B5D0A42721C41204005EF3C6 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
 		B5D0A42821C41204005EF3C6 /* Knight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Knight.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
@@ -295,6 +298,15 @@
 			path = Dices;
 			sourceTree = "<group>";
 		};
+		B5D01C5421C828C000A007DC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B5D01C5521C8291B00A007DC /* Battlefield.h */,
+				B5D01C5621C8291B00A007DC /* Battlefield.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		B5D0A42521C411EC005EF3C6 /* Allies */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +329,7 @@
 		B5DE1244218DA53E000D6784 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B5D01C5421C828C000A007DC /* Data */,
 				B5671A59219A13CF009E270F /* Objects */,
 				B5DE1256218DA933000D6784 /* Levels */,
 				B57B0D0D21A5FCA80064B91F /* Level.h */,
@@ -673,6 +686,7 @@
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
+				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,
 				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,

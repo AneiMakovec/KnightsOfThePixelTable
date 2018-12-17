@@ -22,8 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
     AttackType attackType;
     BattlePosition *origin;
     NSMutableArray *stats;
-    NSArray *attackDamage;
-    NSArray *attackDuration;
+    NSMutableArray *attackDamage;
+    NSMutableArray *attackDuration;
+    
+    ResetableLifetime *attackTime;
+    int strength;
     
     Entity *target;
 }

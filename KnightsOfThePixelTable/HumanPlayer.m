@@ -20,6 +20,10 @@
     return self;
 }
 
+- (void) initialize {
+    ally = [[Rectangle alloc] initWithX:200 y:200 width:500 height:500];
+}
+
 - (void) setCamera:(Matrix *)camera {
     [inverseView release];
     inverseView = [[Matrix invert:camera] retain];
@@ -48,6 +52,31 @@
                     dice.frameType = DiceFrameTypeGood;
                     [level.scene addItem:dice];
                 }
+            } else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
+                //[[level.battlefield getAllyAtPosition:FirstCombatPosition] attackTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                
+                Knight *enemy;
+                Knight *allyKnight;
+                for (id item in level.scene) {
+                    Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
+                    if (entity) {
+                        if (entity.type == KnightTypeLancelot) {
+                            allyKnight = entity;
+                        } else if (entity.type == KnightTypeEnemy) {
+                            enemy = entity;
+                        }
+                    }
+                }
+                
+                /*
+                ally.velocity.x = (enemy.position.x - ally.position.x) / 2;
+                ally.velocity.y = (enemy.position.y - ally.position.y) / 2;
+                
+                ally.state = EntityStateApproaching;
+                 */
+                
+                allyKnight.attackType = BasicAttack;
+                [allyKnight attackTarget:enemy];
             } else {
                 for (id item in level.scene) {
                     Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice*)item : nil;
@@ -58,6 +87,22 @@
             }
         }
     }
+}
+
+- (BOOL) checkIfCanAttack {
+    for (id item in level.scene) {
+        Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
+        if (entity) {
+            if (entity.type == KnightTypeLancelot) {
+                if (entity.state == EntityStateJustAttacked) {
+                    entity.state = EntityStateIdle;
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return false;
 }
 
 @end

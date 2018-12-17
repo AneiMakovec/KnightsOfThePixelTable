@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pixlron.Knights.classes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AIPlayer : NSObject
+@interface AIPlayer : GameComponent {
+    HumanPlayer *player;
+    Level *level;
+}
+
+- (id) initWithGame:(Game *)theGame player:(HumanPlayer *)thePlayer level:(Level *)theLevel;
 
 @end
 

@@ -50,7 +50,7 @@
         }
         
         // movement for combat entities
-        CombatEntity *cEntity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *) item : nil;
+        Knight *cEntity = [item isKindOfClass:[Knight class]] ? (Knight *) item : nil;
         if (cEntity) {
             if (cEntity.state == EntityStateApproaching || cEntity.state == EntityStateRetreating) {
                 [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];

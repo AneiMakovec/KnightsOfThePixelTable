@@ -12,11 +12,11 @@
 
 @implementation Renderer
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay battlefield:(Battlefield *)theBattlefield {
     self = [super initWithGame:theGame];
     if (self != nil) {
         gameplay = theGameplay;
-        
+        battlefield = theBattlefield;
         
         for (int i = 0; i < CombatPositions; i++) {
             allyPositions[i] = [[Vector2 alloc] init];
@@ -69,45 +69,37 @@
     allyPositions[FirstCombatPosition].x = 77;
     allyPositions[FirstCombatPosition].y = 46;
     [backgroundStretch scalePosition:allyPositions[FirstCombatPosition]];
-    [gameplay.currentLevel setAllyPosition:FirstCombatPosition toPosition:allyPositions[FirstCombatPosition]];
     
     // 2. ally
     allyPositions[SecondCombatPosition].x = 64;
     allyPositions[SecondCombatPosition].y = 62;
     [backgroundStretch scalePosition:allyPositions[SecondCombatPosition]];
-    [gameplay.currentLevel setAllyPosition:SecondCombatPosition toPosition:allyPositions[SecondCombatPosition]];
     
     // 3. ally
     allyPositions[ThirdCombatPosition].x = 38;
     allyPositions[ThirdCombatPosition].y = 46;
     [backgroundStretch scalePosition:allyPositions[ThirdCombatPosition]];
-    [gameplay.currentLevel setAllyPosition:ThirdCombatPosition toPosition:allyPositions[ThirdCombatPosition]];
     
     // 4. ally
     allyPositions[FourthCombatPosition].x = 26;
     allyPositions[FourthCombatPosition].y = 62;
     [backgroundStretch scalePosition:allyPositions[FourthCombatPosition]];
-    [gameplay.currentLevel setAllyPosition:FourthCombatPosition toPosition:allyPositions[FourthCombatPosition]];
     
     // 1. enemy
     enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
     enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
-    [gameplay.currentLevel setEnemyPosition:FirstCombatPosition toPosition:enemyPositions[FirstCombatPosition]];
     
     // 2. enemy
     enemyPositions[SecondCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[SecondCombatPosition].x;
     enemyPositions[SecondCombatPosition].y = allyPositions[SecondCombatPosition].y;
-    [gameplay.currentLevel setEnemyPosition:SecondCombatPosition toPosition:enemyPositions[SecondCombatPosition]];
     
     // 3. enemy
     enemyPositions[ThirdCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[ThirdCombatPosition].x;
     enemyPositions[ThirdCombatPosition].y = allyPositions[ThirdCombatPosition].y;
-    [gameplay.currentLevel setEnemyPosition:ThirdCombatPosition toPosition:enemyPositions[ThirdCombatPosition]];
     
     // 4. enemy
     enemyPositions[FourthCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FourthCombatPosition].x;
     enemyPositions[FourthCombatPosition].y = allyPositions[FourthCombatPosition].y;
-    [gameplay.currentLevel setEnemyPosition:FourthCombatPosition toPosition:enemyPositions[FourthCombatPosition]];
 
     
     // release the stretchers as we dont need them anymore
@@ -360,11 +352,16 @@
         }
         
         // check if is combat entity
-        CombatEntity *entity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *)item : nil;
+        Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
         
         if (entity) {
-            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-            [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+            if (entity.type == KnightTypeLancelot) {
+                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+                [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+            } else if (entity.type == KnightTypeEnemy) {
+                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+                [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
+            }
         }
     }
     

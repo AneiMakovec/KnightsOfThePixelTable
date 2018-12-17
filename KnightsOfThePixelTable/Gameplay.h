@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
     //Level *levels[LevelTypes];
     Level *currentLevel;
     HumanPlayer *humanPlayer;
-    //AIPlayer *AIPlayer;
+    AIPlayer *aiPlayer;
     Physics *physics;
     Renderer *renderer;
     

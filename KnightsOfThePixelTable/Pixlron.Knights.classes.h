@@ -18,6 +18,8 @@
 // Scene
 @class GroundPlane, DicepoolLimit;
 
+@class Battlefield;
+
 @protocol IDice;
 @class Dice;
 

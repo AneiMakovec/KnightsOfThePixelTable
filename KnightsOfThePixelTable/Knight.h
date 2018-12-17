@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
     KnightType type;
 }
 
+@property (nonatomic) KnightType type;
+
 - (id) initWithKnightType: (KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end

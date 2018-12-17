@@ -15,18 +15,15 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:theGame];
-        scene.updateOrder = 3;
+        scene.updateOrder = 4;
         [self.game.components addComponent:scene];
         
         num_of_dices = numDices;
-        
-        allies = [NSMutableArray arrayWithCapacity:CombatPositions];
-        enemies = [NSMutableArray arrayWithCapacity:CombatPositions];
     }
     return self;
 }
 
-@synthesize scene, bounds, dicePool, num_of_dices;
+@synthesize scene, battlefield, bounds, dicePool, num_of_dices;
 
 - (void) initialize {
     // calculate the right dimensions of the display area
@@ -35,6 +32,8 @@
     dicePool = [[Rectangle alloc] init];
     
     music_played = NO;
+    
+    battlefield = [[Battlefield alloc] initWithWidth:bounds.width height:bounds.height firstAlly:0 secondAlly:0 thirdAlly:0 fourthAlly:0 firstEnemy:0 secondEnemy:0 thirdEnemy:0 fourthEnemy:0];
     
     [self reset];
 }
@@ -63,40 +62,19 @@
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-bottomWall - hudOffset]] autorelease]];
     
     // allies
-    Knight *lancelot = [[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
-    [lancelot.stats insertObject:[NSNumber numberWithInteger:30] atIndex:Strength];
-    //lancelot.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    //lancelot.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    //lancelot.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
-    //lancelot.position = allyPositions[FirstCombatPosition];
-    lancelot.position = [[Vector2 alloc] init];
-    lancelot.position.x = 50;
-    lancelot.position.y = 100;
-    
-    //BattlePosition *position = [[BattlePosition alloc] initWithRadius:1];
-    //position.position = allyPositions[FirstCombatPosition];
-    
-    //lancelot.origin = position;
-    
-    [scene addItem:lancelot];
-    //[scene addItem:position];
-    
-    /*
-    // enemies
-    Knight *enemy = [[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
-    enemy.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    enemy.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    enemy.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
-    enemy.position = enemyPositions[FirstCombatPosition];
-    
-    BattlePosition *enemyPosition = [[BattlePosition alloc] initWithRadius:1];
-    enemyPosition.position = enemyPositions[FirstCombatPosition];
-    
-    enemy.origin = enemyPosition;
-    
-    [scene addItem:enemy];
-    [scene addItem:enemyPosition];
-     */
+    for (int i = 0; i < CombatPositions; i++) {
+        Knight *entity = [battlefield getAllyAtPosition:i];
+        if (entity) {
+            [scene addItem:entity];
+            [scene addItem:entity.origin];
+        }
+        
+        entity = [battlefield getEnemyAtPosition:i];
+        if (entity) {
+            [scene addItem:entity];
+            [scene addItem:entity.origin];
+        }
+    }
 }
 
 
@@ -105,28 +83,19 @@
         [SoundEngine play:SoundEffectTypeBackground];
         music_played = YES;
     }
-}
-
-
-
-- (void) setAllyPosition:(CombatPosition)theAllyPosition toPosition:(Vector2 *)thePosition {
-    allyPositions[theAllyPosition] = thePosition;
-}
-
-- (void) setEnemyPosition:(CombatPosition)theEnemyPosition toPosition:(Vector2 *)thePosition {
-    enemyPositions[theEnemyPosition] = thePosition;
+    
+    for (id item in scene) {
+        id<ICustomUpdate> updatable = [item conformsToProtocol:@protocol(ICustomUpdate)] ? (id<ICustomUpdate>) item : nil;
+        if (updatable) {
+            [updatable updateWithGameTime:gameTime];
+        }
+    }
 }
 
 
 - (void) dealloc {
     [scene release];
     [bounds release];
-    
-    for (int i = 0; i < CombatPositions; i++) {
-        [allies[i] release];
-        [enemies[i] release];
-    }
-    
     [super dealloc];
 }
 

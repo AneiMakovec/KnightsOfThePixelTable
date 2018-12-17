@@ -16,16 +16,19 @@
     if (self != nil) {
         currentLevel = [[Level alloc] initWithGame:self.game numDices:8];
         humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
+        aiPlayer = [[AIPlayer alloc] initWithGame:self.game player:humanPlayer level:currentLevel];
         physics = [[Physics alloc] initWithGame:self.game level:currentLevel];
-        renderer = [[Renderer alloc] initWithGame:self.game gameplay:self];
+        renderer = [[Renderer alloc] initWithGame:self.game gameplay:self battlefield:currentLevel.battlefield];
         
         humanPlayer.updateOrder = 0;
-        physics.updateOrder = 1;
-        currentLevel.updateOrder = 2;
-        renderer.updateOrder = 4;
-        self.updateOrder = 5;
+        aiPlayer.updateOrder = 1;
+        physics.updateOrder = 2;
+        currentLevel.updateOrder = 3;
+        renderer.updateOrder = 5;
+        self.updateOrder = 6;
         
         [self.game.components addComponent:humanPlayer];
+        [self.game.components addComponent:aiPlayer];
         [self.game.components addComponent:physics];
         [self.game.components addComponent:currentLevel];
         [self.game.components addComponent:renderer];

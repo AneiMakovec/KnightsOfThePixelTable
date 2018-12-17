@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Level : GameComponent {
     SimpleScene *scene;
+    Battlefield *battlefield;
     
     Rectangle *bounds;
     Rectangle *dicePool;
@@ -24,14 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL music_played;
     
     int num_of_dices;
-    
-    NSArray *allies;
-    NSArray *enemies;
-    Vector2 *allyPositions[CombatPositions];
-    Vector2 *enemyPositions[CombatPositions];
 }
 
 @property (nonatomic, readonly) SimpleScene *scene;
+
+@property (nonatomic, readonly) Battlefield *battlefield;
 
 @property (nonatomic, readonly) Rectangle *bounds;
 
@@ -43,10 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initWithGame:(Game *)theGame numDices:(int) numDices;
 
 - (void) reset;
-
-- (void) setAllyPosition:(CombatPosition)theAllyPosition toPosition:(Vector2 *)thePosition;
-
-- (void) setEnemyPosition:(CombatPosition)theEnemyPosition toPosition:(Vector2 *)thePosition;
 
 @end
 
