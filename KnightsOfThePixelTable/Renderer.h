@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
     AnimatedSprite *allySprites[CombatPositions];
     Vector2 *allyPositions[CombatPositions];
     
+    Vector2 *enemyPositions[CombatPositions];
+    
     
     
     

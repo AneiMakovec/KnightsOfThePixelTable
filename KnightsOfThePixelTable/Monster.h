@@ -11,6 +11,8 @@
 #import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
 
+#import "ICombatEntity.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Monster : DamageDealer<IExperienceGiver, ICombatEntity>

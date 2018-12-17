@@ -63,21 +63,40 @@
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-bottomWall - hudOffset]] autorelease]];
     
     // allies
-    Knight *lancelot = [[[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60] autorelease];
-    lancelot.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    lancelot.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
-    lancelot.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
-    lancelot.position = allyPositions[FirstCombatPosition];
+    Knight *lancelot = [[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
+    [lancelot.stats insertObject:[NSNumber numberWithInteger:30] atIndex:Strength];
+    //lancelot.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    //lancelot.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    //lancelot.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
+    //lancelot.position = allyPositions[FirstCombatPosition];
+    lancelot.position = [[Vector2 alloc] init];
+    lancelot.position.x = 50;
+    lancelot.position.y = 100;
     
-    BattlePosition *position = [[BattlePosition alloc] initWithRadius:1];
-    position.position = allyPositions[FirstCombatPosition];
+    //BattlePosition *position = [[BattlePosition alloc] initWithRadius:1];
+    //position.position = allyPositions[FirstCombatPosition];
     
-    lancelot.origin = position;
+    //lancelot.origin = position;
     
     [scene addItem:lancelot];
-    [scene addItem:position];
+    //[scene addItem:position];
     
+    /*
     // enemies
+    Knight *enemy = [[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
+    enemy.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    enemy.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    enemy.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
+    enemy.position = enemyPositions[FirstCombatPosition];
+    
+    BattlePosition *enemyPosition = [[BattlePosition alloc] initWithRadius:1];
+    enemyPosition.position = enemyPositions[FirstCombatPosition];
+    
+    enemy.origin = enemyPosition;
+    
+    [scene addItem:enemy];
+    [scene addItem:enemyPosition];
+     */
 }
 
 
@@ -102,6 +121,12 @@
 - (void) dealloc {
     [scene release];
     [bounds release];
+    
+    for (int i = 0; i < CombatPositions; i++) {
+        [allies[i] release];
+        [enemies[i] release];
+    }
+    
     [super dealloc];
 }
 

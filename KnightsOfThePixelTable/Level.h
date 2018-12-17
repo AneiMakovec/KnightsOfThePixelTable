@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PixEngine.Scene.Objects.h"
 #import "PixEngine.Scene.h"
 #import "PixEngine.Math.h"
 #import "PixEngine.Utilities.h"

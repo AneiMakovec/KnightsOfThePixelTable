@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
     EntityState state;
     AttackType attackType;
     BattlePosition *origin;
-    NSArray *stats;
+    NSMutableArray *stats;
     NSArray *attackDamage;
     NSArray *attackDuration;
     

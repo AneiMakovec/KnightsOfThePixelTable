@@ -64,26 +64,50 @@
     [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
     
     
-    // set and stretch the position of ally entities and then send them to level
+    // set and stretch the position of ally and enemy entities and then send them to level
+    // 1. ally
     allyPositions[FirstCombatPosition].x = 77;
     allyPositions[FirstCombatPosition].y = 46;
     [backgroundStretch scalePosition:allyPositions[FirstCombatPosition]];
     [gameplay.currentLevel setAllyPosition:FirstCombatPosition toPosition:allyPositions[FirstCombatPosition]];
     
+    // 2. ally
     allyPositions[SecondCombatPosition].x = 64;
     allyPositions[SecondCombatPosition].y = 62;
     [backgroundStretch scalePosition:allyPositions[SecondCombatPosition]];
     [gameplay.currentLevel setAllyPosition:SecondCombatPosition toPosition:allyPositions[SecondCombatPosition]];
     
+    // 3. ally
     allyPositions[ThirdCombatPosition].x = 38;
     allyPositions[ThirdCombatPosition].y = 46;
     [backgroundStretch scalePosition:allyPositions[ThirdCombatPosition]];
     [gameplay.currentLevel setAllyPosition:ThirdCombatPosition toPosition:allyPositions[ThirdCombatPosition]];
     
+    // 4. ally
     allyPositions[FourthCombatPosition].x = 26;
     allyPositions[FourthCombatPosition].y = 62;
     [backgroundStretch scalePosition:allyPositions[FourthCombatPosition]];
     [gameplay.currentLevel setAllyPosition:FourthCombatPosition toPosition:allyPositions[FourthCombatPosition]];
+    
+    // 1. enemy
+    enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
+    enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
+    [gameplay.currentLevel setEnemyPosition:FirstCombatPosition toPosition:enemyPositions[FirstCombatPosition]];
+    
+    // 2. enemy
+    enemyPositions[SecondCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[SecondCombatPosition].x;
+    enemyPositions[SecondCombatPosition].y = allyPositions[SecondCombatPosition].y;
+    [gameplay.currentLevel setEnemyPosition:SecondCombatPosition toPosition:enemyPositions[SecondCombatPosition]];
+    
+    // 3. enemy
+    enemyPositions[ThirdCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[ThirdCombatPosition].x;
+    enemyPositions[ThirdCombatPosition].y = allyPositions[ThirdCombatPosition].y;
+    [gameplay.currentLevel setEnemyPosition:ThirdCombatPosition toPosition:enemyPositions[ThirdCombatPosition]];
+    
+    // 4. enemy
+    enemyPositions[FourthCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FourthCombatPosition].x;
+    enemyPositions[FourthCombatPosition].y = allyPositions[FourthCombatPosition].y;
+    [gameplay.currentLevel setEnemyPosition:FourthCombatPosition toPosition:enemyPositions[FourthCombatPosition]];
 
     
     // release the stretchers as we dont need them anymore
@@ -294,45 +318,53 @@
     
     // ally entities and portraits
     for (int i = 0; i < CombatPositions; i++) {
-        Sprite *drawable = [allySprites[i] spriteAtTime:gameTime.totalGameTime];
-        [spriteBatch draw:drawable.texture to:allyPositions[i] fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
-        
         [spriteBatch draw:portraits[i].texture toRectangle:[Rectangle rectangleWithX:portraitPositions[i].x y:portraitPositions[i].y width:portraitSize.x height:portraitSize.y] fromRectangle:portraits[i].sourceRectangle tintWithColor:[Color white]
                  rotation:0 origin:portraits[i].origin effects:SpriteEffectsNone layerDepth:0];
     }
     
-    // dices
+    // scene items
     for (id item in gameplay.currentLevel.scene) {
+        // check if is dice
         id<IDice> diceItem = [item conformsToProtocol:@protocol(IDice)] ? item : nil;
         
-        AnimatedSprite *diceAnim = nil;
-        Sprite *diceSymbol = nil;
-        Sprite *diceBorder = nil;
-        Dice *dice = nil;
-        
-        if ([diceItem isKindOfClass:[Dice class]]) {
-            dice = (Dice *) diceItem;
-            // check if dice is still rolling
-            if (dice.state == DiceStateMoving) {
-                diceAnim = diceGoodAnim;
-            } else {
-                diceSymbol = diceSymbols[dice.type];
-                diceBorder = diceFrames[dice.frameType];
+        if (diceItem) {
+            AnimatedSprite *diceAnim = nil;
+            Sprite *diceSymbol = nil;
+            Sprite *diceBorder = nil;
+            Dice *dice = nil;
+            
+            if ([diceItem isKindOfClass:[Dice class]]) {
+                dice = (Dice *) diceItem;
+                // check if dice is still rolling
+                if (dice.state == DiceStateMoving) {
+                    diceAnim = diceGoodAnim;
+                } else {
+                    diceSymbol = diceSymbols[dice.type];
+                    diceBorder = diceFrames[dice.frameType];
+                }
+            }
+            
+            if (diceAnim) {
+                // rolling
+                Sprite *currentSprite = [diceAnim spriteAtTime:gameTime.totalGameTime];
+                [spriteBatch draw:currentSprite.texture to:dice.position fromRectangle:currentSprite.sourceRectangle tintWithColor:[Color white]
+                         rotation:dice.rotationAngle origin:currentSprite.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+            } else if (diceSymbol && diceBorder) {
+                // not rolling
+                [spriteBatch draw:diceBorder.texture to:dice.position fromRectangle:diceBorder.sourceRectangle tintWithColor:[Color white]
+                         rotation:dice.rotationAngle origin:diceBorder.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+                
+                [spriteBatch draw:diceSymbol.texture to:dice.position fromRectangle:diceSymbol.sourceRectangle tintWithColor:[Color white]
+                         rotation:dice.rotationAngle origin:diceSymbol.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
             }
         }
         
-        if (diceAnim) {
-            // rolling
-            Sprite *currentSprite = [diceAnim spriteAtTime:gameTime.totalGameTime];
-            [spriteBatch draw:currentSprite.texture to:dice.position fromRectangle:currentSprite.sourceRectangle tintWithColor:[Color white]
-                     rotation:dice.rotationAngle origin:currentSprite.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
-        } else if (diceSymbol && diceBorder) {
-            // not rolling
-            [spriteBatch draw:diceBorder.texture to:dice.position fromRectangle:diceBorder.sourceRectangle tintWithColor:[Color white]
-                     rotation:dice.rotationAngle origin:diceBorder.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
-            
-            [spriteBatch draw:diceSymbol.texture to:dice.position fromRectangle:diceSymbol.sourceRectangle tintWithColor:[Color white]
-                     rotation:dice.rotationAngle origin:diceSymbol.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+        // check if is combat entity
+        CombatEntity *entity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *)item : nil;
+        
+        if (entity) {
+            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+            [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
         }
     }
     
@@ -347,6 +379,7 @@
         [portraits[i] release];
         [allyPositions[i] release];
         [portraitPositions[i] release];
+        [enemyPositions[i] release];
     }
     
     for (int i = 0; i < LevelTypes; i++) {
