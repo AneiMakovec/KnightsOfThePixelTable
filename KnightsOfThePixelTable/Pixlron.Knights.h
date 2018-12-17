@@ -26,8 +26,10 @@
 #import "Dice.h"
 
 #import "ICombatEntity.h"
+#import "CombatEntity.h"
 
 #import "Knight.h"
+#import "KnightLancelot.h"
 
 #import "Monster.h"
 

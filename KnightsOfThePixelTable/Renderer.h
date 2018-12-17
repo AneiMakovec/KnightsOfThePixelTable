@@ -30,11 +30,19 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *levelBackgrounds[LevelTypes];
     Texture2D *hud;
     
+    
+    
+    
+    
     // entities idle animations
-    Texture2D *allyTexturesIdle[AllyPositions];
-    AnimatedSprite *allySprites[AllyPositions];
-    Vector2 *allyPositions[AllyPositions];
-    //AnimatedSprite *enemySprites[EnemyPositions];
+    Texture2D *allyTexturesIdle[CombatPositions];
+    AnimatedSprite *allySprites[CombatPositions];
+    Vector2 *allyPositions[CombatPositions];
+    
+    
+    
+    
+    
     
     // dice textures
     Texture2D *diceSymbolTexture;
@@ -49,8 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     // portraits
     Texture2D *portraitTexture;
-    Sprite *portraits[AllyPositions];
-    Vector2 *portraitPositions[AllyPositions];
+    Sprite *portraits[CombatPositions];
+    Vector2 *portraitPositions[CombatPositions];
     Vector2 *portraitSize;
 }
 

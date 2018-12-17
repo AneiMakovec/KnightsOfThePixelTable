@@ -17,11 +17,17 @@
 
 // Scene
 @class GroundPlane, DicepoolLimit;
+
 @protocol IDice;
 @class Dice;
+
 @protocol ICombatEntity;
-@class Knight;
+@class CombatEntity;
+
+@class Knight, KnightLancelot;
+
 @class Monster;
+
 @class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
 
 // Player

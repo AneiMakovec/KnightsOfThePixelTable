@@ -18,7 +18,7 @@
         gameplay = theGameplay;
         
         
-        for (int i = 0; i < AllyPositions; i++) {
+        for (int i = 0; i < CombatPositions; i++) {
             allyPositions[i] = [[Vector2 alloc] init];
             portraitPositions[i] = [[Vector2 alloc] init];
         }
@@ -47,45 +47,49 @@
     portraitSize.y = 14;
     [hudStretch scaleSize:portraitSize];
     
-    portraitPositions[FirstAlly].x = 85;
-    portraitPositions[FirstAlly].y = 6;
-    [hudStretch scalePosition:portraitPositions[FirstAlly]];
+    portraitPositions[FirstCombatPosition].x = 85;
+    portraitPositions[FirstCombatPosition].y = 6;
+    [hudStretch scalePosition:portraitPositions[FirstCombatPosition]];
     
-    portraitPositions[SecondAlly].x = 85;
-    portraitPositions[SecondAlly].y = 28;
-    [hudStretch scalePosition:portraitPositions[SecondAlly]];
+    portraitPositions[SecondCombatPosition].x = 85;
+    portraitPositions[SecondCombatPosition].y = 28;
+    [hudStretch scalePosition:portraitPositions[SecondCombatPosition]];
     
-    portraitPositions[ThirdAlly].x = 7;
-    portraitPositions[ThirdAlly].y = 6;
-    [hudStretch scalePosition:portraitPositions[ThirdAlly]];
+    portraitPositions[ThirdCombatPosition].x = 7;
+    portraitPositions[ThirdCombatPosition].y = 6;
+    [hudStretch scalePosition:portraitPositions[ThirdCombatPosition]];
     
-    portraitPositions[FourthAlly].x = 7;
-    portraitPositions[FourthAlly].y = 28;
-    [hudStretch scalePosition:portraitPositions[FourthAlly]];
+    portraitPositions[FourthCombatPosition].x = 7;
+    portraitPositions[FourthCombatPosition].y = 28;
+    [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
     
     
-    // set and stretch the position of ally entities
-    allyPositions[FirstAlly].x = 77;
-    allyPositions[FirstAlly].y = 46;
-    [backgroundStretch scalePosition:allyPositions[FirstAlly]];
+    // set and stretch the position of ally entities and then send them to level
+    allyPositions[FirstCombatPosition].x = 77;
+    allyPositions[FirstCombatPosition].y = 46;
+    [backgroundStretch scalePosition:allyPositions[FirstCombatPosition]];
+    [gameplay.currentLevel setAllyPosition:FirstCombatPosition toPosition:allyPositions[FirstCombatPosition]];
     
-    allyPositions[SecondAlly].x = 64;
-    allyPositions[SecondAlly].y = 62;
-    [backgroundStretch scalePosition:allyPositions[SecondAlly]];
+    allyPositions[SecondCombatPosition].x = 64;
+    allyPositions[SecondCombatPosition].y = 62;
+    [backgroundStretch scalePosition:allyPositions[SecondCombatPosition]];
+    [gameplay.currentLevel setAllyPosition:SecondCombatPosition toPosition:allyPositions[SecondCombatPosition]];
     
-    allyPositions[ThirdAlly].x = 38;
-    allyPositions[ThirdAlly].y = 46;
-    [backgroundStretch scalePosition:allyPositions[ThirdAlly]];
+    allyPositions[ThirdCombatPosition].x = 38;
+    allyPositions[ThirdCombatPosition].y = 46;
+    [backgroundStretch scalePosition:allyPositions[ThirdCombatPosition]];
+    [gameplay.currentLevel setAllyPosition:ThirdCombatPosition toPosition:allyPositions[ThirdCombatPosition]];
     
-    allyPositions[FourthAlly].x = 26;
-    allyPositions[FourthAlly].y = 62;
-    [backgroundStretch scalePosition:allyPositions[FourthAlly]];
+    allyPositions[FourthCombatPosition].x = 26;
+    allyPositions[FourthCombatPosition].y = 62;
+    [backgroundStretch scalePosition:allyPositions[FourthCombatPosition]];
+    [gameplay.currentLevel setAllyPosition:FourthCombatPosition toPosition:allyPositions[FourthCombatPosition]];
 
     
     // release the stretchers as we dont need them anymore
     [backgroundStretch release];
     [hudStretch release];
-
+    
     [super initialize];
 }
 
@@ -186,88 +190,88 @@
     
     
     // characters - GOOD textures
-    allyTexturesIdle[FirstAlly] = [self.game.content load:LANCELOT_IDLE];
-    allyTexturesIdle[SecondAlly] = [self.game.content load:PALADIN_IDLE];
-    allyTexturesIdle[ThirdAlly] = [self.game.content load:KNIGHT_IDLE];
-    allyTexturesIdle[FourthAlly] = [self.game.content load:LANCELOT_IDLE];
+    allyTexturesIdle[FirstCombatPosition] = [self.game.content load:LANCELOT_IDLE];
+    allyTexturesIdle[SecondCombatPosition] = [self.game.content load:PALADIN_IDLE];
+    allyTexturesIdle[ThirdCombatPosition] = [self.game.content load:KNIGHT_IDLE];
+    allyTexturesIdle[FourthCombatPosition] = [self.game.content load:LANCELOT_IDLE];
     
     // chareacters - GOOD animations
     // first ally
-    allySprites[FirstAlly] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[FirstAlly].looping = NO;
+    allySprites[FirstCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allySprites[FirstCombatPosition].looping = NO;
     
     for (int i = 0; i < 6; i++) {
         int x = i % 2;
         int y = i / 2;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[FirstAlly];
+        frameSprite.texture = allyTexturesIdle[FirstCombatPosition];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FirstAlly].duration * (float) i / 6];
-        [allySprites[FirstAlly] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FirstCombatPosition].duration * (float) i / 6];
+        [allySprites[FirstCombatPosition] addFrame:frame];
     }
     
-    allySprites[FirstAlly].looping = YES;
+    allySprites[FirstCombatPosition].looping = YES;
     
     // second ally
-    allySprites[SecondAlly] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[SecondAlly].looping = NO;
+    allySprites[SecondCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allySprites[SecondCombatPosition].looping = NO;
     
     for (int i = 0; i < 3; i++) {
         int x = i % 2;
         int y = i / 2;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[SecondAlly];
+        frameSprite.texture = allyTexturesIdle[SecondCombatPosition];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameSprite.origin = [Vector2 vectorWithX:16 y:16];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[SecondAlly].duration * (float) i / 3];
-        [allySprites[SecondAlly] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[SecondCombatPosition].duration * (float) i / 3];
+        [allySprites[SecondCombatPosition] addFrame:frame];
     }
     
-    allySprites[SecondAlly].looping = YES;
+    allySprites[SecondCombatPosition].looping = YES;
     
     // third ally
-    allySprites[ThirdAlly] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[ThirdAlly].looping = NO;
+    allySprites[ThirdCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allySprites[ThirdCombatPosition].looping = NO;
     
     for (int i = 0; i < 4; i++) {
         int x = i % 2;
         int y = i / 2;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[ThirdAlly];
+        frameSprite.texture = allyTexturesIdle[ThirdCombatPosition];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameSprite.origin = [Vector2 vectorWithX:16 y:16];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[ThirdAlly].duration * (float) i / 4];
-        [allySprites[ThirdAlly] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[ThirdCombatPosition].duration * (float) i / 4];
+        [allySprites[ThirdCombatPosition] addFrame:frame];
     }
     
-    allySprites[ThirdAlly].looping = YES;
+    allySprites[ThirdCombatPosition].looping = YES;
     
     // fourth ally
-    allySprites[FourthAlly] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[FourthAlly].looping = NO;
+    allySprites[FourthCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allySprites[FourthCombatPosition].looping = NO;
     
     for (int i = 0; i < 6; i++) {
         int x = i % 2;
         int y = i / 2;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[FourthAlly];
+        frameSprite.texture = allyTexturesIdle[FourthCombatPosition];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FourthAlly].duration * (float) i / 6];
-        [allySprites[FourthAlly] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FourthCombatPosition].duration * (float) i / 6];
+        [allySprites[FourthCombatPosition] addFrame:frame];
     }
     
-    allySprites[FourthAlly].looping = YES;
+    allySprites[FourthCombatPosition].looping = YES;
     
     // portraits
     portraitTexture = [self.game.content load:@"ui_icons"];
     
-    for (int i = 0; i < AllyPositions; i++) {
+    for (int i = 0; i < CombatPositions; i++) {
         portraits[i] = [[Sprite alloc] init];
         portraits[i].texture = portraitTexture;
         portraits[i].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
@@ -289,7 +293,7 @@
     [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:gameplay.currentLevel.bounds.width height:gameplay.currentLevel.bounds.height - hudOffset] tintWithColor:[Color white]];
     
     // ally entities and portraits
-    for (int i = 0; i < AllyPositions; i++) {
+    for (int i = 0; i < CombatPositions; i++) {
         Sprite *drawable = [allySprites[i] spriteAtTime:gameTime.totalGameTime];
         [spriteBatch draw:drawable.texture to:allyPositions[i] fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
         
@@ -338,7 +342,7 @@
 - (void) unloadContent {
     [spriteBatch release];
     
-    for (int i = 0; i < AllyPositions; i++) {
+    for (int i = 0; i < CombatPositions; i++) {
         [allySprites[i] release];
         [portraits[i] release];
         [allyPositions[i] release];

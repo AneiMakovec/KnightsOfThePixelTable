@@ -13,6 +13,7 @@
 
 @protocol ICombatEntity <ICustomUpdate, ICustomCollider, IParticleCollider>
 
+@property (nonatomic) float maxRadius;
 @property (nonatomic) EntityState state;
 @property (nonatomic) AttackType attackType;
 @property (nonatomic, retain) BattlePosition *origin;

@@ -41,20 +41,12 @@ typedef enum {
 
 // combat positions
 typedef enum {
-    FirstAlly,
-    SecondAlly,
-    ThirdAlly,
-    FourthAlly,
-    AllyPositions
-} AllyPosition;
-
-typedef enum {
-    FirstEnemy,
-    SecondEnemy,
-    ThirdEnemy,
-    FourthEnemy,
-    EnemyPositions
-} EnemyPosition;
+    FirstCombatPosition,
+    SecondCombatPosition,
+    ThirdCombatPosition,
+    FourthCombatPosition,
+    CombatPositions
+} CombatPosition;
 
 // level types
 typedef enum {

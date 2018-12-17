@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CombatEntity : DamageDealer<ICombatEntity> {
     float radius;
+    float maxRadius;
     
     EntityState state;
     AttackType attackType;
@@ -27,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     Entity *target;
 }
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength;
+- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

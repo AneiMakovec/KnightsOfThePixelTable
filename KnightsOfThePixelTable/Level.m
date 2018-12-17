@@ -19,6 +19,9 @@
         [self.game.components addComponent:scene];
         
         num_of_dices = numDices;
+        
+        allies = [NSMutableArray arrayWithCapacity:CombatPositions];
+        enemies = [NSMutableArray arrayWithCapacity:CombatPositions];
     }
     return self;
 }
@@ -59,20 +62,20 @@
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:topWall + hudOffset]] autorelease]];
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-bottomWall - hudOffset]] autorelease]];
     
-    // dices
-    /*
-    for (int i = 0; i < num_of_dices; i++) {
-        Dice *dice = [[[Dice alloc] init] autorelease];
-        dice.position.x = [Random intGreaterThanOrEqual:(int)leftWall+(int)dice.radius lessThan:(int)rightWall-(int)dice.radius];
-        dice.position.y = [Random intGreaterThanOrEqual:(int)topWall+(int)dice.radius lessThan:(int)bottomWall-(int)dice.radius];;
-        dice.velocity.x = [Random intGreaterThanOrEqual:-500 lessThan:500];
-        dice.velocity.y = [Random intGreaterThanOrEqual:-500 lessThan:500];
-        [scene addItem:dice];
-    }
-     */
-    
     // allies
+    Knight *lancelot = [[[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60] autorelease];
+    lancelot.stats = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    lancelot.attackDamage = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:30], nil];
+    lancelot.attackDuration = [[NSArray alloc] initWithObjects:[[ResetableLifetime alloc] initWithStart:0 duration:2], nil];
+    lancelot.position = allyPositions[FirstCombatPosition];
     
+    BattlePosition *position = [[BattlePosition alloc] initWithRadius:1];
+    position.position = allyPositions[FirstCombatPosition];
+    
+    lancelot.origin = position;
+    
+    [scene addItem:lancelot];
+    [scene addItem:position];
     
     // enemies
 }
@@ -83,6 +86,16 @@
         [SoundEngine play:SoundEffectTypeBackground];
         music_played = YES;
     }
+}
+
+
+
+- (void) setAllyPosition:(CombatPosition)theAllyPosition toPosition:(Vector2 *)thePosition {
+    allyPositions[theAllyPosition] = thePosition;
+}
+
+- (void) setEnemyPosition:(CombatPosition)theEnemyPosition toPosition:(Vector2 *)thePosition {
+    enemyPositions[theEnemyPosition] = thePosition;
 }
 
 

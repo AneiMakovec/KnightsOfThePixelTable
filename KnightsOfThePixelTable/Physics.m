@@ -24,8 +24,9 @@
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    // movement, rotation and height for dices
     for (id item in level.scene) {
+        
+        // movement, rotation and height for dices
         Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice *) item : nil;
         if (dice) {
             if (dice.state == DiceStateMoving) {
@@ -47,11 +48,19 @@
                 }
             }
         }
+        
+        // movement for combat entities
+        CombatEntity *cEntity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *) item : nil;
+        if (cEntity) {
+            if (cEntity.state == EntityStateApproaching || cEntity.state == EntityStateRetreating) {
+                [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
+            }
+        }
     }
     
-    // check for collisions between dices and halfplanes
+    // check for collisions for dices and combat entities
     for (id item1 in level.scene) {
-        if ([item1 isKindOfClass:[Dice class]]) {
+        if ([item1 isKindOfClass:[Dice class]] || [item1 isKindOfClass:[CombatEntity class]]) {
             for (id item2 in level.scene) {
                 if (item1 != item2) {
                     [Collision collisionBetween:item1 and:item2];

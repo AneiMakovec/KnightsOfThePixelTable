@@ -12,25 +12,19 @@
 
 @implementation Knight
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength {
-    self = [super initWithHealth:hp damageStrength:theDamageStrength];
+- (id) initWithKnightType:(KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithHealth:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         maxLevel = 80;
         currentLevel = 1;
         exp = 0;
         
-        radius = 1;
-        
-        state = EntityStateIdle;
-        stats = [NSMutableArray arrayWithCapacity:StatTypes];
-        attackDamage = [NSMutableArray arrayWithCapacity:AttackTypes];
-        attackDuration = [NSMutableArray arrayWithCapacity:AttackTypes];
-        //targets = [NSMutableArray arrayWithCapacity:EnemyPositions];
+        type = theType;
     }
     return self;
 }
 
-@synthesize maxLevel, currentLevel, exp, radius, state, attackType, origin, stats, attackDamage, attackDuration;
+@synthesize maxLevel, currentLevel, exp;
 
 
 - (void) gainExperience:(int)theExp {
@@ -43,24 +37,6 @@
 - (void) levelUp {
     if (currentLevel < maxLevel) {
         currentLevel++;
-    }
-}
-
-
-- (void) updateWithGameTime:(GameTime *)gameTime {
-    if (state == EntityStateAttacking) {
-        id item = attackDuration[attackType];
-        
-        ResetableLifetime *duration = [item isKindOfClass:[ResetableLifetime class]] ? (ResetableLifetime *)item : nil;
-        
-        if (duration) {
-            if (!duration.isAlive) {
-                [duration reset];
-                state = EntityStateRetreating;
-            } else {
-                [duration updateWithGameTime:gameTime];
-            }
-        }
     }
 }
 

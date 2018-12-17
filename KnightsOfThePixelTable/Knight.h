@@ -10,27 +10,19 @@
 
 #import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
-#import "ICombatEntity.h"
+#import "CombatEntity.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Knight : DamageDealer<IExperienceGainer, ICombatEntity> {
+@interface Knight : CombatEntity<IExperienceGainer> {
     int currentLevel;
     int maxLevel;
     int exp;
     
-    float radius;
-    
-    EntityState state;
-    AttackType attackType;
-    BattlePosition *origin;
-    NSArray *stats;
-    NSArray *attackDamage;
-    NSArray *attackDuration;
-    //NSArray *targets;
+    KnightType type;
 }
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength;
+- (id) initWithKnightType: (KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

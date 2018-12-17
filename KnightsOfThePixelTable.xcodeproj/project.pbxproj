@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightLancelot.m */; };
 		B537665A21AEF0340098C44C /* GroundPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = B537665921AEF0340098C44C /* GroundPlane.m */; };
 		B537665C21AEF8540098C44C /* background_farmlands.png in Resources */ = {isa = PBXBuildFile; fileRef = B537665B21AEF8540098C44C /* background_farmlands.png */; };
 		B537665E21AEF85E0098C44C /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = B537665D21AEF85E0098C44C /* hud.png */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B52192AB21C7260400637BE7 /* KnightLancelot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightLancelot.h; sourceTree = "<group>"; };
+		B52192AC21C7260400637BE7 /* KnightLancelot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightLancelot.m; sourceTree = "<group>"; };
 		B537665821AEF0340098C44C /* GroundPlane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroundPlane.h; sourceTree = "<group>"; };
 		B537665921AEF0340098C44C /* GroundPlane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroundPlane.m; sourceTree = "<group>"; };
 		B537665B21AEF8540098C44C /* background_farmlands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_farmlands.png; sourceTree = "<group>"; };
@@ -168,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B52192AA21C725E200637BE7 /* Knights */ = {
+			isa = PBXGroup;
+			children = (
+				B52192AB21C7260400637BE7 /* KnightLancelot.h */,
+				B52192AC21C7260400637BE7 /* KnightLancelot.m */,
+			);
+			name = Knights;
+			sourceTree = "<group>";
+		};
 		B537665721AEF0130098C44C /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +298,7 @@
 		B5D0A42521C411EC005EF3C6 /* Allies */ = {
 			isa = PBXGroup;
 			children = (
+				B52192AA21C725E200637BE7 /* Knights */,
 				B5D0A42721C41204005EF3C6 /* Knight.h */,
 				B5D0A42821C41204005EF3C6 /* Knight.m */,
 			);
@@ -665,6 +678,7 @@
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
+				B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */,
 				B57B0D1A21A602530064B91F /* Renderer.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
