@@ -27,6 +27,8 @@
 		B57B0D1A21A602530064B91F /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D1921A602530064B91F /* Renderer.m */; };
 		B58869A521C4430900CE4C0E /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869A421C4430900CE4C0E /* Monster.m */; };
 		B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869AF21C4675200CE4C0E /* CombatEntity.m */; };
+		B5A493CA21CAD38A003EBB1D /* StatValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493C921CAD38A003EBB1D /* StatValue.m */; };
+		B5A493CD21CAECF0003EBB1D /* AttackValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493CC21CAECF0003EBB1D /* AttackValue.m */; };
 		B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AE501421BEEE2800FC5CBF /* SoundEngine.m */; };
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
@@ -114,6 +116,11 @@
 		B58869A621C44DA400CE4C0E /* ICombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICombatEntity.h; sourceTree = "<group>"; };
 		B58869AE21C4675200CE4C0E /* CombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombatEntity.h; sourceTree = "<group>"; };
 		B58869AF21C4675200CE4C0E /* CombatEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CombatEntity.m; sourceTree = "<group>"; };
+		B5A493C721CACCB6003EBB1D /* IUpgradable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUpgradable.h; sourceTree = "<group>"; };
+		B5A493C821CAD38A003EBB1D /* StatValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatValue.h; sourceTree = "<group>"; };
+		B5A493C921CAD38A003EBB1D /* StatValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatValue.m; sourceTree = "<group>"; };
+		B5A493CB21CAECF0003EBB1D /* AttackValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttackValue.h; sourceTree = "<group>"; };
+		B5A493CC21CAECF0003EBB1D /* AttackValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttackValue.m; sourceTree = "<group>"; };
 		B5AE501321BEEE2800FC5CBF /* SoundEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundEngine.h; sourceTree = "<group>"; };
 		B5AE501421BEEE2800FC5CBF /* SoundEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundEngine.m; sourceTree = "<group>"; };
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
@@ -247,6 +254,7 @@
 				B58869A621C44DA400CE4C0E /* ICombatEntity.h */,
 				B58869AE21C4675200CE4C0E /* CombatEntity.h */,
 				B58869AF21C4675200CE4C0E /* CombatEntity.m */,
+				B5A493BD21CAC38A003EBB1D /* Other classes */,
 				B5D0A42521C411EC005EF3C6 /* Allies */,
 				B5D0A42621C411F4005EF3C6 /* Enemies */,
 			);
@@ -261,6 +269,18 @@
 				B5FFCB8921A3603C005F15BF /* Dice.m */,
 			);
 			name = Props;
+			sourceTree = "<group>";
+		};
+		B5A493BD21CAC38A003EBB1D /* Other classes */ = {
+			isa = PBXGroup;
+			children = (
+				B5A493C721CACCB6003EBB1D /* IUpgradable.h */,
+				B5A493C821CAD38A003EBB1D /* StatValue.h */,
+				B5A493C921CAD38A003EBB1D /* StatValue.m */,
+				B5A493CB21CAECF0003EBB1D /* AttackValue.h */,
+				B5A493CC21CAECF0003EBB1D /* AttackValue.m */,
+			);
+			name = "Other classes";
 			sourceTree = "<group>";
 		};
 		B5AE501221BEEDE800FC5CBF /* Audio */ = {
@@ -681,6 +701,8 @@
 			files = (
 				B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */,
 				B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */,
+				B5A493CD21CAECF0003EBB1D /* AttackValue.m in Sources */,
+				B5A493CA21CAD38A003EBB1D /* StatValue.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,
 				B537665A21AEF0340098C44C /* GroundPlane.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,

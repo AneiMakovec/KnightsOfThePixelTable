@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Retronator.Xni.Framework.Input.Touch.h"
+#import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     Matrix *inverseView;
     Level *level;
     
-    Rectangle *ally;
+    Entity *target;
 }
 
 - (id) initWithGame:(Game*)theGame level:(Level*)theLevel;

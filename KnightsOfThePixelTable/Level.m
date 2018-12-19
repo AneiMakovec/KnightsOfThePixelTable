@@ -33,8 +33,6 @@
     
     music_played = NO;
     
-    battlefield = [[Battlefield alloc] initWithWidth:bounds.width height:bounds.height firstAlly:0 secondAlly:0 thirdAlly:0 fourthAlly:0 firstEnemy:0 secondEnemy:0 thirdEnemy:0 fourthEnemy:0];
-    
     [self reset];
 }
 
@@ -61,20 +59,8 @@
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:topWall + hudOffset]] autorelease]];
     [scene addItem:[[[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-bottomWall - hudOffset]] autorelease]];
     
-    // allies
-    for (int i = 0; i < CombatPositions; i++) {
-        Knight *entity = [battlefield getAllyAtPosition:i];
-        if (entity) {
-            [scene addItem:entity];
-            [scene addItem:entity.origin];
-        }
-        
-        entity = [battlefield getEnemyAtPosition:i];
-        if (entity) {
-            [scene addItem:entity];
-            [scene addItem:entity.origin];
-        }
-    }
+    // entities
+    battlefield = [[Battlefield alloc] initWithLevel:self width:bounds.width height:bounds.height];
 }
 
 

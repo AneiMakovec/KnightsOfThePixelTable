@@ -16,12 +16,9 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         level = theLevel;
+        target = nil;
     }
     return self;
-}
-
-- (void) initialize {
-    ally = [[Rectangle alloc] initWithX:200 y:200 width:500 height:500];
 }
 
 - (void) setCamera:(Matrix *)camera {
@@ -52,9 +49,10 @@
                     dice.frameType = DiceFrameTypeGood;
                     [level.scene addItem:dice];
                 }
-            } else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
+            //} else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
                 //[[level.battlefield getAllyAtPosition:FirstCombatPosition] attackTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
                 
+                /*
                 Knight *enemy;
                 Knight *allyKnight;
                 for (id item in level.scene) {
@@ -68,21 +66,32 @@
                     }
                 }
                 
-                /*
+                
                 ally.velocity.x = (enemy.position.x - ally.position.x) / 2;
                 ally.velocity.y = (enemy.position.y - ally.position.y) / 2;
                 
                 ally.state = EntityStateApproaching;
-                 */
+                 
                 
                 allyKnight.attackType = BasicAttack;
                 [allyKnight attackTarget:enemy];
+                */
             } else {
                 for (id item in level.scene) {
                     Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice*)item : nil;
                     if (dice && dice.frameType == DiceFrameTypeGood) {
                         [level.scene removeItem:item];
                     }
+                }
+            }
+            
+            Rectangle *bounds;
+            for (int i = 0; i < CombatPositions; i++) {
+                bounds = [level.battlefield getBoundsOfEnemy:i];
+                if ([bounds containsX:touchInScene.x y:touchInScene.y]) {
+                    target = [level.battlefield getEnemyAtPosition:i];
+                    NSLog(@"Target is enemy on position: %d", i + 1);
+                    break;
                 }
             }
         }

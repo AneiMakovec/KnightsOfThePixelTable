@@ -25,9 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *attackDamage;
     NSMutableArray *attackDuration;
     
-    ResetableLifetime *attackTime;
-    int strength;
-    
     Entity *target;
 }
 

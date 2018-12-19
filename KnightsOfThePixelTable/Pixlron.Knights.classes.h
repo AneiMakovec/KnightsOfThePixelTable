@@ -25,6 +25,8 @@
 
 @protocol ICombatEntity;
 @class CombatEntity;
+@protocol IUpgradable;
+@class StatValue, AttackValue;
 
 @class Knight, KnightLancelot;
 

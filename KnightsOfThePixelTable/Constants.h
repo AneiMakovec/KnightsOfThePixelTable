@@ -7,10 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KOTPTEnums.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
+
++ (int) lancelotValueOfStat:(StatType)theStat;
++ (StatGainRate) lancelotGainOfStat:(StatType)theStat;
++ (int) lancelotGainMarginOfStat:(StatType)theStat;
++ (int) lancelotPowerOfAttack:(AttackType)theAttack;
++ (StatType) lancelotStatUsedForAttack:(AttackType)theAttack;
++ (StatGainRate) lancelotGainOfAttack:(AttackType)theAttack;
++ (int) lancelotGainMarginOfAttack:(AttackType)theAttack;
++ (NSTimeInterval) lancelotDurationOfAttack:(AttackType)theAttack;
 
 @end
 

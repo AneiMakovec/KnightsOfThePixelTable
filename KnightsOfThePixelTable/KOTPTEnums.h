@@ -29,6 +29,13 @@ typedef enum {
 } StatType;
 
 typedef enum {
+    StateGainRateSlow,
+    StateGainRateMedium,
+    StateGainRateFast,
+    StatGainRates
+} StatGainRate;
+
+typedef enum {
     BasicAttack,
     FirstCombo,
     SecondCombo,

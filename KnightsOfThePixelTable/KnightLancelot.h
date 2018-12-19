@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Pixlron.Knights.classes.h"
 #import "Knight.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KnightLancelot : Knight
+
+- (id) initWithPosition:(Vector2 *)thePosition;
 
 @end
 

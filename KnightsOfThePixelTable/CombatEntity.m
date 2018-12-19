@@ -19,12 +19,12 @@
         maxRadius = theMaxRadius;
         
         state = EntityStateIdle;
-        stats = [NSMutableArray arrayWithCapacity:StatTypes];
-        attackDamage = [NSMutableArray arrayWithCapacity:AttackTypes];
-        attackDuration = [NSMutableArray arrayWithCapacity:AttackTypes];
+        stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
+        attackDamage = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
+        attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         
-        attackTime = [[ResetableLifetime alloc] initWithStart:0 duration:2];
-        strength = 30;
+        origin = [[BattlePosition alloc] initWithRadius:5];
+        
         //targets = [NSMutableArray arrayWithCapacity:EnemyPositions];
     }
     return self;
@@ -68,27 +68,26 @@
     state = EntityStateApproaching;
     // TODO: change radius to bigger radius
     radius = 60;
-    velocity.x = (target.position.x - position.x) / 1;
-    velocity.y = (target.position.y - position.y) / 1;
+    velocity.x = (target.position.x - position.x) * 2;
+    velocity.y = (target.position.y - position.y) * 2;
 }
 
 
 - (void) dealDamageToTarget {
-    //id stat = stats[Strength];
-    //NSNumber *strength = [stat isKindOfClass:[NSNumber class]] ? (NSNumber *) stat : nil;
+    AttackValue *attack = [attackDamage objectAtIndex:attackType];
+    StatValue *stat = [stats objectAtIndex:attack.statUsed];
     
-    //if (strength) {
-        //int damage = damageStrength * strength.intValue;
-        int damage = damageStrength * strength;
-        [self dealDamageToTarget:target damage:damage];
-    //}
+    if (attack && stat) {
+        int damage = damageStrength * stat.value * attack.value;
+        [self dealDamageToTarget:target damage:-damage];
+    }
 }
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     if (state == EntityStateAttacking) {
         
-        //ResetableLifetime *duration = [attackDuration[attackType] isKindOfClass:[ResetableLifetime class]] ? (ResetableLifetime *)attackDuration[attackType] : nil;
+        ResetableLifetime *attackTime = [attackDuration objectAtIndex:attackType];
         
         // wait for attack to end
         if (attackTime) {
@@ -102,8 +101,8 @@
                 // and retreat to idle position
                 state = EntityStateRetreating;
                 radius = 1;
-                velocity.x = (origin.position.x - position.x) / 1;
-                velocity.y = (origin.position.y - position.y) / 1;
+                velocity.x = (origin.position.x - position.x) * 2;
+                velocity.y = (origin.position.y - position.y) * 2;
             } else {
                 [attackTime updateWithGameTime:gameTime];
             }

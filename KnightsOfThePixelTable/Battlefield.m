@@ -11,102 +11,89 @@
 
 @implementation Battlefield
 
-- (id) initWithWidth:(int)theWidth height:(int)theHeight firstAlly:(KnightType)theFirstAlly secondAlly:(KnightType)theSecondAlly thirdAlly:(KnightType)theThirdAlly fourthAlly:(KnightType)theFourthAlly firstEnemy:(MonsterType)theFirstEnemy secondEnemy:(MonsterType)theSecondEnemy thirdEnemy:(MonsterType)theThirdEnemy fourthEnemy:(MonsterType)theFourthEnemy {
+- (id) initWithLevel:(Level *)theLevel width:(int)theWidth height:(int)theHeight {
     
     self = [super init];
     if (self != nil) {
-        allyEntities = [NSMutableArray arrayWithCapacity:CombatPositions];
-        enemyEntities = [NSMutableArray arrayWithCapacity:CombatPositions];
+        level = theLevel;
         
-        allyPositions = [NSMutableArray arrayWithCapacity:CombatPositions];
-        enemyPositions = [NSMutableArray arrayWithCapacity:CombatPositions];
+        allyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        enemyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        
+        allyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        enemyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        
+        enemyBounds = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        allyBounds = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+        comboBounds = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         
         for (int i = 0; i < CombatPositions; i++) {
             allyPositions[i] = [[Vector2 alloc] init];
             enemyPositions[i] = [[Vector2 alloc] init];
+            enemyBounds[i] = [[Rectangle alloc] init];
+            allyBounds[i] = [[Rectangle alloc] init];
+            comboBounds[i] = [[Rectangle alloc] init];
         }
         
         // create scale
         int hudOffset = theHeight * 0.625;
         stretcher = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)theWidth toHeight:(float)hudOffset xOffset:0 yOffset:0];
         
-        Vector2 *tempV;
         // calculate positions for ally and enemy entities
         // 1. ally
-        tempV = (Vector2 *)allyPositions[FirstCombatPosition];
-        tempV.x = 77;
-        tempV.y = 46;
-        [stretcher scalePosition:tempV];
+        Vector2 *pos = [allyPositions objectAtIndex:FirstCombatPosition];
+        pos.x = 77;
+        pos.y = 46;
+        [stretcher scalePosition:pos];
         
         // 2. ally
-        tempV = (Vector2 *)allyPositions[SecondCombatPosition];
-        tempV.x = 64;
-        tempV.y = 62;
-        [stretcher scalePosition:tempV];
+        pos = [allyPositions objectAtIndex:SecondCombatPosition];
+        pos.x = 64;
+        pos.y = 62;
+        [stretcher scalePosition:pos];
         
         // 3. ally
-        tempV = (Vector2 *)allyPositions[ThirdCombatPosition];
-        tempV.x = 38;
-        tempV.y = 46;
-        [stretcher scalePosition:tempV];
+        pos = [allyPositions objectAtIndex:ThirdCombatPosition];
+        pos.x = 38;
+        pos.y = 46;
+        [stretcher scalePosition:pos];
         
         // 4. ally
-        tempV = (Vector2 *)allyPositions[FourthCombatPosition];
-        tempV.x = 26;
-        tempV.y = 62;
-        [stretcher scalePosition:tempV];
+        pos = [allyPositions objectAtIndex:FourthCombatPosition];
+        pos.x = 26;
+        pos.y = 62;
+        [stretcher scalePosition:pos];
         
         
-        // 1. enemy
-        tempV = (Vector2 *)enemyPositions[FirstCombatPosition];
-        Vector2 *tempVV = (Vector2 *)allyPositions[FirstCombatPosition];
-        tempV.x = theWidth - tempVV.x;
-        tempV.y = tempVV.y;
-         
-        /*
+        // enemy positions + bounds
+        Vector2 *posAlly;
+        Rectangle *enemyBound;
+        for (int i = 0; i < CombatPositions; i++) {
+            pos = [enemyPositions objectAtIndex:i];
+            posAlly = [allyPositions objectAtIndex:i];
+            pos.x = theWidth - posAlly.x;
+            pos.y = posAlly.y;
+            
+            enemyBound = [enemyBounds objectAtIndex:i];
+            enemyBound.x = pos.x - 56;
+            enemyBound.y = pos.y - 56;
+            enemyBound.width = 112;
+            enemyBound.height = 112;
+        }
         
-        // 2. enemy
-        tempV = (Vector2 *)enemyPositions[SecondCombatPosition];
-        enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
-        enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
-        
-        // 3. enemy
-        tempV = (Vector2 *)enemyPositions[ThirdCombatPosition];
-        enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
-        enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
-        
-        // 4. enemy
-        tempV = (Vector2 *)enemyPositions[FourthCombatPosition];
-        enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
-        enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
-         */
-        
+
         
         // add the entities
-        Knight *lancelot = [[Knight alloc] initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
-        [lancelot.stats insertObject:[NSNumber numberWithInteger:30] atIndex:Strength];
-        [lancelot.attackDamage insertObject:[NSNumber numberWithInt:30] atIndex:BasicAttack];
-        ResetableLifetime *time1 = [[ResetableLifetime alloc] initWithStart:0 duration:0.2];
-        [lancelot.attackDuration insertObject:time1 atIndex:BasicAttack];
-        lancelot.origin = [[BattlePosition alloc] initWithRadius:5];
-        lancelot.position = allyPositions[FirstCombatPosition];
-        lancelot.origin.position.x = lancelot.position.x;
-        lancelot.origin.position.y = lancelot.position.y;
-        
+        KnightLancelot *lancelot = [[KnightLancelot alloc] initWithPosition:[allyPositions objectAtIndex:FirstCombatPosition]];
         [allyEntities insertObject:lancelot atIndex:FirstCombatPosition];
+        [level.scene addItem:lancelot];
+        [level.scene addItem:lancelot.origin];
         
         
-        Knight *enemy = [[Knight alloc] initWithKnightType:KnightTypeEnemy health:100 damageStrength:0.85 maxRadius:60];
-        [enemy.stats insertObject:[NSNumber numberWithInteger:30] atIndex:Strength];
-        [enemy.attackDamage insertObject:[NSNumber numberWithInt:30] atIndex:BasicAttack];
-        ResetableLifetime *time2 = [[ResetableLifetime alloc] initWithStart:0 duration:0.2];
-        [enemy.attackDuration insertObject:time2 atIndex:BasicAttack];
-        enemy.origin = [[BattlePosition alloc] initWithRadius:5];
-        enemy.position = enemyPositions[FirstCombatPosition];
-        enemy.origin.position.x = enemy.position.x;
-        enemy.origin.position.y = enemy.position.y;
-        
-        [enemyEntities insertObject:enemy atIndex:FirstCombatPosition];
+        KnightLancelot *enemyLancelot = [[KnightLancelot alloc] initWithPosition:[enemyPositions objectAtIndex:FirstCombatPosition]];
+        [enemyEntities insertObject:enemyLancelot atIndex:FirstCombatPosition];
+        [level.scene addItem:enemyLancelot];
+        [level.scene addItem:enemyLancelot.origin];
         
         // release the scale
         [stretcher release];
@@ -114,12 +101,12 @@
     return self;
 }
 
-@synthesize allyEntities, enemyEntities, allyPositions, enemyPositions;
+@synthesize allyEntities, enemyEntities, allyPositions, enemyPositions, enemyBounds, allyBounds, comboBounds;
 
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition {
     if ([allyEntities count] > thePosition) {
-        return (Knight *)allyEntities[thePosition];
+        return [allyEntities objectAtIndex:thePosition];
     } else {
         return nil;
     }
@@ -131,7 +118,7 @@
 
 - (Knight *) getEnemyAtPosition:(CombatPosition)thePosition {
     if ([enemyEntities count] > thePosition) {
-        return (Knight *)enemyEntities[thePosition];
+        return [enemyEntities objectAtIndex:thePosition];
     } else {
         return nil;
     }
@@ -143,7 +130,7 @@
 
 - (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly {
     if ([allyPositions count] > theAlly) {
-        return (Vector2 *)allyPositions[theAlly];
+        return [allyPositions objectAtIndex:theAlly];
     } else {
         return nil;
     }
@@ -151,7 +138,15 @@
 
 - (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy {
     if ([enemyPositions count] > theEnemy) {
-        return (Vector2 *)enemyPositions[theEnemy];
+        return [enemyPositions objectAtIndex:theEnemy];
+    } else {
+        return nil;
+    }
+}
+
+- (Rectangle *) getBoundsOfEnemy:(CombatPosition)theEnemy {
+    if ([enemyBounds count] > theEnemy) {
+        return [enemyBounds objectAtIndex:theEnemy];
     } else {
         return nil;
     }

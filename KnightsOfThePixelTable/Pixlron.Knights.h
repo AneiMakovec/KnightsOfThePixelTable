@@ -29,6 +29,9 @@
 
 #import "ICombatEntity.h"
 #import "CombatEntity.h"
+#import "IUpgradable.h"
+#import "StatValue.h"
+#import "AttackValue.h"
 
 #import "Knight.h"
 #import "KnightLancelot.h"
