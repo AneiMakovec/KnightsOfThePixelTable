@@ -11,10 +11,9 @@
 
 @implementation AIPlayer
 
-- (id) initWithGame:(Game *)theGame player:(HumanPlayer *)thePlayer level:(Level *)theLevel {
+- (id) initWithGame:(Game *)theGame level:(Level *)theLevel {
     self = [super initWithGame:theGame];
     if (self != nil) {
-        player = thePlayer;
         level = theLevel;
     }
     return self;

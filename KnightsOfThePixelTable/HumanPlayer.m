@@ -17,6 +17,7 @@
     if (self != nil) {
         level = theLevel;
         target = nil;
+        selectedDice = nil;
     }
     return self;
 }
@@ -33,6 +34,30 @@
         TouchLocation *touch = [touches objectAtIndex:0];
         
         Vector2 *touchInScene = [Vector2 transform:touch.position with:inverseView];
+        
+        if (touch.state == TouchLocationStatePressed) {
+            if (!selectedDice && [level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
+                selectedDice = [level.dicepool getDiceAtTouchLocation:touchInScene];
+            }
+        }
+        
+        if (touch.state == TouchLocationStateMoved) {
+            if (selectedDice) {
+                selectedDice.position.x = touchInScene.x;
+                selectedDice.position.y = touchInScene.y;
+                
+                Rectangle *comboArea;
+                for (int i = 0; i < CombatPositions; i++) {
+                    comboArea = [level.battlefield getComboAreaOfAlly:i];
+                    if ([comboArea containsX:touchInScene.x y:touchInScene.y]) {
+                        // TODO: add dice to combo of entity
+                        NSLog(@"Added dice to ally: %d", i + 1);
+                        [level.dicepool removeDice:selectedDice];
+                        selectedDice = nil;
+                    }
+                }
+            }
+        }
         
         if (touch.state == TouchLocationStateReleased) {
             if ([level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
@@ -52,7 +77,9 @@
                 }
                  */
                 
-                [level.dicepool addDicesOfType:DiceFrameTypeGood];
+                if (!level.dicepool.dicesAdded) {
+                    [level.dicepool addDicesOfType:DiceFrameTypeGood];
+                }
                 
             //} else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
                 //[[level.battlefield getAllyAtPosition:FirstCombatPosition] attackTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
@@ -82,8 +109,12 @@
                 [allyKnight attackTarget:enemy];
                 */
             } else {
-                [level.dicepool removeDices];
+//                if (level.dicepool.dicesAdded) {
+//                    [level.dicepool removeAllDices];
+//                }
             }
+            
+            selectedDice = nil;
             
             Rectangle *area;
             for (int i = 0; i < CombatPositions; i++) {
@@ -118,20 +149,20 @@
     }
 }
 
-- (BOOL) checkIfCanAttack {
-    for (id item in level.scene) {
-        Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
-        if (entity) {
-            if (entity.type == KnightTypeLancelot) {
-                if (entity.state == EntityStateJustAttacked) {
-                    entity.state = EntityStateIdle;
-                    return YES;
-                }
-            }
-        }
-    }
-    
-    return false;
-}
+//- (BOOL) checkIfCanAttack {
+//    for (id item in level.scene) {
+//        Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
+//        if (entity) {
+//            if (entity.type == KnightTypeLancelot) {
+//                if (entity.state == EntityStateJustAttacked) {
+//                    entity.state = EntityStateIdle;
+//                    return YES;
+//                }
+//            }
+//        }
+//    }
+//
+//    return false;
+//}
 
 @end

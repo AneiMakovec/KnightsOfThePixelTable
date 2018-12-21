@@ -24,11 +24,13 @@
         mass = 16.0f * 16.0f * M_PI;
         coefficientOfRestitution = 0.1f;
         coefficientOfFriction = 0.05f;
+        
+        ignoreCollision = NO;
     }
     return self;
 }
 
-@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction;
+@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision;
 
 - (void) updateRadius {
     radius = 16.0f * altitude;

@@ -6,14 +6,14 @@
 //  Copyright © 2018 Anei Makovec. All rights reserved.
 //
 
-#import "Physics.h"
+#import "PhysicsEngine.h"
 
 #import "PixEngine.Physics.h"
 #import "PixEngine.Math.h"
 #import "PixEngine.Utilities.h"
 #import "Pixlron.Knights.h"
 
-@implementation Physics
+@implementation PhysicsEngine
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel {
     self = [super initWithGame:theGame];
@@ -39,6 +39,7 @@
                 
                 if (fabsf(dice.velocity.x) < 20 && fabsf(dice.velocity.y) < 20) {
                     dice.state = DiceStateStopped;
+                    dice.ignoreCollision = YES;
                 }
             }
             
@@ -63,7 +64,8 @@
     for (id item1 in level.scene) {
         
         // dices
-        if ([item1 isKindOfClass:[Dice class]]) {
+        Dice *dItem = [item1 isKindOfClass:[Dice class]] ? (Dice *) item1 : nil;
+        if (dItem && !dItem.ignoreCollision) {
             // collision with other dices
             for (Dice *dice in level.dicepool.dices) {
                 if (item1 != dice) {

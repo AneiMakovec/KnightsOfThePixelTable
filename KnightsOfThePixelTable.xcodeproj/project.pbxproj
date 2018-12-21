@@ -16,7 +16,7 @@
 		B57B0CF121A5F0A50064B91F /* lancelot_idle.png in Resources */ = {isa = PBXBuildFile; fileRef = B57B0CF021A5F0A50064B91F /* lancelot_idle.png */; };
 		B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF621A5F64B0064B91F /* HumanPlayer.m */; };
 		B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF921A5F6590064B91F /* AIPlayer.m */; };
-		B57B0CFD21A5F72C0064B91F /* Physics.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFC21A5F72C0064B91F /* Physics.m */; };
+		B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */; };
 		B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFF21A5F8130064B91F /* FarmlandsLevel.m */; };
 		B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0221A5F8270064B91F /* PinewoodsLevel.m */; };
 		B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0521A5F8580064B91F /* MountainsLevel.m */; };
@@ -93,8 +93,8 @@
 		B57B0CF621A5F64B0064B91F /* HumanPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HumanPlayer.m; sourceTree = "<group>"; };
 		B57B0CF821A5F6590064B91F /* AIPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIPlayer.h; sourceTree = "<group>"; };
 		B57B0CF921A5F6590064B91F /* AIPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIPlayer.m; sourceTree = "<group>"; };
-		B57B0CFB21A5F72C0064B91F /* Physics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
-		B57B0CFC21A5F72C0064B91F /* Physics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Physics.m; sourceTree = "<group>"; };
+		B57B0CFB21A5F72C0064B91F /* PhysicsEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsEngine.h; sourceTree = "<group>"; };
+		B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhysicsEngine.m; sourceTree = "<group>"; };
 		B57B0CFE21A5F8130064B91F /* FarmlandsLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmlandsLevel.h; sourceTree = "<group>"; };
 		B57B0CFF21A5F8130064B91F /* FarmlandsLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmlandsLevel.m; sourceTree = "<group>"; };
 		B57B0D0121A5F8270064B91F /* PinewoodsLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinewoodsLevel.h; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 		B5671A56219A1380009E270F /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				B57B0CFB21A5F72C0064B91F /* Physics.h */,
-				B57B0CFC21A5F72C0064B91F /* Physics.m */,
+				B57B0CFB21A5F72C0064B91F /* PhysicsEngine.h */,
+				B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -721,7 +721,7 @@
 				B57B0D0C21A5F8720064B91F /* FinalLevel.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,
 				B58869A521C4430900CE4C0E /* Monster.m in Sources */,
-				B57B0CFD21A5F72C0064B91F /* Physics.m in Sources */,
+				B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */,
 				B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */,
 				B537666721AF36E40098C44C /* Constants.m in Sources */,
 			);

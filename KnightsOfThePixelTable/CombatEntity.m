@@ -48,9 +48,10 @@
     if (state == EntityStateRetreating) {
         BattlePosition *start = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
         if (start && start == origin) {
-            state = EntityStateJustAttacked;
+            state = EntityStateIdle;
             velocity.x = 0;
             velocity.y = 0;
+            target = nil;
         }
     }
     

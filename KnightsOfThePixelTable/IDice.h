@@ -18,5 +18,6 @@
 @property (nonatomic) DiceState state;
 @property (nonatomic) StatType type;
 @property (nonatomic) DiceFrameType frameType;
+@property (nonatomic) BOOL ignoreCollision;
 
 @end

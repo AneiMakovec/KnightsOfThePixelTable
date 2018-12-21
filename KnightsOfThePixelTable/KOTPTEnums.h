@@ -57,7 +57,6 @@ typedef enum {
     EntityStateDefending,
     EntityStateApproaching,
     EntityStateRetreating,
-    EntityStateJustAttacked,
     EntityStates
 } EntityState;
 

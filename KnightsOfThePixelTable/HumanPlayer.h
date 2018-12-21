@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     Level *level;
     
     Entity *target;
+    
+    Dice *selectedDice;
 }
 
 - (id) initWithGame:(Game*)theGame level:(Level*)theLevel;
@@ -27,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) updateWithGameTime:(GameTime*)gameTime;
 
-- (BOOL) checkIfCanAttack;
+//- (BOOL) checkIfCanAttack;
 
 @end
 

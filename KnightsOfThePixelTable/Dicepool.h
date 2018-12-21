@@ -22,17 +22,25 @@ NS_ASSUME_NONNULL_BEGIN
     
     // area
     Rectangle *dicepoolArea;
+    
+    // dices added
+    BOOL dicesAdded;
 }
 
 @property (nonatomic, retain) NSMutableArray *dices;
 @property (nonatomic, retain) NSMutableArray *borders;
 @property (nonatomic, retain) Rectangle *dicepoolArea;
+@property (nonatomic, readonly) BOOL dicesAdded;
 
 - (id) initWithLevel:(Level *)theLevel;
 
 - (void) addDicesOfType:(DiceFrameType)diceType;
 
-- (void) removeDices;
+- (void) removeAllDices;
+
+- (void) removeDice:(Dice *)dice;
+
+- (Dice *) getDiceAtTouchLocation:(Vector2 *)touchLocation;
 
 @end
 

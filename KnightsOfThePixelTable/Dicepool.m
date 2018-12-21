@@ -20,6 +20,8 @@
         borders = [[NSMutableArray alloc] initWithCapacity:4];
         dicepoolArea = [[Rectangle alloc] init];
         
+        dicesAdded = NO;
+        
         int hudOffset = level.bounds.height * 0.625;
         float leftWall = [TextureStretcher scaleX:162.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
         float rightWall = [TextureStretcher scaleX:250.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
@@ -46,7 +48,7 @@
     return self;
 }
 
-@synthesize dices, borders, dicepoolArea;
+@synthesize dices, borders, dicepoolArea, dicesAdded;
 
 - (void) addDicesOfType:(DiceFrameType)diceType {
     if ([dices count] == 0) {
@@ -62,17 +64,37 @@
             [dices addObject:dice];
             [level.scene addItem:dice];
         }
+        
+        dicesAdded = YES;
     }
 }
 
-- (void) removeDices {
+- (void) removeAllDices {
     if ([dices count] > 0) {
         for (Dice *dice in dices) {
             [level.scene removeItem:dice];
         }
         
         [dices removeAllObjects];
+        
+        dicesAdded = NO;
     }
+}
+
+- (void) removeDice:(Dice *)dice {
+    [dices removeObject:dice];
+    [level.scene removeItem:dice];
+}
+
+- (Dice *) getDiceAtTouchLocation:(Vector2 *)touchLocation {
+    for (Dice *dice in dices) {
+        float distance = [[Vector2 subtract:dice.position by:touchLocation] length];
+        if (distance < dice.radius) {
+            return dice;
+        }
+    }
+    
+    return nil;
 }
 
 

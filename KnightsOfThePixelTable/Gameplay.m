@@ -16,8 +16,8 @@
     if (self != nil) {
         currentLevel = [[Level alloc] initWithGame:self.game numDices:8];
         humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
-        aiPlayer = [[AIPlayer alloc] initWithGame:self.game player:humanPlayer level:currentLevel];
-        physics = [[Physics alloc] initWithGame:self.game level:currentLevel];
+        aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
+        physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];
         renderer = [[Renderer alloc] initWithGame:self.game gameplay:self battlefield:currentLevel.battlefield];
         
         

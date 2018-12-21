@@ -13,7 +13,7 @@
 @class Renderer;
 
 // Physics
-@class Physics;
+@class PhysicsEngine;
 
 // Scene
 @class DicepoolLimit;

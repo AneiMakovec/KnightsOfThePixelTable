@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
     Level *currentLevel;
     HumanPlayer *humanPlayer;
     AIPlayer *aiPlayer;
-    Physics *physics;
+    PhysicsEngine *physics;
     Renderer *renderer;
     
     //int num_of_dices;

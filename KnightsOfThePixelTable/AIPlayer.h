@@ -12,11 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AIPlayer : GameComponent {
-    HumanPlayer *player;
     Level *level;
 }
 
-- (id) initWithGame:(Game *)theGame player:(HumanPlayer *)thePlayer level:(Level *)theLevel;
+- (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
 
 @end
 
