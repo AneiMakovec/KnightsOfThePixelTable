@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Level : GameComponent {
     SimpleScene *scene;
     Battlefield *battlefield;
+    Dicepool *dicepool;
     
     Rectangle *bounds;
-    Rectangle *dicePool;
-    
+
     BOOL music_played;
     
     int num_of_dices;
@@ -29,11 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) SimpleScene *scene;
 
-@property (nonatomic, readonly) Battlefield *battlefield;
+@property (nonatomic, retain) Battlefield *battlefield;
+
+@property (nonatomic, retain) Dicepool *dicepool;
 
 @property (nonatomic, readonly) Rectangle *bounds;
-
-@property (nonatomic, readonly) Rectangle *dicePool;
 
 @property (nonatomic, readonly) int num_of_dices;
 

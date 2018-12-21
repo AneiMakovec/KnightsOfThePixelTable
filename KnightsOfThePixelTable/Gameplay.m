@@ -20,6 +20,7 @@
         physics = [[Physics alloc] initWithGame:self.game level:currentLevel];
         renderer = [[Renderer alloc] initWithGame:self.game gameplay:self battlefield:currentLevel.battlefield];
         
+        
         humanPlayer.updateOrder = 0;
         aiPlayer.updateOrder = 1;
         physics.updateOrder = 2;
@@ -51,11 +52,13 @@
 
 - (void) dealloc {
     [self.game.components removeComponent:humanPlayer];
+    [self.game.components removeComponent:aiPlayer];
     [self.game.components removeComponent:physics];
     [self.game.components removeComponent:currentLevel];
     [self.game.components removeComponent:renderer];
     
     [humanPlayer release];
+    [aiPlayer release];
     [physics release];
     [currentLevel release];
     [renderer release];

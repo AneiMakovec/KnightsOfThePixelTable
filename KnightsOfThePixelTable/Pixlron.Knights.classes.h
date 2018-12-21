@@ -16,9 +16,9 @@
 @class Physics;
 
 // Scene
-@class GroundPlane, DicepoolLimit;
+@class DicepoolLimit;
 
-@class Battlefield;
+@class Battlefield, Dicepool;
 
 @protocol IDice;
 @class Dice;

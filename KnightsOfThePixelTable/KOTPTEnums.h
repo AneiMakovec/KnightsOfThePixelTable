@@ -29,9 +29,9 @@ typedef enum {
 } StatType;
 
 typedef enum {
-    StateGainRateSlow,
-    StateGainRateMedium,
-    StateGainRateFast,
+    StatGainRateSlow,
+    StatGainRateMedium,
+    StatGainRateFast,
     StatGainRates
 } StatGainRate;
 
@@ -42,6 +42,14 @@ typedef enum {
     ThirdCombo,
     AttackTypes
 } AttackType;
+
+typedef enum {
+    FirstComboItem,
+    SecondComboItem,
+    ThirdComboItem,
+    FourthComboItem,
+    ComboItems
+} ComboItem;
 
 typedef enum {
     EntityStateIdle,

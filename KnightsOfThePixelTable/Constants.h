@@ -13,6 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
++ (int) positionXOfAlly:(CombatPosition)theAlly;
++ (int) positionYOfAlly:(CombatPosition)theAlly;
+
++ (int) areaXOfAlly:(CombatPosition)theAlly;
++ (int) areaYOfAlly:(CombatPosition)theAlly;
+
++ (int) comboAreaXOfAlly:(CombatPosition)theAlly;
++ (int) comboAreaYOfAlly:(CombatPosition)theAlly;
+
 + (int) lancelotValueOfStat:(StatType)theStat;
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat;
 + (int) lancelotGainMarginOfStat:(StatType)theStat;

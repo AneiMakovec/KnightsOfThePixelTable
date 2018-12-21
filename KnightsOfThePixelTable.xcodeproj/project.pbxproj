@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightLancelot.m */; };
-		B537665A21AEF0340098C44C /* GroundPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = B537665921AEF0340098C44C /* GroundPlane.m */; };
 		B537665C21AEF8540098C44C /* background_farmlands.png in Resources */ = {isa = PBXBuildFile; fileRef = B537665B21AEF8540098C44C /* background_farmlands.png */; };
 		B537665E21AEF85E0098C44C /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = B537665D21AEF85E0098C44C /* hud.png */; };
 		B537666721AF36E40098C44C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = B537666621AF36E40098C44C /* Constants.m */; };
@@ -49,6 +48,7 @@
 		B5E380552183B3E00007D013 /* skill_slash.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380452183B3E00007D013 /* skill_slash.png */; };
 		B5E380582183B3E00007D013 /* archer.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E3804E2183B3E00007D013 /* archer.png */; };
 		B5E380592183B3E00007D013 /* dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380512183B3E00007D013 /* dices.png */; };
+		B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FE06E621CC6AF200038407 /* Dicepool.m */; };
 		B5FE45EB21ADC83600F3C177 /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FE45EA21ADC83600F3C177 /* knight.png */; };
 		B5FE45ED21ADC83C00F3C177 /* paladin.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FE45EC21ADC83C00F3C177 /* paladin.png */; };
 		B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCB8921A3603C005F15BF /* Dice.m */; };
@@ -79,8 +79,6 @@
 /* Begin PBXFileReference section */
 		B52192AB21C7260400637BE7 /* KnightLancelot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightLancelot.h; sourceTree = "<group>"; };
 		B52192AC21C7260400637BE7 /* KnightLancelot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightLancelot.m; sourceTree = "<group>"; };
-		B537665821AEF0340098C44C /* GroundPlane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroundPlane.h; sourceTree = "<group>"; };
-		B537665921AEF0340098C44C /* GroundPlane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroundPlane.m; sourceTree = "<group>"; };
 		B537665B21AEF8540098C44C /* background_farmlands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_farmlands.png; sourceTree = "<group>"; };
 		B537665D21AEF85E0098C44C /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		B537666521AF36E40098C44C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -150,6 +148,8 @@
 		B5E380452183B3E00007D013 /* skill_slash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skill_slash.png; sourceTree = "<group>"; };
 		B5E3804E2183B3E00007D013 /* archer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archer.png; sourceTree = "<group>"; };
 		B5E380512183B3E00007D013 /* dices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dices.png; sourceTree = "<group>"; };
+		B5FE06E521CC6AF200038407 /* Dicepool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dicepool.h; sourceTree = "<group>"; };
+		B5FE06E621CC6AF200038407 /* Dicepool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dicepool.m; sourceTree = "<group>"; };
 		B5FE45EA21ADC83600F3C177 /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = "<group>"; };
 		B5FE45EC21ADC83C00F3C177 /* paladin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paladin.png; sourceTree = "<group>"; };
 		B5FE45EE21ADEA3F00F3C177 /* IDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDice.h; sourceTree = "<group>"; };
@@ -193,8 +193,6 @@
 		B537665721AEF0130098C44C /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
-				B537665821AEF0340098C44C /* GroundPlane.h */,
-				B537665921AEF0340098C44C /* GroundPlane.m */,
 				B537666B21AF62840098C44C /* DicepoolLimit.h */,
 				B537666C21AF62840098C44C /* DicepoolLimit.m */,
 			);
@@ -323,6 +321,8 @@
 			children = (
 				B5D01C5521C8291B00A007DC /* Battlefield.h */,
 				B5D01C5621C8291B00A007DC /* Battlefield.m */,
+				B5FE06E521CC6AF200038407 /* Dicepool.h */,
+				B5FE06E621CC6AF200038407 /* Dicepool.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 			name = Enemies;
 			sourceTree = "<group>";
 		};
-		B5DE1244218DA53E000D6784 /* Scene */ = {
+		B5DE1244218DA53E000D6784 /* Level */ = {
 			isa = PBXGroup;
 			children = (
 				B5D01C5421C828C000A007DC /* Data */,
@@ -355,7 +355,7 @@
 				B57B0D0D21A5FCA80064B91F /* Level.h */,
 				B57B0D0E21A5FCA80064B91F /* Level.m */,
 			);
-			name = Scene;
+			name = Level;
 			sourceTree = "<group>";
 		};
 		B5DE1252218DA625000D6784 /* Graphics */ = {
@@ -451,7 +451,7 @@
 				B5DE124B218DA5FE000D6784 /* Pixlron.Knights.classes.h */,
 				B5DE1252218DA625000D6784 /* Graphics */,
 				B5671A56219A1380009E270F /* Physics */,
-				B5DE1244218DA53E000D6784 /* Scene */,
+				B5DE1244218DA53E000D6784 /* Level */,
 				B5671A58219A1395009E270F /* Player */,
 				B5671A57219A138A009E270F /* Gameplay */,
 				B5AE501221BEEDE800FC5CBF /* Audio */,
@@ -699,12 +699,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */,
 				B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */,
 				B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */,
 				B5A493CD21CAECF0003EBB1D /* AttackValue.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* StatValue.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,
-				B537665A21AEF0340098C44C /* GroundPlane.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,

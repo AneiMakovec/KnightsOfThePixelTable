@@ -14,7 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Battlefield : NSObject {
     // background scale
-    TextureStretcher *stretcher;
+    TextureStretcher *battleStretcher;
+    
+    // hud scale
+    TextureStretcher *hudStretcher;
     
     // level
     Level *level;
@@ -25,21 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *allyPositions;
     NSMutableArray *enemyPositions;
     
-    // entity boxes
-    NSMutableArray *enemyBounds;
-    NSMutableArray *allyBounds;
-    NSMutableArray *comboBounds;
+    // entity areas
+    NSMutableArray *enemyAreas;
+    NSMutableArray *allyAreas;
+    NSMutableArray *comboAreas;
 }
 
 @property (nonatomic, retain) NSMutableArray *allyEntities;
 @property (nonatomic, retain) NSMutableArray *enemyEntities;
 @property (nonatomic, retain) NSMutableArray *allyPositions;
 @property (nonatomic, retain) NSMutableArray *enemyPositions;
-@property (nonatomic, retain) NSMutableArray *enemyBounds;
-@property (nonatomic, retain) NSMutableArray *allyBounds;
-@property (nonatomic, retain) NSMutableArray *comboBounds;
+@property (nonatomic, retain) NSMutableArray *enemyAreas;
+@property (nonatomic, retain) NSMutableArray *allyAreas;
+@property (nonatomic, retain) NSMutableArray *comboAreas;
 
-- (id) initWithLevel:(Level *)theLevel width:(int)theWidth height:(int)theHeight;
+- (id) initWithLevel:(Level *)theLevel;
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition;
 
@@ -53,11 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy;
 
-- (Rectangle *) getBoundsOfEnemy:(CombatPosition)theEnemy;
+- (Rectangle *) getAreaOfEnemy:(CombatPosition)theEnemy;
 
-- (Rectangle *) getBoundsOfAlly:(CombatPosition)theAlly;
+- (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly;
 
-- (Rectangle *) getComboBoundsOfAlly:(CombatPosition)theAlly;
+- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly;
 
 @end
 

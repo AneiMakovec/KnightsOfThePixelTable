@@ -10,6 +10,104 @@
 
 @implementation Constants
 
+
++ (int) positionXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 77;
+        case SecondCombatPosition:
+            return 64;
+        case ThirdCombatPosition:
+            return 38;
+        case FourthCombatPosition:
+            return 26;
+        default:
+            return -1;
+    }
+}
+
++ (int) positionYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 46;
+        case SecondCombatPosition:
+            return 62;
+        case ThirdCombatPosition:
+            return 46;
+        case FourthCombatPosition:
+            return 62;
+        default:
+            return -1;
+    }
+}
+
++ (int) areaXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 81;
+        case SecondCombatPosition:
+            return 81;
+        case ThirdCombatPosition:
+            return 3;
+        case FourthCombatPosition:
+            return 3;
+        default:
+            return -1;
+    }
+}
+
++ (int) areaYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 3;
+        case SecondCombatPosition:
+            return 25;
+        case ThirdCombatPosition:
+            return 3;
+        case FourthCombatPosition:
+            return 25;
+        default:
+            return -1;
+    }
+}
+
++ (int) comboAreaXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 104;
+        case SecondCombatPosition:
+            return 104;
+        case ThirdCombatPosition:
+            return 26;
+        case FourthCombatPosition:
+            return 26;
+        default:
+            return -1;
+    }
+}
+
++ (int) comboAreaYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 9;
+        case SecondCombatPosition:
+            return 31;
+        case ThirdCombatPosition:
+            return 9;
+        case FourthCombatPosition:
+            return 31;
+        default:
+            return -1;
+    }
+}
+
+
+
+
+
+
+
+
 + (int) lancelotValueOfStat:(StatType)theStat {
     switch (theStat) {
         case Strength:
@@ -32,17 +130,17 @@
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat {
     switch (theStat) {
         case Strength:
-            return StateGainRateFast;
+            return StatGainRateFast;
         case Agility:
-            return StateGainRateFast;
+            return StatGainRateFast;
         case Intelligence:
-            return StateGainRateFast;
+            return StatGainRateFast;
         case Insight:
-            return StateGainRateFast;
+            return StatGainRateFast;
         case Cunning:
-            return StateGainRateFast;
+            return StatGainRateFast;
         case Sturdiness:
-            return StateGainRateFast;
+            return StatGainRateFast;
         default:
             return -1;
     }
@@ -100,13 +198,13 @@
 + (StatGainRate) lancelotGainOfAttack:(AttackType)theAttack {
     switch (theAttack) {
         case BasicAttack:
-            return StateGainRateMedium;
+            return StatGainRateMedium;
         case FirstCombo:
-            return StateGainRateMedium;
+            return StatGainRateMedium;
         case SecondCombo:
-            return StateGainRateMedium;
+            return StatGainRateMedium;
         case ThirdCombo:
-            return StateGainRateMedium;
+            return StatGainRateMedium;
         default:
             return -1;
     }

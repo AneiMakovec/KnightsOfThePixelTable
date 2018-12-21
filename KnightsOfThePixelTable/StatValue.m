@@ -28,13 +28,13 @@
 - (void) upgrade {
     if (currentUpgradeLevel < maxUpgradeLevel) {
         switch (gainRate) {
-            case StateGainRateSlow:
+            case StatGainRateSlow:
                 value += upgradeMargin;
                 break;
-            case StateGainRateMedium:
+            case StatGainRateMedium:
                 value += upgradeMargin + (upgradeMargin / 2);
                 break;
-            case StateGainRateFast:
+            case StatGainRateFast:
                 value += upgradeMargin * 2;
                 break;
             default:

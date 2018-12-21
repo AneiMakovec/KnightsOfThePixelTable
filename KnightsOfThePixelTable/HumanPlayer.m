@@ -35,9 +35,10 @@
         Vector2 *touchInScene = [Vector2 transform:touch.position with:inverseView];
         
         if (touch.state == TouchLocationStateReleased) {
-            if ([level.dicePool containsX:touchInScene.x y:touchInScene.y]) {
+            if ([level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
                 [SoundEngine play:SoundEffectTypeClick];
                 
+                /*
                 for (int i = 0; i < level.num_of_dices; i++) {
                     Dice *dice = [[[Dice alloc] init] autorelease];
                     dice.position.x = [Random intGreaterThanOrEqual:(int)level.dicePool.x+(int)dice.radius lessThan:(int)level.dicePool.x+level.dicePool.width-(int)dice.radius];
@@ -49,6 +50,10 @@
                     dice.frameType = DiceFrameTypeGood;
                     [level.scene addItem:dice];
                 }
+                 */
+                
+                [level.dicepool addDicesOfType:DiceFrameTypeGood];
+                
             //} else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
                 //[[level.battlefield getAllyAtPosition:FirstCombatPosition] attackTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
                 
@@ -77,20 +82,35 @@
                 [allyKnight attackTarget:enemy];
                 */
             } else {
-                for (id item in level.scene) {
-                    Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice*)item : nil;
-                    if (dice && dice.frameType == DiceFrameTypeGood) {
-                        [level.scene removeItem:item];
-                    }
-                }
+                [level.dicepool removeDices];
             }
             
-            Rectangle *bounds;
+            Rectangle *area;
             for (int i = 0; i < CombatPositions; i++) {
-                bounds = [level.battlefield getBoundsOfEnemy:i];
-                if ([bounds containsX:touchInScene.x y:touchInScene.y]) {
+                // check if enemy touched
+                area = [level.battlefield getAreaOfEnemy:i];
+                if ([area containsX:touchInScene.x y:touchInScene.y]) {
                     target = [level.battlefield getEnemyAtPosition:i];
                     NSLog(@"Target is enemy on position: %d", i + 1);
+                    break;
+                }
+                
+                // check if ally touched
+                area = [level.battlefield getAreaOfAlly:i];
+                if ([area containsX:touchInScene.x y:touchInScene.y]) {
+                    NSLog(@"Touched ally: %d", i + 1);
+                    
+                    if (target) {
+                        Knight *selected = [level.battlefield getAllyAtPosition:i];
+                        selected.attackType = BasicAttack;
+                        [selected attackTarget:target];
+                    }
+                    
+                    // also check if combo area of that ally touched
+                    area = [level.battlefield getComboAreaOfAlly:i];
+                    if ([area containsX:touchInScene.x y:touchInScene.y]) {
+                        NSLog(@"Touched combo field as well!");
+                    }
                     break;
                 }
             }

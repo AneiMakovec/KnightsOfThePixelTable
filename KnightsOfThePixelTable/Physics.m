@@ -24,6 +24,7 @@
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
+    // move objects
     for (id item in level.scene) {
         
         // movement, rotation and height for dices
@@ -50,7 +51,7 @@
         }
         
         // movement for combat entities
-        Knight *cEntity = [item isKindOfClass:[Knight class]] ? (Knight *) item : nil;
+        CombatEntity *cEntity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *) item : nil;
         if (cEntity) {
             if (cEntity.state == EntityStateApproaching || cEntity.state == EntityStateRetreating) {
                 [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
@@ -58,13 +59,33 @@
         }
     }
     
-    // check for collisions for dices and combat entities
+    // check for collisions between objects
     for (id item1 in level.scene) {
-        if ([item1 isKindOfClass:[Dice class]] || [item1 isKindOfClass:[CombatEntity class]]) {
-            for (id item2 in level.scene) {
-                if (item1 != item2) {
-                    [Collision collisionBetween:item1 and:item2];
+        
+        // dices
+        if ([item1 isKindOfClass:[Dice class]]) {
+            // collision with other dices
+            for (Dice *dice in level.dicepool.dices) {
+                if (item1 != dice) {
+                    [Collision collisionBetween:item1 and:dice];
                 }
+            }
+            
+            // collision with borders
+            for (DicepoolLimit *border in level.dicepool.borders) {
+                [Collision collisionBetween:item1 and:border];
+            }
+        }
+        
+        // combat entities
+        CombatEntity *cEntity = [item1 isKindOfClass:[CombatEntity class]] ? (CombatEntity *) item1 : nil;
+        if (cEntity) {
+            if (cEntity.state == EntityStateApproaching) {
+                // collision with target
+                [Collision collisionBetween:cEntity and:cEntity.target];
+            } else if (cEntity.state == EntityStateRetreating) {
+                // collision with origin
+                [Collision collisionBetween:cEntity and:cEntity.origin];
             }
         }
     }

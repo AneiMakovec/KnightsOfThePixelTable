@@ -22,6 +22,7 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
+    /*
     if ([player checkIfCanAttack]) {
         Knight *enemy;
         Knight *ally;
@@ -39,6 +40,7 @@
         ally.attackType = BasicAttack;
         [ally attackTarget:enemy];
     }
+     */
 }
 
 @end
