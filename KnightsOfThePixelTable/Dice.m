@@ -26,14 +26,28 @@
         coefficientOfFriction = 0.05f;
         
         ignoreCollision = NO;
+        
+        origin = nil;
     }
     return self;
 }
 
-@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision;
+@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision, origin;
 
 - (void) updateRadius {
     radius = 16.0f * altitude;
+}
+
+- (void) rememberOrigin {
+    origin = [[Vector2 alloc] initWithX:position.x y:position.y];
+}
+
+- (void) resetPositionToOrigin:(BOOL)reset {
+    if (reset) {
+        [position set:origin];
+    }
+    
+    origin = nil;
 }
 
 - (void) dealloc {

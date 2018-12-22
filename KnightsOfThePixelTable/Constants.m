@@ -11,6 +11,9 @@
 @implementation Constants
 
 
+/*
+    ALLY ENTITY POSITIONS
+*/
 + (int) positionXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
@@ -41,6 +44,10 @@
     }
 }
 
+
+/*
+    ALLY ENTITIES TOUCH AREAS
+*/
 + (int) areaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
@@ -71,6 +78,18 @@
     }
 }
 
++ (int) allyAreaWidth {
+    return 75;
+}
+
++ (int) allyAreaHeight {
+    return 19;
+}
+
+
+/*
+    ALLY ENTITY COMBO TOUCH AREAS
+*/
 + (int) comboAreaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
@@ -99,6 +118,172 @@
         default:
             return -1;
     }
+}
+
++ (int) comboAreaWidth {
+    return 38;
+}
+
++ (int) comboAreaHeight {
+    return 8;
+}
+
+
+/*
+    SEPARATE COMBO AREAS
+*/
++ (int) comboAreaXOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            switch (theItem) {
+                case FirstComboItem:
+                    return 105;
+                case SecondComboItem:
+                    return 115;
+                case ThirdComboItem:
+                    return 125;
+                case FourthComboItem:
+                    return 135;
+                default:
+                    return -1;
+            }
+        case SecondCombatPosition:
+            switch (theItem) {
+                case FirstComboItem:
+                    return 105;
+                case SecondComboItem:
+                    return 115;
+                case ThirdComboItem:
+                    return 125;
+                case FourthComboItem:
+                    return 135;
+                default:
+                    return -1;
+            }
+        case ThirdCombatPosition:
+            switch (theItem) {
+                case FirstComboItem:
+                    return 27;
+                case SecondComboItem:
+                    return 37;
+                case ThirdComboItem:
+                    return 47;
+                case FourthComboItem:
+                    return 57;
+                default:
+                    return -1;
+            }
+        case FourthCombatPosition:
+            switch (theItem) {
+                case FirstComboItem:
+                    return 27;
+                case SecondComboItem:
+                    return 37;
+                case ThirdComboItem:
+                    return 47;
+                case FourthComboItem:
+                    return 57;
+                default:
+                    return -1;
+            }
+        default:
+            return -1;
+    }
+}
+
++ (int) comboAreaYOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 10;
+        case SecondCombatPosition:
+            return 32;
+        case ThirdCombatPosition:
+            return 10;
+        case FourthCombatPosition:
+            return 32;
+        default:
+            return -1;
+    }
+}
+
++ (int) separateComboAreaSize {
+    return 8;
+}
+
+
+/*
+    ALLY ENTITY PORTRAIT AREAS
+*/
++ (int) portraitXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 85;
+        case SecondCombatPosition:
+            return 85;
+        case ThirdCombatPosition:
+            return 7;
+        case FourthCombatPosition:
+            return 7;
+        default:
+            return -1;
+    }
+}
+
++ (int) portraitYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 6;
+        case SecondCombatPosition:
+            return 28;
+        case ThirdCombatPosition:
+            return 6;
+        case FourthCombatPosition:
+            return 28;
+        default:
+            return -1;
+    }
+}
+
++ (int) portraitSize {
+    return 14;
+}
+
+
+/*
+    ALLY ENTITY SKILL AREAS
+*/
++ (int) skillXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 146;
+        case SecondCombatPosition:
+            return 146;
+        case ThirdCombatPosition:
+            return 68;
+        case FourthCombatPosition:
+            return 68;
+        default:
+            return -1;
+    }
+}
+
++ (int) skillYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 9;
+        case SecondCombatPosition:
+            return 31;
+        case ThirdCombatPosition:
+            return 9;
+        case FourthCombatPosition:
+            return 31;
+        default:
+            return -1;
+    }
+}
+
++ (int) skillSize {
+    return 8;
 }
 
 

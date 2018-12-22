@@ -13,14 +13,8 @@
 @implementation KnightLancelot
 
 - (id) initWithPosition:(Vector2 *)thePosition {
-    self = [super initWithKnightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
+    self = [super initWithPosition:thePosition knightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
     if (self != nil) {
-        // set position and origin
-        position = thePosition;
-        origin.position.x = thePosition.x;
-        origin.position.y = thePosition.y;
-        
-        
         // init stats
         StatValue *statValue;
         for (int i = 0; i < StatTypes; i++) {

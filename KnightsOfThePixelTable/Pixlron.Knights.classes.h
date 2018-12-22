@@ -27,6 +27,7 @@
 @class CombatEntity;
 @protocol IUpgradable;
 @class StatValue, AttackValue;
+@class ComboSlot;
 
 @class Knight, KnightLancelot;
 

@@ -81,6 +81,11 @@
     }
 }
 
+- (void) addDice:(Dice *)dice {
+    [dices addObject:dice];
+    [level.scene addItem:dice];
+}
+
 - (void) removeDice:(Dice *)dice {
     [dices removeObject:dice];
     [level.scene removeItem:dice];

@@ -12,9 +12,10 @@
 
 @implementation CombatEntity
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithPosition:(Vector2 *)thePosition health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
+        position = thePosition;
         radius = 1;
         maxRadius = theMaxRadius;
         
@@ -22,15 +23,19 @@
         stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
         attackDamage = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
+        combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
+        
+        for (int i = 0; i < ComboItems; i++) {
+            combo[i] = [[ComboSlot alloc] init];
+        }
         
         origin = [[BattlePosition alloc] initWithRadius:5];
-        
-        //targets = [NSMutableArray arrayWithCapacity:EnemyPositions];
+        [origin.position set:position];
     }
     return self;
 }
 
-@synthesize radius, maxRadius, state, attackType, stats, origin, attackDamage, attackDuration, target;
+@synthesize radius, maxRadius, state, attackType, stats, origin, attackDamage, attackDuration, target, combo;
 
 - (BOOL) collidingWithItem:(id)item {
     
@@ -39,8 +44,7 @@
         Entity *entity = [item isKindOfClass:[Entity class]] ? (Entity *)item : nil;
         if (entity && entity == target) {
             state = EntityStateAttacking;
-            velocity.x = 0;
-            velocity.y = 0;
+            [velocity set:[Vector2 zero]];
         }
     }
     
@@ -49,8 +53,7 @@
         BattlePosition *start = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
         if (start && start == origin) {
             state = EntityStateIdle;
-            velocity.x = 0;
-            velocity.y = 0;
+            [velocity set:[Vector2 zero]];
             target = nil;
         }
     }
@@ -82,6 +85,26 @@
         int damage = damageStrength * stat.value * attack.value;
         [self dealDamageToTarget:target damage:-damage];
     }
+}
+
+
+- (BOOL) addComboItem:(Dice *)theItem {
+    if ([combo count] < ComboItems) {
+        [combo addObject:theItem];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (Dice *) removeCombo:(ComboItem)theItem {
+    if ([combo count] > theItem) {
+        Dice *dice = [[combo objectAtIndex:theItem] retain];
+        [combo removeObjectAtIndex:theItem];
+        return dice;
+    }
+    
+    return nil;
 }
 
 

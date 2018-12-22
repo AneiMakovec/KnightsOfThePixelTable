@@ -8,27 +8,24 @@
 
 #import "Pixlron.Knights.h"
 #import "Renderer.h"
-#import "Retronator.Xni.Framework.Input.Touch.h"
 
 @implementation Renderer
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay battlefield:(Battlefield *)theBattlefield {
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
     self = [super initWithGame:theGame];
     if (self != nil) {
         gameplay = theGameplay;
-        battlefield = theBattlefield;
-        
-        for (int i = 0; i < CombatPositions; i++) {
-            allyPositions[i] = [[Vector2 alloc] init];
-            portraitPositions[i] = [[Vector2 alloc] init];
-        }
-        portraitSize = [[Vector2 alloc] init];
     }
     return self;
 }
 
 @synthesize camera;
 
+
+
+/*
+    INITIALIZE
+*/
 - (void) initialize {
     // create the camera on which the graphics will be displayed
     float scaleX = (float)self.game.gameWindow.clientBounds.width / (float)gameplay.currentLevel.bounds.width;
@@ -43,63 +40,30 @@
     
     
     // set and stretch the position of portraits
-    portraitSize.x = 14;
-    portraitSize.y = 14;
-    [hudStretch scaleSize:portraitSize];
-    
-    portraitPositions[FirstCombatPosition].x = 85;
-    portraitPositions[FirstCombatPosition].y = 6;
-    [hudStretch scalePosition:portraitPositions[FirstCombatPosition]];
-    
-    portraitPositions[SecondCombatPosition].x = 85;
-    portraitPositions[SecondCombatPosition].y = 28;
-    [hudStretch scalePosition:portraitPositions[SecondCombatPosition]];
-    
-    portraitPositions[ThirdCombatPosition].x = 7;
-    portraitPositions[ThirdCombatPosition].y = 6;
-    [hudStretch scalePosition:portraitPositions[ThirdCombatPosition]];
-    
-    portraitPositions[FourthCombatPosition].x = 7;
-    portraitPositions[FourthCombatPosition].y = 28;
-    [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
-    
-    
-    // set and stretch the position of ally and enemy entities and then send them to level
-    // 1. ally
-    allyPositions[FirstCombatPosition].x = 77;
-    allyPositions[FirstCombatPosition].y = 46;
-    [backgroundStretch scalePosition:allyPositions[FirstCombatPosition]];
-    
-    // 2. ally
-    allyPositions[SecondCombatPosition].x = 64;
-    allyPositions[SecondCombatPosition].y = 62;
-    [backgroundStretch scalePosition:allyPositions[SecondCombatPosition]];
-    
-    // 3. ally
-    allyPositions[ThirdCombatPosition].x = 38;
-    allyPositions[ThirdCombatPosition].y = 46;
-    [backgroundStretch scalePosition:allyPositions[ThirdCombatPosition]];
-    
-    // 4. ally
-    allyPositions[FourthCombatPosition].x = 26;
-    allyPositions[FourthCombatPosition].y = 62;
-    [backgroundStretch scalePosition:allyPositions[FourthCombatPosition]];
-    
-    // 1. enemy
-    enemyPositions[FirstCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FirstCombatPosition].x;
-    enemyPositions[FirstCombatPosition].y = allyPositions[FirstCombatPosition].y;
-    
-    // 2. enemy
-    enemyPositions[SecondCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[SecondCombatPosition].x;
-    enemyPositions[SecondCombatPosition].y = allyPositions[SecondCombatPosition].y;
-    
-    // 3. enemy
-    enemyPositions[ThirdCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[ThirdCombatPosition].x;
-    enemyPositions[ThirdCombatPosition].y = allyPositions[ThirdCombatPosition].y;
-    
-    // 4. enemy
-    enemyPositions[FourthCombatPosition].x = gameplay.currentLevel.bounds.width - allyPositions[FourthCombatPosition].x;
-    enemyPositions[FourthCombatPosition].y = allyPositions[FourthCombatPosition].y;
+    for (int i = 0; i < CombatPositions; i++) {
+        portraitAreas[i] = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:i] y:[Constants portraitYOfAlly:i] width:[Constants portraitSize] height:[Constants portraitSize]];
+        [hudStretch scaleRectangle:portraitAreas[i]];
+    }
+//    Vector2 *portraitSize = [[Vector2 alloc] init];
+//    portraitSize.x = 14;
+//    portraitSize.y = 14;
+//    [hudStretch scaleSize:portraitSize];
+//
+//    portraitPositions[FirstCombatPosition].x = 85;
+//    portraitPositions[FirstCombatPosition].y = 6;
+//    [hudStretch scalePosition:portraitPositions[FirstCombatPosition]];
+//
+//    portraitPositions[SecondCombatPosition].x = 85;
+//    portraitPositions[SecondCombatPosition].y = 28;
+//    [hudStretch scalePosition:portraitPositions[SecondCombatPosition]];
+//
+//    portraitPositions[ThirdCombatPosition].x = 7;
+//    portraitPositions[ThirdCombatPosition].y = 6;
+//    [hudStretch scalePosition:portraitPositions[ThirdCombatPosition]];
+//
+//    portraitPositions[FourthCombatPosition].x = 7;
+//    portraitPositions[FourthCombatPosition].y = 28;
+//    [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
 
     
     // release the stretchers as we dont need them anymore
@@ -109,6 +73,12 @@
     [super initialize];
 }
 
+
+
+
+/*
+    LOAD CONTENT
+*/
 - (void) loadContent {
     spriteBatch = [[SpriteBatch alloc] initWithGraphicsDevice:self.graphicsDevice];
     
@@ -296,6 +266,13 @@
     }
 }
 
+
+
+
+
+/*
+    DRAW
+*/
 - (void) drawWithGameTime:(GameTime *)gameTime {
     [self.graphicsDevice clearWithColor:[Color darkRed]];
     
@@ -310,7 +287,7 @@
     
     // ally entities and portraits
     for (int i = 0; i < CombatPositions; i++) {
-        [spriteBatch draw:portraits[i].texture toRectangle:[Rectangle rectangleWithX:portraitPositions[i].x y:portraitPositions[i].y width:portraitSize.x height:portraitSize.y] fromRectangle:portraits[i].sourceRectangle tintWithColor:[Color white]
+        [spriteBatch draw:portraits[i].texture toRectangle:portraitAreas[i] fromRectangle:portraits[i].sourceRectangle tintWithColor:[Color white]
                  rotation:0 origin:portraits[i].origin effects:SpriteEffectsNone layerDepth:0];
     }
     
@@ -358,6 +335,15 @@
             if (entity.type == KnightTypeLancelot) {
                 Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
                 [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+                
+                for (int i = 0; i < ComboItems; i++) {
+                    Dice *dice = [entity.combo objectAtIndex:i];
+                    if (dice) {
+                        Rectangle *rect = [gameplay.currentLevel.battlefield getComboAreaOfAlly:FirstCombatPosition forCombo:i];
+                        [spriteBatch draw:diceSymbols[dice.type].texture toRectangle:rect fromRectangle:diceSymbols[dice.type].sourceRectangle tintWithColor:[Color white]
+                                 rotation:0 origin:diceSymbols[dice.type].origin effects:SpriteEffectsNone layerDepth:0];
+                    }
+                }
             } else if (entity.type == KnightTypeEnemy) {
                 Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
                 [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
@@ -368,15 +354,19 @@
     [spriteBatch end];
 }
 
+
+
+
+
+/*
+    UNLOAD CONTENT
+*/
 - (void) unloadContent {
     [spriteBatch release];
     
     for (int i = 0; i < CombatPositions; i++) {
         [allySprites[i] release];
         [portraits[i] release];
-        [allyPositions[i] release];
-        [portraitPositions[i] release];
-        [enemyPositions[i] release];
     }
     
     for (int i = 0; i < LevelTypes; i++) {
@@ -400,10 +390,18 @@
     [diceEvilAnim release];
     
     [portraitTexture release];
-    [portraitSize release];
 }
 
+
+
+/*
+    DEALLOC
+*/
 - (void) dealloc {
+    for (int i = 0; i < CombatPositions; i++) {
+        [portraitAreas[i] release];
+    }
+    
     [camera release];
     [super dealloc];
 }

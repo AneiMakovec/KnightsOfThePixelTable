@@ -12,8 +12,8 @@
 
 @implementation Knight
 
-- (id) initWithKnightType:(KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithHealth:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initWithPosition:(Vector2 *)thePosition knightType:(KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithPosition:thePosition health:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         maxLevel = 80;
         currentLevel = 1;

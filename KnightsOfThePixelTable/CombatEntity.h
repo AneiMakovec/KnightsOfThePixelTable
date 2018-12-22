@@ -24,11 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *stats;
     NSMutableArray *attackDamage;
     NSMutableArray *attackDuration;
+    NSMutableArray *combo;
     
     Entity *target;
 }
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initWithPosition:(Vector2 *)thePosition health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

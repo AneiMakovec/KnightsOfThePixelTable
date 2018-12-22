@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
     // core
     SpriteBatch *spriteBatch;
     Gameplay *gameplay;
-    Battlefield *battlefield;
     Matrix *camera;
     
     // texture stretchers
@@ -38,9 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
     // entities idle animations
     Texture2D *allyTexturesIdle[CombatPositions];
     AnimatedSprite *allySprites[CombatPositions];
-    Vector2 *allyPositions[CombatPositions];
-    
-    Vector2 *enemyPositions[CombatPositions];
     
     
     
@@ -61,13 +57,12 @@ NS_ASSUME_NONNULL_BEGIN
     // portraits
     Texture2D *portraitTexture;
     Sprite *portraits[CombatPositions];
-    Vector2 *portraitPositions[CombatPositions];
-    Vector2 *portraitSize;
+    Rectangle *portraitAreas[CombatPositions];
 }
 
 @property (nonatomic, readonly) Matrix *camera;
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay battlefield:(Battlefield *)theBattlefield;
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay;
 
 @end
 

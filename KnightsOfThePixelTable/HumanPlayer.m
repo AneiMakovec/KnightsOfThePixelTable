@@ -38,6 +38,7 @@
         if (touch.state == TouchLocationStatePressed) {
             if (!selectedDice && [level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
                 selectedDice = [level.dicepool getDiceAtTouchLocation:touchInScene];
+                [selectedDice rememberOrigin];
             }
         }
         
@@ -50,10 +51,11 @@
                 for (int i = 0; i < CombatPositions; i++) {
                     comboArea = [level.battlefield getComboAreaOfAlly:i];
                     if ([comboArea containsX:touchInScene.x y:touchInScene.y]) {
-                        // TODO: add dice to combo of entity
-                        NSLog(@"Added dice to ally: %d", i + 1);
-                        [level.dicepool removeDice:selectedDice];
-                        selectedDice = nil;
+                        if ([level.battlefield addCombo:selectedDice toAlly:i]) {
+                            NSLog(@"Added dice to ally: %d", i + 1);
+                            [level.dicepool removeDice:selectedDice];
+                            selectedDice = nil;
+                        }
                     }
                 }
             }
@@ -79,6 +81,9 @@
                 
                 if (!level.dicepool.dicesAdded) {
                     [level.dicepool addDicesOfType:DiceFrameTypeGood];
+                } else if (selectedDice) {
+                    [selectedDice resetPositionToOrigin:NO];
+                    selectedDice = nil;
                 }
                 
             //} else if ([ally containsX:touchInScene.x y:touchInScene.y]) {
@@ -112,9 +117,13 @@
 //                if (level.dicepool.dicesAdded) {
 //                    [level.dicepool removeAllDices];
 //                }
+                
+                if (selectedDice) {
+                    [selectedDice resetPositionToOrigin:YES];
+                    selectedDice = nil;
+                }
             }
             
-            selectedDice = nil;
             
             Rectangle *area;
             for (int i = 0; i < CombatPositions; i++) {
@@ -141,6 +150,10 @@
                     area = [level.battlefield getComboAreaOfAlly:i];
                     if ([area containsX:touchInScene.x y:touchInScene.y]) {
                         NSLog(@"Touched combo field as well!");
+                        Dice *dice = [level.battlefield removeComboAtTouchLocation:touchInScene fromAlly:i];
+                        if (dice) {
+                            [dice resetPositionToOrigin:YES];
+                        }
                     }
                     break;
                 }

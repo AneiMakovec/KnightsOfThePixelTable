@@ -29,11 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
     DiceState state;
     StatType type;
     DiceFrameType frameType;
-    
     BOOL ignoreCollision;
+    Vector2 *origin;
 }
-
-- (void) updateRadius;
 
 @end
 

@@ -18,9 +18,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (int) areaXOfAlly:(CombatPosition)theAlly;
 + (int) areaYOfAlly:(CombatPosition)theAlly;
++ (int) allyAreaWidth;
++ (int) allyAreaHeight;
 
 + (int) comboAreaXOfAlly:(CombatPosition)theAlly;
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly;
++ (int) comboAreaWidth;
++ (int) comboAreaHeight;
+
++ (int) comboAreaXOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem;
++ (int) comboAreaYOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem;
++ (int) separateComboAreaSize;
+
++ (int) portraitXOfAlly:(CombatPosition)theAlly;
++ (int) portraitYOfAlly:(CombatPosition)theAlly;
++ (int) portraitSize;
+
++ (int) skillXOfAlly:(CombatPosition)theAlly;
++ (int) skillYOfAlly:(CombatPosition)theAlly;
++ (int) skillSize;
 
 + (int) lancelotValueOfStat:(StatType)theStat;
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat;

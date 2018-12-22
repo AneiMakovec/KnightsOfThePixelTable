@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) removeAllDices;
 
+- (void) addDice:(Dice *)dice;
+
 - (void) removeDice:(Dice *)dice;
 
 - (Dice *) getDiceAtTouchLocation:(Vector2 *)touchLocation;

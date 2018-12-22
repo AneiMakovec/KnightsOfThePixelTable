@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *enemyAreas;
     NSMutableArray *allyAreas;
     NSMutableArray *comboAreas;
+    
+    Rectangle *separateComboAreas[CombatPositions][ComboItems];
 }
 
 @property (nonatomic, retain) NSMutableArray *allyEntities;
@@ -52,6 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) containsEnemy:(Knight *)theEnemy;
 
+- (BOOL) addCombo:(Dice *)theCombo toAlly:(CombatPosition)theAlly;
+
+- (Dice *) removeComboAtTouchLocation:(Vector2 *)theLocation fromAlly:(CombatPosition)theAlly;
+
 - (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly;
 
 - (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy;
@@ -61,6 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly;
 
 - (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly;
+
+- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly forCombo:(ComboItem)theCombo;
 
 @end
 

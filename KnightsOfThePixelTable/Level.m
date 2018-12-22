@@ -46,6 +46,9 @@
     
     // entities
     battlefield = [[Battlefield alloc] initWithLevel:self];
+    
+    Rectangle *rect = [battlefield getAreaOfAlly:FirstCombatPosition];
+    NSLog(@"%d, %d, %d, %d", rect.x, rect.y, rect.width, rect.height);
 }
 
 

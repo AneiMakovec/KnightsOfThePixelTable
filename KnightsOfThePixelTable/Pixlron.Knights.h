@@ -32,6 +32,7 @@
 #import "IUpgradable.h"
 #import "StatValue.h"
 #import "AttackValue.h"
+#import "ComboSlot.h"
 
 #import "Knight.h"
 #import "KnightLancelot.h"

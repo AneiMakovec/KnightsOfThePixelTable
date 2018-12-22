@@ -19,5 +19,12 @@
 @property (nonatomic) StatType type;
 @property (nonatomic) DiceFrameType frameType;
 @property (nonatomic) BOOL ignoreCollision;
+@property (nonatomic, retain) Vector2 *origin;
+
+- (void) updateRadius;
+
+- (void) rememberOrigin;
+
+- (void) resetPositionToOrigin:(BOOL)reset;
 
 @end

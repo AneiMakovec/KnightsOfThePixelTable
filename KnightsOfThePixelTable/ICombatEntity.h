@@ -21,8 +21,12 @@
 @property (nonatomic, retain) NSMutableArray *attackDamage;
 @property (nonatomic, retain) NSMutableArray *attackDuration;
 @property (nonatomic, retain) Entity *target;
-//@property (nonatomic, retain) NSArray *targets;
+@property (nonatomic, retain) NSMutableArray *combo;
 
 - (void) attackTarget:(Entity *)theTarget;
+
+- (BOOL) addComboItem:(Dice *)theItem;
+
+- (Dice *) removeCombo:(ComboItem)theItem;
 
 @end
