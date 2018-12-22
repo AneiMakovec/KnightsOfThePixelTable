@@ -12,15 +12,31 @@
 
 @implementation ComboSlot
 
-- (id) initWithArea:(Rectangle *)theArea {
+- (id) init {
     self = [super init];
     if (self != nil) {
-        area = theArea;
+        area = nil;
         item = nil;
     }
     return self;
 }
 
 @synthesize area, item;
+
+
+- (void) addItem:(Dice *)theItem {
+    item = theItem;
+    [item retain];
+}
+
+- (Dice *) removeItem {
+    Dice *dice = item;
+    [dice retain];
+    
+    [item release];
+    item = nil;
+    
+    return dice;
+}
 
 @end

@@ -153,6 +153,7 @@
                         Dice *dice = [level.battlefield removeComboAtTouchLocation:touchInScene fromAlly:i];
                         if (dice) {
                             [dice resetPositionToOrigin:YES];
+                            [level.dicepool addDice:dice];
                         }
                     }
                     break;

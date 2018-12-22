@@ -25,9 +25,9 @@
         attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
         
-        for (int i = 0; i < ComboItems; i++) {
-            combo[i] = [[ComboSlot alloc] init];
-        }
+//        for (int i = 0; i < ComboItems; i++) {
+//            combo[i] = [[ComboSlot alloc] init];
+//        }
         
         origin = [[BattlePosition alloc] initWithRadius:5];
         [origin.position set:position];
@@ -99,12 +99,20 @@
 
 - (Dice *) removeCombo:(ComboItem)theItem {
     if ([combo count] > theItem) {
-        Dice *dice = [[combo objectAtIndex:theItem] retain];
+        Dice *dice = [combo objectAtIndex:theItem];
+        //[dice retain];
+        
         [combo removeObjectAtIndex:theItem];
         return dice;
     }
     
     return nil;
+}
+
+- (void) setComboAreas:(Rectangle *)area {
+    for (ComboSlot *slot in combo) {
+        slot.area = area;
+    }
 }
 
 

@@ -336,7 +336,7 @@
                 Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
                 [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
                 
-                for (int i = 0; i < ComboItems; i++) {
+                for (int i = 0; i < [entity.combo count]; i++) {
                     Dice *dice = [entity.combo objectAtIndex:i];
                     if (dice) {
                         Rectangle *rect = [gameplay.currentLevel.battlefield getComboAreaOfAlly:FirstCombatPosition forCombo:i];

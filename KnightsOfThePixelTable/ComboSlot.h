@@ -21,7 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Rectangle *area;
 @property (nonatomic, retain) Dice *item;
 
-- (id) initWithArea:(Rectangle *)theArea;
+- (void) addItem:(Dice *)theItem;
+
+- (Dice *) removeItem;
 
 @end
 

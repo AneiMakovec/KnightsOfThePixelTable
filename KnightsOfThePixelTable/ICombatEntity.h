@@ -29,4 +29,6 @@
 
 - (Dice *) removeCombo:(ComboItem)theItem;
 
+- (void) setComboAreas:(Rectangle *)area;
+
 @end
