@@ -12,14 +12,15 @@
 
 @implementation CombatEntity
 
-- (id) initWithPosition:(Vector2 *)thePosition health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
-        position = thePosition;
         radius = 1;
         maxRadius = theMaxRadius;
         
         state = EntityStateIdle;
+        attackType = NoAttack;
+        
         stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
         attackDamage = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
@@ -29,13 +30,32 @@
 //            combo[i] = [[ComboSlot alloc] init];
 //        }
         
-        origin = [[BattlePosition alloc] initWithRadius:5];
-        [origin.position set:position];
+//        origin = [[BattlePosition alloc] initWithRadius:5];
+//        [origin.position set:position];
     }
     return self;
 }
 
-@synthesize radius, maxRadius, state, attackType, stats, origin, attackDamage, attackDuration, target, combo;
+@synthesize radius, maxRadius, state, attackType, combatPosition, entityArea, stats, origin, attackDamage, attackDuration, target, combo;
+
+
+- (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
+    combatPosition = theCombatPosition;
+    
+    // calc position
+    position = [[Vector2 alloc] initWithX:[Constants positionXOfAlly:combatPosition] y:[Constants positionYOfAlly:combatPosition]];
+    [[ScreenComponent getScale:@"battlefield"] scalePosition:position];
+    
+    if (!isAlly) {
+        position.x = [ScreenComponent getScreenBounds].width - position.x;
+    }
+    
+    // calc battle position
+    origin = [[BattlePosition alloc] initWithRadius:5];
+    [origin.position set:position];
+}
+
+
 
 - (BOOL) collidingWithItem:(id)item {
     
@@ -53,6 +73,7 @@
         BattlePosition *start = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
         if (start && start == origin) {
             state = EntityStateIdle;
+            attackType = NoAttack;
             [velocity set:[Vector2 zero]];
             target = nil;
         }
@@ -67,6 +88,7 @@
 - (void) attackTarget:(Entity *)theTarget {
     // remember target
     target = theTarget;
+    attackType = BasicAttack;
     
     // move towards the target
     state = EntityStateApproaching;
@@ -88,32 +110,29 @@
 }
 
 
+
 - (BOOL) addComboItem:(Dice *)theItem {
-    if ([combo count] < ComboItems) {
-        [combo addObject:theItem];
-        return YES;
-    } else {
-        return NO;
-    }
+    // Override this in child implementations.
+    return false;
 }
 
 - (Dice *) removeCombo:(ComboItem)theItem {
-    if ([combo count] > theItem) {
-        Dice *dice = [combo objectAtIndex:theItem];
-        //[dice retain];
+    if (theItem < [combo count]) {
+        ComboSlot *comboSlot = [combo objectAtIndex:theItem];
+        Dice *dice = [comboSlot.item retain];
         
-        [combo removeObjectAtIndex:theItem];
+        [combo removeObject:comboSlot];
+        
+        for (ComboSlot *slot in combo) {
+            [slot changeToSlot:[combo indexOfObject:slot]];
+        }
+        
         return dice;
+    } else {
+        return nil;
     }
-    
-    return nil;
 }
 
-- (void) setComboAreas:(Rectangle *)area {
-    for (ComboSlot *slot in combo) {
-        slot.area = area;
-    }
-}
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {

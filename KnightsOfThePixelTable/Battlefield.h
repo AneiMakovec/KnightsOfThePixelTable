@@ -13,11 +13,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Battlefield : NSObject {
-    // background scale
-    TextureStretcher *battleStretcher;
-    
-    // hud scale
-    TextureStretcher *hudStretcher;
+//    // background scale
+//    TextureStretcher *battleStretcher;
+//    
+//    // hud scale
+//    TextureStretcher *hudStretcher;
     
     // level
     Level *level;
@@ -25,24 +25,24 @@ NS_ASSUME_NONNULL_BEGIN
     // entity data
     NSMutableArray *allyEntities;
     NSMutableArray *enemyEntities;
-    NSMutableArray *allyPositions;
-    NSMutableArray *enemyPositions;
+//    NSMutableArray *allyPositions;
+//    NSMutableArray *enemyPositions;
     
-    // entity areas
-    NSMutableArray *enemyAreas;
-    NSMutableArray *allyAreas;
-    NSMutableArray *comboAreas;
-    
-    Rectangle *separateComboAreas[CombatPositions][ComboItems];
+//    // entity areas
+//    NSMutableArray *enemyAreas;
+//    NSMutableArray *allyAreas;
+//    NSMutableArray *comboAreas;
+//
+//    Rectangle *separateComboAreas[CombatPositions][ComboItems];
 }
 
 @property (nonatomic, retain) NSMutableArray *allyEntities;
 @property (nonatomic, retain) NSMutableArray *enemyEntities;
-@property (nonatomic, retain) NSMutableArray *allyPositions;
-@property (nonatomic, retain) NSMutableArray *enemyPositions;
-@property (nonatomic, retain) NSMutableArray *enemyAreas;
-@property (nonatomic, retain) NSMutableArray *allyAreas;
-@property (nonatomic, retain) NSMutableArray *comboAreas;
+//@property (nonatomic, retain) NSMutableArray *allyPositions;
+//@property (nonatomic, retain) NSMutableArray *enemyPositions;
+//@property (nonatomic, retain) NSMutableArray *enemyAreas;
+//@property (nonatomic, retain) NSMutableArray *allyAreas;
+//@property (nonatomic, retain) NSMutableArray *comboAreas;
 
 - (id) initWithLevel:(Level *)theLevel;
 
@@ -58,17 +58,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Dice *) removeComboAtTouchLocation:(Vector2 *)theLocation fromAlly:(CombatPosition)theAlly;
 
-- (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly;
+//- (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly;
+//
+//- (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy;
 
-- (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy;
+//- (Rectangle *) getAreaOfEnemy:(CombatPosition)theEnemy;
 
-- (Rectangle *) getAreaOfEnemy:(CombatPosition)theEnemy;
-
-- (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly;
-
-- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly;
-
-- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly forCombo:(ComboItem)theCombo;
+//- (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly;
+//
+//- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly;
+//
+//- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly forCombo:(ComboItem)theCombo;
 
 @end
 

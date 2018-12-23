@@ -21,9 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
     Gameplay *gameplay;
     Matrix *camera;
     
-    // texture stretchers
-    TextureStretcher *backgroundStretch;
-    TextureStretcher *hudStretch;
+//    // texture stretchers
+//    TextureStretcher *backgroundStretch;
+//    TextureStretcher *hudStretch;
     int hudOffset;
     
     // background and hud textures
@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
     // portraits
     Texture2D *portraitTexture;
     Sprite *portraits[CombatPositions];
-    Rectangle *portraitAreas[CombatPositions];
+//    Rectangle *portraitAreas[CombatPositions];
 }
 
 @property (nonatomic, readonly) Matrix *camera;

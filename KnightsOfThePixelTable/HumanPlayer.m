@@ -47,12 +47,10 @@
                 selectedDice.position.x = touchInScene.x;
                 selectedDice.position.y = touchInScene.y;
                 
-                Rectangle *comboArea;
-                for (int i = 0; i < CombatPositions; i++) {
-                    comboArea = [level.battlefield getComboAreaOfAlly:i];
-                    if ([comboArea containsX:touchInScene.x y:touchInScene.y]) {
-                        if ([level.battlefield addCombo:selectedDice toAlly:i]) {
-                            NSLog(@"Added dice to ally: %d", i + 1);
+                for (Knight *knight in level.battlefield.allyEntities) {
+                    if ([knight.comboArea containsX:touchInScene.x y:touchInScene.y]) {
+                        if ([knight addComboItem:selectedDice]) {
+                            NSLog(@"Added dice to ally: %d", knight.combatPosition);
                             [level.dicepool removeDice:selectedDice];
                             selectedDice = nil;
                         }
@@ -125,32 +123,28 @@
             }
             
             
-            Rectangle *area;
-            for (int i = 0; i < CombatPositions; i++) {
+            for (Monster *monster in level.battlefield.enemyEntities) {
                 // check if enemy touched
-                area = [level.battlefield getAreaOfEnemy:i];
-                if ([area containsX:touchInScene.x y:touchInScene.y]) {
-                    target = [level.battlefield getEnemyAtPosition:i];
-                    NSLog(@"Target is enemy on position: %d", i + 1);
+                if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
+                    target = monster;
+                    NSLog(@"Target is enemy on position: %d", monster.combatPosition);
                     break;
                 }
-                
+            }
+            
+            for (Knight *knight in level.battlefield.allyEntities) {
                 // check if ally touched
-                area = [level.battlefield getAreaOfAlly:i];
-                if ([area containsX:touchInScene.x y:touchInScene.y]) {
-                    NSLog(@"Touched ally: %d", i + 1);
+                if ([knight.entityArea containsX:touchInScene.x y:touchInScene.y]) {
+                    NSLog(@"Touched ally: %d", knight.combatPosition);
                     
                     if (target) {
-                        Knight *selected = [level.battlefield getAllyAtPosition:i];
-                        selected.attackType = BasicAttack;
-                        [selected attackTarget:target];
+                        [knight attackTarget:target];
                     }
                     
                     // also check if combo area of that ally touched
-                    area = [level.battlefield getComboAreaOfAlly:i];
-                    if ([area containsX:touchInScene.x y:touchInScene.y]) {
+                    if ([knight.comboArea containsX:touchInScene.x y:touchInScene.y]) {
                         NSLog(@"Touched combo field as well!");
-                        Dice *dice = [level.battlefield removeComboAtTouchLocation:touchInScene fromAlly:i];
+                        Dice *dice = [level.battlefield removeComboAtTouchLocation:touchInScene fromAlly:knight.combatPosition];
                         if (dice) {
                             [dice resetPositionToOrigin:YES];
                             [level.dicepool addDice:dice];

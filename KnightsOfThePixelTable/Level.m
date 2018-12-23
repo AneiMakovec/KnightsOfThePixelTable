@@ -15,7 +15,7 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:theGame];
-        scene.updateOrder = 4;
+        scene.updateOrder = 5;
         [self.game.components addComponent:scene];
         
         num_of_dices = numDices;
@@ -23,12 +23,12 @@
     return self;
 }
 
-@synthesize scene, battlefield, bounds, dicepool, num_of_dices;
+@synthesize scene, battlefield, dicepool, num_of_dices;
 
 - (void) initialize {
-    // calculate the right dimensions of the display area
-    float aspectRatio = (float)self.game.gameWindow.clientBounds.width / (float)self.game.gameWindow.clientBounds.height;
-    bounds = [[Rectangle alloc] initWithX:0 y:0 width:1000 height:1000/aspectRatio];
+//    // calculate the right dimensions of the display area
+//    float aspectRatio = (float)self.game.gameWindow.clientBounds.width / (float)self.game.gameWindow.clientBounds.height;
+//    bounds = [[Rectangle alloc] initWithX:0 y:0 width:1000 height:1000/aspectRatio];
 
     music_played = NO;
     
@@ -46,9 +46,6 @@
     
     // entities
     battlefield = [[Battlefield alloc] initWithLevel:self];
-    
-    Rectangle *rect = [battlefield getAreaOfAlly:FirstCombatPosition];
-    NSLog(@"%d, %d, %d, %d", rect.x, rect.y, rect.width, rect.height);
 }
 
 
@@ -69,7 +66,7 @@
 
 - (void) dealloc {
     [scene release];
-    [bounds release];
+//    [bounds release];
     [battlefield release];
     [dicepool release];
     [super dealloc];

@@ -11,6 +11,7 @@
 
 // Graphics
 @class Renderer;
+@class ScreenComponent;
 
 // Physics
 @class PhysicsEngine;
@@ -31,7 +32,7 @@
 
 @class Knight, KnightLancelot;
 
-@class Monster;
+@class Monster, MonsterWarrior;
 
 @class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
 

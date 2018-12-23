@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
++ (float) backgroundWidth;
++ (float) battlefieldHeight;
++ (float) hudHeight;
+
 + (int) positionXOfAlly:(CombatPosition)theAlly;
 + (int) positionYOfAlly:(CombatPosition)theAlly;
 

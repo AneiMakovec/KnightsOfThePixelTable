@@ -27,23 +27,25 @@
     INITIALIZE
 */
 - (void) initialize {
-    // create the camera on which the graphics will be displayed
-    float scaleX = (float)self.game.gameWindow.clientBounds.width / (float)gameplay.currentLevel.bounds.width;
-    float scaleY = (float)self.game.gameWindow.clientBounds.height / (float)gameplay.currentLevel.bounds.height;
-    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+//    // create the camera on which the graphics will be displayed
+//    float scaleX = (float)self.game.gameWindow.clientBounds.width / (float)[TextureStretcher getScreenBounds].width;
+//    float scaleY = (float)self.game.gameWindow.clientBounds.height / (float)[TextureStretcher getScreenBounds].height;
+//    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+    
+    camera = [ScreenComponent getCamera];
     
     
-    // calculate hud offset and init the stretchers
-    hudOffset = gameplay.currentLevel.bounds.height * 0.625;
-    backgroundStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0];
-    hudStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:48.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)gameplay.currentLevel.bounds.height - (float) hudOffset xOffset:0 yOffset:hudOffset];
+//    // calculate hud offset and init the stretchers
+    hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
+//    backgroundStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0];
+//    hudStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:48.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)gameplay.currentLevel.bounds.height - (float) hudOffset xOffset:0 yOffset:hudOffset];
     
     
-    // set and stretch the position of portraits
-    for (int i = 0; i < CombatPositions; i++) {
-        portraitAreas[i] = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:i] y:[Constants portraitYOfAlly:i] width:[Constants portraitSize] height:[Constants portraitSize]];
-        [hudStretch scaleRectangle:portraitAreas[i]];
-    }
+//    // set and stretch the position of portraits
+//    for (int i = 0; i < CombatPositions; i++) {
+//        portraitAreas[i] = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:i] y:[Constants portraitYOfAlly:i] width:[Constants portraitSize] height:[Constants portraitSize]];
+//        [hudStretch scaleRectangle:portraitAreas[i]];
+//    }
 //    Vector2 *portraitSize = [[Vector2 alloc] init];
 //    portraitSize.x = 14;
 //    portraitSize.y = 14;
@@ -66,9 +68,9 @@
 //    [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
 
     
-    // release the stretchers as we dont need them anymore
-    [backgroundStretch release];
-    [hudStretch release];
+//    // release the stretchers as we dont need them anymore
+//    [backgroundStretch release];
+//    [hudStretch release];
     
     [super initialize];
 }
@@ -280,16 +282,11 @@
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];
     
     // backgorund
-    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:gameplay.currentLevel.bounds.width height:hudOffset] tintWithColor:[Color white]];
+    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
     
     // hud
-    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:gameplay.currentLevel.bounds.width height:gameplay.currentLevel.bounds.height - hudOffset] tintWithColor:[Color white]];
+    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
     
-    // ally entities and portraits
-    for (int i = 0; i < CombatPositions; i++) {
-        [spriteBatch draw:portraits[i].texture toRectangle:portraitAreas[i] fromRectangle:portraits[i].sourceRectangle tintWithColor:[Color white]
-                 rotation:0 origin:portraits[i].origin effects:SpriteEffectsNone layerDepth:0];
-    }
     
     // scene items
     for (id item in gameplay.currentLevel.scene) {
@@ -328,26 +325,34 @@
             }
         }
         
-        // check if is combat entity
-        Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
-        
-        if (entity) {
-            if (entity.type == KnightTypeLancelot) {
-                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-                [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+        // check if is knight entity
+        Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
+        if (knight) {
+            if (knight.type == KnightTypeLancelot) {
+                // portrait
+                Sprite *portrait = portraits[FirstCombatPosition];
+                [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
                 
-                for (int i = 0; i < [entity.combo count]; i++) {
-                    Dice *dice = [entity.combo objectAtIndex:i];
-                    if (dice) {
-                        Rectangle *rect = [gameplay.currentLevel.battlefield getComboAreaOfAlly:FirstCombatPosition forCombo:i];
-                        [spriteBatch draw:diceSymbols[dice.type].texture toRectangle:rect fromRectangle:diceSymbols[dice.type].sourceRectangle tintWithColor:[Color white]
-                                 rotation:0 origin:diceSymbols[dice.type].origin effects:SpriteEffectsNone layerDepth:0];
+                // sprite
+                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+                [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+                
+                // combo
+                for (ComboSlot *comboSlot in knight.combo) {
+                    if (comboSlot.item) {
+                        [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white]
+                                 rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
                     }
                 }
-            } else if (entity.type == KnightTypeEnemy) {
-                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-                [spriteBatch draw:drawable.texture to:entity.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
             }
+        }
+        
+        // check if is monster entity
+        Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
+        if (monster) {
+            // sprite
+            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
         }
     }
     
@@ -398,11 +403,6 @@
     DEALLOC
 */
 - (void) dealloc {
-    for (int i = 0; i < CombatPositions; i++) {
-        [portraitAreas[i] release];
-    }
-    
-    [camera release];
     [super dealloc];
 }
 

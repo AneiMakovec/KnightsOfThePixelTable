@@ -18,9 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
     float radius;
     float maxRadius;
     
+    Rectangle *entityArea;
+    
     EntityState state;
     AttackType attackType;
+    CombatPosition combatPosition;
     BattlePosition *origin;
+    
     NSMutableArray *stats;
     NSMutableArray *attackDamage;
     NSMutableArray *attackDuration;
@@ -29,7 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
     Entity *target;
 }
 
-- (id) initWithPosition:(Vector2 *)thePosition health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+
+- (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
 @end
 

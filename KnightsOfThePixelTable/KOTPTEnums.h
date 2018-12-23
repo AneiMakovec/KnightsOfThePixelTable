@@ -6,7 +6,7 @@
 //  Copyright © 2018 Anei Makovec. All rights reserved.
 //
 
-// entities
+// MARK: entities
 typedef enum {
     KnightTypeLancelot,
     KnightTypeEnemy,
@@ -37,10 +37,11 @@ typedef enum {
 
 typedef enum {
     BasicAttack,
-    FirstCombo,
-    SecondCombo,
-    ThirdCombo,
-    AttackTypes
+    FirstComboAttack,
+    SecondComboAttack,
+    ThirdComboAttack,
+    AttackTypes,
+    NoAttack
 } AttackType;
 
 typedef enum {
@@ -48,7 +49,8 @@ typedef enum {
     SecondComboItem,
     ThirdComboItem,
     FourthComboItem,
-    ComboItems
+    ComboItems,
+    NoCombo
 } ComboItem;
 
 typedef enum {
@@ -60,7 +62,7 @@ typedef enum {
     EntityStates
 } EntityState;
 
-// combat positions
+// MARK: combat positions
 typedef enum {
     FirstCombatPosition,
     SecondCombatPosition,
@@ -69,7 +71,7 @@ typedef enum {
     CombatPositions
 } CombatPosition;
 
-// level types
+// MARK: level types
 typedef enum {
     LevelTypeFarmlands,
     LevelTypePinewoods,
@@ -79,7 +81,7 @@ typedef enum {
     LevelTypes
 } LevelType;
 
-// dices
+// MARK: dices
 typedef enum {
     DiceFrameTypeGood,
     DiceFrameTypeEvil,
@@ -92,7 +94,7 @@ typedef enum {
     DiceStates
 } DiceState;
 
-// sounds
+// MARK: sounds
 typedef enum {
     SoundEffectTypeDice,
     SoundEffectTypeBackground,
@@ -100,20 +102,20 @@ typedef enum {
     SoundEffectTypes
 } SoundEffectType;
 
-// areas
+// MARK: area textures
 #define AREA_FARMLANDS @"background_farmlands"
 #define AREA_MOUNTAINS @"background_mountains"
 #define AREA_PINEWOODS @"background_pinewoods"
 
-// hud
+// MARK: hud texture
 #define HUD @"hud"
 
-// characters
+// MARK: character textures
 #define LANCELOT_IDLE @"lancelot_idle"
 #define PALADIN_IDLE @"paladin"
 #define KNIGHT_IDLE @"knight"
 
-// dices
+// MARK: dice textures
 #define DICE_ANIM_EVIL @"combat_dice_animation_evil"
 #define DICE_ANIM_GOOD @"combat_dice_animation_good"
 #define DICE_SYMBOLS @"combat_dices"

@@ -12,8 +12,8 @@
 
 @implementation KnightLancelot
 
-- (id) initWithPosition:(Vector2 *)thePosition {
-    self = [super initWithPosition:thePosition knightType:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
+- (id) init {
+    self = [super initKnight:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         StatValue *statValue;

@@ -20,17 +20,17 @@
         allyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         enemyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         
-        allyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
-        enemyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+//        allyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+//        enemyPositions = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         
-        enemyAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
-        allyAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
-        comboAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+//        enemyAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+//        allyAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
+//        comboAreas = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         
-        // create scale
-        int hudOffset = level.bounds.height * 0.625;
-        battleStretcher = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)level.bounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0];
-        hudStretcher = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:48.0f toWidth:(float)level.bounds.width toHeight:(float)level.bounds.height - (float)hudOffset xOffset:0 yOffset:hudOffset];
+//        // create scale
+//        int hudOffset = level.bounds.height * 0.625;
+//        battleStretcher = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)level.bounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0];
+//        hudStretcher = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:48.0f toWidth:(float)level.bounds.width toHeight:(float)level.bounds.height - (float)hudOffset xOffset:0 yOffset:hudOffset];
         
         
 //        for (int i = 0; i < CombatPositions; i++) {
@@ -42,37 +42,59 @@
 //        }
         
         
-        // calculate positions and touch areas
-        for (int i = 0; i < CombatPositions; i++) {
-            // ally positions
-            allyPositions[i] = [[Vector2 alloc] initWithX:[Constants positionXOfAlly:i] y:[Constants positionYOfAlly:i]];
-            Vector2 *temp = [allyPositions objectAtIndex:i];
-            [battleStretcher scalePosition:temp];
+        // add the entities
+        KnightLancelot *lancelot = [[KnightLancelot alloc] init];
+        [lancelot setCombatPosition:FirstCombatPosition];
+        [allyEntities insertObject:lancelot atIndex:FirstCombatPosition];
+        [level.scene addItem:lancelot];
+        [level.scene addItem:lancelot.origin];
+        
+        
+        KnightLancelot *secondLancelot = [[KnightLancelot alloc] init];
+        [secondLancelot setCombatPosition:SecondCombatPosition];
+        [allyEntities insertObject:secondLancelot atIndex:SecondCombatPosition];
+        [level.scene addItem:secondLancelot];
+        [level.scene addItem:secondLancelot.origin];
+        
+        
+        Monster *monster = [[Monster alloc] initMonster:MonsterTypeWarrior health:100 damageStrength:0.5 maxRadius:60];
+        [monster setCombatPosition:FirstCombatPosition];
+        [enemyEntities insertObject:monster atIndex:FirstCombatPosition];
+        [level.scene addItem:monster];
+        [level.scene addItem:monster.origin];
+        
+        
+//        // calculate positions and touch areas
+//        for (int i = 0; i < CombatPositions; i++) {
+//            // ally positions
+//            allyPositions[i] = [[Vector2 alloc] initWithX:[Constants positionXOfAlly:i] y:[Constants positionYOfAlly:i]];
+//            Vector2 *temp = [allyPositions objectAtIndex:i];
+//            [[TextureStretcher getScaleMappedTo:@"battlefield"] scalePosition:temp];
 
-            // enemy positions
-            Vector2 *pos = [allyPositions objectAtIndex:i];
-            enemyPositions[i] = [[Vector2 alloc] initWithX:level.bounds.width - pos.x y:pos.y];
+//            // enemy positions
+//            Vector2 *pos = [allyPositions objectAtIndex:i];
+//            enemyPositions[i] = [[Vector2 alloc] initWithX:[TextureStretcher getScreenBounds].width - pos.x y:pos.y];
 
-            // enemy touch areas
-            pos = [enemyPositions objectAtIndex:i];
-            enemyAreas[i] = [[Rectangle alloc] initWithX:pos.x - 56 y:pos.y - 56 width:112 height:112];
+//            // enemy touch areas
+//            pos = [enemyPositions objectAtIndex:i];
+//            enemyAreas[i] = [[Rectangle alloc] initWithX:pos.x - 56 y:pos.y - 56 width:112 height:112];
 
-            // ally touch areas
-            allyAreas[i] = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:i] y:[Constants areaYOfAlly:i] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
-            Rectangle *tempRect = [allyAreas objectAtIndex:i];
-            [hudStretcher scaleRectangle:tempRect];
+//            // ally touch areas
+//            allyAreas[i] = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:i] y:[Constants areaYOfAlly:i] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
+//            Rectangle *tempRect = [allyAreas objectAtIndex:i];
+//            [[TextureStretcher getScaleMappedTo:@"hud"] scaleRectangle:tempRect];
 
-            // ally combo touch areas
-            comboAreas[i] = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:i] y:[Constants comboAreaYOfAlly:i] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
-            tempRect = [comboAreas objectAtIndex:i];
-            [hudStretcher scaleRectangle:tempRect];
+//            // ally combo touch areas
+//            comboAreas[i] = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:i] y:[Constants comboAreaYOfAlly:i] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
+//            tempRect = [comboAreas objectAtIndex:i];
+//            [[TextureStretcher getScaleMappedTo:@"hud"] scaleRectangle:tempRect];
             
-            // separate combo touch areas
-            for (int j = 0; j < ComboItems; j++) {
-                separateComboAreas[i][j] = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:i atPosition:j] y:[Constants comboAreaYOfAlly:i atPosition:j] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
-                [hudStretcher scaleRectangle:separateComboAreas[i][j]];
-            }
-        }
+//            // separate combo touch areas
+//            for (int j = 0; j < ComboItems; j++) {
+//                separateComboAreas[i][j] = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:i atPosition:j] y:[Constants comboAreaYOfAlly:i atPosition:j] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
+//                [[TextureStretcher getScaleMappedTo:@"hud"] scaleRectangle:separateComboAreas[i][j]];
+//            }
+//        }
         
         
 //        // calculate positions for ally entities
@@ -147,26 +169,26 @@
         
 
         
-        // add the entities
-        KnightLancelot *lancelot = [[KnightLancelot alloc] initWithPosition:[allyPositions objectAtIndex:FirstCombatPosition]];
-        [allyEntities insertObject:lancelot atIndex:FirstCombatPosition];
-        [level.scene addItem:lancelot];
-        [level.scene addItem:lancelot.origin];
+//        // add the entities
+//        KnightLancelot *lancelot = [[KnightLancelot alloc] initWithPosition:[allyPositions objectAtIndex:FirstCombatPosition]];
+//        [allyEntities insertObject:lancelot atIndex:FirstCombatPosition];
+//        [level.scene addItem:lancelot];
+//        [level.scene addItem:lancelot.origin];
+//
+//
+//        KnightLancelot *enemyLancelot = [[KnightLancelot alloc] initWithPosition:[enemyPositions objectAtIndex:FirstCombatPosition]];
+//        [enemyEntities insertObject:enemyLancelot atIndex:FirstCombatPosition];
+//        [level.scene addItem:enemyLancelot];
+//        [level.scene addItem:enemyLancelot.origin];
         
-        
-        KnightLancelot *enemyLancelot = [[KnightLancelot alloc] initWithPosition:[enemyPositions objectAtIndex:FirstCombatPosition]];
-        [enemyEntities insertObject:enemyLancelot atIndex:FirstCombatPosition];
-        [level.scene addItem:enemyLancelot];
-        [level.scene addItem:enemyLancelot.origin];
-        
-        // release the scale
-        [battleStretcher release];
-        [hudStretcher release];
+//        // release the scale
+//        [battleStretcher release];
+//        [hudStretcher release];
     }
     return self;
 }
 
-@synthesize allyEntities, enemyEntities, allyPositions, enemyPositions, enemyAreas, allyAreas, comboAreas;
+@synthesize allyEntities, enemyEntities;
 
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition {
@@ -206,8 +228,9 @@
 - (Dice *) removeComboAtTouchLocation:(Vector2 *)theLocation fromAlly:(CombatPosition)theAlly {
     Knight *ally = [allyEntities objectAtIndex:theAlly];
     if (ally) {
-        for (int i = 0; i < ComboItems; i++) {
-            if ([separateComboAreas[theAlly][i] containsX:theLocation.x y:theLocation.y]) {
+        for (int i = 0; i < [ally.combo count]; i++) {
+            ComboSlot *slot = [ally.combo objectAtIndex:i];
+            if ([slot.area containsX:theLocation.x y:theLocation.y]) {
                 return [ally removeCombo:i];
             }
         }
@@ -218,60 +241,55 @@
 
 
 
-- (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly {
-    if ([allyPositions count] > theAlly) {
-        return [allyPositions objectAtIndex:theAlly];
-    } else {
-        return nil;
-    }
-}
-
-- (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy {
-    if ([enemyPositions count] > theEnemy) {
-        return [enemyPositions objectAtIndex:theEnemy];
-    } else {
-        return nil;
-    }
-}
-
-- (Rectangle *) getAreaOfEnemy:(CombatPosition)theEnemy {
-    if ([enemyAreas count] > theEnemy) {
-        return [enemyAreas objectAtIndex:theEnemy];
-    } else {
-        return nil;
-    }
-}
-
-- (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly {
-    if ([allyAreas count] > theAlly) {
-        return [allyAreas objectAtIndex:theAlly];
-    } else {
-        return nil;
-    }
-}
-
-- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly {
-    if ([comboAreas count] > theAlly) {
-        return [comboAreas objectAtIndex:theAlly];
-    } else {
-        return nil;
-    }
-}
-
-- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly forCombo:(ComboItem)theCombo {
-    return separateComboAreas[theAlly][theCombo];
-}
+//- (Vector2 *) getPositionOfAlly:(CombatPosition)theAlly {
+//    if ([allyPositions count] > theAlly) {
+//        return [allyPositions objectAtIndex:theAlly];
+//    } else {
+//        return nil;
+//    }
+//}
+//
+//- (Vector2 *) getPositionOfEnemy:(CombatPosition)theEnemy {
+//    if ([enemyPositions count] > theEnemy) {
+//        return [enemyPositions objectAtIndex:theEnemy];
+//    } else {
+//        return nil;
+//    }
+//}
+//
+//- (Rectangle *) getAreaOfEnemy:(CombatPosition)theEnemy {
+//    if ([enemyAreas count] > theEnemy) {
+//        return [enemyAreas objectAtIndex:theEnemy];
+//    } else {
+//        return nil;
+//    }
+//}
+//
+//- (Rectangle *) getAreaOfAlly:(CombatPosition)theAlly {
+//    if ([allyAreas count] > theAlly) {
+//        return [allyAreas objectAtIndex:theAlly];
+//    } else {
+//        return nil;
+//    }
+//}
+//
+//- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly {
+//    if ([comboAreas count] > theAlly) {
+//        return [comboAreas objectAtIndex:theAlly];
+//    } else {
+//        return nil;
+//    }
+//}
+//
+//- (Rectangle *) getComboAreaOfAlly:(CombatPosition)theAlly forCombo:(ComboItem)theCombo {
+//    return separateComboAreas[theAlly][theCombo];
+//}
 
 
 - (void) dealloc {
     for (int i = 0; i < CombatPositions; i++) {
         [allyEntities[i] release];
         [enemyEntities[i] release];
-        [allyPositions[i] release];
-        [enemyPositions[i] release];
-        [enemyAreas[i] release];
-        [allyAreas[i] release];
-        [comboAreas[i] release];
     }
     
     [super dealloc];

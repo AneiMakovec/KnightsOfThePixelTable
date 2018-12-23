@@ -21,12 +21,12 @@
         renderer = [[Renderer alloc] initWithGame:self.game gameplay:self];
         
         
-        humanPlayer.updateOrder = 0;
-        aiPlayer.updateOrder = 1;
-        physics.updateOrder = 2;
-        currentLevel.updateOrder = 3;
-        renderer.updateOrder = 5;
-        self.updateOrder = 6;
+        humanPlayer.updateOrder = 1;
+        aiPlayer.updateOrder = 2;
+        physics.updateOrder = 3;
+        currentLevel.updateOrder = 4;
+        renderer.updateOrder = 6;
+        self.updateOrder = 7;
         
         [self.game.components addComponent:humanPlayer];
         [self.game.components addComponent:aiPlayer];

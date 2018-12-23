@@ -10,12 +10,21 @@
 
 #import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
-
-#import "ICombatEntity.h"
+#import "CombatEntity.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Monster : DamageDealer<IExperienceGiver, ICombatEntity>
+@interface Monster : CombatEntity<IExperienceGiver> {
+    int expWorth;
+    
+    MonsterType type;
+}
+
+@property (nonatomic) MonsterType type;
+
+- (id) initMonster:(MonsterType)theMonster health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+
+- (void) setCombatPosition:(CombatPosition)theCombatPosition;
 
 @end
 

@@ -10,13 +10,13 @@
 
 #import "Retronator.Xni.Framework.Content.h"
 
-SoundEngine *instance;
+SoundEngine *soundEngineInstance;
 
 @implementation SoundEngine
 
 + (void) initializeWithGame:(Game*)game {
-    instance = [[SoundEngine alloc] initWithGame:game];
-    [game.components addComponent:instance];
+    soundEngineInstance = [[SoundEngine alloc] initWithGame:game];
+    [game.components addComponent:soundEngineInstance];
 }
 
 - (void) initialize {
@@ -32,7 +32,7 @@ SoundEngine *instance;
 }
 
 + (void) play:(SoundEffectType)type {
-    [instance play:type];
+    [soundEngineInstance play:type];
 }
 
 - (void) dealloc

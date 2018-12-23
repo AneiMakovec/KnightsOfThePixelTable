@@ -20,11 +20,21 @@ NS_ASSUME_NONNULL_BEGIN
     int exp;
     
     KnightType type;
+    
+    Rectangle *portraitArea;
+    Rectangle *comboArea;
+    Rectangle *skillArea;
 }
 
 @property (nonatomic) KnightType type;
 
-- (id) initWithPosition:(Vector2 *)thePosition knightType:(KnightType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+@property (nonatomic, retain) Rectangle *portraitArea;
+@property (nonatomic, retain) Rectangle *comboArea;
+@property (nonatomic, retain) Rectangle *skillArea;
+
+- (id) initKnight:(KnightType)theKnight health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+
+- (void) setCombatPosition:(CombatPosition)theCombatPosition;
 
 @end
 

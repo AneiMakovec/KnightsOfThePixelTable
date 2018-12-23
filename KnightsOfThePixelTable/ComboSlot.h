@@ -16,10 +16,20 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ComboSlot : NSObject {
     Rectangle *area;
     Dice *item;
+    
+    CombatPosition entityPosition;
 }
 
 @property (nonatomic, retain) Rectangle *area;
 @property (nonatomic, retain) Dice *item;
+
+- (id) initWithItem:(Dice *)theItem forPosition:(CombatPosition)thePosition inSlot:(ComboItem)theSlot;
+
+- (id) initWithItem:(Dice *)theItem forPosition:(CombatPosition)thePosition;
+
+- (void) setSlot:(ComboItem)theSlot;
+
+- (void) changeToSlot:(ComboItem)theSlot;
 
 - (void) addItem:(Dice *)theItem;
 

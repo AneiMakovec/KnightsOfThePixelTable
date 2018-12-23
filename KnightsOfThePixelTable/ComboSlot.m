@@ -12,17 +12,54 @@
 
 @implementation ComboSlot
 
-- (id) init {
+- (id) initWithItem:(Dice *)theItem forPosition:(CombatPosition)thePosition inSlot:(ComboItem)theSlot {
     self = [super init];
     if (self != nil) {
+        item = [theItem retain];
+        entityPosition = thePosition;
+        
+        if (theSlot == NoCombo) {
+            area = nil;
+        } else {
+            area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:thePosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:thePosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
+            [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+        }
+    }
+    return self;
+}
+
+- (id) initWithItem:(Dice *)theItem forPosition:(CombatPosition)thePosition {
+    self = [super init];
+    if (self != nil) {
+        entityPosition = thePosition;
+        
+        item = [theItem retain];
         area = nil;
-        item = nil;
     }
     return self;
 }
 
 @synthesize area, item;
 
+
+- (void) setSlot:(ComboItem)theSlot {
+    if (!area) {
+        if (theSlot != NoCombo) {
+            area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:entityPosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:entityPosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
+            [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+        }
+    }
+}
+
+- (void) changeToSlot:(ComboItem)theSlot {
+    if (theSlot != NoCombo) {
+        area.x = [Constants comboAreaXOfAlly:entityPosition atPosition:theSlot];
+        area.y = [Constants comboAreaYOfAlly:entityPosition atPosition:theSlot];
+        area.width = [Constants separateComboAreaSize];
+        area.height = [Constants separateComboAreaSize];
+        [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+    }
+}
 
 - (void) addItem:(Dice *)theItem {
     item = theItem;
@@ -37,6 +74,12 @@
     item = nil;
     
     return dice;
+}
+
+- (void) dealloc {
+    [area release];
+    [item release];
+    [super dealloc];
 }
 
 @end

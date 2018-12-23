@@ -22,27 +22,32 @@
         
         dicesAdded = NO;
         
-        int hudOffset = level.bounds.height * 0.625;
-        float leftWall = [TextureStretcher scaleX:162.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
-        float rightWall = [TextureStretcher scaleX:250.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
-        float topWall = [TextureStretcher scaleY:5.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
-        float bottomWall = [TextureStretcher scaleY:42.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
+//        int hudOffset = level.bounds.height * 0.625;
+//        float leftWall = [TextureStretcher scaleX:162.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
+//        float rightWall = [TextureStretcher scaleX:250.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
+//        float topWall = [TextureStretcher scaleY:5.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
+//        float bottomWall = [TextureStretcher scaleY:42.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
         
-        dicepoolArea.x = leftWall;
-        dicepoolArea.y = topWall + hudOffset;
-        dicepoolArea.width = rightWall - leftWall;
-        dicepoolArea.height = bottomWall - topWall;
+        dicepoolArea.x = [[ScreenComponent getScale:@"hud"] scaleX:162.0f];
+        dicepoolArea.width = [[ScreenComponent getScale:@"hud"] scaleX:250.0f];
+        dicepoolArea.y = [[ScreenComponent getScale:@"hud"] scaleY:5.0f];
+        dicepoolArea.height = [[ScreenComponent getScale:@"hud"] scaleY:42.0f];
         
-        DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:leftWall]];
+//        dicepoolArea.x = leftWall;
+//        dicepoolArea.y = topWall + hudOffset;
+//        dicepoolArea.width = rightWall - leftWall;
+//        dicepoolArea.height = bottomWall - topWall;
+        
+        DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:dicepoolArea.x]];
         [borders addObject:border];
         
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeX distance:-rightWall]];
+        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeX distance:-dicepoolArea.width]];
         [borders addObject:border];
         
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:topWall + hudOffset]];
+        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:dicepoolArea.y]];
         [borders addObject:border];
         
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-bottomWall - hudOffset]];
+        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-dicepoolArea.height]];
         [borders addObject:border];
     }
     return self;

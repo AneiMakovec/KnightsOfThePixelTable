@@ -12,6 +12,7 @@
 
 // Graphics
 #import "Renderer.h"
+#import "ScreenComponent.h"
 
 
 // Physics
@@ -38,6 +39,7 @@
 #import "KnightLancelot.h"
 
 #import "Monster.h"
+#import "MonsterWarrior.h"
 
 #import "Level.h"
 #import "FarmlandsLevel.h"

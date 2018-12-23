@@ -36,6 +36,8 @@
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
 		B5AE502021BEF47300FC5CBF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501D21BEF47300FC5CBF /* click.wav */; };
+		B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */; };
+		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
@@ -132,6 +134,10 @@
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
 		B5AE501C21BEF47300FC5CBF /* background_sounds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background_sounds.wav; sourceTree = "<group>"; };
 		B5AE501D21BEF47300FC5CBF /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterWarrior.h; sourceTree = "<group>"; };
+		B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterWarrior.m; sourceTree = "<group>"; };
+		B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenComponent.h; sourceTree = "<group>"; };
+		B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenComponent.m; sourceTree = "<group>"; };
 		B5D01C5521C8291B00A007DC /* Battlefield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Battlefield.h; sourceTree = "<group>"; };
 		B5D01C5621C8291B00A007DC /* Battlefield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Battlefield.m; sourceTree = "<group>"; };
 		B5D0A42721C41204005EF3C6 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
@@ -305,9 +311,9 @@
 				B58869A621C44DA400CE4C0E /* ICombatEntity.h */,
 				B58869AE21C4675200CE4C0E /* CombatEntity.h */,
 				B58869AF21C4675200CE4C0E /* CombatEntity.m */,
-				B5A493BD21CAC38A003EBB1D /* Other classes */,
 				B5D0A42521C411EC005EF3C6 /* Allies */,
 				B5D0A42621C411F4005EF3C6 /* Enemies */,
+				B5A493BD21CAC38A003EBB1D /* Other classes */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -366,6 +372,15 @@
 			path = Dices;
 			sourceTree = "<group>";
 		};
+		B5CCC15E21D0082E00AD19C5 /* Monsters */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */,
+				B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */,
+			);
+			name = Monsters;
+			sourceTree = "<group>";
+		};
 		B5D01C5421C828C000A007DC /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +405,7 @@
 		B5D0A42621C411F4005EF3C6 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				B5CCC15E21D0082E00AD19C5 /* Monsters */,
 				B58869A321C4430900CE4C0E /* Monster.h */,
 				B58869A421C4430900CE4C0E /* Monster.m */,
 			);
@@ -413,6 +429,8 @@
 			children = (
 				B57B0D1821A602530064B91F /* Renderer.h */,
 				B57B0D1921A602530064B91F /* Renderer.m */,
+				B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */,
+				B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -754,10 +772,12 @@
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
+				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
 				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,
 				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
+				B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */,
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */,

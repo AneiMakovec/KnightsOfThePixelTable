@@ -10,9 +10,24 @@
 
 @implementation Constants
 
+/*
+ MARK: BACKGROUND SIZE
+*/
++ (float) backgroundWidth {
+    return 256.0f;
+}
+
++ (float) battlefieldHeight {
+    return 80.0f;
+}
+
++ (float) hudHeight {
+    return 48.0f;
+}
+
 
 /*
-    ALLY ENTITY POSITIONS
+ MARK: ALLY ENTITY POSITIONS
 */
 + (int) positionXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
@@ -46,7 +61,7 @@
 
 
 /*
-    ALLY ENTITIES TOUCH AREAS
+ MARK: ALLY ENTITIES TOUCH AREAS
 */
 + (int) areaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
@@ -88,7 +103,7 @@
 
 
 /*
-    ALLY ENTITY COMBO TOUCH AREAS
+ MARK: ALLY ENTITY COMBO TOUCH AREAS
 */
 + (int) comboAreaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
@@ -130,7 +145,7 @@
 
 
 /*
-    SEPARATE COMBO AREAS
+ MARK: SEPARATE COMBO AREAS
 */
 + (int) comboAreaXOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem {
     switch (theAlly) {
@@ -207,12 +222,12 @@
 }
 
 + (int) separateComboAreaSize {
-    return 8;
+    return 6;
 }
 
 
 /*
-    ALLY ENTITY PORTRAIT AREAS
+ MARK: ALLY ENTITY PORTRAIT AREAS
 */
 + (int) portraitXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
@@ -250,7 +265,7 @@
 
 
 /*
-    ALLY ENTITY SKILL AREAS
+ MARK: ALLY ENTITY SKILL AREAS
 */
 + (int) skillXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
@@ -290,9 +305,13 @@
 
 
 
+/*
+ MARK: KNIGHTS STAT VALUES
+*/
 
-
-
+/*
+ MARK: LANCELOT STATS
+*/
 + (int) lancelotValueOfStat:(StatType)theStat {
     switch (theStat) {
         case Strength:
@@ -354,11 +373,11 @@
     switch (theAttack) {
         case BasicAttack:
             return 30;
-        case FirstCombo:
+        case FirstComboAttack:
             return 30;
-        case SecondCombo:
+        case SecondComboAttack:
             return 30;
-        case ThirdCombo:
+        case ThirdComboAttack:
             return 30;
         default:
             return -1;
@@ -369,11 +388,11 @@
     switch (theAttack) {
         case BasicAttack:
             return Strength;
-        case FirstCombo:
+        case FirstComboAttack:
             return Strength;
-        case SecondCombo:
+        case SecondComboAttack:
             return Strength;
-        case ThirdCombo:
+        case ThirdComboAttack:
             return Strength;
         default:
             return -1;
@@ -384,11 +403,11 @@
     switch (theAttack) {
         case BasicAttack:
             return StatGainRateMedium;
-        case FirstCombo:
+        case FirstComboAttack:
             return StatGainRateMedium;
-        case SecondCombo:
+        case SecondComboAttack:
             return StatGainRateMedium;
-        case ThirdCombo:
+        case ThirdComboAttack:
             return StatGainRateMedium;
         default:
             return -1;
@@ -399,11 +418,11 @@
     switch (theAttack) {
         case BasicAttack:
             return 10;
-        case FirstCombo:
+        case FirstComboAttack:
             return 10;
-        case SecondCombo:
+        case SecondComboAttack:
             return 10;
-        case ThirdCombo:
+        case ThirdComboAttack:
             return 10;
         default:
             return -1;
@@ -414,11 +433,11 @@
     switch (theAttack) {
         case BasicAttack:
             return 1;
-        case FirstCombo:
+        case FirstComboAttack:
             return 1;
-        case SecondCombo:
+        case SecondComboAttack:
             return 1;
-        case ThirdCombo:
+        case ThirdComboAttack:
             return 1;
         default:
             return -1;
