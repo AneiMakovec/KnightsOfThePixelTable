@@ -123,13 +123,13 @@
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 9;
+            return 5;
         case SecondCombatPosition:
-            return 31;
+            return 27;
         case ThirdCombatPosition:
-            return 9;
+            return 5;
         case FourthCombatPosition:
-            return 31;
+            return 27;
         default:
             return -1;
     }
@@ -209,13 +209,13 @@
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 10;
+            return 6;
         case SecondCombatPosition:
-            return 32;
+            return 28;
         case ThirdCombatPosition:
-            return 10;
+            return 6;
         case FourthCombatPosition:
-            return 32;
+            return 28;
         default:
             return -1;
     }
@@ -223,6 +223,48 @@
 
 + (int) separateComboAreaSize {
     return 6;
+}
+
+
+/*
+ MARK: ALLY HP POOL
+*/
++ (int) hpPoolXOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 113;
+        case SecondCombatPosition:
+            return 113;
+        case ThirdCombatPosition:
+            return 35;
+        case FourthCombatPosition:
+            return 35;
+        default:
+            return -1;
+    }
+}
+
++ (int) hpPoolYOfAlly:(CombatPosition)theAlly {
+    switch (theAlly) {
+        case FirstCombatPosition:
+            return 16;
+        case SecondCombatPosition:
+            return 38;
+        case ThirdCombatPosition:
+            return 16;
+        case FourthCombatPosition:
+            return 38;
+        default:
+            return -1;
+    }
+}
+
++ (int) hpPoolWidth {
+    return 28;
+}
+
++ (int) hpPoolHeight {
+    return 5;
 }
 
 

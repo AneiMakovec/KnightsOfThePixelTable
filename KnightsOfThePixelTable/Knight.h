@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     Rectangle *portraitArea;
     Rectangle *comboArea;
     Rectangle *skillArea;
+    Rectangle *hpPoolArea;
 }
 
 @property (nonatomic) KnightType type;
@@ -31,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Rectangle *portraitArea;
 @property (nonatomic, retain) Rectangle *comboArea;
 @property (nonatomic, retain) Rectangle *skillArea;
+@property (nonatomic, retain) Rectangle *hpPoolArea;
 
 - (id) initKnight:(KnightType)theKnight health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 

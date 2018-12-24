@@ -7,9 +7,9 @@
 //
 
 #import "Pixlron.Knights.h"
-#import "Renderer.h"
+#import "GameRenderer.h"
 
-@implementation Renderer
+@implementation GameRenderer
 
 - (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
     self = [super initWithGame:theGame];
@@ -93,6 +93,9 @@
     
     // HUD
     hud = [self.game.content load:HUD];
+    
+    // Hp and Exp pool
+    hpPool = [self.game.content load:HP_POOL];
     
     // Dice textures
     diceSymbolTexture = [self.game.content load:DICE_SYMBOLS];
@@ -336,6 +339,9 @@
                 // sprite
                 Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
                 [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+                
+                // hp exp pool
+                [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea tintWithColor:[Color white]];
                 
                 // combo
                 for (ComboSlot *comboSlot in knight.combo) {

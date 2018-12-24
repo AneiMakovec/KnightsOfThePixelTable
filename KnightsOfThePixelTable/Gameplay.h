@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     HumanPlayer *humanPlayer;
     AIPlayer *aiPlayer;
     PhysicsEngine *physics;
-    Renderer *renderer;
+    GameRenderer *renderer;
     
     //int num_of_dices;
 }

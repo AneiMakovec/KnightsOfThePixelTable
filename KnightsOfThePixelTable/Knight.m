@@ -41,6 +41,10 @@
     comboArea = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:combatPosition] y:[Constants comboAreaYOfAlly:combatPosition] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
     [[ScreenComponent getScale:@"hud"] scaleRectangle:comboArea];
     
+    // calc hp pool area
+    hpPoolArea = [[Rectangle alloc] initWithX:[Constants hpPoolXOfAlly:combatPosition] y:[Constants hpPoolYOfAlly:combatPosition] width:[Constants hpPoolWidth] height:[Constants hpPoolHeight]];
+    [[ScreenComponent getScale:@"hud"] scaleRectangle:hpPoolArea];
+    
 //    // calc combo slot areas and add combos
 //    for (int i = 0; i < ComboItems; i++) {
 //        ComboSlot *comboSlot = [[ComboSlot alloc] initForPosition:combatPosition inSlot:i];

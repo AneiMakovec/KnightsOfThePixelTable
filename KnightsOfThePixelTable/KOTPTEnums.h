@@ -110,6 +110,9 @@ typedef enum {
 // MARK: hud texture
 #define HUD @"hud"
 
+// MARK: hp pool texture
+#define HP_POOL @"hp_pool"
+
 // MARK: character textures
 #define LANCELOT_IDLE @"lancelot_idle"
 #define PALADIN_IDLE @"paladin"

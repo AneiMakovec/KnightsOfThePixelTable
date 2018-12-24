@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Renderer : DrawableGameComponent {
+@interface GameRenderer : DrawableGameComponent {
     // core
     SpriteBatch *spriteBatch;
     Gameplay *gameplay;
@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     
     // entities idle animations
+    Texture2D *hpPool;
     Texture2D *allyTexturesIdle[CombatPositions];
     AnimatedSprite *allySprites[CombatPositions];
     

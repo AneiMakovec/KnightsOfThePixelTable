@@ -11,7 +11,7 @@
 
 
 // Graphics
-#import "Renderer.h"
+#import "GameRenderer.h"
 #import "ScreenComponent.h"
 
 

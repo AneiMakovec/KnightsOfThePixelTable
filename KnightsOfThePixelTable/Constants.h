@@ -34,6 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem;
 + (int) separateComboAreaSize;
 
++ (int) hpPoolXOfAlly:(CombatPosition)theAlly;
++ (int) hpPoolYOfAlly:(CombatPosition)theAlly;
++ (int) hpPoolWidth;
++ (int) hpPoolHeight;
+
 + (int) portraitXOfAlly:(CombatPosition)theAlly;
 + (int) portraitYOfAlly:(CombatPosition)theAlly;
 + (int) portraitSize;
