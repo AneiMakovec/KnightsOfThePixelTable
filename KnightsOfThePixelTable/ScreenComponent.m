@@ -53,14 +53,16 @@ ScreenComponent *screenComponentInstance;
     float aspectRatio = (float)self.game.gameWindow.clientBounds.width / (float)self.game.gameWindow.clientBounds.height;
     screenBounds = [[Rectangle alloc] initWithX:0 y:0 width:screenWidth height:screenHeight/aspectRatio];
     
+    NSLog(@"Aspect ratio: %f", aspectRatio);
+    
     float scaleX = (float)self.game.gameWindow.clientBounds.width / (float)screenBounds.width;
     float scaleY = (float)self.game.gameWindow.clientBounds.height / (float)screenBounds.height;
     camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
     
     // add scales
-    int hudOffset = screenBounds.height * 0.625;
-    [self addScaleFromWidth:[Constants backgroundWidth] fromHeight:[Constants battlefieldHeight] toWidth:(float)screenBounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0 mapTo:@"battlefield"];
-    [self addScaleFromWidth:[Constants backgroundWidth] fromHeight:[Constants hudHeight] toWidth:(float)screenBounds.width toHeight:(float)screenBounds.height-(float)hudOffset xOffset:0 yOffset:hudOffset mapTo:@"hud"];
+    float hudOffset = screenBounds.height * 0.625;
+    [self addScaleFromWidth:[Constants backgroundWidth] fromHeight:[Constants battlefieldHeight] toWidth:(float)screenBounds.width toHeight:hudOffset xOffset:0 yOffset:0 mapTo:@"battlefield"];
+    [self addScaleFromWidth:[Constants backgroundWidth] fromHeight:[Constants hudHeight] toWidth:(float)screenBounds.width toHeight:(float)screenBounds.height-hudOffset xOffset:0 yOffset:hudOffset mapTo:@"hud"];
 }
 
 - (TextureStretcher *) getScale:(NSString *)scale {

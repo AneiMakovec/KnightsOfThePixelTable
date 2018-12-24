@@ -24,7 +24,7 @@
     return self;
 }
 
-@synthesize maxLevel, currentLevel, exp, type, comboArea, portraitArea, skillArea;
+@synthesize maxLevel, currentLevel, exp, type, comboArea, portraitArea, skillArea, hpPoolArea;
 
 
 
