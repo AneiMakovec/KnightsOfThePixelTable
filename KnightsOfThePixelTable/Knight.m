@@ -29,7 +29,7 @@
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition {
-    // invoce super method
+    // invoke super method
     [super setCombatPosition:theCombatPosition ally:YES];
     
     
@@ -44,6 +44,8 @@
     // calc hp pool area
     hpPoolArea = [[Rectangle alloc] initWithX:[Constants hpPoolXOfAlly:combatPosition] y:[Constants hpPoolYOfAlly:combatPosition] width:[Constants hpPoolWidth] height:[Constants hpPoolHeight]];
     [[ScreenComponent getScale:@"hud"] scaleRectangle:hpPoolArea];
+    
+    maxHpWidth = hpPoolArea.width;
     
 //    // calc combo slot areas and add combos
 //    for (int i = 0; i < ComboItems; i++) {
@@ -65,10 +67,22 @@
     if ([combo count] < ComboItems) {
         ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:[combo count]];
         [combo addObject:comboSlot];
+        [comboSlot release];
         return YES;
     } else {
         return NO;
     }
+}
+
+- (Dice *) removeComboAtTouchLocation:(Vector2 *)touchLocation {
+    for (int i = 0; i < [combo count]; i++) {
+        ComboSlot *slot = [combo objectAtIndex:i];
+        if ([slot.area containsX:touchLocation.x y:touchLocation.y]) {
+            return [self removeCombo:i];
+        }
+    }
+    
+    return nil;
 }
 
 
@@ -83,6 +97,24 @@
     if (currentLevel < maxLevel) {
         currentLevel++;
     }
+}
+
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+    // invoke super method to update movement
+    [super updateWithGameTime:gameTime];
+    
+    // then update health
+    hpPoolArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
+}
+
+
+- (void) dealloc {
+    [portraitArea release];
+    [skillArea release];
+    [comboArea release];
+    [hpPoolArea release];
+    [super dealloc];
 }
 
 @end

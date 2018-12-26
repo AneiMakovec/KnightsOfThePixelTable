@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Rectangle *entityArea;
     
+    BOOL isDead;
+    
     EntityState state;
     AttackType attackType;
     CombatPosition combatPosition;

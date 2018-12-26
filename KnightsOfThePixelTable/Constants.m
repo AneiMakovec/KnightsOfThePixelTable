@@ -260,7 +260,7 @@
 }
 
 + (int) hpPoolWidth {
-    return 28;
+    return 29;
 }
 
 + (int) hpPoolHeight {

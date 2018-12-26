@@ -22,21 +22,10 @@
         
         dicesAdded = NO;
         
-//        int hudOffset = level.bounds.height * 0.625;
-//        float leftWall = [TextureStretcher scaleX:162.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
-//        float rightWall = [TextureStretcher scaleX:250.0f fromWidth:256.0f toWidth:(float)level.bounds.width];
-//        float topWall = [TextureStretcher scaleY:5.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
-//        float bottomWall = [TextureStretcher scaleY:42.0f fromHeight:48.0f toHeight:(float)level.bounds.height - (float)hudOffset];
-        
         dicepoolArea.x = [[ScreenComponent getScale:@"hud"] scaleX:162.0f];
         dicepoolArea.width = [[ScreenComponent getScale:@"hud"] scaleX:250.0f];
         dicepoolArea.y = [[ScreenComponent getScale:@"hud"] scaleY:5.0f];
         dicepoolArea.height = [[ScreenComponent getScale:@"hud"] scaleY:42.0f];
-        
-//        dicepoolArea.x = leftWall;
-//        dicepoolArea.y = topWall + hudOffset;
-//        dicepoolArea.width = rightWall - leftWall;
-//        dicepoolArea.height = bottomWall - topWall;
         
         DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:dicepoolArea.x]];
         [borders addObject:border];
@@ -49,6 +38,8 @@
         
         border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-dicepoolArea.height]];
         [borders addObject:border];
+        
+        [border release];
     }
     return self;
 }
@@ -68,6 +59,7 @@
             dice.frameType = diceType;
             [dices addObject:dice];
             [level.scene addItem:dice];
+            [dice release];
         }
         
         dicesAdded = YES;
@@ -110,14 +102,8 @@
 
 
 - (void) dealloc {
-    for (Dice *dice in dices) {
-        [dice release];
-    }
-    
-    for (DicepoolLimit *border in borders) {
-        [border release];
-    }
-    
+    [dices release];
+    [borders release];
     [dicepoolArea release];
     
     [super dealloc];

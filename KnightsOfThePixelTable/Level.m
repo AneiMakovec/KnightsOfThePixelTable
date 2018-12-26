@@ -26,10 +26,6 @@
 @synthesize scene, battlefield, dicepool, num_of_dices;
 
 - (void) initialize {
-//    // calculate the right dimensions of the display area
-//    float aspectRatio = (float)self.game.gameWindow.clientBounds.width / (float)self.game.gameWindow.clientBounds.height;
-//    bounds = [[Rectangle alloc] initWithX:0 y:0 width:1000 height:1000/aspectRatio];
-
     music_played = NO;
     
     [self reset];
@@ -61,12 +57,13 @@
             [updatable updateWithGameTime:gameTime];
         }
     }
+    
+    [battlefield updateWithGameTime:gameTime];
 }
 
 
 - (void) dealloc {
     [scene release];
-//    [bounds release];
     [battlefield release];
     [dicepool release];
     [super dealloc];

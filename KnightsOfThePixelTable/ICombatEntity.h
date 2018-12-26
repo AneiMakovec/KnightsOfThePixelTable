@@ -17,6 +17,8 @@
 
 @property (nonatomic, retain) Rectangle *entityArea;
 
+@property (nonatomic, readonly) BOOL isDead;
+
 @property (nonatomic) EntityState state;
 @property (nonatomic) AttackType attackType;
 @property (nonatomic) CombatPosition combatPosition;

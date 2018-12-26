@@ -18,6 +18,8 @@
         radius = 1;
         maxRadius = theMaxRadius;
         
+        isDead = NO;
+        
         state = EntityStateIdle;
         attackType = NoAttack;
         
@@ -36,7 +38,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, state, attackType, combatPosition, entityArea, stats, origin, attackDamage, attackDuration, target, combo;
+@synthesize radius, maxRadius, isDead, state, attackType, combatPosition, entityArea, stats, origin, attackDamage, attackDuration, target, combo;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -136,6 +138,13 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
+    
+    // check if is still alive
+    if (currentHealthPoints <= 0) {
+        isDead = YES;
+    }
+    
+    // update movement
     if (state == EntityStateAttacking) {
         
         ResetableLifetime *attackTime = [attackDuration objectAtIndex:attackType];
@@ -159,6 +168,18 @@
             }
         }
     }
+}
+
+- (void) dealloc {
+    [entityArea release];
+    [origin release];
+    
+    [stats release];
+    [attackDamage release];
+    [attackDuration release];
+    [combo release];
+    
+    [super dealloc];
 }
 
 @end

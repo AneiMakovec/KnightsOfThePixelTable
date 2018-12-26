@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
     SimpleScene *scene;
     Battlefield *battlefield;
     Dicepool *dicepool;
-    
-//    Rectangle *bounds;
 
     BOOL music_played;
     
@@ -32,8 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Battlefield *battlefield;
 
 @property (nonatomic, retain) Dicepool *dicepool;
-
-//@property (nonatomic, readonly) Rectangle *bounds;
 
 @property (nonatomic, readonly) int num_of_dices;
 

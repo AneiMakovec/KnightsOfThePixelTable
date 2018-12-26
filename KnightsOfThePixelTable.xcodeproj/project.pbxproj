@@ -26,7 +26,6 @@
 		B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D1921A602530064B91F /* GameRenderer.m */; };
 		B58869A521C4430900CE4C0E /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869A421C4430900CE4C0E /* Monster.m */; };
 		B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869AF21C4675200CE4C0E /* CombatEntity.m */; };
-		B595F9CA21D056EF00BC07C5 /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = B595F9C921D056EF00BC07C5 /* hud.png */; };
 		B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */ = {isa = PBXBuildFile; fileRef = B595F9CD21D05D9700BC07C5 /* hp_pool.png */; };
 		B5A493CA21CAD38A003EBB1D /* StatValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493C921CAD38A003EBB1D /* StatValue.m */; };
 		B5A493CD21CAECF0003EBB1D /* AttackValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493CC21CAECF0003EBB1D /* AttackValue.m */; };
@@ -34,6 +33,7 @@
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
 		B5AE502021BEF47300FC5CBF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501D21BEF47300FC5CBF /* click.wav */; };
+		B5C2800221D3FF58009C657A /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C2800121D3FF58009C657A /* hud.png */; };
 		B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */; };
 		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
@@ -118,7 +118,6 @@
 		B58869A621C44DA400CE4C0E /* ICombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICombatEntity.h; sourceTree = "<group>"; };
 		B58869AE21C4675200CE4C0E /* CombatEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombatEntity.h; sourceTree = "<group>"; };
 		B58869AF21C4675200CE4C0E /* CombatEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CombatEntity.m; sourceTree = "<group>"; };
-		B595F9C921D056EF00BC07C5 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		B595F9CD21D05D9700BC07C5 /* hp_pool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_pool.png; sourceTree = "<group>"; };
 		B5A493C721CACCB6003EBB1D /* IUpgradable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IUpgradable.h; sourceTree = "<group>"; };
 		B5A493C821CAD38A003EBB1D /* StatValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatValue.h; sourceTree = "<group>"; };
@@ -130,6 +129,7 @@
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
 		B5AE501C21BEF47300FC5CBF /* background_sounds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background_sounds.wav; sourceTree = "<group>"; };
 		B5AE501D21BEF47300FC5CBF /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		B5C2800121D3FF58009C657A /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterWarrior.h; sourceTree = "<group>"; };
 		B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterWarrior.m; sourceTree = "<group>"; };
 		B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenComponent.h; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 		B5E380412183B3E00007D013 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				B595F9C921D056EF00BC07C5 /* hud.png */,
+				B5C2800121D3FF58009C657A /* hud.png */,
 				B5E380422183B3E00007D013 /* Icons */,
 			);
 			path = GUI;
@@ -737,13 +737,13 @@
 				B5E380542183B3E00007D013 /* ui_icons.png in Resources */,
 				B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */,
 				B5FE45ED21ADC83C00F3C177 /* paladin.png in Resources */,
-				B595F9CA21D056EF00BC07C5 /* hud.png in Resources */,
 				B5FFCB9721A36131005F15BF /* combat_dice_animation_good.png in Resources */,
 				B5AE502021BEF47300FC5CBF /* click.wav in Resources */,
 				B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */,
 				B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */,
 				B5E380582183B3E00007D013 /* archer.png in Resources */,
 				B57B0CF121A5F0A50064B91F /* lancelot_idle.png in Resources */,
+				B5C2800221D3FF58009C657A /* hud.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -279,9 +279,9 @@
     DRAW
 */
 - (void) drawWithGameTime:(GameTime *)gameTime {
-    [self.graphicsDevice clearWithColor:[Color darkRed]];
+    [self.graphicsDevice clearWithColor:[Color gray]];
     
-    [spriteBatch beginWithSortMode:SpriteSortModeTexture BlendState:nil SamplerState:[SamplerState pointClamp]
+    [spriteBatch beginWithSortMode:SpriteSortModeBackToFront BlendState:nil SamplerState:[SamplerState pointClamp]
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];
     
     // backgorund
@@ -293,6 +293,41 @@
     
     // scene items
     for (id item in gameplay.currentLevel.scene) {
+        
+        // check if is knight entity
+        Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
+        if (knight) {
+            if (knight.type == KnightTypeLancelot) {
+                // portrait
+                Sprite *portrait = portraits[FirstCombatPosition];
+                [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
+                
+                // sprite
+                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+                [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+                
+                // hp exp pool
+                [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+                
+                
+                // combo
+                for (ComboSlot *comboSlot in knight.combo) {
+                    if (comboSlot.item) {
+                        [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white]
+                                 rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
+                    }
+                }
+            }
+        }
+        
+        // check if is monster entity
+        Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
+        if (monster) {
+            // sprite
+            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
+        }
+        
         // check if is dice
         id<IDice> diceItem = [item conformsToProtocol:@protocol(IDice)] ? item : nil;
         
@@ -326,39 +361,6 @@
                 [spriteBatch draw:diceSymbol.texture to:dice.position fromRectangle:diceSymbol.sourceRectangle tintWithColor:[Color white]
                          rotation:dice.rotationAngle origin:diceSymbol.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
             }
-        }
-        
-        // check if is knight entity
-        Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
-        if (knight) {
-            if (knight.type == KnightTypeLancelot) {
-                // portrait
-                Sprite *portrait = portraits[FirstCombatPosition];
-                [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
-                
-                // sprite
-                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-                [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
-                
-                // hp exp pool
-                [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea tintWithColor:[Color white]];
-                
-                // combo
-                for (ComboSlot *comboSlot in knight.combo) {
-                    if (comboSlot.item) {
-                        [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white]
-                                 rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
-                    }
-                }
-            }
-        }
-        
-        // check if is monster entity
-        Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
-        if (monster) {
-            // sprite
-            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
         }
     }
     

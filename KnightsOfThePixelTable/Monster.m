@@ -26,12 +26,14 @@
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition {
+    // invoke super method
     [super setCombatPosition:theCombatPosition ally:NO];
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
-    [[ScreenComponent getScale:@"battlefield"] scaleRectangle:entityArea];
-    
+
+//    [[ScreenComponent getScale:@"battlefield"] scaleRectangle:entityArea];
+
 //    // calc combo slot areas and add combos
 //    for (int i = 0; i < ComboItems; i++) {
 //        ComboSlot *comboSlot = [[ComboSlot alloc] initWithArea:nil];

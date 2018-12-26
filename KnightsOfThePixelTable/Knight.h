@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     int maxLevel;
     int exp;
     
+    int maxHpWidth;
+    
     KnightType type;
     
     Rectangle *portraitArea;
@@ -37,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initKnight:(KnightType)theKnight health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
+
+- (Dice *) removeComboAtTouchLocation:(Vector2 *)touchLocation;
 
 @end
 
