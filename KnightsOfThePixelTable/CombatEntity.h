@@ -21,7 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
     Rectangle *entityArea;
     
     BOOL isDead;
+    BOOL finishedAttacking;
     
+    StatType entityType;
     EntityState state;
     AttackType attackType;
     CombatPosition combatPosition;
@@ -31,13 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *attackDamage;
     NSMutableArray *attackDuration;
     NSMutableArray *combo;
+    StatType comboAttackTypes[AttackTypes];
     
     Entity *target;
 }
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
-
-- (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
+- (id) initWithEntityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

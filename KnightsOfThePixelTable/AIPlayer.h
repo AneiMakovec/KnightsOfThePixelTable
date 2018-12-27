@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "Pixlron.Knights.classes.h"
+#import "IPlayer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AIPlayer : GameComponent {
+@interface AIPlayer : GameComponent<IPlayer> {
     Level *level;
+    
+    CombatEntity *target;
+    
+    BOOL myTurn;
 }
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel;

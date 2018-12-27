@@ -15,31 +15,33 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         level = theLevel;
+        
+        myTurn = NO;
     }
     return self;
 }
 
+@synthesize myTurn;
+
+- (void) startTurn {
+    [level.dicepool resetDicepool];
+    
+    [level.dicepool addDicesOfType:DiceFrameTypeEvil];
+    
+    myTurn = YES;
+}
+
+- (void) endTurn {
+    myTurn = NO;
+}
+
+
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    /*
-    if ([player checkIfCanAttack]) {
-        Knight *enemy;
-        Knight *ally;
-        for (id item in level.scene) {
-            Knight *entity = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
-            if (entity) {
-                if (entity.type == KnightTypeEnemy) {
-                    ally = entity;
-                } else if (entity.type == KnightTypeLancelot) {
-                    enemy = entity;
-                }
-            }
-        }
-        
-        ally.attackType = BasicAttack;
-        [ally attackTarget:enemy];
-    }
-     */
+    // scan dices for usable combos
+    // scan ally entities for weakneses
+    // assign dices to combat entities
+    // attack
 }
 
 @end

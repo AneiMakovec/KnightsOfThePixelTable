@@ -21,27 +21,23 @@
         enemyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         
         
-        // add the entities
-        KnightLancelot *lancelot = [[KnightLancelot alloc] init];
-        [lancelot setCombatPosition:FirstCombatPosition];
-        [allyEntities insertObject:lancelot atIndex:FirstCombatPosition];
-        [level.scene addItem:lancelot];
-        [lancelot release];
-        
-        
-        KnightLancelot *secondLancelot = [[KnightLancelot alloc] init];
-        [secondLancelot setCombatPosition:SecondCombatPosition];
-        [allyEntities insertObject:secondLancelot atIndex:SecondCombatPosition];
-        [level.scene addItem:secondLancelot];
-        [secondLancelot release];
-        
-        
-        Monster *monster = [[Monster alloc] initMonster:MonsterTypeWarrior health:100 damageStrength:0.5 maxRadius:60];
-        [monster setCombatPosition:FirstCombatPosition];
-        [enemyEntities insertObject:monster atIndex:FirstCombatPosition];
-        [level.scene addItem:monster];
-        [level.scene addItem:monster.origin];
-        [monster release];
+        KnightLancelot *lancelot;
+        Monster *monster;
+        for (int i = 0; i < CombatPositions; i++) {
+            // add ally entities
+            lancelot = [[KnightLancelot alloc] init];
+            [lancelot setCombatPosition:i];
+            [allyEntities insertObject:lancelot atIndex:i];
+            [level.scene addItem:lancelot];
+            [lancelot release];
+            
+            // add enemy entities
+            monster = [[Monster alloc] initMonster:MonsterTypeWarrior entityType:Strength health:100 damageStrength:0.5 maxRadius:60];
+            [monster setCombatPosition:i];
+            [enemyEntities insertObject:monster atIndex:i];
+            [level.scene addItem:monster];
+            [monster release];
+        }
     }
     return self;
 }
@@ -99,7 +95,7 @@
     // enemies
     NSMutableArray *removedMonsters = [[NSMutableArray alloc] init];
     
-    for (Monster *monster in allyEntities) {
+    for (Monster *monster in enemyEntities) {
         if (monster.isDead) {
             [removedMonsters addObject:monster];
         }

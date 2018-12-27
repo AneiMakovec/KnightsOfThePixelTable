@@ -99,6 +99,10 @@
     return nil;
 }
 
+- (void) resetDicepool {
+    dicesAdded = NO;
+}
+
 
 
 - (void) dealloc {

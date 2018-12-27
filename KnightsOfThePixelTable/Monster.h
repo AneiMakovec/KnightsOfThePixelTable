@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) MonsterType type;
 
-- (id) initMonster:(MonsterType)theMonster health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
 

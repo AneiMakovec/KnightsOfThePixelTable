@@ -12,14 +12,16 @@
 
 @implementation CombatEntity
 
-- (id) initWithHealth:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithEntityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
         radius = 1;
         maxRadius = theMaxRadius;
         
         isDead = NO;
+        finishedAttacking = NO;
         
+        entityType = theType;
         state = EntityStateIdle;
         attackType = NoAttack;
         
@@ -27,18 +29,11 @@
         attackDamage = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
-        
-//        for (int i = 0; i < ComboItems; i++) {
-//            combo[i] = [[ComboSlot alloc] init];
-//        }
-        
-//        origin = [[BattlePosition alloc] initWithRadius:5];
-//        [origin.position set:position];
     }
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, state, attackType, combatPosition, entityArea, stats, origin, attackDamage, attackDuration, target, combo;
+@synthesize radius, maxRadius, isDead, finishedAttacking, entityType, state, attackType, combatPosition, entityArea, origin, target, combo;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -74,10 +69,11 @@
     if (state == EntityStateRetreating) {
         BattlePosition *start = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
         if (start && start == origin) {
+            // no more attacking this turn
+            finishedAttacking = YES;
             state = EntityStateIdle;
             attackType = NoAttack;
             [velocity set:[Vector2 zero]];
-            target = nil;
         }
     }
     
@@ -88,16 +84,20 @@
 
 
 - (void) attackTarget:(Entity *)theTarget {
-    // remember target
-    target = theTarget;
-    attackType = BasicAttack;
-    
-    // move towards the target
-    state = EntityStateApproaching;
-    // TODO: change radius to bigger radius
-    radius = 60;
-    velocity.x = (target.position.x - position.x) * 2;
-    velocity.y = (target.position.y - position.y) * 2;
+    if (!finishedAttacking) {
+        // remember target
+        target = [theTarget retain];
+        
+        // remove combo items
+        [combo removeAllObjects];
+        
+        // move towards the target
+        state = EntityStateApproaching;
+        // TODO: change radius to bigger radius
+        radius = 60;
+        velocity.x = (target.position.x - position.x) * 2;
+        velocity.y = (target.position.y - position.y) * 2;
+    }
 }
 
 
@@ -129,10 +129,17 @@
             [slot changeToSlot:[combo indexOfObject:slot]];
         }
         
+        [self updateAttackType];
+        
         return dice;
     } else {
         return nil;
     }
+}
+
+
+- (void) resetAttack {
+    finishedAttacking = NO;
 }
 
 
@@ -143,6 +150,7 @@
     if (currentHealthPoints <= 0) {
         isDead = YES;
     }
+
     
     // update movement
     if (state == EntityStateAttacking) {
@@ -154,6 +162,8 @@
             if (!attackTime.isAlive) {
                 // and then deal the damage to target
                 [self dealDamageToTarget];
+                [target release];
+                target = nil;
                 
                 // then reset the attack lifetime
                 [attackTime reset];
@@ -167,6 +177,73 @@
                 [attackTime updateWithGameTime:gameTime];
             }
         }
+    }
+}
+
+
+- (void) updateAttackType {
+    int mainTypeCount = 0;
+    int attackTypeCount = 0;
+    
+    switch ([combo count]) {
+        case 1:
+            attackType = BasicAttack;
+            break;
+        case 2:
+            for (ComboSlot *slot in combo) {
+                if (slot.item.type == entityType) {
+                    mainTypeCount++;
+                }
+                
+                if (slot.item.type == comboAttackTypes[FirstComboAttack]) {
+                    attackTypeCount++;
+                }
+            }
+            
+            if (mainTypeCount == 1 && attackTypeCount >= 1) {
+                attackType = FirstComboAttack;
+            } else {
+                attackType = BasicAttack;
+            }
+            break;
+        case 3:
+            for (ComboSlot *slot in combo) {
+                if (slot.item.type == entityType) {
+                    mainTypeCount++;
+                }
+                
+                if (slot.item.type == comboAttackTypes[SecondComboAttack]) {
+                    attackTypeCount++;
+                }
+            }
+            
+            if (mainTypeCount == 2 && attackTypeCount >= 1) {
+                attackType = SecondComboAttack;
+            } else {
+                attackType = BasicAttack;
+            }
+            break;
+        case 4:
+            for (ComboSlot *slot in combo) {
+                if (slot.item.type == entityType) {
+                    mainTypeCount++;
+                }
+                
+                if (slot.item.type == comboAttackTypes[ThirdComboAttack]) {
+                    attackTypeCount++;
+                }
+            }
+            
+            if (mainTypeCount == 3 && attackTypeCount == 1) {
+                attackType = ThirdComboAttack;
+            } else {
+                attackType = BasicAttack;
+            }
+            break;
+            
+        default:
+            attackType = NoAttack;
+            break;
     }
 }
 

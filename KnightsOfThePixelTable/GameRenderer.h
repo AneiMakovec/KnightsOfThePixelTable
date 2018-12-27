@@ -36,6 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *allyTexturesIdle[CombatPositions];
     AnimatedSprite *allySprites[CombatPositions];
     
+    // skill textures
+    Texture2D *basicMeleeSkill;
+    
     
     
     

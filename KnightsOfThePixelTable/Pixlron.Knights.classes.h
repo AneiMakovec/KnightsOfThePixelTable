@@ -37,7 +37,11 @@
 @class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
 
 // Player
+@protocol IPlayer;
 @class HumanPlayer, AIPlayer;
+
+// Combat
+@class TurnManager;
 
 // Game
 @class KOTPT, Gameplay;

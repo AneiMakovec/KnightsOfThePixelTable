@@ -118,6 +118,9 @@ typedef enum {
 #define PALADIN_IDLE @"paladin"
 #define KNIGHT_IDLE @"knight"
 
+// MARK: skill textures
+#define BASIC_ATTACK_MELLEE @"basic_melee_skill"
+
 // MARK: dice textures
 #define DICE_ANIM_EVIL @"combat_dice_animation_evil"
 #define DICE_ANIM_GOOD @"combat_dice_animation_good"

@@ -13,7 +13,7 @@
 @implementation KnightLancelot
 
 - (id) init {
-    self = [super initKnight:KnightTypeLancelot health:100 damageStrength:0.85 maxRadius:60];
+    self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         StatValue *statValue;
@@ -34,6 +34,10 @@
             attackTime = [[ResetableLifetime alloc] initWithStart:0 duration:[Constants lancelotDurationOfAttack:i]];
             [attackDuration insertObject:attackTime atIndex:i];
             [attackTime release];
+        }
+        
+        for (int i = 0; i < AttackTypes; i++) {
+            comboAttackTypes[i] = Agility;
         }
     }
     return self;

@@ -18,11 +18,13 @@
         level = theLevel;
         target = nil;
         selectedDice = nil;
+        
+        myTurn = NO;
     }
     return self;
 }
 
-
+@synthesize myTurn;
 
 - (void) setCamera:(Matrix *)camera {
     [inverseView release];
@@ -30,11 +32,29 @@
 }
 
 
+- (void) startTurn {
+    [level.dicepool resetDicepool];
+    myTurn = YES;
+}
+
+- (void) endTurn {
+    myTurn = NO;
+}
+
+
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
+    
+    // check if target is still alive
+    if (target && target.isDead) {
+        [target release];
+        target = nil;
+    }
+    
+    // process input
     TouchCollection *touches = [TouchPanel getState];
     
-    if ([touches count] == 1) {
+    if (myTurn && [touches count] == 1) {
         TouchLocation *touch = [touches objectAtIndex:0];
         
         Vector2 *touchInScene = [Vector2 transform:touch.position with:inverseView];
@@ -80,8 +100,8 @@
                 // MARK: check if enemy touched
                 for (Monster *monster in level.battlefield.enemyEntities) {
                     if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
-                        target = monster;
-                        NSLog(@"Target is enemy on position: %d", monster.combatPosition);
+                        target = [monster retain];
+                        NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
                         break;
                     }
                 }
@@ -119,7 +139,7 @@
                             knight.currentHealthPoints -= 10;
                             NSLog(@"Dealt 10 DMG to ally!");
                             
-                            if (target) {
+                            if (target && knight.state == EntityStateIdle && !knight.finishedAttacking && knight.attackType != NoAttack) {
                                 [knight attackTarget:target];
                             }
                             

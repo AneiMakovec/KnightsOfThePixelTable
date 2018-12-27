@@ -12,8 +12,8 @@
 
 @implementation Knight
 
-- (id) initKnight:(KnightType)theKnight health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithHealth:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initKnight:(KnightType)theKnight entityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithEntityType:theType health:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         maxLevel = 80;
         currentLevel = 1;
@@ -47,12 +47,6 @@
     
     maxHpWidth = hpPoolArea.width;
     
-//    // calc combo slot areas and add combos
-//    for (int i = 0; i < ComboItems; i++) {
-//        ComboSlot *comboSlot = [[ComboSlot alloc] initForPosition:combatPosition inSlot:i];
-//        [combo insertObject:comboSlot atIndex:i];
-//    }
-    
     // calc skill area
     skillArea = [[Rectangle alloc] initWithX:[Constants skillXOfAlly:combatPosition] y:[Constants skillYOfAlly:combatPosition] width:[Constants skillSize] height:[Constants skillSize]];
     [[ScreenComponent getScale:@"hud"] scaleRectangle:skillArea];
@@ -68,6 +62,9 @@
         ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:[combo count]];
         [combo addObject:comboSlot];
         [comboSlot release];
+        
+        [self updateAttackType];
+        
         return YES;
     } else {
         return NO;

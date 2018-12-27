@@ -13,22 +13,21 @@
 
 @protocol ICombatEntity <ICustomUpdate, ICustomCollider, IParticleCollider>
 
-@property (nonatomic) float maxRadius;
+@property (nonatomic, readonly) float maxRadius;
 
 @property (nonatomic, retain) Rectangle *entityArea;
 
 @property (nonatomic, readonly) BOOL isDead;
+@property (nonatomic, readonly) BOOL finishedAttacking;
 
-@property (nonatomic) EntityState state;
-@property (nonatomic) AttackType attackType;
+@property (nonatomic, readonly) EntityState state;
+@property (nonatomic, readonly) AttackType attackType;
+@property (nonatomic, readonly) StatType entityType;
 @property (nonatomic) CombatPosition combatPosition;
-@property (nonatomic, retain) BattlePosition *origin;
+@property (nonatomic, readonly) BattlePosition *origin;
 
-@property (nonatomic, retain) NSMutableArray *stats;
-@property (nonatomic, retain) NSMutableArray *attackDamage;
-@property (nonatomic, retain) NSMutableArray *attackDuration;
-@property (nonatomic, retain) Entity *target;
-@property (nonatomic, retain) NSMutableArray *combo;
+@property (nonatomic, readonly) Entity *target;
+@property (nonatomic, readonly) NSMutableArray *combo;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
@@ -37,6 +36,10 @@
 - (BOOL) addComboItem:(Dice *)theItem;
 
 - (Dice *) removeCombo:(ComboItem)theItem;
+
+- (void) resetAttack;
+
+- (void) updateAttackType;
 
 
 @end

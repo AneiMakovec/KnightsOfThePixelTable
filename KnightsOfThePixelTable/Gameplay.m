@@ -19,19 +19,22 @@
         aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
         physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];
         renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self];
+        turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel humanPlayer:humanPlayer aiPlayer:aiPlayer];
         
         
         humanPlayer.updateOrder = 1;
         aiPlayer.updateOrder = 2;
-        physics.updateOrder = 3;
-        currentLevel.updateOrder = 4;
-        renderer.updateOrder = 6;
-        self.updateOrder = 7;
+        turnManager.updateOrder = 3;
+        physics.updateOrder = 4;
+        currentLevel.updateOrder = 5;
+        renderer.updateOrder = 7;
+        self.updateOrder = 8;
         
         [self.game.components addComponent:humanPlayer];
         [self.game.components addComponent:aiPlayer];
         [self.game.components addComponent:physics];
         [self.game.components addComponent:currentLevel];
+        [self.game.components addComponent:turnManager];
         [self.game.components addComponent:renderer];
     }
     return self;
@@ -56,12 +59,14 @@
     [self.game.components removeComponent:physics];
     [self.game.components removeComponent:currentLevel];
     [self.game.components removeComponent:renderer];
+    [self.game.components removeComponent:turnManager];
     
     [humanPlayer release];
     [aiPlayer release];
     [physics release];
     [currentLevel release];
     [renderer release];
+    [turnManager release];
     [super dealloc];
 }
 

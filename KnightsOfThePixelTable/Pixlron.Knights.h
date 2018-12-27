@@ -50,8 +50,12 @@
 
 
 // Player
+#import "IPlayer.h"
 #import "HumanPlayer.h"
 #import "AIPlayer.h"
+
+// Combat
+#import "TurnManager.h"
 
 // Audio
 #import "SoundEngine.h"

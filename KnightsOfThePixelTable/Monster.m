@@ -11,8 +11,8 @@
 
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithHealth:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithEntityType:theType health:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         type = theMonster;
         
@@ -31,14 +31,14 @@
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
+}
 
-//    [[ScreenComponent getScale:@"battlefield"] scaleRectangle:entityArea];
 
-//    // calc combo slot areas and add combos
-//    for (int i = 0; i < ComboItems; i++) {
-//        ComboSlot *comboSlot = [[ComboSlot alloc] initWithArea:nil];
-//        [combo insertObject:comboSlot atIndex:i];
-//    }
+- (BOOL) addComboItem:(Dice *)theItem {
+    // TODO
+    [self updateAttackType];
+    
+    return false;
 }
 
 

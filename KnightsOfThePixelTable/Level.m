@@ -15,7 +15,7 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:theGame];
-        scene.updateOrder = 5;
+        scene.updateOrder = 6;
         [self.game.components addComponent:scene];
         
         num_of_dices = numDices;

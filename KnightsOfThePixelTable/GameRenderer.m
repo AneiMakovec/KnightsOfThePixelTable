@@ -24,54 +24,15 @@
 
 
 /*
-    INITIALIZE
+ MARK: INITIALIZE
 */
 - (void) initialize {
-//    // create the camera on which the graphics will be displayed
-//    float scaleX = (float)self.game.gameWindow.clientBounds.width / (float)[TextureStretcher getScreenBounds].width;
-//    float scaleY = (float)self.game.gameWindow.clientBounds.height / (float)[TextureStretcher getScreenBounds].height;
-//    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
-    
+    // set display camera
     camera = [ScreenComponent getCamera];
     
-    
-//    // calculate hud offset and init the stretchers
+    // calculate hud offset
     hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
-//    backgroundStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:80.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)hudOffset xOffset:0 yOffset:0];
-//    hudStretch = [[TextureStretcher alloc] initFromWidth:256.0f fromHeight:48.0f toWidth:(float)gameplay.currentLevel.bounds.width toHeight:(float)gameplay.currentLevel.bounds.height - (float) hudOffset xOffset:0 yOffset:hudOffset];
-    
-    
-//    // set and stretch the position of portraits
-//    for (int i = 0; i < CombatPositions; i++) {
-//        portraitAreas[i] = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:i] y:[Constants portraitYOfAlly:i] width:[Constants portraitSize] height:[Constants portraitSize]];
-//        [hudStretch scaleRectangle:portraitAreas[i]];
-//    }
-//    Vector2 *portraitSize = [[Vector2 alloc] init];
-//    portraitSize.x = 14;
-//    portraitSize.y = 14;
-//    [hudStretch scaleSize:portraitSize];
-//
-//    portraitPositions[FirstCombatPosition].x = 85;
-//    portraitPositions[FirstCombatPosition].y = 6;
-//    [hudStretch scalePosition:portraitPositions[FirstCombatPosition]];
-//
-//    portraitPositions[SecondCombatPosition].x = 85;
-//    portraitPositions[SecondCombatPosition].y = 28;
-//    [hudStretch scalePosition:portraitPositions[SecondCombatPosition]];
-//
-//    portraitPositions[ThirdCombatPosition].x = 7;
-//    portraitPositions[ThirdCombatPosition].y = 6;
-//    [hudStretch scalePosition:portraitPositions[ThirdCombatPosition]];
-//
-//    portraitPositions[FourthCombatPosition].x = 7;
-//    portraitPositions[FourthCombatPosition].y = 28;
-//    [hudStretch scalePosition:portraitPositions[FourthCombatPosition]];
 
-    
-//    // release the stretchers as we dont need them anymore
-//    [backgroundStretch release];
-//    [hudStretch release];
-    
     [super initialize];
 }
 
@@ -79,14 +40,14 @@
 
 
 /*
-    LOAD CONTENT
+ MARK: LOAD CONTENT
 */
 - (void) loadContent {
     spriteBatch = [[SpriteBatch alloc] initWithGraphicsDevice:self.graphicsDevice];
     
     // Backgrounds
-    //levelBackgrounds[LevelTypeFinal] = [self.game.content load:AREA_FARMLANDS];
-    //levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_FARMLANDS];
+    levelBackgrounds[LevelTypeFinal] = [self.game.content load:AREA_FARMLANDS];
+    levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_FARMLANDS];
     levelBackgrounds[LevelTypeFarmlands] = [self.game.content load:AREA_FARMLANDS];
     levelBackgrounds[LevelTypeMountains] = [self.game.content load:AREA_MOUNTAINS];
     levelBackgrounds[LevelTypePinewoods] = [self.game.content load:AREA_PINEWOODS];
@@ -96,6 +57,9 @@
     
     // Hp and Exp pool
     hpPool = [self.game.content load:HP_POOL];
+    
+    // Skills
+    basicMeleeSkill = [self.game.content load:BASIC_ATTACK_MELLEE];
     
     // Dice textures
     diceSymbolTexture = [self.game.content load:DICE_SYMBOLS];
@@ -259,6 +223,7 @@
     
     allySprites[FourthCombatPosition].looping = YES;
     
+    
     // portraits
     portraitTexture = [self.game.content load:@"ui_icons"];
     
@@ -276,11 +241,12 @@
 
 
 /*
-    DRAW
+ MARK: DRAW
 */
 - (void) drawWithGameTime:(GameTime *)gameTime {
     [self.graphicsDevice clearWithColor:[Color gray]];
     
+    // begin
     [spriteBatch beginWithSortMode:SpriteSortModeBackToFront BlendState:nil SamplerState:[SamplerState pointClamp]
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];
     
@@ -308,6 +274,17 @@
                 
                 // hp exp pool
                 [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+                
+                // skill
+                if (knight.attackType == BasicAttack) {
+                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color white]];
+                } else if (knight.attackType == FirstComboAttack) {
+                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color red]];
+                } else if (knight.attackType == SecondComboAttack) {
+                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color green]];
+                } else if (knight.attackType == ThirdComboAttack) {
+                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color yellow]];
+                }
                 
                 
                 // combo
@@ -364,6 +341,7 @@
         }
     }
     
+    // end
     [spriteBatch end];
 }
 

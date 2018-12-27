@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Dice *) getDiceAtTouchLocation:(Vector2 *)touchLocation;
 
+- (void) resetDicepool;
+
 @end
 
 NS_ASSUME_NONNULL_END

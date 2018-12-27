@@ -11,16 +11,19 @@
 #import "Retronator.Xni.Framework.Input.Touch.h"
 #import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
+#import "IPlayer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HumanPlayer : GameComponent {
+@interface HumanPlayer : GameComponent<IPlayer> {
     Matrix *inverseView;
     Level *level;
     
-    Entity *target;
+    CombatEntity *target;
     
     Dice *selectedDice;
+    
+    BOOL myTurn;
 }
 
 - (id) initWithGame:(Game*)theGame level:(Level*)theLevel;
