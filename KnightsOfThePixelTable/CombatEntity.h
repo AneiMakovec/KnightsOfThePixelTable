@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *combo;
     StatType comboAttackTypes[AttackTypes];
     
-    Entity *target;
+    CombatEntity *target;
 }
 
 - (id) initWithEntityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;

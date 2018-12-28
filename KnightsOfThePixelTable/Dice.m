@@ -7,6 +7,7 @@
 //
 
 #import "Dice.h"
+#import "Pixlron.Knights.h"
 
 @implementation Dice
 
@@ -32,7 +33,7 @@
     return self;
 }
 
-@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision, origin;
+@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision, origin, target;
 
 - (void) updateRadius {
     radius = 16.0f * altitude;
@@ -47,12 +48,37 @@
         [position set:origin];
     }
     
-    origin = nil;
+    [origin release];
+}
+
+- (void) moveToTarget:(Monster *)theTarget withDicepool:(Dicepool *)pool {
+    target = theTarget;
+    dicepool = pool;
+    [self rememberOrigin];
+    
+    velocity.x = (target.position.x - position.x);
+    velocity.y = (target.position.y - position.y);
+    coefficientOfFriction = 0.0f;
+    
+    //NSLog(@"Velocity X: %f, Y: %f!", velocity.x, velocity.y);
+    state = DiceStateMoving;
+}
+
+- (void) resetTarget {
+    target = nil;
+    [dicepool removeDice:self];
+    dicepool = nil;
+    [velocity set:[Vector2 zero]];
+    coefficientOfFriction = 0.05f;
+    state = DiceStateStopped;
 }
 
 - (void) dealloc {
     [position release];
     [velocity release];
+    if (origin) {
+        [origin release];
+    }
     
     [super dealloc];
 }

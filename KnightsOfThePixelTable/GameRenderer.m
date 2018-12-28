@@ -317,8 +317,12 @@
             if ([diceItem isKindOfClass:[Dice class]]) {
                 dice = (Dice *) diceItem;
                 // check if dice is still rolling
-                if (dice.state == DiceStateMoving) {
-                    diceAnim = diceGoodAnim;
+                if (dice.state == DiceStateRolling) {
+                    if (dice.frameType == DiceFrameTypeGood) {
+                        diceAnim = diceGoodAnim;
+                    } else if (dice.frameType == DiceFrameTypeEvil) {
+                        diceAnim = diceEvilAnim;
+                    }
                 } else {
                     diceSymbol = diceSymbols[dice.type];
                     diceBorder = diceFrames[dice.frameType];

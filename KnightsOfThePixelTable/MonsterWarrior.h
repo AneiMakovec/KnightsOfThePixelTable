@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pixlron.Knights.classes.h"
+#import "Monster.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MonsterWarrior : NSObject
+@interface MonsterWarrior : Monster
 
 @end
 

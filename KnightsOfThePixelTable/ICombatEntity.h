@@ -27,12 +27,13 @@
 @property (nonatomic) CombatPosition combatPosition;
 @property (nonatomic, readonly) BattlePosition *origin;
 
-@property (nonatomic, readonly) Entity *target;
+@property (nonatomic, readonly) CombatEntity *target;
+
 @property (nonatomic, readonly) NSMutableArray *combo;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
-- (void) attackTarget:(Entity *)theTarget;
+- (void) attackTarget:(CombatEntity *)theTarget;
 
 - (BOOL) addComboItem:(Dice *)theItem;
 
@@ -41,6 +42,10 @@
 - (void) resetAttack;
 
 - (void) updateAttackType;
+
+- (void) stopDefending;
+
+- (StatType) getAttackValueForAttack:(AttackType)theAttack;
 
 
 @end

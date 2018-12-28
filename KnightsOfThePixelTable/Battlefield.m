@@ -22,7 +22,7 @@
         
         
         KnightLancelot *lancelot;
-        Monster *monster;
+        MonsterWarrior *monster;
         for (int i = 0; i < CombatPositions; i++) {
             // add ally entities
             lancelot = [[KnightLancelot alloc] init];
@@ -32,7 +32,7 @@
             [lancelot release];
             
             // add enemy entities
-            monster = [[Monster alloc] initMonster:MonsterTypeWarrior entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.5 maxRadius:60];
+            monster = [[MonsterWarrior alloc] init];
             [monster setCombatPosition:i];
             [enemyEntities insertObject:monster atIndex:i];
             [level.scene addItem:monster];
@@ -57,7 +57,7 @@
     return [allyEntities containsObject:theAlly];
 }
 
-- (Knight *) getEnemyAtPosition:(CombatPosition)thePosition {
+- (Monster *) getEnemyAtPosition:(CombatPosition)thePosition {
     if ([enemyEntities count] > thePosition) {
         return [enemyEntities objectAtIndex:thePosition];
     } else {
@@ -65,7 +65,7 @@
     }
 }
 
-- (BOOL) containsEnemy:(Knight *)theEnemy {
+- (BOOL) containsEnemy:(Monster *)theEnemy {
     return [enemyEntities containsObject:theEnemy];
 }
 

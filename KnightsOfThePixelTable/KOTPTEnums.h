@@ -106,6 +106,7 @@ typedef enum {
 } DiceFrameType;
 
 typedef enum {
+    DiceStateRolling,
     DiceStateMoving,
     DiceStateStopped,
     DiceStates

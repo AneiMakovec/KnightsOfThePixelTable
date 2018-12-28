@@ -30,7 +30,7 @@
         // movement, rotation and height for dices
         Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice *) item : nil;
         if (dice) {
-            if (dice.state == DiceStateMoving) {
+            if (dice.state == DiceStateRolling) {
                 [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
                 
                 if ([Random intLessThan:100] < 5) {
@@ -41,6 +41,10 @@
                     dice.state = DiceStateStopped;
                     dice.ignoreCollision = YES;
                 }
+            }
+            
+            if (dice.state == DiceStateMoving) {
+                [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
             }
             
             if (dice.altitude > 1) {
@@ -65,17 +69,23 @@
         
         // dices
         Dice *dItem = [item1 isKindOfClass:[Dice class]] ? (Dice *) item1 : nil;
-        if (dItem && !dItem.ignoreCollision) {
-            // collision with other dices
-            for (Dice *dice in level.dicepool.dices) {
-                if (item1 != dice) {
-                    [Collision collisionBetween:item1 and:dice];
+        if (dItem) {
+            if (!dItem.ignoreCollision) {
+                // collision with other dices
+                for (Dice *dice in level.dicepool.dices) {
+                    if (item1 != dice) {
+                        [Collision collisionBetween:item1 and:dice];
+                    }
+                }
+                
+                // collision with borders
+                for (DicepoolLimit *border in level.dicepool.borders) {
+                    [Collision collisionBetween:item1 and:border];
                 }
             }
             
-            // collision with borders
-            for (DicepoolLimit *border in level.dicepool.borders) {
-                [Collision collisionBetween:item1 and:border];
+            if (dItem.target) {
+                [Collision collisionBetween:item1 and:dItem.target];
             }
         }
         

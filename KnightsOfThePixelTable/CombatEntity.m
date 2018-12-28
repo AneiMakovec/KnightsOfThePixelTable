@@ -78,13 +78,23 @@
         }
     }
     
+    // or wait for collision with attacking entity
+    if (state == EntityStateIdle) {
+        CombatEntity *entity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *)item : nil;
+        if (entity) {
+            if (entity.state == EntityStateAttacking) {
+                state = EntityStateDefending;
+            }
+        }
+    }
+    
     // ignore all
     return NO;
 }
 
 
 
-- (void) attackTarget:(Entity *)theTarget {
+- (void) attackTarget:(CombatEntity *)theTarget {
     if (!finishedAttacking) {
         // remember target
         target = [theTarget retain];
@@ -107,7 +117,7 @@
     StatValue *stat = [stats objectAtIndex:attack.statUsed];
     
     if (attack && stat) {
-        int damage = damageStrength * stat.value * attack.value;
+        int damage = stat.value;
         [self dealDamageToTarget:target damage:-damage];
     }
 }
@@ -161,8 +171,9 @@
         // wait for attack to end
         if (attackTime) {
             if (!attackTime.isAlive) {
-                // and then deal the damage to target
+                // and then deal the damage to target and tell it to stop defending
                 [self dealDamageToTarget];
+                [target stopDefending];
                 [target release];
                 target = nil;
                 
@@ -179,6 +190,11 @@
             }
         }
     }
+}
+
+
+- (void) stopDefending {
+    state = EntityStateIdle;
 }
 
 
@@ -246,6 +262,11 @@
             attackType = NoAttack;
             break;
     }
+}
+
+- (StatType) getAttackValueForAttack:(AttackType)theAttack {
+    // MARK: TODO: change the attack type to attack value in attack damages
+    return comboAttackTypes[theAttack];
 }
 
 - (void) dealloc {

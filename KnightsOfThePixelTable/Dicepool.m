@@ -54,7 +54,7 @@
             dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius*2 lessThan:(int)dicepoolArea.y+dicepoolArea.height-(int)dice.radius*2];;
             dice.velocity.x = [Random intGreaterThanOrEqual:-700 lessThan:700];
             dice.velocity.y = [Random intGreaterThanOrEqual:-700 lessThan:700];
-            dice.state = DiceStateMoving;
+            dice.state = DiceStateRolling;
             dice.type = [Random intLessThan:StatTypes];
             dice.frameType = diceType;
             [dices addObject:dice];

@@ -32,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) containsAlly:(Knight *)theAlly;
 
-- (Knight *) getEnemyAtPosition:(CombatPosition)thePosition;
+- (Monster *) getEnemyAtPosition:(CombatPosition)thePosition;
 
-- (BOOL) containsEnemy:(Knight *)theEnemy;
+- (BOOL) containsEnemy:(Monster *)theEnemy;
 
 @end
 

@@ -34,11 +34,29 @@
 }
 
 
-- (BOOL) addComboItem:(Dice *)theItem {
-    // TODO
-    [self updateAttackType];
+- (BOOL) collidingWithItem:(id)item {
+    Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice *)item : nil;
+    if (dice) {
+        [dice resetTarget];
+        [self addComboItem:dice];
+    }
     
-    return false;
+    return [super collidingWithItem:item];
+}
+
+
+- (BOOL) addComboItem:(Dice *)theItem {
+    if ([combo count] < ComboItems) {
+        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition];
+        [combo addObject:comboSlot];
+        [comboSlot release];
+        
+        [self updateAttackType];
+        
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 

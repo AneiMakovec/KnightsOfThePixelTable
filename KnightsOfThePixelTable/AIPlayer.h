@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PixEngine.Scene.Objects.h"
 #import "Pixlron.Knights.classes.h"
 #import "IPlayer.h"
 
@@ -17,11 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
     
     CombatEntity *target;
     
+    ResetableLifetime *delay;
+    
     BOOL myTurn;
     AIState state;
     
     int countDices[StatTypes];
     float ownEntityTypes[DamageTypes];
+    DamageType ownEntityDamageTypes[CombatPositions];
+    
+    DamageType opponentEntityDamageTypes[CombatPositions];
     float opponentEntityTypes[DamageTypes];
     float opponentEntityThreat[CombatPositions];
 }

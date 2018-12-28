@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "PixEngine.Scene.Objects.h"
+#import "Pixlron.Knights.classes.h"
 #import "IDice.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -31,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
     DiceFrameType frameType;
     BOOL ignoreCollision;
     Vector2 *origin;
+    Monster *target;
+    
+    Dicepool *dicepool;
 }
 
 @end
