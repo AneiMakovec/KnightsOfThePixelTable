@@ -33,8 +33,9 @@
 
 
 - (void) startTurn {
-    [level.dicepool resetDicepool];
     myTurn = YES;
+    [level.dicepool resetDicepool];
+    [level.dicepool addDicesOfType:DiceFrameTypeGood];
 }
 
 - (void) endTurn {
@@ -82,13 +83,13 @@
             
             // MARK: check if touched dicepool
             if ([level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
-                // play sound effect
-                [SoundEngine play:SoundEffectTypeClick];
-
-                // add dices if not already added
-                if (!level.dicepool.dicesAdded) {
-                    [level.dicepool addDicesOfType:DiceFrameTypeGood];
-                }
+//                // play sound effect
+//                [SoundEngine play:SoundEffectTypeClick];
+//
+//                // add dices if not already added
+//                if (!level.dicepool.dicesAdded) {
+//                    [level.dicepool addDicesOfType:DiceFrameTypeGood];
+//                }
                 
                 // release the selected dice if still in the dicepool
                 if (selectedDice) {
@@ -135,9 +136,6 @@
                     } else if ([knight.entityArea containsX:touchInScene.x y:touchInScene.y]) {
                         if (!selectedDice) {
                             NSLog(@"Touched ally: %d", knight.combatPosition + 1);
-                            
-                            knight.currentHealthPoints -= 10;
-                            NSLog(@"Dealt 10 DMG to ally!");
                             
                             if (target && knight.state == EntityStateIdle && !knight.finishedAttacking && knight.attackType != NoAttack) {
                                 [knight attackTarget:target];

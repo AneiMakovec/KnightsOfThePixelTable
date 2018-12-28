@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     StatType entityType;
     EntityState state;
+    DamageType damageType;
     AttackType attackType;
     CombatPosition combatPosition;
     BattlePosition *origin;
@@ -38,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
     Entity *target;
 }
 
-- (id) initWithEntityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initWithEntityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

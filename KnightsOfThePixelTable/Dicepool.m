@@ -50,8 +50,8 @@
     if ([dices count] == 0) {
         for (int i = 0; i < level.num_of_dices; i++) {
             Dice *dice = [[Dice alloc] init];
-            dice.position.x = [Random intGreaterThanOrEqual:(int)dicepoolArea.x+(int)dice.radius lessThan:(int)dicepoolArea.x+dicepoolArea.width-(int)dice.radius];
-            dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius lessThan:(int)dicepoolArea.y+dicepoolArea.height-(int)dice.radius];;
+            dice.position.x = [Random intGreaterThanOrEqual:(int)dicepoolArea.x+(int)dice.radius*2 lessThan:(int)dicepoolArea.x+dicepoolArea.width-(int)dice.radius*2];
+            dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius*2 lessThan:(int)dicepoolArea.y+dicepoolArea.height-(int)dice.radius*2];;
             dice.velocity.x = [Random intGreaterThanOrEqual:-700 lessThan:700];
             dice.velocity.y = [Random intGreaterThanOrEqual:-700 lessThan:700];
             dice.state = DiceStateMoving;

@@ -12,7 +12,7 @@
 
 @implementation CombatEntity
 
-- (id) initWithEntityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithEntityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
         radius = 1;
@@ -23,6 +23,7 @@
         
         entityType = theType;
         state = EntityStateIdle;
+        damageType = theDamageType;
         attackType = NoAttack;
         
         stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
@@ -33,7 +34,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, finishedAttacking, entityType, state, attackType, combatPosition, entityArea, origin, target, combo;
+@synthesize radius, maxRadius, isDead, finishedAttacking, entityType, state, damageType, attackType, combatPosition, entityArea, origin, target, combo;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {

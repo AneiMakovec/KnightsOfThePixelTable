@@ -13,7 +13,7 @@
 @implementation KnightLancelot
 
 - (id) init {
-    self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageStrength:0.85 maxRadius:60];
+    self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         StatValue *statValue;

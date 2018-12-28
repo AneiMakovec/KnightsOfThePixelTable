@@ -45,6 +45,13 @@ typedef enum {
 } AttackType;
 
 typedef enum {
+    DamageTypeMelee,
+    DamageTypeRanged,
+    DamageTypeMagic,
+    DamageTypes
+} DamageType;
+
+typedef enum {
     FirstComboItem,
     SecondComboItem,
     ThirdComboItem,
@@ -61,6 +68,16 @@ typedef enum {
     EntityStateRetreating,
     EntityStates
 } EntityState;
+
+// MARK: ai
+typedef enum {
+    AIStateScanOwnMetadata,
+    AIStateScanOpponentMetadata,
+    AIStateScanDices,
+    AIStateAssignDices,
+    AIStateAttack,
+    AIStates
+} AIState;
 
 // MARK: combat positions
 typedef enum {

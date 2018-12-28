@@ -23,6 +23,7 @@
 @property (nonatomic, readonly) EntityState state;
 @property (nonatomic, readonly) AttackType attackType;
 @property (nonatomic, readonly) StatType entityType;
+@property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic) CombatPosition combatPosition;
 @property (nonatomic, readonly) BattlePosition *origin;
 

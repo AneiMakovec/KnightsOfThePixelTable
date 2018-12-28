@@ -32,7 +32,7 @@
             [lancelot release];
             
             // add enemy entities
-            monster = [[Monster alloc] initMonster:MonsterTypeWarrior entityType:Strength health:100 damageStrength:0.5 maxRadius:60];
+            monster = [[Monster alloc] initMonster:MonsterTypeWarrior entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.5 maxRadius:60];
             [monster setCombatPosition:i];
             [enemyEntities insertObject:monster atIndex:i];
             [level.scene addItem:monster];

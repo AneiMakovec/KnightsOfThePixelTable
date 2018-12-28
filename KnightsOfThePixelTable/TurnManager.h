@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Pixlron.Knights.classes.h"
+#import "PixEngine.Scene.Objects.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TurnManager : GameComponent {
     Level *level;
+    ResetableLifetime *turnDelay;
     
     HumanPlayer *player;
     AIPlayer *aiPlayer;

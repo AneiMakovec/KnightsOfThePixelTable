@@ -18,9 +18,17 @@ NS_ASSUME_NONNULL_BEGIN
     CombatEntity *target;
     
     BOOL myTurn;
+    AIState state;
+    
+    int countDices[StatTypes];
+    float ownEntityTypes[DamageTypes];
+    float opponentEntityTypes[DamageTypes];
+    float opponentEntityThreat[CombatPositions];
 }
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
+
+- (void) startTurnWithNewEntities:(BOOL)newWave;
 
 @end
 

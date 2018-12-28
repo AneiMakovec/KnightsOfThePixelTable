@@ -11,8 +11,8 @@
 
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithEntityType:theType health:hp damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithEntityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         type = theMonster;
         

@@ -15,6 +15,7 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         level = theLevel;
+        turnDelay = [[ResetableLifetime alloc] initWithStart:0 duration:1];
         
         player = hPlayer;
         aiPlayer = theAiPlayer;
@@ -38,25 +39,32 @@
     
     // check if all dices used
     if ([self checkDices]) {
-        NSLog(@"No dices!");
+//        NSLog(@"No dices!");
         
         // check if no entity is ready to attack
         if ([self checkEntityAttacks]) {
-            NSLog(@"No attacks!");
+//            NSLog(@"No attacks!");
             
             // check if all entities are idle
             if ([self checkIdleEntities]) {
-                NSLog(@"All idle!");
-                // end turn
-                playersTurn = !playersTurn;
-                NSLog(@"Next turn!");
+//                NSLog(@"All idle!");
                 
-                if (playersTurn) {
-                    [aiPlayer endTurn];
-                    [player startTurn];
-                } else {
-                    [player endTurn];
-                    [aiPlayer startTurn];
+                [turnDelay updateWithGameTime:gameTime];
+                
+                if (!turnDelay.isAlive) {
+                    [turnDelay reset];
+                    
+                    // end turn
+                    playersTurn = !playersTurn;
+                    NSLog(@"Next turn!");
+                    
+                    if (playersTurn) {
+                        [aiPlayer endTurn];
+                        [player startTurn];
+                    } else {
+                        [player endTurn];
+                        [aiPlayer startTurn];
+                    }
                 }
             }
         }
