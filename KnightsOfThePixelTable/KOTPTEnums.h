@@ -143,3 +143,6 @@ typedef enum {
 #define DICE_ANIM_EVIL @"combat_dice_animation_evil"
 #define DICE_ANIM_GOOD @"combat_dice_animation_good"
 #define DICE_SYMBOLS @"combat_dices"
+
+// MARK: gui textures
+#define FONT @"font"

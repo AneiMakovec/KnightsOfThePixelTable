@@ -19,7 +19,9 @@
         aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
         physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];
         renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self];
-        turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel humanPlayer:humanPlayer aiPlayer:aiPlayer];
+        //guiRenderer = [[GUIRenderer alloc] initWithGame:self.game scene:gameHud.scene];
+        gameHud = [[GameHud alloc] initWithGame:self.game level:currentLevel];
+        turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel gameHud:gameHud humanPlayer:humanPlayer aiPlayer:aiPlayer];
         
         
         humanPlayer.updateOrder = 1;
@@ -27,15 +29,19 @@
         turnManager.updateOrder = 3;
         physics.updateOrder = 4;
         currentLevel.updateOrder = 5;
-        renderer.updateOrder = 7;
-        self.updateOrder = 8;
+        currentLevel.scene.updateOrder = 6;
+        self.updateOrder = 7;
+        
+        //guiRenderer.drawOrder = 1;
         
         [self.game.components addComponent:humanPlayer];
         [self.game.components addComponent:aiPlayer];
         [self.game.components addComponent:physics];
         [self.game.components addComponent:currentLevel];
+        [self.game.components addComponent:gameHud];
         [self.game.components addComponent:turnManager];
         [self.game.components addComponent:renderer];
+        //[self.game.components addComponent:guiRenderer];
     }
     return self;
 }
@@ -58,14 +64,18 @@
     [self.game.components removeComponent:aiPlayer];
     [self.game.components removeComponent:physics];
     [self.game.components removeComponent:currentLevel];
+    [self.game.components removeComponent:gameHud];
     [self.game.components removeComponent:renderer];
+    //[self.game.components removeComponent:guiRenderer];
     [self.game.components removeComponent:turnManager];
     
     [humanPlayer release];
     [aiPlayer release];
     [physics release];
     [currentLevel release];
+    [gameHud release];
     [renderer release];
+    //[guiRenderer release];
     [turnManager release];
     [super dealloc];
 }

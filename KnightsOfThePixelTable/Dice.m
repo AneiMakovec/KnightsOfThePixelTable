@@ -49,6 +49,7 @@
     }
     
     [origin release];
+    origin = nil;
 }
 
 - (void) moveToTarget:(Monster *)theTarget withDicepool:(Dicepool *)pool {

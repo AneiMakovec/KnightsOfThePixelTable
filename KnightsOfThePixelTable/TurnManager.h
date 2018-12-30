@@ -14,17 +14,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TurnManager : GameComponent {
     Level *level;
+    GameHud *hud;
     ResetableLifetime *turnDelay;
     
     HumanPlayer *player;
     AIPlayer *aiPlayer;
     
     BOOL playersTurn;
+    int waveCounter;
 }
 
 @property (nonatomic, readonly) BOOL playersTurn;
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer;
+- (id) initWithGame:(Game *)theGame level:(Level *)theLevel gameHud:(GameHud *)theHud humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer;
 
 @end
 

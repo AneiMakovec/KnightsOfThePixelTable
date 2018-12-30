@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) containsEnemy:(Monster *)theEnemy;
 
+- (void) newWave;
+
 @end
 
 NS_ASSUME_NONNULL_END

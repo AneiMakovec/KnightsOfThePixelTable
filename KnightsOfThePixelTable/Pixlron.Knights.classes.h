@@ -12,11 +12,15 @@
 // Graphics
 @class GameRenderer;
 @class ScreenComponent;
+@class GUIRenderer;
+
+// HUD
+@class GameHud;
 
 // Physics
 @class PhysicsEngine;
 
-// Scene
+// Level
 @class DicepoolLimit;
 
 @class Battlefield, Dicepool;

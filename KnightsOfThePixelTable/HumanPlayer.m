@@ -53,9 +53,9 @@
     }
     
     // process input
-    TouchCollection *touches = [TouchPanel getState];
+    TouchCollection *touches = [TouchPanelHelper getState];
     
-    if (myTurn && [touches count] == 1) {
+    if (myTurn && touches != nil && [touches count] > 0) {
         TouchLocation *touch = [touches objectAtIndex:0];
         
         Vector2 *touchInScene = [Vector2 transform:touch.position with:inverseView];

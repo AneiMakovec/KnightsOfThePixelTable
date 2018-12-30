@@ -22,10 +22,15 @@
         
         dicesAdded = NO;
         
-        dicepoolArea.x = [[ScreenComponent getScale:@"hud"] scaleX:162.0f];
-        dicepoolArea.width = [[ScreenComponent getScale:@"hud"] scaleX:250.0f];
-        dicepoolArea.y = [[ScreenComponent getScale:@"hud"] scaleY:5.0f];
-        dicepoolArea.height = [[ScreenComponent getScale:@"hud"] scaleY:42.0f];
+//        dicepoolArea.x = [[ScreenComponent getScale:@"hud"] scaleX:162.0f];
+//        dicepoolArea.width = [[ScreenComponent getScale:@"hud"] scaleX:250.0f];
+//        dicepoolArea.y = [[ScreenComponent getScale:@"hud"] scaleY:5.0f];
+//        dicepoolArea.height = [[ScreenComponent getScale:@"hud"] scaleY:42.0f];
+        
+        dicepoolArea.x = [Constants dicepoolLeftWall];
+        dicepoolArea.width = [Constants dicepoolRightWall];
+        dicepoolArea.y = [Constants dicepoolUpWall];
+        dicepoolArea.height = [Constants dicepoolDownWall];
         
         DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:dicepoolArea.x]];
         [borders addObject:border];
@@ -50,8 +55,8 @@
     if ([dices count] == 0) {
         for (int i = 0; i < level.num_of_dices; i++) {
             Dice *dice = [[Dice alloc] init];
-            dice.position.x = [Random intGreaterThanOrEqual:(int)dicepoolArea.x+(int)dice.radius*2 lessThan:(int)dicepoolArea.x+dicepoolArea.width-(int)dice.radius*2];
-            dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius*2 lessThan:(int)dicepoolArea.y+dicepoolArea.height-(int)dice.radius*2];;
+            dice.position.x = [Random intGreaterThanOrEqual:(int)dicepoolArea.x+(int)dice.radius*2+15 lessThan:(int)dicepoolArea.x+dicepoolArea.width-(int)dice.radius*2-15];
+            dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius*2+15 lessThan:(int)dicepoolArea.y+dicepoolArea.height-(int)dice.radius*2-15];;
             dice.velocity.x = [Random intGreaterThanOrEqual:-700 lessThan:700];
             dice.velocity.y = [Random intGreaterThanOrEqual:-700 lessThan:700];
             dice.state = DiceStateRolling;

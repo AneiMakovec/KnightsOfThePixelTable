@@ -42,10 +42,11 @@
     
     // calc position
     position = [[Vector2 alloc] initWithX:[Constants positionXOfAlly:combatPosition] y:[Constants positionYOfAlly:combatPosition]];
-    [[ScreenComponent getScale:@"battlefield"] scalePosition:position];
+    //[[ScreenComponent getScale:@"battlefield"] scalePosition:position];
     
     if (!isAlly) {
-        position.x = [ScreenComponent getScreenBounds].width - position.x;
+        //position.x = [ScreenComponent getScreenBounds].width - position.x;
+        position.x = [Constants backgroundWidth] - position.x;
     }
     
     // calc battle position
@@ -117,7 +118,8 @@
     StatValue *stat = [stats objectAtIndex:attack.statUsed];
     
     if (attack && stat) {
-        int damage = stat.value;
+        //int damage = stat.value;
+        int damage = 100;
         [self dealDamageToTarget:target damage:-damage];
     }
 }

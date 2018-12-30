@@ -28,10 +28,15 @@
 */
 - (void) initialize {
     // set display camera
-    camera = [ScreenComponent getCamera];
+    //camera = [ScreenComponent getCamera];
+    
+    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
+    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
+    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
     
     // calculate hud offset
-    hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
+    //hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
+    hudOffset = [Constants battlefieldHeight];
 
     [super initialize];
 }
@@ -251,10 +256,12 @@
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];
     
     // backgorund
-    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
+    //[spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
+    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] tintWithColor:[Color white]];
     
     // hud
-    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
+    //[spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
+    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[Constants backgroundWidth] height:[Constants hudHeight]] tintWithColor:[Color white]];
     
     
     // scene items

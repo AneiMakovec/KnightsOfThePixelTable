@@ -109,6 +109,19 @@
     [removedMonsters release];
 }
 
+- (void) newWave {
+    MonsterWarrior *monster;
+    for (int i = 0; i < CombatPositions; i++) {
+        
+        // add enemy entities
+        monster = [[MonsterWarrior alloc] init];
+        [monster setCombatPosition:i];
+        [enemyEntities insertObject:monster atIndex:i];
+        [level.scene addItem:monster];
+        [monster release];
+    }
+}
+
 
 - (void) dealloc {
     [allyEntities release];

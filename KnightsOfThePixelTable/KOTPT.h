@@ -11,6 +11,8 @@
 #import "Pixlron.Knights.classes.h"
 #import "KOTPTEnums.h"
 
+#import "PixEngine.Control.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 

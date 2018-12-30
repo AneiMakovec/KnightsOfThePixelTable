@@ -13,13 +13,17 @@
 // Graphics
 #import "GameRenderer.h"
 #import "ScreenComponent.h"
+#import "GUIRenderer.h"
+
+// HUD
+#import "GameHud.h"
 
 
 // Physics
 #import "PhysicsEngine.h"
 
 
-// Scene
+// Level
 #import "DicepoolLimit.h"
 
 #import "Battlefield.h"

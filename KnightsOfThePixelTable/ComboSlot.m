@@ -22,7 +22,7 @@
             area = nil;
         } else {
             area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:thePosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:thePosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
-            [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+            //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
         }
     }
     return self;
@@ -46,7 +46,7 @@
     if (!area) {
         if (theSlot != NoCombo) {
             area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:entityPosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:entityPosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
-            [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+            //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
         }
     }
 }
@@ -57,7 +57,7 @@
         area.y = [Constants comboAreaYOfAlly:entityPosition atPosition:theSlot];
         area.width = [Constants separateComboAreaSize];
         area.height = [Constants separateComboAreaSize];
-        [[ScreenComponent getScale:@"hud"] scaleRectangle:area];
+        //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
     }
 }
 

@@ -15,8 +15,6 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:theGame];
-        scene.updateOrder = 6;
-        [self.game.components addComponent:scene];
         
         num_of_dices = numDices;
     }
@@ -29,6 +27,10 @@
     music_played = NO;
     
     [self reset];
+    
+    [super initialize];
+    
+    [self.game.components addComponent:scene];
 }
 
 - (void) reset {

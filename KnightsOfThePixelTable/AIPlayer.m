@@ -34,7 +34,13 @@
 
 - (void) startTurnWithNewEntities:(BOOL)newWave {
     if (newWave) {
-        state = AIStateScanOwnMetadata;
+        if (opponentEntityThreat[FirstCombatPosition] > 0) {
+            state = AIStateScanOwnMetadata;
+        } else {
+            state = AIStateScanOpponentMetadata;
+        }
+            
+        [level.battlefield newWave];
     }
     
     [self startTurn];

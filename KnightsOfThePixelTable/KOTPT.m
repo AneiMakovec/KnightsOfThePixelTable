@@ -21,8 +21,8 @@
         // init sound engine
         [SoundEngine initializeWithGame:self];
         
-        // init screen scale
-        [ScreenComponent initializeWithGame:self screenWidth:1000 screenHeight:1000];
+        // init touch panel helper
+        [self.components addComponent:[[[TouchPanelHelper alloc] initWithGame:self] autorelease]];
         
         // create gameplay and add it to components
         [self.components addComponent:[[[Gameplay alloc] initWithGame:self] autorelease]];

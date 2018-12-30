@@ -13,16 +13,16 @@
 /*
  MARK: BACKGROUND SIZE
 */
-+ (float) backgroundWidth {
-    return 256.0f;
++ (int) backgroundWidth {
+    return 1024;
 }
 
-+ (float) battlefieldHeight {
-    return 80.0f;
++ (int) battlefieldHeight {
+    return 320;
 }
 
-+ (float) hudHeight {
-    return 48.0f;
++ (int) hudHeight {
+    return 192;
 }
 
 
@@ -32,13 +32,13 @@
 + (int) positionXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 77;
+            return 308;
         case SecondCombatPosition:
-            return 64;
+            return 256;
         case ThirdCombatPosition:
-            return 38;
+            return 152;
         case FourthCombatPosition:
-            return 26;
+            return 104;
         default:
             return -1;
     }
@@ -47,13 +47,13 @@
 + (int) positionYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 46;
+            return 184;
         case SecondCombatPosition:
-            return 62;
+            return 248;
         case ThirdCombatPosition:
-            return 46;
+            return 184;
         case FourthCombatPosition:
-            return 62;
+            return 248;
         default:
             return -1;
     }
@@ -66,13 +66,13 @@
 + (int) areaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 81;
+            return 324;
         case SecondCombatPosition:
-            return 81;
+            return 324;
         case ThirdCombatPosition:
-            return 3;
+            return 12;
         case FourthCombatPosition:
-            return 3;
+            return 12;
         default:
             return -1;
     }
@@ -81,24 +81,24 @@
 + (int) areaYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 3;
+            return 12 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 25;
+            return 100 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 3;
+            return 12 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 25;
+            return 100 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) allyAreaWidth {
-    return 75;
+    return 304;
 }
 
 + (int) allyAreaHeight {
-    return 19;
+    return 80;
 }
 
 
@@ -108,13 +108,13 @@
 + (int) comboAreaXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 104;
+            return 416;
         case SecondCombatPosition:
-            return 104;
+            return 416;
         case ThirdCombatPosition:
-            return 26;
+            return 104;
         case FourthCombatPosition:
-            return 26;
+            return 104;
         default:
             return -1;
     }
@@ -123,24 +123,24 @@
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 5;
+            return 20 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 27;
+            return 108 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 5;
+            return 20 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 27;
+            return 108 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) comboAreaWidth {
-    return 38;
+    return 152;
 }
 
 + (int) comboAreaHeight {
-    return 8;
+    return 32;
 }
 
 
@@ -152,52 +152,52 @@
         case FirstCombatPosition:
             switch (theItem) {
                 case FirstComboItem:
-                    return 105;
+                    return 420;
                 case SecondComboItem:
-                    return 115;
+                    return 460;
                 case ThirdComboItem:
-                    return 125;
+                    return 500;
                 case FourthComboItem:
-                    return 135;
+                    return 540;
                 default:
                     return -1;
             }
         case SecondCombatPosition:
             switch (theItem) {
                 case FirstComboItem:
-                    return 105;
+                    return 420;
                 case SecondComboItem:
-                    return 115;
+                    return 460;
                 case ThirdComboItem:
-                    return 125;
+                    return 500;
                 case FourthComboItem:
-                    return 135;
+                    return 540;
                 default:
                     return -1;
             }
         case ThirdCombatPosition:
             switch (theItem) {
                 case FirstComboItem:
-                    return 27;
+                    return 108;
                 case SecondComboItem:
-                    return 37;
+                    return 148;
                 case ThirdComboItem:
-                    return 47;
+                    return 188;
                 case FourthComboItem:
-                    return 57;
+                    return 228;
                 default:
                     return -1;
             }
         case FourthCombatPosition:
             switch (theItem) {
                 case FirstComboItem:
-                    return 27;
+                    return 108;
                 case SecondComboItem:
-                    return 37;
+                    return 148;
                 case ThirdComboItem:
-                    return 47;
+                    return 188;
                 case FourthComboItem:
-                    return 57;
+                    return 228;
                 default:
                     return -1;
             }
@@ -209,20 +209,20 @@
 + (int) comboAreaYOfAlly:(CombatPosition)theAlly atPosition:(ComboItem)theItem {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 6;
+            return 24 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 28;
+            return 112 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 6;
+            return 24 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 28;
+            return 112 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) separateComboAreaSize {
-    return 6;
+    return 24;
 }
 
 
@@ -232,13 +232,13 @@
 + (int) hpPoolXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 113;
+            return 456;
         case SecondCombatPosition:
-            return 113;
+            return 456;
         case ThirdCombatPosition:
-            return 35;
+            return 144;
         case FourthCombatPosition:
-            return 35;
+            return 144;
         default:
             return -1;
     }
@@ -247,24 +247,24 @@
 + (int) hpPoolYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 16;
+            return 68 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 38;
+            return 156 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 16;
+            return 68 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 38;
+            return 156 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) hpPoolWidth {
-    return 29;
+    return 108;
 }
 
 + (int) hpPoolHeight {
-    return 5;
+    return 12;
 }
 
 
@@ -274,13 +274,13 @@
 + (int) portraitXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 85;
+            return 340;
         case SecondCombatPosition:
-            return 85;
+            return 340;
         case ThirdCombatPosition:
-            return 7;
+            return 28;
         case FourthCombatPosition:
-            return 7;
+            return 28;
         default:
             return -1;
     }
@@ -289,20 +289,20 @@
 + (int) portraitYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 6;
+            return 24 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 28;
+            return 112 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 6;
+            return 24 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 28;
+            return 112 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) portraitSize {
-    return 14;
+    return 56;
 }
 
 
@@ -312,13 +312,13 @@
 + (int) skillXOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 146;
+            return 584;
         case SecondCombatPosition:
-            return 146;
+            return 584;
         case ThirdCombatPosition:
-            return 68;
+            return 272;
         case FourthCombatPosition:
-            return 68;
+            return 272;
         default:
             return -1;
     }
@@ -327,20 +327,39 @@
 + (int) skillYOfAlly:(CombatPosition)theAlly {
     switch (theAlly) {
         case FirstCombatPosition:
-            return 9;
+            return 36 + [self battlefieldHeight];
         case SecondCombatPosition:
-            return 31;
+            return 124 + [self battlefieldHeight];
         case ThirdCombatPosition:
-            return 9;
+            return 36 + [self battlefieldHeight];
         case FourthCombatPosition:
-            return 31;
+            return 124 + [self battlefieldHeight];
         default:
             return -1;
     }
 }
 
 + (int) skillSize {
-    return 8;
+    return 32;
+}
+
+/*
+ MARK: DICEPOOL BOUNDS
+*/
++ (int) dicepoolLeftWall {
+    return 647;
+}
+
++ (int) dicepoolRightWall {
+    return 1004;
+}
+
++ (int) dicepoolUpWall {
+    return 19 + [self battlefieldHeight];
+}
+
++ (int) dicepoolDownWall {
+    return 172 + [self battlefieldHeight];
 }
 
 

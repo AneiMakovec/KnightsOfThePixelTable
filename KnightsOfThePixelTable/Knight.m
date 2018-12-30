@@ -35,25 +35,25 @@
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:combatPosition] y:[Constants areaYOfAlly:combatPosition] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
-    [[ScreenComponent getScale:@"hud"] scaleRectangle:entityArea];
+    //[[ScreenComponent getScale:@"hud"] scaleRectangle:entityArea];
     
     // calc combo area
     comboArea = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:combatPosition] y:[Constants comboAreaYOfAlly:combatPosition] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
-    [[ScreenComponent getScale:@"hud"] scaleRectangle:comboArea];
+    //[[ScreenComponent getScale:@"hud"] scaleRectangle:comboArea];
     
     // calc hp pool area
     hpPoolArea = [[Rectangle alloc] initWithX:[Constants hpPoolXOfAlly:combatPosition] y:[Constants hpPoolYOfAlly:combatPosition] width:[Constants hpPoolWidth] height:[Constants hpPoolHeight]];
-    [[ScreenComponent getScale:@"hud"] scaleRectangle:hpPoolArea];
+    //[[ScreenComponent getScale:@"hud"] scaleRectangle:hpPoolArea];
     
     maxHpWidth = hpPoolArea.width;
     
     // calc skill area
     skillArea = [[Rectangle alloc] initWithX:[Constants skillXOfAlly:combatPosition] y:[Constants skillYOfAlly:combatPosition] width:[Constants skillSize] height:[Constants skillSize]];
-    [[ScreenComponent getScale:@"hud"] scaleRectangle:skillArea];
+    //[[ScreenComponent getScale:@"hud"] scaleRectangle:skillArea];
     
     // calc portrait area
     portraitArea = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:combatPosition] y:[Constants portraitYOfAlly:combatPosition] width:[Constants portraitSize] height:[Constants portraitSize]];
-    [[ScreenComponent getScale:@"hud"] scaleRectangle:portraitArea];
+    //[[ScreenComponent getScale:@"hud"] scaleRectangle:portraitArea];
 }
 
 

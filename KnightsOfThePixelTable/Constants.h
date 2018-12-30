@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-+ (float) backgroundWidth;
-+ (float) battlefieldHeight;
-+ (float) hudHeight;
++ (int) backgroundWidth;
++ (int) battlefieldHeight;
++ (int) hudHeight;
 
 + (int) positionXOfAlly:(CombatPosition)theAlly;
 + (int) positionYOfAlly:(CombatPosition)theAlly;
@@ -46,6 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) skillXOfAlly:(CombatPosition)theAlly;
 + (int) skillYOfAlly:(CombatPosition)theAlly;
 + (int) skillSize;
+
++ (int) dicepoolLeftWall;
++ (int) dicepoolRightWall;
++ (int) dicepoolUpWall;
++ (int) dicepoolDownWall;
 
 + (int) lancelotValueOfStat:(StatType)theStat;
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat;

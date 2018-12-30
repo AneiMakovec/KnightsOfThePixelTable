@@ -11,16 +11,18 @@
 
 @implementation TurnManager
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer {
+- (id) initWithGame:(Game *)theGame level:(Level *)theLevel gameHud:(GameHud *)theHud humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer {
     self = [super initWithGame:theGame];
     if (self != nil) {
         level = theLevel;
+        hud = theHud;
         turnDelay = [[ResetableLifetime alloc] initWithStart:0 duration:1];
         
         player = hPlayer;
         aiPlayer = theAiPlayer;
         
         playersTurn = YES;
+        waveCounter = 1;
     }
     return self;
 }
@@ -63,7 +65,14 @@
                         [player startTurn];
                     } else {
                         [player endTurn];
-                        [aiPlayer startTurn];
+                        
+                        if ([level.battlefield.enemyEntities count] == 0) {
+                            waveCounter++;
+                            [hud increaseWaveCounterTo:waveCounter];
+                            [aiPlayer startTurnWithNewEntities:YES];
+                        } else {
+                            [aiPlayer startTurn];
+                        }
                     }
                 }
             }
