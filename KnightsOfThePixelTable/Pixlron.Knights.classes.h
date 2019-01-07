@@ -47,8 +47,14 @@
 // Combat
 @class TurnManager;
 
+// Game states
+@class GameState;
+@class Gameplay;
+@class Menu, MainMenu, OptionsMenu;
+@class CamelotMenu;
+
 // Game
-@class KOTPT, Gameplay;
+@class KOTPT;
 
 // Audio
 @class SoundEngine;

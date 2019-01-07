@@ -24,9 +24,11 @@
 @synthesize camera;
 
 - (void) initialize {
-    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
-    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
-    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+//    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
+//    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
+//    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+    
+    camera = [ScreenComponent getCamera];
     
     [super initialize];
 }
@@ -54,8 +56,12 @@
         }
         
         if (image) {
-            [spriteBatch draw:image.texture to:image.position fromRectangle:image.sourceRectangle tintWithColor:image.color
-                     rotation:image.rotation origin:image.origin scale:image.scale effects:SpriteEffectsNone layerDepth:image.layerDepth];
+            if (image.drawToRectangle) {
+                [spriteBatch draw:image.texture toRectangle:image.drawRectangle fromRectangle:image.sourceRectangle tintWithColor:image.color rotation:image.rotation origin:image.origin effects:SpriteEffectsNone layerDepth:image.layerDepth];
+            } else {
+                [spriteBatch draw:image.texture to:image.position fromRectangle:image.sourceRectangle tintWithColor:image.color
+                         rotation:image.rotation origin:image.origin scale:image.scale effects:SpriteEffectsNone layerDepth:image.layerDepth];
+            }
         }
     }
     

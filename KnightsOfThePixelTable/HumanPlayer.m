@@ -26,6 +26,12 @@
 
 @synthesize myTurn;
 
+
+- (void) initialize {
+    [self setCamera:[ScreenComponent getCamera]];
+    [super initialize];
+}
+
 - (void) setCamera:(Matrix *)camera {
     [inverseView release];
     inverseView = [[Matrix invert:camera] retain];

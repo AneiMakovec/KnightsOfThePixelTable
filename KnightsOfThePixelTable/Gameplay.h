@@ -8,26 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "Pixlron.Knights.classes.h"
+#import "GameState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Gameplay : GameComponent {
+@interface Gameplay : GameState {
     //Level *levels[LevelTypes];
+    
     Level *currentLevel;
     GameHud *gameHud;
     HumanPlayer *humanPlayer;
     AIPlayer *aiPlayer;
     PhysicsEngine *physics;
     GameRenderer *renderer;
-    //GUIRenderer *guiRenderer;
     TurnManager *turnManager;
-    
-    //int num_of_dices;
 }
 
 @property (nonatomic, readonly) Level *currentLevel;
-
-- (void) reset;
 
 @end
 

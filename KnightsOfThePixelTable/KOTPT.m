@@ -21,13 +21,59 @@
         // init sound engine
         [SoundEngine initializeWithGame:self];
         
+        // init camera
+        [ScreenComponent initializeWithGame:self screenWidth:[Constants backgroundWidth] screenHeight:[Constants battlefieldHeight] + [Constants hudHeight]];
+        
         // init touch panel helper
         [self.components addComponent:[[[TouchPanelHelper alloc] initWithGame:self] autorelease]];
         
-        // create gameplay and add it to components
-        [self.components addComponent:[[[Gameplay alloc] initWithGame:self] autorelease]];
+        // init state stack
+        stateStack = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void) initialize {
+    // start in main menu
+    MainMenu *mainMenu = [[[MainMenu alloc] initWithGame:self] autorelease];
+    [self pushState:mainMenu];
+    
+    // debug - start in gameplay
+//    Gameplay *gameplay = [[[Gameplay alloc] initWithGame:self] autorelease];
+//    [self pushState:gameplay];
+    
+    // initializa all components
+    [super initialize];
+}
+
+- (void) pushState:(GameState *)gameState {
+    GameState *currentActiveState = [stateStack lastObject];
+    [currentActiveState deactivate];
+    [self.components removeComponent:currentActiveState];
+    
+    [stateStack addObject:gameState];
+    [self.components addComponent:gameState];
+    [gameState activate];
+}
+
+- (void) popState {
+    GameState *currentActiveState = [stateStack lastObject];
+    [stateStack removeLastObject];
+    [currentActiveState deactivate];
+    [self.components removeComponent:currentActiveState];
+    
+    currentActiveState = [stateStack lastObject];
+    [self.components addComponent:currentActiveState];
+    [currentActiveState activate];
+}
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+    [super updateWithGameTime:gameTime];
+}
+
+- (void) drawWithGameTime:(GameTime *)gameTime {
+    [self.graphicsDevice clearWithColor:[Color gray]];
+    [super drawWithGameTime:gameTime];
 }
 
 - (void) dealloc {

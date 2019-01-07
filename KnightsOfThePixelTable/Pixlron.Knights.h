@@ -64,10 +64,16 @@
 // Audio
 #import "SoundEngine.h"
 
+// Game states
+#import "GameState.h"
+#import "Gameplay.h"
+#import "Menu.h"
+#import "MainMenu.h"
+#import "OptionsMenu.h"
+#import "CamelotMenu.h"
 
 // Game
 #import "KOTPT.h"
-#import "Gameplay.h"
 
 
 // Other

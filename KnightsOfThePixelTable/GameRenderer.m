@@ -30,9 +30,11 @@
     // set display camera
     //camera = [ScreenComponent getCamera];
     
-    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
-    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
-    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+//    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
+//    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
+//    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
+    
+    camera = [ScreenComponent getCamera];
     
     // calculate hud offset
     //hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
@@ -249,8 +251,6 @@
  MARK: DRAW
 */
 - (void) drawWithGameTime:(GameTime *)gameTime {
-    [self.graphicsDevice clearWithColor:[Color gray]];
-    
     // begin
     [spriteBatch beginWithSortMode:SpriteSortModeBackToFront BlendState:nil SamplerState:[SamplerState pointClamp]
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];

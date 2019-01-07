@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "Pixlron.Knights.classes.h"
-#import "KOTPTEnums.h"
 
 #import "PixEngine.Control.h"
 
@@ -17,8 +16,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KOTPT : Game {
+    // Graphics device
     GraphicsDeviceManager *graphics;
+    
+    // Game states
+    NSMutableArray *stateStack;
 }
+
+- (void) pushState:(GameState*)gameState;
+- (void) popState;
 
 @end
 

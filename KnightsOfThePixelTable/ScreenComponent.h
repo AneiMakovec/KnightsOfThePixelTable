@@ -15,16 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
     int screenWidth;
     int screenHeight;
     
-    NSMutableDictionary *scales;
+//    NSMutableDictionary *scales;
     Matrix *camera;
-    Rectangle *screenBounds;
+//    Rectangle *screenBounds;
 }
 
 + (void) initializeWithGame:(Game *)game screenWidth:(int)width screenHeight:(int)height;
 
-+ (TextureStretcher *) getScale:(NSString *)scale;
-
-+ (Rectangle *) getScreenBounds;
+//+ (TextureStretcher *) getScale:(NSString *)scale;
+//
+//+ (Rectangle *) getScreenBounds;
 
 + (Matrix *) getCamera;
 
