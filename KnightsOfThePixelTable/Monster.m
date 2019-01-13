@@ -17,11 +17,13 @@
         type = theMonster;
         
         expWorth = 10;
+        
+        isTargeted = NO;
     }
     return self;
 }
 
-@synthesize expWorth, type;
+@synthesize expWorth, type, isTargeted;
 
 
 

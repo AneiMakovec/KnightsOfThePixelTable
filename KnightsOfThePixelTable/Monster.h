@@ -17,10 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Monster : CombatEntity<IExperienceGiver> {
     int expWorth;
     
+    BOOL isTargeted;
+    
     MonsterType type;
 }
 
 @property (nonatomic) MonsterType type;
+@property (nonatomic) BOOL isTargeted;
 
 - (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 

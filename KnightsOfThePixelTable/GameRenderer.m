@@ -283,15 +283,18 @@
                 [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
                 
                 // skill
+                Color *skillColor = [Color white];
                 if (knight.attackType == BasicAttack) {
-                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color white]];
+                    skillColor = [Color white];
                 } else if (knight.attackType == FirstComboAttack) {
-                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color red]];
+                    skillColor = [Color red];
                 } else if (knight.attackType == SecondComboAttack) {
-                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color green]];
+                    skillColor = [Color green];
                 } else if (knight.attackType == ThirdComboAttack) {
-                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:[Color yellow]];
+                    skillColor = [Color yellow];
                 }
+                
+                [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
                 
                 
                 // combo
@@ -309,7 +312,15 @@
         if (monster) {
             // sprite
             Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
+            
+            // color changes if monster is targeted
+            Color *color;
+            if (monster.isTargeted)
+                color = [Color red];
+            else
+                color = [Color white];
+            
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
         }
         
         // check if is dice

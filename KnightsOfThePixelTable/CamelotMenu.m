@@ -23,22 +23,25 @@
     title.verticalAlign = VerticalAlignMiddle;
     [scene addItem:title];
     
+    
     // Buttons
-    toBattle = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 250 y:150 width:200 height:50]
-                                   background:buttonBackground font:retrotype text:@"To Battle"];
-    [scene addItem:toBattle];
+    castle = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:200 y:50 width:200 height:50]
+                                   background:buttonBackground font:retrotype text:@"Castle"];
+    [scene addItem:castle];
     
-    seeStats = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:100 y:100 width:200 height:50]
-                                      background:buttonBackground font:retrotype text:@"See Stats"];
-    [scene addItem:seeStats];
+    commandersPost = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:400 y:150 width:200 height:50]
+                                      background:buttonBackground font:retrotype text:@"Commander's post"];
+    [scene addItem:commandersPost];
     
-    upgradeKnights = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:50 width:250 height:50]
-                                      background:buttonBackground font:retrotype text:@"Upgrade Knights"];
-    [scene addItem:upgradeKnights];
+    barracks = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:650 y:200 width:200 height:50]
+                                            background:buttonBackground font:retrotype text:@"Barracks"];
+    [scene addItem:barracks];
     
-    assembleParty = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 400 y:[Constants battlefieldHeight] width:250 height:50]
-                                      background:buttonBackground font:retrotype text:@"Assemble Party"];
-    [scene addItem:assembleParty];
+    gatehouse = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:400 y:150 width:200 height:50]
+                                            background:buttonBackground font:retrotype text:@"Gatehouse"];
+    [scene addItem:gatehouse];
+    
+    
     
     [scene addItem:back];
 }
@@ -48,9 +51,7 @@
     
     GameState *newState = nil;
     
-    if (toBattle.wasReleased) {
-        newState = [[[Gameplay alloc] initWithGame:self.game] autorelease];
-    }
+    // check for actions
     
     if (newState) {
         [knightsGame pushState:newState];
@@ -60,10 +61,8 @@
 - (void) dealloc {
     [title release];
     
-    [toBattle release];
-    [seeStats release];
-    [upgradeKnights release];
-    [assembleParty release];
+    [castle release];
+    [commandersPost release];
     
     [super dealloc];
 }

@@ -89,14 +89,6 @@
             
             // MARK: check if touched dicepool
             if ([level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
-//                // play sound effect
-//                [SoundEngine play:SoundEffectTypeClick];
-//
-//                // add dices if not already added
-//                if (!level.dicepool.dicesAdded) {
-//                    [level.dicepool addDicesOfType:DiceFrameTypeGood];
-//                }
-                
                 // release the selected dice if still in the dicepool
                 if (selectedDice) {
                     [selectedDice resetPositionToOrigin:NO];
@@ -107,6 +99,14 @@
                 // MARK: check if enemy touched
                 for (Monster *monster in level.battlefield.enemyEntities) {
                     if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
+                        // remove previous target
+                        for (Monster *other in level.battlefield.enemyEntities) {
+                            if (other.isTargeted)
+                                other.isTargeted = NO;
+                        }
+                        
+                        // set new target
+                        monster.isTargeted = YES;
                         target = [monster retain];
                         NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
                         break;
