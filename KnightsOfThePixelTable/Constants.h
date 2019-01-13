@@ -52,6 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) dicepoolUpWall;
 + (int) dicepoolDownWall;
 
++ (DamageType) advantageOfDamageType:(DamageType)type;
++ (DamageType) disadvantageOfDamageType:(DamageType)type;
+
 + (int) lancelotValueOfStat:(StatType)theStat;
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat;
 + (int) lancelotGainMarginOfStat:(StatType)theStat;

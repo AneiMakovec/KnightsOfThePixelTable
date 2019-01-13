@@ -18,19 +18,32 @@ NS_ASSUME_NONNULL_BEGIN
     
     CombatEntity *target;
     
-    ResetableLifetime *delay;
+    // delay for assigning dices
+    ResetableLifetime *diceAssignDelay;
+    
+    // delay for attacking
+    ResetableLifetime *attackPhaseDelay;
+    
+    // delay for attacks
+    ResetableLifetime *attackDelay;
+    CombatPosition attackPosition;
     
     BOOL myTurn;
+    BOOL turnEnded;
+    
+    // AI state
     AIState state;
     
+    // data
     int countDices[StatTypes];
-    float ownEntityTypes[DamageTypes];
     DamageType ownEntityDamageTypes[CombatPositions];
-    
     DamageType opponentEntityDamageTypes[CombatPositions];
-    float opponentEntityTypes[DamageTypes];
-    float opponentEntityThreat[CombatPositions];
+    
+    // assigned dices
+    NSMutableArray *assignedDices;
 }
+
+@property (nonatomic, readonly) BOOL turnEnded;
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
 

@@ -294,7 +294,8 @@
                     skillColor = [Color yellow];
                 }
                 
-                [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
+                if (knight.attackType != NoAttack)
+                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
                 
                 
                 // combo

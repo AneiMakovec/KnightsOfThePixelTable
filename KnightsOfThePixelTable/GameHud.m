@@ -22,6 +22,8 @@
         
         level = theLevel;
         
+        endTurnReleased = NO;
+        
         renderer = [[GUIRenderer alloc] initWithGame:self.game scene:scene];
         renderer.drawOrder = 1;
         [self.game.components addComponent:renderer];
@@ -29,12 +31,15 @@
     return self;
 }
 
-@synthesize scene;
+@synthesize scene, endTurnReleased;
 
 - (void) initialize {
     FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
     SpriteFont *font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
     
+    buttonBackground = [self.game.content load:BACK_BUTTON];
+    
+    // Wave counter
     Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:512 y:20]];
     waveText.color = [Color black];
     waveText.horizontalAlign = HorizontalAlignCenter;
@@ -50,11 +55,14 @@
     [waveCounter setScaleUniform:2.0f];
     [scene addItem:waveCounter];
     
-    resetDices = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:100 height:50] background:nil font:font text:@"Reset dices"];
-    resetDices.labelColor = [Color black];
-    resetDices.labelHoverColor = [Color gray];
-    resetDices.label.horizontalAlign = HorizontalAlignCenter;
+    // Debug - reset dices button
+    resetDices = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] background:buttonBackground font:font text:@"Reset dices"];
     [scene addItem:resetDices];
+    
+    // End turn button
+    endTurn = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
+    [scene addItem:endTurn];
+    
     
     [super initialize];
 }
@@ -74,6 +82,14 @@
         [level.dicepool removeAllDices];
         [level.dicepool addDicesOfType:DiceFrameTypeGood];
     }
+    
+    if (endTurn.wasReleased) {
+        endTurnReleased = YES;
+    }
+}
+
+- (void) resetEndTurnButton {
+    endTurnReleased = NO;
 }
 
 

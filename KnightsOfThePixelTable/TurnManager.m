@@ -16,10 +16,11 @@
     if (self != nil) {
         level = theLevel;
         hud = theHud;
-        turnDelay = [[ResetableLifetime alloc] initWithStart:0 duration:1];
         
         player = hPlayer;
         aiPlayer = theAiPlayer;
+        
+        turnDelay = [[ResetableLifetime alloc] initWithStart:0 duration:2];
         
         playersTurn = YES;
         waveCounter = 1;
@@ -37,48 +38,56 @@
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     
-    // check if turn is over
-    
-    // check if all dices used
-    if ([self checkDices]) {
-//        NSLog(@"No dices!");
-        
-        // check if no entity is ready to attack
-        if ([self checkEntityAttacks]) {
-//            NSLog(@"No attacks!");
+    // check if player's turn is over
+    if (playersTurn) {
+        if (hud.endTurnReleased) {
+            [hud resetEndTurnButton];
             
-            // check if all entities are idle
-            if ([self checkIdleEntities]) {
-//                NSLog(@"All idle!");
+            // check if no entity is ready to attack
+            if ([self checkEntityAttacks]) {
                 
-                [turnDelay updateWithGameTime:gameTime];
+                // check if all entities are idle
+                if ([self checkIdleEntities]) {
+                    
+                    // end player's turn
+                    playersTurn = NO;
+                    
+                    [player endTurn];
+                    
+                    if ([level.battlefield.enemyEntities count] == 0) {
+                        waveCounter++;
+                        [hud increaseWaveCounterTo:waveCounter];
+                        [aiPlayer startTurnWithNewEntities:YES];
+                    } else {
+                        [aiPlayer startTurn];
+                    }
+                }
+            }
+        }
+    // check if ai's turn is over
+    } else {
+        if (aiPlayer.turnEnded) {
+
+            // check if no entity is ready to attack
+            if ([self checkEntityAttacks]) {
                 
-                if (!turnDelay.isAlive) {
-                    [turnDelay reset];
+                // check if all entities are idle
+                if ([self checkIdleEntities]) {
                     
-                    // end turn
-                    playersTurn = !playersTurn;
-                    NSLog(@"Next turn!");
-                    
-                    if (playersTurn) {
+                    [turnDelay updateWithGameTime:gameTime];
+                    if (![turnDelay isAlive]) {
+                        [turnDelay reset];
+                        
+                        // end ai's turn
+                        playersTurn = YES;
+                        
                         [aiPlayer endTurn];
                         [player startTurn];
-                    } else {
-                        [player endTurn];
-                        
-                        if ([level.battlefield.enemyEntities count] == 0) {
-                            waveCounter++;
-                            [hud increaseWaveCounterTo:waveCounter];
-                            [aiPlayer startTurnWithNewEntities:YES];
-                        } else {
-                            [aiPlayer startTurn];
-                        }
                     }
                 }
             }
         }
     }
-    
 }
 
 

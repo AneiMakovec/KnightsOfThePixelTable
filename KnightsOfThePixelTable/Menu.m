@@ -46,9 +46,6 @@
     
     back = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 100 y:20 width:80 height:30]
                                   background:buttonBackground font:retrotype text:@"Back"];
-    back.labelColor = [Color white];
-    back.labelHoverColor = [Color gray];
-    back.label.horizontalAlign = HorizontalAlignCenter;
     
     [super initialize];
 }

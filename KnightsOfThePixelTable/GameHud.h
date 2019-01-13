@@ -21,18 +21,28 @@ NS_ASSUME_NONNULL_BEGIN
     GUIRenderer *renderer;
     Level *level;
     
+    Texture2D *buttonBackground;
+    
     Label *waveCounter;
     Label *currentHpCounters[CombatPositions];
     Label *maxHpCounters[CombatPositions];
     
+    BOOL endTurnReleased;
+    
+    // Debug
     Button *resetDices;
+
+    Button *endTurn;
 }
 
 @property (nonatomic, readonly) id<IScene> scene;
+@property (nonatomic, readonly) BOOL endTurnReleased;
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
 
 - (void) increaseWaveCounterTo:(int)wave;
+
+- (void) resetEndTurnButton;
 
 @end
 

@@ -363,6 +363,42 @@
 }
 
 
+/*
+ MARK: DAMAGE TYPE TYPING
+*/
++ (DamageType) advantageOfDamageType:(DamageType)type {
+    switch (type) {
+        case DamageTypeMelee:
+            return DamageTypeRanged;
+        case DamageTypeRanged:
+            return DamageTypeMagic;
+        case DamageTypeMagic:
+            return DamageTypeMelee;
+            
+        default:
+            break;
+    }
+    
+    return NoDamageType;
+}
+
++ (DamageType) disadvantageOfDamageType:(DamageType)type {
+    switch (type) {
+        case DamageTypeMelee:
+            return DamageTypeMagic;
+        case DamageTypeRanged:
+            return DamageTypeMelee;
+        case DamageTypeMagic:
+            return DamageTypeRanged;
+            
+        default:
+            break;
+    }
+    
+    return NoDamageType;
+}
+
+
 
 
 

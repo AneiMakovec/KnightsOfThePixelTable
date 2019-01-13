@@ -57,6 +57,8 @@
     dicepool = pool;
     [self rememberOrigin];
     
+    [target newDiceComming];
+    
     velocity.x = (target.position.x - position.x);
     velocity.y = (target.position.y - position.y);
     coefficientOfFriction = 0.0f;

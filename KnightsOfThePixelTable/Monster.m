@@ -19,6 +19,8 @@
         expWorth = 10;
         
         isTargeted = NO;
+        
+        dicesComming = 0;
     }
     return self;
 }
@@ -41,6 +43,7 @@
     if (dice) {
         [dice resetTarget];
         [self addComboItem:dice];
+        dicesComming--;
     }
     
     return [super collidingWithItem:item];
@@ -61,6 +64,13 @@
     }
 }
 
+- (BOOL) areDicesComming {
+    return dicesComming > 0;
+}
+
+- (void) newDiceComming {
+    dicesComming++;
+}
 
 - (int) giveExperience {
     // TODO

@@ -46,6 +46,8 @@
 
 - (void) endTurn {
     myTurn = NO;
+    [level.dicepool removeAllDices];
+    [level.dicepool resetDicepool];
 }
 
 

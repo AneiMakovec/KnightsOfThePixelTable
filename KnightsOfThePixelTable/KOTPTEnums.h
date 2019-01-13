@@ -48,7 +48,8 @@ typedef enum {
     DamageTypeMelee,
     DamageTypeRanged,
     DamageTypeMagic,
-    DamageTypes
+    DamageTypes,
+    NoDamageType
 } DamageType;
 
 typedef enum {
@@ -71,10 +72,11 @@ typedef enum {
 
 // MARK: ai
 typedef enum {
-    AIStateScanOwnMetadata,
-    AIStateScanOpponentMetadata,
+    AIStateScanOwnData,
+    AIStateScanOpponentData,
     AIStateScanDices,
     AIStateAssignDices,
+    AIStateWait,
     AIStateAttack,
     AIStates
 } AIState;

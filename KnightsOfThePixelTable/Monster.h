@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     BOOL isTargeted;
     
+    int dicesComming;
+    
     MonsterType type;
 }
 
@@ -28,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
+
+- (BOOL) areDicesComming;
+
+- (void) newDiceComming;
 
 @end
 
