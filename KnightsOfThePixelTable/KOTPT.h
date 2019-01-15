@@ -19,9 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
     // Graphics device
     GraphicsDeviceManager *graphics;
     
+    // Game progress
+    GameProgress *progress;
+    
     // Game states
     NSMutableArray *stateStack;
 }
+
+@property (nonatomic, retain) GameProgress *progress;
 
 - (void) pushState:(GameState*)gameState;
 - (void) popState;

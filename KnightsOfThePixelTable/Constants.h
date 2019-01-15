@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
++ (NSString*) progressFilePath;
+
 + (int) backgroundWidth;
 + (int) battlefieldHeight;
 + (int) hudHeight;
@@ -54,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (DamageType) advantageOfDamageType:(DamageType)type;
 + (DamageType) disadvantageOfDamageType:(DamageType)type;
+
++ (int) requiredExpToLvlUp;
++ (int) expGainNormal;
++ (int) expGainElite;
++ (int) expGainBoss;
 
 + (int) lancelotValueOfStat:(StatType)theStat;
 + (StatGainRate) lancelotGainOfStat:(StatType)theStat;

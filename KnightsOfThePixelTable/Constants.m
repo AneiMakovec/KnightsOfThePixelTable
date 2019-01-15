@@ -11,6 +11,13 @@
 @implementation Constants
 
 /*
+ MARK: PROGRESS FILE PATH
+*/
++ (NSString*) progressFilePath {
+    return @"KOTPTSave";
+}
+
+/*
  MARK: BACKGROUND SIZE
 */
 + (int) backgroundWidth {
@@ -396,6 +403,26 @@
     }
     
     return NoDamageType;
+}
+
+
+/*
+ MARK: EXPERIENCE
+*/
++ (int) requiredExpToLvlUp {
+    return 500;
+}
+
++ (int) expGainNormal {
+    return 100;
+}
+
++ (int) expGainElite {
+    return 500;
+}
+
++ (int) expGainBoss {
+    return 1000;
 }
 
 

@@ -8,10 +8,6 @@
 
 @protocol IUpgradable <NSObject>
 
-@property (nonatomic, readonly) int maxUpgradeLevel;
-@property (nonatomic, readonly) int currentUpgradeLevel;
-@property (nonatomic, readonly) int upgradeMargin;
-
 - (void) upgrade;
 
 @end

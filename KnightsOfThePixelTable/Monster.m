@@ -11,12 +11,11 @@
 
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initMonster:(MonsterType)theMonster expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithEntityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         type = theMonster;
-        
-        expWorth = 10;
+        expType = theExpType;
         
         isTargeted = NO;
         
@@ -25,7 +24,7 @@
     return self;
 }
 
-@synthesize expWorth, type, isTargeted;
+@synthesize type, isTargeted;
 
 
 
@@ -39,6 +38,7 @@
 
 
 - (BOOL) collidingWithItem:(id)item {
+    // check if collision with combo dice
     Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice *)item : nil;
     if (dice) {
         [dice resetTarget];
@@ -46,16 +46,19 @@
         dicesComming--;
     }
     
+    // invoke super method
     return [super collidingWithItem:item];
 }
 
 
 - (BOOL) addComboItem:(Dice *)theItem {
     if ([combo count] < ComboItems) {
+        // add combo item
         ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition];
         [combo addObject:comboSlot];
         [comboSlot release];
         
+        // update attack/skill
         [self updateAttackType];
         
         return YES;
@@ -73,8 +76,17 @@
 }
 
 - (int) giveExperience {
-    // TODO
-    return expWorth;
+    switch (expType) {
+        case ExpTypeNormal:
+            return [Constants expGainNormal];
+        case ExpTypeElite:
+            return [Constants expGainElite];
+        case ExpTypeBoss:
+            return [Constants expGainBoss];
+            
+        default:
+            return 0;
+    }
 }
 
 @end

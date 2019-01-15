@@ -16,6 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
     Label *title;
     
     Button *reset;
+    Button *sound, *music;
+    
+    Texture2D *enabledSoundButtonBackground;
+    Texture2D *disabledSoundButtonBackground;
+    Texture2D *enabledMusicButtonBackground;
+    Texture2D *disabledMusicButtonBackground;
 }
 
 @end

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     int currentLevel;
     int maxLevel;
     int exp;
+    int currentExp;
     
     int maxHpWidth;
     

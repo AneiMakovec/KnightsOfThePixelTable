@@ -46,7 +46,6 @@
     if (!area) {
         if (theSlot != NoCombo) {
             area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:entityPosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:entityPosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
-            //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
         }
     }
 }
@@ -57,7 +56,6 @@
         area.y = [Constants comboAreaYOfAlly:entityPosition atPosition:theSlot];
         area.width = [Constants separateComboAreaSize];
         area.height = [Constants separateComboAreaSize];
-        //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
     }
 }
 

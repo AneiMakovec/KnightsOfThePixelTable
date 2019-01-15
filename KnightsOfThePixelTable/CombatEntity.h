@@ -31,8 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
     BattlePosition *origin;
     
     NSMutableArray *stats;
-    NSMutableArray *attackDamage;
-    NSMutableArray *attackDuration;
+    NSMutableArray *skills;
     NSMutableArray *combo;
     StatType comboAttackTypes[AttackTypes];
     

@@ -27,8 +27,7 @@
         attackType = NoAttack;
         
         stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
-        attackDamage = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
-        attackDuration = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
+        skills = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
     }
     return self;
@@ -114,10 +113,11 @@
 
 
 - (void) dealDamageToTarget {
-    AttackValue *attack = [attackDamage objectAtIndex:attackType];
-    StatValue *stat = [stats objectAtIndex:attack.statUsed];
+    // MARK: TODO - change attack logic
+    Skill *skill = [skills objectAtIndex:attackType];
+    Stat *stat = [stats objectAtIndex:Strength];
     
-    if (attack && stat) {
+    if (skill && stat) {
         //int damage = stat.value;
         int damage = 100;
         [self dealDamageToTarget:target damage:-damage];
@@ -133,17 +133,23 @@
 
 - (Dice *) removeCombo:(ComboItem)theItem {
     if (theItem < [combo count]) {
+        // remember the combo dice
         ComboSlot *comboSlot = [combo objectAtIndex:theItem];
         Dice *dice = [comboSlot.item retain];
         
+        // remove combo item
         [combo removeObject:comboSlot];
         
+        // shift combo items after the removed one to the left
         for (ComboSlot *slot in combo) {
-            [slot changeToSlot:[combo indexOfObject:slot]];
+            ComboItem slotPosition = (ComboItem) [combo indexOfObject:slot];
+            [slot changeToSlot:slotPosition];
         }
         
+        // update attack/skill
         [self updateAttackType];
         
+        // return combo dice
         return dice;
     } else {
         return nil;
@@ -168,11 +174,11 @@
     // update movement
     if (state == EntityStateAttacking) {
         
-        ResetableLifetime *attackTime = [attackDuration objectAtIndex:attackType];
+        Skill *skill = [skills objectAtIndex:attackType];
         
         // wait for attack to end
-        if (attackTime) {
-            if (!attackTime.isAlive) {
+        if (skill) {
+            if (!skill.duration.isAlive) {
                 // and then deal the damage to target and tell it to stop defending
                 [self dealDamageToTarget];
                 [target stopDefending];
@@ -180,7 +186,7 @@
                 target = nil;
                 
                 // then reset the attack lifetime
-                [attackTime reset];
+                [skill.duration reset];
                 
                 // and retreat to idle position
                 state = EntityStateRetreating;
@@ -188,7 +194,7 @@
                 velocity.x = (origin.position.x - position.x) * 2;
                 velocity.y = (origin.position.y - position.y) * 2;
             } else {
-                [attackTime updateWithGameTime:gameTime];
+                [skill.duration updateWithGameTime:gameTime];
             }
         }
     }
@@ -201,6 +207,8 @@
 
 
 - (void) updateAttackType {
+    // MARK: TODO - change checking combo logic
+    
     int mainTypeCount = 0;
     int attackTypeCount = 0;
     
@@ -271,13 +279,16 @@
     return comboAttackTypes[theAttack];
 }
 
+
 - (void) dealloc {
     [entityArea release];
     [origin release];
     
+    if (target)
+        [target release];
+    
     [stats release];
-    [attackDamage release];
-    [attackDuration release];
+    [skills release];
     [combo release];
     
     [super dealloc];

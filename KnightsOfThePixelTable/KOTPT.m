@@ -29,9 +29,14 @@
         
         // init state stack
         stateStack = [[NSMutableArray alloc] init];
+        
+        // load game progress
+        progress = [[GameProgress loadProgress] retain];
     }
     return self;
 }
+
+@synthesize progress;
 
 - (void) initialize {
     // start in main menu

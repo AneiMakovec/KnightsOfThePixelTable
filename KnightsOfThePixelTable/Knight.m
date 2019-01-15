@@ -24,7 +24,7 @@
     return self;
 }
 
-@synthesize maxLevel, currentLevel, exp, type, comboArea, portraitArea, skillArea, hpPoolArea;
+@synthesize maxLevel, currentLevel, exp, currentExp, type, comboArea, portraitArea, skillArea, hpPoolArea;
 
 
 
@@ -35,34 +35,32 @@
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:combatPosition] y:[Constants areaYOfAlly:combatPosition] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
-    //[[ScreenComponent getScale:@"hud"] scaleRectangle:entityArea];
     
     // calc combo area
     comboArea = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:combatPosition] y:[Constants comboAreaYOfAlly:combatPosition] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
-    //[[ScreenComponent getScale:@"hud"] scaleRectangle:comboArea];
     
     // calc hp pool area
     hpPoolArea = [[Rectangle alloc] initWithX:[Constants hpPoolXOfAlly:combatPosition] y:[Constants hpPoolYOfAlly:combatPosition] width:[Constants hpPoolWidth] height:[Constants hpPoolHeight]];
-    //[[ScreenComponent getScale:@"hud"] scaleRectangle:hpPoolArea];
     
     maxHpWidth = hpPoolArea.width;
     
     // calc skill area
     skillArea = [[Rectangle alloc] initWithX:[Constants skillXOfAlly:combatPosition] y:[Constants skillYOfAlly:combatPosition] width:[Constants skillSize] height:[Constants skillSize]];
-    //[[ScreenComponent getScale:@"hud"] scaleRectangle:skillArea];
     
     // calc portrait area
     portraitArea = [[Rectangle alloc] initWithX:[Constants portraitXOfAlly:combatPosition] y:[Constants portraitYOfAlly:combatPosition] width:[Constants portraitSize] height:[Constants portraitSize]];
-    //[[ScreenComponent getScale:@"hud"] scaleRectangle:portraitArea];
 }
 
 
 - (BOOL) addComboItem:(Dice *)theItem {
     if ([combo count] < ComboItems) {
-        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:[combo count]];
+        // add combo item
+        ComboItem slotPosition = (ComboItem) [combo count];
+        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:slotPosition];
         [combo addObject:comboSlot];
         [comboSlot release];
         
+        // update attack/skill
         [self updateAttackType];
         
         return YES;
@@ -73,8 +71,10 @@
 
 - (Dice *) removeComboAtTouchLocation:(Vector2 *)touchLocation {
     for (int i = 0; i < [combo count]; i++) {
+        // check which combo item was selected
         ComboSlot *slot = [combo objectAtIndex:i];
         if ([slot.area containsX:touchLocation.x y:touchLocation.y]) {
+            // and remove it
             return [self removeCombo:i];
         }
     }
@@ -84,15 +84,31 @@
 
 
 - (void) gainExperience:(int)theExp {
-    exp += theExp;
-    
-    // MARK: TODO: calculate if gained enough experiance to level up
-    
+    if (currentLevel < maxLevel) {
+        exp += theExp;
+        currentExp += theExp;
+        
+        // Calculate if gained enough experiance to level up
+        int requiredExp = (currentLevel + 1) * [Constants requiredExpToLvlUp];
+        if (currentExp >= requiredExp) {
+            // reset current exp
+            currentExp = requiredExp - currentExp;
+            
+            // and level up
+            [self levelUp];
+        }
+    }
 }
 
 - (void) levelUp {
     if (currentLevel < maxLevel) {
+        // increase level
         currentLevel++;
+        
+        // upgrade stats
+        for (Stat *stat in stats) {
+            [stat upgrade];
+        }
     }
 }
 

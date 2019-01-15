@@ -19,6 +19,13 @@ typedef enum {
 } MonsterType;
 
 typedef enum {
+    ExpTypeNormal,
+    ExpTypeElite,
+    ExpTypeBoss,
+    ExpTypes
+} ExpType;
+
+typedef enum {
     Strength,
     Agility,
     Intelligence,
@@ -43,6 +50,18 @@ typedef enum {
     AttackTypes,
     NoAttack
 } AttackType;
+
+typedef enum {
+    SkillRangeMelee,
+    SkillRangeRanged,
+    SkillRanges
+} SkillRange;
+
+typedef enum {
+    StatEffectTypeBuff,
+    StatEffectTypeDebuff,
+    StatEffectTypes
+} StatEffectType;
 
 typedef enum {
     DamageTypeMelee,
@@ -122,6 +141,13 @@ typedef enum {
     SoundEffectTypes
 } SoundEffectType;
 
+// MARK: settings
+typedef enum {
+    SettingTypeSound,
+    SettingTypeMusic,
+    SettingTypes
+} SettingType;
+
 // MARK: area textures
 #define AREA_FARMLANDS @"background_farmlands"
 #define AREA_MOUNTAINS @"background_mountains"
@@ -149,3 +175,7 @@ typedef enum {
 // MARK: gui textures
 #define FONT @"font"
 #define BACK_BUTTON @"back_button"
+#define MUSIC_BUTTON_ENABLED @"enabled_music_button"
+#define MUSIC_BUTTON_DISABLED @"disabled_music_button"
+#define SOUND_BUTTON_ENABLED @"enabled_sound_button"
+#define SOUND_BUTTON_DISABLED @"disabled_sound_button"

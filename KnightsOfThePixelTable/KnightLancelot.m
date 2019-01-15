@@ -16,24 +16,19 @@
     self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
-        StatValue *statValue;
+        Stat *stat;
         for (int i = 0; i < StatTypes; i++) {
-            statValue = [[StatValue alloc] initWithValue:[Constants lancelotValueOfStat:i] gainRate:[Constants lancelotGainOfStat:i] upgradeMargin:[Constants lancelotGainMarginOfStat:i]];
-            [stats insertObject:statValue atIndex:i];
-            [statValue release];
+            stat = [[Stat alloc] initWithValue:[Constants lancelotValueOfStat:i] upgradeMargin:[Constants lancelotGainMarginOfStat:i]];
+            [stats insertObject:stat atIndex:i];
+            [stat release];
         }
         
-        // init power and durations of attacks
-        AttackValue *attackValue;
-        ResetableLifetime *attackTime;
+        // init skills
+        Skill *skill;
         for (int i = 0; i < AttackTypes; i++) {
-            attackValue = [[AttackValue alloc] initWithValue:[Constants lancelotPowerOfAttack:i] statUsed:[Constants lancelotStatUsedForAttack:i] gainRate:[Constants lancelotGainOfAttack:i] upgradeMargin:[Constants lancelotGainMarginOfAttack:i]];
-            [attackDamage insertObject:attackValue atIndex:i];
-            [attackValue release];
-            
-            attackTime = [[ResetableLifetime alloc] initWithStart:0 duration:[Constants lancelotDurationOfAttack:i]];
-            [attackDuration insertObject:attackTime atIndex:i];
-            [attackTime release];
+            skill = [[Skill alloc] initWithValue:[Constants lancelotPowerOfAttack:i] duration:[Constants lancelotDurationOfAttack:i] upgradeMargin:[Constants lancelotGainMarginOfAttack:i]];
+            [skills insertObject:skill atIndex:i];
+            [skill release];
         }
         
         for (int i = 0; i < AttackTypes; i++) {

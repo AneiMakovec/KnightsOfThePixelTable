@@ -102,6 +102,11 @@
     }
     
     for (Monster *monster in removedMonsters) {
+        // give experience to allies
+        for (Knight *knight in allyEntities) {
+            [knight gainExperience:[monster giveExperience]];
+        }
+        
         [enemyEntities removeObject:monster];
         [level.scene removeItem:monster];
     }

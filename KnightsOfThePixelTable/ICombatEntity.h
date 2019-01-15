@@ -34,16 +34,12 @@
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
 - (void) attackTarget:(CombatEntity *)theTarget;
+- (void) resetAttack;
+- (void) stopDefending;
 
 - (BOOL) addComboItem:(Dice *)theItem;
-
 - (Dice *) removeCombo:(ComboItem)theItem;
-
-- (void) resetAttack;
-
 - (void) updateAttackType;
-
-- (void) stopDefending;
 
 - (StatType) getAttackValueForAttack:(AttackType)theAttack;
 

@@ -31,7 +31,8 @@
 @protocol ICombatEntity;
 @class CombatEntity;
 @protocol IUpgradable;
-@class StatValue, AttackValue;
+@class Stat, Skill;
+@class StatEffect, Condition;
 @class ComboSlot;
 
 @class Knight, KnightLancelot;
@@ -52,6 +53,9 @@
 @class Gameplay;
 @class Menu, MainMenu, OptionsMenu;
 @class CamelotMenu;
+
+// Game progress
+@class GameProgress;
 
 // Game
 @class KOTPT;

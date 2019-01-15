@@ -34,9 +34,14 @@
 
 #import "ICombatEntity.h"
 #import "CombatEntity.h"
+
 #import "IUpgradable.h"
-#import "StatValue.h"
-#import "AttackValue.h"
+#import "Stat.h"
+#import "Skill.h"
+
+#import "StatEffect.h"
+#import "Condition.h"
+
 #import "ComboSlot.h"
 
 #import "Knight.h"
@@ -71,6 +76,9 @@
 #import "MainMenu.h"
 #import "OptionsMenu.h"
 #import "CamelotMenu.h"
+
+// Game progress
+#import "GameProgress.h"
 
 // Game
 #import "KOTPT.h"
