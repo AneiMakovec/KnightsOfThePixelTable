@@ -31,25 +31,21 @@
     [scene addItem:title];
     
     // Buttons
-    reset = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] width:200 height:50]
+    reset = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] width:200 height:50]
                                   background:buttonBackground font:retrotype text:@"Reset progress"];
     [scene addItem:reset];
     
     if ([knightsGame.progress isSettingEnabled:SettingTypeSound]) {
-        sound = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] + 100 width:50 height:50]
-                                       background:enabledSoundButtonBackground font:retrotype text:@""];
+        sound = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] + 100 width:50 height:50] background:enabledSoundButtonBackground];
     } else {
-        sound = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] + 100 width:50 height:50]
-                                       background:disabledSoundButtonBackground font:retrotype text:@""];
+        sound = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] + 100 width:50 height:50] background:disabledSoundButtonBackground];
     }
     [scene addItem:sound];
     
     if ([knightsGame.progress isSettingEnabled:SettingTypeMusic]) {
-        music = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 + 50 y:[Constants battlefieldHeight] + 100 width:50 height:50]
-                                       background:enabledMusicButtonBackground font:retrotype text:@""];
+        music = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 + 50 y:[Constants battlefieldHeight] + 100 width:50 height:50] background:enabledMusicButtonBackground];
     } else {
-        music = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 + 50 y:[Constants battlefieldHeight] + 100 width:50 height:50]
-                                       background:disabledMusicButtonBackground font:retrotype text:@""];
+        music = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 + 50 y:[Constants battlefieldHeight] + 100 width:50 height:50] background:disabledMusicButtonBackground];
     }
     [scene addItem:music];
     

@@ -24,11 +24,11 @@
     [scene addItem:title];
     
     // Buttons
-    play = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] width:100 height:50]
+    play = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] width:100 height:50]
                                      background:buttonBackground font:retrotype text:@"Play"];
     [scene addItem:play];
     
-    options = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] + 70 width:100 height:50]
+    options = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] + 70 width:100 height:50]
                                      background:buttonBackground font:retrotype text:@"Options"];
     [scene addItem:options];
 }

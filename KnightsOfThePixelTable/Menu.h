@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     SpriteFont *retrotype;
     Texture2D *buttonBackground;
     
-    Button *back;
+    ImageButton *back;
 }
 
 @end

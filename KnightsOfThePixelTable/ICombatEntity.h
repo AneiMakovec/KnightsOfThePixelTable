@@ -32,6 +32,8 @@
 
 @property (nonatomic, readonly) NSMutableArray *combo;
 
+@property (nonatomic, retain) GameHud *hud;
+
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
 - (void) attackTarget:(CombatEntity *)theTarget;

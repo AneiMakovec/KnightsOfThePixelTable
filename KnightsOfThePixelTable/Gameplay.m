@@ -40,8 +40,8 @@
     [self.game.components addComponent:humanPlayer];
     [self.game.components addComponent:aiPlayer];
     [self.game.components addComponent:physics];
-    [self.game.components addComponent:currentLevel];
     [self.game.components addComponent:gameHud];
+    [self.game.components addComponent:currentLevel];
     [self.game.components addComponent:turnManager];
     [self.game.components addComponent:renderer];
 }

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MainMenu : Menu {
     Label *title;
     
-    Button *play, *options;
+    ImageLabelButton *play, *options;
 }
 
 @end

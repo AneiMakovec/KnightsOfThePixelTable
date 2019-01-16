@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CamelotMenu : Menu {
     Label *title;
     
-    Button *castle, *commandersPost, *barracks, *enchantersGuild, *blackSmith, *adventurersYard, *warbandCamp, *gatehouse;
+    ImageLabelButton *castle, *commandersPost, *barracks, *enchantersGuild, *blackSmith, *adventurersYard, *warbandCamp, *gatehouse;
 }
 
 @end

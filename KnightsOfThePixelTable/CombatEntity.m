@@ -12,11 +12,13 @@
 
 @implementation CombatEntity
 
-- (id) initWithEntityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithGameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
         radius = 1;
         maxRadius = theMaxRadius;
+        
+        hud = theHud;
         
         stunned = NO;
         isDead = NO;
@@ -35,7 +37,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo;
+@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -137,7 +139,11 @@
         if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[target getStat:Sturdiness].statValue]) {
             // critical
             damage *= 2;
+            
+            [hud addDamageIndicatorAt:target.position amount:damage isCrit:YES];
             NSLog(@"CRITICAL DAMAGE: %d", damage);
+        } else {
+            [hud addDamageIndicatorAt:target.position amount:damage isCrit:NO];
         }
         
         // first deal damage
@@ -149,6 +155,7 @@
         }
     } else {
         // miss
+        [hud addMissIndicatorAt:target.position];
         NSLog(@"MISS");
     }
 }

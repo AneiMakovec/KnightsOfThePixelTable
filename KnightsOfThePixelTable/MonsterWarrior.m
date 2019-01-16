@@ -12,8 +12,8 @@
 
 @implementation MonsterWarrior
 
-- (id) init {
-    self = [super initMonster:MonsterTypeWarrior expType:ExpTypeNormal entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithGameHud:(GameHud *)hud {
+    self = [super initMonster:MonsterTypeWarrior gameHud:(GameHud*)hud expType:ExpTypeNormal entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {

@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Texture2D *buttonBackground;
     
+    SpriteFont *font;
+    
     Label *waveCounter;
     Label *currentHpCounters[CombatPositions];
     Label *maxHpCounters[CombatPositions];
@@ -30,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL endTurnReleased;
     
     // Debug
-    Button *resetDices;
+    LabelButton *resetDices;
 
-    Button *endTurn;
+    ImageLabelButton *endTurn;
 }
 
 @property (nonatomic, readonly) id<IScene> scene;
@@ -43,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) increaseWaveCounterTo:(int)wave;
 
 - (void) resetEndTurnButton;
+
+- (void) addDamageIndicatorAt:(Vector2*)position amount:(int)amount isCrit:(BOOL)isCrit;
+- (void) addMissIndicatorAt:(Vector2*)position;
 
 @end
 

@@ -34,8 +34,10 @@
 @synthesize scene, endTurnReleased;
 
 - (void) initialize {
+    [level.battlefield setGameHud:self];
+    
     FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
-    SpriteFont *font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
+    font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
     
     buttonBackground = [self.game.content load:BACK_BUTTON];
     
@@ -56,11 +58,11 @@
     [scene addItem:waveCounter];
     
     // Debug - reset dices button
-    resetDices = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] background:buttonBackground font:font text:@"Reset dices"];
+    resetDices = [[LabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] font:font text:@"Reset dices"];
     [scene addItem:resetDices];
     
     // End turn button
-    endTurn = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
+    endTurn = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
     [scene addItem:endTurn];
     
     
@@ -72,9 +74,13 @@
     Matrix *inverseView = [Matrix invert:renderer.camera];
     for (id item in scene) {
         Button *button = [item isKindOfClass:[Button class]] ? item : nil;
-        
         if (button) {
             [button updateWithInverseView:inverseView];
+        }
+        
+        id<ICustomUpdate> update = [item conformsToProtocol:@protocol(ICustomUpdate)] ? item : nil;
+        if (update) {
+            [update updateWithGameTime:gameTime];
         }
     }
     
@@ -90,6 +96,19 @@
 
 - (void) resetEndTurnButton {
     endTurnReleased = NO;
+}
+
+- (void) addDamageIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
+    NSLog(@"Method called");
+    DamageIndicator *indicator = [[DamageIndicator alloc] initWithAmount:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addMissIndicatorAt:(Vector2 *)position {
+    DamageIndicator *indicator = [[DamageIndicator alloc] initMissAtPosition:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    [scene addItem:indicator];
+    [indicator release];
 }
 
 

@@ -44,8 +44,8 @@
     // Buttons
     buttonBackground = [self.game.content load:BACK_BUTTON];
     
-    back = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 100 y:20 width:80 height:30]
-                                  background:buttonBackground font:retrotype text:@"Back"];
+    back = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 100 y:20 width:80 height:30]
+                                  background:buttonBackground];
     
     [super initialize];
 }

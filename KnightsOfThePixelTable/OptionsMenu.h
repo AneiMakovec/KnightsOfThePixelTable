@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OptionsMenu : Menu {
     Label *title;
     
-    Button *reset;
-    Button *sound, *music;
+    ImageLabelButton *reset;
+    ImageButton *sound, *music;
     
     Texture2D *enabledSoundButtonBackground;
     Texture2D *disabledSoundButtonBackground;

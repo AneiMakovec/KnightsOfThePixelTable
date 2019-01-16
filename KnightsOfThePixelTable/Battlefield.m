@@ -19,30 +19,38 @@
         
         allyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         enemyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
-        
-        
-        KnightLancelot *lancelot;
-        MonsterWarrior *monster;
-        for (int i = 0; i < CombatPositions; i++) {
-            // add ally entities
-            lancelot = [[KnightLancelot alloc] init];
-            [lancelot setCombatPosition:i];
-            [allyEntities insertObject:lancelot atIndex:i];
-            [level.scene addItem:lancelot];
-            [lancelot release];
-            
-            // add enemy entities
-            monster = [[MonsterWarrior alloc] init];
-            [monster setCombatPosition:i];
-            [enemyEntities insertObject:monster atIndex:i];
-            [level.scene addItem:monster];
-            [monster release];
-        }
     }
     return self;
 }
 
 @synthesize allyEntities, enemyEntities;
+
+
+- (void) initialize {
+    KnightLancelot *lancelot;
+    MonsterWarrior *monster;
+    for (int i = 0; i < CombatPositions; i++) {
+        // add ally entities
+        lancelot = [[KnightLancelot alloc] initWithGameHud:hud];
+        [lancelot setCombatPosition:i];
+        [allyEntities insertObject:lancelot atIndex:i];
+        [level.scene addItem:lancelot];
+        [lancelot release];
+        
+        // add enemy entities
+        monster = [[MonsterWarrior alloc] initWithGameHud:hud];
+        [monster setCombatPosition:i];
+        [enemyEntities insertObject:monster atIndex:i];
+        [level.scene addItem:monster];
+        [monster release];
+    }
+}
+
+
+- (void) setGameHud:(GameHud *)theHud {
+    NSLog(@"Hud set");
+    hud = theHud;
+}
 
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition {

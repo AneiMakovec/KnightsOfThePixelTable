@@ -12,8 +12,8 @@
 
 @implementation KnightLancelot
 
-- (id) init {
-    self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithGameHud:(GameHud *)hud {
+    self = [super initKnight:KnightTypeLancelot gameHud:(GameHud*)hud entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
