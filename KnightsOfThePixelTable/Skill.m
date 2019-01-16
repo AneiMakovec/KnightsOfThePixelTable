@@ -1,5 +1,5 @@
 //
-//  AttackValue.m
+//  Skill.m
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 19/12/2018.
@@ -12,34 +12,37 @@
 
 @implementation Skill
 
-- (id) initWithValue:(int)theValue range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(int)theMargin {
+- (id) initWithDamage:(float)dmg range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin {
     self = [super init];
     if (self != nil) {
+        damage = dmg;
         upgradeMargin = theMargin;
         
         range = theRange;
         duration = [[ResetableLifetime alloc] initWithStart:0 duration:theDuration];
         
         statEffects = [[NSMutableArray alloc] init];
-        conditions = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-@synthesize range, duration, conditions, statEffects;
+@synthesize damage, range, duration, statEffects;
 
 
 - (void) addStatEffect:(StatEffect *)statEffect {
     [statEffects addObject:statEffect];
 }
 
-- (void) addCondition:(Condition *)condition {
-    [conditions addObject:condition];
-}
-
 
 - (void) upgrade {
     // TODO
+}
+
+- (void) dealloc {
+    [duration release];
+    [statEffects release];
+    
+    [super dealloc];
 }
 
 @end

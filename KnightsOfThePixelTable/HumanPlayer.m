@@ -46,6 +46,10 @@
 
 - (void) endTurn {
     myTurn = NO;
+    if (target) {
+        target.isTargeted = NO;
+        target = nil;
+    }
     [level.dicepool removeAllDices];
     [level.dicepool resetDicepool];
 }
@@ -102,10 +106,7 @@
                 for (Monster *monster in level.battlefield.enemyEntities) {
                     if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
                         // remove previous target
-                        for (Monster *other in level.battlefield.enemyEntities) {
-                            if (other.isTargeted)
-                                other.isTargeted = NO;
-                        }
+                        target.isTargeted = NO;
                         
                         // set new target
                         monster.isTargeted = YES;
@@ -145,7 +146,7 @@
                         if (!selectedDice) {
                             NSLog(@"Touched ally: %d", knight.combatPosition + 1);
                             
-                            if (target && knight.state == EntityStateIdle && !knight.finishedAttacking && knight.attackType != NoAttack) {
+                            if (target && knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
                                 [knight attackTarget:target];
                             }
                             

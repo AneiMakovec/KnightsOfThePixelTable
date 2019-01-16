@@ -39,7 +39,10 @@
 #import "Stat.h"
 #import "Skill.h"
 
+#import "StatEffectFactory.h"
 #import "StatEffect.h"
+#import "Buff.h"
+#import "Debuff.h"
 #import "Condition.h"
 
 #import "ComboSlot.h"

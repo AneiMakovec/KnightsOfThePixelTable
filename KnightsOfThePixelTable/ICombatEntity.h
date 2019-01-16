@@ -19,9 +19,10 @@
 
 @property (nonatomic, readonly) BOOL isDead;
 @property (nonatomic, readonly) BOOL finishedAttacking;
+@property (nonatomic) BOOL isTargeted;
 
 @property (nonatomic, readonly) EntityState state;
-@property (nonatomic, readonly) AttackType attackType;
+@property (nonatomic, readonly) SkillType skillType;
 @property (nonatomic, readonly) StatType entityType;
 @property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic) CombatPosition combatPosition;
@@ -39,9 +40,24 @@
 
 - (BOOL) addComboItem:(Dice *)theItem;
 - (Dice *) removeCombo:(ComboItem)theItem;
-- (void) updateAttackType;
+- (void) updateSkillType;
 
-- (StatType) getAttackValueForAttack:(AttackType)theAttack;
+- (StatType) getAttackValueForAttack:(SkillType)theAttack;
+
+//- (void) addStat:(Stat*)stat type:(StatType)type;
+//- (void) addSkill:(Skill*)skill type:(SkillType)type;
+- (Stat *) getStat:(StatType)type;
+
+- (void) addStatEffect:(StatEffect*)effect;
+- (void) updateStatEffects;
+
+- (void) buffStat:(StatType)type amount:(float)amount;
+- (void) debuffStat:(StatType)type amount:(float)amount;
+- (void) resetStat:(StatType)type;
+
+- (BOOL) isStunned;
+- (void) stun;
+- (void) recoverFromStun;
 
 
 @end

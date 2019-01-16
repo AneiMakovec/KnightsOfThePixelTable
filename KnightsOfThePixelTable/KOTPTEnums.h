@@ -28,7 +28,7 @@ typedef enum {
 typedef enum {
     Strength,
     Agility,
-    Intelligence,
+    Defence,
     Insight,
     Cunning,
     Sturdiness,
@@ -36,20 +36,13 @@ typedef enum {
 } StatType;
 
 typedef enum {
-    StatGainRateSlow,
-    StatGainRateMedium,
-    StatGainRateFast,
-    StatGainRates
-} StatGainRate;
-
-typedef enum {
     BasicAttack,
-    FirstComboAttack,
-    SecondComboAttack,
-    ThirdComboAttack,
-    AttackTypes,
-    NoAttack
-} AttackType;
+    FirstComboSkill,
+    SecondComboSkill,
+    ThirdComboSkill,
+    SkillTypes,
+    NoSkill
+} SkillType;
 
 typedef enum {
     SkillRangeMelee,
@@ -58,10 +51,13 @@ typedef enum {
 } SkillRange;
 
 typedef enum {
-    StatEffectTypeBuff,
-    StatEffectTypeDebuff,
-    StatEffectTypes
-} StatEffectType;
+    ConditionTypeBleed,
+    ConditionTypeBurn,
+    ConditionTypePoison,
+    ConditionTypeFrostbite,
+    ConditionTypeStun,
+    ConditionTypes
+} ConditionType;
 
 typedef enum {
     DamageTypeMelee,

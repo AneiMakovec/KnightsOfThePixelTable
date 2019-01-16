@@ -22,7 +22,6 @@
             area = nil;
         } else {
             area = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:thePosition atPosition:theSlot] y:[Constants comboAreaYOfAlly:thePosition atPosition:theSlot] width:[Constants separateComboAreaSize] height:[Constants separateComboAreaSize]];
-            //[[ScreenComponent getScale:@"hud"] scaleRectangle:area];
         }
     }
     return self;

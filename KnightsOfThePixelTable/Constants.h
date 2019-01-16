@@ -62,14 +62,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) expGainElite;
 + (int) expGainBoss;
 
-+ (int) lancelotValueOfStat:(StatType)theStat;
-+ (StatGainRate) lancelotGainOfStat:(StatType)theStat;
-+ (int) lancelotGainMarginOfStat:(StatType)theStat;
-+ (int) lancelotPowerOfAttack:(AttackType)theAttack;
-+ (StatType) lancelotStatUsedForAttack:(AttackType)theAttack;
-+ (StatGainRate) lancelotGainOfAttack:(AttackType)theAttack;
-+ (int) lancelotGainMarginOfAttack:(AttackType)theAttack;
-+ (NSTimeInterval) lancelotDurationOfAttack:(AttackType)theAttack;
++ (int) lancelotValueOfStat:(StatType)stat;
++ (int) lancelotGainMarginOfStat:(StatType)stat;
++ (float) lancelotDamageOfSkill:(SkillType)skill;
++ (SkillRange) lancelotRangeOfSkill:(SkillType)skill;
++ (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill;
++ (float) lancelotGainMarginOfSkill:(SkillType)skill;
 
 @end
 

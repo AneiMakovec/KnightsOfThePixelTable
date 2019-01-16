@@ -8,23 +8,31 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PixEngine.Scene.Objects.h"
+
+#import "Pixlron.Knights.classes.h"
+
 #import "KOTPTEnums.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface StatEffect : NSObject {
-    StatType statAffected;
-    StatEffectType effectType;
-    int value;
-    
     int duration;
+    
+    BOOL active;
+    
+    CombatEntity *target;
 }
 
-@property (nonatomic, readonly) StatType statAffected;
-@property (nonatomic, readonly) StatEffectType effectType;
-@property (nonatomic, readonly) int value;
+@property (nonatomic, readonly) int duration;
+@property (nonatomic, readonly) BOOL active;
 
-- (id) initWith;
+- (id) initWithDuration:(int)theDuration;
+
+- (void) activateWithTarget:(CombatEntity*)theTarget;
+- (void) deactivate;
+
+- (void) update;
 
 @end
 

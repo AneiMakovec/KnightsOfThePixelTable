@@ -20,20 +20,24 @@ NS_ASSUME_NONNULL_BEGIN
     
     Rectangle *entityArea;
     
+    BOOL stunned;
     BOOL isDead;
     BOOL finishedAttacking;
+    BOOL isTargeted;
     
     StatType entityType;
     EntityState state;
     DamageType damageType;
-    AttackType attackType;
+    SkillType skillType;
     CombatPosition combatPosition;
     BattlePosition *origin;
     
-    NSMutableArray *stats;
-    NSMutableArray *skills;
+    Stat *stats[StatTypes];
+    Skill *skills[SkillTypes];
     NSMutableArray *combo;
-    StatType comboAttackTypes[AttackTypes];
+    StatType comboSkillTypes[SkillTypes];
+    
+    NSMutableArray *statEffects;
     
     CombatEntity *target;
 }

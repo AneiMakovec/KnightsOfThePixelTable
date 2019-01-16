@@ -16,23 +16,22 @@
     self = [super initKnight:KnightTypeLancelot entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
-        Stat *stat;
         for (int i = 0; i < StatTypes; i++) {
-            stat = [[Stat alloc] initWithValue:[Constants lancelotValueOfStat:i] upgradeMargin:[Constants lancelotGainMarginOfStat:i]];
-            [stats insertObject:stat atIndex:i];
-            [stat release];
+            stats[i] = [[Stat alloc] initWithValue:[Constants lancelotValueOfStat:i] upgradeMargin:[Constants lancelotGainMarginOfStat:i]];
         }
         
         // init skills
-        Skill *skill;
-        for (int i = 0; i < AttackTypes; i++) {
-            skill = [[Skill alloc] initWithValue:[Constants lancelotPowerOfAttack:i] duration:[Constants lancelotDurationOfAttack:i] upgradeMargin:[Constants lancelotGainMarginOfAttack:i]];
-            [skills insertObject:skill atIndex:i];
-            [skill release];
+        StatEffect *effect;
+        for (int i = 0; i < SkillTypes; i++) {
+            skills[i] = [[Skill alloc] initWithDamage:[Constants lancelotDamageOfSkill:i] range:[Constants lancelotRangeOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
+            
+            effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1];
+            [skills[i] addStatEffect:effect];
+            [effect release];
         }
         
-        for (int i = 0; i < AttackTypes; i++) {
-            comboAttackTypes[i] = Agility;
+        for (int i = 0; i < SkillTypes; i++) {
+            comboSkillTypes[i] = Agility;
         }
     }
     return self;

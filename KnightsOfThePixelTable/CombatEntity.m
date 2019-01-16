@@ -18,22 +18,24 @@
         radius = 1;
         maxRadius = theMaxRadius;
         
+        stunned = NO;
         isDead = NO;
         finishedAttacking = NO;
+        isTargeted = NO;
         
         entityType = theType;
         state = EntityStateIdle;
         damageType = theDamageType;
-        attackType = NoAttack;
+        skillType = NoSkill;
         
-        stats = [[NSMutableArray alloc] initWithCapacity:StatTypes];
-        skills = [[NSMutableArray alloc] initWithCapacity:AttackTypes];
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
+        
+        statEffects = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, finishedAttacking, entityType, state, damageType, attackType, combatPosition, entityArea, origin, target, combo;
+@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -73,7 +75,7 @@
             // no more attacking this turn
             finishedAttacking = YES;
             state = EntityStateIdle;
-            attackType = NoAttack;
+            skillType = NoSkill;
             [velocity set:[Vector2 zero]];
         }
     }
@@ -102,26 +104,67 @@
         // remove combo items
         [combo removeAllObjects];
         
-        // move towards the target
-        state = EntityStateApproaching;
-        // TODO: change radius to bigger radius
-        radius = 60;
-        velocity.x = (target.position.x - position.x) * 2;
-        velocity.y = (target.position.y - position.y) * 2;
+        // if attacking with melee skill
+        if (skills[skillType].range == SkillRangeMelee) {
+            // move towards the target
+            state = EntityStateApproaching;
+            
+            radius = 60;
+            velocity.x = (target.position.x - position.x) * 2;
+            velocity.y = (target.position.y - position.y) * 2;
+        // or if attacking with ranged skill
+        } else if (skills[skillType].range == SkillRangeRanged) {
+            // attack from origin
+            state = EntityStateAttacking;
+        }
     }
 }
 
 
 - (void) dealDamageToTarget {
-    // MARK: TODO - change attack logic
-    Skill *skill = [skills objectAtIndex:attackType];
-    Stat *stat = [stats objectAtIndex:Strength];
+    NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
     
-    if (skill && stat) {
-        //int damage = stat.value;
-        int damage = 100;
+    // calculate if attack will miss
+    if ([self calcChanceForSuccess:stats[Agility].statValue fail:[target getStat:Insight].statValue]) {
+        // hit
+        NSLog(@"HIT");
+        
+        // calculate damage: damage = strength stat * percentage of skill - target defence
+        int damage = skills[skillType].damage * stats[Strength].statValue; //- [target getStat:Defence].statValue;
+        NSLog(@"DAMAGE: %d", damage);
+        
+        // calculate if damage is critical
+        if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[target getStat:Sturdiness].statValue]) {
+            // critical
+            damage *= 2;
+            NSLog(@"CRITICAL DAMAGE: %d", damage);
+        }
+        
+        // first deal damage
         [self dealDamageToTarget:target damage:-damage];
+        
+        // then apply status effects
+        for (StatEffect *effect in skills[skillType].statEffects) {
+            [target addStatEffect:effect];
+        }
+    } else {
+        // miss
+        NSLog(@"MISS");
     }
+}
+
+
+- (BOOL) calcChanceForSuccess:(int)success fail:(int)fail {
+    int sum = success + fail;
+    float pSuccess = (float)success / (float)sum;
+    
+    int threshold = 100 * pSuccess;
+    int hit = [Random  intLessThan:100];
+    
+    if (hit <= threshold)
+        return YES;
+    else
+        return NO;
 }
 
 
@@ -147,7 +190,7 @@
         }
         
         // update attack/skill
-        [self updateAttackType];
+        [self updateSkillType];
         
         // return combo dice
         return dice;
@@ -174,28 +217,33 @@
     // update movement
     if (state == EntityStateAttacking) {
         
-        Skill *skill = [skills objectAtIndex:attackType];
+        Skill *skill = skills[skillType];
         
         // wait for attack to end
-        if (skill) {
-            if (!skill.duration.isAlive) {
-                // and then deal the damage to target and tell it to stop defending
-                [self dealDamageToTarget];
-                [target stopDefending];
-                [target release];
-                target = nil;
+        if (!skill.duration.isAlive) {
+            // and then deal the damage to target and tell it to stop defending
+            [self dealDamageToTarget];
+            [target stopDefending];
+            [target release];
+            target = nil;
                 
-                // then reset the attack lifetime
-                [skill.duration reset];
-                
+            // then reset the attack lifetime
+            [skill.duration reset];
+            
+            // if attacking with melee skill
+            if (skills[skillType].range == SkillRangeMelee) {
                 // and retreat to idle position
                 state = EntityStateRetreating;
                 radius = 1;
                 velocity.x = (origin.position.x - position.x) * 2;
                 velocity.y = (origin.position.y - position.y) * 2;
-            } else {
-                [skill.duration updateWithGameTime:gameTime];
+            // or if attacking with ranged skill
+            } else if (skills[skillType].range == SkillRangeRanged) {
+                // end attack
+                state = EntityStateIdle;
             }
+        } else {
+            [skill.duration updateWithGameTime:gameTime];
         }
     }
 }
@@ -206,15 +254,15 @@
 }
 
 
-- (void) updateAttackType {
+- (void) updateSkillType {
     // MARK: TODO - change checking combo logic
     
     int mainTypeCount = 0;
-    int attackTypeCount = 0;
+    int skillTypeCount = 0;
     
     switch ([combo count]) {
         case 1:
-            attackType = BasicAttack;
+            skillType = BasicAttack;
             break;
         case 2:
             for (ComboSlot *slot in combo) {
@@ -222,15 +270,15 @@
                     mainTypeCount++;
                 }
                 
-                if (slot.item.type == comboAttackTypes[FirstComboAttack]) {
-                    attackTypeCount++;
+                if (slot.item.type == comboSkillTypes[FirstComboSkill]) {
+                    skillTypeCount++;
                 }
             }
             
-            if (mainTypeCount == 1 && attackTypeCount >= 1) {
-                attackType = FirstComboAttack;
+            if (mainTypeCount == 1 && skillTypeCount >= 1) {
+                skillType = FirstComboSkill;
             } else {
-                attackType = BasicAttack;
+                skillType = BasicAttack;
             }
             break;
         case 3:
@@ -239,15 +287,15 @@
                     mainTypeCount++;
                 }
                 
-                if (slot.item.type == comboAttackTypes[SecondComboAttack]) {
-                    attackTypeCount++;
+                if (slot.item.type == comboSkillTypes[SecondComboSkill]) {
+                    skillTypeCount++;
                 }
             }
             
-            if (mainTypeCount == 2 && attackTypeCount >= 1) {
-                attackType = SecondComboAttack;
+            if (mainTypeCount == 2 && skillTypeCount >= 1) {
+                skillType = SecondComboSkill;
             } else {
-                attackType = BasicAttack;
+                skillType = BasicAttack;
             }
             break;
         case 4:
@@ -256,28 +304,93 @@
                     mainTypeCount++;
                 }
                 
-                if (slot.item.type == comboAttackTypes[ThirdComboAttack]) {
-                    attackTypeCount++;
+                if (slot.item.type == comboSkillTypes[ThirdComboSkill]) {
+                    skillTypeCount++;
                 }
             }
             
-            if (mainTypeCount == 3 && attackTypeCount == 1) {
-                attackType = ThirdComboAttack;
+            if (mainTypeCount == 3 && skillTypeCount == 1) {
+                skillType = ThirdComboSkill;
             } else {
-                attackType = BasicAttack;
+                skillType = BasicAttack;
             }
             break;
             
         default:
-            attackType = NoAttack;
+            skillType = NoSkill;
             break;
     }
 }
 
-- (StatType) getAttackValueForAttack:(AttackType)theAttack {
-    // MARK: TODO: change the attack type to attack value in attack damages
-    return comboAttackTypes[theAttack];
+- (void) updateStatEffects {
+    // update status effects and check if any is disactivated
+    NSMutableArray *deactivated = [[NSMutableArray alloc] init];
+    for (StatEffect *effect in statEffects) {
+        [effect update];
+        if (!effect.active) {
+            [deactivated addObject:effect];
+        }
+    }
+    
+    // if is deactivated remove it
+    for (StatEffect *effect in deactivated) {
+        [statEffects removeObject:effect];
+    }
+    
+    [deactivated release];
 }
+
+- (StatType) getAttackValueForAttack:(SkillType)theAttack {
+    // MARK: TODO: change the attack type to attack value in attack damages
+    return comboSkillTypes[theAttack];
+}
+
+
+//- (void) addStat:(Stat *)stat type:(StatType)type {
+//    [stat retain];
+//    stats[type] = stat;
+//}
+//
+//- (void) addSkill:(Skill *)skill type:(SkillType)type {
+//    [skill retain];
+//    skills[type] = skill;
+//}
+
+- (Stat*) getStat:(StatType)type {
+    return stats[type];
+}
+
+
+- (void) addStatEffect:(StatEffect *)effect {
+    [statEffects addObject:effect];
+    [effect activateWithTarget:self];
+}
+
+- (void) buffStat:(StatType)type amount:(float)amount {
+    [stats[type] increaseByPercentage:amount];
+}
+
+- (void) debuffStat:(StatType)type amount:(float)amount {
+    [stats[type] decreaseByPercentage:amount];
+}
+
+- (void) resetStat:(StatType)type {
+    [stats[type] reset];
+}
+
+
+- (BOOL) isStunned {
+    return stunned;
+}
+
+- (void) stun {
+    stunned = YES;
+}
+
+- (void) recoverFromStun {
+    stunned = NO;
+}
+
 
 
 - (void) dealloc {
@@ -287,8 +400,14 @@
     if (target)
         [target release];
     
-    [stats release];
-    [skills release];
+    for (int i = 0; i < StatTypes; i++) {
+        [stats[i] release];
+    }
+    
+    for (int i = 0; i < SkillTypes; i++) {
+        [skills[i] release];
+    }
+    
     [combo release];
     
     [super dealloc];

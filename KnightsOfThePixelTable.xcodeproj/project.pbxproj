@@ -13,9 +13,12 @@
 		B50F830121ED2A4C000C2A92 /* enabled_music_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B50F82FD21ED2A4C000C2A92 /* enabled_music_button.png */; };
 		B50F830221ED2A4C000C2A92 /* disabled_sound_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B50F82FE21ED2A4C000C2A92 /* disabled_sound_button.png */; };
 		B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F830521ED57E4000C2A92 /* StatEffect.m */; };
-		B50F830921ED5814000C2A92 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F830821ED5814000C2A92 /* Condition.m */; };
 		B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D99E421CDD94E00CE6056 /* ComboSlot.m */; };
 		B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightLancelot.m */; };
+		B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */; };
+		B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4B21EEA69C00B09A55 /* Condition.m */; };
+		B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4E21EEA6A900B09A55 /* Buff.m */; };
+		B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE5121EEA6BD00B09A55 /* Debuff.m */; };
 		B537666721AF36E40098C44C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = B537666621AF36E40098C44C /* Constants.m */; };
 		B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = B537666C21AF62840098C44C /* DicepoolLimit.m */; };
 		B54E88CA21E2B48B0040C888 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88C921E2B48B0040C888 /* GameState.m */; };
@@ -106,12 +109,18 @@
 		B50F82FE21ED2A4C000C2A92 /* disabled_sound_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled_sound_button.png; sourceTree = "<group>"; };
 		B50F830421ED57E4000C2A92 /* StatEffect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatEffect.h; sourceTree = "<group>"; };
 		B50F830521ED57E4000C2A92 /* StatEffect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatEffect.m; sourceTree = "<group>"; };
-		B50F830721ED5814000C2A92 /* Condition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
-		B50F830821ED5814000C2A92 /* Condition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
 		B51D99E321CDD94E00CE6056 /* ComboSlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboSlot.h; sourceTree = "<group>"; };
 		B51D99E421CDD94E00CE6056 /* ComboSlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboSlot.m; sourceTree = "<group>"; };
 		B52192AB21C7260400637BE7 /* KnightLancelot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightLancelot.h; sourceTree = "<group>"; };
 		B52192AC21C7260400637BE7 /* KnightLancelot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightLancelot.m; sourceTree = "<group>"; };
+		B523BE1121EE8B9D00B09A55 /* StatEffectFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatEffectFactory.h; sourceTree = "<group>"; };
+		B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatEffectFactory.m; sourceTree = "<group>"; };
+		B523BE4A21EEA69C00B09A55 /* Condition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
+		B523BE4B21EEA69C00B09A55 /* Condition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
+		B523BE4D21EEA6A900B09A55 /* Buff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Buff.h; sourceTree = "<group>"; };
+		B523BE4E21EEA6A900B09A55 /* Buff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Buff.m; sourceTree = "<group>"; };
+		B523BE5021EEA6BD00B09A55 /* Debuff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debuff.h; sourceTree = "<group>"; };
+		B523BE5121EEA6BD00B09A55 /* Debuff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Debuff.m; sourceTree = "<group>"; };
 		B537666521AF36E40098C44C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B537666621AF36E40098C44C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		B537666B21AF62840098C44C /* DicepoolLimit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DicepoolLimit.h; sourceTree = "<group>"; };
@@ -250,10 +259,11 @@
 		B50F830321ED5278000C2A92 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				B523BE1021EE8B5500B09A55 /* Status effects */,
 				B50F830421ED57E4000C2A92 /* StatEffect.h */,
 				B50F830521ED57E4000C2A92 /* StatEffect.m */,
-				B50F830721ED5814000C2A92 /* Condition.h */,
-				B50F830821ED5814000C2A92 /* Condition.m */,
+				B523BE1121EE8B9D00B09A55 /* StatEffectFactory.h */,
+				B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -311,6 +321,19 @@
 				B52192AC21C7260400637BE7 /* KnightLancelot.m */,
 			);
 			name = Knights;
+			sourceTree = "<group>";
+		};
+		B523BE1021EE8B5500B09A55 /* Status effects */ = {
+			isa = PBXGroup;
+			children = (
+				B523BE4D21EEA6A900B09A55 /* Buff.h */,
+				B523BE4E21EEA6A900B09A55 /* Buff.m */,
+				B523BE5021EEA6BD00B09A55 /* Debuff.h */,
+				B523BE5121EEA6BD00B09A55 /* Debuff.m */,
+				B523BE4A21EEA69C00B09A55 /* Condition.h */,
+				B523BE4B21EEA69C00B09A55 /* Condition.m */,
+			);
+			name = "Status effects";
 			sourceTree = "<group>";
 		};
 		B537665721AEF0130098C44C /* Obstacles */ = {
@@ -912,10 +935,12 @@
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
+				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
+				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
 				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
 				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,
 				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
@@ -923,13 +948,14 @@
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
 				B54E88D621E2E0C20040C888 /* OptionsMenu.m in Sources */,
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
+				B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */,
 				B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */,
 				B54E88D321E2D3760040C888 /* MainMenu.m in Sources */,
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
 				B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
+				B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */,
 				B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */,
-				B50F830921ED5814000C2A92 /* Condition.m in Sources */,
 				B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */,

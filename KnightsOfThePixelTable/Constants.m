@@ -436,13 +436,13 @@
 /*
  MARK: LANCELOT STATS
 */
-+ (int) lancelotValueOfStat:(StatType)theStat {
-    switch (theStat) {
++ (int) lancelotValueOfStat:(StatType)stat {
+    switch (stat) {
         case Strength:
             return 30;
         case Agility:
             return 30;
-        case Intelligence:
+        case Defence:
             return 30;
         case Insight:
             return 30;
@@ -455,32 +455,13 @@
     }
 }
 
-+ (StatGainRate) lancelotGainOfStat:(StatType)theStat {
-    switch (theStat) {
-        case Strength:
-            return StatGainRateFast;
-        case Agility:
-            return StatGainRateFast;
-        case Intelligence:
-            return StatGainRateFast;
-        case Insight:
-            return StatGainRateFast;
-        case Cunning:
-            return StatGainRateFast;
-        case Sturdiness:
-            return StatGainRateFast;
-        default:
-            return -1;
-    }
-}
-
-+ (int) lancelotGainMarginOfStat:(StatType)theStat {
-    switch (theStat) {
++ (int) lancelotGainMarginOfStat:(StatType)stat {
+    switch (stat) {
         case Strength:
             return 4;
         case Agility:
             return 4;
-        case Intelligence:
+        case Defence:
             return 4;
         case Insight:
             return 4;
@@ -493,79 +474,65 @@
     }
 }
 
-+ (int) lancelotPowerOfAttack:(AttackType)theAttack {
-    switch (theAttack) {
++ (float) lancelotDamageOfSkill:(SkillType)skill {
+    switch (skill) {
         case BasicAttack:
-            return 30;
-        case FirstComboAttack:
-            return 30;
-        case SecondComboAttack:
-            return 30;
-        case ThirdComboAttack:
-            return 30;
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
         default:
             return -1;
     }
 }
 
-+ (StatType) lancelotStatUsedForAttack:(AttackType)theAttack {
-    switch (theAttack) {
++ (SkillRange) lancelotRangeOfSkill:(SkillType)skill {
+    switch (skill) {
         case BasicAttack:
-            return Strength;
-        case FirstComboAttack:
-            return Strength;
-        case SecondComboAttack:
-            return Strength;
-        case ThirdComboAttack:
-            return Strength;
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
         default:
             return -1;
     }
 }
 
-+ (StatGainRate) lancelotGainOfAttack:(AttackType)theAttack {
-    switch (theAttack) {
-        case BasicAttack:
-            return StatGainRateMedium;
-        case FirstComboAttack:
-            return StatGainRateMedium;
-        case SecondComboAttack:
-            return StatGainRateMedium;
-        case ThirdComboAttack:
-            return StatGainRateMedium;
-        default:
-            return -1;
-    }
-}
-
-+ (int) lancelotGainMarginOfAttack:(AttackType)theAttack {
-    switch (theAttack) {
++ (float) lancelotGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
         case BasicAttack:
             return 10;
-        case FirstComboAttack:
+        case FirstComboSkill:
             return 10;
-        case SecondComboAttack:
+        case SecondComboSkill:
             return 10;
-        case ThirdComboAttack:
+        case ThirdComboSkill:
             return 10;
         default:
             return -1;
     }
 }
 
-+ (NSTimeInterval) lancelotDurationOfAttack:(AttackType)theAttack {
-    switch (theAttack) {
-        case BasicAttack:
-            return 1;
-        case FirstComboAttack:
-            return 1;
-        case SecondComboAttack:
-            return 1;
-        case ThirdComboAttack:
-            return 1;
-        default:
-            return -1;
-    }
-}
 
 @end

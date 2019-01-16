@@ -1,5 +1,5 @@
 //
-//  Condition.h
+//  Debuff.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 16/01/2019.
@@ -13,15 +13,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Condition : StatEffect {
-    ConditionType type;
-    int dmg;
+@interface Debuff : StatEffect {
+    StatType type;
+    float debuff;
 }
 
-@property (nonatomic, readonly) ConditionType type;
-@property (nonatomic, readonly) int dmg;
+@property (nonatomic, readonly) StatType type;
+@property (nonatomic, readonly) float debuff;
 
-- (id) initWithConditionType:(ConditionType)theType damage:(int)damage duration:(int)duration;
+- (id) initWithStatType:(StatType)theType debuff:(float)theDebuff duration:(int)duration;
 
 @end
 

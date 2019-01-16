@@ -59,6 +59,11 @@
                         [hud increaseWaveCounterTo:waveCounter];
                         [aiPlayer startTurnWithNewEntities:YES];
                     } else {
+                        // update status conditions
+                        for (Monster *monster in level.battlefield.enemyEntities) {
+                            [monster updateStatEffects];
+                        }
+                        
                         [aiPlayer startTurn];
                     }
                 }
@@ -82,6 +87,12 @@
                         playersTurn = YES;
                         
                         [aiPlayer endTurn];
+                        
+                        // update player's status effects
+                        for (Knight *knight in level.battlefield.allyEntities) {
+                            [knight updateStatEffects];
+                        }
+                        
                         [player startTurn];
                     }
                 }
@@ -98,13 +109,13 @@
 - (BOOL) checkEntityAttacks {
     if (playersTurn) {
         for (Knight *knight in level.battlefield.allyEntities) {
-            if (knight.attackType != NoAttack) {
+            if (knight.skillType != NoSkill) {
                 return false;
             }
         }
     } else {
         for (Monster *monster in level.battlefield.enemyEntities) {
-            if (monster.attackType != NoAttack) {
+            if (monster.skillType != NoSkill) {
                 return false;
             }
         }

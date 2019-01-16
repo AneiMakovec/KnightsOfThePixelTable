@@ -53,7 +53,7 @@
 
 
 - (BOOL) addComboItem:(Dice *)theItem {
-    if ([combo count] < ComboItems) {
+    if (!finishedAttacking && [combo count] < ComboItems) {
         // add combo item
         ComboItem slotPosition = (ComboItem) [combo count];
         ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:slotPosition];
@@ -61,7 +61,7 @@
         [comboSlot release];
         
         // update attack/skill
-        [self updateAttackType];
+        [self updateSkillType];
         
         return YES;
     } else {
@@ -106,8 +106,8 @@
         currentLevel++;
         
         // upgrade stats
-        for (Stat *stat in stats) {
-            [stat upgrade];
+        for (int i = 0; i < StatTypes; i++) {
+            [stats[i] upgrade];
         }
     }
 }

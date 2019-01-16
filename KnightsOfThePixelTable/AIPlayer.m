@@ -123,7 +123,7 @@
                 Monster *monster = [level.battlefield getEnemyAtPosition:attackPosition];
                     
                 if (monster) {
-                    if (monster.attackType != NoAttack) {
+                    if (monster.skillType != NoSkill) {
                         [attackDelay updateWithGameTime:gameTime];
                             
                         if (![attackDelay isAlive]) {
@@ -184,20 +184,20 @@
     for (Monster *monster in level.battlefield.enemyEntities) {
         switch (countDices[monster.entityType]) {
             case 1:
-                if (countDices[[monster getAttackValueForAttack:FirstComboAttack]] > 0) {
-                    [self assignToEntity:monster entityDices:1 dicesForAttack:FirstComboAttack numOfAttackDices:1];
+                if (countDices[[monster getAttackValueForAttack:FirstComboSkill]] > 0) {
+                    [self assignToEntity:monster entityDices:1 dicesForAttack:FirstComboSkill numOfAttackDices:1];
                 }
                 break;
             case 2:
-                if (countDices[[monster getAttackValueForAttack:SecondComboAttack]] > 0) {
-                    [self assignToEntity:monster entityDices:2 dicesForAttack:SecondComboAttack numOfAttackDices:1];
+                if (countDices[[monster getAttackValueForAttack:SecondComboSkill]] > 0) {
+                    [self assignToEntity:monster entityDices:2 dicesForAttack:SecondComboSkill numOfAttackDices:1];
                 }
                 break;
                     
             // 3 or more
             default:
-                if (countDices[[monster getAttackValueForAttack:ThirdComboAttack]] > 0) {
-                    [self assignToEntity:monster entityDices:3 dicesForAttack:ThirdComboAttack numOfAttackDices:1];
+                if (countDices[[monster getAttackValueForAttack:ThirdComboSkill]] > 0) {
+                    [self assignToEntity:monster entityDices:3 dicesForAttack:ThirdComboSkill numOfAttackDices:1];
                 }
                 break;
         }
@@ -205,7 +205,7 @@
     
     // second, go trough entities again and assign basic attacks
     for (Monster *monster in level.battlefield.enemyEntities) {
-        if (monster.attackType == NoAttack) {
+        if (monster.skillType == NoSkill) {
             [self assignOneDiceToEntity:monster];
         }
     }
@@ -284,7 +284,7 @@
 //    return bestCounterPos;
 //}
 
-- (void) assignToEntity:(Monster *)theEntity entityDices:(int)entityNum dicesForAttack:(AttackType)theAttack numOfAttackDices:(int)attackNum {
+- (void) assignToEntity:(Monster *)theEntity entityDices:(int)entityNum dicesForAttack:(SkillType)theAttack numOfAttackDices:(int)attackNum {
     if ([level.dicepool.dices count] > 0) {
         int entityCount = 0;
         int attackCount = 0;

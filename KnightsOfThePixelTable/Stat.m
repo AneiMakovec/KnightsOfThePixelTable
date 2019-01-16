@@ -1,5 +1,5 @@
 //
-//  StatValue.m
+//  Stat.m
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 19/12/2018.
@@ -13,26 +13,34 @@
 - (id) initWithValue:(int)theValue upgradeMargin:(int)theMargin {
     self = [super init];
     if (self != nil) {
-        value = theValue;
+        defaultValue = theValue;
+        statValue = theValue;
         upgradeMargin = theMargin;
     }
     return self;
 }
 
-@synthesize value;
+@synthesize statValue;
 
 - (void) increaseByPercentage:(float)amount {
     amount = amount + 1.0f;
-    value *= amount;
+    statValue *= amount;
 }
 
 - (void) decreaseByPercentage:(float)amount {
-    value *= amount;
+    amount = 1.0f - amount;
+    statValue *= amount;
+}
+
+- (void) reset {
+    statValue = defaultValue;
 }
 
 
 - (void) upgrade {
-    value += upgradeMargin;
+    float scale = (float)statValue / (float)defaultValue;
+    defaultValue += upgradeMargin;
+    statValue = defaultValue * scale;
 }
 
 @end

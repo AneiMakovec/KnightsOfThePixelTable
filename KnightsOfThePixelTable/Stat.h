@@ -13,16 +13,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Stat : NSObject<IUpgradable> {
-    int value;
+    int defaultValue;
+    int statValue;
     int upgradeMargin;
 }
 
-@property (nonatomic, readonly) int value;
+@property (nonatomic, readonly) int statValue;
 
 - (id) initWithValue:(int)theValue upgradeMargin:(int)theMargin;
 
 - (void) increaseByPercentage:(float)amount;
 - (void) decreaseByPercentage:(float)amount;
+
+- (void) reset;
 
 @end
 

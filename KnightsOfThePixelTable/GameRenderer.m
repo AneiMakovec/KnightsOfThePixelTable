@@ -99,10 +99,10 @@
     diceSymbols[Insight].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
     diceSymbols[Insight].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[Intelligence] =[[Sprite alloc] init];
-    diceSymbols[Intelligence].texture = diceSymbolTexture;
-    diceSymbols[Intelligence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
-    diceSymbols[Intelligence].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Defence] =[[Sprite alloc] init];
+    diceSymbols[Defence].texture = diceSymbolTexture;
+    diceSymbols[Defence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
+    diceSymbols[Defence].origin = [Vector2 vectorWithX:16 y:16];
     
     diceSymbols[Strength] =[[Sprite alloc] init];
     diceSymbols[Strength].texture = diceSymbolTexture;
@@ -284,17 +284,17 @@
                 
                 // skill
                 Color *skillColor = [Color white];
-                if (knight.attackType == BasicAttack) {
+                if (knight.skillType == BasicAttack) {
                     skillColor = [Color white];
-                } else if (knight.attackType == FirstComboAttack) {
+                } else if (knight.skillType == FirstComboSkill) {
                     skillColor = [Color red];
-                } else if (knight.attackType == SecondComboAttack) {
+                } else if (knight.skillType == SecondComboSkill) {
                     skillColor = [Color green];
-                } else if (knight.attackType == ThirdComboAttack) {
+                } else if (knight.skillType == ThirdComboSkill) {
                     skillColor = [Color yellow];
                 }
                 
-                if (knight.attackType != NoAttack)
+                if (knight.skillType != NoSkill)
                     [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
                 
                 

@@ -30,9 +30,14 @@
 
 @protocol ICombatEntity;
 @class CombatEntity;
+
 @protocol IUpgradable;
 @class Stat, Skill;
-@class StatEffect, Condition;
+
+@class StatEffectFactory;
+@class StatEffect;
+@class Buff, Debuff, Condition;
+
 @class ComboSlot;
 
 @class Knight, KnightLancelot;

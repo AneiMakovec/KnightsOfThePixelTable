@@ -1,5 +1,5 @@
 //
-//  AttackValue.h
+//  Skill.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 19/12/2018.
@@ -16,24 +16,23 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Skill : NSObject<IUpgradable> {
-    int upgradeMargin;
+    float upgradeMargin;
+    float damage;
     
     SkillRange range;
     ResetableLifetime *duration;
     NSMutableArray *statEffects;
-    NSMutableArray *conditions;
 }
 
+@property (nonatomic, readonly) float damage;
 @property (nonatomic, readonly) SkillRange range;
 @property (nonatomic, retain) ResetableLifetime *duration;
 @property (nonatomic, retain) NSMutableArray *statEffects;
-@property (nonatomic, retain) NSMutableArray *conditions;
 
 
-- (id) initWithValue:(int)theValue range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(int)theMargin;
+- (id) initWithDamage:(float)dmg range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin;
 
 - (void) addStatEffect:(StatEffect*)statEffect;
-- (void) addCondition:(Condition*)condition;
 
 @end
 

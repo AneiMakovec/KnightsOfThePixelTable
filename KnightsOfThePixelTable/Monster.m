@@ -16,15 +16,13 @@
     if (self != nil) {
         type = theMonster;
         expType = theExpType;
-        
-        isTargeted = NO;
-        
+
         dicesComming = 0;
     }
     return self;
 }
 
-@synthesize type, isTargeted;
+@synthesize type;
 
 
 
@@ -59,7 +57,7 @@
         [comboSlot release];
         
         // update attack/skill
-        [self updateAttackType];
+        [self updateSkillType];
         
         return YES;
     } else {
