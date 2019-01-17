@@ -15,7 +15,7 @@
 		B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F830521ED57E4000C2A92 /* StatEffect.m */; };
 		B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D99E421CDD94E00CE6056 /* ComboSlot.m */; };
 		B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightLancelot.m */; };
-		B52284D921EFA01E0005B3AC /* DamageIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B52284D821EFA01E0005B3AC /* DamageIndicator.m */; };
+		B52284D921EFA01E0005B3AC /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B52284D821EFA01E0005B3AC /* Indicator.m */; };
 		B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */; };
 		B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4B21EEA69C00B09A55 /* Condition.m */; };
 		B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4E21EEA6A900B09A55 /* Buff.m */; };
@@ -114,8 +114,8 @@
 		B51D99E421CDD94E00CE6056 /* ComboSlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboSlot.m; sourceTree = "<group>"; };
 		B52192AB21C7260400637BE7 /* KnightLancelot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightLancelot.h; sourceTree = "<group>"; };
 		B52192AC21C7260400637BE7 /* KnightLancelot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightLancelot.m; sourceTree = "<group>"; };
-		B52284D721EFA01E0005B3AC /* DamageIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DamageIndicator.h; sourceTree = "<group>"; };
-		B52284D821EFA01E0005B3AC /* DamageIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DamageIndicator.m; sourceTree = "<group>"; };
+		B52284D721EFA01E0005B3AC /* Indicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
+		B52284D821EFA01E0005B3AC /* Indicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Indicator.m; sourceTree = "<group>"; };
 		B523BE1121EE8B9D00B09A55 /* StatEffectFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatEffectFactory.h; sourceTree = "<group>"; };
 		B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatEffectFactory.m; sourceTree = "<group>"; };
 		B523BE4A21EEA69C00B09A55 /* Condition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
@@ -346,8 +346,8 @@
 		B52284D621EFA0080005B3AC /* Indicators */ = {
 			isa = PBXGroup;
 			children = (
-				B52284D721EFA01E0005B3AC /* DamageIndicator.h */,
-				B52284D821EFA01E0005B3AC /* DamageIndicator.m */,
+				B52284D721EFA01E0005B3AC /* Indicator.h */,
+				B52284D821EFA01E0005B3AC /* Indicator.m */,
 			);
 			name = Indicators;
 			sourceTree = "<group>";
@@ -963,7 +963,7 @@
 				B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */,
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
-				B52284D921EFA01E0005B3AC /* DamageIndicator.m in Sources */,
+				B52284D921EFA01E0005B3AC /* Indicator.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
 				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,

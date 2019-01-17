@@ -12,8 +12,8 @@
 
 @implementation MonsterWarrior
 
-- (id) initWithGameHud:(GameHud *)hud {
-    self = [super initMonster:MonsterTypeWarrior gameHud:(GameHud*)hud expType:ExpTypeNormal entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud *)hud {
+    self = [super initMonster:MonsterTypeWarrior battlefield:theBattlefield gameHud:hud expType:ExpTypeNormal entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
@@ -22,7 +22,7 @@
         
         // init skills
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[Skill alloc] initWithDamage:[Constants lancelotDamageOfSkill:i] range:[Constants lancelotRangeOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
+            skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:[Constants lancelotRangeOfSkill:i] target:[Constants lancelotTargetOfSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
         }
         
         for (int i = 0; i < SkillTypes; i++) {

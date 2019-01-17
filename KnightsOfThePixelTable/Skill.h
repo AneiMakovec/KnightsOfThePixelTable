@@ -19,18 +19,22 @@ NS_ASSUME_NONNULL_BEGIN
     float upgradeMargin;
     float damage;
     
+    SkillFunction function;
+    SkillTarget target;
     SkillRange range;
     ResetableLifetime *duration;
     NSMutableArray *statEffects;
 }
 
 @property (nonatomic, readonly) float damage;
+@property (nonatomic, readonly) SkillFunction function;
 @property (nonatomic, readonly) SkillRange range;
+@property (nonatomic, readonly) SkillTarget target;
 @property (nonatomic, retain) ResetableLifetime *duration;
 @property (nonatomic, retain) NSMutableArray *statEffects;
 
 
-- (id) initWithDamage:(float)dmg range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin;
+- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget damage:(float)dmg duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin;
 
 - (void) addStatEffect:(StatEffect*)statEffect;
 

@@ -12,8 +12,8 @@
 
 @implementation KnightLancelot
 
-- (id) initWithGameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypeLancelot gameHud:(GameHud*)hud entityType:Strength health:100 damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud *)hud {
+    self = [super initKnight:KnightTypeLancelot battlefield:theBattlefield gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
@@ -23,7 +23,7 @@
         // init skills
         StatEffect *effect;
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[Skill alloc] initWithDamage:[Constants lancelotDamageOfSkill:i] range:[Constants lancelotRangeOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
+            skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:[Constants lancelotRangeOfSkill:i] target:[Constants lancelotTargetOfSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
             
             effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1];
             [skills[i] addStatEffect:effect];

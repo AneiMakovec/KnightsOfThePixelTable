@@ -12,13 +12,15 @@
 
 @implementation Skill
 
-- (id) initWithDamage:(float)dmg range:(SkillRange)theRange duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin {
+- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget damage:(float)dmg duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin {
     self = [super init];
     if (self != nil) {
         damage = dmg;
         upgradeMargin = theMargin;
         
+        function = theFunction;
         range = theRange;
+        target = theTarget;
         duration = [[ResetableLifetime alloc] initWithStart:0 duration:theDuration];
         
         statEffects = [[NSMutableArray alloc] init];
@@ -26,7 +28,7 @@
     return self;
 }
 
-@synthesize damage, range, duration, statEffects;
+@synthesize damage, function, range, target, duration, statEffects;
 
 
 - (void) addStatEffect:(StatEffect *)statEffect {

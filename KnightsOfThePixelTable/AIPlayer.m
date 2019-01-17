@@ -26,6 +26,10 @@
         diceAssignDelay = [[ResetableLifetime alloc] initWithStart:0 duration:2];
         attackPhaseDelay = [[ResetableLifetime alloc] initWithStart:0 duration:3];
         attackDelay = [[ResetableLifetime alloc] initWithStart:0 duration:0.2f];
+        
+        for (int i = 0; i < CombatPositions; i++) {
+            dicesAssigned[i] = NO;
+        }
     }
     return self;
 }
@@ -60,6 +64,10 @@
     [level.dicepool removeAllDices];
     [level.dicepool resetDicepool];
     [assignedDices removeAllObjects];
+    
+    for (int i = 0; i < CombatPositions; i++) {
+        dicesAssigned[i] = NO;
+    }
 }
 
 
@@ -119,32 +127,33 @@
             
         // attack
         } else if (state == AIStateAttack) {
-            if ([self checkIfCombosSet] && attackPosition < CombatPositions) {
-                Monster *monster = [level.battlefield getEnemyAtPosition:attackPosition];
+            if ([self checkIfCombosSet]) {
+                if (attackPosition < CombatPositions) {
+                    Monster *monster = [level.battlefield getEnemyAtPosition:attackPosition];
                     
-                if (monster) {
-                    if (monster.skillType != NoSkill) {
-                        [attackDelay updateWithGameTime:gameTime];
+                    if (monster) {
+                        if (monster.skillType != NoSkill) {
+                            [attackDelay updateWithGameTime:gameTime];
                             
-                        if (![attackDelay isAlive]) {
-                            [attackDelay reset];
+                            if (![attackDelay isAlive]) {
+                                [attackDelay reset];
+                                
+                                Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                                while (!knight || knight.isDead) {
+                                    knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                                }
                             
-                            Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
-                            while (!knight || knight.isDead) {
-                                knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                                [monster attackTarget:knight ally:NO];
+                                attackPosition++;
                             }
-                        
-                            [monster attackTarget:knight];
-                            attackPosition++;
                         }
+                    } else {
+                        attackPosition++;
                     }
                 } else {
-                    attackPosition++;
+                    NSLog(@"Finished attacking!");
+                    turnEnded = YES;
                 }
-            } else {
-                // End turn
-                NSLog(@"Finished attacking!");
-                turnEnded = YES;
             }
         }
     }
@@ -181,31 +190,43 @@
 
 - (void) assignDices {
     // first check if any combos can be done
-    for (Monster *monster in level.battlefield.enemyEntities) {
-        switch (countDices[monster.entityType]) {
-            case 1:
-                if (countDices[[monster getAttackValueForAttack:FirstComboSkill]] > 0) {
-                    [self assignToEntity:monster entityDices:1 dicesForAttack:FirstComboSkill numOfAttackDices:1];
-                }
-                break;
-            case 2:
-                if (countDices[[monster getAttackValueForAttack:SecondComboSkill]] > 0) {
-                    [self assignToEntity:monster entityDices:2 dicesForAttack:SecondComboSkill numOfAttackDices:1];
-                }
-                break;
+    Monster *monster;
+    for (int i = 0; i < CombatPositions; i++) {
+        monster = [level.battlefield getEnemyAtPosition:i];
+        if (monster) {
+            switch (countDices[monster.entityType]) {
+                case 0:
+                    break;
                     
-            // 3 or more
-            default:
-                if (countDices[[monster getAttackValueForAttack:ThirdComboSkill]] > 0) {
-                    [self assignToEntity:monster entityDices:3 dicesForAttack:ThirdComboSkill numOfAttackDices:1];
-                }
-                break;
+                case 1:
+                    if (countDices[[monster getAttackValueForAttack:FirstComboSkill]] > 0) {
+                        [self assignToEntity:monster entityDices:1 dicesForAttack:FirstComboSkill numOfAttackDices:1];
+                        dicesAssigned[i] = YES;
+                    }
+                    break;
+                    
+                case 2:
+                    if (countDices[[monster getAttackValueForAttack:SecondComboSkill]] > 0) {
+                        [self assignToEntity:monster entityDices:2 dicesForAttack:SecondComboSkill numOfAttackDices:1];
+                        dicesAssigned[i] = YES;
+                    }
+                    break;
+                    
+                // 3 or more
+                default:
+                    if (countDices[[monster getAttackValueForAttack:ThirdComboSkill]] > 0) {
+                        [self assignToEntity:monster entityDices:3 dicesForAttack:ThirdComboSkill numOfAttackDices:1];
+                        dicesAssigned[i] = YES;
+                    }
+                    break;
+            }
         }
     }
     
     // second, go trough entities again and assign basic attacks
-    for (Monster *monster in level.battlefield.enemyEntities) {
-        if (monster.skillType == NoSkill) {
+    for (int i = 0; i < CombatPositions; i++) {
+        monster = [level.battlefield getEnemyAtPosition:i];
+        if (monster && !dicesAssigned[i]) {
             [self assignOneDiceToEntity:monster];
         }
     }

@@ -436,6 +436,10 @@
 /*
  MARK: LANCELOT STATS
 */
++ (int) lancelotHealthPoints {
+    return 100;
+}
+
 + (int) lancelotValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
@@ -474,18 +478,18 @@
     }
 }
 
-+ (float) lancelotDamageOfSkill:(SkillType)skill {
++ (SkillFunction) lancelotFunctionOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
-            return 0.8f;
+            return SkillFunctionDamage;
         case FirstComboSkill:
-            return 0.8f;
+            return SkillFunctionHeal;
         case SecondComboSkill:
-            return 0.8f;
+            return SkillFunctionDamage;
         case ThirdComboSkill:
-            return 0.8f;
+            return SkillFunctionDamage;
         default:
-            return -1;
+            return SkillFunctionDamage;
     }
 }
 
@@ -501,6 +505,36 @@
             return SkillRangeMelee;
         default:
             return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) lancelotTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetFrontRow;
+        case SecondComboSkill:
+            return SkillTargetBackRow;
+        case ThirdComboSkill:
+            return SkillTargetAll;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (float) lancelotDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
     }
 }
 

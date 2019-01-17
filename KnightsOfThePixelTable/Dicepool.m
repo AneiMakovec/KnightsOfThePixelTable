@@ -26,25 +26,28 @@
         dicepoolArea.width = [Constants dicepoolRightWall];
         dicepoolArea.y = [Constants dicepoolUpWall];
         dicepoolArea.height = [Constants dicepoolDownWall];
-        
-        DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:dicepoolArea.x]];
-        [borders addObject:border];
-        
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeX distance:-dicepoolArea.width]];
-        [borders addObject:border];
-        
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:dicepoolArea.y]];
-        [borders addObject:border];
-        
-        border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-dicepoolArea.height]];
-        [borders addObject:border];
-        
-        [border release];
     }
     return self;
 }
 
 @synthesize dices, borders, dicepoolArea, dicesAdded;
+
+
+- (void) initialize {
+    DicepoolLimit *border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveX distance:dicepoolArea.x]];
+    [borders addObject:border];
+    
+    border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeX distance:-dicepoolArea.width]];
+    [borders addObject:border];
+    
+    border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionPositiveY distance:dicepoolArea.y]];
+    [borders addObject:border];
+    
+    border = [[DicepoolLimit alloc] initWithLimit:[AAHalfPlane aaHalfPlaneWithDirection:AxisDirectionNegativeY distance:-dicepoolArea.height]];
+    [borders addObject:border];
+    
+    [border release];
+}
 
 - (void) addDicesOfType:(DiceFrameType)diceType {
     if ([dices count] == 0) {

@@ -105,14 +105,21 @@
                 // MARK: check if enemy touched
                 for (Monster *monster in level.battlefield.enemyEntities) {
                     if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
-                        // remove previous target
-                        target.isTargeted = NO;
-                        
-                        // set new target
-                        monster.isTargeted = YES;
-                        target = [monster retain];
-                        NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
-                        break;
+                        if (monster == target) {
+                            // if touched the same monster remove target
+                            target.isTargeted = NO;
+                            target = nil;
+                            break;
+                        } else {
+                            // remove previous target
+                            target.isTargeted = NO;
+                            
+                            // set new target
+                            monster.isTargeted = YES;
+                            target = [monster retain];
+                            NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
+                            break;
+                        }
                     }
                 }
                 
@@ -146,8 +153,8 @@
                         if (!selectedDice) {
                             NSLog(@"Touched ally: %d", knight.combatPosition + 1);
                             
-                            if (target && knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
-                                [knight attackTarget:target];
+                            if (knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
+                                [knight attackTarget:target ally:YES];
                             }
                             
                             break;

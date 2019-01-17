@@ -19,6 +19,7 @@
         num_of_dices = numDices;
         
         battlefield = [[Battlefield alloc] initWithLevel:self];
+        dicepool = [[Dicepool alloc] initWithLevel:self];
     }
     return self;
 }
@@ -42,7 +43,7 @@
     // add objects to scene
     
     // dicepool objects
-    dicepool = [[Dicepool alloc] initWithLevel:self];
+    [dicepool initialize];
     
     // entities
     [battlefield initialize];

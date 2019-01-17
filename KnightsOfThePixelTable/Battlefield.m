@@ -23,7 +23,7 @@
     return self;
 }
 
-@synthesize allyEntities, enemyEntities;
+@synthesize allyEntities, enemyEntities, enemyFrontRow, enemyBackRow, allyFrontRow, allyBackRow;
 
 
 - (void) initialize {
@@ -31,19 +31,47 @@
     MonsterWarrior *monster;
     for (int i = 0; i < CombatPositions; i++) {
         // add ally entities
-        lancelot = [[KnightLancelot alloc] initWithGameHud:hud];
+        lancelot = [[KnightLancelot alloc] initWithBattlefield:self gameHud:hud];
         [lancelot setCombatPosition:i];
         [allyEntities insertObject:lancelot atIndex:i];
         [level.scene addItem:lancelot];
         [lancelot release];
         
         // add enemy entities
-        monster = [[MonsterWarrior alloc] initWithGameHud:hud];
+        monster = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
         [monster setCombatPosition:i];
         [enemyEntities insertObject:monster atIndex:i];
         [level.scene addItem:monster];
         [monster release];
     }
+    
+    // calculate row attack positions
+    Monster *firstEnemy = [enemyEntities objectAtIndex:FirstCombatPosition];
+    Monster *secondEnemy = [enemyEntities objectAtIndex:SecondCombatPosition];
+    Monster *thirdEnemy = [enemyEntities objectAtIndex:ThirdCombatPosition];
+    Monster *fourthEnemy = [enemyEntities objectAtIndex:FourthCombatPosition];
+    
+    int x = secondEnemy.position.x - 56;
+    int y = firstEnemy.position.y + ((secondEnemy.position.y - firstEnemy.position.y) / 2);
+    enemyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+    
+    x = fourthEnemy.position.x - 56;
+    y = thirdEnemy.position.y + ((fourthEnemy.position.y - thirdEnemy.position.y) / 2);
+    enemyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+    
+    
+    Knight *firstAlly = [allyEntities objectAtIndex:FirstCombatPosition];
+    Knight *secondAlly = [allyEntities objectAtIndex:SecondCombatPosition];
+    Knight *thirdAlly = [allyEntities objectAtIndex:ThirdCombatPosition];
+    Knight *fourthAlly = [allyEntities objectAtIndex:FourthCombatPosition];
+    
+    x = secondAlly.position.x + 56;
+    y = firstAlly.position.y + ((secondAlly.position.y - firstAlly.position.y) / 2);
+    allyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+    
+    x = fourthAlly.position.x + 56;
+    y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
+    allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
 }
 
 
@@ -61,7 +89,7 @@
     }
 }
 
-- (BOOL) containsAlly:(Knight *)theAlly {
+- (BOOL) containsAlly:(CombatEntity *)theAlly {
     return [allyEntities containsObject:theAlly];
 }
 
@@ -73,7 +101,7 @@
     }
 }
 
-- (BOOL) containsEnemy:(Monster *)theEnemy {
+- (BOOL) containsEnemy:(CombatEntity *)theEnemy {
     return [enemyEntities containsObject:theEnemy];
 }
 
@@ -110,9 +138,13 @@
     }
     
     for (Monster *monster in removedMonsters) {
+
         // give experience to allies
         for (Knight *knight in allyEntities) {
             [knight gainExperience:[monster giveExperience]];
+            
+            // add exp gain indicator
+            [hud addExpIndicatorAt:knight.origin.position amount:monster.giveExperience];
         }
         
         [enemyEntities removeObject:monster];

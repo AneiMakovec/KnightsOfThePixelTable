@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KnightLancelot : Knight
 
-- (id) initWithGameHud:(GameHud*)hud;
+- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)hud;
 
 @end
 

@@ -18,7 +18,7 @@
 // HUD
 #import "GameHud.h"
 
-#import "DamageIndicator.h"
+#import "Indicator.h"
 
 
 // Physics

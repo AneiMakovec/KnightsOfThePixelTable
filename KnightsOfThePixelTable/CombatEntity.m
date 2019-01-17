@@ -12,13 +12,14 @@
 
 @implementation CombatEntity
 
-- (id) initWithGameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
         radius = 1;
         maxRadius = theMaxRadius;
         
         hud = theHud;
+        battlefield = theBattlefield;
         
         stunned = NO;
         isDead = NO;
@@ -33,6 +34,7 @@
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
         
         statEffects = [[NSMutableArray alloc] init];
+        targets = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -63,8 +65,8 @@
     
     // wait for collision with target
     if (state == EntityStateApproaching) {
-        Entity *entity = [item isKindOfClass:[Entity class]] ? (Entity *)item : nil;
-        if (entity && entity == target) {
+        BattlePosition *end = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
+        if (end && end == target) {
             state = EntityStateAttacking;
             [velocity set:[Vector2 zero]];
         }
@@ -98,13 +100,84 @@
 
 
 
-- (void) attackTarget:(CombatEntity *)theTarget {
-    if (!finishedAttacking) {
-        // remember target
-        target = [theTarget retain];
-        
+- (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly {
+    if (!stunned && !finishedAttacking) {
         // remove combo items
         [combo removeAllObjects];
+
+        // check if its healing skill
+        if (skills[skillType].function == SkillFunctionHeal)
+            isAlly = !isAlly;
+        
+        // check skill targeting
+        switch (skills[skillType].target) {
+            case SkillTargetSingle:
+                // single target
+                if (!theTarget) {
+                    CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
+                    target = [entity.origin retain];
+                    [targets addObject:entity];
+                } else {
+                    target = [theTarget.origin retain];
+                    [targets addObject:theTarget];
+                }
+                break;
+                
+            case SkillTargetFrontRow:
+                // front row
+                if (isAlly) {
+                    target = battlefield.enemyFrontRow;
+                    [targets addObject:[battlefield getEnemyAtPosition:FirstCombatPosition]];
+                    [targets addObject:[battlefield getEnemyAtPosition:SecondCombatPosition]];
+                } else {
+                    target = battlefield.allyFrontRow;
+                    [targets addObject:[battlefield getAllyAtPosition:FirstCombatPosition]];
+                    [targets addObject:[battlefield getAllyAtPosition:SecondCombatPosition]];
+                }
+                break;
+                
+            case SkillTargetBackRow:
+                // back row
+                if (isAlly) {
+                    target = battlefield.enemyBackRow;
+                    [targets addObject:[battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                    [targets addObject:[battlefield getEnemyAtPosition:FourthCombatPosition]];
+                } else {
+                    target = battlefield.allyBackRow;
+                    [targets addObject:[battlefield getAllyAtPosition:ThirdCombatPosition]];
+                    [targets addObject:[battlefield getAllyAtPosition:FourthCombatPosition]];
+                }
+                break;
+                
+            case SkillTargetAll:
+                // all
+                if (isAlly) {
+                    target = battlefield.enemyFrontRow;
+                    [targets addObject:[battlefield getEnemyAtPosition:FirstCombatPosition]];
+                    [targets addObject:[battlefield getEnemyAtPosition:SecondCombatPosition]];
+                    [targets addObject:[battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                    [targets addObject:[battlefield getEnemyAtPosition:FourthCombatPosition]];
+                } else {
+                    target = battlefield.allyFrontRow;
+                    [targets addObject:[battlefield getAllyAtPosition:FirstCombatPosition]];
+                    [targets addObject:[battlefield getAllyAtPosition:SecondCombatPosition]];
+                    [targets addObject:[battlefield getAllyAtPosition:ThirdCombatPosition]];
+                    [targets addObject:[battlefield getAllyAtPosition:FourthCombatPosition]];
+                }
+                break;
+                
+            default:
+                // single target
+                if (!theTarget) {
+                    CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
+                    target = [entity.origin retain];
+                    [targets addObject:entity];
+                } else {
+                    target = [theTarget.origin retain];
+                    [targets addObject:theTarget];
+                }
+                break;
+        }
         
         // if attacking with melee skill
         if (skills[skillType].range == SkillRangeMelee) {
@@ -123,11 +196,11 @@
 }
 
 
-- (void) dealDamageToTarget {
+- (void) dealDamageToTarget:(CombatEntity *)theTarget {
     NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
     
     // calculate if attack will miss
-    if ([self calcChanceForSuccess:stats[Agility].statValue fail:[target getStat:Insight].statValue]) {
+    if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Insight].statValue]) {
         // hit
         NSLog(@"HIT");
         
@@ -135,28 +208,61 @@
         int damage = skills[skillType].damage * stats[Strength].statValue; //- [target getStat:Defence].statValue;
         NSLog(@"DAMAGE: %d", damage);
         
+        BOOL criticalHit;
         // calculate if damage is critical
-        if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[target getStat:Sturdiness].statValue]) {
+        if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
             // critical
             damage *= 2;
             
-            [hud addDamageIndicatorAt:target.position amount:damage isCrit:YES];
+            criticalHit = YES;
             NSLog(@"CRITICAL DAMAGE: %d", damage);
         } else {
-            [hud addDamageIndicatorAt:target.position amount:damage isCrit:NO];
+            criticalHit = NO;
         }
         
         // first deal damage
-        [self dealDamageToTarget:target damage:-damage];
+        [self dealDamageToTarget:theTarget damage:damage];
+        
+        // add damage indicator
+        [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
         
         // then apply status effects
         for (StatEffect *effect in skills[skillType].statEffects) {
-            [target addStatEffect:effect];
+            [theTarget addStatEffect:effect];
         }
     } else {
         // miss
-        [hud addMissIndicatorAt:target.position];
+        [hud addMissIndicatorAt:theTarget.position];
         NSLog(@"MISS");
+    }
+}
+
+- (void) healTarget:(CombatEntity *)theTarget {
+    // calculate heal: heal = strength stat * percentage of skill - target defence
+    int healAmount = skills[skillType].damage * stats[Strength].statValue; //- [target getStat:Defence].statValue;
+    NSLog(@"HEALING: %d", healAmount);
+        
+    BOOL criticalHit;
+    // calculate if heal is critical
+    if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
+        // critical
+        healAmount *= 2;
+            
+        criticalHit = YES;
+        NSLog(@"CRITICAL HEAL: %d", healAmount);
+    } else {
+        criticalHit = NO;
+    }
+        
+    // first heal
+    [self healTarget:theTarget amount:healAmount];
+        
+    // add hela indicator
+    [hud addHealIndicatorAt:theTarget.position amount:healAmount isCrit:criticalHit];
+    
+    // then apply status effects
+    for (StatEffect *effect in skills[skillType].statEffects) {
+        [theTarget addStatEffect:effect];
     }
 }
 
@@ -172,6 +278,23 @@
         return YES;
     else
         return NO;
+}
+
+- (CombatEntity *) getRandomTargetForAlly:(BOOL)isAlly {
+    CombatEntity *entity;
+    if (isAlly) {
+        entity = [battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
+        while (!entity) {
+            entity = [battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
+        }
+    } else {
+        entity = [battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+        while (!entity) {
+            entity = [battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+        }
+    }
+    
+    return entity;
 }
 
 
@@ -228,11 +351,21 @@
         
         // wait for attack to end
         if (!skill.duration.isAlive) {
-            // and then deal the damage to target and tell it to stop defending
-            [self dealDamageToTarget];
-            [target stopDefending];
+            // and then deal the damage to targets and tell them to stop defending
+            for (CombatEntity *entity in targets) {
+                // check if skill heals
+                if (skill.function == SkillFunctionHeal) {
+                    [self healTarget:entity];
+                } else if (skill.function == SkillFunctionDamage) {
+                    [self dealDamageToTarget:entity];
+                    [entity stopDefending];
+                }
+            }
+            
+            // release targets
             [target release];
             target = nil;
+            [targets removeAllObjects];
                 
             // then reset the attack lifetime
             [skill.duration reset];
@@ -416,6 +549,7 @@
     }
     
     [combo release];
+    [targets release];
     
     [super dealloc];
 }

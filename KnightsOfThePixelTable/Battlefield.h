@@ -23,10 +23,19 @@ NS_ASSUME_NONNULL_BEGIN
     // entity data
     NSMutableArray *allyEntities;
     NSMutableArray *enemyEntities;
+    
+    BattlePosition *enemyFrontRow;
+    BattlePosition *enemyBackRow;
+    BattlePosition *allyFrontRow;
+    BattlePosition *allyBackRow;
 }
 
 @property (nonatomic, retain) NSMutableArray *allyEntities;
 @property (nonatomic, retain) NSMutableArray *enemyEntities;
+@property (nonatomic, retain) BattlePosition *enemyFrontRow;
+@property (nonatomic, retain) BattlePosition *enemyBackRow;
+@property (nonatomic, retain) BattlePosition *allyFrontRow;
+@property (nonatomic, retain) BattlePosition *allyBackRow;
 
 
 - (id) initWithLevel:(Level *)theLevel;
@@ -37,11 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition;
 
-- (BOOL) containsAlly:(Knight *)theAlly;
+- (BOOL) containsAlly:(CombatEntity *)theAlly;
 
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition;
 
-- (BOOL) containsEnemy:(Monster *)theEnemy;
+- (BOOL) containsEnemy:(CombatEntity *)theEnemy;
 
 - (void) newWave;
 

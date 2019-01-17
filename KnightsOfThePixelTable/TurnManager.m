@@ -62,6 +62,7 @@
                         // update status conditions
                         for (Monster *monster in level.battlefield.enemyEntities) {
                             [monster updateStatEffects];
+                            [monster resetAttack];
                         }
                         
                         [aiPlayer startTurn];
@@ -88,9 +89,10 @@
                         
                         [aiPlayer endTurn];
                         
-                        // update player's status effects
+                        // update player's status effects and reset attack
                         for (Knight *knight in level.battlefield.allyEntities) {
                             [knight updateStatEffects];
+                            [knight resetAttack];
                         }
                         
                         [player startTurn];

@@ -99,14 +99,31 @@
 }
 
 - (void) addDamageIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
-    NSLog(@"Method called");
-    DamageIndicator *indicator = [[DamageIndicator alloc] initWithAmount:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
+    Indicator *indicator = [[Indicator alloc] initWithDamage:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addHealIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
+    Indicator *indicator = [[Indicator alloc] initWithHeal:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
     [scene addItem:indicator];
     [indicator release];
 }
 
 - (void) addMissIndicatorAt:(Vector2 *)position {
-    DamageIndicator *indicator = [[DamageIndicator alloc] initMissAtPosition:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    Indicator *indicator = [[Indicator alloc] initMissAtPosition:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addExpIndicatorAt:(Vector2 *)position amount:(int)amount {
+    Indicator *indicator = [[Indicator alloc] initWithExp:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addGoldIndicatorAt:(Vector2 *)position amount:(int)amount {
+    Indicator *indicator = [[Indicator alloc] initWithGold:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
     [scene addItem:indicator];
     [indicator release];
 }

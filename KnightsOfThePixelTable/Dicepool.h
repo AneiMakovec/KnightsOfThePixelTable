@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithLevel:(Level *)theLevel;
 
+- (void) initialize;
+
 - (void) addDicesOfType:(DiceFrameType)diceType;
 
 - (void) removeAllDices;

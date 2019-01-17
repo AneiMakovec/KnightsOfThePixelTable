@@ -51,6 +51,20 @@ typedef enum {
 } SkillRange;
 
 typedef enum {
+    SkillTargetSingle,
+    SkillTargetFrontRow,
+    SkillTargetBackRow,
+    SkillTargetAll,
+    SkillTargets
+} SkillTarget;
+
+typedef enum {
+    SkillFunctionDamage,
+    SkillFunctionHeal,
+    SkillFunctions
+} SkillFunction;
+
+typedef enum {
     ConditionTypeBleed,
     ConditionTypeBurn,
     ConditionTypePoison,

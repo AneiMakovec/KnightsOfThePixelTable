@@ -39,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
     DamageType ownEntityDamageTypes[CombatPositions];
     DamageType opponentEntityDamageTypes[CombatPositions];
     
+    // already assigned dices to entities
+    BOOL dicesAssigned[CombatPositions];
+    
     // assigned dices
     NSMutableArray *assignedDices;
 }
