@@ -19,6 +19,7 @@
 #import "GameHud.h"
 
 #import "Indicator.h"
+#import "AnimatedIndicator.h"
 
 
 // Physics

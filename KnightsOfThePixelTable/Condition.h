@@ -15,13 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Condition : StatEffect {
     ConditionType type;
-    int dmg;
+    float dmg;
 }
 
 @property (nonatomic, readonly) ConditionType type;
-@property (nonatomic, readonly) int dmg;
+@property (nonatomic, readonly) float dmg;
 
-- (id) initWithConditionType:(ConditionType)theType damage:(int)damage duration:(int)duration;
+- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance;
 
 @end
 

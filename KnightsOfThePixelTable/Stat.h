@@ -8,24 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+#import "KOTPTEnums.h"
 #import "IUpgradable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Stat : NSObject<IUpgradable> {
+    int maxValue;
     int defaultValue;
     int statValue;
-    int upgradeMargin;
+    StatUpgrade upgradeMargin;
+    
+    NSMutableArray *changeStack;
 }
 
 @property (nonatomic, readonly) int statValue;
 
-- (id) initWithValue:(int)theValue upgradeMargin:(int)theMargin;
+- (id) initWithValue:(int)theValue upgradeMargin:(StatUpgrade)theMargin;
 
 - (void) increaseByPercentage:(float)amount;
 - (void) decreaseByPercentage:(float)amount;
 
 - (void) reset;
+- (void) resetAll;
 
 @end
 

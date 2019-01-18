@@ -31,6 +31,7 @@
 @property (nonatomic, readonly) BattlePosition *target;
 
 @property (nonatomic, readonly) NSMutableArray *combo;
+@property (nonatomic, retain) NSMutableArray *statEffects;
 
 @property (nonatomic, retain) GameHud *hud;
 
@@ -60,6 +61,8 @@
 - (BOOL) isStunned;
 - (void) stun;
 - (void) recoverFromStun;
+
+- (BOOL) isOnlyStunnEffect:(Condition*)condition;
 
 
 @end

@@ -12,16 +12,22 @@
 
 @implementation StatEffect
 
-- (id) initWithDuration:(int)theDuration {
+- (id) initWithDuration:(int)theDuration chance:(int)theChance {
     self = [super init];
     if (self != nil) {
+        if (theChance > 100) {
+            chance = theChance % 100;
+        } else {
+            chance = theChance;
+        }
+        
         duration = theDuration;
         active = NO;
     }
     return self;
 }
 
-@synthesize duration, active;
+@synthesize duration, active, chance;
 
 
 - (void) activateWithTarget:(CombatEntity *)theTarget {
@@ -33,6 +39,14 @@
     active = NO;
 }
 
+
+- (void) increaseDuration {
+    duration++;
+}
+
+- (void) decreaseDuration {
+    duration--;
+}
 
 
 - (void) update {

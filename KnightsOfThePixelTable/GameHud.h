@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) resetEndTurnButton;
 
 - (void) addDamageIndicatorAt:(Vector2*)position amount:(int)amount isCrit:(BOOL)isCrit;
-- (void) addHealIndicatorAt:(Vector2*)position amount:(int)amount isCrit:(BOOL)isCrit;
+- (void) addHealIndicatorAt:(Vector2*)position amount:(int)amount;
 - (void) addMissIndicatorAt:(Vector2*)position;
 - (void) addExpIndicatorAt:(Vector2*)position amount:(int)amount;
 - (void) addGoldIndicatorAt:(Vector2*)position amount:(int)amount;

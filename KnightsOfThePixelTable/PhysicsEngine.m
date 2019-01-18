@@ -58,7 +58,7 @@
         // movement for combat entities
         CombatEntity *cEntity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *) item : nil;
         if (cEntity) {
-            if (cEntity.state == EntityStateApproaching || cEntity.state == EntityStateRetreating) {
+            if (cEntity.state == EntityStateApproaching || cEntity.state == EntityStateRetreating || cEntity.state == EntityStateStart) {
                 [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
             }
         }
@@ -95,7 +95,7 @@
             if (cEntity.state == EntityStateApproaching) {
                 // collision with target
                 [Collision collisionBetween:cEntity and:cEntity.target];
-            } else if (cEntity.state == EntityStateRetreating) {
+            } else if (cEntity.state == EntityStateRetreating || cEntity.state == EntityStateStart) {
                 // collision with origin
                 [Collision collisionBetween:cEntity and:cEntity.origin];
             }

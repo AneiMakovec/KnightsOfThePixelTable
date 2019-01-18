@@ -28,7 +28,6 @@
 
 - (void) initialize {
     KnightLancelot *lancelot;
-    MonsterWarrior *monster;
     for (int i = 0; i < CombatPositions; i++) {
         // add ally entities
         lancelot = [[KnightLancelot alloc] initWithBattlefield:self gameHud:hud];
@@ -36,14 +35,10 @@
         [allyEntities insertObject:lancelot atIndex:i];
         [level.scene addItem:lancelot];
         [lancelot release];
-        
-        // add enemy entities
-        monster = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
-        [monster setCombatPosition:i];
-        [enemyEntities insertObject:monster atIndex:i];
-        [level.scene addItem:monster];
-        [monster release];
     }
+    
+    // add enemy entities
+    [self newWave];
     
     // calculate row attack positions
     Monster *firstEnemy = [enemyEntities objectAtIndex:FirstCombatPosition];
@@ -159,11 +154,25 @@
     for (int i = 0; i < CombatPositions; i++) {
         
         // add enemy entities
-        monster = [[MonsterWarrior alloc] init];
+        monster = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
         [monster setCombatPosition:i];
         [enemyEntities insertObject:monster atIndex:i];
         [level.scene addItem:monster];
         [monster release];
+    }
+}
+
+- (BOOL) hasAnyEnemyForAlly:(BOOL)isAlly {
+    if (isAlly) {
+        if ([enemyEntities count] > 0)
+            return YES;
+        else
+            return NO;
+    } else {
+        if ([allyEntities count] > 0)
+            return YES;
+        else
+            return NO;
     }
 }
 

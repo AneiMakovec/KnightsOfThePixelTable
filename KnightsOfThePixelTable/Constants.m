@@ -437,7 +437,7 @@
  MARK: LANCELOT STATS
 */
 + (int) lancelotHealthPoints {
-    return 100;
+    return 1000;
 }
 
 + (int) lancelotValueOfStat:(StatType)stat {
@@ -520,6 +520,21 @@
             return SkillTargetAll;
         default:
             return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) lancelotUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnAlly;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
     }
 }
 

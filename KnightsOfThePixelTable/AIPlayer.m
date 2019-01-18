@@ -18,7 +18,7 @@
         
         myTurn = NO;
         turnEnded = NO;
-        state = AIStateScanOpponentData;
+        state = AIStateWait;
         attackPosition = FirstCombatPosition;
         
         assignedDices = [[NSMutableArray alloc] init];
@@ -40,9 +40,6 @@
     // reset data
     [self reset];
     
-    // and start over
-    state = AIStateScanOpponentData;
-    
     // roll dices
     myTurn = YES;
     [level.dicepool resetDicepool];
@@ -52,6 +49,7 @@
 - (void) startTurnWithNewEntities:(BOOL)newWave {
     if (newWave) {
         // add a new wave
+        state = AIStateWait;
         [level.battlefield newWave];
     }
     
@@ -68,6 +66,9 @@
     for (int i = 0; i < CombatPositions; i++) {
         dicesAssigned[i] = NO;
     }
+    
+    // start over next turn
+    state = AIStateScanOpponentData;
 }
 
 
@@ -118,12 +119,12 @@
             }
             
         } else if (state == AIStateWait) {
-            [attackPhaseDelay updateWithGameTime:gameTime];
-            if (![attackPhaseDelay isAlive]) {
-                [attackPhaseDelay reset];
-                
-                state = AIStateAttack;
+            // wait for entities to become idle
+            if ([self checkIfEntitiesIdle]) {
+                state = AIStateScanOpponentData;
             }
+            
+            NSLog(@"WAITING");
             
         // attack
         } else if (state == AIStateAttack) {
@@ -133,16 +134,19 @@
                     
                     if (monster) {
                         if (monster.skillType != NoSkill) {
+                            NSLog(@"MONSTER HAS SKILL, WAITING FOR ATTACK");
                             [attackDelay updateWithGameTime:gameTime];
                             
                             if (![attackDelay isAlive]) {
                                 [attackDelay reset];
                                 
+                                NSLog(@"SELECTING TARGET");
                                 Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
                                 while (!knight || knight.isDead) {
                                     knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
                                 }
                             
+                                NSLog(@"ATTACKED");
                                 [monster attackTarget:knight ally:NO];
                                 attackPosition++;
                             }
@@ -343,11 +347,21 @@
 - (BOOL) checkIfCombosSet {
     for (Monster *monster in level.battlefield.enemyEntities) {
         if ([monster areDicesComming]) {
-            return false;
+            return NO;
         }
     }
     
-    return true;
+    return YES;
+}
+
+- (BOOL) checkIfEntitiesIdle {
+    for (Monster *monster in level.battlefield.enemyEntities) {
+        if (monster.state != EntityStateIdle) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 

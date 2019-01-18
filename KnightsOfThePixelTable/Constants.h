@@ -68,6 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillFunction) lancelotFunctionOfSkill:(SkillType)skill;
 + (SkillRange) lancelotRangeOfSkill:(SkillType)skill;
 + (SkillTarget) lancelotTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) lancelotUseOnSkill:(SkillType)skill;
 + (float) lancelotDamageOfSkill:(SkillType)skill;
 + (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill;
 + (float) lancelotGainMarginOfSkill:(SkillType)skill;

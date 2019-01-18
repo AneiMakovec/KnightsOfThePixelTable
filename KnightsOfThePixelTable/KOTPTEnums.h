@@ -36,6 +36,14 @@ typedef enum {
 } StatType;
 
 typedef enum {
+    StatUpgradeSlow,
+    StatUpgradeMedium,
+    StatUpgradeFast,
+    StatUpgradeVeryFast,
+    StatUpgrades
+} StatUpgrade;
+
+typedef enum {
     BasicAttack,
     FirstComboSkill,
     SecondComboSkill,
@@ -51,6 +59,7 @@ typedef enum {
 } SkillRange;
 
 typedef enum {
+    SkillTargetSelf,
     SkillTargetSingle,
     SkillTargetFrontRow,
     SkillTargetBackRow,
@@ -61,8 +70,26 @@ typedef enum {
 typedef enum {
     SkillFunctionDamage,
     SkillFunctionHeal,
+    SkillFunctionUtility,
     SkillFunctions
 } SkillFunction;
+
+typedef enum {
+    SkillEffectRemoveBuffs,
+    SkillEffectRemoveDebuffs,
+    SkillEffectRemoveConditions,
+    SkillEffectIncreaseBuff,
+    SkillEffectIncreaseDebuff,
+    SkillEffectDecreaseBuff,
+    SkillEffectDecreaseDebuff,
+    SkillEffects
+} SkillEffect;
+
+typedef enum {
+    SkillUseOnEnemy,
+    SkillUseOnAlly,
+    SkillUseOns
+} SkillUseOn;
 
 typedef enum {
     ConditionTypeBleed,
@@ -96,6 +123,7 @@ typedef enum {
     EntityStateDefending,
     EntityStateApproaching,
     EntityStateRetreating,
+    EntityStateStart,
     EntityStates
 } EntityState;
 

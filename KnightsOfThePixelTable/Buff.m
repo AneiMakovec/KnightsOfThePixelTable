@@ -12,8 +12,8 @@
 
 @implementation Buff
 
-- (id) initWithStatType:(StatType)theType buff:(float)theBuff duration:(int)duration; {
-    self = [super initWithDuration:duration];
+- (id) initWithStatType:(StatType)theType buff:(float)theBuff duration:(int)duration chance:(int)chance {
+    self = [super initWithDuration:duration chance:chance];
     if (self != nil) {
         type = theType;
         buff = theBuff;

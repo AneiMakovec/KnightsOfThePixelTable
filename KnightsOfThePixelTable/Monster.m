@@ -32,6 +32,16 @@
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
+    
+    // move outside the view
+    position.x += 500;
+    position.y += 50;
+
+    // move to origin
+    state = EntityStateStart;
+    radius = 1;
+    velocity.x = (origin.position.x - position.x) * 2;
+    velocity.y = (origin.position.y - position.y) * 2;
 }
 
 
@@ -42,6 +52,16 @@
         [dice resetTarget];
         [self addComboItem:dice];
         dicesComming--;
+    }
+    
+    // check with collision with origin point
+    if (state == EntityStateStart) {
+        BattlePosition *start = [item isKindOfClass:[BattlePosition class]] ? (BattlePosition *)item : nil;
+        if (start && start == origin) {
+            state = EntityStateIdle;
+            skillType = NoSkill;
+            [velocity set:[Vector2 zero]];
+        }
     }
     
     // invoke super method

@@ -12,8 +12,8 @@
 
 @implementation Condition
 
-- (id) initWithConditionType:(ConditionType)theType damage:(int)damage duration:(int)duration {
-    self = [super initWithDuration:duration];
+- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance {
+    self = [super initWithDuration:duration chance:chance];
     if (self != nil) {
         type = theType;
         
@@ -28,10 +28,24 @@
 @synthesize dmg, type;
 
 
+- (void) activateWithTarget:(CombatEntity *)theTarget {
+    // call super method
+    [super activateWithTarget:theTarget];
+    
+    // stun the target
+    if (type == ConditionTypeStun && ![target isStunned]) {
+        [target stun];
+        
+        // TODO - add stun animation
+    }
+}
+
 - (void) deactivate {
     if (type == ConditionTypeStun) {
-        // remove stun from target
-        [target recoverFromStun];
+        if ([target isOnlyStunnEffect:self]) {
+            // remove stun from target
+            [target recoverFromStun];
+        }
     }
     
     // call super method
@@ -40,13 +54,19 @@
 
 
 - (void) update {
-    // stun the target
-    if (type == ConditionTypeStun && ![target isStunned]) {
-        [target stun];
+    if (active) {
+        // stun the target
+        if (type == ConditionTypeStun && ![target isStunned]) {
+            [target stun];
+        }
+        
+        // deal damage to target
+        if (type != ConditionTypeStun) {
+            [target takePercentDamage:dmg];
+            
+            // TODO add damage indicators and animations
+        }
     }
-    
-    // deal damage to target
-    [target takeDamage:dmg];
     
     // call super method
     [super update];

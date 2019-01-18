@@ -12,8 +12,8 @@
 
 @implementation Debuff
 
-- (id) initWithStatType:(StatType)theType debuff:(float)theDebuff duration:(int)duration {
-    self = [super initWithDuration:duration];
+- (id) initWithStatType:(StatType)theType debuff:(float)theDebuff duration:(int)duration chance:(int)chance {
+    self = [super initWithDuration:duration chance:chance];
     if (self != nil) {
         type = theType;
         debuff = theDebuff;

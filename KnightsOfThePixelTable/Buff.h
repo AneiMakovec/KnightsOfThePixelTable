@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) StatType type;
 @property (nonatomic, readonly) float buff;
 
-- (id) initWithStatType:(StatType)theType buff:(float)theBuff duration:(int)duration;
+- (id) initWithStatType:(StatType)theType buff:(float)theBuff duration:(int)duration chance:(int)chance;
 
 @end
 

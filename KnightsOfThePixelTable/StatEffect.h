@@ -21,16 +21,22 @@ NS_ASSUME_NONNULL_BEGIN
     
     BOOL active;
     
+    int chance;
+    
     CombatEntity *target;
 }
 
 @property (nonatomic, readonly) int duration;
 @property (nonatomic, readonly) BOOL active;
+@property (nonatomic, readonly) int chance;
 
-- (id) initWithDuration:(int)theDuration;
+- (id) initWithDuration:(int)theDuration chance:(int)theChance;
 
 - (void) activateWithTarget:(CombatEntity*)theTarget;
 - (void) deactivate;
+
+- (void) increaseDuration;
+- (void) decreaseDuration;
 
 - (void) update;
 

@@ -22,11 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
     float opacity;
 }
 
-- (id) initWithDamage:(int)amount position:(Vector2*)position font:(SpriteFont*)font isCrit:(BOOL)isCrit;
-- (id) initWithHeal:(int)amount position:(Vector2*)position font:(SpriteFont*)font isCrit:(BOOL)isCrit;
-- (id) initMissAtPosition:(Vector2*)position font:(SpriteFont*)font;
-- (id) initWithExp:(int)amount position:(Vector2*)position font:(SpriteFont*)font;
-- (id) initWithGold:(int)amount position:(Vector2*)position font:(SpriteFont*)font;
+- (id) initWithText:(NSString*)text position:(Vector2*)position font:(SpriteFont*)font color:(Color*)color duration:(float)theDuration;
 
 @end
 

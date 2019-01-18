@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     float upgradeMargin;
     float damage;
     
+    SkillUseOn useOn;
+    BOOL additionalEffects[SkillEffects];
     SkillFunction function;
     SkillTarget target;
     SkillRange range;
@@ -27,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property (nonatomic, readonly) float damage;
+@property (nonatomic, readonly) SkillUseOn useOn;
 @property (nonatomic, readonly) SkillFunction function;
 @property (nonatomic, readonly) SkillRange range;
 @property (nonatomic, readonly) SkillTarget target;
@@ -34,9 +37,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSMutableArray *statEffects;
 
 
-- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget damage:(float)dmg duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin;
+- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget useOn:(SkillUseOn)theUseOn damage:(float)dmg duration:(NSTimeInterval)theDuration upgradeMargin:(float)theMargin;
 
 - (void) addStatEffect:(StatEffect*)statEffect;
+
+- (void) setEffect:(SkillEffect)effect;
+- (BOOL) hasEffect:(SkillEffect)effect;
 
 @end
 

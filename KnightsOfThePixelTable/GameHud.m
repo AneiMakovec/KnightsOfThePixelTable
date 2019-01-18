@@ -99,31 +99,36 @@
 }
 
 - (void) addDamageIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
-    Indicator *indicator = [[Indicator alloc] initWithDamage:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
+    Indicator *indicator;
+    if (isCrit)
+        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color red] duration:0.5f];
+    else
+        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color whiteSmoke] duration:0.5f];
+    
     [scene addItem:indicator];
     [indicator release];
 }
 
-- (void) addHealIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
-    Indicator *indicator = [[Indicator alloc] initWithHeal:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font isCrit:isCrit];
+- (void) addHealIndicatorAt:(Vector2 *)position amount:(int)amount {
+    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color green] duration:0.5f];
     [scene addItem:indicator];
     [indicator release];
 }
 
 - (void) addMissIndicatorAt:(Vector2 *)position {
-    Indicator *indicator = [[Indicator alloc] initMissAtPosition:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    Indicator *indicator = [[Indicator alloc] initWithText:@"MISS" position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGray] duration:0.5f];
     [scene addItem:indicator];
     [indicator release];
 }
 
 - (void) addExpIndicatorAt:(Vector2 *)position amount:(int)amount {
-    Indicator *indicator = [[Indicator alloc] initWithExp:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d EXP", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color blue] duration:0.5f];
     [scene addItem:indicator];
     [indicator release];
 }
 
 - (void) addGoldIndicatorAt:(Vector2 *)position amount:(int)amount {
-    Indicator *indicator = [[Indicator alloc] initWithGold:amount position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font];
+    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d G", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGoldenrodYellow] duration:0.5f];
     [scene addItem:indicator];
     [indicator release];
 }

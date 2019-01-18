@@ -16,7 +16,7 @@
 
 // HUD
 @class GameHud;
-@class Indicator;
+@class Indicator, AnimatedIndicator;
 
 // Physics
 @class PhysicsEngine;

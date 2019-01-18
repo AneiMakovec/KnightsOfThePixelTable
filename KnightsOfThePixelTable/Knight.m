@@ -15,7 +15,7 @@
 - (id) initKnight:(KnightType)theKnight battlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithBattlefield:theBattlefield gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
-        maxLevel = 80;
+        maxLevel = 50;
         currentLevel = 1;
         exp = 0;
         
@@ -87,27 +87,29 @@
     if (currentLevel < maxLevel) {
         exp += theExp;
         currentExp += theExp;
-        
+    }
+}
+
+- (void) levelUp {
+    if (currentLevel < maxLevel) {
         // Calculate if gained enough experiance to level up
         int requiredExp = (currentLevel + 1) * [Constants requiredExpToLvlUp];
         if (currentExp >= requiredExp) {
             // reset current exp
             currentExp = requiredExp - currentExp;
             
-            // and level up
-            [self levelUp];
-        }
-    }
-}
-
-- (void) levelUp {
-    if (currentLevel < maxLevel) {
-        // increase level
-        currentLevel++;
-        
-        // upgrade stats
-        for (int i = 0; i < StatTypes; i++) {
-            [stats[i] upgrade];
+            // level up
+            currentLevel++;
+            
+            // upgrade stats
+            for (int i = 0; i < StatTypes; i++) {
+                [stats[i] upgrade];
+            }
+            
+            // and upgrade skills
+            for (int i = 0; i < SkillTypes; i++) {
+                [skills[i] upgrade];
+            }
         }
     }
 }
