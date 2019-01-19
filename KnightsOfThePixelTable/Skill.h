@@ -16,6 +16,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Skill : NSObject<IUpgradable> {
+    int maxSkillLevel;
+    int currentSkillLevel;
+    
     float upgradeMargin;
     float damage;
     
@@ -43,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) setEffect:(SkillEffect)effect;
 - (BOOL) hasEffect:(SkillEffect)effect;
+
+- (BOOL) isMaxLevel;
 
 @end
 

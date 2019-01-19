@@ -12,8 +12,8 @@
 
 @implementation Condition
 
-- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance {
-    self = [super initWithDuration:duration chance:chance];
+- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance chanceUpgradeMargin:(int)theChanceMargin {
+    self = [super initWithDuration:duration chance:chance chanceUpgradeMargin:theChanceMargin];
     if (self != nil) {
         type = theType;
         

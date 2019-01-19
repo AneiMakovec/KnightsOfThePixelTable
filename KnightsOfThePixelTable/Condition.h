@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) ConditionType type;
 @property (nonatomic, readonly) float dmg;
 
-- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance;
+- (id) initWithConditionType:(ConditionType)theType damage:(float)damage duration:(int)duration chance:(int)chance chanceUpgradeMargin:(int)theChanceMargin;
 
 @end
 

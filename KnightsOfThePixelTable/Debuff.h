@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) StatType type;
 @property (nonatomic, readonly) float debuff;
 
-- (id) initWithStatType:(StatType)theType debuff:(float)theDebuff duration:(int)duration chance:(int)chance;
+- (id) initWithStatType:(StatType)theType debuff:(float)theDebuff duration:(int)duration chance:(int)chance chanceUpgradeMargin:(int)theChanceMargin;
 
 @end
 

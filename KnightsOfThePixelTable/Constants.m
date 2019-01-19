@@ -426,6 +426,12 @@
 }
 
 
+/*
+ MARK: SKILLS
+*/
++ (int) maxSkillLevel {
+    return 10;
+}
 
 
 

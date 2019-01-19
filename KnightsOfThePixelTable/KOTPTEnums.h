@@ -210,10 +210,15 @@ typedef enum {
 #define DICE_ANIM_GOOD @"combat_dice_animation_good"
 #define DICE_SYMBOLS @"combat_dices"
 
-// MARK: gui textures
+// MARK: gui textures - buttons
 #define FONT @"font"
 #define BACK_BUTTON @"back_button"
 #define MUSIC_BUTTON_ENABLED @"enabled_music_button"
 #define MUSIC_BUTTON_DISABLED @"disabled_music_button"
 #define SOUND_BUTTON_ENABLED @"enabled_sound_button"
 #define SOUND_BUTTON_DISABLED @"disabled_sound_button"
+
+// MARK: gui textures - effects
+#define HIT @"hit"
+#define BURN @"burn"
+#define FROSTBITE @"frostbite"

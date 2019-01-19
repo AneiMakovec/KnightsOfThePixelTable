@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PixEngine.Graphics.h"
 #import "PixEngine.Scene.Objects.h"
 #import "PixEngine.GUI.h"
 
@@ -20,16 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
     id<IScene> scene;
     
     NSTimeInterval duration;
+    Vector2 *position;
     
     Texture2D *texture;
-    AnimatedSprite *animation;
-    
-    Image *image;
+    AnimatedImage *animation;
     
     CombatEntity *target;
 }
 
-- (id) initWithTexture:(Texture2D*)theTexture position:(Vector2*)position duration:(NSTimeInterval)theDuration;
+- (id) initWithTexture:(Texture2D*)theTexture position:(Vector2*)thePosition duration:(NSTimeInterval)theDuration;
 
 - (void) loadHitAnimation;
 - (void) loadHealAnimation;

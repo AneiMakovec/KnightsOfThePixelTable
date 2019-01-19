@@ -25,7 +25,7 @@
         for (int i = 0; i < SkillTypes; i++) {
             skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:[Constants lancelotRangeOfSkill:i] target:[Constants lancelotTargetOfSkill:i] useOn:[Constants lancelotUseOnSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
             
-            effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1 chance:100];
+            effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1 chance:100 chanceUpgradeMargin:5];
             [skills[i] addStatEffect:effect];
             [effect release];
         }

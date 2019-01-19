@@ -62,6 +62,9 @@
 		B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */; };
 		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
+		B5D0312421F29EA500C162A1 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312321F29EA500C162A1 /* hit.png */; };
+		B5D0312621F2A09E00C162A1 /* burn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312521F2A09E00C162A1 /* burn.png */; };
+		B5D0312821F2A43500C162A1 /* frostbite.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312721F2A43500C162A1 /* frostbite.png */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
@@ -201,6 +204,9 @@
 		B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenComponent.m; sourceTree = "<group>"; };
 		B5D01C5521C8291B00A007DC /* Battlefield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Battlefield.h; sourceTree = "<group>"; };
 		B5D01C5621C8291B00A007DC /* Battlefield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Battlefield.m; sourceTree = "<group>"; };
+		B5D0312321F29EA500C162A1 /* hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit.png; sourceTree = "<group>"; };
+		B5D0312521F2A09E00C162A1 /* burn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burn.png; sourceTree = "<group>"; };
+		B5D0312721F2A43500C162A1 /* frostbite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frostbite.png; sourceTree = "<group>"; };
 		B5D0A42721C41204005EF3C6 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
 		B5D0A42821C41204005EF3C6 /* Knight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Knight.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
@@ -578,6 +584,16 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		B5D0311621F26F8200C162A1 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				B5D0312721F2A43500C162A1 /* frostbite.png */,
+				B5D0312521F2A09E00C162A1 /* burn.png */,
+				B5D0312321F29EA500C162A1 /* hit.png */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
 		B5D0A42521C411EC005EF3C6 /* Allies */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +765,7 @@
 				B5C2800121D3FF58009C657A /* hud.png */,
 				B55FA73F21D828E600526790 /* Font */,
 				B5E380422183B3E00007D013 /* Icons */,
+				B5D0311621F26F8200C162A1 /* Effects */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -940,11 +957,14 @@
 				B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */,
 				B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */,
 				B5FE45ED21ADC83C00F3C177 /* paladin.png in Resources */,
+				B5D0312421F29EA500C162A1 /* hit.png in Resources */,
 				B5FFCB9721A36131005F15BF /* combat_dice_animation_good.png in Resources */,
 				B5C2800821D43676009C657A /* basic_melee_skill.png in Resources */,
 				B5AE502021BEF47300FC5CBF /* click.wav in Resources */,
 				B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */,
+				B5D0312821F2A43500C162A1 /* frostbite.png in Resources */,
 				B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */,
+				B5D0312621F2A09E00C162A1 /* burn.png in Resources */,
 				B5E380582183B3E00007D013 /* archer.png in Resources */,
 				B50F830021ED2A4C000C2A92 /* disabled_music_button.png in Resources */,
 				B57B0CF121A5F0A50064B91F /* lancelot_idle.png in Resources */,

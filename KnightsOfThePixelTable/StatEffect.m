@@ -12,7 +12,7 @@
 
 @implementation StatEffect
 
-- (id) initWithDuration:(int)theDuration chance:(int)theChance {
+- (id) initWithDuration:(int)theDuration chance:(int)theChance chanceUpgradeMargin:(int)theChanceMargin {
     self = [super init];
     if (self != nil) {
         if (theChance > 100) {
@@ -20,6 +20,8 @@
         } else {
             chance = theChance;
         }
+        
+        chanceUpgradeMargin = theChanceMargin;
         
         duration = theDuration;
         active = NO;
@@ -46,6 +48,13 @@
 
 - (void) decreaseDuration {
     duration--;
+}
+
+- (void) upgrade {
+    chance += chanceUpgradeMargin;
+    
+    if (chance > 100)
+        chance = 100;
 }
 
 

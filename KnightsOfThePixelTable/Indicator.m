@@ -57,4 +57,11 @@
     }
 }
 
+- (void) dealloc {
+    [indicator release];
+    [duration release];
+    
+    [super dealloc];
+}
+
 @end

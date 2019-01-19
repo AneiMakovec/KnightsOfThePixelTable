@@ -94,9 +94,9 @@
     if (currentLevel < maxLevel) {
         // Calculate if gained enough experiance to level up
         int requiredExp = (currentLevel + 1) * [Constants requiredExpToLvlUp];
-        if (currentExp >= requiredExp) {
+        while (currentExp >= requiredExp) {
             // reset current exp
-            currentExp = requiredExp - currentExp;
+            currentExp = currentExp - requiredExp;
             
             // level up
             currentLevel++;
@@ -106,10 +106,8 @@
                 [stats[i] upgrade];
             }
             
-            // and upgrade skills
-            for (int i = 0; i < SkillTypes; i++) {
-                [skills[i] upgrade];
-            }
+            // keep checking if enough experience to level up
+            requiredExp = (currentLevel + 1) * [Constants requiredExpToLvlUp];
         }
     }
 }

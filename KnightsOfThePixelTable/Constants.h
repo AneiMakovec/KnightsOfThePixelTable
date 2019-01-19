@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) expGainElite;
 + (int) expGainBoss;
 
++ (int) maxSkillLevel;
+
 + (int) lancelotHealthPoints;
 + (int) lancelotValueOfStat:(StatType)stat;
 + (int) lancelotGainMarginOfStat:(StatType)stat;

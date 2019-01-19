@@ -20,6 +20,9 @@
         
         function = theFunction;
         
+        maxSkillLevel = [Constants maxSkillLevel];
+        currentSkillLevel = 1;
+        
         // set parameters for healing skill
         if (function == SkillFunctionHeal) {
             useOn = SkillUseOnAlly;
@@ -52,9 +55,19 @@
     additionalEffects[effect] = YES;
 }
 
+- (BOOL) isMaxLevel {
+    return currentSkillLevel == maxSkillLevel;
+}
+
 
 - (void) upgrade {
-    // TODO
+    if (currentSkillLevel < maxSkillLevel) {
+        damage += upgradeMargin;
+        
+        for (StatEffect *effect in statEffects) {
+            [effect upgrade];
+        }
+    }
 }
 
 - (void) dealloc {

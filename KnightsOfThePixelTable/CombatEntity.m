@@ -234,8 +234,9 @@
         // first deal damage
         [self dealDamageToTarget:theTarget damage:damage];
         
-        // add damage indicator
+        // add damage and hit indicators
         [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
+        [hud addHitIndicatorAt:theTarget.position];
         
         // apply skill effects
         [self applySkillEffectsToTarget:theTarget];

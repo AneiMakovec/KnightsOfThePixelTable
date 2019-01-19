@@ -13,15 +13,18 @@
 #import "Pixlron.Knights.classes.h"
 
 #import "KOTPTEnums.h"
+#import "IUpgradable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StatEffect : NSObject {
+@interface StatEffect : NSObject<IUpgradable> {
     int duration;
     
     BOOL active;
     
     int chance;
+    
+    int chanceUpgradeMargin;
     
     CombatEntity *target;
 }
@@ -30,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL active;
 @property (nonatomic, readonly) int chance;
 
-- (id) initWithDuration:(int)theDuration chance:(int)theChance;
+- (id) initWithDuration:(int)theDuration chance:(int)theChance chanceUpgradeMargin:(int)theChanceMargin;
 
 - (void) activateWithTarget:(CombatEntity*)theTarget;
 - (void) deactivate;

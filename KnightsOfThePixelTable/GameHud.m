@@ -66,6 +66,12 @@
     [scene addItem:endTurn];
     
     
+    // load indicator textures
+    hitTexture = [[self.game.content load:HIT] retain];
+    burnTexture = [[self.game.content load:BURN] retain];
+    frostbiteTexture = [[self.game.content load:FROSTBITE] retain];
+    
+    
     [super initialize];
 }
 
@@ -133,9 +139,46 @@
     [indicator release];
 }
 
+- (void) addHitIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:1.0f];
+    [indicator loadHitAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addBurnIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:burnTexture position:position duration:0.5f];
+    [indicator loadBurnAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addFrostbiteIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:frostbiteTexture position:position duration:0.5f];
+    [indicator loadFrostbiteAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
 
 - (void) increaseWaveCounterTo:(int)wave {
     waveCounter.text = [NSString stringWithFormat:@"%i", wave];
+}
+
+
+- (void) dealloc {
+    [scene release];
+    [renderer release];
+    
+    [waveCounter release];
+    [resetDices release];
+    [endTurn release];
+    
+    [hitTexture release];
+    [burnTexture release];
+    [frostbiteTexture release];
+    
+    [super dealloc];
 }
 
 @end
