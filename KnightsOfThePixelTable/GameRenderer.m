@@ -54,15 +54,16 @@
     
     // Backgrounds
     levelBackgrounds[LevelTypeFinal] = [self.game.content load:AREA_FARMLANDS];
-    levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_FARMLANDS];
+    levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_SEASHORE];
     levelBackgrounds[LevelTypeFarmlands] = [self.game.content load:AREA_FARMLANDS];
     levelBackgrounds[LevelTypeMountains] = [self.game.content load:AREA_MOUNTAINS];
     levelBackgrounds[LevelTypePinewoods] = [self.game.content load:AREA_PINEWOODS];
     
     // HUD
     hud = [self.game.content load:HUD];
+    hudWaveCounter = [self.game.content load:HUD_WAVE_COUNTER];
     
-    // Hp and Exp pool
+    // Hp pool
     hpPool = [self.game.content load:HP_POOL];
     
     // Skills
@@ -151,84 +152,61 @@
     diceEvilAnim.looping = YES;
     
     
-    // characters - GOOD textures
-    allyTexturesIdle[FirstCombatPosition] = [self.game.content load:LANCELOT_IDLE];
-    allyTexturesIdle[SecondCombatPosition] = [self.game.content load:PALADIN_IDLE];
-    allyTexturesIdle[ThirdCombatPosition] = [self.game.content load:KNIGHT_IDLE];
-    allyTexturesIdle[FourthCombatPosition] = [self.game.content load:LANCELOT_IDLE];
     
-    // chareacters - GOOD animations
-    // first ally
-    allySprites[FirstCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[FirstCombatPosition].looping = NO;
     
-    for (int i = 0; i < 6; i++) {
-        int x = i % 2;
-        int y = i / 2;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[FirstCombatPosition];
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
-        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+    // characters - ALLY textures
+    for (int i = 0; i < CombatPositions; i++) {
+        Knight *knight = [gameplay.currentLevel.battlefield getAllyAtPosition:i];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FirstCombatPosition].duration * (float) i / 6];
-        [allySprites[FirstCombatPosition] addFrame:frame];
+        switch (knight.type) {
+            case KnightTypeBrawler:
+                allyTextures[i] = [self.game.content load:CHARACTER_BRAWLER];
+                break;
+                
+            case KnightTypeBowman:
+                allyTextures[i] = [self.game.content load:CHARACTER_BOWMAN];
+                break;
+                
+            case KnightTypePaladin:
+                allyTextures[i] = [self.game.content load:CHARACTER_PALADIN];
+                break;
+                
+            case KnightTypeFireEnchantress:
+                allyTextures[i] = [self.game.content load:CHARACTER_FIRE_ENCHANTRESS];
+                break;
+                
+            default:
+                break;
+        }
     }
     
-    allySprites[FirstCombatPosition].looping = YES;
-    
-    // second ally
-    allySprites[SecondCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[SecondCombatPosition].looping = NO;
-    
-    for (int i = 0; i < 3; i++) {
-        int x = i % 2;
-        int y = i / 2;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[SecondCombatPosition];
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
-        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
+    // chareacters - ALLY idle animations
+    for (int pos = 0; pos < CombatPositions; pos++) {
+        allyIdleSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+        allyIdleSprites[pos].looping = NO;
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[SecondCombatPosition].duration * (float) i / 3];
-        [allySprites[SecondCombatPosition] addFrame:frame];
+        for (int i = 0; i < 6; i++) {
+            int x = i % 8;
+            int y = i / 8;
+            Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+            frameSprite.texture = allyTextures[pos];
+            frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+            frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+            
+            AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyIdleSprites[pos].duration * (float) i / 6];
+            [allyIdleSprites[pos] addFrame:frame];
+        }
+        
+        allyIdleSprites[pos].looping = YES;
     }
     
-    allySprites[SecondCombatPosition].looping = YES;
     
-    // third ally
-    allySprites[ThirdCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[ThirdCombatPosition].looping = NO;
-    
-    for (int i = 0; i < 4; i++) {
-        int x = i % 2;
-        int y = i / 2;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[ThirdCombatPosition];
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
-        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
-        
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[ThirdCombatPosition].duration * (float) i / 4];
-        [allySprites[ThirdCombatPosition] addFrame:frame];
+    // load enemy sprites
+    for (int i = 0; i < MonsterTypes; i++) {
+        [self loadTextureOfEnemy:i];
+        [self loadAnimationsOfEnemy:i];
     }
     
-    allySprites[ThirdCombatPosition].looping = YES;
-    
-    // fourth ally
-    allySprites[FourthCombatPosition] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    allySprites[FourthCombatPosition].looping = NO;
-    
-    for (int i = 0; i < 6; i++) {
-        int x = i % 2;
-        int y = i / 2;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = allyTexturesIdle[FourthCombatPosition];
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
-        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
-        
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allySprites[FourthCombatPosition].duration * (float) i / 6];
-        [allySprites[FourthCombatPosition] addFrame:frame];
-    }
-    
-    allySprites[FourthCombatPosition].looping = YES;
     
     
     // portraits
@@ -263,6 +241,8 @@
     //[spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
     [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[Constants backgroundWidth] height:[Constants hudHeight]] tintWithColor:[Color white]];
     
+    [spriteBatch draw:hudWaveCounter to:[Vector2 vectorWithX:0 y:0] tintWithColor:[Color white]];
+    
     
     // scene items
     for (id item in gameplay.currentLevel.scene) {
@@ -270,40 +250,40 @@
         // check if is knight entity
         Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
         if (knight) {
-            if (knight.type == KnightTypeLancelot) {
-                // portrait
-                Sprite *portrait = portraits[FirstCombatPosition];
-                [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
+            int pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
+            
+            // portrait
+            Sprite *portrait = portraits[pos];
+            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
                 
-                // sprite
-                Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
-                [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+            // sprite
+            // TODO: check knight state
+            Sprite *drawable = [allyIdleSprites[pos] spriteAtTime:gameTime.totalGameTime];
+            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
                 
-                // hp exp pool
-                [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+            // hp exp pool
+            [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
                 
-                // skill
-                Color *skillColor = [Color white];
-                if (knight.skillType == BasicAttack) {
-                    skillColor = [Color white];
-                } else if (knight.skillType == FirstComboSkill) {
-                    skillColor = [Color red];
-                } else if (knight.skillType == SecondComboSkill) {
-                    skillColor = [Color green];
-                } else if (knight.skillType == ThirdComboSkill) {
-                    skillColor = [Color yellow];
-                }
+            // skill
+            Color *skillColor = [Color white];
+            if (knight.skillType == BasicAttack) {
+                skillColor = [Color white];
+            } else if (knight.skillType == FirstComboSkill) {
+                skillColor = [Color red];
+            } else if (knight.skillType == SecondComboSkill) {
+                skillColor = [Color green];
+            } else if (knight.skillType == ThirdComboSkill) {
+                skillColor = [Color yellow];
+            }
                 
-                if (knight.skillType != NoSkill)
-                    [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
+            if (knight.skillType != NoSkill)
+                [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
                 
                 
-                // combo
-                for (ComboSlot *comboSlot in knight.combo) {
-                    if (comboSlot.item) {
-                        [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white]
-                                 rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
-                    }
+            // combo
+            for (ComboSlot *comboSlot in knight.combo) {
+                if (comboSlot.item) {
+                [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white] rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
                 }
             }
         }
@@ -312,7 +292,7 @@
         Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
         if (monster) {
             // sprite
-            Sprite *drawable = [allySprites[FirstCombatPosition] spriteAtTime:gameTime.totalGameTime];
+            Sprite *drawable = [enemyIdleSprites[monster.type] spriteAtTime:gameTime.totalGameTime];
             
             // color changes if monster is targeted
             Color *color;
@@ -372,6 +352,150 @@
 
 
 
+
+- (void) loadTextureOfEnemy:(MonsterType)enemy {
+    switch (enemy) {
+        case MonsterTypeWarrior:
+            enemyTextures[enemy] = [self.game.content load:ENEMY_SWORDSMAN];
+            break;
+            
+        case MonsterTypeBrute:
+            enemyTextures[enemy] = [self.game.content load:ENEMY_BRUTE];
+            break;
+            
+        case MonsterTypeBossViking:
+            enemyTextures[enemy] = [self.game.content load:ENEMY_VIKING_BOSS];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void) loadAnimationsOfEnemy:(MonsterType)enemy {
+    int idleFrames = 0, moveFrames = 0, hitFrames = 0, deathFrames = 0, attackFrames = 0;
+    switch (enemy) {
+        case MonsterTypeWarrior:
+            idleFrames = 4;
+            moveFrames = 12;
+            hitFrames = 16;
+            deathFrames = 39;
+            attackFrames = 47;
+            break;
+            
+        case MonsterTypeBrute:
+            idleFrames = 6;
+            moveFrames = 14;
+            hitFrames = 18;
+            deathFrames = 37;
+            attackFrames = 47;
+            break;
+            
+        case MonsterTypeBossViking:
+            idleFrames = 4;
+            moveFrames = 12;
+            hitFrames = 17;
+            deathFrames = 34;
+            attackFrames = 45;
+            break;
+            
+        default:
+            break;
+    }
+    
+    // idle animation
+    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyIdleSprites[enemy].looping = NO;
+    
+    for (int i = 0; i < idleFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[enemy].duration * (float) i / 6];
+        [enemyIdleSprites[enemy] addFrame:frame];
+    }
+    
+    enemyIdleSprites[enemy].looping = YES;
+    
+    // move animation
+    enemyMoveSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyMoveSprites[enemy].looping = NO;
+    
+    for (int i = idleFrames; i < moveFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[enemy].duration * (float) i / 6];
+        [enemyMoveSprites[enemy] addFrame:frame];
+    }
+    
+    enemyMoveSprites[enemy].looping = YES;
+    
+    // hit animation
+    enemyHitSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyHitSprites[enemy].looping = NO;
+    
+    for (int i = moveFrames; i < hitFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[enemy].duration * (float) i / 6];
+        [enemyHitSprites[enemy] addFrame:frame];
+    }
+    
+    enemyHitSprites[enemy].looping = YES;
+    
+    // death animation
+    enemyDeathSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyDeathSprites[enemy].looping = NO;
+    
+    for (int i = hitFrames; i < deathFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[enemy].duration * (float) i / 6];
+        [enemyDeathSprites[enemy] addFrame:frame];
+    }
+    
+    enemyDeathSprites[enemy].looping = YES;
+    
+    // attack animation
+    enemyAttackSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyAttackSprites[enemy].looping = NO;
+    
+    for (int i = deathFrames; i < attackFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[enemy].duration * (float) i / 6];
+        [enemyAttackSprites[enemy] addFrame:frame];
+    }
+    
+    enemyAttackSprites[enemy].looping = YES;
+}
+
+
+
 /*
     UNLOAD CONTENT
 */
@@ -379,8 +503,22 @@
     [spriteBatch release];
     
     for (int i = 0; i < CombatPositions; i++) {
-        [allySprites[i] release];
+        [allyTextures[i] release];
+        [allyIdleSprites[i] release];
+        [allyHitSprites[i] release];
+        [allyMoveSprites[i] release];
+        [allyDeathSprites[i] release];
+        [allyAttackSprites[i] release];
         [portraits[i] release];
+    }
+    
+    for (int i = 0; i < MonsterTypes; i++) {
+        [enemyTextures[i] release];
+        [enemyIdleSprites[i] release];
+        [enemyHitSprites[i] release];
+        [enemyMoveSprites[i] release];
+        [enemyDeathSprites[i] release];
+        [enemyAttackSprites[i] release];
     }
     
     for (int i = 0; i < LevelTypes; i++) {
@@ -388,6 +526,7 @@
     }
     
     [hud release];
+    [hudWaveCounter release];
     [diceSymbolTexture release];
     [diceGoodAnimTexture release];
     [diceEvilAnimTexture release];

@@ -51,10 +51,15 @@
 #import "ComboSlot.h"
 
 #import "Knight.h"
-#import "KnightLancelot.h"
+#import "KnightBrawler.h"
+#import "KnightBowman.h"
+#import "KnightPaladin.h"
+#import "KnightFireEnchantress.h"
 
 #import "Monster.h"
 #import "MonsterWarrior.h"
+#import "MonsterBrute.h"
+#import "MonsterBossViking.h"
 
 #import "Level.h"
 #import "FarmlandsLevel.h"

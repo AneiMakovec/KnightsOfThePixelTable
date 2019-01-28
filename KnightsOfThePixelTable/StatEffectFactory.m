@@ -15,13 +15,13 @@
 + (StatEffect*) createStatEffect:(StatEffect *)statEffect {
     if ([statEffect isKindOfClass:[Buff class]]) {
         Buff *buff = (Buff *)statEffect;
-        return [[[Buff alloc] initWithStatType:buff.type buff:buff.buff duration:buff.duration chance:buff.chance] autorelease];
+        return [[[Buff alloc] initWithStatType:buff.type buff:buff.buff duration:buff.duration chance:buff.chance chanceUpgradeMargin:buff.chanceUpgradeMargin] autorelease];
     } else if ([statEffect isKindOfClass:[Debuff class]]) {
         Debuff *debuff = (Debuff *)statEffect;
-        return [[[Debuff alloc] initWithStatType:debuff.type debuff:debuff.debuff duration:debuff.duration chance:debuff.chance] autorelease];
+        return [[[Debuff alloc] initWithStatType:debuff.type debuff:debuff.debuff duration:debuff.duration chance:debuff.chance chanceUpgradeMargin:debuff.chanceUpgradeMargin] autorelease];
     } else if ([statEffect isKindOfClass:[Condition class]]) {
         Condition *cond = (Condition *)statEffect;
-        return [[[Condition alloc] initWithConditionType:cond.type damage:cond.dmg duration:cond.duration chance:cond.chance] autorelease];
+        return [[[Condition alloc] initWithConditionType:cond.type damage:cond.dmg duration:cond.duration chance:cond.chance chanceUpgradeMargin:cond.chanceUpgradeMargin] autorelease];
     } else {
         return nil;
     }

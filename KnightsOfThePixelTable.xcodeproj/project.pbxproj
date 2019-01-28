@@ -14,7 +14,7 @@
 		B50F830221ED2A4C000C2A92 /* disabled_sound_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B50F82FE21ED2A4C000C2A92 /* disabled_sound_button.png */; };
 		B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F830521ED57E4000C2A92 /* StatEffect.m */; };
 		B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D99E421CDD94E00CE6056 /* ComboSlot.m */; };
-		B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightLancelot.m */; };
+		B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightBrawler.m */; };
 		B52284D921EFA01E0005B3AC /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B52284D821EFA01E0005B3AC /* Indicator.m */; };
 		B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */; };
 		B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4B21EEA69C00B09A55 /* Condition.m */; };
@@ -35,8 +35,40 @@
 		B55FA73B21D817C400526790 /* GameHud.m in Sources */ = {isa = PBXBuildFile; fileRef = B55FA73A21D817C400526790 /* GameHud.m */; };
 		B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B55FA73D21D8196100526790 /* GUIRenderer.m */; };
 		B55FA74321D82F4500526790 /* font.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B55FA74221D82F4500526790 /* font.bmp */; };
+		B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371521FE6FBD00CE7123 /* background_seashore.png */; };
+		B560372221FE707200CE7123 /* status_effect_poison.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371921FE707100CE7123 /* status_effect_poison.png */; };
+		B560372321FE707200CE7123 /* status_effect_bleed.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371A21FE707100CE7123 /* status_effect_bleed.png */; };
+		B560372421FE707200CE7123 /* status_effect_debuff.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371B21FE707100CE7123 /* status_effect_debuff.png */; };
+		B560372521FE707200CE7123 /* status_effect_stun.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371C21FE707100CE7123 /* status_effect_stun.png */; };
+		B560372621FE707200CE7123 /* status_effect_frostbite.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371D21FE707200CE7123 /* status_effect_frostbite.png */; };
+		B560372721FE707200CE7123 /* status_effect_burn.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371E21FE707200CE7123 /* status_effect_burn.png */; };
+		B560372821FE707200CE7123 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = B560371F21FE707200CE7123 /* hit.png */; };
+		B560372921FE707200CE7123 /* status_effect_buff.png in Resources */ = {isa = PBXBuildFile; fileRef = B560372021FE707200CE7123 /* status_effect_buff.png */; };
+		B560372A21FE707200CE7123 /* heal.png in Resources */ = {isa = PBXBuildFile; fileRef = B560372121FE707200CE7123 /* heal.png */; };
+		B560373521FE710400CE7123 /* interface_background_edge_up.png in Resources */ = {isa = PBXBuildFile; fileRef = B560372D21FE710400CE7123 /* interface_background_edge_up.png */; };
+		B560373621FE710400CE7123 /* interface_background_edge_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B560372E21FE710400CE7123 /* interface_background_edge_right.png */; };
+		B560373721FE710400CE7123 /* interface_background_corner_up_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B560372F21FE710400CE7123 /* interface_background_corner_up_left.png */; };
+		B560373821FE710400CE7123 /* interface_background_corner_down_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B560373021FE710400CE7123 /* interface_background_corner_down_right.png */; };
+		B560373921FE710400CE7123 /* interface_background_edge_down.png in Resources */ = {isa = PBXBuildFile; fileRef = B560373121FE710400CE7123 /* interface_background_edge_down.png */; };
+		B560373A21FE710400CE7123 /* interface_background_corner_up_right.png in Resources */ = {isa = PBXBuildFile; fileRef = B560373221FE710400CE7123 /* interface_background_corner_up_right.png */; };
+		B560373B21FE710400CE7123 /* interface_background_corner_down_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B560373321FE710400CE7123 /* interface_background_corner_down_left.png */; };
+		B560373C21FE710400CE7123 /* interface_background_edge_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B560373421FE710400CE7123 /* interface_background_edge_left.png */; };
+		B560374321FE71D600CE7123 /* character_class_paladin.png in Resources */ = {isa = PBXBuildFile; fileRef = B560374221FE71D600CE7123 /* character_class_paladin.png */; };
+		B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */ = {isa = PBXBuildFile; fileRef = B560374421FE71DD00CE7123 /* character_class_fire_enchantress.png */; };
+		B560374721FE71E300CE7123 /* character_class_bowman.png in Resources */ = {isa = PBXBuildFile; fileRef = B560374621FE71E300CE7123 /* character_class_bowman.png */; };
+		B560374921FE71E900CE7123 /* character_class_brawler.png in Resources */ = {isa = PBXBuildFile; fileRef = B560374821FE71E900CE7123 /* character_class_brawler.png */; };
+		B560374F21FE725700CE7123 /* character_enemy_brute.png in Resources */ = {isa = PBXBuildFile; fileRef = B560374E21FE725700CE7123 /* character_enemy_brute.png */; };
+		B560375121FE725D00CE7123 /* character_enemy_swordsman.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375021FE725D00CE7123 /* character_enemy_swordsman.png */; };
+		B560375321FE726300CE7123 /* character_enemy_boss_viking.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375221FE726300CE7123 /* character_enemy_boss_viking.png */; };
+		B560375721FE7ECB00CE7123 /* enemy_hp_pool.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375621FE7ECB00CE7123 /* enemy_hp_pool.png */; };
+		B560375921FE803A00CE7123 /* background_main_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375821FE803A00CE7123 /* background_main_menu.png */; };
+		B560375C21FE82D600CE7123 /* KnightBowman.m in Sources */ = {isa = PBXBuildFile; fileRef = B560375B21FE82D600CE7123 /* KnightBowman.m */; };
+		B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */ = {isa = PBXBuildFile; fileRef = B560375E21FE82ED00CE7123 /* KnightPaladin.m */; };
+		B560376221FE82FB00CE7123 /* KnightFireEnchantress.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */; };
+		B560376721FE843800CE7123 /* MonsterBrute.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376621FE843800CE7123 /* MonsterBrute.m */; };
+		B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376921FE844800CE7123 /* MonsterBossViking.m */; };
+		B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */ = {isa = PBXBuildFile; fileRef = B560376B21FE91B000CE7123 /* hud_wave_counter.png */; };
 		B5671A5C219A13EA009E270F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B5671A5B219A13EA009E270F /* Gameplay.m */; };
-		B57B0CF121A5F0A50064B91F /* lancelot_idle.png in Resources */ = {isa = PBXBuildFile; fileRef = B57B0CF021A5F0A50064B91F /* lancelot_idle.png */; };
 		B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF621A5F64B0064B91F /* HumanPlayer.m */; };
 		B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF921A5F6590064B91F /* AIPlayer.m */; };
 		B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */; };
@@ -62,9 +94,6 @@
 		B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */; };
 		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
-		B5D0312421F29EA500C162A1 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312321F29EA500C162A1 /* hit.png */; };
-		B5D0312621F2A09E00C162A1 /* burn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312521F2A09E00C162A1 /* burn.png */; };
-		B5D0312821F2A43500C162A1 /* frostbite.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D0312721F2A43500C162A1 /* frostbite.png */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
@@ -77,11 +106,8 @@
 		B5E380222183A8170007D013 /* libPixEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380192183A29B0007D013 /* libPixEngine.a */; };
 		B5E380292183ABD30007D013 /* KOTPT.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E380282183ABD30007D013 /* KOTPT.m */; };
 		B5E380542183B3E00007D013 /* ui_icons.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380432183B3E00007D013 /* ui_icons.png */; };
-		B5E380582183B3E00007D013 /* archer.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E3804E2183B3E00007D013 /* archer.png */; };
 		B5E380592183B3E00007D013 /* dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380512183B3E00007D013 /* dices.png */; };
 		B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FE06E621CC6AF200038407 /* Dicepool.m */; };
-		B5FE45EB21ADC83600F3C177 /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FE45EA21ADC83600F3C177 /* knight.png */; };
-		B5FE45ED21ADC83C00F3C177 /* paladin.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FE45EC21ADC83C00F3C177 /* paladin.png */; };
 		B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCB8921A3603C005F15BF /* Dice.m */; };
 		B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FFCB9221A36131005F15BF /* combat_dices.png */; };
 		B5FFCB9621A36131005F15BF /* combat_dice_animation_evil.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FFCB9321A36131005F15BF /* combat_dice_animation_evil.png */; };
@@ -116,8 +142,8 @@
 		B50F830521ED57E4000C2A92 /* StatEffect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatEffect.m; sourceTree = "<group>"; };
 		B51D99E321CDD94E00CE6056 /* ComboSlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboSlot.h; sourceTree = "<group>"; };
 		B51D99E421CDD94E00CE6056 /* ComboSlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboSlot.m; sourceTree = "<group>"; };
-		B52192AB21C7260400637BE7 /* KnightLancelot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightLancelot.h; sourceTree = "<group>"; };
-		B52192AC21C7260400637BE7 /* KnightLancelot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightLancelot.m; sourceTree = "<group>"; };
+		B52192AB21C7260400637BE7 /* KnightBrawler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightBrawler.h; sourceTree = "<group>"; };
+		B52192AC21C7260400637BE7 /* KnightBrawler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightBrawler.m; sourceTree = "<group>"; };
 		B52284D721EFA01E0005B3AC /* Indicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
 		B52284D821EFA01E0005B3AC /* Indicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Indicator.m; sourceTree = "<group>"; };
 		B523BE1121EE8B9D00B09A55 /* StatEffectFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatEffectFactory.h; sourceTree = "<group>"; };
@@ -153,9 +179,46 @@
 		B55FA73C21D8196100526790 /* GUIRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GUIRenderer.h; sourceTree = "<group>"; };
 		B55FA73D21D8196100526790 /* GUIRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GUIRenderer.m; sourceTree = "<group>"; };
 		B55FA74221D82F4500526790 /* font.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = font.bmp; sourceTree = "<group>"; };
+		B560371521FE6FBD00CE7123 /* background_seashore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_seashore.png; sourceTree = "<group>"; };
+		B560371921FE707100CE7123 /* status_effect_poison.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_poison.png; sourceTree = "<group>"; };
+		B560371A21FE707100CE7123 /* status_effect_bleed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_bleed.png; sourceTree = "<group>"; };
+		B560371B21FE707100CE7123 /* status_effect_debuff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_debuff.png; sourceTree = "<group>"; };
+		B560371C21FE707100CE7123 /* status_effect_stun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_stun.png; sourceTree = "<group>"; };
+		B560371D21FE707200CE7123 /* status_effect_frostbite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_frostbite.png; sourceTree = "<group>"; };
+		B560371E21FE707200CE7123 /* status_effect_burn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_burn.png; sourceTree = "<group>"; };
+		B560371F21FE707200CE7123 /* hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit.png; sourceTree = "<group>"; };
+		B560372021FE707200CE7123 /* status_effect_buff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_effect_buff.png; sourceTree = "<group>"; };
+		B560372121FE707200CE7123 /* heal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heal.png; sourceTree = "<group>"; };
+		B560372D21FE710400CE7123 /* interface_background_edge_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_edge_up.png; sourceTree = "<group>"; };
+		B560372E21FE710400CE7123 /* interface_background_edge_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_edge_right.png; sourceTree = "<group>"; };
+		B560372F21FE710400CE7123 /* interface_background_corner_up_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_corner_up_left.png; sourceTree = "<group>"; };
+		B560373021FE710400CE7123 /* interface_background_corner_down_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_corner_down_right.png; sourceTree = "<group>"; };
+		B560373121FE710400CE7123 /* interface_background_edge_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_edge_down.png; sourceTree = "<group>"; };
+		B560373221FE710400CE7123 /* interface_background_corner_up_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_corner_up_right.png; sourceTree = "<group>"; };
+		B560373321FE710400CE7123 /* interface_background_corner_down_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_corner_down_left.png; sourceTree = "<group>"; };
+		B560373421FE710400CE7123 /* interface_background_edge_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background_edge_left.png; sourceTree = "<group>"; };
+		B560374221FE71D600CE7123 /* character_class_paladin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_class_paladin.png; sourceTree = "<group>"; };
+		B560374421FE71DD00CE7123 /* character_class_fire_enchantress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_class_fire_enchantress.png; sourceTree = "<group>"; };
+		B560374621FE71E300CE7123 /* character_class_bowman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_class_bowman.png; sourceTree = "<group>"; };
+		B560374821FE71E900CE7123 /* character_class_brawler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_class_brawler.png; sourceTree = "<group>"; };
+		B560374E21FE725700CE7123 /* character_enemy_brute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_enemy_brute.png; sourceTree = "<group>"; };
+		B560375021FE725D00CE7123 /* character_enemy_swordsman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_enemy_swordsman.png; sourceTree = "<group>"; };
+		B560375221FE726300CE7123 /* character_enemy_boss_viking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_enemy_boss_viking.png; sourceTree = "<group>"; };
+		B560375621FE7ECB00CE7123 /* enemy_hp_pool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_hp_pool.png; sourceTree = "<group>"; };
+		B560375821FE803A00CE7123 /* background_main_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_main_menu.png; sourceTree = "<group>"; };
+		B560375A21FE82D600CE7123 /* KnightBowman.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightBowman.h; sourceTree = "<group>"; };
+		B560375B21FE82D600CE7123 /* KnightBowman.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightBowman.m; sourceTree = "<group>"; };
+		B560375D21FE82ED00CE7123 /* KnightPaladin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightPaladin.h; sourceTree = "<group>"; };
+		B560375E21FE82ED00CE7123 /* KnightPaladin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightPaladin.m; sourceTree = "<group>"; };
+		B560376021FE82FB00CE7123 /* KnightFireEnchantress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightFireEnchantress.h; sourceTree = "<group>"; };
+		B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightFireEnchantress.m; sourceTree = "<group>"; };
+		B560376521FE843800CE7123 /* MonsterBrute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterBrute.h; sourceTree = "<group>"; };
+		B560376621FE843800CE7123 /* MonsterBrute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterBrute.m; sourceTree = "<group>"; };
+		B560376821FE844800CE7123 /* MonsterBossViking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterBossViking.h; sourceTree = "<group>"; };
+		B560376921FE844800CE7123 /* MonsterBossViking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterBossViking.m; sourceTree = "<group>"; };
+		B560376B21FE91B000CE7123 /* hud_wave_counter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_wave_counter.png; sourceTree = "<group>"; };
 		B5671A5A219A13EA009E270F /* Gameplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		B5671A5B219A13EA009E270F /* Gameplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
-		B57B0CF021A5F0A50064B91F /* lancelot_idle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lancelot_idle.png; sourceTree = "<group>"; };
 		B57B0CF421A5F48B0064B91F /* KOTPT_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPT_Prefix.pch; sourceTree = "<group>"; };
 		B57B0CF521A5F64B0064B91F /* HumanPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HumanPlayer.h; sourceTree = "<group>"; };
 		B57B0CF621A5F64B0064B91F /* HumanPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HumanPlayer.m; sourceTree = "<group>"; };
@@ -204,9 +267,6 @@
 		B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenComponent.m; sourceTree = "<group>"; };
 		B5D01C5521C8291B00A007DC /* Battlefield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Battlefield.h; sourceTree = "<group>"; };
 		B5D01C5621C8291B00A007DC /* Battlefield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Battlefield.m; sourceTree = "<group>"; };
-		B5D0312321F29EA500C162A1 /* hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit.png; sourceTree = "<group>"; };
-		B5D0312521F2A09E00C162A1 /* burn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burn.png; sourceTree = "<group>"; };
-		B5D0312721F2A43500C162A1 /* frostbite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frostbite.png; sourceTree = "<group>"; };
 		B5D0A42721C41204005EF3C6 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
 		B5D0A42821C41204005EF3C6 /* Knight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Knight.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
@@ -226,12 +286,9 @@
 		B5E380272183ABD30007D013 /* KOTPT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPT.h; sourceTree = "<group>"; };
 		B5E380282183ABD30007D013 /* KOTPT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOTPT.m; sourceTree = "<group>"; };
 		B5E380432183B3E00007D013 /* ui_icons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_icons.png; sourceTree = "<group>"; };
-		B5E3804E2183B3E00007D013 /* archer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archer.png; sourceTree = "<group>"; };
 		B5E380512183B3E00007D013 /* dices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dices.png; sourceTree = "<group>"; };
 		B5FE06E521CC6AF200038407 /* Dicepool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dicepool.h; sourceTree = "<group>"; };
 		B5FE06E621CC6AF200038407 /* Dicepool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dicepool.m; sourceTree = "<group>"; };
-		B5FE45EA21ADC83600F3C177 /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = "<group>"; };
-		B5FE45EC21ADC83C00F3C177 /* paladin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paladin.png; sourceTree = "<group>"; };
 		B5FE45EE21ADEA3F00F3C177 /* IDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDice.h; sourceTree = "<group>"; };
 		B5FFCB8821A3603C005F15BF /* Dice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dice.h; sourceTree = "<group>"; };
 		B5FFCB8921A3603C005F15BF /* Dice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dice.m; sourceTree = "<group>"; };
@@ -299,6 +356,7 @@
 		B51D99DA21CDA8A400CE6056 /* Status icons */ = {
 			isa = PBXGroup;
 			children = (
+				B560375621FE7ECB00CE7123 /* enemy_hp_pool.png */,
 				B595F9CD21D05D9700BC07C5 /* hp_pool.png */,
 			);
 			path = "Status icons";
@@ -329,8 +387,14 @@
 		B52192AA21C725E200637BE7 /* Knights */ = {
 			isa = PBXGroup;
 			children = (
-				B52192AB21C7260400637BE7 /* KnightLancelot.h */,
-				B52192AC21C7260400637BE7 /* KnightLancelot.m */,
+				B52192AB21C7260400637BE7 /* KnightBrawler.h */,
+				B52192AC21C7260400637BE7 /* KnightBrawler.m */,
+				B560375A21FE82D600CE7123 /* KnightBowman.h */,
+				B560375B21FE82D600CE7123 /* KnightBowman.m */,
+				B560375D21FE82ED00CE7123 /* KnightPaladin.h */,
+				B560375E21FE82ED00CE7123 /* KnightPaladin.m */,
+				B560376021FE82FB00CE7123 /* KnightFireEnchantress.h */,
+				B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */,
 			);
 			name = Knights;
 			sourceTree = "<group>";
@@ -438,6 +502,143 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		B560371721FE6FCC00CE7123 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				B560375821FE803A00CE7123 /* background_main_menu.png */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
+		B560371821FE702A00CE7123 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				B560376B21FE91B000CE7123 /* hud_wave_counter.png */,
+				B5C2800121D3FF58009C657A /* hud.png */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		B560372B21FE70C700CE7123 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				B560372C21FE70CE00CE7123 /* Background */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		B560372C21FE70CE00CE7123 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				B560373321FE710400CE7123 /* interface_background_corner_down_left.png */,
+				B560373021FE710400CE7123 /* interface_background_corner_down_right.png */,
+				B560372F21FE710400CE7123 /* interface_background_corner_up_left.png */,
+				B560373221FE710400CE7123 /* interface_background_corner_up_right.png */,
+				B560373121FE710400CE7123 /* interface_background_edge_down.png */,
+				B560373421FE710400CE7123 /* interface_background_edge_left.png */,
+				B560372E21FE710400CE7123 /* interface_background_edge_right.png */,
+				B560372D21FE710400CE7123 /* interface_background_edge_up.png */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		B560373D21FE716000CE7123 /* Adventurers */ = {
+			isa = PBXGroup;
+			children = (
+				B560374121FE718200CE7123 /* Paladin */,
+				B560374021FE717900CE7123 /* Fire enchantress */,
+				B560373F21FE717100CE7123 /* Bowman */,
+				B560373E21FE716A00CE7123 /* Brawler */,
+			);
+			path = Adventurers;
+			sourceTree = "<group>";
+		};
+		B560373E21FE716A00CE7123 /* Brawler */ = {
+			isa = PBXGroup;
+			children = (
+				B560374821FE71E900CE7123 /* character_class_brawler.png */,
+			);
+			path = Brawler;
+			sourceTree = "<group>";
+		};
+		B560373F21FE717100CE7123 /* Bowman */ = {
+			isa = PBXGroup;
+			children = (
+				B560374621FE71E300CE7123 /* character_class_bowman.png */,
+			);
+			path = Bowman;
+			sourceTree = "<group>";
+		};
+		B560374021FE717900CE7123 /* Fire enchantress */ = {
+			isa = PBXGroup;
+			children = (
+				B560374421FE71DD00CE7123 /* character_class_fire_enchantress.png */,
+			);
+			path = "Fire enchantress";
+			sourceTree = "<group>";
+		};
+		B560374121FE718200CE7123 /* Paladin */ = {
+			isa = PBXGroup;
+			children = (
+				B560374221FE71D600CE7123 /* character_class_paladin.png */,
+			);
+			path = Paladin;
+			sourceTree = "<group>";
+		};
+		B560374A21FE71FE00CE7123 /* Mock-up */ = {
+			isa = PBXGroup;
+			children = (
+				B560374D21FE721600CE7123 /* Brute */,
+				B560374C21FE720A00CE7123 /* Swordsman */,
+				B560374B21FE720500CE7123 /* Boss */,
+			);
+			path = "Mock-up";
+			sourceTree = "<group>";
+		};
+		B560374B21FE720500CE7123 /* Boss */ = {
+			isa = PBXGroup;
+			children = (
+				B560375221FE726300CE7123 /* character_enemy_boss_viking.png */,
+			);
+			path = Boss;
+			sourceTree = "<group>";
+		};
+		B560374C21FE720A00CE7123 /* Swordsman */ = {
+			isa = PBXGroup;
+			children = (
+				B560375021FE725D00CE7123 /* character_enemy_swordsman.png */,
+			);
+			path = Swordsman;
+			sourceTree = "<group>";
+		};
+		B560374D21FE721600CE7123 /* Brute */ = {
+			isa = PBXGroup;
+			children = (
+				B560374E21FE725700CE7123 /* character_enemy_brute.png */,
+			);
+			path = Brute;
+			sourceTree = "<group>";
+		};
+		B560376321FE841A00CE7123 /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */,
+				B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */,
+				B560376521FE843800CE7123 /* MonsterBrute.h */,
+				B560376621FE843800CE7123 /* MonsterBrute.m */,
+			);
+			name = Normal;
+			sourceTree = "<group>";
+		};
+		B560376421FE842900CE7123 /* Boss */ = {
+			isa = PBXGroup;
+			children = (
+				B560376821FE844800CE7123 /* MonsterBossViking.h */,
+				B560376921FE844800CE7123 /* MonsterBossViking.m */,
+			);
+			name = Boss;
+			sourceTree = "<group>";
+		};
 		B5671A56219A1380009E270F /* Physics */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,14 +679,6 @@
 				B57B0D1021A5FDD50064B91F /* Entities */,
 			);
 			name = "Scene objects";
-			sourceTree = "<group>";
-		};
-		B57B0CEE21A5F0270064B91F /* Lancelot */ = {
-			isa = PBXGroup;
-			children = (
-				B57B0CF021A5F0A50064B91F /* lancelot_idle.png */,
-			);
-			path = Lancelot;
 			sourceTree = "<group>";
 		};
 		B57B0D1021A5FDD50064B91F /* Entities */ = {
@@ -567,8 +760,8 @@
 		B5CCC15E21D0082E00AD19C5 /* Monsters */ = {
 			isa = PBXGroup;
 			children = (
-				B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */,
-				B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */,
+				B560376421FE842900CE7123 /* Boss */,
+				B560376321FE841A00CE7123 /* Normal */,
 			);
 			name = Monsters;
 			sourceTree = "<group>";
@@ -587,9 +780,15 @@
 		B5D0311621F26F8200C162A1 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				B5D0312721F2A43500C162A1 /* frostbite.png */,
-				B5D0312521F2A09E00C162A1 /* burn.png */,
-				B5D0312321F29EA500C162A1 /* hit.png */,
+				B560371A21FE707100CE7123 /* status_effect_bleed.png */,
+				B560372021FE707200CE7123 /* status_effect_buff.png */,
+				B560371E21FE707200CE7123 /* status_effect_burn.png */,
+				B560371B21FE707100CE7123 /* status_effect_debuff.png */,
+				B560371D21FE707200CE7123 /* status_effect_frostbite.png */,
+				B560372121FE707200CE7123 /* heal.png */,
+				B560371F21FE707200CE7123 /* hit.png */,
+				B560371921FE707100CE7123 /* status_effect_poison.png */,
+				B560371C21FE707100CE7123 /* status_effect_stun.png */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -762,7 +961,8 @@
 		B5E380412183B3E00007D013 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				B5C2800121D3FF58009C657A /* hud.png */,
+				B560372B21FE70C700CE7123 /* Interfaces */,
+				B560371821FE702A00CE7123 /* HUD */,
 				B55FA73F21D828E600526790 /* Font */,
 				B5E380422183B3E00007D013 /* Icons */,
 				B5D0311621F26F8200C162A1 /* Effects */,
@@ -793,9 +993,7 @@
 		B5E380472183B3E00007D013 /* Playable */ = {
 			isa = PBXGroup;
 			children = (
-				B5FE45E721ADC80000F3C177 /* Knight */,
-				B5FE45E621ADC7FA00F3C177 /* Paladin */,
-				B57B0CEE21A5F0270064B91F /* Lancelot */,
+				B560373D21FE716000CE7123 /* Adventurers */,
 			);
 			path = Playable;
 			sourceTree = "<group>";
@@ -803,17 +1001,9 @@
 		B5E3804C2183B3E00007D013 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
-				B5E3804D2183B3E00007D013 /* Archer */,
+				B560374A21FE71FE00CE7123 /* Mock-up */,
 			);
 			path = Enemies;
-			sourceTree = "<group>";
-		};
-		B5E3804D2183B3E00007D013 /* Archer */ = {
-			isa = PBXGroup;
-			children = (
-				B5E3804E2183B3E00007D013 /* archer.png */,
-			);
-			path = Archer;
 			sourceTree = "<group>";
 		};
 		B5E3804F2183B3E00007D013 /* Props */ = {
@@ -838,30 +1028,16 @@
 		B5E380522183B3E00007D013 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				B560371721FE6FCC00CE7123 /* Menus */,
 				B5FFCB8B21A3607F005F15BF /* Areas */,
 			);
 			path = Background;
 			sourceTree = "<group>";
 		};
-		B5FE45E621ADC7FA00F3C177 /* Paladin */ = {
-			isa = PBXGroup;
-			children = (
-				B5FE45EC21ADC83C00F3C177 /* paladin.png */,
-			);
-			path = Paladin;
-			sourceTree = "<group>";
-		};
-		B5FE45E721ADC80000F3C177 /* Knight */ = {
-			isa = PBXGroup;
-			children = (
-				B5FE45EA21ADC83600F3C177 /* knight.png */,
-			);
-			path = Knight;
-			sourceTree = "<group>";
-		};
 		B5FFCB8B21A3607F005F15BF /* Areas */ = {
 			isa = PBXGroup;
 			children = (
+				B560371521FE6FBD00CE7123 /* background_seashore.png */,
 				B55FA72721D7FC0A00526790 /* background_farmlands.png */,
 				B55FA72821D7FC0A00526790 /* background_mountains.png */,
 				B55FA72921D7FC0A00526790 /* background_pinewoods.png */,
@@ -944,32 +1120,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				B50F82FF21ED2A4C000C2A92 /* enabled_sound_button.png in Resources */,
+				B560373821FE710400CE7123 /* interface_background_corner_down_right.png in Resources */,
 				B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */,
+				B560375921FE803A00CE7123 /* background_main_menu.png in Resources */,
+				B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */,
+				B560372721FE707200CE7123 /* status_effect_burn.png in Resources */,
 				B50F830121ED2A4C000C2A92 /* enabled_music_button.png in Resources */,
 				B5FFCB9621A36131005F15BF /* combat_dice_animation_evil.png in Resources */,
 				B54E88D021E2D2450040C888 /* back_button.png in Resources */,
 				B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */,
 				B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */,
-				B5FE45EB21ADC83600F3C177 /* knight.png in Resources */,
+				B560372921FE707200CE7123 /* status_effect_buff.png in Resources */,
+				B560375121FE725D00CE7123 /* character_enemy_swordsman.png in Resources */,
+				B560373921FE710400CE7123 /* interface_background_edge_down.png in Resources */,
+				B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */,
+				B560372421FE707200CE7123 /* status_effect_debuff.png in Resources */,
 				B55FA74321D82F4500526790 /* font.bmp in Resources */,
+				B560372A21FE707200CE7123 /* heal.png in Resources */,
 				B5E380592183B3E00007D013 /* dices.png in Resources */,
+				B560374F21FE725700CE7123 /* character_enemy_brute.png in Resources */,
+				B560372321FE707200CE7123 /* status_effect_bleed.png in Resources */,
 				B5E380542183B3E00007D013 /* ui_icons.png in Resources */,
+				B560373521FE710400CE7123 /* interface_background_edge_up.png in Resources */,
+				B560374721FE71E300CE7123 /* character_class_bowman.png in Resources */,
 				B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */,
+				B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */,
+				B560372521FE707200CE7123 /* status_effect_stun.png in Resources */,
 				B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */,
-				B5FE45ED21ADC83C00F3C177 /* paladin.png in Resources */,
-				B5D0312421F29EA500C162A1 /* hit.png in Resources */,
+				B560373721FE710400CE7123 /* interface_background_corner_up_left.png in Resources */,
 				B5FFCB9721A36131005F15BF /* combat_dice_animation_good.png in Resources */,
+				B560374321FE71D600CE7123 /* character_class_paladin.png in Resources */,
 				B5C2800821D43676009C657A /* basic_melee_skill.png in Resources */,
+				B560372221FE707200CE7123 /* status_effect_poison.png in Resources */,
 				B5AE502021BEF47300FC5CBF /* click.wav in Resources */,
+				B560372621FE707200CE7123 /* status_effect_frostbite.png in Resources */,
+				B560373621FE710400CE7123 /* interface_background_edge_right.png in Resources */,
+				B560374921FE71E900CE7123 /* character_class_brawler.png in Resources */,
 				B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */,
-				B5D0312821F2A43500C162A1 /* frostbite.png in Resources */,
+				B560375321FE726300CE7123 /* character_enemy_boss_viking.png in Resources */,
+				B560375721FE7ECB00CE7123 /* enemy_hp_pool.png in Resources */,
 				B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */,
-				B5D0312621F2A09E00C162A1 /* burn.png in Resources */,
-				B5E380582183B3E00007D013 /* archer.png in Resources */,
 				B50F830021ED2A4C000C2A92 /* disabled_music_button.png in Resources */,
-				B57B0CF121A5F0A50064B91F /* lancelot_idle.png in Resources */,
+				B560373C21FE710400CE7123 /* interface_background_edge_left.png in Resources */,
+				B560373A21FE710400CE7123 /* interface_background_corner_up_right.png in Resources */,
 				B5C2800221D3FF58009C657A /* hud.png in Resources */,
 				B50F830221ED2A4C000C2A92 /* disabled_sound_button.png in Resources */,
+				B560372821FE707200CE7123 /* hit.png in Resources */,
+				B560373B21FE710400CE7123 /* interface_background_corner_down_left.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1185,7 @@
 				B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */,
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
+				B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */,
 				B52284D921EFA01E0005B3AC /* Indicator.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
 				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
@@ -1000,6 +1198,8 @@
 				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
 				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,
 				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
+				B560376221FE82FB00CE7123 /* KnightFireEnchantress.m in Sources */,
+				B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */,
 				B5C2800621D42D72009C657A /* TurnManager.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
 				B54E88D621E2E0C20040C888 /* OptionsMenu.m in Sources */,
@@ -1011,12 +1211,14 @@
 				B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */,
-				B52192AD21C7260400637BE7 /* KnightLancelot.m in Sources */,
+				B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */,
 				B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */,
+				B560376721FE843800CE7123 /* MonsterBrute.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
 				B54E88CD21E2CDFC0040C888 /* Menu.m in Sources */,
+				B560375C21FE82D600CE7123 /* KnightBowman.m in Sources */,
 				B57B0D0C21A5F8720064B91F /* FinalLevel.m in Sources */,
 				B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,

@@ -8,13 +8,17 @@
 
 // MARK: entities
 typedef enum {
-    KnightTypeLancelot,
-    KnightTypeEnemy,
+    KnightTypeBrawler,
+    KnightTypeBowman,
+    KnightTypePaladin,
+    KnightTypeFireEnchantress,
     KnightTypes
 } KnightType;
 
 typedef enum {
     MonsterTypeWarrior,
+    MonsterTypeBrute,
+    MonsterTypeBossViking,
     MonsterTypes
 } MonsterType;
 
@@ -190,17 +194,28 @@ typedef enum {
 #define AREA_FARMLANDS @"background_farmlands"
 #define AREA_MOUNTAINS @"background_mountains"
 #define AREA_PINEWOODS @"background_pinewoods"
+#define AREA_SEASHORE @"background_seashore"
+
+// MARK: menu backgrounds
+#define BACKGROUND_MAIN_MENU @"background_main_menu"
 
 // MARK: hud texture
 #define HUD @"hud"
+#define HUD_WAVE_COUNTER @"hud_wave_counter"
 
 // MARK: hp pool texture
 #define HP_POOL @"hp_pool"
+#define HP_ENEMY_POOL @"enemy_hp_pool"
 
 // MARK: character textures
-#define LANCELOT_IDLE @"lancelot_idle"
-#define PALADIN_IDLE @"paladin"
-#define KNIGHT_IDLE @"knight"
+#define CHARACTER_BRAWLER @"character_class_brawler"
+#define CHARACTER_BOWMAN @"character_class_bowman"
+#define CHARACTER_PALADIN @"character_class_paladin"
+#define CHARACTER_FIRE_ENCHANTRESS @"character_class_fire_enchantress"
+
+#define ENEMY_SWORDSMAN @"character_enemy_swordsman"
+#define ENEMY_BRUTE @"character_enemy_brute"
+#define ENEMY_VIKING_BOSS @"character_enemy_boss_viking"
 
 // MARK: skill textures
 #define BASIC_ATTACK_MELLEE @"basic_melee_skill"
@@ -219,6 +234,12 @@ typedef enum {
 #define SOUND_BUTTON_DISABLED @"disabled_sound_button"
 
 // MARK: gui textures - effects
+#define HEAL @"heal"
 #define HIT @"hit"
-#define BURN @"burn"
-#define FROSTBITE @"frostbite"
+#define STAT_EFFECT_BURN @"status_effect_burn"
+#define STAT_EFFECT_FROSTBITE @"status_effect_frostbite"
+#define STAT_EFFECT_BLEED @"status_effect_bleed"
+#define STAT_EFFECT_BUFF @"status_effect_buff"
+#define STAT_EFFECT_DEBUFF @"status_effect_debuff"
+#define STAT_EFFECT_POISON @"status_effect_poison"
+#define STAT_EFFECT_STUN @"status_effect_stun"

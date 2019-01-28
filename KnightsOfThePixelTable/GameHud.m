@@ -68,8 +68,8 @@
     
     // load indicator textures
     hitTexture = [[self.game.content load:HIT] retain];
-    burnTexture = [[self.game.content load:BURN] retain];
-    frostbiteTexture = [[self.game.content load:FROSTBITE] retain];
+    burnTexture = [[self.game.content load:STAT_EFFECT_BURN] retain];
+    frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
     
     
     [super initialize];

@@ -41,9 +41,9 @@
 
 @class ComboSlot;
 
-@class Knight, KnightLancelot;
+@class Knight, KnightBrawler, KnightBowman, KnightPaladin, KnightFireEnchantress;
 
-@class Monster, MonsterWarrior;
+@class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking;
 
 @class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
 

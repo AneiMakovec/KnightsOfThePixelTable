@@ -39,7 +39,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud;
+@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -314,7 +314,7 @@
 - (void) applyStatEffectsToTarget:(CombatEntity*)theTarget {
     for (StatEffect *effect in skills[skillType].statEffects) {
         if ([Random intLessThan:100] < effect.chance)
-            [theTarget addStatEffect:effect];
+            [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
     }
 }
 

@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) int duration;
 @property (nonatomic, readonly) BOOL active;
 @property (nonatomic, readonly) int chance;
+@property (nonatomic, readonly) int chanceUpgradeMargin;
 
 - (id) initWithDuration:(int)theDuration chance:(int)theChance chanceUpgradeMargin:(int)theChanceMargin;
 

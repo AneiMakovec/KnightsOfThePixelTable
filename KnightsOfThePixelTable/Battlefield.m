@@ -27,15 +27,34 @@
 
 
 - (void) initialize {
-    KnightLancelot *lancelot;
-    for (int i = 0; i < CombatPositions; i++) {
-        // add ally entities
-        lancelot = [[KnightLancelot alloc] initWithBattlefield:self gameHud:hud];
-        [lancelot setCombatPosition:i];
-        [allyEntities insertObject:lancelot atIndex:i];
-        [level.scene addItem:lancelot];
-        [lancelot release];
-    }
+    // add ally entities
+    KnightBrawler *brawler;
+    brawler = [[KnightBrawler alloc] initWithBattlefield:self gameHud:hud];
+    [brawler setCombatPosition:FirstCombatPosition];
+    [allyEntities insertObject:brawler atIndex:FirstCombatPosition];
+    [level.scene addItem:brawler];
+    [brawler release];
+    
+    KnightBowman *bowman;
+    bowman = [[KnightBowman alloc] initWithBattlefield:self gameHud:hud];
+    [bowman setCombatPosition:SecondCombatPosition];
+    [allyEntities insertObject:bowman atIndex:SecondCombatPosition];
+    [level.scene addItem:bowman];
+    [bowman release];
+    
+    KnightPaladin *paladin;
+    paladin = [[KnightPaladin alloc] initWithBattlefield:self gameHud:hud];
+    [paladin setCombatPosition:ThirdCombatPosition];
+    [allyEntities insertObject:paladin atIndex:ThirdCombatPosition];
+    [level.scene addItem:paladin];
+    [paladin release];
+    
+    KnightFireEnchantress *enchantress;
+    enchantress = [[KnightFireEnchantress alloc] initWithBattlefield:self gameHud:hud];
+    [enchantress setCombatPosition:FourthCombatPosition];
+    [allyEntities insertObject:enchantress atIndex:FourthCombatPosition];
+    [level.scene addItem:enchantress];
+    [enchantress release];
     
     // add enemy entities
     [self newWave];
@@ -88,6 +107,10 @@
     return [allyEntities containsObject:theAlly];
 }
 
+- (int) getCombatPositionOfAlly:(Knight *)theAlly {
+    return (int)[allyEntities indexOfObject:theAlly];
+}
+
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition {
     if ([enemyEntities count] > thePosition) {
         return [enemyEntities objectAtIndex:thePosition];
@@ -98,6 +121,10 @@
 
 - (BOOL) containsEnemy:(CombatEntity *)theEnemy {
     return [enemyEntities containsObject:theEnemy];
+}
+
+- (int) getCombatPositionOfEnemy:(Monster *)theEnemy {
+    return (int)[enemyEntities indexOfObject:theEnemy];
 }
 
 
@@ -150,15 +177,26 @@
 }
 
 - (void) newWave {
-    MonsterWarrior *monster;
-    for (int i = 0; i < CombatPositions; i++) {
+    MonsterWarrior *monsterWarrior;
+    for (int i = 0; i < 2; i++) {
         
         // add enemy entities
-        monster = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
-        [monster setCombatPosition:i];
-        [enemyEntities insertObject:monster atIndex:i];
-        [level.scene addItem:monster];
-        [monster release];
+        monsterWarrior = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
+        [monsterWarrior setCombatPosition:i];
+        [enemyEntities insertObject:monsterWarrior atIndex:i];
+        [level.scene addItem:monsterWarrior];
+        [monsterWarrior release];
+    }
+    
+    MonsterBrute *monsterBrute;
+    for (int i = 2; i < 4; i++) {
+        
+        // add enemy entities
+        monsterBrute = [[MonsterBrute alloc] initWithBattlefield:self gameHud:hud];
+        [monsterBrute setCombatPosition:i];
+        [enemyEntities insertObject:monsterBrute atIndex:i];
+        [level.scene addItem:monsterBrute];
+        [monsterBrute release];
     }
 }
 

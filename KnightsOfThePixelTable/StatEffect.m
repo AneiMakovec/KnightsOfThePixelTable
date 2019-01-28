@@ -29,7 +29,7 @@
     return self;
 }
 
-@synthesize duration, active, chance;
+@synthesize duration, active, chance, chanceUpgradeMargin;
 
 
 - (void) activateWithTarget:(CombatEntity *)theTarget {

@@ -26,15 +26,38 @@ NS_ASSUME_NONNULL_BEGIN
     // background and hud textures
     Texture2D *levelBackgrounds[LevelTypes];
     Texture2D *hud;
+    Texture2D *hudWaveCounter;
     
     
     
     
     
-    // entities idle animations
+    // entity textures
     Texture2D *hpPool;
-    Texture2D *allyTexturesIdle[CombatPositions];
-    AnimatedSprite *allySprites[CombatPositions];
+    Texture2D *allyTextures[CombatPositions];
+    Texture2D *enemyTextures[MonsterTypes];
+    
+    // idle sprites
+    AnimatedSprite *allyIdleSprites[CombatPositions];
+    AnimatedSprite *enemyIdleSprites[MonsterTypes];
+    
+    // move sprites
+    AnimatedSprite *allyMoveSprites[CombatPositions];
+    AnimatedSprite *enemyMoveSprites[MonsterTypes];
+    
+    // hit sprites
+    AnimatedSprite *allyHitSprites[CombatPositions];
+    AnimatedSprite *enemyHitSprites[MonsterTypes];
+    
+    // death sprites
+    AnimatedSprite *allyDeathSprites[CombatPositions];
+    AnimatedSprite *enemyDeathSprites[MonsterTypes];
+    
+    // attack sprites
+    AnimatedSprite *allyAttackSprites[CombatPositions];
+    AnimatedSprite *enemyAttackSprites[MonsterTypes];
+    
+    
     
     // skill textures
     Texture2D *basicMeleeSkill;
