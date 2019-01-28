@@ -12,8 +12,8 @@
 
 @implementation KnightPaladin
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypePaladin battlefield:theBattlefield gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
+    self = [super initKnight:KnightTypePaladin level:theLevel gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {

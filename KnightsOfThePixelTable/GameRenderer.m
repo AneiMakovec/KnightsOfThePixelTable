@@ -11,10 +11,11 @@
 
 @implementation GameRenderer
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay turnManager:(TurnManager *)theTurnManager {
     self = [super initWithGame:theGame];
     if (self != nil) {
         gameplay = theGameplay;
+        turnManager = theTurnManager;
     }
     return self;
 }
@@ -65,6 +66,7 @@
     
     // Hp pool
     hpPool = [self.game.content load:HP_POOL];
+    enemyHpPool = [self.game.content load:HP_ENEMY_POOL];
     
     // Skills
     basicMeleeSkill = [self.game.content load:BASIC_ATTACK_MELLEE];
@@ -212,13 +214,24 @@
  MARK: DRAW
 */
 - (void) drawWithGameTime:(GameTime *)gameTime {
+    float allyDepth, enemyDepth;
+    if (turnManager.playersTurn) {
+        allyDepth = 0;
+        enemyDepth = 0.1f;
+    } else {
+        allyDepth = 0.1f;
+        enemyDepth = 0;
+    }
+    
+    
     // begin
     [spriteBatch beginWithSortMode:SpriteSortModeBackToFront BlendState:nil SamplerState:[SamplerState pointClamp]
                  DepthStencilState:nil RasterizerState:nil Effect:nil TransformMatrix:camera];
     
     // backgorund
     //[spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
-    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] tintWithColor:[Color white]];
+//    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] tintWithColor:[Color white]];
+    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
     
     // hud
     //[spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
@@ -292,7 +305,7 @@
                     break;
             }
             
-            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:0];
+            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:allyDepth];
                 
             // hp exp pool
             [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
@@ -378,7 +391,19 @@
             else
                 color = [Color white];
             
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:0];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:enemyDepth];
+            
+            // hp pool
+            if (monster.state != EntityStateStart) {
+                [spriteBatch draw:enemyHpPool toRectangle:monster.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
+                [spriteBatch draw:hpPool toRectangle:monster.hpArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
+            }
+        }
+        
+        // check if is projectile
+        Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
+        if (projectile) {
+            [spriteBatch draw:basicMeleeSkill to:projectile.position tintWithColor:[Color white]];
         }
         
         // check if is dice
@@ -500,7 +525,6 @@
     for (int i = 0; i < idleFrames; i++) {
         int x = i % 8;
         int y = i / 8;
-        NSLog(@"x: %d, y: %d", x, y);
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
         frameSprite.texture = allyTextures[ally];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
@@ -522,7 +546,6 @@
     for (int i = idleFrames; i < moveFrames; i++) {
         int x = i % 8;
         int y = i / 8;
-        NSLog(@"x: %d, y: %d", x, y);
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
         frameSprite.texture = allyTextures[ally];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
@@ -544,7 +567,6 @@
     for (int i = moveFrames; i < hitFrames; i++) {
         int x = i % 8;
         int y = i / 8;
-        NSLog(@"x: %d, y: %d", x, y);
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
         frameSprite.texture = allyTextures[ally];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
@@ -564,7 +586,6 @@
     for (int i = hitFrames; i < deathFrames; i++) {
         int x = i % 8;
         int y = i / 8;
-        NSLog(@"x: %d, y: %d", x, y);
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
         frameSprite.texture = allyTextures[ally];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
@@ -584,7 +605,6 @@
     for (int i = deathFrames; i < attackFrames; i++) {
         int x = i % 8;
         int y = i / 8;
-        NSLog(@"x: %d, y: %d", x, y);
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
         frameSprite.texture = allyTextures[ally];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];

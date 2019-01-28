@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KnightFireEnchantress : Knight
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)hud;
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)hud;
 
 @end
 

@@ -12,14 +12,14 @@
 
 @implementation CombatEntity
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
         radius = 1;
         maxRadius = theMaxRadius;
         
         hud = theHud;
-        battlefield = theBattlefield;
+        level = theLevel;
         
         stunned = NO;
         isDead = NO;
@@ -39,7 +39,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects;
+@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -92,6 +92,33 @@
 //        }
 //    }
     
+    // or wait for collision with projectile
+    if (state == EntityStateIdle) {
+        Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
+        if (projectile) {
+            
+            NSLog(@"A projectile!");
+            
+            // check if miss
+            if (projectile.missed) {
+                // miss
+                [hud addMissIndicatorAt:position];
+            } else {
+                // take damage
+                [self takeDamage:projectile.damage];
+                
+                // add damage and hit indicators
+                [hud addDamageIndicatorAt:position amount:projectile.damage isCrit:projectile.wasCrit];
+                [hud addHitIndicatorAt:position];
+                
+                // show hit animation
+                [self startDefending];
+            }
+            
+            [level.scene removeItem:projectile];
+        }
+    }
+    
     // ignore all
     return NO;
 }
@@ -100,7 +127,7 @@
 
 - (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly {
     // check if there are any enemies
-    if ([battlefield hasAnyEnemyForAlly:isAlly]) {
+    if ([level.battlefield hasAnyEnemyForAlly:isAlly]) {
         
         // check if not finished attacking
         if (!finishedAttacking) {
@@ -133,43 +160,43 @@
                 case SkillTargetFrontRow:
                     // front row
                     if (isAlly) {
-                        target = battlefield.enemyFrontRow;
-                        [targets addObject:[battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[battlefield getEnemyAtPosition:SecondCombatPosition]];
+                        target = level.battlefield.enemyFrontRow;
+                        [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                        [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
                     } else {
-                        target = battlefield.allyFrontRow;
-                        [targets addObject:[battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[battlefield getAllyAtPosition:SecondCombatPosition]];
+                        target = level.battlefield.allyFrontRow;
+                        [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                        [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
                     }
                     break;
                     
                 case SkillTargetBackRow:
                     // back row
                     if (isAlly) {
-                        target = battlefield.enemyBackRow;
-                        [targets addObject:[battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[battlefield getEnemyAtPosition:FourthCombatPosition]];
+                        target = level.battlefield.enemyBackRow;
+                        [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                        [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
-                        target = battlefield.allyBackRow;
-                        [targets addObject:[battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[battlefield getAllyAtPosition:FourthCombatPosition]];
+                        target = level.battlefield.allyBackRow;
+                        [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                        [targets addObject:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
                     }
                     break;
                     
                 case SkillTargetAll:
                     // all
                     if (isAlly) {
-                        target = battlefield.enemyFrontRow;
-                        [targets addObject:[battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[battlefield getEnemyAtPosition:SecondCombatPosition]];
-                        [targets addObject:[battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[battlefield getEnemyAtPosition:FourthCombatPosition]];
+                        target = level.battlefield.enemyFrontRow;
+                        [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                        [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                        [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                        [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
-                        target = battlefield.allyFrontRow;
-                        [targets addObject:[battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[battlefield getAllyAtPosition:SecondCombatPosition]];
-                        [targets addObject:[battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[battlefield getAllyAtPosition:FourthCombatPosition]];
+                        target = level.battlefield.allyFrontRow;
+                        [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                        [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                        [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                        [targets addObject:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
                     }
                     break;
                     
@@ -213,9 +240,6 @@
         NSLog(@"HIT");
         
         // calculate damage
-        
-        // Debug
-//        int damage = 1000;  // HAX
         int damage = [self calcDamageOnTarget:theTarget];
         NSLog(@"DAMAGE: %d", damage);
         
@@ -231,26 +255,41 @@
             criticalHit = NO;
         }
         
-        // first deal damage
-        damage = 1000;
-        [self dealDamageToTarget:theTarget damage:damage];
-        
-        // add damage and hit indicators
-        [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
-        [hud addHitIndicatorAt:theTarget.position];
-        
-        // make the target show hit animation
-        [theTarget startDefending];
-        
-        // apply skill effects
-        [self applySkillEffectsToTarget:theTarget];
-        
-        // then apply skill status effects
-        [self applyStatEffectsToTarget:theTarget];
+        // check if skill is ranged
+        if (skills[skillType].range == SkillRangeRanged) {
+            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
+            [level.scene addItem:projectile];
+            [projectile release];
+        } else {
+            // first deal damage
+//        damage = 1000;  // HAX
+            [self dealDamageToTarget:theTarget damage:damage];
+            
+            // add damage and hit indicators
+            [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
+            [hud addHitIndicatorAt:theTarget.position];
+            
+            // make the target show hit animation
+            [theTarget startDefending];
+            
+            // apply skill effects
+            [self applySkillEffectsToTarget:theTarget];
+            
+            // then apply skill status effects
+            [self applyStatEffectsToTarget:theTarget];
+        }
     } else {
         // miss
-        [hud addMissIndicatorAt:theTarget.position];
-        NSLog(@"MISS");
+        
+        if (skills[skillType].range == SkillRangeRanged) {
+            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
+            [level.scene addItem:projectile];
+            [projectile release];
+            NSLog(@"MISS");
+        } else {
+            [hud addMissIndicatorAt:theTarget.position];
+            NSLog(@"MISS");
+        }
         
         // Debug
 //        [self dealDamageToTarget:theTarget damage:1000]; // HAX
@@ -297,17 +336,17 @@
 - (CombatEntity *) getRandomTargetForAlly:(BOOL)isAlly {
     CombatEntity *entity = nil;
     if (isAlly) {
-        if ([battlefield.enemyEntities count] > 0) {
-            entity = [battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
+        if ([level.battlefield.enemyEntities count] > 0) {
+            entity = [level.battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
             while (!entity) {
-                entity = [battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
+                entity = [level.battlefield getEnemyAtPosition:[Random intLessThan:CombatPositions]];
             }
         }
     } else {
-        if ([battlefield.allyEntities count] > 0) {
-            entity = [battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+        if ([level.battlefield.allyEntities count] > 0) {
+            entity = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
             while (!entity) {
-                entity = [battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                entity = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
             }
         }
     }

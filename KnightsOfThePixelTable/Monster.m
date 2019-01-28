@@ -11,8 +11,8 @@
 
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster battlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithBattlefield:theBattlefield gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         type = theMonster;
         expType = theExpType;
@@ -22,7 +22,7 @@
     return self;
 }
 
-@synthesize type;
+@synthesize type, hpPoolArea, hpArea;
 
 
 
@@ -32,6 +32,11 @@
     
     // calc entity area
     entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
+    
+    // calc hpPoolArea
+    hpPoolArea = [[Rectangle alloc] initWithX:origin.position.x - 40 y:origin.position.y - 30 width:80 height:12];
+    hpArea = [[Rectangle alloc] initWithX:origin.position.x - 29 y:origin.position.y - 30 width:69 height:12];
+    maxHpWidth = hpArea.width;
     
     // move outside the view
     position.x += 500;
@@ -105,6 +110,21 @@
         default:
             return 0;
     }
+}
+
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+    // invoke super method
+    [super updateWithGameTime:gameTime];
+    
+    // then update health
+    hpArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
+}
+
+- (void) dealloc {
+    [hpPoolArea release];
+    
+    [super dealloc];
 }
 
 @end

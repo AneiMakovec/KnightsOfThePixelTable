@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     SpriteFont *font;
     
+    int numWaves;
     Label *waveCounter;
     Label *currentHpCounters[CombatPositions];
     Label *maxHpCounters[CombatPositions];
@@ -39,8 +40,14 @@ NS_ASSUME_NONNULL_BEGIN
     
     // indicator textures
     Texture2D *hitTexture;
+    Texture2D *healTexture;
+    Texture2D *bleedTexture;
+    Texture2D *poisonTexture;
     Texture2D *burnTexture;
     Texture2D *frostbiteTexture;
+    Texture2D *stunTexture;
+    Texture2D *buffTexture;
+    Texture2D *debuffTexture;
 }
 
 @property (nonatomic, readonly) id<IScene> scene;
@@ -61,6 +68,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) addHitIndicatorAt:(Vector2*)position;
 - (void) addBurnIndicatorAt:(Vector2*)position;
 - (void) addFrostbiteIndicatorAt:(Vector2*)position;
+- (void) addBleedIndicatorAt:(Vector2*)position;
+- (void) addPoisonIndicatorAt:(Vector2*)position;
+- (void) addBuffIndicatorAt:(Vector2*)position;
+- (void) addDebuffIndicatorAt:(Vector2*)position;
+- (void) addStunIndicatorAt:(Vector2*)position target:(CombatEntity *)target;
 
 @end
 

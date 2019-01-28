@@ -16,12 +16,10 @@
 
 - (void) initialize {
     [super initialize];
-
-    // Text
-    title = [[Label alloc] initWithFont:retrotype text:@"Knights of the Pixel Table" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:100]];
-    title.horizontalAlign = HorizontalAlignCenter;
-    title.verticalAlign = VerticalAlignMiddle;
-    [scene addItem:title];
+    
+    // Background
+    background = [[Image alloc] initWithTexture:[self.game.content load:BACKGROUND_MAIN_MENU] position:[Vector2 vectorWithX:0 y:0]];
+    [scene addItem:background];
     
     // Buttons
     play = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] width:100 height:50]
@@ -50,8 +48,6 @@
 }
 
 - (void) dealloc {
-    [title release];
-    
     [play release];
     
     [super dealloc];

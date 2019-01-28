@@ -18,9 +18,9 @@
         humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
         aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
         physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];
-        renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self];
         gameHud = [[GameHud alloc] initWithGame:self.game level:currentLevel];
         turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel gameHud:gameHud humanPlayer:humanPlayer aiPlayer:aiPlayer];
+        renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self turnManager:turnManager];
         
         
         humanPlayer.updateOrder = 1;

@@ -50,6 +50,8 @@
 
 #import "ComboSlot.h"
 
+#import "Projectile.h"
+
 #import "Knight.h"
 #import "KnightBrawler.h"
 #import "KnightBowman.h"

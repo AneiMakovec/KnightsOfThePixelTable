@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     // core
     SpriteBatch *spriteBatch;
     Gameplay *gameplay;
+    TurnManager *turnManager;
     Matrix *camera;
     
     int hudOffset;
@@ -33,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
     
     
     // entity textures
-    Texture2D *hpPool;
     Texture2D *allyTextures[KnightTypes];
     Texture2D *enemyTextures[MonsterTypes];
     
@@ -62,6 +62,10 @@ NS_ASSUME_NONNULL_BEGIN
     // skill textures
     Texture2D *basicMeleeSkill;
     
+    // hp pool textures
+    Texture2D *hpPool;
+    Texture2D *enemyHpPool;
+    
     
     
     
@@ -85,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) Matrix *camera;
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay;
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay turnManager:(TurnManager *)theTurnManager;
 
 @end
 

@@ -12,8 +12,8 @@
 
 @implementation KnightBowman
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypeBowman battlefield:theBattlefield gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
+    self = [super initKnight:KnightTypeBowman level:theLevel gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
@@ -23,7 +23,7 @@
         // init skills
         StatEffect *effect;
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:[Constants lancelotRangeOfSkill:i] target:[Constants lancelotTargetOfSkill:i] useOn:[Constants lancelotUseOnSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
+            skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:SkillRangeRanged target:[Constants lancelotTargetOfSkill:i] useOn:[Constants lancelotUseOnSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
             
             effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1 chance:100 chanceUpgradeMargin:5];
             [skills[i] addStatEffect:effect];

@@ -41,6 +41,8 @@
 
 @class ComboSlot;
 
+@class Projectile;
+
 @class Knight, KnightBrawler, KnightBowman, KnightPaladin, KnightFireEnchantress;
 
 @class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking;

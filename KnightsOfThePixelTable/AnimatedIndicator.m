@@ -8,6 +8,8 @@
 
 #import "AnimatedIndicator.h"
 
+#import "Pixlron.Knights.h"
+
 @implementation AnimatedIndicator
 
 - (id) initWithTexture:(Texture2D *)theTexture position:(Vector2*)thePosition duration:(NSTimeInterval)theDuration {
@@ -46,19 +48,69 @@
 }
 
 - (void) loadHealAnimation {
+    animation.looping = NO;
     
+    for (int i = 0; i < 7; i++) {
+        int x = i % 7;
+        int y = i / 7;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+        frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 7];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
-- (void) loadStunAnimationWithTarget:(CombatEntity *)target {
+- (void) loadStunAnimationWithTarget:(CombatEntity *)theTarget {
+    target = theTarget;
     
+    animation.looping = NO;
+    
+    for (int i = 0; i < 3; i++) {
+        int x = i % 3;
+        int y = i / 3;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+        frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 3];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
 - (void) loadBleedAnimation {
+    animation.looping = NO;
     
+    for (int i = 0; i < 7; i++) {
+        int x = i % 7;
+        int y = i / 7;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameImage.origin = [Vector2 vectorWithX:64 y:64];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 7];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
 - (void) loadPoisonAnimation {
+    animation.looping = NO;
     
+    for (int i = 0; i < 9; i++) {
+        int x = i % 9;
+        int y = i / 9;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+        frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 9];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
 - (void) loadBurnAnimation {
@@ -94,12 +146,36 @@
     }
 }
 
-- (void) loadAnimationOfBuff:(StatType)stat {
+- (void) loadBuffAnimation {
+    animation.looping = NO;
     
+    for (int i = 0; i < 4; i++) {
+        int x = i % 4;
+        int y = i / 4;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+        frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 4];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
-- (void) loadAnimationOfDebuff:(StatType)stat {
+- (void) loadDebuffAnimation {
+    animation.looping = NO;
     
+    for (int i = 0; i < 4; i++) {
+        int x = i % 4;
+        int y = i / 4;
+        Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
+        frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+        frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        
+        AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 4];
+        [animation addFrame:frame];
+        [frameImage release];
+    }
 }
 
 
@@ -117,6 +193,10 @@
 - (void) updateWithGameTime:(GameTime *)gameTime {
     if (![animation isAlive]) {
         // animation finished, remove indicator from scene
+        [scene removeItem:self];
+    }
+    
+    if (target != nil && !target.stunned) {
         [scene removeItem:self];
     }
 }

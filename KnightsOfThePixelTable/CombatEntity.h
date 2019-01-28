@@ -43,10 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *targets;
     
     GameHud *hud;
-    Battlefield *battlefield;
+    Level *level;
 }
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
 
 @end
 

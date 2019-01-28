@@ -12,8 +12,8 @@
 
 @implementation Knight
 
-- (id) initKnight:(KnightType)theKnight battlefield:(Battlefield*)theBattlefield gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithBattlefield:theBattlefield gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initKnight:(KnightType)theKnight level:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
+    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
     if (self != nil) {
         maxLevel = 50;
         currentLevel = 1;

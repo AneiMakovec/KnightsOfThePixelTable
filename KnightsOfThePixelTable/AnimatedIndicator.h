@@ -31,13 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) loadHitAnimation;
 - (void) loadHealAnimation;
-- (void) loadStunAnimationWithTarget:(CombatEntity*)target;
+- (void) loadStunAnimationWithTarget:(CombatEntity*)theTarget;
 - (void) loadBleedAnimation;
 - (void) loadPoisonAnimation;
 - (void) loadBurnAnimation;
 - (void) loadFrostbiteAnimation;
-- (void) loadAnimationOfBuff:(StatType)stat;
-- (void) loadAnimationOfDebuff:(StatType)stat;
+- (void) loadBuffAnimation;
+- (void) loadDebuffAnimation;
 
 @end
 

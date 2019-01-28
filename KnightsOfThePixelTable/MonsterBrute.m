@@ -12,8 +12,8 @@
 
 @implementation MonsterBrute
 
-- (id) initWithBattlefield:(Battlefield*)theBattlefield gameHud:(GameHud *)hud {
-    self = [super initMonster:MonsterTypeBrute battlefield:theBattlefield gameHud:hud expType:ExpTypeNormal entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
+    self = [super initMonster:MonsterTypeBrute level:theLevel gameHud:hud expType:ExpTypeNormal entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {

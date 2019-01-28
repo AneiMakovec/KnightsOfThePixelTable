@@ -24,6 +24,8 @@
         
         endTurnReleased = NO;
         
+        numWaves = 4;
+        
         renderer = [[GUIRenderer alloc] initWithGame:self.game scene:scene];
         renderer.drawOrder = 1;
         [self.game.components addComponent:renderer];
@@ -42,20 +44,28 @@
     buttonBackground = [self.game.content load:BACK_BUTTON];
     
     // Wave counter
-    Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:512 y:20]];
-    waveText.color = [Color black];
+    Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:490 y:20]];
+    waveText.color = [Color white];
     waveText.horizontalAlign = HorizontalAlignCenter;
     waveText.verticalAlign = VerticalAlignMiddle;
-    [waveText setScaleUniform:2.0f];
+    [waveText setScaleUniform:1.0f];
     [scene addItem:waveText];
     [waveText release];
     
-    waveCounter = [[Label alloc] initWithFont:font text:@"1" position:[Vector2 vectorWithX:590 y:20]];
-    waveCounter.color = [Color black];
+    waveCounter = [[Label alloc] initWithFont:font text:@"1" position:[Vector2 vectorWithX:530 y:20]];
+    waveCounter.color = [Color white];
     waveCounter.horizontalAlign = HorizontalAlignCenter;
     waveCounter.verticalAlign = VerticalAlignMiddle;
-    [waveCounter setScaleUniform:2.0f];
+    [waveCounter setScaleUniform:1.0f];
     [scene addItem:waveCounter];
+    
+    Label *waveMaxNum = [[Label alloc] initWithFont:font text:[NSString stringWithFormat:@"/ %d", numWaves] position:[Vector2 vectorWithX:555 y:20]];
+    waveMaxNum.color = [Color white];
+    waveMaxNum.horizontalAlign = HorizontalAlignCenter;
+    waveMaxNum.verticalAlign = VerticalAlignMiddle;
+    [waveMaxNum setScaleUniform:1.0f];
+    [scene addItem:waveMaxNum];
+    [waveMaxNum release];
     
     // Debug - reset dices button
     resetDices = [[LabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] font:font text:@"Reset dices"];
@@ -68,6 +78,12 @@
     
     // load indicator textures
     hitTexture = [[self.game.content load:HIT] retain];
+    healTexture = [[self.game.content load:HEAL] retain];
+    stunTexture = [[self.game.content load:STAT_EFFECT_STUN] retain];
+    buffTexture = [[self.game.content load:STAT_EFFECT_BUFF] retain];
+    debuffTexture = [[self.game.content load:STAT_EFFECT_DEBUFF] retain];
+    bleedTexture = [[self.game.content load:STAT_EFFECT_BLEED] retain];
+    poisonTexture = [[self.game.content load:STAT_EFFECT_POISON] retain];
     burnTexture = [[self.game.content load:STAT_EFFECT_BURN] retain];
     frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
     
@@ -119,6 +135,10 @@
     Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color green] duration:0.5f];
     [scene addItem:indicator];
     [indicator release];
+    
+    AnimatedIndicator *animation = [[AnimatedIndicator alloc] initWithTexture:healTexture position:[Vector2 vectorWithX:position.x y:position.y] duration:0.3f];
+    [scene addItem:animation];
+    [animation release];
 }
 
 - (void) addMissIndicatorAt:(Vector2 *)position {
@@ -140,7 +160,7 @@
 }
 
 - (void) addHitIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:1.0f];
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:0.4f];
     [indicator loadHitAnimation];
     [scene addItem:indicator];
     [indicator release];
@@ -159,6 +179,44 @@
     [scene addItem:indicator];
     [indicator release];
 }
+
+- (void) addBleedIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:bleedTexture position:position duration:0.4f];
+    [indicator loadBleedAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addPoisonIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:poisonTexture position:position duration:0.5f];
+    [indicator loadPoisonAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addBuffIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:buffTexture position:position duration:0.3f];
+    [indicator loadBuffAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+-(void) addDebuffIndicatorAt:(Vector2 *)position {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:debuffTexture position:position duration:0.5f];
+    [indicator loadDebuffAnimation];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+- (void) addStunIndicatorAt:(Vector2 *)position target:(CombatEntity *)target {
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:stunTexture position:position duration:0.5f];
+    [indicator loadStunAnimationWithTarget:target];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+
+
 
 
 - (void) increaseWaveCounterTo:(int)wave {

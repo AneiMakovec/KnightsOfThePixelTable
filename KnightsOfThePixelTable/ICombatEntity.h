@@ -18,6 +18,7 @@
 @property (nonatomic, retain) Rectangle *entityArea;
 
 @property (nonatomic, readonly) BOOL isDead;
+@property (nonatomic, readonly) BOOL stunned;
 @property (nonatomic, readonly) BOOL finishedAttacking;
 @property (nonatomic) BOOL isTargeted;
 

@@ -95,6 +95,7 @@
 		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
+		B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1746921FF74D20033DF2C /* Projectile.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
 		B5E380092183A2580007D013 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380082183A2580007D013 /* AudioToolbox.framework */; };
@@ -269,6 +270,8 @@
 		B5D01C5621C8291B00A007DC /* Battlefield.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Battlefield.m; sourceTree = "<group>"; };
 		B5D0A42721C41204005EF3C6 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
 		B5D0A42821C41204005EF3C6 /* Knight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Knight.m; sourceTree = "<group>"; };
+		B5D1746821FF74D20033DF2C /* Projectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
+		B5D1746921FF74D20033DF2C /* Projectile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
 		B5DE124B218DA5FE000D6784 /* Pixlron.Knights.classes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.classes.h; sourceTree = "<group>"; };
 		B5DE1264218DE6BA000D6784 /* KOTPTEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPTEnums.h; sourceTree = "<group>"; };
@@ -707,6 +710,7 @@
 		B5A493BD21CAC38A003EBB1D /* Other classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5D1746721FF74BF0033DF2C /* Projectiles */,
 				B51D99E221CDD91600CE6056 /* Combo */,
 				B51D99E121CDD90800CE6056 /* Stats */,
 			);
@@ -811,6 +815,15 @@
 				B58869A421C4430900CE4C0E /* Monster.m */,
 			);
 			name = Enemies;
+			sourceTree = "<group>";
+		};
+		B5D1746721FF74BF0033DF2C /* Projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				B5D1746821FF74D20033DF2C /* Projectile.h */,
+				B5D1746921FF74D20033DF2C /* Projectile.m */,
+			);
+			name = Projectiles;
 			sourceTree = "<group>";
 		};
 		B5DE1244218DA53E000D6784 /* Level */ = {
@@ -1191,6 +1204,7 @@
 				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
+				B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,

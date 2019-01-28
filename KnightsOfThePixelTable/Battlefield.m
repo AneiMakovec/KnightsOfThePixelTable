@@ -29,28 +29,28 @@
 - (void) initialize {
     // add ally entities
     KnightBrawler *brawler;
-    brawler = [[KnightBrawler alloc] initWithBattlefield:self gameHud:hud];
+    brawler = [[KnightBrawler alloc] initWithLevel:level gameHud:hud];
     [brawler setCombatPosition:FirstCombatPosition];
     [allyEntities insertObject:brawler atIndex:FirstCombatPosition];
     [level.scene addItem:brawler];
     [brawler release];
     
     KnightBowman *bowman;
-    bowman = [[KnightBowman alloc] initWithBattlefield:self gameHud:hud];
+    bowman = [[KnightBowman alloc] initWithLevel:level gameHud:hud];
     [bowman setCombatPosition:SecondCombatPosition];
     [allyEntities insertObject:bowman atIndex:SecondCombatPosition];
     [level.scene addItem:bowman];
     [bowman release];
     
     KnightPaladin *paladin;
-    paladin = [[KnightPaladin alloc] initWithBattlefield:self gameHud:hud];
+    paladin = [[KnightPaladin alloc] initWithLevel:level gameHud:hud];
     [paladin setCombatPosition:ThirdCombatPosition];
     [allyEntities insertObject:paladin atIndex:ThirdCombatPosition];
     [level.scene addItem:paladin];
     [paladin release];
     
     KnightFireEnchantress *enchantress;
-    enchantress = [[KnightFireEnchantress alloc] initWithBattlefield:self gameHud:hud];
+    enchantress = [[KnightFireEnchantress alloc] initWithLevel:level gameHud:hud];
     [enchantress setCombatPosition:FourthCombatPosition];
     [allyEntities insertObject:enchantress atIndex:FourthCombatPosition];
     [level.scene addItem:enchantress];
@@ -65,12 +65,12 @@
     Monster *thirdEnemy = [enemyEntities objectAtIndex:ThirdCombatPosition];
     Monster *fourthEnemy = [enemyEntities objectAtIndex:FourthCombatPosition];
     
-    int x = secondEnemy.position.x - 56;
-    int y = firstEnemy.position.y + ((secondEnemy.position.y - firstEnemy.position.y) / 2);
+    int x = secondEnemy.origin.position.x - 56;
+    int y = firstEnemy.origin.position.y + ((secondEnemy.origin.position.y - firstEnemy.origin.position.y) / 2);
     enemyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
     
-    x = fourthEnemy.position.x - 56;
-    y = thirdEnemy.position.y + ((fourthEnemy.position.y - thirdEnemy.position.y) / 2);
+    x = fourthEnemy.origin.position.x - 56;
+    y = thirdEnemy.origin.position.y + ((fourthEnemy.origin.position.y - thirdEnemy.origin.position.y) / 2);
     enemyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
     
     
@@ -90,7 +90,6 @@
 
 
 - (void) setGameHud:(GameHud *)theHud {
-    NSLog(@"Hud set");
     hud = theHud;
 }
 
@@ -199,7 +198,7 @@
     for (int i = 0; i < 2; i++) {
         
         // add enemy entities
-        monsterWarrior = [[MonsterWarrior alloc] initWithBattlefield:self gameHud:hud];
+        monsterWarrior = [[MonsterWarrior alloc] initWithLevel:level gameHud:hud];
         [monsterWarrior setCombatPosition:i];
         [enemyEntities insertObject:monsterWarrior atIndex:i];
         [level.scene addItem:monsterWarrior];
@@ -210,7 +209,7 @@
     for (int i = 2; i < 4; i++) {
         
         // add enemy entities
-        monsterBrute = [[MonsterBrute alloc] initWithBattlefield:self gameHud:hud];
+        monsterBrute = [[MonsterBrute alloc] initWithLevel:level gameHud:hud];
         [monsterBrute setCombatPosition:i];
         [enemyEntities insertObject:monsterBrute atIndex:i];
         [level.scene addItem:monsterBrute];

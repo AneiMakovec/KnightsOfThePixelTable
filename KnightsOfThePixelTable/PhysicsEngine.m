@@ -62,6 +62,12 @@
                 [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
             }
         }
+        
+        // movement for projectiles
+        Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *) item : nil;
+        if (projectile) {
+            [MovementPhysics simulateMovementOn:item withElapsed:gameTime.elapsedGameTime];
+        }
     }
     
     // check for collisions between objects
@@ -99,6 +105,13 @@
                 // collision with origin
                 [Collision collisionBetween:cEntity and:cEntity.origin];
             }
+        }
+        
+        // projectiles
+        Projectile *projectile = [item1 isKindOfClass:[Projectile class]] ? (Projectile *) item1 : nil;
+        if (projectile) {
+            // collision with target
+            [Collision collisionBetween:projectile and:projectile.target];
         }
     }
 }
