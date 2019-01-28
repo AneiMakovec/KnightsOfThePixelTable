@@ -50,11 +50,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (int) getCombatPositionOfAlly:(Knight *)theAlly;
 
+- (void) removeAlly:(Knight *)theAlly;
+
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition;
 
 - (BOOL) containsEnemy:(CombatEntity *)theEnemy;
 
 - (int) getCombatPositionOfEnemy:(Monster *)theEnemy;
+
+- (void) removeEnemy:(Monster *)theEnemy;
 
 - (void) newWave;
 

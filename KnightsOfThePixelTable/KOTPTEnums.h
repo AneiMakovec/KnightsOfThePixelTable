@@ -128,6 +128,7 @@ typedef enum {
     EntityStateApproaching,
     EntityStateRetreating,
     EntityStateStart,
+    EntityStateDead,
     EntityStates
 } EntityState;
 

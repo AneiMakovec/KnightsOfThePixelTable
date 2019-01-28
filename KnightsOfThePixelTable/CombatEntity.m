@@ -82,15 +82,15 @@
         }
     }
     
-    // or wait for collision with attacking entity
-    if (state == EntityStateIdle) {
-        CombatEntity *entity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *)item : nil;
-        if (entity) {
-            if (entity.state == EntityStateAttacking) {
-                state = EntityStateDefending;
-            }
-        }
-    }
+//    // or wait for collision with attacking entity
+//    if (state == EntityStateIdle) {
+//        CombatEntity *entity = [item isKindOfClass:[CombatEntity class]] ? (CombatEntity *)item : nil;
+//        if (entity) {
+//            if (entity.state == EntityStateAttacking) {
+//                state = EntityStateDefending;
+//            }
+//        }
+//    }
     
     // ignore all
     return NO;
@@ -232,11 +232,15 @@
         }
         
         // first deal damage
+        damage = 1000;
         [self dealDamageToTarget:theTarget damage:damage];
         
         // add damage and hit indicators
         [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
         [hud addHitIndicatorAt:theTarget.position];
+        
+        // make the target show hit animation
+        [theTarget startDefending];
         
         // apply skill effects
         [self applySkillEffectsToTarget:theTarget];
@@ -444,7 +448,7 @@
                     [self healTarget:entity];
                 } else {
                     [self dealDamageToTarget:entity];
-                    [entity stopDefending];
+//                    [entity stopDefending];
                 }
             }
             
@@ -587,6 +591,10 @@
 
 - (void) stopDefending {
     state = EntityStateIdle;
+}
+
+- (void) startDefending {
+    state = EntityStateDefending;
 }
 
 

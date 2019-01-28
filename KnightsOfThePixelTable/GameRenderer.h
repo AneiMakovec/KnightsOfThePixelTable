@@ -34,27 +34,27 @@ NS_ASSUME_NONNULL_BEGIN
     
     // entity textures
     Texture2D *hpPool;
-    Texture2D *allyTextures[CombatPositions];
+    Texture2D *allyTextures[KnightTypes];
     Texture2D *enemyTextures[MonsterTypes];
     
     // idle sprites
-    AnimatedSprite *allyIdleSprites[CombatPositions];
+    AnimatedSprite *allyIdleSprites[KnightTypes];
     AnimatedSprite *enemyIdleSprites[MonsterTypes];
     
     // move sprites
-    AnimatedSprite *allyMoveSprites[CombatPositions];
+    AnimatedSprite *allyMoveSprites[KnightTypes];
     AnimatedSprite *enemyMoveSprites[MonsterTypes];
     
     // hit sprites
-    AnimatedSprite *allyHitSprites[CombatPositions];
+    AnimatedSprite *allyHitSprites[KnightTypes];
     AnimatedSprite *enemyHitSprites[MonsterTypes];
     
     // death sprites
-    AnimatedSprite *allyDeathSprites[CombatPositions];
+    AnimatedSprite *allyDeathSprites[KnightTypes];
     AnimatedSprite *enemyDeathSprites[MonsterTypes];
     
     // attack sprites
-    AnimatedSprite *allyAttackSprites[CombatPositions];
+    AnimatedSprite *allyAttackSprites[KnightTypes];
     AnimatedSprite *enemyAttackSprites[MonsterTypes];
     
     

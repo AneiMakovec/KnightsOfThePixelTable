@@ -590,4 +590,12 @@
 }
 
 
+
+
+/*
+ MARK: MONSTERS STAT VALUES
+ */
+
+
+
 @end

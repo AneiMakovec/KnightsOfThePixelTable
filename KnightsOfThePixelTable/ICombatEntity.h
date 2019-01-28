@@ -40,6 +40,7 @@
 - (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly;
 - (void) resetAttack;
 - (void) stopDefending;
+- (void) startDefending;
 
 - (BOOL) addComboItem:(Dice *)theItem;
 - (Dice *) removeCombo:(ComboItem)theItem;

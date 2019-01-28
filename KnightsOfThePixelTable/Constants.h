@@ -64,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (int) maxSkillLevel;
 
+// allies
 + (int) lancelotHealthPoints;
 + (int) lancelotValueOfStat:(StatType)stat;
 + (int) lancelotGainMarginOfStat:(StatType)stat;
@@ -74,6 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (float) lancelotDamageOfSkill:(SkillType)skill;
 + (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill;
 + (float) lancelotGainMarginOfSkill:(SkillType)skill;
+
+// enemies
+
 
 @end
 

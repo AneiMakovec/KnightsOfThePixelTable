@@ -111,6 +111,11 @@
     return (int)[allyEntities indexOfObject:theAlly];
 }
 
+- (void) removeAlly:(Knight *)theAlly {
+    [allyEntities removeObject:theAlly];
+    [level.scene removeItem:theAlly];
+}
+
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition {
     if ([enemyEntities count] > thePosition) {
         return [enemyEntities objectAtIndex:thePosition];
@@ -127,53 +132,66 @@
     return (int)[enemyEntities indexOfObject:theEnemy];
 }
 
+- (void) removeEnemy:(Monster *)theEnemy {
+    // give experience to allies
+    for (Knight *knight in allyEntities) {
+        [knight gainExperience:[theEnemy giveExperience]];
+        
+        // add exp gain indicator
+        [hud addExpIndicatorAt:knight.origin.position amount:theEnemy.giveExperience];
+    }
+    
+    [enemyEntities removeObject:theEnemy];
+    [level.scene removeItem:theEnemy];
+}
+
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     
-    // check if entities are still alive
-    
-    // allies
-    NSMutableArray *removedKnights = [[NSMutableArray alloc] init];
-    
-    for (Knight *knight in allyEntities) {
-        if (knight.isDead) {
-            [removedKnights addObject:knight];
-        }
-    }
-    
-    for (Knight *knight in removedKnights) {
-        [allyEntities removeObject:knight];
-        [level.scene removeItem:knight];
-    }
-    
-    [removedKnights release];
-    
-    
-    // enemies
-    NSMutableArray *removedMonsters = [[NSMutableArray alloc] init];
-    
-    for (Monster *monster in enemyEntities) {
-        if (monster.isDead) {
-            [removedMonsters addObject:monster];
-        }
-    }
-    
-    for (Monster *monster in removedMonsters) {
-
-        // give experience to allies
-        for (Knight *knight in allyEntities) {
-            [knight gainExperience:[monster giveExperience]];
-            
-            // add exp gain indicator
-            [hud addExpIndicatorAt:knight.origin.position amount:monster.giveExperience];
-        }
-        
-        [enemyEntities removeObject:monster];
-        [level.scene removeItem:monster];
-    }
-    
-    [removedMonsters release];
+//    // check if entities are still alive
+//
+//    // allies
+//    NSMutableArray *removedKnights = [[NSMutableArray alloc] init];
+//
+//    for (Knight *knight in allyEntities) {
+//        if (knight.isDead) {
+//            [removedKnights addObject:knight];
+//        }
+//    }
+//
+//    for (Knight *knight in removedKnights) {
+//        [allyEntities removeObject:knight];
+//        [level.scene removeItem:knight];
+//    }
+//
+//    [removedKnights release];
+//
+//
+//    // enemies
+//    NSMutableArray *removedMonsters = [[NSMutableArray alloc] init];
+//
+//    for (Monster *monster in enemyEntities) {
+//        if (monster.isDead) {
+//            [removedMonsters addObject:monster];
+//        }
+//    }
+//
+//    for (Monster *monster in removedMonsters) {
+//
+//        // give experience to allies
+//        for (Knight *knight in allyEntities) {
+//            [knight gainExperience:[monster giveExperience]];
+//
+//            // add exp gain indicator
+//            [hud addExpIndicatorAt:knight.origin.position amount:monster.giveExperience];
+//        }
+//
+//        [enemyEntities removeObject:monster];
+//        [level.scene removeItem:monster];
+//    }
+//
+//    [removedMonsters release];
 }
 
 - (void) newWave {

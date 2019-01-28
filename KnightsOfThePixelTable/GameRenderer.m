@@ -155,10 +155,10 @@
     
     
     // characters - ALLY textures
-    for (int i = 0; i < CombatPositions; i++) {
-        Knight *knight = [gameplay.currentLevel.battlefield getAllyAtPosition:i];
+    for (int i = 0; i < KnightTypes; i++) {
+//        Knight *knight = [gameplay.currentLevel.battlefield getAllyAtPosition:i];
         
-        switch (knight.type) {
+        switch (i) {
             case KnightTypeBrawler:
                 allyTextures[i] = [self.game.content load:CHARACTER_BRAWLER];
                 break;
@@ -178,26 +178,8 @@
             default:
                 break;
         }
-    }
-    
-    // chareacters - ALLY idle animations
-    for (int pos = 0; pos < CombatPositions; pos++) {
-        allyIdleSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-        allyIdleSprites[pos].looping = NO;
         
-        for (int i = 0; i < 6; i++) {
-            int x = i % 8;
-            int y = i / 8;
-            Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-            frameSprite.texture = allyTextures[pos];
-            frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
-            frameSprite.origin = [Vector2 vectorWithX:32 y:32];
-            
-            AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyIdleSprites[pos].duration * (float) i / 6];
-            [allyIdleSprites[pos] addFrame:frame];
-        }
-        
-        allyIdleSprites[pos].looping = YES;
+        [self loadAnimationsOfAlly:i];
     }
     
     
@@ -220,6 +202,7 @@
         
     }
 }
+
 
 
 
@@ -253,13 +236,63 @@
             int pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
             
             // portrait
-            Sprite *portrait = portraits[pos];
-            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
+            if (!knight.isDead) {
+                Sprite *portrait = portraits[pos];
+                [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
+            }
                 
             // sprite
-            // TODO: check knight state
-            Sprite *drawable = [allyIdleSprites[pos] spriteAtTime:gameTime.totalGameTime];
-            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0];
+            Sprite *drawable;
+            SpriteEffects effect;
+            switch (knight.state) {
+                case EntityStateIdle:
+                    if (knight.isDead) {
+                        drawable = [allyDeathSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                        if (![allyDeathSprites[knight.type] isAlive]) {
+                            [allyDeathSprites[knight.type] reset];
+                        }
+                    } else {
+                        drawable = [allyIdleSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    }
+                    
+                    effect = SpriteEffectsNone;
+                    break;
+                    
+                case EntityStateApproaching:
+                    drawable = [allyMoveSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsNone;
+                    break;
+                    
+                case EntityStateRetreating:
+                    drawable = [allyMoveSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+                    
+                case EntityStateAttacking:
+                    drawable = [allyAttackSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsNone;
+                    break;
+                    
+                case EntityStateDefending:
+                    if (![allyHitSprites[knight.type] isAlive]) {
+                        [allyHitSprites[knight.type] reset];
+                        [knight stopDefending];
+                        drawable = [allyIdleSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    } else {
+                        drawable = [allyHitSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    }
+                    
+                    effect = SpriteEffectsNone;
+                    break;
+                    
+                default:
+                    drawable = [allyIdleSprites[knight.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    
+                    effect = SpriteEffectsNone;
+                    break;
+            }
+            
+            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:0];
                 
             // hp exp pool
             [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
@@ -292,7 +325,51 @@
         Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
         if (monster) {
             // sprite
-            Sprite *drawable = [enemyIdleSprites[monster.type] spriteAtTime:gameTime.totalGameTime];
+            Sprite *drawable;
+            SpriteEffects effect;
+            switch (monster.state) {
+                case EntityStateIdle:
+                    if (monster.isDead) {
+                        drawable = [enemyDeathSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    } else {
+                        drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    }
+                    
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+                    
+                case EntityStateApproaching:
+                    drawable = [enemyMoveSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+                    
+                case EntityStateRetreating:
+                    drawable = [enemyMoveSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsNone;
+                    break;
+                    
+                case EntityStateAttacking:
+                    drawable = [enemyAttackSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+                    
+                case EntityStateDefending:
+                    if (![enemyHitSprites[monster.type] isAlive]) {
+                        [enemyHitSprites[monster.type] reset];
+                        [monster stopDefending];
+                        drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    } else {
+                        drawable = [enemyHitSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    }
+                    
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+                    
+                default:
+                    drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    effect = SpriteEffectsFlipHorizontally;
+                    break;
+            }
             
             // color changes if monster is targeted
             Color *color;
@@ -301,7 +378,7 @@
             else
                 color = [Color white];
             
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsFlipHorizontally layerDepth:0];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:0];
         }
         
         // check if is dice
@@ -346,11 +423,182 @@
     
     // end
     [spriteBatch end];
+    
+    // check if entities are dead
+    for (int i = 0; i < CombatPositions; i++) {
+        BOOL reseted = NO;
+        Knight *knight = [gameplay.currentLevel.battlefield getAllyAtPosition:i];
+        if (knight && knight.isDead) {
+            if (![allyDeathSprites[knight.type] isAlive]) {
+                reseted = YES;
+                [gameplay.currentLevel.battlefield removeAlly:knight];
+//                break;
+            }
+        }
+        
+        if (reseted)
+            [allyDeathSprites[knight.type] reset];
+        
+        reseted = NO;
+        
+        Monster *monster = [gameplay.currentLevel.battlefield getEnemyAtPosition:i];
+        if (monster && monster.isDead) {
+            if (![enemyDeathSprites[monster.type] isAlive]) {
+                reseted = YES;
+                [gameplay.currentLevel.battlefield removeEnemy:monster];
+//                break;
+            }
+        }
+        
+        if (reseted)
+            [enemyDeathSprites[monster.type] reset];
+    }
 }
 
 
 
 
+
+- (void) loadAnimationsOfAlly:(KnightType)ally {
+    int idleFrames = 6, moveFrames = 14, hitFrames = 20, deathFrames = 31, attackFrames = 0;
+    int idleDuration = 6, moveDuration = 8, hitDuration = 6, deathDuration = 11, attackDuration = 0;
+    switch (ally) {
+        case KnightTypeBrawler:
+            attackFrames = 37;
+            attackDuration = 6;
+            break;
+            
+        case KnightTypeBowman:
+            attackFrames = 37;
+            attackDuration = 6;
+            break;
+            
+        case KnightTypePaladin:
+            attackFrames = 36;
+            attackDuration = 5;
+            break;
+            
+        case KnightTypeFireEnchantress:
+            moveFrames = 6;
+            moveDuration = 1;
+            hitFrames = 12;
+            deathFrames = 23;
+            attackFrames = 34;
+            attackDuration = 11;
+            break;
+            
+        default:
+            break;
+    }
+    
+    int num = 0;
+    
+    // idle animation
+    allyIdleSprites[ally] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allyIdleSprites[ally].looping = NO;
+    
+    for (int i = 0; i < idleFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        NSLog(@"x: %d, y: %d", x, y);
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = allyTextures[ally];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyIdleSprites[ally].duration * (float) num / idleDuration];
+        [allyIdleSprites[ally] addFrame:frame];
+        
+        num++;
+    }
+    
+    allyIdleSprites[ally].looping = YES;
+    num = 0;
+    
+    // move animation
+    allyMoveSprites[ally] = [[AnimatedSprite alloc] initWithDuration:0.5f];
+    allyMoveSprites[ally].looping = NO;
+
+    for (int i = idleFrames; i < moveFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        NSLog(@"x: %d, y: %d", x, y);
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = allyTextures[ally];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyMoveSprites[ally].duration * (float) num / moveDuration];
+        [allyMoveSprites[ally] addFrame:frame];
+        
+        num++;
+    }
+
+    allyMoveSprites[ally].looping = YES;
+    num = 0;
+
+    // hit animation
+    allyHitSprites[ally] = [[AnimatedSprite alloc] initWithDuration:0.4f];
+    allyHitSprites[ally].looping = NO;
+
+    for (int i = moveFrames; i < hitFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        NSLog(@"x: %d, y: %d", x, y);
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = allyTextures[ally];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyHitSprites[ally].duration * (float) num / hitDuration];
+        [allyHitSprites[ally] addFrame:frame];
+        
+        num++;
+    }
+    num = 0;
+
+    // death animation
+    allyDeathSprites[ally] = [[AnimatedSprite alloc] initWithDuration:1];
+    allyDeathSprites[ally].looping = NO;
+
+    for (int i = hitFrames; i < deathFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        NSLog(@"x: %d, y: %d", x, y);
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = allyTextures[ally];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyDeathSprites[ally].duration * (float) num / deathDuration];
+        [allyDeathSprites[ally] addFrame:frame];
+        
+        num++;
+    }
+    num = 0;
+
+    // attack animation
+    allyAttackSprites[ally] = [[AnimatedSprite alloc] initWithDuration:1];
+    allyAttackSprites[ally].looping = NO;
+
+    for (int i = deathFrames; i < attackFrames; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        NSLog(@"x: %d, y: %d", x, y);
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = allyTextures[ally];
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
+        frameSprite.origin = [Vector2 vectorWithX:32 y:32];
+
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:allyAttackSprites[ally].duration * (float) num / attackDuration];
+        [allyAttackSprites[ally] addFrame:frame];
+        
+        num++;
+    }
+
+    allyAttackSprites[ally].looping = YES;
+    num = 0;
+}
 
 
 - (void) loadTextureOfEnemy:(MonsterType)enemy {
@@ -374,28 +622,43 @@
 
 - (void) loadAnimationsOfEnemy:(MonsterType)enemy {
     int idleFrames = 0, moveFrames = 0, hitFrames = 0, deathFrames = 0, attackFrames = 0;
+    int idleDuration = 0, moveDuration = 0, hitDuration = 0, deathDuration = 0, attackDuration = 0;
     switch (enemy) {
         case MonsterTypeWarrior:
             idleFrames = 4;
+            idleDuration = 4;
             moveFrames = 12;
+            moveDuration = 8;
             hitFrames = 16;
+            hitDuration = 4;
             deathFrames = 39;
+            deathDuration = 23;
             attackFrames = 47;
+            attackDuration = 8;
             break;
             
         case MonsterTypeBrute:
             idleFrames = 6;
+            idleDuration = 6;
             moveFrames = 14;
+            moveDuration = 8;
             hitFrames = 18;
+            hitDuration = 4;
             deathFrames = 37;
+            deathDuration = 19;
             attackFrames = 47;
+            attackDuration = 10;
             break;
             
         case MonsterTypeBossViking:
             idleFrames = 4;
+            idleDuration = 4;
             moveFrames = 12;
+            moveDuration = 8;
             hitFrames = 17;
+            hitDuration = 5;
             deathFrames = 34;
+            deathDuration = 9;
             attackFrames = 45;
             break;
             
@@ -403,8 +666,10 @@
             break;
     }
     
+    int num = 0;
+    
     // idle animation
-    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:1];
     enemyIdleSprites[enemy].looping = NO;
     
     for (int i = 0; i < idleFrames; i++) {
@@ -415,11 +680,14 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[enemy].duration * (float) i / 6];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[enemy].duration * (float) num / idleDuration];
         [enemyIdleSprites[enemy] addFrame:frame];
+        
+        num++;
     }
     
     enemyIdleSprites[enemy].looping = YES;
+    num = 0;
     
     // move animation
     enemyMoveSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
@@ -433,14 +701,17 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[enemy].duration * (float) i / 6];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[enemy].duration * (float) num / moveDuration];
         [enemyMoveSprites[enemy] addFrame:frame];
+        
+        num++;
     }
     
     enemyMoveSprites[enemy].looping = YES;
+    num = 0;
     
     // hit animation
-    enemyHitSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyHitSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.4f];
     enemyHitSprites[enemy].looping = NO;
     
     for (int i = moveFrames; i < hitFrames; i++) {
@@ -451,14 +722,15 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[enemy].duration * (float) i / 6];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[enemy].duration * (float) num / hitDuration];
         [enemyHitSprites[enemy] addFrame:frame];
+        
+        num++;
     }
-    
-    enemyHitSprites[enemy].looping = YES;
+    num = 0;
     
     // death animation
-    enemyDeathSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyDeathSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
     enemyDeathSprites[enemy].looping = NO;
     
     for (int i = hitFrames; i < deathFrames; i++) {
@@ -469,14 +741,15 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[enemy].duration * (float) i / 6];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[enemy].duration * (float) num / deathDuration];
         [enemyDeathSprites[enemy] addFrame:frame];
+        
+        num++;
     }
-    
-    enemyDeathSprites[enemy].looping = YES;
+    num = 0;
     
     // attack animation
-    enemyAttackSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyAttackSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
     enemyAttackSprites[enemy].looping = NO;
     
     for (int i = deathFrames; i < attackFrames; i++) {
@@ -487,11 +760,14 @@
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[enemy].duration * (float) i / 6];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[enemy].duration * (float) num / attackDuration];
         [enemyAttackSprites[enemy] addFrame:frame];
+        
+        num++;
     }
     
     enemyAttackSprites[enemy].looping = YES;
+    num = 0;
 }
 
 
