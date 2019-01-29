@@ -41,6 +41,7 @@
 #import "IUpgradable.h"
 #import "Stat.h"
 #import "Skill.h"
+#import "SkillFactory.h"
 
 #import "StatEffectFactory.h"
 #import "StatEffect.h"

@@ -132,24 +132,22 @@
                 if (attackPosition < CombatPositions) {
                     Monster *monster = [level.battlefield getEnemyAtPosition:attackPosition];
                     
-                    if (monster) {
-                        if (monster.skillType != NoSkill) {
-                            NSLog(@"MONSTER HAS SKILL, WAITING FOR ATTACK");
-                            [attackDelay updateWithGameTime:gameTime];
+                    if (monster && monster.skillType != NoSkill) {
+                        NSLog(@"MONSTER HAS SKILL, WAITING FOR ATTACK");
+                        [attackDelay updateWithGameTime:gameTime];
                             
-                            if (![attackDelay isAlive]) {
-                                [attackDelay reset];
-                                
-                                NSLog(@"SELECTING TARGET");
-                                Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
-                                while (!knight || knight.isDead) {
-                                    knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
-                                }
+                        if (![attackDelay isAlive]) {
+                            [attackDelay reset];
                             
-                                NSLog(@"ATTACKED");
-                                [monster attackTarget:knight ally:NO];
-                                attackPosition++;
+                            NSLog(@"SELECTING TARGET");
+                            Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                            while (!knight || knight.isDead) {
+                                knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
                             }
+                        
+                            NSLog(@"ATTACKED");
+                            [monster attackTarget:knight ally:NO];
+                            attackPosition++;
                         }
                     } else {
                         attackPosition++;
@@ -197,7 +195,7 @@
     Monster *monster;
     for (int i = 0; i < CombatPositions; i++) {
         monster = [level.battlefield getEnemyAtPosition:i];
-        if (monster) {
+        if (monster && !monster.stunned) {
             switch (countDices[monster.entityType]) {
                 case 0:
                     break;
@@ -230,7 +228,7 @@
     // second, go trough entities again and assign basic attacks
     for (int i = 0; i < CombatPositions; i++) {
         monster = [level.battlefield getEnemyAtPosition:i];
-        if (monster && !dicesAssigned[i]) {
+        if (monster && !monster.stunned && !dicesAssigned[i]) {
             [self assignOneDiceToEntity:monster];
         }
     }

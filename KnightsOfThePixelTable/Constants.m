@@ -440,13 +440,17 @@
 */
 
 /*
- MARK: LANCELOT STATS
+ MARK: BRAWLER STATS
 */
-+ (int) lancelotHealthPoints {
-    return 1000;
++ (int) brawlerHealthPoints {
+    return 300;
 }
 
-+ (int) lancelotValueOfStat:(StatType)stat {
++ (DamageType) brawlerDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) brawlerValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
             return 30;
@@ -465,7 +469,7 @@
     }
 }
 
-+ (int) lancelotGainMarginOfStat:(StatType)stat {
++ (int) brawlerGainMarginOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
             return 4;
@@ -484,7 +488,7 @@
     }
 }
 
-+ (SkillFunction) lancelotFunctionOfSkill:(SkillType)skill {
++ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return SkillFunctionDamage;
@@ -499,7 +503,7 @@
     }
 }
 
-+ (SkillRange) lancelotRangeOfSkill:(SkillType)skill {
++ (SkillRange) brawlerRangeOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return SkillRangeMelee;
@@ -514,7 +518,7 @@
     }
 }
 
-+ (SkillTarget) lancelotTargetOfSkill:(SkillType)skill {
++ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return SkillTargetSingle;
@@ -529,7 +533,7 @@
     }
 }
 
-+ (SkillUseOn) lancelotUseOnSkill:(SkillType)skill {
++ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return SkillUseOnEnemy;
@@ -544,7 +548,7 @@
     }
 }
 
-+ (float) lancelotDamageOfSkill:(SkillType)skill {
++ (float) brawlerDamageOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return 0.8f;
@@ -559,7 +563,7 @@
     }
 }
 
-+ (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill {
++ (NSTimeInterval) brawlerDurationOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return 1;
@@ -574,7 +578,7 @@
     }
 }
 
-+ (float) lancelotGainMarginOfSkill:(SkillType)skill {
++ (float) brawlerGainMarginOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
             return 10;
@@ -589,6 +593,472 @@
     }
 }
 
+
+/*
+ MARK: BOWMAN STATS
+ */
++ (int) bowmanHealthPoints {
+    return 300;
+}
+
++ (DamageType) bowmanDamageType {
+    return DamageTypeRanged;
+}
+
++ (int) bowmanValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) bowmanGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionHeal;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) bowmanRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeRanged;
+        case FirstComboSkill:
+            return SkillRangeRanged;
+        case SecondComboSkill:
+            return SkillRangeRanged;
+        case ThirdComboSkill:
+            return SkillRangeRanged;
+        default:
+            return SkillRangeRanged;
+    }
+}
+
++ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetFrontRow;
+        case SecondComboSkill:
+            return SkillTargetBackRow;
+        case ThirdComboSkill:
+            return SkillTargetAll;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnAlly;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) bowmanDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) bowmanDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) bowmanGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
+
+
+/*
+ MARK: PALADIN STATS
+ */
++ (int) paladinHealthPoints {
+    return 300;
+}
+
++ (DamageType) paladinDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) paladinValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) paladinGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionHeal;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) paladinRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) paladinTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetFrontRow;
+        case SecondComboSkill:
+            return SkillTargetBackRow;
+        case ThirdComboSkill:
+            return SkillTargetAll;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) paladinUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnAlly;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) paladinDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) paladinDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) paladinGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
+
+
+
+
+/*
+ MARK: FIRE ENCHANTRESS STATS
+ */
++ (int) fireEnchantressHealthPoints {
+    return 300;
+}
+
++ (DamageType) fireEnchantressDamageType {
+    return DamageTypeMagic;
+}
+
++ (int) fireEnchantressValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) fireEnchantressGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionHeal;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeRanged;
+        case FirstComboSkill:
+            return SkillRangeRanged;
+        case SecondComboSkill:
+            return SkillRangeRanged;
+        case ThirdComboSkill:
+            return SkillRangeRanged;
+        default:
+            return SkillRangeRanged;
+    }
+}
+
++ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetFrontRow;
+        case SecondComboSkill:
+            return SkillTargetBackRow;
+        case ThirdComboSkill:
+            return SkillTargetAll;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnAlly;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) fireEnchantressDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) fireEnchantressDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) fireEnchantressGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
 
 
 

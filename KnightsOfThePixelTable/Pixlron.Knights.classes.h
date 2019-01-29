@@ -34,6 +34,7 @@
 
 @protocol IUpgradable;
 @class Stat, Skill;
+@class SkillFactory;
 
 @class StatEffectFactory;
 @class StatEffect;

@@ -17,7 +17,7 @@
     if (self != nil) {
         texture = [theTexture retain];
         duration = theDuration;
-        position = thePosition;
+        position = [thePosition retain];
         
         animation = [[AnimatedImage alloc] initWithDuration:duration];
 
@@ -56,6 +56,7 @@
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        [frameImage setScaleUniform:3.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 7];
         [animation addFrame:frame];
@@ -74,11 +75,14 @@
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        [frameImage setScaleUniform:3.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 3];
         [animation addFrame:frame];
         [frameImage release];
     }
+    
+    animation.looping = YES;
 }
 
 - (void) loadBleedAnimation {
@@ -89,7 +93,8 @@
         int y = i / 7;
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
-        frameImage.origin = [Vector2 vectorWithX:64 y:64];
+        frameImage.origin = [Vector2 vectorWithX:32 y:32];
+        [frameImage setScaleUniform:2.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 7];
         [animation addFrame:frame];
@@ -106,6 +111,7 @@
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        [frameImage setScaleUniform:3.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 9];
         [animation addFrame:frame];
@@ -155,6 +161,7 @@
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        [frameImage setScaleUniform:3.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 4];
         [animation addFrame:frame];
@@ -171,6 +178,7 @@
         Image *frameImage = [[Image alloc] initWithTexture:texture position:position];
         frameImage.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
         frameImage.origin = [Vector2 vectorWithX:16 y:16];
+        [frameImage setScaleUniform:3.0f];
         
         AnimatedImageFrame *frame = [AnimatedImageFrame frameWithImage:frameImage start:animation.duration * (float) i / 4];
         [animation addFrame:frame];
@@ -204,6 +212,7 @@
 - (void) dealloc {
     [animation release];
     [texture release];
+    [position release];
     
     if (target)
         [target release];

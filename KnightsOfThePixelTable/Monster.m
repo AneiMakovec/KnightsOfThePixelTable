@@ -119,6 +119,13 @@
     
     // then update health
     hpArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
+    
+    // move the health bar
+    hpPoolArea.x = position.x - 40;
+    hpPoolArea.y = position.y - 30;
+
+    hpArea.x = position.x - 29;
+    hpArea.y = position.y - 30;
 }
 
 - (void) dealloc {

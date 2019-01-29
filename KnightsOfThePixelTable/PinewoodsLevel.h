@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Level.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PinewoodsLevel : NSObject
+@interface PinewoodsLevel : Level
 
 @end
 

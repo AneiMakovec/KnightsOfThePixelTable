@@ -36,7 +36,8 @@
     if (type == ConditionTypeStun && ![target isStunned]) {
         [target stun];
         
-        // TODO - add stun animation
+        // add stun animation
+        [target addConditionAnimation:type];
     }
 }
 
@@ -64,7 +65,8 @@
         if (type != ConditionTypeStun) {
             [target takePercentDamage:dmg];
             
-            // TODO add damage indicators and animations
+            // add damage indicators and animations
+            [target addConditionAnimation:type];
         }
     }
     

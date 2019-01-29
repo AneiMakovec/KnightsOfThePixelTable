@@ -244,3 +244,7 @@ typedef enum {
 #define STAT_EFFECT_DEBUFF @"status_effect_debuff"
 #define STAT_EFFECT_POISON @"status_effect_poison"
 #define STAT_EFFECT_STUN @"status_effect_stun"
+
+// MARK: attack textures
+#define PROJECTILE_ARROW @"arrow"
+#define PROJECTILE_FIREBALL @"fire_ball"

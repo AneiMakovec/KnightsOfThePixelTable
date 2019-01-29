@@ -96,6 +96,9 @@
 		B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D01C5621C8291B00A007DC /* Battlefield.m */; };
 		B5D0A42921C41204005EF3C6 /* Knight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A42821C41204005EF3C6 /* Knight.m */; };
 		B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1746921FF74D20033DF2C /* Projectile.m */; };
+		B5D1746F21FF86100033DF2C /* fire_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D1746D21FF86100033DF2C /* fire_ball.png */; };
+		B5D1747021FF86100033DF2C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D1746E21FF86100033DF2C /* arrow.png */; };
+		B5D1747521FF93150033DF2C /* SkillFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1747421FF93150033DF2C /* SkillFactory.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
 		B5E380092183A2580007D013 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380082183A2580007D013 /* AudioToolbox.framework */; };
@@ -272,6 +275,10 @@
 		B5D0A42821C41204005EF3C6 /* Knight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Knight.m; sourceTree = "<group>"; };
 		B5D1746821FF74D20033DF2C /* Projectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
 		B5D1746921FF74D20033DF2C /* Projectile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
+		B5D1746D21FF86100033DF2C /* fire_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire_ball.png; sourceTree = "<group>"; };
+		B5D1746E21FF86100033DF2C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		B5D1747321FF93150033DF2C /* SkillFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillFactory.h; sourceTree = "<group>"; };
+		B5D1747421FF93150033DF2C /* SkillFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillFactory.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
 		B5DE124B218DA5FE000D6784 /* Pixlron.Knights.classes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.classes.h; sourceTree = "<group>"; };
 		B5DE1264218DE6BA000D6784 /* KOTPTEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPTEnums.h; sourceTree = "<group>"; };
@@ -365,17 +372,14 @@
 			path = "Status icons";
 			sourceTree = "<group>";
 		};
-		B51D99E121CDD90800CE6056 /* Stats */ = {
+		B51D99E121CDD90800CE6056 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
-				B50F830321ED5278000C2A92 /* Effects */,
 				B5A493C721CACCB6003EBB1D /* IUpgradable.h */,
-				B5A493C821CAD38A003EBB1D /* Stat.h */,
-				B5A493C921CAD38A003EBB1D /* Stat.m */,
-				B5A493CB21CAECF0003EBB1D /* Skill.h */,
-				B5A493CC21CAECF0003EBB1D /* Skill.m */,
+				B5D1747121FF92FA0033DF2C /* Stats */,
+				B5D1747221FF93030033DF2C /* Skills */,
 			);
-			name = Stats;
+			name = Properties;
 			sourceTree = "<group>";
 		};
 		B51D99E221CDD91600CE6056 /* Combo */ = {
@@ -712,7 +716,8 @@
 			children = (
 				B5D1746721FF74BF0033DF2C /* Projectiles */,
 				B51D99E221CDD91600CE6056 /* Combo */,
-				B51D99E121CDD90800CE6056 /* Stats */,
+				B51D99E121CDD90800CE6056 /* Properties */,
+				B50F830321ED5278000C2A92 /* Effects */,
 			);
 			name = "Other classes";
 			sourceTree = "<group>";
@@ -824,6 +829,43 @@
 				B5D1746921FF74D20033DF2C /* Projectile.m */,
 			);
 			name = Projectiles;
+			sourceTree = "<group>";
+		};
+		B5D1746B21FF85F40033DF2C /* Attacks */ = {
+			isa = PBXGroup;
+			children = (
+				B5D1746C21FF85FE0033DF2C /* Projectiles */,
+			);
+			path = Attacks;
+			sourceTree = "<group>";
+		};
+		B5D1746C21FF85FE0033DF2C /* Projectiles */ = {
+			isa = PBXGroup;
+			children = (
+				B5D1746E21FF86100033DF2C /* arrow.png */,
+				B5D1746D21FF86100033DF2C /* fire_ball.png */,
+			);
+			path = Projectiles;
+			sourceTree = "<group>";
+		};
+		B5D1747121FF92FA0033DF2C /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				B5A493C821CAD38A003EBB1D /* Stat.h */,
+				B5A493C921CAD38A003EBB1D /* Stat.m */,
+			);
+			name = Stats;
+			sourceTree = "<group>";
+		};
+		B5D1747221FF93030033DF2C /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				B5A493CB21CAECF0003EBB1D /* Skill.h */,
+				B5A493CC21CAECF0003EBB1D /* Skill.m */,
+				B5D1747321FF93150033DF2C /* SkillFactory.h */,
+				B5D1747421FF93150033DF2C /* SkillFactory.m */,
+			);
+			name = Skills;
 			sourceTree = "<group>";
 		};
 		B5DE1244218DA53E000D6784 /* Level */ = {
@@ -997,6 +1039,7 @@
 		B5E380462183B3E00007D013 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B5D1746B21FF85F40033DF2C /* Attacks */,
 				B5E380472183B3E00007D013 /* Playable */,
 				B5E3804C2183B3E00007D013 /* Enemies */,
 			);
@@ -1135,6 +1178,7 @@
 				B50F82FF21ED2A4C000C2A92 /* enabled_sound_button.png in Resources */,
 				B560373821FE710400CE7123 /* interface_background_corner_down_right.png in Resources */,
 				B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */,
+				B5D1747021FF86100033DF2C /* arrow.png in Resources */,
 				B560375921FE803A00CE7123 /* background_main_menu.png in Resources */,
 				B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */,
 				B560372721FE707200CE7123 /* status_effect_burn.png in Resources */,
@@ -1148,6 +1192,7 @@
 				B560373921FE710400CE7123 /* interface_background_edge_down.png in Resources */,
 				B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */,
 				B560372421FE707200CE7123 /* status_effect_debuff.png in Resources */,
+				B5D1746F21FF86100033DF2C /* fire_ball.png in Resources */,
 				B55FA74321D82F4500526790 /* font.bmp in Resources */,
 				B560372A21FE707200CE7123 /* heal.png in Resources */,
 				B5E380592183B3E00007D013 /* dices.png in Resources */,
@@ -1203,6 +1248,7 @@
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
 				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
 				B5E380292183ABD30007D013 /* KOTPT.m in Sources */,
+				B5D1747521FF93150033DF2C /* SkillFactory.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,

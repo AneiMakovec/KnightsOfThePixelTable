@@ -13,17 +13,17 @@
 @implementation KnightPaladin
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypePaladin level:theLevel gameHud:hud entityType:Strength health:[Constants lancelotHealthPoints] damageType:DamageTypeMelee damageStrength:0.85 maxRadius:60];
+    self = [super initKnight:KnightTypePaladin level:theLevel gameHud:hud entityType:Strength health:[Constants paladinHealthPoints] damageType:[Constants paladinDamageType] damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
-            stats[i] = [[Stat alloc] initWithValue:[Constants lancelotValueOfStat:i] upgradeMargin:[Constants lancelotGainMarginOfStat:i]];
+            stats[i] = [[Stat alloc] initWithValue:[Constants paladinValueOfStat:i] upgradeMargin:[Constants paladinGainMarginOfStat:i]];
         }
         
         // init skills
         StatEffect *effect;
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[Skill alloc] initWithFunction:[Constants lancelotFunctionOfSkill:i] range:[Constants lancelotRangeOfSkill:i] target:[Constants lancelotTargetOfSkill:i] useOn:[Constants lancelotUseOnSkill:i] damage:[Constants lancelotDamageOfSkill:i] duration:[Constants lancelotDurationOfSkill:i] upgradeMargin:[Constants lancelotGainMarginOfSkill:i]];
+            skills[i] = [[SkillFactory createSkill:i forAlly:type] retain];
             
             effect = [[Debuff alloc] initWithStatType:Strength debuff:0.5f duration:1 chance:100 chanceUpgradeMargin:5];
             [skills[i] addStatEffect:effect];

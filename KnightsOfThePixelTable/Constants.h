@@ -65,16 +65,53 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) maxSkillLevel;
 
 // allies
-+ (int) lancelotHealthPoints;
-+ (int) lancelotValueOfStat:(StatType)stat;
-+ (int) lancelotGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) lancelotFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) lancelotRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) lancelotTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) lancelotUseOnSkill:(SkillType)skill;
-+ (float) lancelotDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) lancelotDurationOfSkill:(SkillType)skill;
-+ (float) lancelotGainMarginOfSkill:(SkillType)skill;
++ (int) brawlerHealthPoints;
++ (DamageType) brawlerDamageType;
++ (int) brawlerValueOfStat:(StatType)stat;
++ (int) brawlerGainMarginOfStat:(StatType)stat;
++ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill;
++ (SkillRange) brawlerRangeOfSkill:(SkillType)skill;
++ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill;
++ (float) brawlerDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) brawlerDurationOfSkill:(SkillType)skill;
++ (float) brawlerGainMarginOfSkill:(SkillType)skill;
+
++ (int) bowmanHealthPoints;
++ (DamageType) bowmanDamageType;
++ (int) bowmanValueOfStat:(StatType)stat;
++ (int) bowmanGainMarginOfStat:(StatType)stat;
++ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill;
++ (SkillRange) bowmanRangeOfSkill:(SkillType)skill;
++ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill;
++ (float) bowmanDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) bowmanDurationOfSkill:(SkillType)skill;
++ (float) bowmanGainMarginOfSkill:(SkillType)skill;
+
++ (int) paladinHealthPoints;
++ (DamageType) paladinDamageType;
++ (int) paladinValueOfStat:(StatType)stat;
++ (int) paladinGainMarginOfStat:(StatType)stat;
++ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill;
++ (SkillRange) paladinRangeOfSkill:(SkillType)skill;
++ (SkillTarget) paladinTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) paladinUseOnSkill:(SkillType)skill;
++ (float) paladinDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) paladinDurationOfSkill:(SkillType)skill;
++ (float) paladinGainMarginOfSkill:(SkillType)skill;
+
++ (int) fireEnchantressHealthPoints;
++ (DamageType) fireEnchantressDamageType;
++ (int) fireEnchantressValueOfStat:(StatType)stat;
++ (int) fireEnchantressGainMarginOfStat:(StatType)stat;
++ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill;
++ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill;
++ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill;
++ (float) fireEnchantressDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) fireEnchantressDurationOfSkill:(SkillType)skill;
++ (float) fireEnchantressGainMarginOfSkill:(SkillType)skill;
 
 // enemies
 

@@ -16,6 +16,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Level : GameComponent {
+    LevelType levelType;
+    
     SimpleScene *scene;
     Battlefield *battlefield;
     Dicepool *dicepool;
@@ -32,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Dicepool *dicepool;
 
 @property (nonatomic, readonly) int num_of_dices;
+
+@property (nonatomic, readonly) LevelType levelType;
 
 
 - (id) initWithGame:(Game *)theGame numDices:(int) numDices;

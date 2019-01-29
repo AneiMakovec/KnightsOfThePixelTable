@@ -13,9 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FarmlandsLevel : Level {
-    
-}
+@interface FarmlandsLevel : Level
 
 @end
 

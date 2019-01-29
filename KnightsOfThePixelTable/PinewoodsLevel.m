@@ -10,4 +10,12 @@
 
 @implementation PinewoodsLevel
 
+- (id) initWithGame:(Game *)theGame numDices:(int)numDices {
+    self = [super initWithGame:theGame numDices:numDices];
+    if (self != nil) {
+        levelType = LevelTypePinewoods;
+    }
+    return self;
+}
+
 @end

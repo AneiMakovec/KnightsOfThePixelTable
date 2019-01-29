@@ -67,4 +67,7 @@
 - (BOOL) isOnlyStunnEffect:(Condition*)condition;
 
 
+- (void) addConditionAnimation:(ConditionType)condition;
+
+
 @end

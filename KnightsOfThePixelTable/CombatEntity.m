@@ -96,9 +96,6 @@
     if (state == EntityStateIdle) {
         Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
         if (projectile) {
-            
-            NSLog(@"A projectile!");
-            
             // check if miss
             if (projectile.missed) {
                 // miss
@@ -110,6 +107,12 @@
                 // add damage and hit indicators
                 [hud addDamageIndicatorAt:position amount:projectile.damage isCrit:projectile.wasCrit];
                 [hud addHitIndicatorAt:position];
+                
+                // apply skill effects
+                [self applySkillEffectsToTarget:self skill:projectile.skill];
+                
+                // then apply skill status effects
+                [self applyStatEffectsToTarget:self skill:projectile.skill];
                 
                 // show hit animation
                 [self startDefending];
@@ -160,11 +163,11 @@
                 case SkillTargetFrontRow:
                     // front row
                     if (isAlly) {
-                        target = level.battlefield.enemyFrontRow;
+                        target = [level.battlefield.enemyFrontRow retain];
                         [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
                         [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
                     } else {
-                        target = level.battlefield.allyFrontRow;
+                        target = [level.battlefield.allyFrontRow retain];
                         [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
                         [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
                     }
@@ -173,11 +176,11 @@
                 case SkillTargetBackRow:
                     // back row
                     if (isAlly) {
-                        target = level.battlefield.enemyBackRow;
+                        target = [level.battlefield.enemyBackRow retain];
                         [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
                         [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
-                        target = level.battlefield.allyBackRow;
+                        target = [level.battlefield.allyBackRow retain];
                         [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
                         [targets addObject:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
                     }
@@ -186,13 +189,13 @@
                 case SkillTargetAll:
                     // all
                     if (isAlly) {
-                        target = level.battlefield.enemyFrontRow;
+                        target = [level.battlefield.enemyFrontRow retain];
                         [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
                         [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
                         [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
                         [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
-                        target = level.battlefield.allyFrontRow;
+                        target = [level.battlefield.allyFrontRow retain];
                         [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
                         [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
                         [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
@@ -257,7 +260,7 @@
         
         // check if skill is ranged
         if (skills[skillType].range == SkillRangeRanged) {
-            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
+            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
             [level.scene addItem:projectile];
             [projectile release];
         } else {
@@ -273,16 +276,16 @@
             [theTarget startDefending];
             
             // apply skill effects
-            [self applySkillEffectsToTarget:theTarget];
+            [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
             
             // then apply skill status effects
-            [self applyStatEffectsToTarget:theTarget];
+            [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
         }
     } else {
         // miss
         
         if (skills[skillType].range == SkillRangeRanged) {
-            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
+            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
             [level.scene addItem:projectile];
             [projectile release];
             NSLog(@"MISS");
@@ -304,10 +307,10 @@
     [hud addHealIndicatorAt:theTarget.position amount:amount];
     
     // apply skill effects
-    [self applySkillEffectsToTarget:theTarget];
+    [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
     
     // then apply status effects
-    [self applyStatEffectsToTarget:theTarget];
+    [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
 }
 
 
@@ -354,16 +357,116 @@
     return entity;
 }
 
-- (void) applyStatEffectsToTarget:(CombatEntity*)theTarget {
-    for (StatEffect *effect in skills[skillType].statEffects) {
-        if ([Random intLessThan:100] < effect.chance)
+- (void) applyStatEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
+    for (StatEffect *effect in skill.statEffects) {
+        if ([Random intLessThan:100] < effect.chance) {
             [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
+            
+            if ([effect isKindOfClass:[Buff class]]) {
+                Buff *buff = (Buff *)effect;
+                NSString *text = @"";
+                switch (buff.type) {
+                    case Strength:
+                        text = @"Buff Strength";
+                        break;
+                    
+                    case Agility:
+                        text = @"Buff Agility";
+                        break;
+                        
+                    case Defence:
+                        text = @"Buff Defence";
+                        break;
+                        
+                    case Insight:
+                        text = @"Buff Insight";
+                        break;
+                        
+                    case Cunning:
+                        text = @"Buff Cunning";
+                        break;
+                        
+                    case Sturdiness:
+                        text = @"Buff Sturdiness";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                [hud addTextIndicatorAt:theTarget.position text:text color:[Color cornflowerBlue]];
+                [hud addBuffIndicatorAt:theTarget.position];
+            } else if ([effect isKindOfClass:[Debuff class]]) {
+                Debuff *debuff = (Debuff *)effect;
+                NSString *text = @"";
+                switch (debuff.type) {
+                    case Strength:
+                        text = @"Debuff Strength";
+                        break;
+                        
+                    case Agility:
+                        text = @"Debuff Agility";
+                        break;
+                        
+                    case Defence:
+                        text = @"Debuff Defence";
+                        break;
+                        
+                    case Insight:
+                        text = @"Debuff Insight";
+                        break;
+                        
+                    case Cunning:
+                        text = @"BDebuff Cunning";
+                        break;
+                        
+                    case Sturdiness:
+                        text = @"Debuff Sturdiness";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
+                [hud addDebuffIndicatorAt:theTarget.position];
+            } else if ([effect isKindOfClass:[Condition class]]) {
+                Condition *cond = (Condition *)effect;
+                NSString *text = @"";
+                switch (cond.type) {
+                    case ConditionTypeBurn:
+                        text = @"Burned";
+                        break;
+                        
+                    case ConditionTypeBleed:
+                        text = @"Bleeding";
+                        break;
+                        
+                    case ConditionTypeFrostbite:
+                        text = @"Frostbitten";
+                        break;
+                        
+                    case ConditionTypePoison:
+                        text = @"Poisoned";
+                        break;
+                    
+                    case ConditionTypeStun:
+                        text = @"Stunned";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
+            }
+        }
     }
 }
 
-- (void) applySkillEffectsToTarget:(CombatEntity*)theTarget {
+- (void) applySkillEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
     for (int i = 0; i < SkillEffects; i++) {
-        if ([skills[skillType] hasEffect:i]) {
+        if ([skill hasEffect:i]) {
             [self applySkillEffect:i toTarget:theTarget];
         }
     }
@@ -587,6 +690,36 @@
             skillType = NoSkill;
             break;
     }
+}
+
+
+- (void) addConditionAnimation:(ConditionType)condition {
+    switch (condition) {
+        case ConditionTypeBurn:
+            [hud addBurnIndicatorAt:position];
+            break;
+            
+        case ConditionTypeFrostbite:
+            [hud addFrostbiteIndicatorAt:position];
+            break;
+        
+        case ConditionTypeBleed:
+            [hud addBleedIndicatorAt:position];
+            break;
+            
+        case ConditionTypeStun:
+            [hud addStunIndicatorAt:position target:self];
+            break;
+            
+        case ConditionTypePoison:
+            [hud addPoisonIndicatorAt:position];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self startDefending];
 }
 
 - (void) updateStatEffects {

@@ -24,7 +24,7 @@
     return self;
 }
 
-@synthesize scene, battlefield, dicepool, num_of_dices;
+@synthesize scene, battlefield, dicepool, num_of_dices, levelType;
 
 - (void) initialize {
     music_played = NO;

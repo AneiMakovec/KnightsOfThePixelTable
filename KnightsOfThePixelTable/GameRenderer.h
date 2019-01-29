@@ -62,6 +62,10 @@ NS_ASSUME_NONNULL_BEGIN
     // skill textures
     Texture2D *basicMeleeSkill;
     
+    // attack textures
+    Texture2D *projectileArrow;
+    Texture2D *projectileFireBall;
+    
     // hp pool textures
     Texture2D *hpPool;
     Texture2D *enemyHpPool;

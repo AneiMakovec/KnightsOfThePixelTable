@@ -14,7 +14,7 @@
 - (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
-        currentLevel = [[Level alloc] initWithGame:self.game numDices:8];
+        currentLevel = [[FarmlandsLevel alloc] initWithGame:self.game numDices:8];
         humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
         aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
         physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];

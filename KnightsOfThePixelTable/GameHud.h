@@ -65,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) addExpIndicatorAt:(Vector2*)position amount:(int)amount;
 - (void) addGoldIndicatorAt:(Vector2*)position amount:(int)amount;
 
+- (void) addTextIndicatorAt:(Vector2*)position text:(NSString*)text color:(Color*)color;
+
 - (void) addHitIndicatorAt:(Vector2*)position;
 - (void) addBurnIndicatorAt:(Vector2*)position;
 - (void) addFrostbiteIndicatorAt:(Vector2*)position;

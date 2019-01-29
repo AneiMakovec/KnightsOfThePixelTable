@@ -137,6 +137,7 @@
     [indicator release];
     
     AnimatedIndicator *animation = [[AnimatedIndicator alloc] initWithTexture:healTexture position:[Vector2 vectorWithX:position.x y:position.y] duration:0.3f];
+    [animation loadHealAnimation];
     [scene addItem:animation];
     [animation release];
 }
@@ -158,6 +159,16 @@
     [scene addItem:indicator];
     [indicator release];
 }
+
+
+
+- (void) addTextIndicatorAt:(Vector2 *)position text:(NSString *)text color:(Color *)color {
+    Indicator *indicator = [[Indicator alloc] initWithText:text position:[Vector2 vectorWithX:position.x y:position.y - 100] font:font color:color duration:1.5f];
+    [scene addItem:indicator];
+    [indicator release];
+}
+
+
 
 - (void) addHitIndicatorAt:(Vector2 *)position {
     AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:0.4f];
@@ -202,14 +213,14 @@
 }
 
 -(void) addDebuffIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:debuffTexture position:position duration:0.5f];
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:debuffTexture position:position duration:0.3f];
     [indicator loadDebuffAnimation];
     [scene addItem:indicator];
     [indicator release];
 }
 
 - (void) addStunIndicatorAt:(Vector2 *)position target:(CombatEntity *)target {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:stunTexture position:position duration:0.5f];
+    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:stunTexture position:[Vector2 vectorWithX:position.x y:position.y - 50] duration:0.5f];
     [indicator loadStunAnimationWithTarget:target];
     [scene addItem:indicator];
     [indicator release];

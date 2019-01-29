@@ -83,6 +83,8 @@
     y = firstAlly.position.y + ((secondAlly.position.y - firstAlly.position.y) / 2);
     allyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
     
+    NSLog(@"ally front row - x: %f, y: %f", allyFrontRow.position.x, allyFrontRow.position.y);
+    
     x = fourthAlly.position.x + 56;
     y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
     allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
@@ -194,26 +196,47 @@
 }
 
 - (void) newWave {
-    MonsterWarrior *monsterWarrior;
-    for (int i = 0; i < 2; i++) {
-        
-        // add enemy entities
-        monsterWarrior = [[MonsterWarrior alloc] initWithLevel:level gameHud:hud];
-        [monsterWarrior setCombatPosition:i];
-        [enemyEntities insertObject:monsterWarrior atIndex:i];
-        [level.scene addItem:monsterWarrior];
-        [monsterWarrior release];
-    }
     
-    MonsterBrute *monsterBrute;
-    for (int i = 2; i < 4; i++) {
-        
-        // add enemy entities
-        monsterBrute = [[MonsterBrute alloc] initWithLevel:level gameHud:hud];
-        [monsterBrute setCombatPosition:i];
-        [enemyEntities insertObject:monsterBrute atIndex:i];
-        [level.scene addItem:monsterBrute];
-        [monsterBrute release];
+    Monster *monster;
+    switch (level.levelType) {
+        case LevelTypeFarmlands:
+            for (int i = 0; i < CombatPositions; i++) {
+                
+                // add enemy entities
+                monster = [[MonsterBrute alloc] initWithLevel:level gameHud:hud];
+                [monster setCombatPosition:i];
+                [enemyEntities insertObject:monster atIndex:i];
+                [level.scene addItem:monster];
+                [monster release];
+            }
+            break;
+            
+        case LevelTypeMountains:
+            for (int i = 0; i < CombatPositions; i++) {
+                
+                // add enemy entities
+                monster = [[MonsterWarrior alloc] initWithLevel:level gameHud:hud];
+                [monster setCombatPosition:i];
+                [enemyEntities insertObject:monster atIndex:i];
+                [level.scene addItem:monster];
+                [monster release];
+            }
+            break;
+            
+        case LevelTypeSeashore:
+            for (int i = 0; i < CombatPositions; i++) {
+                
+                // add enemy entities
+                monster = [[MonsterBossViking alloc] initWithLevel:level gameHud:hud];
+                [monster setCombatPosition:i];
+                [enemyEntities insertObject:monster atIndex:i];
+                [level.scene addItem:monster];
+                [monster release];
+            }
+            break;
+            
+        default:
+            break;
     }
 }
 

@@ -71,6 +71,10 @@
     // Skills
     basicMeleeSkill = [self.game.content load:BASIC_ATTACK_MELLEE];
     
+    // Attacks
+    projectileArrow = [self.game.content load:PROJECTILE_ARROW];
+    projectileFireBall = [self.game.content load:PROJECTILE_FIREBALL];
+    
     // Dice textures
     diceSymbolTexture = [self.game.content load:DICE_SYMBOLS];
     diceGoodAnimTexture = [self.game.content load:DICE_ANIM_GOOD];
@@ -403,7 +407,10 @@
         // check if is projectile
         Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
         if (projectile) {
-            [spriteBatch draw:basicMeleeSkill to:projectile.position tintWithColor:[Color white]];
+            if ([projectile.sender isKindOfClass:[KnightBowman class]])
+                [spriteBatch draw:projectileArrow to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
+            else if ([projectile.sender isKindOfClass:[KnightFireEnchantress class]])
+                [spriteBatch draw:projectileFireBall to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
         }
         
         // check if is dice
@@ -519,7 +526,7 @@
     int num = 0;
     
     // idle animation
-    allyIdleSprites[ally] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    allyIdleSprites[ally] = [[AnimatedSprite alloc] initWithDuration:0.5f];
     allyIdleSprites[ally].looping = NO;
     
     for (int i = 0; i < idleFrames; i++) {
@@ -689,7 +696,7 @@
     int num = 0;
     
     // idle animation
-    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:1];
+    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
     enemyIdleSprites[enemy].looping = NO;
     
     for (int i = 0; i < idleFrames; i++) {
