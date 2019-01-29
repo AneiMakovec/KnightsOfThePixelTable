@@ -21,6 +21,9 @@
 #import "Indicator.h"
 #import "AnimatedIndicator.h"
 
+#import "RetreatInterface.h"
+#import "DungeonEndInterface.h"
+
 
 // Physics
 #import "PhysicsEngine.h"

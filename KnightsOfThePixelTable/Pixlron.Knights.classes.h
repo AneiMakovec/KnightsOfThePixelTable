@@ -17,6 +17,7 @@
 // HUD
 @class GameHud;
 @class Indicator, AnimatedIndicator;
+@class RetreatInterface, DungeonEndInterface;
 
 // Physics
 @class PhysicsEngine;

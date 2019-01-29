@@ -173,6 +173,17 @@
 }
 
 
+- (void) pause {
+    if (myTurn)
+        myTurn = NO;
+}
+
+- (void) resume {
+    if (!myTurn)
+        myTurn = YES;
+}
+
+
 
 - (void) dealloc {
     [inverseView release];

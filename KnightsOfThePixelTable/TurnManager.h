@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     HumanPlayer *player;
     AIPlayer *aiPlayer;
     
+    BOOL paused;
+    
     BOOL playersTurn;
     int waveCounter;
 }

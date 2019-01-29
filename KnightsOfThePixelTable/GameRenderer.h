@@ -60,7 +60,11 @@ NS_ASSUME_NONNULL_BEGIN
     
     
     // skill textures
-    Texture2D *basicMeleeSkill;
+    Texture2D *skillIconsTexture;
+    Sprite *basicAttackSprites[KnightTypes];
+    Sprite *firstComboSkillSprites[KnightTypes];
+    Sprite *secondComboSkillSprites[KnightTypes];
+    Sprite *thirdComboSkillSprites[KnightTypes];
     
     // attack textures
     Texture2D *projectileArrow;

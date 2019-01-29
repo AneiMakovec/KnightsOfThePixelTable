@@ -376,6 +376,17 @@
     attackPosition = FirstCombatPosition;
 }
 
+- (void) pause {
+    if (myTurn)
+        myTurn = NO;
+}
+
+- (void) resume {
+    if (!myTurn)
+        myTurn = YES;
+}
+
+
 - (void) dealloc {
     if (target) {
         [target release];

@@ -22,6 +22,8 @@
         
         turnDelay = [[ResetableLifetime alloc] initWithStart:0 duration:2];
         
+        paused = NO;
+        
         playersTurn = YES;
         waveCounter = 1;
     }
@@ -38,64 +40,86 @@
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     
+    // check if game was paused
+    if (!paused && hud.paused) {
+        if (playersTurn)
+            [player pause];
+        else
+            [aiPlayer pause];
+        
+        paused = YES;
+    }
+    
+    if (paused && !hud.paused) {
+        if (playersTurn)
+            [player resume];
+        else
+            [aiPlayer resume];
+        
+        paused = NO;
+    }
+    
+    
     // check if player's turn is over
-    if (playersTurn) {
-        if (hud.endTurnReleased) {
-            [hud resetEndTurnButton];
-            
-            // check if no entity is ready to attack
-            if ([self checkEntityAttacks]) {
+    if (!paused) {
+        if (playersTurn) {
+            if (hud.endTurnReleased) {
+                [hud resetEndTurnButton];
                 
-                // check if all entities are idle
-                if ([self checkIdleEntities]) {
+                // check if no entity is ready to attack
+                if ([self checkEntityAttacks]) {
                     
-                    // end player's turn
-                    playersTurn = NO;
-                    
-                    [player endTurn];
-                    
-                    if ([level.battlefield.enemyEntities count] == 0) {
-                        waveCounter++;
-                        [hud increaseWaveCounterTo:waveCounter];
-                        [aiPlayer startTurnWithNewEntities:YES];
-                    } else {
-                        // update status conditions
-                        for (Monster *monster in level.battlefield.enemyEntities) {
-                            [monster updateStatEffects];
-                            [monster resetAttack];
-                        }
+                    // check if all entities are idle
+                    if ([self checkIdleEntities]) {
                         
-                        [aiPlayer startTurn];
+                        // end player's turn
+                        playersTurn = NO;
+                        
+                        [player endTurn];
+                        
+                        if ([level.battlefield.enemyEntities count] == 0) {
+                            waveCounter++;
+                            [hud increaseWaveCounterTo:waveCounter];
+                            [aiPlayer startTurnWithNewEntities:YES];
+                        } else {
+                            // update status conditions
+                            for (Monster *monster in level.battlefield.enemyEntities) {
+                                [monster updateStatEffects];
+                                [monster resetAttack];
+                            }
+                            
+                            [aiPlayer startTurn];
+                        }
                     }
                 }
             }
-        }
-    // check if ai's turn is over
-    } else {
-        if (aiPlayer.turnEnded) {
+        // check if ai's turn is over
+        } else {
+            if (aiPlayer.turnEnded) {
 
-            // check if no entity is ready to attack
-            if ([self checkEntityAttacks]) {
-                
-                // check if all entities are idle
-                if ([self checkIdleEntities]) {
+                // check if no entity is ready to attack
+                if ([self checkEntityAttacks]) {
                     
-                    [turnDelay updateWithGameTime:gameTime];
-                    if (![turnDelay isAlive]) {
-                        [turnDelay reset];
+                    // check if all entities are idle
+                    if ([self checkIdleEntities]) {
                         
-                        // end ai's turn
-                        playersTurn = YES;
-                        
-                        [aiPlayer endTurn];
-                        
-                        // update player's status effects and reset attack
-                        for (Knight *knight in level.battlefield.allyEntities) {
-                            [knight updateStatEffects];
-                            [knight resetAttack];
+                        [turnDelay updateWithGameTime:gameTime];
+                        if (![turnDelay isAlive]) {
+                            [turnDelay reset];
+                            
+                            // end ai's turn
+                            playersTurn = YES;
+                            
+                            [aiPlayer endTurn];
+                            
+                            // update player's status effects and reset attack
+                            for (Knight *knight in level.battlefield.allyEntities) {
+                                [knight updateStatEffects];
+                                [knight resetAttack];
+                            }
+                            
+                            [player startTurn];
                         }
-                        
-                        [player startTurn];
                     }
                 }
             }

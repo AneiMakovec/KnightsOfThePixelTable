@@ -83,8 +83,6 @@
     y = firstAlly.position.y + ((secondAlly.position.y - firstAlly.position.y) / 2);
     allyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
     
-    NSLog(@"ally front row - x: %f, y: %f", allyFrontRow.position.x, allyFrontRow.position.y);
-    
     x = fourthAlly.position.x + 56;
     y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
     allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];

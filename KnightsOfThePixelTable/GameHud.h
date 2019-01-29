@@ -31,11 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
     Label *maxHpCounters[CombatPositions];
     
     BOOL endTurnReleased;
+    BOOL paused;
     
     // Debug
     LabelButton *resetDices;
 
     ImageLabelButton *endTurn;
+    ImageLabelButton *retreat;
+    
+    CompositeImage *interfaceBackground;
     
     
     // indicator textures
@@ -48,10 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *stunTexture;
     Texture2D *buffTexture;
     Texture2D *debuffTexture;
+    
+    // interface tetures
+    NSMutableArray *interfaceTextures;
 }
 
 @property (nonatomic, readonly) id<IScene> scene;
 @property (nonatomic, readonly) BOOL endTurnReleased;
+@property (nonatomic, readonly) BOOL paused;
 
 - (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
 
@@ -75,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) addBuffIndicatorAt:(Vector2*)position;
 - (void) addDebuffIndicatorAt:(Vector2*)position;
 - (void) addStunIndicatorAt:(Vector2*)position target:(CombatEntity *)target;
+
+- (void) resumeGame;
+
+- (void) addRetreatInterface;
 
 @end
 

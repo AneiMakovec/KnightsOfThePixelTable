@@ -42,10 +42,11 @@
     retrotype = [self.game.content load:FONT processor:fontProcessor];
     
     // Buttons
-    buttonBackground = [self.game.content load:BACK_BUTTON];
+    buttonBackground = [self.game.content load:BUTTON_BACKGROUND];
     
-    back = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 100 y:20 width:80 height:30]
-                                  background:buttonBackground];
+    Texture2D *backButtonTexture = [self.game.content load:BUTTON_BACK];
+    back = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 50 y:10 width:40 height:40]
+                                  background:backButtonTexture];
     
     [super initialize];
 }

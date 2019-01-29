@@ -51,12 +51,12 @@
                     break;
                     
                 case FirstComboSkill:
-                    // DOUBLE ARROW
+                    // POISONED SHOT
                     return [[[Skill alloc] initWithFunction:[Constants bowmanFunctionOfSkill:FirstComboSkill] range:[Constants bowmanRangeOfSkill:FirstComboSkill] target:[Constants bowmanTargetOfSkill:FirstComboSkill] useOn:[Constants bowmanUseOnSkill:FirstComboSkill] damage:[Constants bowmanDamageOfSkill:FirstComboSkill] duration:[Constants bowmanDurationOfSkill:FirstComboSkill] upgradeMargin:[Constants bowmanGainMarginOfSkill:FirstComboSkill]] autorelease];
                     break;
                     
                 case SecondComboSkill:
-                    // BLEEDING SHOT
+                    // DOUBLE ARROW
                     return [[[Skill alloc] initWithFunction:[Constants bowmanFunctionOfSkill:SecondComboSkill] range:[Constants bowmanRangeOfSkill:SecondComboSkill] target:[Constants brawlerTargetOfSkill:SecondComboSkill] useOn:[Constants bowmanUseOnSkill:SecondComboSkill] damage:[Constants bowmanDamageOfSkill:SecondComboSkill] duration:[Constants bowmanDurationOfSkill:SecondComboSkill] upgradeMargin:[Constants bowmanGainMarginOfSkill:SecondComboSkill]] autorelease];
                     break;
                     

@@ -23,8 +23,11 @@
         level = theLevel;
         
         endTurnReleased = NO;
+        paused = NO;
         
         numWaves = 4;
+        
+        interfaceTextures = [[NSMutableArray alloc] initWithCapacity:ImageLocations];
         
         renderer = [[GUIRenderer alloc] initWithGame:self.game scene:scene];
         renderer.drawOrder = 1;
@@ -33,7 +36,7 @@
     return self;
 }
 
-@synthesize scene, endTurnReleased;
+@synthesize scene, endTurnReleased, paused;
 
 - (void) initialize {
     [level.battlefield setGameHud:self];
@@ -41,7 +44,7 @@
     FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
     font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
     
-    buttonBackground = [self.game.content load:BACK_BUTTON];
+    buttonBackground = [self.game.content load:BUTTON_BACKGROUND];
     
     // Wave counter
     Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:490 y:20]];
@@ -75,6 +78,10 @@
     endTurn = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
     [scene addItem:endTurn];
     
+    // Retreat button
+    retreat = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:10 y:10 width:110 height:50] background:buttonBackground font:font text:@"Retreat"];
+    [scene addItem:retreat];
+    
     
     // load indicator textures
     hitTexture = [[self.game.content load:HIT] retain];
@@ -86,6 +93,17 @@
     poisonTexture = [[self.game.content load:STAT_EFFECT_POISON] retain];
     burnTexture = [[self.game.content load:STAT_EFFECT_BURN] retain];
     frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
+    
+    // load interface textures
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_LEFT] atIndex:ImageLocationUpLeft];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_CENTER] atIndex:ImageLocationUpCenter];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_RIGHT] atIndex:ImageLocationUpRight];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_LEFT] atIndex:ImageLocationMiddleLeft];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_CENTER] atIndex:ImageLocationMiddleCenter];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_RIGHT] atIndex:ImageLocationMiddleRight];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_LEFT] atIndex:ImageLocationDownLeft];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_CENTER] atIndex:ImageLocationDownCenter];
+    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_RIGHT] atIndex:ImageLocationDownRight];
     
     
     [super initialize];
@@ -113,6 +131,10 @@
     
     if (endTurn.wasReleased) {
         endTurnReleased = YES;
+    }
+    
+    if (retreat.wasReleased) {
+        [self addRetreatInterface];
     }
 }
 
@@ -229,6 +251,22 @@
 
 
 
+- (void) addRetreatInterface {
+    interfaceBackground = [[CompositeImage alloc] initWithImageTextures:interfaceTextures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
+    RetreatInterface *interface = [[RetreatInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera];
+    [scene addItem:interfaceBackground];
+    [scene addItem:interface];
+    [interface release];
+    
+    paused = YES;
+}
+
+- (void) resumeGame {
+    [scene removeItem:interfaceBackground];
+    
+    paused = NO;
+}
+
 
 - (void) increaseWaveCounterTo:(int)wave {
     waveCounter.text = [NSString stringWithFormat:@"%i", wave];
@@ -242,10 +280,22 @@
     [waveCounter release];
     [resetDices release];
     [endTurn release];
+    [retreat release];
+    
+    if (interfaceBackground)
+        [interfaceBackground release];
     
     [hitTexture release];
     [burnTexture release];
+    [healTexture release];
+    [bleedTexture release];
+    [stunTexture release];
     [frostbiteTexture release];
+    [poisonTexture release];
+    [buffTexture release];
+    [debuffTexture release];
+    
+    [interfaceTextures release];
     
     [super dealloc];
 }

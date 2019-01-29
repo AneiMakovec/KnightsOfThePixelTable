@@ -219,7 +219,7 @@ typedef enum {
 #define ENEMY_VIKING_BOSS @"character_enemy_boss_viking"
 
 // MARK: skill textures
-#define BASIC_ATTACK_MELLEE @"basic_melee_skill"
+#define SKILL_ICONS @"skills"
 
 // MARK: dice textures
 #define DICE_ANIM_EVIL @"combat_dice_animation_evil"
@@ -228,11 +228,17 @@ typedef enum {
 
 // MARK: gui textures - buttons
 #define FONT @"font"
-#define BACK_BUTTON @"back_button"
+#define BUTTON_BACKGROUND @"button_background"
 #define MUSIC_BUTTON_ENABLED @"enabled_music_button"
 #define MUSIC_BUTTON_DISABLED @"disabled_music_button"
 #define SOUND_BUTTON_ENABLED @"enabled_sound_button"
 #define SOUND_BUTTON_DISABLED @"disabled_sound_button"
+#define BUTTON_BACK @"button_back"
+#define BUTTON_CONFIRM @"button_confirm"
+#define BUTTON_DENY @"button_deny"
+#define BUTTON_MUSIC_OFF @"button_music_off"
+#define BUTTON_MUSIC_ON @"button_music_on"
+#define BUTTON_SETTINGS @"button_settings"
 
 // MARK: gui textures - effects
 #define HEAL @"heal"
@@ -244,6 +250,17 @@ typedef enum {
 #define STAT_EFFECT_DEBUFF @"status_effect_debuff"
 #define STAT_EFFECT_POISON @"status_effect_poison"
 #define STAT_EFFECT_STUN @"status_effect_stun"
+
+// MARK: gui textures - interface
+#define INTERFACE_BACKGROUND_UP_LEFT @"interface_background_corner_up_left"
+#define INTERFACE_BACKGROUND_UP_CENTER @"interface_background_edge_up"
+#define INTERFACE_BACKGROUND_UP_RIGHT @"interface_background_corner_up_right"
+#define INTERFACE_BACKGROUND_MIDDLE_LEFT @"interface_background_edge_left"
+#define INTERFACE_BACKGROUND_MIDDLE_CENTER @"interface_background_center"
+#define INTERFACE_BACKGROUND_MIDDLE_RIGHT @"interface_background_edge_right"
+#define INTERFACE_BACKGROUND_DOWN_LEFT @"interface_background_corner_down_left"
+#define INTERFACE_BACKGROUND_DOWN_CENTER @"interface_background_edge_down"
+#define INTERFACE_BACKGROUND_DOWN_RIGHT @"interface_background_corner_down_right"
 
 // MARK: attack textures
 #define PROJECTILE_ARROW @"arrow"

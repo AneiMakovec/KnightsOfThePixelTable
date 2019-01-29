@@ -69,7 +69,7 @@
     enemyHpPool = [self.game.content load:HP_ENEMY_POOL];
     
     // Skills
-    basicMeleeSkill = [self.game.content load:BASIC_ATTACK_MELLEE];
+    skillIconsTexture = [self.game.content load:SKILL_ICONS];
     
     // Attacks
     projectileArrow = [self.game.content load:PROJECTILE_ARROW];
@@ -158,6 +158,29 @@
     diceEvilAnim.looping = YES;
     
     
+    
+    // skill sprites
+    for (int i = 0; i < KnightTypes; i++) {
+        basicAttackSprites[i] = [[Sprite alloc] init];
+        basicAttackSprites[i].texture = skillIconsTexture;
+        basicAttackSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 0 y:32 * i width:32 height:32];
+        basicAttackSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+        
+        firstComboSkillSprites[i] = [[Sprite alloc] init];
+        firstComboSkillSprites[i].texture = skillIconsTexture;
+        firstComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 1 y:32 * i width:32 height:32];
+        firstComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+        
+        secondComboSkillSprites[i] = [[Sprite alloc] init];
+        secondComboSkillSprites[i].texture = skillIconsTexture;
+        secondComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 2 y:32 * i width:32 height:32];
+        secondComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+        
+        thirdComboSkillSprites[i] = [[Sprite alloc] init];
+        thirdComboSkillSprites[i].texture = skillIconsTexture;
+        thirdComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 3 y:32 * i width:32 height:32];
+        thirdComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+    }
     
     
     // characters - ALLY textures
@@ -325,9 +348,35 @@
             } else if (knight.skillType == ThirdComboSkill) {
                 skillColor = [Color yellow];
             }
+            
+            
+            if (knight.skillType != NoSkill) {
+                Sprite *skill = nil;
+                switch (knight.skillType) {
+                    case BasicAttack:
+                        skill = basicAttackSprites[knight.type];
+                        break;
+                        
+                    case FirstComboSkill:
+                        skill = firstComboSkillSprites[knight.type];
+                        break;
+                        
+                    case SecondComboSkill:
+                        skill = secondComboSkillSprites[knight.type];
+                        break;
+                        
+                    case ThirdComboSkill:
+                        skill = thirdComboSkillSprites[knight.type];
+                        break;
+                        
+                    default:
+                        break;
+                }
                 
-            if (knight.skillType != NoSkill)
-                [spriteBatch draw:basicMeleeSkill toRectangle:knight.skillArea tintWithColor:skillColor];
+                if (skill)
+                    [spriteBatch draw:skill.texture toRectangle:knight.skillArea fromRectangle:skill.sourceRectangle tintWithColor:[Color white] rotation:0 origin:skill.origin effects:SpriteEffectsNone layerDepth:0];
+            }
+                
                 
                 
             // combo
@@ -805,7 +854,7 @@
 - (void) unloadContent {
     [spriteBatch release];
     
-    for (int i = 0; i < CombatPositions; i++) {
+    for (int i = 0; i < KnightTypes; i++) {
         [allyTextures[i] release];
         [allyIdleSprites[i] release];
         [allyHitSprites[i] release];
@@ -813,7 +862,13 @@
         [allyDeathSprites[i] release];
         [allyAttackSprites[i] release];
         [portraits[i] release];
+        [basicAttackSprites[i] release];
+        [firstComboSkillSprites[i] release];
+        [secondComboSkillSprites[i] release];
+        [thirdComboSkillSprites[i] release];
     }
+    
+    
     
     for (int i = 0; i < MonsterTypes; i++) {
         [enemyTextures[i] release];
