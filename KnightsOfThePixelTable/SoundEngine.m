@@ -24,15 +24,24 @@ SoundEngine *soundEngineInstance;
     soundEffects[SoundEffectTypeBackground] = [self.game.content load:@"background_sounds"];
     soundEffects[SoundEffectTypeClick] = [self.game.content load:@"click"];
     
+    songs[SongTypeTheme] = [self.game.content load:@"music_theme"];
+    songs[SongTypeBattle] = [self.game.content load:@"music_battle"];
 }
 
 - (void) play:(SoundEffectType)type {
     [soundEffects[type] play];
-    
+}
+
+- (void) playSong:(SongType)type {
+    [MediaPlayer playSong:songs[type]];
 }
 
 + (void) play:(SoundEffectType)type {
     [soundEngineInstance play:type];
+}
+
++ (void) playSong:(SongType)type {
+    [soundEngineInstance playSong:type];
 }
 
 - (void) dealloc

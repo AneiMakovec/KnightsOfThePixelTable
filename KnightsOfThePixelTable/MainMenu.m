@@ -23,11 +23,11 @@
     
     // Buttons
     play = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] width:100 height:50]
-                                     background:buttonBackground font:retrotype text:@"Play"];
+                                     background:buttonBackground font:font text:@"Play"];
     [scene addItem:play];
     
     options = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] + 70 width:100 height:50]
-                                     background:buttonBackground font:retrotype text:@"Options"];
+                                     background:buttonBackground font:font text:@"Options"];
     [scene addItem:options];
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Retronator.Xni.Framework.Media.h"
 #import "Retronator.Xni.Framework.Audio.h"
 #import "Pixlron.Knights.classes.h"
 
@@ -15,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SoundEngine : GameComponent {
     SoundEffect *soundEffects[SoundEffectTypes];
+    Song *songs[SongTypes];
 }
 
 + (void) initializeWithGame:(Game*)game;
 + (void) play:(SoundEffectType)type;
++ (void) playSong:(SongType)type;
 
 @end
 

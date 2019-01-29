@@ -23,7 +23,7 @@
         radius = 16.0f * altitude;
         altitudeVelocity = 0.2f;
         mass = 16.0f * 16.0f * M_PI;
-        coefficientOfRestitution = 0.1f;
+        coefficientOfRestitution = 0.8f;
         coefficientOfFriction = 0.05f;
         
         ignoreCollision = NO;

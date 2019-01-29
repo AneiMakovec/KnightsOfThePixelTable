@@ -443,7 +443,7 @@
  MARK: BRAWLER STATS
 */
 + (int) brawlerHealthPoints {
-    return 300;
+    return 500;
 }
 
 + (DamageType) brawlerDamageType {
@@ -453,17 +453,17 @@
 + (int) brawlerValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
-            return 30;
+            return 60;
         case Agility:
-            return 30;
+            return 60;
         case Defence:
-            return 30;
+            return 60;
         case Insight:
-            return 30;
+            return 60;
         case Cunning:
-            return 30;
+            return 60;
         case Sturdiness:
-            return 30;
+            return 60;
         default:
             return -1;
     }
@@ -493,7 +493,7 @@
         case BasicAttack:
             return SkillFunctionDamage;
         case FirstComboSkill:
-            return SkillFunctionHeal;
+            return SkillFunctionDamage;
         case SecondComboSkill:
             return SkillFunctionDamage;
         case ThirdComboSkill:
@@ -523,7 +523,7 @@
         case BasicAttack:
             return SkillTargetSingle;
         case FirstComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetSingle;
         case SecondComboSkill:
             return SkillTargetBackRow;
         case ThirdComboSkill:
@@ -538,7 +538,7 @@
         case BasicAttack:
             return SkillUseOnEnemy;
         case FirstComboSkill:
-            return SkillUseOnAlly;
+            return SkillUseOnEnemy;
         case SecondComboSkill:
             return SkillUseOnEnemy;
         case ThirdComboSkill:
@@ -551,13 +551,13 @@
 + (float) brawlerDamageOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
-            return 0.8f;
+            return 1.5f;
         case FirstComboSkill:
-            return 0.8f;
+            return 1.5f;
         case SecondComboSkill:
-            return 0.8f;
+            return 1.5f;
         case ThirdComboSkill:
-            return 0.8f;
+            return 1.5f;
         default:
             return -1;
     }
@@ -598,7 +598,7 @@
  MARK: BOWMAN STATS
  */
 + (int) bowmanHealthPoints {
-    return 300;
+    return 500;
 }
 
 + (DamageType) bowmanDamageType {
@@ -608,17 +608,17 @@
 + (int) bowmanValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
-            return 30;
+            return 60;
         case Agility:
-            return 30;
+            return 60;
         case Defence:
-            return 30;
+            return 60;
         case Insight:
-            return 30;
+            return 60;
         case Cunning:
-            return 30;
+            return 60;
         case Sturdiness:
-            return 30;
+            return 60;
         default:
             return -1;
     }
@@ -648,7 +648,7 @@
         case BasicAttack:
             return SkillFunctionDamage;
         case FirstComboSkill:
-            return SkillFunctionHeal;
+            return SkillFunctionDamage;
         case SecondComboSkill:
             return SkillFunctionDamage;
         case ThirdComboSkill:
@@ -678,7 +678,7 @@
         case BasicAttack:
             return SkillTargetSingle;
         case FirstComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetSingle;
         case SecondComboSkill:
             return SkillTargetBackRow;
         case ThirdComboSkill:
@@ -693,7 +693,7 @@
         case BasicAttack:
             return SkillUseOnEnemy;
         case FirstComboSkill:
-            return SkillUseOnAlly;
+            return SkillUseOnEnemy;
         case SecondComboSkill:
             return SkillUseOnEnemy;
         case ThirdComboSkill:
@@ -706,13 +706,13 @@
 + (float) bowmanDamageOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
-            return 0.8f;
+            return 1.5f;
         case FirstComboSkill:
-            return 0.8f;
+            return 1.5f;
         case SecondComboSkill:
-            return 0.8f;
+            return 1.5f;
         case ThirdComboSkill:
-            return 0.8f;
+            return 1.5f;
         default:
             return -1;
     }
@@ -753,7 +753,7 @@
  MARK: PALADIN STATS
  */
 + (int) paladinHealthPoints {
-    return 300;
+    return 500;
 }
 
 + (DamageType) paladinDamageType {
@@ -763,17 +763,17 @@
 + (int) paladinValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
-            return 30;
+            return 60;
         case Agility:
-            return 30;
+            return 60;
         case Defence:
-            return 30;
+            return 60;
         case Insight:
-            return 30;
+            return 60;
         case Cunning:
-            return 30;
+            return 60;
         case Sturdiness:
-            return 30;
+            return 60;
         default:
             return -1;
     }
@@ -803,7 +803,7 @@
         case BasicAttack:
             return SkillFunctionDamage;
         case FirstComboSkill:
-            return SkillFunctionHeal;
+            return SkillFunctionDamage;
         case SecondComboSkill:
             return SkillFunctionDamage;
         case ThirdComboSkill:
@@ -835,7 +835,7 @@
         case FirstComboSkill:
             return SkillTargetFrontRow;
         case SecondComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetSingle;
         case ThirdComboSkill:
             return SkillTargetAll;
         default:
@@ -848,7 +848,7 @@
         case BasicAttack:
             return SkillUseOnEnemy;
         case FirstComboSkill:
-            return SkillUseOnAlly;
+            return SkillUseOnEnemy;
         case SecondComboSkill:
             return SkillUseOnEnemy;
         case ThirdComboSkill:
@@ -861,13 +861,13 @@
 + (float) paladinDamageOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
-            return 0.8f;
+            return 1.5f;
         case FirstComboSkill:
-            return 0.8f;
+            return 1.5f;
         case SecondComboSkill:
-            return 0.8f;
+            return 1.5f;
         case ThirdComboSkill:
-            return 0.8f;
+            return 1.5f;
         default:
             return -1;
     }
@@ -910,7 +910,7 @@
  MARK: FIRE ENCHANTRESS STATS
  */
 + (int) fireEnchantressHealthPoints {
-    return 300;
+    return 600;
 }
 
 + (DamageType) fireEnchantressDamageType {
@@ -920,17 +920,17 @@
 + (int) fireEnchantressValueOfStat:(StatType)stat {
     switch (stat) {
         case Strength:
-            return 30;
+            return 60;
         case Agility:
-            return 30;
+            return 60;
         case Defence:
-            return 30;
+            return 60;
         case Insight:
-            return 30;
+            return 60;
         case Cunning:
-            return 30;
+            return 60;
         case Sturdiness:
-            return 30;
+            return 60;
         default:
             return -1;
     }
@@ -960,7 +960,7 @@
         case BasicAttack:
             return SkillFunctionDamage;
         case FirstComboSkill:
-            return SkillFunctionHeal;
+            return SkillFunctionDamage;
         case SecondComboSkill:
             return SkillFunctionDamage;
         case ThirdComboSkill:
@@ -990,7 +990,7 @@
         case BasicAttack:
             return SkillTargetSingle;
         case FirstComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetSingle;
         case SecondComboSkill:
             return SkillTargetBackRow;
         case ThirdComboSkill:
@@ -1005,7 +1005,7 @@
         case BasicAttack:
             return SkillUseOnEnemy;
         case FirstComboSkill:
-            return SkillUseOnAlly;
+            return SkillUseOnEnemy;
         case SecondComboSkill:
             return SkillUseOnEnemy;
         case ThirdComboSkill:
@@ -1018,13 +1018,13 @@
 + (float) fireEnchantressDamageOfSkill:(SkillType)skill {
     switch (skill) {
         case BasicAttack:
-            return 0.8f;
+            return 1.5f;
         case FirstComboSkill:
-            return 0.8f;
+            return 1.5f;
         case SecondComboSkill:
-            return 0.8f;
+            return 1.5f;
         case ThirdComboSkill:
-            return 0.8f;
+            return 1.5f;
         default:
             return -1;
     }
@@ -1066,6 +1066,628 @@
  MARK: MONSTERS STAT VALUES
  */
 
+/*
+ MARK: MONSTER WARRIOR STAT VALUES
+ */
++ (int) enemyWarriorHealthPoints {
+    return 300;
+}
+
++ (DamageType) enemyWarriorDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) enemyWarriorValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) enemyWarriorGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionDamage;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetSingle;
+        case SecondComboSkill:
+            return SkillTargetSingle;
+        case ThirdComboSkill:
+            return SkillTargetFrontRow;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnEnemy;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) enemyWarriorDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) enemyWarriorDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) enemyWarriorGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
+
+
+
+/*
+ MARK: MONSTER BRUTE STAT VALUES
+ */
++ (int) enemyBruteHealthPoints {
+    return 300;
+}
+
++ (DamageType) enemyBruteDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) enemyBruteValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) enemyBruteGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionDamage;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetSingle;
+        case SecondComboSkill:
+            return SkillTargetSingle;
+        case ThirdComboSkill:
+            return SkillTargetFrontRow;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnEnemy;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) enemyBruteDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) enemyBruteDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) enemyBruteGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
+
+
+
+/*
+ MARK: MONSTER VIKING STAT VALUES
+ */
++ (int) enemyVikingHealthPoints {
+    return 300;
+}
+
++ (DamageType) enemyVikingDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) enemyVikingValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) enemyVikingGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionDamage;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetSingle;
+        case SecondComboSkill:
+            return SkillTargetSingle;
+        case ThirdComboSkill:
+            return SkillTargetBackRow;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnEnemy;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) enemyVikingDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) enemyVikingDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) enemyVikingGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
+
+
+
+
+/*
+ MARK: MONSTER BOSS KNIGHT STAT VALUES
+ */
++ (int) enemyBossKnightHealthPoints {
+    return 300;
+}
+
++ (DamageType) enemyBossKnightDamageType {
+    return DamageTypeMelee;
+}
+
++ (int) enemyBossKnightValueOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 30;
+        case Agility:
+            return 30;
+        case Defence:
+            return 30;
+        case Insight:
+            return 30;
+        case Cunning:
+            return 30;
+        case Sturdiness:
+            return 30;
+        default:
+            return -1;
+    }
+}
+
++ (int) enemyBossKnightGainMarginOfStat:(StatType)stat {
+    switch (stat) {
+        case Strength:
+            return 4;
+        case Agility:
+            return 4;
+        case Defence:
+            return 4;
+        case Insight:
+            return 4;
+        case Cunning:
+            return 4;
+        case Sturdiness:
+            return 4;
+        default:
+            return -1;
+    }
+}
+
++ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillFunctionDamage;
+        case FirstComboSkill:
+            return SkillFunctionDamage;
+        case SecondComboSkill:
+            return SkillFunctionDamage;
+        case ThirdComboSkill:
+            return SkillFunctionDamage;
+        default:
+            return SkillFunctionDamage;
+    }
+}
+
++ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillRangeMelee;
+        case FirstComboSkill:
+            return SkillRangeMelee;
+        case SecondComboSkill:
+            return SkillRangeMelee;
+        case ThirdComboSkill:
+            return SkillRangeMelee;
+        default:
+            return SkillRangeMelee;
+    }
+}
+
++ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillTargetSingle;
+        case FirstComboSkill:
+            return SkillTargetFrontRow;
+        case SecondComboSkill:
+            return SkillTargetBackRow;
+        case ThirdComboSkill:
+            return SkillTargetAll;
+        default:
+            return SkillTargetSingle;
+    }
+}
+
++ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return SkillUseOnEnemy;
+        case FirstComboSkill:
+            return SkillUseOnEnemy;
+        case SecondComboSkill:
+            return SkillUseOnEnemy;
+        case ThirdComboSkill:
+            return SkillUseOnEnemy;
+        default:
+            return SkillUseOnEnemy;
+    }
+}
+
++ (float) enemyBossKnightDamageOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 0.8f;
+        case FirstComboSkill:
+            return 0.8f;
+        case SecondComboSkill:
+            return 0.8f;
+        case ThirdComboSkill:
+            return 0.8f;
+        default:
+            return -1;
+    }
+}
+
++ (NSTimeInterval) enemyBossKnightDurationOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 1;
+        case FirstComboSkill:
+            return 1;
+        case SecondComboSkill:
+            return 1;
+        case ThirdComboSkill:
+            return 1;
+        default:
+            return -1;
+    }
+}
+
++ (float) enemyBossKnightGainMarginOfSkill:(SkillType)skill {
+    switch (skill) {
+        case BasicAttack:
+            return 10;
+        case FirstComboSkill:
+            return 10;
+        case SecondComboSkill:
+            return 10;
+        case ThirdComboSkill:
+            return 10;
+        default:
+            return -1;
+    }
+}
 
 
 @end

@@ -47,7 +47,7 @@
 
 @class Knight, KnightBrawler, KnightBowman, KnightPaladin, KnightFireEnchantress;
 
-@class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking;
+@class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking, MonsterBoosKnight;
 
 @class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
 
@@ -62,7 +62,7 @@
 @class GameState;
 @class Gameplay;
 @class Menu, MainMenu, OptionsMenu;
-@class CamelotMenu;
+@class CamelotMenu, WorldMenu;
 
 // Game progress
 @class GameProgress;

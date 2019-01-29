@@ -14,16 +14,17 @@
 
 @implementation GameHud
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel {
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:self.game];
         [self.game.components addComponent:scene];
         
-        level = theLevel;
+        gameplay = theGameplay;
         
         endTurnReleased = NO;
         paused = NO;
+        endDungeon = NO;
         
         numWaves = 4;
         
@@ -36,10 +37,10 @@
     return self;
 }
 
-@synthesize scene, endTurnReleased, paused;
+@synthesize scene, endTurnReleased, paused, endDungeon;
 
 - (void) initialize {
-    [level.battlefield setGameHud:self];
+    [gameplay.currentLevel.battlefield setGameHud:self];
     
     FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
     font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
@@ -125,8 +126,8 @@
     }
     
     if (resetDices.wasReleased) {
-        [level.dicepool removeAllDices];
-        [level.dicepool addDicesOfType:DiceFrameTypeGood];
+        [gameplay.currentLevel.dicepool removeAllDices];
+        [gameplay.currentLevel.dicepool addDicesOfType:DiceFrameTypeGood];
     }
     
     if (endTurn.wasReleased) {
@@ -267,9 +268,20 @@
     paused = NO;
 }
 
+- (void) endGameplay {
+    [scene removeItem:interfaceBackground];
+    
+    endDungeon = YES;
+}
+
 
 - (void) increaseWaveCounterTo:(int)wave {
     waveCounter.text = [NSString stringWithFormat:@"%i", wave];
+}
+
+- (void) deactivate {
+    [self.game.components removeComponent:scene];
+    [self.game.components removeComponent:renderer];
 }
 
 

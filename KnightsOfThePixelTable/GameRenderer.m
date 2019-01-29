@@ -213,10 +213,22 @@
     
     
     // load enemy sprites
-    for (int i = 0; i < MonsterTypes; i++) {
+    for (int i = 0; i < MonsterTypeBossKnight; i++) {
         [self loadTextureOfEnemy:i];
-        [self loadAnimationsOfEnemy:i];
     }
+    
+    for (int i = 0; i < CombatPositions; i++) {
+        Monster *monster = [gameplay.currentLevel.battlefield getEnemyAtPosition:i];
+        if (monster) {
+            if (monster.type == MonsterTypeBossKnight) {
+                [self loadAnimationsOfEnemyBossAtPosition:i];
+            } else {
+                [self loadAnimationsOfEnemy:monster combatPosition:i];
+            }
+        }
+    }
+    
+    
     
     
     
@@ -258,7 +270,7 @@
     // backgorund
     //[spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
 //    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] tintWithColor:[Color white]];
-    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+    [spriteBatch draw:levelBackgrounds[gameplay.currentLevel.levelType] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
     
     // hud
     //[spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
@@ -390,49 +402,51 @@
         // check if is monster entity
         Monster *monster = [item isKindOfClass:[Monster class]] ? (Monster *)item : nil;
         if (monster) {
+            int pos = [gameplay.currentLevel.battlefield getCombatPositionOfEnemy:monster];
+            
             // sprite
             Sprite *drawable;
             SpriteEffects effect;
             switch (monster.state) {
                 case EntityStateIdle:
                     if (monster.isDead) {
-                        drawable = [enemyDeathSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                        drawable = [enemyDeathSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     } else {
-                        drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                        drawable = [enemyIdleSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     }
                     
                     effect = SpriteEffectsFlipHorizontally;
                     break;
                     
                 case EntityStateApproaching:
-                    drawable = [enemyMoveSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    drawable = [enemyMoveSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     effect = SpriteEffectsFlipHorizontally;
                     break;
                     
                 case EntityStateRetreating:
-                    drawable = [enemyMoveSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    drawable = [enemyMoveSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     effect = SpriteEffectsNone;
                     break;
                     
                 case EntityStateAttacking:
-                    drawable = [enemyAttackSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    drawable = [enemyAttackSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     effect = SpriteEffectsFlipHorizontally;
                     break;
                     
                 case EntityStateDefending:
-                    if (![enemyHitSprites[monster.type] isAlive]) {
-                        [enemyHitSprites[monster.type] reset];
+                    if (![enemyHitSprites[pos] isAlive]) {
+                        [enemyHitSprites[pos] reset];
                         [monster stopDefending];
-                        drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                        drawable = [enemyIdleSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     } else {
-                        drawable = [enemyHitSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                        drawable = [enemyHitSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     }
                     
                     effect = SpriteEffectsFlipHorizontally;
                     break;
                     
                 default:
-                    drawable = [enemyIdleSprites[monster.type] spriteWithElapsedTime:gameTime.elapsedGameTime];
+                    drawable = [enemyIdleSprites[pos] spriteWithElapsedTime:gameTime.elapsedGameTime];
                     effect = SpriteEffectsFlipHorizontally;
                     break;
             }
@@ -524,7 +538,7 @@
         
         Monster *monster = [gameplay.currentLevel.battlefield getEnemyAtPosition:i];
         if (monster && monster.isDead) {
-            if (![enemyDeathSprites[monster.type] isAlive]) {
+            if (![enemyDeathSprites[i] isAlive]) {
                 reseted = YES;
                 [gameplay.currentLevel.battlefield removeEnemy:monster];
 //                break;
@@ -532,7 +546,7 @@
         }
         
         if (reseted)
-            [enemyDeathSprites[monster.type] reset];
+            [enemyDeathSprites[i] reset];
     }
 }
 
@@ -696,10 +710,10 @@
     }
 }
 
-- (void) loadAnimationsOfEnemy:(MonsterType)enemy {
+- (void) loadAnimationsOfEnemy:(Monster *)enemy combatPosition:(CombatPosition)pos {
     int idleFrames = 0, moveFrames = 0, hitFrames = 0, deathFrames = 0, attackFrames = 0;
     int idleDuration = 0, moveDuration = 0, hitDuration = 0, deathDuration = 0, attackDuration = 0;
-    switch (enemy) {
+    switch (enemy.type) {
         case MonsterTypeWarrior:
             idleFrames = 4;
             idleDuration = 4;
@@ -734,8 +748,9 @@
             hitFrames = 17;
             hitDuration = 5;
             deathFrames = 34;
-            deathDuration = 9;
+            deathDuration = 17;
             attackFrames = 45;
+            attackDuration = 11;
             break;
             
         default:
@@ -745,105 +760,202 @@
     int num = 0;
     
     // idle animation
-    enemyIdleSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
-    enemyIdleSprites[enemy].looping = NO;
+    enemyIdleSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyIdleSprites[pos].looping = NO;
     
     for (int i = 0; i < idleFrames; i++) {
         int x = i % 8;
         int y = i / 8;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.texture = enemyTextures[enemy.type];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[enemy].duration * (float) num / idleDuration];
-        [enemyIdleSprites[enemy] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[pos].duration * (float) num / idleDuration];
+        [enemyIdleSprites[pos] addFrame:frame];
         
         num++;
     }
     
-    enemyIdleSprites[enemy].looping = YES;
+    enemyIdleSprites[pos].looping = YES;
     num = 0;
     
     // move animation
-    enemyMoveSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.7f];
-    enemyMoveSprites[enemy].looping = NO;
+    enemyMoveSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyMoveSprites[pos].looping = NO;
     
     for (int i = idleFrames; i < moveFrames; i++) {
         int x = i % 8;
         int y = i / 8;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.texture = enemyTextures[enemy.type];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[enemy].duration * (float) num / moveDuration];
-        [enemyMoveSprites[enemy] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[pos].duration * (float) num / moveDuration];
+        [enemyMoveSprites[pos] addFrame:frame];
         
         num++;
     }
     
-    enemyMoveSprites[enemy].looping = YES;
+    enemyMoveSprites[pos].looping = YES;
     num = 0;
     
     // hit animation
-    enemyHitSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:0.4f];
-    enemyHitSprites[enemy].looping = NO;
+    enemyHitSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.4f];
+    enemyHitSprites[pos].looping = NO;
     
     for (int i = moveFrames; i < hitFrames; i++) {
         int x = i % 8;
         int y = i / 8;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.texture = enemyTextures[enemy.type];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[enemy].duration * (float) num / hitDuration];
-        [enemyHitSprites[enemy] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[pos].duration * (float) num / hitDuration];
+        [enemyHitSprites[pos] addFrame:frame];
         
         num++;
     }
     num = 0;
     
     // death animation
-    enemyDeathSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
-    enemyDeathSprites[enemy].looping = NO;
+    enemyDeathSprites[pos] = [[AnimatedSprite alloc] initWithDuration:2];
+    enemyDeathSprites[pos].looping = NO;
     
     for (int i = hitFrames; i < deathFrames; i++) {
         int x = i % 8;
         int y = i / 8;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.texture = enemyTextures[enemy.type];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[enemy].duration * (float) num / deathDuration];
-        [enemyDeathSprites[enemy] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[pos].duration * (float) num / deathDuration];
+        [enemyDeathSprites[pos] addFrame:frame];
         
         num++;
     }
     num = 0;
     
     // attack animation
-    enemyAttackSprites[enemy] = [[AnimatedSprite alloc] initWithDuration:2];
-    enemyAttackSprites[enemy].looping = NO;
+    enemyAttackSprites[pos] = [[AnimatedSprite alloc] initWithDuration:1];
+    enemyAttackSprites[pos].looping = NO;
     
     for (int i = deathFrames; i < attackFrames; i++) {
         int x = i % 8;
         int y = i / 8;
         Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = enemyTextures[enemy];
+        frameSprite.texture = enemyTextures[enemy.type];
         frameSprite.sourceRectangle = [Rectangle rectangleWithX:64 * x y:64 * y width:64 height:64];
         frameSprite.origin = [Vector2 vectorWithX:32 y:32];
         
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[enemy].duration * (float) num / attackDuration];
-        [enemyAttackSprites[enemy] addFrame:frame];
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[pos].duration * (float) num / attackDuration];
+        [enemyAttackSprites[pos] addFrame:frame];
         
         num++;
     }
     
-    enemyAttackSprites[enemy].looping = YES;
+    enemyAttackSprites[pos].looping = YES;
     num = 0;
+}
+
+
+- (void) loadAnimationsOfEnemyBossAtPosition:(CombatPosition)pos {
+    // load boss sprites
+    bossIdle = [self.game.content load:@"boss_idle"];
+    bossMove = [self.game.content load:@"boss_move"];
+    bossHit = [self.game.content load:@"boss_hit"];
+    bossDeath = [self.game.content load:@"boss_death"];
+    bossAttack = [self.game.content load:@"boss_attack"];
+    
+    // idle boss
+    enemyIdleSprites[pos] = [[AnimatedSprite alloc] initWithDuration:1];
+    enemyIdleSprites[pos].looping = NO;
+    
+    for (int i = 0; i < 4; i++) {
+        int x = i % 4;
+        int y = i / 4;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = bossIdle;
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:42 * x y:42 * y width:42 height:42];
+        frameSprite.origin = [Vector2 vectorWithX:21 y:21];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyIdleSprites[pos].duration * (float) i / 4];
+        [enemyIdleSprites[pos] addFrame:frame];
+    }
+    
+    enemyIdleSprites[pos].looping = YES;
+    
+    // move boss
+    enemyMoveSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.7f];
+    enemyMoveSprites[pos].looping = NO;
+    
+    for (int i = 0; i < 8; i++) {
+        int x = i % 8;
+        int y = i / 8;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = bossMove;
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:42 * x y:42 * y width:42 height:42];
+        frameSprite.origin = [Vector2 vectorWithX:21 y:21];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyMoveSprites[pos].duration * (float) i / 8];
+        [enemyMoveSprites[pos] addFrame:frame];
+    }
+    
+    enemyMoveSprites[pos].looping = YES;
+    
+    // hit boss
+    enemyHitSprites[pos] = [[AnimatedSprite alloc] initWithDuration:0.3f];
+    enemyHitSprites[pos].looping = NO;
+    
+    for (int i = 0; i < 7; i++) {
+        int x = i % 7;
+        int y = i / 7;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = bossHit;
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:42 * x y:42 * y width:42 height:42];
+        frameSprite.origin = [Vector2 vectorWithX:21 y:21];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyHitSprites[pos].duration * (float) i / 7];
+        [enemyHitSprites[pos] addFrame:frame];
+    }
+    
+    // death boss
+    enemyDeathSprites[pos] = [[AnimatedSprite alloc] initWithDuration:2];
+    enemyDeathSprites[pos].looping = NO;
+    
+    for (int i = 0; i < 9; i++) {
+        int x = i % 9;
+        int y = i / 9;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = bossDeath;
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:42 * x y:42 * y width:42 height:42];
+        frameSprite.origin = [Vector2 vectorWithX:21 y:21];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyDeathSprites[pos].duration * (float) i / 9];
+        [enemyDeathSprites[pos] addFrame:frame];
+    }
+    
+    
+    // attack boss
+    enemyAttackSprites[pos] = [[AnimatedSprite alloc] initWithDuration:1];
+    enemyAttackSprites[pos].looping = NO;
+    
+    for (int i = 0; i < 10; i++) {
+        int x = i % 10;
+        int y = i / 10;
+        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+        frameSprite.texture = bossAttack;
+        frameSprite.sourceRectangle = [Rectangle rectangleWithX:80 * x y:42 * y width:80 height:42];
+        frameSprite.origin = [Vector2 vectorWithX:40 y:21];
+        
+        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:enemyAttackSprites[pos].duration * (float) i / 10];
+        [enemyAttackSprites[pos] addFrame:frame];
+    }
+    
+    enemyAttackSprites[pos].looping = YES;
 }
 
 

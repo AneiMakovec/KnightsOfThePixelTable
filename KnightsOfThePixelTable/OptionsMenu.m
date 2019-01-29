@@ -25,14 +25,14 @@
     disabledMusicButtonBackground = [self.game.content load:MUSIC_BUTTON_DISABLED];
     
     // Text
-    title = [[Label alloc] initWithFont:retrotype text:@"Options" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:100]];
+    title = [[Label alloc] initWithFont:font text:@"Options" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:100]];
     title.horizontalAlign = HorizontalAlignCenter;
     title.verticalAlign = VerticalAlignMiddle;
     [scene addItem:title];
     
     // Buttons
     reset = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 100 y:[Constants battlefieldHeight] width:200 height:50]
-                                  background:buttonBackground font:retrotype text:@"Reset progress"];
+                                  background:buttonBackground font:font text:@"Reset progress"];
     [scene addItem:reset];
     
     if ([knightsGame.progress isSettingEnabled:SettingTypeSound]) {

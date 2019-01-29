@@ -19,6 +19,7 @@ typedef enum {
     MonsterTypeWarrior,
     MonsterTypeBrute,
     MonsterTypeBossViking,
+    MonsterTypeBossKnight,
     MonsterTypes
 } MonsterType;
 
@@ -184,6 +185,12 @@ typedef enum {
     SoundEffectTypes
 } SoundEffectType;
 
+typedef enum {
+    SongTypeTheme,
+    SongTypeBattle,
+    SongTypes
+} SongType;
+
 // MARK: settings
 typedef enum {
     SettingTypeSound,
@@ -199,6 +206,9 @@ typedef enum {
 
 // MARK: menu backgrounds
 #define BACKGROUND_MAIN_MENU @"background_main_menu"
+#define BACKGROUND_WORLD_MENU @"background_world_menu"
+#define BACKGROUND_CAMELOT @"background_camelot"
+#define BUTTON_GATE @"button_gate"
 
 // MARK: hud texture
 #define HUD @"hud"
@@ -239,6 +249,7 @@ typedef enum {
 #define BUTTON_MUSIC_OFF @"button_music_off"
 #define BUTTON_MUSIC_ON @"button_music_on"
 #define BUTTON_SETTINGS @"button_settings"
+#define BUTTON_DESTINATION @"button_destination"
 
 // MARK: gui textures - effects
 #define HEAL @"heal"

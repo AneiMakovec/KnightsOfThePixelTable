@@ -13,20 +13,20 @@
 @implementation MonsterWarrior
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initMonster:MonsterTypeWarrior level:theLevel gameHud:hud expType:ExpTypeNormal entityType:Strength health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] damageStrength:0.85 maxRadius:60];
+    self = [super initMonster:MonsterTypeWarrior level:theLevel gameHud:hud expType:ExpTypeNormal entityType:Agility health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] damageStrength:0.85 maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
-            stats[i] = [[Stat alloc] initWithValue:[Constants brawlerValueOfStat:i] upgradeMargin:[Constants brawlerGainMarginOfStat:i]];
+            stats[i] = [[Stat alloc] initWithValue:[Constants enemyWarriorValueOfStat:i] upgradeMargin:[Constants enemyWarriorGainMarginOfStat:i]];
         }
         
         // init skills
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[SkillFactory createSkill:i forAlly:KnightTypeBrawler] retain];
+            skills[i] = [[SkillFactory createSkill:i forEnemy:type] retain];
         }
         
         for (int i = 0; i < SkillTypes; i++) {
-            comboSkillTypes[i] = Agility;
+            comboSkillTypes[i] = Cunning;
         }
     }
     return self;

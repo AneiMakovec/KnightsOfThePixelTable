@@ -17,45 +17,48 @@
 - (void) initialize {
     [super initialize];
     
+    // Background
+    background = [[Image alloc] initWithTexture:[self.game.content load:BACKGROUND_CAMELOT] position:[Vector2 vectorWithX:0 y:0]];
+    [scene addItem:background];
+    
     // Text
-    title = [[Label alloc] initWithFont:retrotype text:@"Cemelot" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:20]];
+    title = [[Label alloc] initWithFont:font text:@"Cemelot" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:20]];
     title.horizontalAlign = HorizontalAlignCenter;
     title.verticalAlign = VerticalAlignMiddle;
     [scene addItem:title];
     
     
     // Buttons
-    castle = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:200 y:50 width:200 height:50]
-                                   background:buttonBackground font:retrotype text:@"Castle"];
-    [scene addItem:castle];
-    
-    commandersPost = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:400 y:150 width:200 height:50]
-                                      background:buttonBackground font:retrotype text:@"Commander's post"];
-    [scene addItem:commandersPost];
-    
-    barracks = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:650 y:200 width:200 height:50]
-                                            background:buttonBackground font:retrotype text:@"Barracks"];
-    [scene addItem:barracks];
-    
-    gatehouse = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:800 y:300 width:200 height:50]
-                                            background:buttonBackground font:retrotype text:@"Gatehouse"];
+//    castle = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:200 y:50 width:200 height:50]
+//                                   background:buttonBackground font:font text:@"Castle"];
+//    [scene addItem:castle];
+//
+//    commandersPost = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:400 y:150 width:200 height:50]
+//                                      background:buttonBackground font:font text:@"Commander's post"];
+//    [scene addItem:commandersPost];
+//
+//    barracks = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:650 y:200 width:200 height:50]
+//                                            background:buttonBackground font:font text:@"Barracks"];
+//    [scene addItem:barracks];
+//
+    gatehouse = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:[Constants hudHeight] + [Constants battlefieldHeight]] background:[self.game.content load:BUTTON_GATE]];
     [scene addItem:gatehouse];
     
-    enchantersGuild = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:50 y:130 width:200 height:50]
-                                       background:buttonBackground font:retrotype text:@"Enchanter's guild"];
-    [scene addItem:enchantersGuild];
-    
-    blackSmith = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:20 y:300 width:200 height:50]
-                                             background:buttonBackground font:retrotype text:@"Black smith"];
-    [scene addItem:blackSmith];
-    
-    adventurersYard = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:200 y:400 width:200 height:50]
-                                        background:buttonBackground font:retrotype text:@"Adventurer's yard"];
-    [scene addItem:adventurersYard];
-    
-    warbandCamp = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:460 y:350 width:200 height:50]
-                                        background:buttonBackground font:retrotype text:@"Warband camp"];
-    [scene addItem:warbandCamp];
+//    enchantersGuild = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:50 y:130 width:200 height:50]
+//                                       background:buttonBackground font:font text:@"Enchanter's guild"];
+//    [scene addItem:enchantersGuild];
+//    
+//    blackSmith = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:20 y:300 width:200 height:50]
+//                                             background:buttonBackground font:font text:@"Black smith"];
+//    [scene addItem:blackSmith];
+//    
+//    adventurersYard = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:200 y:400 width:200 height:50]
+//                                        background:buttonBackground font:font text:@"Adventurer's yard"];
+//    [scene addItem:adventurersYard];
+//    
+//    warbandCamp = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:460 y:350 width:200 height:50]
+//                                        background:buttonBackground font:font text:@"Warband camp"];
+//    [scene addItem:warbandCamp];
     
     
     
@@ -69,7 +72,7 @@
     
     // check for actions
     if (gatehouse.wasReleased)
-        newState = [[Gameplay alloc] initWithGame:self.game];
+        newState = [[WorldMenu alloc] initWithGame:self.game];
     
     if (newState) {
         [knightsGame pushState:newState];

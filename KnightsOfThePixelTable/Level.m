@@ -27,8 +27,6 @@
 @synthesize scene, battlefield, dicepool, num_of_dices, levelType;
 
 - (void) initialize {
-    music_played = NO;
-    
     [self reset];
     
     [super initialize];
@@ -40,8 +38,9 @@
     // remove everything from scene
     [scene clear];
     
-    // add objects to scene
-    
+    // play battle music
+//    [SoundEngine playSong:SongTypeBattle];
+
     // dicepool objects
     [dicepool initialize];
     
@@ -51,11 +50,6 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    if (!music_played) {
-        [SoundEngine play:SoundEffectTypeBackground];
-        music_played = YES;
-    }
-    
     for (id item in scene) {
         id<ICustomUpdate> updatable = [item conformsToProtocol:@protocol(ICustomUpdate)] ? (id<ICustomUpdate>) item : nil;
         if (updatable) {

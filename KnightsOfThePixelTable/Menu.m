@@ -39,7 +39,7 @@
 - (void) initialize {
     // Fonts
     FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
-    retrotype = [self.game.content load:FONT processor:fontProcessor];
+    font = [self.game.content load:FONT processor:fontProcessor];
     
     // Buttons
     buttonBackground = [self.game.content load:BUTTON_BACKGROUND];
@@ -70,7 +70,7 @@
 {
     [back release];
     [buttonBackground release];
-    [retrotype release];
+    [font release];
     [scene release];
     [renderer release];
     [super dealloc];

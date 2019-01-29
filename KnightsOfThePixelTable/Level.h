@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
     SimpleScene *scene;
     Battlefield *battlefield;
     Dicepool *dicepool;
-
-    BOOL music_played;
     
     int num_of_dices;
 }

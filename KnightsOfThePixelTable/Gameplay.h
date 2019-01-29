@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Gameplay : GameState {
-    //Level *levels[LevelTypes];
+    //Class *levels[LevelTypes];
     
     Level *currentLevel;
     GameHud *gameHud;
@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property (nonatomic, readonly) Level *currentLevel;
+
+- (id) initWithGame:(Game *)theGame levelType:(LevelType)levelType;
 
 @end
 

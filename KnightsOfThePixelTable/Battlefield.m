@@ -233,6 +233,18 @@
             }
             break;
             
+        case LevelTypePinewoods:
+            for (int i = 0; i < CombatPositions; i++) {
+                
+                // add enemy entities
+                monster = [[MonsterBossKnight alloc] initWithLevel:level gameHud:hud];
+                [monster setCombatPosition:i];
+                [enemyEntities insertObject:monster atIndex:i];
+                [level.scene addItem:monster];
+                [monster release];
+            }
+            break;
+            
         default:
             break;
     }

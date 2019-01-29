@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
     SimpleScene *scene;
     GUIRenderer *renderer;
     
-    SpriteFont *retrotype;
+    SpriteFont *font;
     Texture2D *buttonBackground;
     
     ImageButton *back;

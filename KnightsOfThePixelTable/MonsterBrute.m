@@ -17,16 +17,16 @@
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
-            stats[i] = [[Stat alloc] initWithValue:[Constants brawlerValueOfStat:i] upgradeMargin:[Constants brawlerGainMarginOfStat:i]];
+            stats[i] = [[Stat alloc] initWithValue:[Constants enemyBruteValueOfStat:i] upgradeMargin:[Constants enemyBruteGainMarginOfStat:i]];
         }
         
         // init skills
         for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [[SkillFactory createSkill:i forAlly:KnightTypeBrawler] retain];
+            skills[i] = [[SkillFactory createSkill:i forEnemy:type] retain];
         }
         
         for (int i = 0; i < SkillTypes; i++) {
-            comboSkillTypes[i] = Agility;
+            comboSkillTypes[i] = Sturdiness;
         }
     }
     return self;

@@ -47,7 +47,8 @@
     
     // check if buttons pressed
     if (confirmButton.wasReleased) {
-        
+        [hud endGameplay];
+        [scene removeItem:self];
     } else if (denyButton.wasReleased) {
         [hud resumeGame];
         [scene removeItem:self];

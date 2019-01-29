@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GameHud : GameComponent {
     SimpleScene *scene;
     GUIRenderer *renderer;
-    Level *level;
+    Gameplay *gameplay;
     
     Texture2D *buttonBackground;
     
@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     BOOL endTurnReleased;
     BOOL paused;
+    BOOL endDungeon;
     
     // Debug
     LabelButton *resetDices;
@@ -60,8 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) id<IScene> scene;
 @property (nonatomic, readonly) BOOL endTurnReleased;
 @property (nonatomic, readonly) BOOL paused;
+@property (nonatomic, readonly) BOOL endDungeon;
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay;
 
 - (void) increaseWaveCounterTo:(int)wave;
 
@@ -87,6 +89,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) resumeGame;
 
 - (void) addRetreatInterface;
+
+- (void) endGameplay;
+
+- (void) deactivate;
 
 @end
 

@@ -66,6 +66,7 @@
 #import "MonsterWarrior.h"
 #import "MonsterBrute.h"
 #import "MonsterBossViking.h"
+#import "MonsterBoosKnight.h"
 
 #import "Level.h"
 #import "FarmlandsLevel.h"
@@ -93,6 +94,7 @@
 #import "MainMenu.h"
 #import "OptionsMenu.h"
 #import "CamelotMenu.h"
+#import "WorldMenu.h"
 
 // Game progress
 #import "GameProgress.h"

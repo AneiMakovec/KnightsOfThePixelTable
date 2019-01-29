@@ -114,6 +114,53 @@ NS_ASSUME_NONNULL_BEGIN
 + (float) fireEnchantressGainMarginOfSkill:(SkillType)skill;
 
 // enemies
++ (int) enemyWarriorHealthPoints;
++ (DamageType) enemyWarriorDamageType;
++ (int) enemyWarriorValueOfStat:(StatType)stat;
++ (int) enemyWarriorGainMarginOfStat:(StatType)stat;
++ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill;
++ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill;
++ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill;
++ (float) enemyWarriorDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) enemyWarriorDurationOfSkill:(SkillType)skill;
++ (float) enemyWarriorGainMarginOfSkill:(SkillType)skill;
+
++ (int) enemyBruteHealthPoints;
++ (DamageType) enemyBruteDamageType;
++ (int) enemyBruteValueOfStat:(StatType)stat;
++ (int) enemyBruteGainMarginOfStat:(StatType)stat;
++ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill;
++ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill;
++ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill;
++ (float) enemyBruteDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) enemyBruteDurationOfSkill:(SkillType)skill;
++ (float) enemyBruteGainMarginOfSkill:(SkillType)skill;
+
++ (int) enemyVikingHealthPoints;
++ (DamageType) enemyVikingDamageType;
++ (int) enemyVikingValueOfStat:(StatType)stat;
++ (int) enemyVikingGainMarginOfStat:(StatType)stat;
++ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill;
++ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill;
++ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill;
++ (float) enemyVikingDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) enemyVikingDurationOfSkill:(SkillType)skill;
++ (float) enemyVikingGainMarginOfSkill:(SkillType)skill;
+
++ (int) enemyBossKnightHealthPoints;
++ (DamageType) enemyBossKnightDamageType;
++ (int) enemyBossKnightValueOfStat:(StatType)stat;
++ (int) enemyBossKnightGainMarginOfStat:(StatType)stat;
++ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill;
++ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill;
++ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill;
++ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill;
++ (float) enemyBossKnightDamageOfSkill:(SkillType)skill;
++ (NSTimeInterval) enemyBossKnightDurationOfSkill:(SkillType)skill;
++ (float) enemyBossKnightGainMarginOfSkill:(SkillType)skill;
 
 
 @end

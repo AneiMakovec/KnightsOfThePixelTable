@@ -152,11 +152,13 @@
                     // single target
                     if (!theTarget) {
                         CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
-                        target = [entity.origin retain];
-                        [targets addObject:entity];
+                        if (entity) {
+                            target = [entity.origin retain];
+                            [self addTarget:entity];
+                        }
                     } else {
                         target = [theTarget.origin retain];
-                        [targets addObject:theTarget];
+                        [self addTarget:theTarget];
                     }
                     break;
                     
@@ -164,12 +166,12 @@
                     // front row
                     if (isAlly) {
                         target = [level.battlefield.enemyFrontRow retain];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
                     } else {
                         target = [level.battlefield.allyFrontRow retain];
-                        [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
                     }
                     break;
                     
@@ -177,12 +179,12 @@
                     // back row
                     if (isAlly) {
                         target = [level.battlefield.enemyBackRow retain];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
                         target = [level.battlefield.allyBackRow retain];
-                        [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
                     }
                     break;
                     
@@ -190,16 +192,16 @@
                     // all
                     if (isAlly) {
                         target = [level.battlefield.enemyFrontRow retain];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
                     } else {
                         target = [level.battlefield.allyFrontRow retain];
-                        [targets addObject:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [targets addObject:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
-                        [targets addObject:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [targets addObject:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
                     }
                     break;
                     
@@ -207,27 +209,33 @@
                     // single target
                     if (!theTarget) {
                         CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
-                        target = [entity.origin retain];
-                        [targets addObject:entity];
+                        if (entity) {
+                            target = [entity.origin retain];
+                            [self addTarget:entity];
+                        }
                     } else {
                         target = [theTarget.origin retain];
-                        [targets addObject:theTarget];
+                        [self addTarget:theTarget];
                     }
                     break;
             }
             
-            // if attacking with melee skill
-            if (skills[skillType].range == SkillRangeMelee) {
-                // move towards the target
-                state = EntityStateApproaching;
-                
-                radius = 60;
-                velocity.x = (target.position.x - position.x) * 2;
-                velocity.y = (target.position.y - position.y) * 2;
-            // or if attacking with ranged skill
-            } else if (skills[skillType].range == SkillRangeRanged) {
-                // attack from origin
-                state = EntityStateAttacking;
+            if ([targets count] != 0) {
+                // if attacking with melee skill
+                if (skills[skillType].range == SkillRangeMelee) {
+                    // move towards the target
+                    state = EntityStateApproaching;
+                    
+                    radius = 60;
+                    velocity.x = (target.position.x - position.x) * 2;
+                    velocity.y = (target.position.y - position.y) * 2;
+                // or if attacking with ranged skill
+                } else if (skills[skillType].range == SkillRangeRanged) {
+                    // attack from origin
+                    state = EntityStateAttacking;
+                }
+            } else {
+                [target release];
             }
         }
     }
@@ -814,6 +822,13 @@
     }
     
     return true;
+}
+
+
+- (void) addTarget:(CombatEntity *)entity {
+    if (entity && !entity.isDead) {
+        [targets addObject:entity];
+    }
 }
 
 
