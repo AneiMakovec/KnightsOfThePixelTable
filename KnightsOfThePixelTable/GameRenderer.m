@@ -285,11 +285,17 @@
         // check if is knight entity
         Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
         if (knight) {
-            int pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
+            CombatPosition pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
             
             // portrait
+            Color *portraitColor;
+            if (knight.finishedAttacking)
+                portraitColor = [Color darkGray];
+            else
+                portraitColor = [Color white];
+            
             Sprite *portrait = portraits[pos];
-            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:[Color white]];
+            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:portraitColor];
                 
             // sprite
 //            Sprite *drawable;
@@ -463,7 +469,7 @@
                 effect = SpriteEffectsNone;
             
             Sprite *drawable = [[monster getCurrentAnimation] spriteWithElapsedTime:gameTime.elapsedGameTime];
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:enemyDepth];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:enemyDepth];
             
             // hp pool
             if (monster.state != EntityStateStart) {

@@ -14,7 +14,7 @@
 
 @implementation GameHud
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay {
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay waves:(int)theWaves {
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:self.game];
@@ -26,7 +26,8 @@
         paused = NO;
         endDungeon = NO;
         
-        numWaves = 4;
+        wave = 1;
+        numWaves = theWaves;
         
         interfaceTextures = [[NSMutableArray alloc] initWithCapacity:ImageLocations];
         
@@ -275,8 +276,13 @@
 }
 
 
-- (void) increaseWaveCounterTo:(int)wave {
-    waveCounter.text = [NSString stringWithFormat:@"%i", wave];
+- (void) increaseWaveCounter {
+    wave++;
+    
+    if (wave > numWaves)
+        [self endGameplay];
+    else
+        waveCounter.text = [NSString stringWithFormat:@"%i", wave];
 }
 
 - (void) deactivate {

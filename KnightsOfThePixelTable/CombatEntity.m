@@ -15,7 +15,7 @@
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
     self = [super initWithHealth:hp damageStrength:theDamageStrength];
     if (self != nil) {
-        radius = 1;
+        radius = 20;
         maxRadius = theMaxRadius;
         
         hud = theHud;
@@ -137,8 +137,11 @@
             [combo removeAllObjects];
 
             // check if it is healing skill or if skill is used on allies
-            if (skills[skillType].function == SkillFunctionHeal || skills[skillType].useOn == SkillUseOnAlly)
+            BOOL ignoreTarget = NO;
+            if (skills[skillType].function == SkillFunctionHeal || skills[skillType].useOn == SkillUseOnAlly) {
                 isAlly = !isAlly;
+                ignoreTarget = YES;
+            }
             
             // check skill targeting
             switch (skills[skillType].target) {
@@ -161,30 +164,72 @@
                     }
                     break;
                     
-                case SkillTargetFrontRow:
-                    // front row
+                case SkillTargetRow:
                     if (isAlly) {
-                        target = [level.battlefield.enemyFrontRow retain];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                        // check if has target
+                        if (!ignoreTarget && theTarget) {
+                            // check if target is in front row or back row
+                            CombatPosition pos = [level.battlefield getCombatPositionOfEnemy:(Monster *)theTarget];
+                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
+                                target = [level.battlefield.enemyFrontRow retain];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                            } else {
+                                target = [level.battlefield.enemyBackRow retain];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+                            }
+                        } else {
+                            // check front row
+                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
+                                target = [level.battlefield.enemyFrontRow retain];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+                            // check back row
+                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
+                                target = [level.battlefield.enemyBackRow retain];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+                            }
+                        }
                     } else {
-                        target = [level.battlefield.allyFrontRow retain];
-                        [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                        if (!ignoreTarget && theTarget) {
+                            // check if target is in front row or back row
+                            CombatPosition pos = [level.battlefield getCombatPositionOfAlly:(Knight *)theTarget];
+                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
+                                target = [level.battlefield.allyFrontRow retain];
+                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                            } else {
+                                target = [level.battlefield.allyBackRow retain];
+                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+                            }
+                        } else {
+                            // check front row
+                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
+                                target = [level.battlefield.allyFrontRow retain];
+                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+                                // check back row
+                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
+                                target = [level.battlefield.allyBackRow retain];
+                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+                            }
+                        }
                     }
-                    break;
-                    
-                case SkillTargetBackRow:
-                    // back row
-                    if (isAlly) {
-                        target = [level.battlefield.enemyBackRow retain];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
-                    } else {
-                        target = [level.battlefield.allyBackRow retain];
-                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
-                    }
+
+                    // check back row
+//                    if (isAlly) {
+//                        target = [level.battlefield.enemyBackRow retain];
+//                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+//                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+//                    } else {
+//                        target = [level.battlefield.allyBackRow retain];
+//                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+//                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+//                    }
                     break;
                     
                 case SkillTargetAll:
@@ -874,6 +919,7 @@
     
     [combo release];
     [targets release];
+    [statEffects release];
     
     [super dealloc];
 }

@@ -17,7 +17,7 @@
     if (self != nil) {
         texture = [theTexture retain];
         duration = theDuration;
-        position = [thePosition retain];
+        position = [thePosition retain];
         
         animation = [[AnimatedImage alloc] initWithDuration:duration];
 
@@ -204,8 +204,9 @@
         [scene removeItem:self];
     }
     
-    if (target != nil && !target.stunned) {
-        [scene removeItem:self];
+    if (target != nil) {
+        if (!target.stunned || target.state == EntityStateDead)
+            [scene removeItem:self];
     }
 }
 

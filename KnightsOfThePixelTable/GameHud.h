@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     SpriteFont *font;
     
+    int wave;
     int numWaves;
     Label *waveCounter;
     Label *currentHpCounters[CombatPositions];
@@ -63,9 +64,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL paused;
 @property (nonatomic, readonly) BOOL endDungeon;
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay;
+- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay waves:(int)theWaves;
 
-- (void) increaseWaveCounterTo:(int)wave;
+- (void) increaseWaveCounter;
 
 - (void) resetEndTurnButton;
 

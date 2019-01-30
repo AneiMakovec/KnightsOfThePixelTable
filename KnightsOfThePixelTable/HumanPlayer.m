@@ -60,6 +60,7 @@
     
     // check if target is still alive
     if (target && target.state == EntityStateDead) {
+        target.isTargeted = NO;
         [target release];
         target = nil;
     }

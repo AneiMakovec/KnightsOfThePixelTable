@@ -525,7 +525,7 @@
         case FirstComboSkill:
             return SkillTargetSingle;
         case SecondComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetRow;
         case ThirdComboSkill:
             return SkillTargetAll;
         default:
@@ -665,7 +665,7 @@
         case FirstComboSkill:
             return SkillTargetSingle;
         case SecondComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetRow;
         case ThirdComboSkill:
             return SkillTargetAll;
         default:
@@ -803,7 +803,7 @@
         case BasicAttack:
             return SkillTargetSingle;
         case FirstComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetRow;
         case SecondComboSkill:
             return SkillTargetSingle;
         case ThirdComboSkill:
@@ -947,7 +947,7 @@
         case FirstComboSkill:
             return SkillTargetSingle;
         case SecondComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetRow;
         case ThirdComboSkill:
             return SkillTargetAll;
         default:
@@ -1094,7 +1094,7 @@
         case SecondComboSkill:
             return SkillTargetSingle;
         case ThirdComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetRow;
         default:
             return SkillTargetSingle;
     }
@@ -1235,7 +1235,7 @@
         case SecondComboSkill:
             return SkillTargetSingle;
         case ThirdComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetRow;
         default:
             return SkillTargetSingle;
     }
@@ -1376,7 +1376,7 @@
         case SecondComboSkill:
             return SkillTargetSingle;
         case ThirdComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetRow;
         default:
             return SkillTargetSingle;
     }
@@ -1514,9 +1514,9 @@
         case BasicAttack:
             return SkillTargetSingle;
         case FirstComboSkill:
-            return SkillTargetFrontRow;
+            return SkillTargetRow;
         case SecondComboSkill:
-            return SkillTargetBackRow;
+            return SkillTargetRow;
         case ThirdComboSkill:
             return SkillTargetAll;
         default:

@@ -66,8 +66,7 @@ typedef enum {
 typedef enum {
     SkillTargetSelf,
     SkillTargetSingle,
-    SkillTargetFrontRow,
-    SkillTargetBackRow,
+    SkillTargetRow,
     SkillTargetAll,
     SkillTargets
 } SkillTarget;

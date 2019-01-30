@@ -95,19 +95,18 @@
 
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition {
-    if ([allyEntities count] > thePosition) {
+    if ([allyEntities count] > thePosition)
         return [allyEntities objectAtIndex:thePosition];
-    } else {
+    else
         return nil;
-    }
 }
 
 - (BOOL) containsAlly:(CombatEntity *)theAlly {
     return [allyEntities containsObject:theAlly];
 }
 
-- (int) getCombatPositionOfAlly:(Knight *)theAlly {
-    return (int)[allyEntities indexOfObject:theAlly];
+- (CombatPosition) getCombatPositionOfAlly:(Knight *)theAlly {
+    return (CombatPosition)[allyEntities indexOfObject:theAlly];
 }
 
 - (void) removeAlly:(Knight *)theAlly {
@@ -116,19 +115,18 @@
 }
 
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition {
-    if ([enemyEntities count] > thePosition) {
+    if ([enemyEntities count] > thePosition)
         return [enemyEntities objectAtIndex:thePosition];
-    } else {
+    else
         return nil;
-    }
 }
 
 - (BOOL) containsEnemy:(CombatEntity *)theEnemy {
     return [enemyEntities containsObject:theEnemy];
 }
 
-- (int) getCombatPositionOfEnemy:(Monster *)theEnemy {
-    return (int)[enemyEntities indexOfObject:theEnemy];
+- (CombatPosition) getCombatPositionOfEnemy:(Monster *)theEnemy {
+    return (CombatPosition)[enemyEntities indexOfObject:theEnemy];
 }
 
 - (void) removeEnemy:(Monster *)theEnemy {
@@ -274,6 +272,31 @@
             return NO;
         }
     }
+}
+
+
+- (BOOL) hasAnyEnemyInFrontRowForAlly:(BOOL)isAlly {
+    if (isAlly) {
+        if ([enemyEntities objectAtIndex:FirstCombatPosition] || [enemyEntities objectAtIndex:SecondCombatPosition])
+            return YES;
+    } else {
+        if ([allyEntities objectAtIndex:FirstCombatPosition] || [allyEntities objectAtIndex:SecondCombatPosition])
+            return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL) hasAnyEnemyInBackRowForAlly:(BOOL)isAlly {
+    if (isAlly) {
+        if ([enemyEntities objectAtIndex:ThirdCombatPosition] || [enemyEntities objectAtIndex:FourthCombatPosition])
+            return YES;
+    } else {
+        if ([allyEntities objectAtIndex:ThirdCombatPosition] || [allyEntities objectAtIndex:FourthCombatPosition])
+            return YES;
+    }
+    
+    return NO;
 }
 
 

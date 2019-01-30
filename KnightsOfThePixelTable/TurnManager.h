@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL paused;
     
     BOOL playersTurn;
-    int waveCounter;
 }
 
 @property (nonatomic, readonly) BOOL playersTurn;

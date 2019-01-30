@@ -25,7 +25,6 @@
         paused = NO;
         
         playersTurn = YES;
-        waveCounter = 1;
     }
     return self;
 }
@@ -78,8 +77,7 @@
                         [player endTurn];
                         
                         if ([level.battlefield.enemyEntities count] == 0) {
-                            waveCounter++;
-                            [hud increaseWaveCounterTo:waveCounter];
+                            [hud increaseWaveCounter];
                             [aiPlayer startTurnWithNewEntities:YES];
                         } else {
                             // update status conditions
