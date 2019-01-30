@@ -20,6 +20,11 @@
         exp = 0;
         
         type = theKnight;
+        
+        // init textures
+        for (int i = 0; i < EntityStates; i++) {
+            animations[i] = [[TextureComponent getAnimationType:i forAlly:type] retain];
+        }
     }
     return self;
 }
@@ -119,6 +124,13 @@
     
     // then update health
     hpPoolArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
+    
+    // death
+    if (state == EntityStateDead) {
+        if (!animations[state].isAlive) {
+            [level.battlefield removeAlly:self];
+        }
+    }
 }
 
 

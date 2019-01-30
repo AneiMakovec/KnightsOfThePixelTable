@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PixEngine.Graphics.h"
 #import "PixEngine.Scene.Objects.h"
 #import "KOTPTEnums.h"
 
@@ -17,7 +18,6 @@
 
 @property (nonatomic, retain) Rectangle *entityArea;
 
-@property (nonatomic, readonly) BOOL isDead;
 @property (nonatomic, readonly) BOOL stunned;
 @property (nonatomic, readonly) BOOL finishedAttacking;
 @property (nonatomic) BOOL isTargeted;
@@ -68,6 +68,12 @@
 
 
 - (void) addConditionAnimation:(ConditionType)condition;
+
+
+- (AnimatedSprite *) getCurrentAnimation;
+
+
+- (void) cancelAttack;
 
 
 @end

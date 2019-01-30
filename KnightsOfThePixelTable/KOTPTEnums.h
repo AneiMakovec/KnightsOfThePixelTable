@@ -128,10 +128,19 @@ typedef enum {
     EntityStateDefending,
     EntityStateApproaching,
     EntityStateRetreating,
-    EntityStateStart,
     EntityStateDead,
+    EntityStateStart,
     EntityStates
 } EntityState;
+
+typedef enum {
+    AnimationTypeIdle,
+    AnimationTypeMove,
+    AnimationTypeHit,
+    AnimationTypeDeath,
+    AnimationTypeAttack,
+    AnimationTypes
+} AnimationType;
 
 // MARK: ai
 typedef enum {

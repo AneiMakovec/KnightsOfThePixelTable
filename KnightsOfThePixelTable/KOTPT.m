@@ -24,6 +24,9 @@
         // init camera
         [ScreenComponent initializeWithGame:self screenWidth:[Constants backgroundWidth] screenHeight:[Constants battlefieldHeight] + [Constants hudHeight]];
         
+        // init entity textures
+        [TextureComponent initializeWithGame:self];
+        
         // init touch panel helper
         [self.components addComponent:[[[TouchPanelHelper alloc] initWithGame:self] autorelease]];
         

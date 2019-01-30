@@ -25,9 +25,15 @@
             skills[i] = [[SkillFactory createSkill:i forAlly:type] retain];
         }
         
+        // init skill types
         for (int i = 0; i < SkillTypes; i++) {
             comboSkillTypes[i] = Defence;
         }
+        
+//        // init textures
+//        for (int i = 0; i < EntityStates; i++) {
+//            animations[i] = [[TextureComponent getAnimationType:i forAlly:type] retain];
+//        }
     }
     return self;
 }

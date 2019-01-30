@@ -154,7 +154,7 @@
 //    NSMutableArray *removedKnights = [[NSMutableArray alloc] init];
 //
 //    for (Knight *knight in allyEntities) {
-//        if (knight.isDead) {
+//        if (knight.state == EntityStateDead) {
 //            [removedKnights addObject:knight];
 //        }
 //    }
@@ -171,7 +171,7 @@
 //    NSMutableArray *removedMonsters = [[NSMutableArray alloc] init];
 //
 //    for (Monster *monster in enemyEntities) {
-//        if (monster.isDead) {
+//        if (monster.state == EntityStateDead) {
 //            [removedMonsters addObject:monster];
 //        }
 //    }
@@ -237,7 +237,7 @@
             for (int i = 0; i < CombatPositions; i++) {
                 
                 // add enemy entities
-                monster = [[MonsterBossKnight alloc] initWithLevel:level gameHud:hud];
+                monster = [[MonsterBossViking alloc] initWithLevel:level gameHud:hud];
                 [monster setCombatPosition:i];
                 [enemyEntities insertObject:monster atIndex:i];
                 [level.scene addItem:monster];
@@ -252,15 +252,27 @@
 
 - (BOOL) hasAnyEnemyForAlly:(BOOL)isAlly {
     if (isAlly) {
-        if ([enemyEntities count] > 0)
-            return YES;
-        else
+        if ([enemyEntities count] > 0) {
+            for (Monster *monster in enemyEntities) {
+                if (monster.state != EntityStateDead)
+                    return YES;
+            }
+            
             return NO;
+        } else {
+            return NO;
+        }
     } else {
-        if ([allyEntities count] > 0)
-            return YES;
-        else
+        if ([allyEntities count] > 0) {
+            for (Knight *knight in allyEntities) {
+                if (knight.state != EntityStateDead)
+                    return YES;
+            }
+            
             return NO;
+        } else {
+            return NO;
+        }
     }
 }
 

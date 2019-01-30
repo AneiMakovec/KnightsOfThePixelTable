@@ -12,8 +12,10 @@
 
 // Graphics
 #import "GameRenderer.h"
-#import "ScreenComponent.h"
 #import "GUIRenderer.h"
+
+#import "ScreenComponent.h"
+#import "TextureComponent.h"
 
 // HUD
 #import "GameHud.h"

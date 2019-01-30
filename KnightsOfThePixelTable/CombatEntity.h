@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
     Rectangle *entityArea;
     
     BOOL stunned;
-    BOOL isDead;
     BOOL finishedAttacking;
     BOOL isTargeted;
     
@@ -44,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     GameHud *hud;
     Level *level;
+    
+    AnimatedSprite *animations[EntityStates];
 }
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;

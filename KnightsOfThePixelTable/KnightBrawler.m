@@ -25,9 +25,15 @@
             skills[i] = [[SkillFactory createSkill:i forAlly:type] retain];
         }
         
+        // init skill combos
         for (int i = 0; i < SkillTypes; i++) {
             comboSkillTypes[i] = Cunning;
         }
+        
+//        // init textures
+//        for (int i = 0; i < EntityStates; i++) {
+//            animations[i] = [[TextureComponent getAnimationType:i forAlly:type] retain];
+//        }
     }
     return self;
 }

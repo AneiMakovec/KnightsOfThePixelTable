@@ -84,6 +84,7 @@
 		B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */ = {isa = PBXBuildFile; fileRef = B595F9CD21D05D9700BC07C5 /* hp_pool.png */; };
 		B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493C921CAD38A003EBB1D /* Stat.m */; };
 		B5A493CD21CAECF0003EBB1D /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493CC21CAECF0003EBB1D /* Skill.m */; };
+		B5A881B02201B5C100ADCE9E /* TextureComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A881AF2201B5C100ADCE9E /* TextureComponent.m */; };
 		B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AE501421BEEE2800FC5CBF /* SoundEngine.m */; };
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
@@ -277,6 +278,8 @@
 		B5A493C921CAD38A003EBB1D /* Stat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stat.m; sourceTree = "<group>"; };
 		B5A493CB21CAECF0003EBB1D /* Skill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
 		B5A493CC21CAECF0003EBB1D /* Skill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
+		B5A881AE2201B5C100ADCE9E /* TextureComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureComponent.h; sourceTree = "<group>"; };
+		B5A881AF2201B5C100ADCE9E /* TextureComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureComponent.m; sourceTree = "<group>"; };
 		B5AE501321BEEE2800FC5CBF /* SoundEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundEngine.h; sourceTree = "<group>"; };
 		B5AE501421BEEE2800FC5CBF /* SoundEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundEngine.m; sourceTree = "<group>"; };
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
@@ -973,10 +976,12 @@
 			children = (
 				B57B0D1821A602530064B91F /* GameRenderer.h */,
 				B57B0D1921A602530064B91F /* GameRenderer.m */,
-				B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */,
-				B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */,
 				B55FA73C21D8196100526790 /* GUIRenderer.h */,
 				B55FA73D21D8196100526790 /* GUIRenderer.m */,
+				B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */,
+				B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */,
+				B5A881AE2201B5C100ADCE9E /* TextureComponent.h */,
+				B5A881AF2201B5C100ADCE9E /* TextureComponent.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1392,6 +1397,7 @@
 				B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */,
 				B5CF917F2200863F006A52B5 /* DungeonEndInterface.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,
+				B5A881B02201B5C100ADCE9E /* TextureComponent.m in Sources */,
 				B58869A521C4430900CE4C0E /* Monster.m in Sources */,
 				B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */,
 				B5CF917C22008611006A52B5 /* RetreatInterface.m in Sources */,

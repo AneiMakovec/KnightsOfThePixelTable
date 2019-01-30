@@ -59,7 +59,7 @@
 - (void) updateWithGameTime:(GameTime *)gameTime {
     
     // check if target is still alive
-    if (target && target.isDead) {
+    if (target && target.state == EntityStateDead) {
         [target release];
         target = nil;
     }
@@ -111,14 +111,17 @@
                             target = nil;
                             break;
                         } else {
-                            // remove previous target
-                            target.isTargeted = NO;
-                            
-                            // set new target
-                            monster.isTargeted = YES;
-                            target = [monster retain];
-                            NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
-                            break;
+                            //check if enemy is dead
+                            if (monster.state != EntityStateDead) {
+                                // remove previous target
+                                target.isTargeted = NO;
+                                
+                                // set new target
+                                monster.isTargeted = YES;
+                                target = [monster retain];
+                                NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
+                                break;
+                            }
                         }
                     }
                 }
@@ -154,7 +157,13 @@
                             NSLog(@"Touched ally: %d", knight.combatPosition + 1);
                             
                             if (knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
-                                [knight attackTarget:target ally:YES];
+                                if (target.state != EntityStateDead) {
+                                    [knight attackTarget:target ally:YES];
+                                } else {
+                                    target.isTargeted = NO;
+                                    target = nil;
+                                    [knight attackTarget:nil ally:YES];
+                                }
                             }
                             
                             break;

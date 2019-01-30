@@ -74,7 +74,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) brawlerTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) brawlerUseOnSkill:(SkillType)skill;
 + (float) brawlerDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) brawlerDurationOfSkill:(SkillType)skill;
 + (float) brawlerGainMarginOfSkill:(SkillType)skill;
 
 + (int) bowmanHealthPoints;
@@ -86,7 +85,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) bowmanTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) bowmanUseOnSkill:(SkillType)skill;
 + (float) bowmanDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) bowmanDurationOfSkill:(SkillType)skill;
 + (float) bowmanGainMarginOfSkill:(SkillType)skill;
 
 + (int) paladinHealthPoints;
@@ -98,7 +96,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) paladinTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) paladinUseOnSkill:(SkillType)skill;
 + (float) paladinDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) paladinDurationOfSkill:(SkillType)skill;
 + (float) paladinGainMarginOfSkill:(SkillType)skill;
 
 + (int) fireEnchantressHealthPoints;
@@ -110,7 +107,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill;
 + (float) fireEnchantressDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) fireEnchantressDurationOfSkill:(SkillType)skill;
 + (float) fireEnchantressGainMarginOfSkill:(SkillType)skill;
 
 // enemies
@@ -123,7 +119,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill;
 + (float) enemyWarriorDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) enemyWarriorDurationOfSkill:(SkillType)skill;
 + (float) enemyWarriorGainMarginOfSkill:(SkillType)skill;
 
 + (int) enemyBruteHealthPoints;
@@ -135,7 +130,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill;
 + (float) enemyBruteDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) enemyBruteDurationOfSkill:(SkillType)skill;
 + (float) enemyBruteGainMarginOfSkill:(SkillType)skill;
 
 + (int) enemyVikingHealthPoints;
@@ -147,7 +141,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill;
 + (float) enemyVikingDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) enemyVikingDurationOfSkill:(SkillType)skill;
 + (float) enemyVikingGainMarginOfSkill:(SkillType)skill;
 
 + (int) enemyBossKnightHealthPoints;
@@ -159,8 +152,28 @@ NS_ASSUME_NONNULL_BEGIN
 + (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill;
 + (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill;
 + (float) enemyBossKnightDamageOfSkill:(SkillType)skill;
-+ (NSTimeInterval) enemyBossKnightDurationOfSkill:(SkillType)skill;
 + (float) enemyBossKnightGainMarginOfSkill:(SkillType)skill;
+
+
+
+
+
+
+// alies
++ (int) spritesheetWidthOfAlly:(KnightType)ally;
++ (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally;
++ (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally;
++ (int) framePositionForAnimation:(AnimationType)type ally:(KnightType)ally;
++ (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally;
++ (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally;
+
+// enemies
++ (int) spritesheetWidthOfEnemy:(MonsterType)enemy;
++ (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
++ (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
++ (int) framePositionForAnimation:(AnimationType)type enemy:(MonsterType)enemy;
++ (int) numFramesInAnimation:(AnimationType)type enemy:(MonsterType)enemy;
++ (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
 
 
 @end

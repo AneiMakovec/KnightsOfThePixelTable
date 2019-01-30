@@ -10,9 +10,9 @@
 #import "KOTPTEnums.h"
 
 // Graphics
-@class GameRenderer;
-@class ScreenComponent;
-@class GUIRenderer;
+@class GameRenderer, GUIRenderer;
+
+@class ScreenComponent, TextureComponent;
 
 // HUD
 @class GameHud;

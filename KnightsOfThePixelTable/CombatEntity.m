@@ -22,7 +22,6 @@
         level = theLevel;
         
         stunned = NO;
-        isDead = NO;
         finishedAttacking = NO;
         isTargeted = NO;
         
@@ -39,7 +38,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isDead, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned;
+@synthesize radius, maxRadius, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -235,9 +234,11 @@
                     state = EntityStateAttacking;
                 }
             } else {
-                [target release];
+                [self cancelAttack];
             }
         }
+    } else {
+        [self cancelAttack];
     }
 }
 
@@ -580,17 +581,17 @@
     
     // check if is still alive
     if (currentHealthPoints <= 0) {
-        isDead = YES;
+        state = EntityStateDead;
     }
 
     
-    // update movement
+    // attack
     if (state == EntityStateAttacking) {
         
         Skill *skill = skills[skillType];
         
         // wait for attack to end
-        if (!skill.duration.isAlive) {
+        if (!animations[state].isAlive) {
             // and then deal the damage to targets and tell them to stop defending
             for (CombatEntity *entity in targets) {
                 // check if skill heals
@@ -598,7 +599,6 @@
                     [self healTarget:entity];
                 } else {
                     [self dealDamageToTarget:entity];
-//                    [entity stopDefending];
                 }
             }
             
@@ -607,8 +607,8 @@
             target = nil;
             [targets removeAllObjects];
                 
-            // then reset the attack lifetime
-            [skill.duration reset];
+            // then reset the animation
+            [animations[state] reset];
             
             // if attacking with melee skill
             if (skills[skillType].range == SkillRangeMelee) {
@@ -624,8 +624,15 @@
                 finishedAttacking = YES;
                 skillType = NoSkill;
             }
-        } else {
-            [skill.duration updateWithGameTime:gameTime];
+        }
+    }
+    
+    
+    // hit
+    if (state == EntityStateDefending) {
+        if (!animations[state].isAlive) {
+            [animations[state] reset];
+            [self stopDefending];
         }
     }
 }
@@ -826,9 +833,26 @@
 
 
 - (void) addTarget:(CombatEntity *)entity {
-    if (entity && !entity.isDead) {
+    if (entity && entity.state != EntityStateDead) {
         [targets addObject:entity];
     }
+}
+
+
+- (AnimatedSprite *) getCurrentAnimation {
+    return animations[state];
+}
+
+
+- (void) cancelAttack {
+    [combo removeAllObjects];
+    skillType = NoSkill;
+    [targets removeAllObjects];
+    if (target) {
+        [target release];
+        target = nil;
+    }
+    state = EntityStateIdle;
 }
 
 

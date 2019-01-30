@@ -18,6 +18,11 @@
         expType = theExpType;
 
         dicesComming = 0;
+        
+        // init textures
+        for (int i = 0; i < EntityStates; i++) {
+            animations[i] = [[TextureComponent getAnimationType:i forEnemy:type] retain];
+        }
     }
     return self;
 }
@@ -126,6 +131,13 @@
 
     hpArea.x = position.x - 29;
     hpArea.y = position.y - 30;
+    
+    // death
+    if (state == EntityStateDead) {
+        if (!animations[state].isAlive) {
+            [level.battlefield removeEnemy:self];
+        }
+    }
 }
 
 - (void) dealloc {

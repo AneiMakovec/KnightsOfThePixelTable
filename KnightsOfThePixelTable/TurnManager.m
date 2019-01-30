@@ -136,36 +136,36 @@
     if (playersTurn) {
         for (Knight *knight in level.battlefield.allyEntities) {
             if (knight.skillType != NoSkill) {
-                return false;
+                return NO;
             }
         }
     } else {
         for (Monster *monster in level.battlefield.enemyEntities) {
             if (monster.skillType != NoSkill) {
-                return false;
+                return NO;
             }
         }
     }
     
-    return true;
+    return YES;
 }
 
 - (BOOL) checkIdleEntities {
     if (playersTurn) {
         for (Knight *knight in level.battlefield.allyEntities) {
             if (knight.state != EntityStateIdle) {
-                return false;
+                return NO;
             }
         }
     } else {
         for (Monster *monster in level.battlefield.enemyEntities) {
             if (monster.state != EntityStateIdle) {
-                return false;
+                return NO;
             }
         }
     }
     
-    return true;
+    return YES;
 }
 
 @end

@@ -139,15 +139,21 @@
                         if (![attackDelay isAlive]) {
                             [attackDelay reset];
                             
-                            NSLog(@"SELECTING TARGET");
-                            Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
-                            while (!knight || knight.isDead) {
-                                knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                            // if any opponent is still alive
+                            if ([level.battlefield hasAnyEnemyForAlly:NO]) {
+                                NSLog(@"SELECTING TARGET");
+                                Knight *knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                                while (!knight || knight.state == EntityStateDead) {
+                                    knight = [level.battlefield getAllyAtPosition:[Random intLessThan:CombatPositions]];
+                                }
+                            
+                                NSLog(@"ATTACKED");
+                                [monster attackTarget:knight ally:NO];
+                                attackPosition++;
+                            } else {
+                                [monster cancelAttack];
+                                attackPosition++;
                             }
-                        
-                            NSLog(@"ATTACKED");
-                            [monster attackTarget:knight ally:NO];
-                            attackPosition++;
                         }
                     } else {
                         attackPosition++;
