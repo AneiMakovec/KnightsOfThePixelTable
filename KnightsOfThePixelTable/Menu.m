@@ -62,6 +62,7 @@
     }
     
     if (back.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         [knightsGame popState];
     }
 }

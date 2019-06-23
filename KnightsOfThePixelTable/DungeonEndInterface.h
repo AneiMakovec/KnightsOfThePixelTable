@@ -8,9 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Pixlron.Knights.classes.h"
+#import "PixEngine.GUI.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DungeonEndInterface : NSObject
+@interface DungeonEndInterface : GuiPanel {
+    GameHud *hud;
+    
+    CompositeImage *background;
+    
+    ImageButton *confirmButton;
+}
+
+- (id) initWithHud:(GameHud *)theHud contentManager:(ContentManager *)manager font:(SpriteFont *)font backgroundTextures:(NSMutableArray *)textures camera:(Matrix *)camera win:(BOOL)win;
 
 @end
 

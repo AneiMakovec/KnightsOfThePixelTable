@@ -15,10 +15,11 @@
 
 @implementation PhysicsEngine
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel {
+- (id) initWithGame:(Game *)theGame level:(Level *)theLevel playSounds:(BOOL)play {
     self = [super initWithGame:theGame];
     if (self != nil) {
         level = theLevel;
+        playSounds = play;
     }
     return self;
 }

@@ -48,7 +48,7 @@
         // init components
         humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
         aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
-        physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel];
+        physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel playSounds:[knightsGame.progress isSettingEnabled:SettingTypeSound]];
         gameHud = [[GameHud alloc] initWithGame:self.game gameplay:self waves:1];
         turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel gameHud:gameHud humanPlayer:humanPlayer aiPlayer:aiPlayer];
         renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self turnManager:turnManager];
@@ -105,6 +105,8 @@
         [knightsGame popState];
         [knightsGame popState];
     }
+    
+    
 }
 
 

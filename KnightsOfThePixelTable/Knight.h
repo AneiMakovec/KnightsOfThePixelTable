@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Rectangle *skillArea;
 @property (nonatomic, retain) Rectangle *hpPoolArea;
 
-- (id) initKnight:(KnightType)theKnight level:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initKnight:(KnightType)theKnight level:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
 

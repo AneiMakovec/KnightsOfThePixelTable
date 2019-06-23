@@ -37,8 +37,10 @@
     GameState *newState = nil;
     
     if (play.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[[CamelotMenu alloc] initWithGame:self.game] autorelease];
     } else if (options.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[[OptionsMenu alloc] initWithGame:self.game] autorelease];
     }
     

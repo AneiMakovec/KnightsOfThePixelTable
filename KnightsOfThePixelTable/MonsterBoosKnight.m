@@ -13,7 +13,7 @@
 @implementation MonsterBossKnight
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initMonster:MonsterTypeBossKnight level:theLevel gameHud:hud expType:ExpTypeNormal entityType:Cunning health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] damageStrength:0.85 maxRadius:60];
+    self = [super initMonster:MonsterTypeBossKnight level:theLevel gameHud:hud expType:ExpTypeNormal entityType:Cunning health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {

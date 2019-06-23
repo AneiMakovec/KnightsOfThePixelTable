@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
     ImageLabelButton *endTurn;
     ImageLabelButton *retreat;
     
-    CompositeImage *interfaceBackground;
+//    CompositeImage *interfaceBackground;
     
     
     // indicator textures
@@ -91,7 +91,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) addRetreatInterface;
 
-- (void) endGameplay;
+- (void) endGameplayWithWin:(BOOL)isWin;
+
+- (void) finishDungeon;
+
+- (BOOL) isLastWave;
 
 - (void) deactivate;
 

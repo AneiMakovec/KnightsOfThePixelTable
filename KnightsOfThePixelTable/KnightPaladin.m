@@ -13,7 +13,7 @@
 @implementation KnightPaladin
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypePaladin level:theLevel gameHud:hud entityType:Sturdiness health:[Constants paladinHealthPoints] damageType:[Constants paladinDamageType] damageStrength:0.85 maxRadius:60];
+    self = [super initKnight:KnightTypePaladin level:theLevel gameHud:hud entityType:Sturdiness health:[Constants paladinHealthPoints] damageType:[Constants paladinDamageType] maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {

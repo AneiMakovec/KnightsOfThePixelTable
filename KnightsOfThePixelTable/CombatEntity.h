@@ -14,40 +14,59 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CombatEntity : DamageDealer<ICombatEntity> {
+@interface CombatEntity : Entity<ICombatEntity> {
+    
+    // physics variables
+    Vector2 *position;
+    Vector2 *velocity;
     float radius;
     float maxRadius;
+    BattlePosition *origin;
     
+    // touch area
     Rectangle *entityArea;
     
+    // action switches
     BOOL stunned;
     BOOL finishedAttacking;
     BOOL isTargeted;
     
+    // combo check variables
     StatType entityType;
-    EntityState state;
-    DamageType damageType;
-    SkillType skillType;
-    CombatPosition combatPosition;
-    BattlePosition *origin;
+    StatType comboSkillTypes[SkillTypes];
+    NSMutableArray *combo;
     
+    // current skill
+    SkillType skillType;
+    
+    // type of unit
+    DamageType damageType;
+    
+    // position of unit on the battlefield
+    CombatPosition combatPosition;
+    
+    // state of unit
+    EntityState state;
+    
+    // stats and skills
     Stat *stats[StatTypes];
     Skill *skills[SkillTypes];
-    NSMutableArray *combo;
-    StatType comboSkillTypes[SkillTypes];
     
+    // active status effects
     NSMutableArray *statEffects;
     
-    BattlePosition *target;
+    // selected targets
+    BattlePosition *targetPosition;
     NSMutableArray *targets;
     
+    // pointers to game components
     GameHud *hud;
     Level *level;
     
     AnimatedSprite *animations[EntityStates];
 }
 
-- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
 
 @end
 

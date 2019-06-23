@@ -40,7 +40,7 @@
 }
 
 - (void) drawWithGameTime:(GameTime *)gameTime {
-    [spriteBatch beginWithSortMode:SpriteSortModeDeffered
+    [spriteBatch beginWithSortMode:SpriteSortModeBackToFront
                         BlendState:nil
                       SamplerState:[SamplerState pointClamp]
                  DepthStencilState:nil

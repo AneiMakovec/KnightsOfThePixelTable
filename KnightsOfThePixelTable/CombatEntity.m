@@ -12,9 +12,12 @@
 
 @implementation CombatEntity
 
-- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithHealth:hp damageStrength:theDamageStrength];
+- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius {
+    self = [super initWithHealth:hp];
     if (self != nil) {
+        position = [[Vector2 alloc] init];
+        velocity = [[Vector2 alloc] init];
+        
         radius = 20;
         maxRadius = theMaxRadius;
         
@@ -38,7 +41,7 @@
     return self;
 }
 
-@synthesize radius, maxRadius, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned;
+@synthesize position, velocity, radius, maxRadius, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned, targets;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -117,6 +120,7 @@
                 [self startDefending];
             }
             
+            // remove projectile from scene
             [level.scene removeItem:projectile];
         }
     }
@@ -288,83 +292,87 @@
 }
 
 
-- (void) dealDamageToTarget:(CombatEntity *)theTarget {
+- (void) dealDamageToTargets {
     NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
     
-    // calculate if attack will miss
-    if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Insight].statValue]) {
-        // hit
-        NSLog(@"HIT");
-        
-        // calculate damage
-        int damage = [self calcDamageOnTarget:theTarget];
-        NSLog(@"DAMAGE: %d", damage);
-        
-        BOOL criticalHit;
-        // calculate if damage is critical
-        if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
-            // critical
-            damage *= 2;
+    for (CombatEntity *theTarget in targets) {
+        // calculate if attack will miss
+        if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Insight].statValue]) {
+            // hit
+            NSLog(@"HIT");
             
-            criticalHit = YES;
-            NSLog(@"CRITICAL DAMAGE: %d", damage);
+            // calculate damage
+            int damage = [self calcDamageOnTarget:theTarget];
+            NSLog(@"DAMAGE: %d", damage);
+            
+            BOOL criticalHit;
+            // calculate if damage is critical
+            if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
+                // critical
+                damage *= 2;
+                
+                criticalHit = YES;
+                NSLog(@"CRITICAL DAMAGE: %d", damage);
+            } else {
+                criticalHit = NO;
+            }
+            
+            // check if skill is ranged
+            if (skills[skillType].range == SkillRangeRanged) {
+                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
+                [level.scene addItem:projectile];
+                [projectile release];
+            } else {
+                // first deal damage
+    //        damage = 1000;  // HAX
+                [theTarget takeDamage:damage];
+                
+                // add damage and hit indicators
+                [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
+                [hud addHitIndicatorAt:theTarget.position];
+                
+                // make the target show hit animation
+                [theTarget startDefending];
+                
+                // apply skill effects
+                [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
+                
+                // then apply skill status effects
+                [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
+            }
         } else {
-            criticalHit = NO;
+            // miss
+            
+            if (skills[skillType].range == SkillRangeRanged) {
+                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
+                [level.scene addItem:projectile];
+                [projectile release];
+                NSLog(@"MISS");
+            } else {
+                [hud addMissIndicatorAt:theTarget.position];
+                NSLog(@"MISS");
+            }
+            
+            // Debug
+//             [theTarget takeDamage:1000]; // HAX
         }
-        
-        // check if skill is ranged
-        if (skills[skillType].range == SkillRangeRanged) {
-            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
-            [level.scene addItem:projectile];
-            [projectile release];
-        } else {
-            // first deal damage
-//        damage = 1000;  // HAX
-            [self dealDamageToTarget:theTarget damage:damage];
-            
-            // add damage and hit indicators
-            [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
-            [hud addHitIndicatorAt:theTarget.position];
-            
-            // make the target show hit animation
-            [theTarget startDefending];
-            
-            // apply skill effects
-            [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
-            
-            // then apply skill status effects
-            [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
-        }
-    } else {
-        // miss
-        
-        if (skills[skillType].range == SkillRangeRanged) {
-            Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
-            [level.scene addItem:projectile];
-            [projectile release];
-            NSLog(@"MISS");
-        } else {
-            [hud addMissIndicatorAt:theTarget.position];
-            NSLog(@"MISS");
-        }
-        
-        // Debug
-//        [self dealDamageToTarget:theTarget damage:1000]; // HAX
     }
 }
 
-- (void) healTarget:(CombatEntity *)theTarget {
-    // heal target
-    int amount = [self healPercentTarget:theTarget amount:skills[skillType].damage];
+- (void) healTargets {
+    for (CombatEntity *theTarget in targets) {
+        // heal target
+        [theTarget heal:skills[skillType].damage];
         
-    // add heal indicator
-    [hud addHealIndicatorAt:theTarget.position amount:amount];
-    
-    // apply skill effects
-    [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
-    
-    // then apply status effects
-    [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
+        // add heal indicator
+        [hud addHealIndicatorAt:theTarget.position amount:skills[skillType].damage];
+        
+        // apply skill effects
+        [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
+        
+        // then apply status effects
+        [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
+    }
 }
 
 
@@ -638,13 +646,11 @@
         // wait for attack to end
         if (!animations[state].isAlive) {
             // and then deal the damage to targets and tell them to stop defending
-            for (CombatEntity *entity in targets) {
-                // check if skill heals
-                if (skill.function == SkillFunctionHeal) {
-                    [self healTarget:entity];
-                } else {
-                    [self dealDamageToTarget:entity];
-                }
+            // check if skill heals
+            if (skill.function == SkillFunctionHeal) {
+                [self healTargets];
+            } else {
+                [self dealDamageToTargets];
             }
             
             // release targets

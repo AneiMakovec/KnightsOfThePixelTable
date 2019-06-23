@@ -18,8 +18,8 @@
         hud = theHud;
         
         // init background
-//        background = [[CompositeImage alloc] initWithImageTextures:textures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
-//        [items addObject:background];
+        background = [[CompositeImage alloc] initWithImageTextures:textures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
+        [items addObject:background];
         
         // init message
         Label *text = [[Label alloc] initWithFont:font text:@"Retreat from battle?" position:[Vector2 vectorWithX:520 y:180]];
@@ -27,6 +27,7 @@
         text.horizontalAlign = HorizontalAlignCenter;
         text.verticalAlign = VerticalAlignMiddle;
         [text setScaleUniform:1.0f];
+        [text setLayerDepth:-0.1f];
         [items addObject:text];
         [text release];
         
@@ -47,7 +48,7 @@
     
     // check if buttons pressed
     if (confirmButton.wasReleased) {
-        [hud endGameplay];
+        [hud endGameplayWithWin:NO];
         [scene removeItem:self];
     } else if (denyButton.wasReleased) {
         [hud resumeGame];
@@ -58,7 +59,7 @@
 
 
 - (void) dealloc {
-//    [background release];
+    [background release];
     [confirmButton release];
     [denyButton release];
     

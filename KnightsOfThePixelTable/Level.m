@@ -40,6 +40,7 @@
     
     // play battle music
 //    [SoundEngine playSong:SongTypeBattle];
+    [SoundEngine play:SoundEffectTypeBackground];
 
     // dicepool objects
     [dicepool initialize];

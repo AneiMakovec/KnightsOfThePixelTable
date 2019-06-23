@@ -11,8 +11,8 @@
 
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius {
-    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType damageStrength:theDamageStrength maxRadius:theMaxRadius];
+- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius {
+    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType maxRadius:theMaxRadius];
     if (self != nil) {
         type = theMonster;
         expType = theExpType;

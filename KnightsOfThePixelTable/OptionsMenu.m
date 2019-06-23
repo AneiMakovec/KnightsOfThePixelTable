@@ -59,9 +59,11 @@
     
     if (reset.wasReleased) {
         // reset game progress
+        [SoundEngine play:SoundEffectTypeClick];
     }
     
     if (sound.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         if ([knightsGame.progress isSettingEnabled:SettingTypeSound]) {
             [knightsGame.progress disableSetting:SettingTypeSound];
             [sound setBackground:disabledSoundButtonBackground];
@@ -72,6 +74,7 @@
     }
     
     if (music.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         if ([knightsGame.progress isSettingEnabled:SettingTypeMusic]) {
             [knightsGame.progress disableSetting:SettingTypeMusic];
             [music setBackground:disabledMusicButtonBackground];

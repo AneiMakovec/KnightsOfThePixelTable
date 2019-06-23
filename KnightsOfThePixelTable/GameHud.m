@@ -127,15 +127,18 @@
     }
     
     if (resetDices.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         [gameplay.currentLevel.dicepool removeAllDices];
         [gameplay.currentLevel.dicepool addDicesOfType:DiceFrameTypeGood];
     }
     
     if (endTurn.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         endTurnReleased = YES;
     }
     
     if (retreat.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         [self addRetreatInterface];
     }
 }
@@ -254,9 +257,9 @@
 
 
 - (void) addRetreatInterface {
-    interfaceBackground = [[CompositeImage alloc] initWithImageTextures:interfaceTextures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
+//    interfaceBackground = [[CompositeImage alloc] initWithImageTextures:interfaceTextures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
     RetreatInterface *interface = [[RetreatInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera];
-    [scene addItem:interfaceBackground];
+//    [scene addItem:interfaceBackground];
     [scene addItem:interface];
     [interface release];
     
@@ -264,14 +267,22 @@
 }
 
 - (void) resumeGame {
-    [scene removeItem:interfaceBackground];
-    
     paused = NO;
 }
 
-- (void) endGameplay {
-    [scene removeItem:interfaceBackground];
+- (BOOL) isLastWave {
+    return wave == numWaves;
+}
+
+- (void) endGameplayWithWin:(BOOL)isWin {
+    paused = YES;
     
+    DungeonEndInterface *interface = [[DungeonEndInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera win:isWin];
+    [scene addItem:interface];
+    [interface release];
+}
+
+- (void) finishDungeon {
     endDungeon = YES;
 }
 
@@ -280,7 +291,7 @@
     wave++;
     
     if (wave > numWaves)
-        [self endGameplay];
+        [self endGameplayWithWin:YES];
     else
         waveCounter.text = [NSString stringWithFormat:@"%i", wave];
 }
@@ -299,9 +310,6 @@
     [resetDices release];
     [endTurn release];
     [retreat release];
-    
-    if (interfaceBackground)
-        [interfaceBackground release];
     
     [hitTexture release];
     [burnTexture release];

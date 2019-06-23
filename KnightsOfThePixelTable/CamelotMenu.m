@@ -71,8 +71,10 @@
     GameState *newState = nil;
     
     // check for actions
-    if (gatehouse.wasReleased)
+    if (gatehouse.wasReleased && !back.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[WorldMenu alloc] initWithGame:self.game];
+    }
     
     if (newState) {
         [knightsGame pushState:newState];

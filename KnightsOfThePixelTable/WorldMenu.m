@@ -81,12 +81,16 @@
     // check if clicked any button
     GameState *newState = nil;
     if (dungeonFarmlands.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeFarmlands];
     } else if (dungeonMountains.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeMountains];
     } else if (dungeonSeashore.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeSeashore];
     } else if (dungeonPinewoods.wasReleased) {
+        [SoundEngine play:SoundEffectTypeClick];
         newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypePinewoods];
     }
     

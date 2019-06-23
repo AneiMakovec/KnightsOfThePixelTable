@@ -76,11 +76,14 @@
                         
                         [player endTurn];
                         
+                        // check if enemies are dead
                         if ([level.battlefield.enemyEntities count] == 0) {
                             [hud increaseWaveCounter];
-                            [aiPlayer startTurnWithNewEntities:YES];
+                            
+                            if (!hud.paused)
+                                [aiPlayer startTurnWithNewEntities:YES];
                         } else {
-                            // update status conditions
+                            // update enemies status effects
                             for (Monster *monster in level.battlefield.enemyEntities) {
                                 [monster updateStatEffects];
                                 [monster resetAttack];
@@ -90,6 +93,8 @@
                         }
                     }
                 }
+            } else if ([hud isLastWave] && [level.battlefield.enemyEntities count] == 0) {
+                [hud increaseWaveCounter];
             }
         // check if ai's turn is over
         } else {
@@ -110,13 +115,19 @@
                             
                             [aiPlayer endTurn];
                             
-                            // update player's status effects and reset attack
-                            for (Knight *knight in level.battlefield.allyEntities) {
-                                [knight updateStatEffects];
-                                [knight resetAttack];
-                            }
+                            //check if allies are dead
+                            if ([level.battlefield.allyEntities count] == 0) {
+                                // mission failed
+                                [hud endGameplayWithWin:NO];
+                            } else {
+                                // update player's status effects and reset attack
+                                for (Knight *knight in level.battlefield.allyEntities) {
+                                    [knight updateStatEffects];
+                                    [knight resetAttack];
+                                }
                             
-                            [player startTurn];
+                                [player startTurn];
+                            }
                         }
                     }
                 }

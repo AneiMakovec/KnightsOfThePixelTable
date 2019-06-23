@@ -63,7 +63,7 @@
         
         // deal damage to target
         if (type != ConditionTypeStun) {
-            [target takePercentDamage:dmg];
+            [target takeDamage:dmg];
             
             // add damage indicators and animations
             [target addConditionAnimation:type];

@@ -12,7 +12,7 @@
 #import "PixEngine.Scene.Objects.h"
 #import "KOTPTEnums.h"
 
-@protocol ICombatEntity <ICustomUpdate, ICustomCollider, IParticleCollider>
+@protocol ICombatEntity <IMovable, ICustomUpdate, ICustomCollider, IParticleCollider, IDamageDealer>
 
 @property (nonatomic, readonly) float maxRadius;
 

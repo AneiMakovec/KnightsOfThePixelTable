@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Rectangle *hpPoolArea;
 @property (nonatomic, retain) Rectangle *hpArea;
 
-- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType damageStrength:(float)theDamageStrength maxRadius:(float)theMaxRadius;
+- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
 

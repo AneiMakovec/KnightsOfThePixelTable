@@ -13,7 +13,7 @@
 @implementation KnightBrawler
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypeBrawler level:theLevel gameHud:hud entityType:Strength health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] damageStrength:0.85 maxRadius:60];
+    self = [super initKnight:KnightTypeBrawler level:theLevel gameHud:hud entityType:Strength health:[Constants brawlerHealthPoints] damageType:[Constants brawlerDamageType] maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
