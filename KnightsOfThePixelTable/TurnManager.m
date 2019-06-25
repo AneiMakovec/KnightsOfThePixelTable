@@ -66,7 +66,7 @@
                 [hud resetEndTurnButton];
                 
                 // check if no entity is ready to attack
-                if ([self checkEntityAttacks]) {
+                //if ([self checkEntityAttacks]) {
                     
                     // check if all entities are idle
                     if ([self checkIdleEntities]) {
@@ -92,7 +92,7 @@
                             [aiPlayer startTurn];
                         }
                     }
-                }
+                //}
             } else if ([hud isLastWave] && [level.battlefield.enemyEntities count] == 0) {
                 [hud increaseWaveCounter];
             }

@@ -16,9 +16,14 @@ TextureComponent *instance;
 
 @implementation TextureComponent
 
-+ (void) initializeWithGame:(Game *)game {
++ (void) activateWithGame:(Game *)game {
     instance = [[TextureComponent alloc] initWithGame:game];
     [game.components addComponent:instance];
+}
+
++ (void) deactivate {
+    [instance.game.components removeComponent:instance];
+    [instance release];
 }
 
 + (AnimatedSprite *) getAnimationType:(EntityState)type forAlly:(KnightType)ally {

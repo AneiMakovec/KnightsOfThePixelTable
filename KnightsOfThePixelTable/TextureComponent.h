@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *enemyTextures[MonsterTypes];
 }
 
-+ (void) initializeWithGame:(Game *)game;
++ (void) activateWithGame:(Game *)game;
+
++ (void) deactivate;
 
 + (AnimatedSprite *) getAnimationType:(EntityState)type forAlly:(KnightType)ally;
 

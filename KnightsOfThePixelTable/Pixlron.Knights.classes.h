@@ -12,12 +12,15 @@
 // Graphics
 @class GameRenderer, GUIRenderer;
 
-@class ScreenComponent, TextureComponent;
+@class ScreenComponent, TextureComponent, CamelotTextureComponent;
 
 // HUD
 @class GameHud;
 @class Indicator, AnimatedIndicator;
 @class RetreatInterface, DungeonEndInterface;
+
+@class Interface;
+@class CastleInterface, CommandersQuartersInterface, BarracksInterface, WarbandCampInterface, AdventurersYardInterface, BlacksmithInterface, EnchantersGuildInterface;
 
 // Physics
 @class PhysicsEngine;

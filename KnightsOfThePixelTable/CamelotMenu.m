@@ -17,6 +17,9 @@
 - (void) initialize {
     [super initialize];
     
+    // init textures
+    [CamelotTextureComponent activateWithGame:self.game];
+    
     // Background
     background = [[Image alloc] initWithTexture:[self.game.content load:BACKGROUND_CAMELOT] position:[Vector2 vectorWithX:0 y:0]];
     [scene addItem:background];
@@ -60,6 +63,11 @@
 //                                        background:buttonBackground font:font text:@"Warband camp"];
 //    [scene addItem:warbandCamp];
     
+    
+    
+    // interface test
+    interface = [[CamelotInterface alloc] initWithCamera:[ScreenComponent getCamera]];
+    [scene addItem:interface];
     
     
     [scene addItem:back];

@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     ImageLabelButton *castle, *commandersPost, *barracks, *enchantersGuild, *blackSmith, *adventurersYard, *warbandCamp;
     
     ImageButton *gatehouse;
+    
+    CamelotInterface *interface;
 }
 
 @end

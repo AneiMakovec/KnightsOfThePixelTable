@@ -19,6 +19,8 @@
         settingEnabled[SettingTypeSound] = YES;
         settingEnabled[SettingTypeMusic] = YES;
         //levelUnlocked[LevelTypeFarmlands] = YES;
+        
+        knights = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -54,8 +56,6 @@
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
     progress = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
-    
-//    progress = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
     
     // If there is no progress file, create a fresh instance.
     if (!progress) {
@@ -101,6 +101,30 @@
 - (void) disableSetting:(SettingType)setting {
     settingEnabled[setting] = NO;
     [self saveProgress];
+}
+
+
+- (void) addKnight:(Knight *)knight {
+    [knights addObject:knight];
+}
+
+- (void) removeKnight:(Knight *)knight {
+    [knights removeObject:knight];
+}
+
+
+- (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position {
+    battleKnights[position] = knight;
+}
+
+- (void) removeKnightOnPosition:(CombatPosition)position {
+    battleKnights[position] = nil;
+}
+
+- (void) removeAllBattleKnights {
+    for (int i = 0; i < CombatPositions; i++) {
+        battleKnights[i] = nil;
+    }
 }
 
 

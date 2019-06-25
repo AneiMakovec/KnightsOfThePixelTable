@@ -25,7 +25,7 @@
         [ScreenComponent initializeWithGame:self screenWidth:[Constants backgroundWidth] screenHeight:[Constants battlefieldHeight] + [Constants hudHeight]];
         
         // init entity textures
-        [TextureComponent initializeWithGame:self];
+        //[TextureComponent activateWithGame:self];
         
         // init touch panel helper
         [self.components addComponent:[[[TouchPanelHelper alloc] initWithGame:self] autorelease]];

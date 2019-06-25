@@ -18,6 +18,9 @@
     self = [super initWithGame:theGame];
     if (self != nil) {
         
+        // init textures
+        [TextureComponent activateWithGame:self.game];
+        
         // init level
         switch (levelType) {
             case LevelTypeFarmlands:
@@ -86,6 +89,8 @@
     [self.game.components removeComponent:gameHud];
     [self.game.components removeComponent:turnManager];
     [self.game.components removeComponent:renderer];
+    
+    [TextureComponent deactivate];
 }
 
 

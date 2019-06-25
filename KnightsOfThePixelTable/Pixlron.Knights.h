@@ -16,6 +16,8 @@
 
 #import "ScreenComponent.h"
 #import "TextureComponent.h"
+#import "CamelotTextureComponent.h"
+
 
 // HUD
 #import "GameHud.h"
@@ -25,6 +27,16 @@
 
 #import "RetreatInterface.h"
 #import "DungeonEndInterface.h"
+
+#import "Interface.h"
+#import "CastleInterface.h"
+#import "CommandersQuartersInterface.h"
+#import "BarracksInterface.h"
+#import "WarbandCampInterface.h"
+#import "AdventurersYardInterface.h"
+#import "BlacksmithInterface.h"
+#import "EnchantersGuildInterface.h"
+
 
 
 // Physics

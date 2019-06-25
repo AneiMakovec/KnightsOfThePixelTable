@@ -15,7 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GameProgress : NSObject <NSCoding> {
     //BOOL levelUnlocked[LevelTypes];
     BOOL settingEnabled[SettingTypes];
+    
+    NSMutableArray *knights;
+    Knight *battleKnights[CombatPositions];
 }
+
+@property (nonatomic, retain) NSMutableArray *knights;
 
 + (GameProgress *) loadProgress;
 + (void) deleteProgress;
@@ -29,6 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
 //- (BOOL) isLevelUnlocked:(LevelType)type;
 
 //- (void) unlockLevel:(LevelType)type;
+
+- (void) addKnight:(Knight *)knight;
+- (void) removeKnight:(Knight *)knight;
+
+- (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position;
+- (void) removeKnightOnPosition:(CombatPosition)position;
+- (void) removeAllBattleKnights;
 
 @end
 
