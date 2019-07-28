@@ -15,16 +15,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CamelotTextureComponent : GameComponent {
-    Texture2D *interfaceBackground;
-    Texture2D *closeButtonBackground;
+    Texture2D *propTextures[InterfacePropTypes];
 }
 
 + (void) activateWithGame:(Game *)game;
 
 + (void) deactivate;
 
-+ (Texture2D *) getInterfaceBackground;
-+ (Texture2D *) getCloseButtonBackground;
++ (Texture2D *) getInterfaceProp:(InterfacePropType)type;
 
 @end
 

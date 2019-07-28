@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Interface.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CastleInterface : Interface {

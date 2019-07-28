@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     ImageButton *gatehouse;
     
-    CamelotInterface *interface;
+    Interface *interface;
 }
 
 @end

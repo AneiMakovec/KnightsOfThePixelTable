@@ -2499,4 +2499,30 @@
 }
 
 
+
+
+// MARK: interface
++ (NSString *) getSwitchButtonText:(BuildingType)type {
+    switch (type) {
+        case BuildingTypeCastle:
+            return @"Castle";
+            
+        case BuildingTypeBarracks:
+            return @"Barracks";
+            
+        case BuildingTypeTrainingYard:
+            return @"Training yard";
+            
+        case BuildingTypeBlacksmith:
+            return @"Blacksmith";
+            
+        case BuildingTypeWarbandCamp:
+            return @"Warband camp";
+            
+        default:
+            return nil;
+    }
+}
+
+
 @end

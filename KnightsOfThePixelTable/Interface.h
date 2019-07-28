@@ -13,13 +13,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Interface : GuiPanel {
-    ImageButton *closeButton;
-    
+@interface Interface : GuiPanel<ICustomUpdate> {
+    DoubleImageButton *closeButton;
     Image *background;
+    
+    BuildingType interfaceType;
+    
+    // interface switching buttons
+    RadioButtonGroup *buttonGroup;
+    DoubleImageLabelRadioButton *switchButtons[BuildingTypes];
 }
 
-- (id) initToRectangle:(Rectangle *)rect camera:(Matrix *)camera;
+- (id) initToRectangle:(Rectangle *)rect font:(SpriteFont *)font layerDepth:(float)layerDepth type:(BuildingType)type;
 
 @end
 

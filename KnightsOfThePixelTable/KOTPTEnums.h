@@ -206,6 +206,35 @@ typedef enum {
     SettingTypes
 } SettingType;
 
+// MARK: menu interface
+typedef enum {
+    InterfacePropBackground,
+    InterfacePropButtonClosePressed,
+    InterfacePropButtonCloseNotPressed,
+    InterfacePropButtonPressed,
+    InterfacePropButtonNotPressed,
+    InterfacePropPaneScroll,
+    InterfacePropPaneScrollLine,
+    InterfacePropPaneStats,
+    InterfacePropPane,
+    InterfacePropSlotBronze,
+    InterfacePropSlotGold,
+    InterfacePropSlotGreen,
+    InterfacePropSlotDice,
+    InterfacePropTab,
+    InterfacePropTypes
+} InterfacePropType;
+
+// MARK: camelot menu building types
+typedef enum {
+    BuildingTypeCastle,
+    BuildingTypeBarracks,
+    BuildingTypeTrainingYard,
+    BuildingTypeBlacksmith,
+    BuildingTypeWarbandCamp,
+    BuildingTypes
+} BuildingType;
+
 // MARK: area textures
 #define AREA_FARMLANDS @"background_farmlands"
 #define AREA_MOUNTAINS @"background_mountains"
@@ -271,15 +300,20 @@ typedef enum {
 #define STAT_EFFECT_STUN @"status_effect_stun"
 
 // MARK: gui textures - interface
-#define INTERFACE_BACKGROUND_UP_LEFT @"interface_background_corner_up_left"
-#define INTERFACE_BACKGROUND_UP_CENTER @"interface_background_edge_up"
-#define INTERFACE_BACKGROUND_UP_RIGHT @"interface_background_corner_up_right"
-#define INTERFACE_BACKGROUND_MIDDLE_LEFT @"interface_background_edge_left"
-#define INTERFACE_BACKGROUND_MIDDLE_CENTER @"interface_background_center"
-#define INTERFACE_BACKGROUND_MIDDLE_RIGHT @"interface_background_edge_right"
-#define INTERFACE_BACKGROUND_DOWN_LEFT @"interface_background_corner_down_left"
-#define INTERFACE_BACKGROUND_DOWN_CENTER @"interface_background_edge_down"
-#define INTERFACE_BACKGROUND_DOWN_RIGHT @"interface_background_corner_down_right"
+#define INTERFACE_BACKGROUND @"interface_background"
+#define INTERFACE_BUTTON_CLOSE_PRESSED @"interface_button_close_pressed"
+#define INTERFACE_BUTTON_CLOSE_NOT_PRESSED @"interface_button_close_not_pressed"
+#define INTERFACE_BUTTON_PRESSED @"interface_button_pressed"
+#define INTERFACE_BUTTON_NOT_PRESSED @"interface_button_not_pressed"
+#define INTERFACE_PANE_SCROLL @"interface_pane_scroll"
+#define INTERFACE_PANE_SCROLL_LINE @"interface_pane_scroll_line"
+#define INTERFACE_PANE_STATS @"interface_pane_stats"
+#define INTERFACE_PANE @"interface_pane"
+#define INTERFACE_SLOT_BRONZE @"interface_slot_bronze"
+#define INTERFACE_SLOT_GOLD @"interface_slot_gold"
+#define INTERFACE_SLOT_GREEN @"interface_slot_green"
+#define INTERFACE_SLOT_DICE @"interface_slot_dice"
+#define INTERFACE_TAB @"interface_tab"
 
 // MARK: attack textures
 #define PROJECTILE_ARROW @"arrow"

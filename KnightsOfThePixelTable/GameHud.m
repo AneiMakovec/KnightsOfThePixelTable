@@ -97,15 +97,15 @@
     frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
     
     // load interface textures
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_LEFT] atIndex:ImageLocationUpLeft];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_CENTER] atIndex:ImageLocationUpCenter];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_RIGHT] atIndex:ImageLocationUpRight];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_LEFT] atIndex:ImageLocationMiddleLeft];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_CENTER] atIndex:ImageLocationMiddleCenter];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_RIGHT] atIndex:ImageLocationMiddleRight];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_LEFT] atIndex:ImageLocationDownLeft];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_CENTER] atIndex:ImageLocationDownCenter];
-    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_RIGHT] atIndex:ImageLocationDownRight];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_LEFT] atIndex:ImageLocationUpLeft];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_CENTER] atIndex:ImageLocationUpCenter];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_RIGHT] atIndex:ImageLocationUpRight];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_LEFT] atIndex:ImageLocationMiddleLeft];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_CENTER] atIndex:ImageLocationMiddleCenter];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_MIDDLE_RIGHT] atIndex:ImageLocationMiddleRight];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_LEFT] atIndex:ImageLocationDownLeft];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_CENTER] atIndex:ImageLocationDownCenter];
+//    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_DOWN_RIGHT] atIndex:ImageLocationDownRight];
     
     
     [super initialize];
@@ -120,9 +120,9 @@
             [button updateWithInverseView:inverseView];
         }
         
-        id<ICustomUpdate> update = [item conformsToProtocol:@protocol(ICustomUpdate)] ? item : nil;
-        if (update) {
-            [update updateWithGameTime:gameTime];
+        id<ICustomUpdate> updatable = [item conformsToProtocol:@protocol(ICustomUpdate)] ? item : nil;
+        if (updatable) {
+            [updatable updateWithGameTime:gameTime];
         }
     }
     

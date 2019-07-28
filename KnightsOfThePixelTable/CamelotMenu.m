@@ -9,6 +9,7 @@
 #import "CamelotMenu.h"
 
 #import "Retronator.Xni.Framework.Content.h"
+#import "Retronator.Xni.Framework.Content.Pipeline.Processors.h"
 
 #import "Pixlron.Knights.h"
 
@@ -22,6 +23,7 @@
     
     // Background
     background = [[Image alloc] initWithTexture:[self.game.content load:BACKGROUND_CAMELOT] position:[Vector2 vectorWithX:0 y:0]];
+    background.layerDepth = 0.9;
     [scene addItem:background];
     
     // Text
@@ -45,6 +47,7 @@
 //    [scene addItem:barracks];
 //
     gatehouse = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:[Constants hudHeight] + [Constants battlefieldHeight]] background:[self.game.content load:BUTTON_GATE]];
+    gatehouse.backgroundImage.layerDepth = 0.8;
     [scene addItem:gatehouse];
     
 //    enchantersGuild = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:50 y:130 width:200 height:50]
@@ -64,9 +67,11 @@
 //    [scene addItem:warbandCamp];
     
     
+    FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
+    SpriteFont *font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
     
     // interface test
-    interface = [[CamelotInterface alloc] initWithCamera:[ScreenComponent getCamera]];
+    interface = [[Interface alloc] initToRectangle:[Rectangle rectangleWithX:128 y:64 width:768 height:384] font:font layerDepth:0.7 type:BuildingTypeBarracks];
     [scene addItem:interface];
     
     
@@ -81,7 +86,7 @@
     // check for actions
     if (gatehouse.wasReleased && !back.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
-        newState = [[WorldMenu alloc] initWithGame:self.game];
+        //newState = [[WorldMenu alloc] initWithGame:self.game];
     }
     
     if (newState) {
@@ -100,6 +105,8 @@
     [adventurersYard release];
     [warbandCamp release];
     [gatehouse release];
+    
+    [interface  release];
     
     [super dealloc];
 }

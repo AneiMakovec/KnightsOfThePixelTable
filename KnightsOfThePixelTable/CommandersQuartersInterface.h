@@ -10,14 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CommandersQuartersInterface : Interface {
-    Label *rank;
-    Label *upgradeCost;
-    Label *cost;
-    Label *diceNumber;
-    
-    TouchImage *rankImage;
-}
+@interface CommandersQuartersInterface : NSObject
 
 @end
 

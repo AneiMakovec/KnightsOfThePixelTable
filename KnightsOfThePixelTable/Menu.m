@@ -52,12 +52,17 @@
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    // Update all buttons.
+    // Update all buttons and upadables.
     Matrix *inverseView = [Matrix invert:renderer.camera];
     for (id item in scene) {
-        Button *button = [item isKindOfClass:[Button class]] ? item : nil;
+        id<IButton> button = [item conformsToProtocol:@protocol(IButton)] ? item : nil;
         if (button) {
             [button updateWithInverseView:inverseView];
+        }
+        
+        id<ICustomUpdate> updatable = [item conformsToProtocol:@protocol(ICustomUpdate)] ? item : nil;
+        if (updatable) {
+            [updatable updateWithGameTime:gameTime];
         }
     }
     

@@ -176,6 +176,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
 
 
+
+
+// interface
++ (NSString *) getSwitchButtonText:(BuildingType)type;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
