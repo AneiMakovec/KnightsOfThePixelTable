@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PixEngine.GUI.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlacksmithInterface : NSObject
+@interface BlacksmithInterface : GuiPanel
 
 @end
 

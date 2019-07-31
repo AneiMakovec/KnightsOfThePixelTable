@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PixEngine.GUI.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WarbandCampInterface : NSObject
+@interface WarbandCampInterface : GuiPanel
 
 @end
 

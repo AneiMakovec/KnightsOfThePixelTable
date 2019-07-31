@@ -10,4 +10,12 @@
 
 @implementation BlacksmithInterface
 
+- (id) init {
+    self = [super init];
+    if (self != nil) {
+        // TODO
+    }
+    return self;
+}
+
 @end

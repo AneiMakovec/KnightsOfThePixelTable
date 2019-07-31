@@ -214,8 +214,9 @@ typedef enum {
     InterfacePropButtonPressed,
     InterfacePropButtonNotPressed,
     InterfacePropPaneScroll,
+    InterfacePropPaneScrollBorder,
     InterfacePropPaneScrollLine,
-    InterfacePropPaneStats,
+    InterfacePropPaneSkills,
     InterfacePropPane,
     InterfacePropSlotBronze,
     InterfacePropSlotGold,
@@ -307,13 +308,26 @@ typedef enum {
 #define INTERFACE_BUTTON_NOT_PRESSED @"interface_button_not_pressed"
 #define INTERFACE_PANE_SCROLL @"interface_pane_scroll"
 #define INTERFACE_PANE_SCROLL_LINE @"interface_pane_scroll_line"
-#define INTERFACE_PANE_STATS @"interface_pane_stats"
+#define INTERFACE_PANE_SCROLL_BORDER @"interface_pane_scroll_border"
+#define INTERFACE_PANE_SKILLS @"interface_pane_skills"
 #define INTERFACE_PANE @"interface_pane"
 #define INTERFACE_SLOT_BRONZE @"interface_slot_bronze"
 #define INTERFACE_SLOT_GOLD @"interface_slot_gold"
 #define INTERFACE_SLOT_GREEN @"interface_slot_green"
 #define INTERFACE_SLOT_DICE @"interface_slot_dice"
 #define INTERFACE_TAB @"interface_tab"
+
+// MARK: interface values
+#define INTERFACE_LAYER_DEPTH_GROUNDZERO 0.1f
+#define INTERFACE_LAYER_DEPTH_BEFOREGROUND 0.05f
+#define INTERFACE_LAYER_DEPTH_GROUNDBACK -0.05f
+#define INTERFACE_LAYER_DEPTH_BACK -0.1f
+#define INTERFACE_LAYER_DEPTH_BACKMID -0.15f
+#define INTERFACE_LAYER_DEPTH_MIDDLE -0.2f
+#define INTERFACE_LAYER_DEPTH_MIDFRONT -0.25f
+#define INTERFACE_LAYER_DEPTH_FRONT -0.3f
+
+#define INTERFACE_SCALE_FONT_MEDIUM 0.7f
 
 // MARK: attack textures
 #define PROJECTILE_ARROW @"arrow"

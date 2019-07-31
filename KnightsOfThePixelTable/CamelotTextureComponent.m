@@ -49,8 +49,9 @@ CamelotTextureComponent *camelotinstance;
     
     // panes
     propTextures[InterfacePropPaneScroll] = [self.game.content load:INTERFACE_PANE_SCROLL];
+    propTextures[InterfacePropPaneScrollBorder] = [self.game.content load:INTERFACE_PANE_SCROLL_BORDER];
     propTextures[InterfacePropPaneScrollLine] = [self.game.content load:INTERFACE_PANE_SCROLL_LINE];
-    propTextures[InterfacePropPaneStats] = [self.game.content load:INTERFACE_PANE_STATS];
+    propTextures[InterfacePropPaneSkills] = [self.game.content load:INTERFACE_PANE_SKILLS];
     propTextures[InterfacePropPane] = [self.game.content load:INTERFACE_PANE];
     
     // slots

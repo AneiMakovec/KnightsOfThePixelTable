@@ -30,12 +30,10 @@
 
 #import "Interface.h"
 #import "CastleInterface.h"
-#import "CommandersQuartersInterface.h"
 #import "BarracksInterface.h"
 #import "WarbandCampInterface.h"
-#import "AdventurersYardInterface.h"
+#import "TrainingYardInterface.h"
 #import "BlacksmithInterface.h"
-#import "EnchantersGuildInterface.h"
 
 
 

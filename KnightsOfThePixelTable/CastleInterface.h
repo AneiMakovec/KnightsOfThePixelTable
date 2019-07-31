@@ -8,16 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Interface.h"
+#import "PixEngine.GUI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CastleInterface : Interface {
-    Image *map;
-    
-    Label *progression;
-    Label *progressionAmount;
-}
+@interface CastleInterface : GuiPanel
 
 @end
 

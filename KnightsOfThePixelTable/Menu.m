@@ -55,9 +55,9 @@
     // Update all buttons and upadables.
     Matrix *inverseView = [Matrix invert:renderer.camera];
     for (id item in scene) {
-        id<IButton> button = [item conformsToProtocol:@protocol(IButton)] ? item : nil;
-        if (button) {
-            [button updateWithInverseView:inverseView];
+        id<ITouchUpdate> touchUpdatable = [item conformsToProtocol:@protocol(ITouchUpdate)] ? item : nil;
+        if (touchUpdatable) {
+            [touchUpdatable updateWithInverseView:inverseView];
         }
         
         id<ICustomUpdate> updatable = [item conformsToProtocol:@protocol(ICustomUpdate)] ? item : nil;

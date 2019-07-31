@@ -20,7 +20,7 @@
 @class RetreatInterface, DungeonEndInterface;
 
 @class Interface;
-@class CastleInterface, CommandersQuartersInterface, BarracksInterface, WarbandCampInterface, AdventurersYardInterface, BlacksmithInterface, EnchantersGuildInterface;
+@class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
 
 // Physics
 @class PhysicsEngine;

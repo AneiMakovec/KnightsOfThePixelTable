@@ -10,13 +10,6 @@
 
 #import "Pixlron.Knights.h"
 
-#define BACK_LAYER_DEPTH 0.1f
-#define MIDDLE_LAYER_DEPTH 0.2f
-#define UPPER_MIDDLE_LAYER_DEPTH 0.25f
-#define FRONT_LAYER_DEPTH 0.3f
-
-#define FONT_SIZE_SCALE 0.7f
-
 @implementation Interface
 
 - (id) initToRectangle:(Rectangle *)rect font:(SpriteFont *)font layerDepth:(float)layerDepth type:(BuildingType)type {
@@ -24,18 +17,18 @@
     if (self != nil) {
         interfaceType = type;
         
-        // interface background
+        // load interface background
         background = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropBackground] toRectangle:rect];
         background.layerDepth = layerDepth;
         [items addObject:background];
         
-        // close button
+        // load close button
         closeButton = [[DoubleImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:rect.x + 734 y:rect.y + 14 width:20 height:20] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonCloseNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonClosePressed]];
-        closeButton.notPressedImage.layerDepth = layerDepth - BACK_LAYER_DEPTH;
-        closeButton.pressedImage.layerDepth = layerDepth - BACK_LAYER_DEPTH;
+        closeButton.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+        closeButton.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:closeButton];
         
-        // interface switching buttons
+        // load interface switching buttons
         int y = 41;
         BOOL down = NO;
         for (int i = 0; i < BuildingTypes; i++) {
@@ -49,20 +42,37 @@
             switchButtons[i].enabled = NO;
             
             // set layer depth for drawing
-            switchButtons[i].notPressedImage.layerDepth = layerDepth - BACK_LAYER_DEPTH;
-            switchButtons[i].pressedImage.layerDepth = layerDepth - BACK_LAYER_DEPTH;
-            switchButtons[i].label.layerDepth = layerDepth - MIDDLE_LAYER_DEPTH;
+            switchButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            switchButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            switchButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             
             // set font size scale
-            [switchButtons[i].label setScaleUniform:FONT_SIZE_SCALE];
+            [switchButtons[i].label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
             
             // add button to scene and button group
             [items addObject:switchButtons[i]];
-            //[buttonGroup addRadioButton:switchButtons[i]];
             
             y += 67;
             down = NO;
         }
+        
+        // load side pane
+        sidePane = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScroll] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44]];
+        sidePane.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDZERO;
+        [items addObject:sidePane];
+        
+        sidePaneBorder = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollBorder] position:[Vector2 vectorWithX:rect.x + 585 y:rect.y + 42]];
+        sidePaneBorder.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:sidePaneBorder];
+        
+        // load interface content
+        interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] init];
+        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth];
+        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] init];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] init];
+        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] init];
+        
+        [items addObject:interfaceContent[interfaceType]];
     }
     return self;
 }
@@ -93,8 +103,7 @@
 - (void) dealloc {
     [background release];
     [closeButton release];
-    
-    [buttonGroup release];
+    [sidePane release];
     
     for (int i = 0; i < BuildingTypes; i++) {
         [switchButtons[i] release];
