@@ -28,12 +28,18 @@
 #import "RetreatInterface.h"
 #import "DungeonEndInterface.h"
 
+// Camelot interfaces
 #import "Interface.h"
+
 #import "CastleInterface.h"
 #import "BarracksInterface.h"
 #import "WarbandCampInterface.h"
 #import "TrainingYardInterface.h"
 #import "BlacksmithInterface.h"
+
+#import "StatsPanel.h"
+#import "SkillsPanel.h"
+#import "EquipmentPanel.h"
 
 
 

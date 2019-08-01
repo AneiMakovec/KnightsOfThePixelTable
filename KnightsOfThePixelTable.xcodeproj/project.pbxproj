@@ -135,6 +135,9 @@
 		B5D1746F21FF86100033DF2C /* fire_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D1746D21FF86100033DF2C /* fire_ball.png */; };
 		B5D1747021FF86100033DF2C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D1746E21FF86100033DF2C /* arrow.png */; };
 		B5D1747521FF93150033DF2C /* SkillFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1747421FF93150033DF2C /* SkillFactory.m */; };
+		B5D9CE6C22F315F800AC165A /* StatsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9CE6B22F315F800AC165A /* StatsPanel.m */; };
+		B5D9CE6F22F3160200AC165A /* SkillsPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9CE6E22F3160200AC165A /* SkillsPanel.m */; };
+		B5D9CE7222F3160E00AC165A /* EquipmentPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D9CE7122F3160E00AC165A /* EquipmentPanel.m */; };
 		B5E37FFD2183A1F00007D013 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E37FFC2183A1F00007D013 /* main.m */; };
 		B5E380072183A24E0007D013 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380062183A24E0007D013 /* Foundation.framework */; };
 		B5E380092183A2580007D013 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E380082183A2580007D013 /* AudioToolbox.framework */; };
@@ -363,6 +366,12 @@
 		B5D1746E21FF86100033DF2C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		B5D1747321FF93150033DF2C /* SkillFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillFactory.h; sourceTree = "<group>"; };
 		B5D1747421FF93150033DF2C /* SkillFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillFactory.m; sourceTree = "<group>"; };
+		B5D9CE6A22F315F800AC165A /* StatsPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatsPanel.h; sourceTree = "<group>"; };
+		B5D9CE6B22F315F800AC165A /* StatsPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatsPanel.m; sourceTree = "<group>"; };
+		B5D9CE6D22F3160200AC165A /* SkillsPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsPanel.h; sourceTree = "<group>"; };
+		B5D9CE6E22F3160200AC165A /* SkillsPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsPanel.m; sourceTree = "<group>"; };
+		B5D9CE7022F3160E00AC165A /* EquipmentPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EquipmentPanel.h; sourceTree = "<group>"; };
+		B5D9CE7122F3160E00AC165A /* EquipmentPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EquipmentPanel.m; sourceTree = "<group>"; };
 		B5DE124A218DA5EB000D6784 /* Pixlron.Knights.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.h; sourceTree = "<group>"; };
 		B5DE124B218DA5FE000D6784 /* Pixlron.Knights.classes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pixlron.Knights.classes.h; sourceTree = "<group>"; };
 		B5DE1264218DE6BA000D6784 /* KOTPTEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPTEnums.h; sourceTree = "<group>"; };
@@ -507,6 +516,7 @@
 				B5309CBA22C256FC005CE22F /* Interface.h */,
 				B5309CBB22C256FC005CE22F /* Interface.m */,
 				B5309CC022C26A03005CE22F /* Building Interfaces */,
+				B5D9CE6922F3159600AC165A /* Stat panes */,
 			);
 			name = "Camelot interfaces";
 			sourceTree = "<group>";
@@ -1011,6 +1021,19 @@
 			name = Skills;
 			sourceTree = "<group>";
 		};
+		B5D9CE6922F3159600AC165A /* Stat panes */ = {
+			isa = PBXGroup;
+			children = (
+				B5D9CE6A22F315F800AC165A /* StatsPanel.h */,
+				B5D9CE6B22F315F800AC165A /* StatsPanel.m */,
+				B5D9CE6D22F3160200AC165A /* SkillsPanel.h */,
+				B5D9CE6E22F3160200AC165A /* SkillsPanel.m */,
+				B5D9CE7022F3160E00AC165A /* EquipmentPanel.h */,
+				B5D9CE7122F3160E00AC165A /* EquipmentPanel.m */,
+			);
+			name = "Stat panes";
+			sourceTree = "<group>";
+		};
 		B5DE1244218DA53E000D6784 /* Level */ = {
 			isa = PBXGroup;
 			children = (
@@ -1442,9 +1465,11 @@
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
 				B5309CCF22C26AC3005CE22F /* TrainingYardInterface.m in Sources */,
 				B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */,
+				B5D9CE6F22F3160200AC165A /* SkillsPanel.m in Sources */,
 				B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */,
 				B54E88D321E2D3760040C888 /* MainMenu.m in Sources */,
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
+				B5D9CE6C22F315F800AC165A /* StatsPanel.m in Sources */,
 				B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */,
@@ -1470,6 +1495,7 @@
 				B5CF91942200C95C006A52B5 /* WorldMenu.m in Sources */,
 				B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */,
 				B537666721AF36E40098C44C /* Constants.m in Sources */,
+				B5D9CE7222F3160E00AC165A /* EquipmentPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -67,7 +67,7 @@
         
         // load interface content
         interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] init];
-        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth];
+        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth font:font];
         interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] init];
         interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] init];
         interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] init];

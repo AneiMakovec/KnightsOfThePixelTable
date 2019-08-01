@@ -19,8 +19,10 @@
 @class Indicator, AnimatedIndicator;
 @class RetreatInterface, DungeonEndInterface;
 
+// Camelot interfaces
 @class Interface;
 @class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
+@class StatsPanel, SkillsPanel, EquipmentPanel;
 
 // Physics
 @class PhysicsEngine;
