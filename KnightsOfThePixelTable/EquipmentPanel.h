@@ -8,9 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PixEngine.GUI.h"
+
+#import "Pixlron.Knights.classes.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EquipmentPanel : NSObject
+@interface EquipmentPanel : GuiPanel<ICustomUpdate> {
+    Image *equipmentPane;
+    
+    Image *weaponBorder, *weapon;
+    Label *weaponLvlLabel, *weaponLvlValueLabel;
+    
+    Image *armorBorder, *armor;
+    Label *armorLvlLabel, *armorLvlValueLabel;
+}
+
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font;
 
 @end
 

@@ -60,9 +60,13 @@
         
         [items addObject:tabs];
         
-        // init pane for skills, stats and equipment
+        // init pane for stats, skills and equipment
+        statPanel = [[StatsPanel alloc] initWithArea:area layerDepth:depth font:font];
+        [items addObject:statPanel];
+        
         skillPanel = [[SkillsPanel alloc] initWithArea:area layerDepth:depth font:font];
-        [items addObject:skillPanel];
+        
+        equipmentPanel = [[EquipmentPanel alloc] initWithArea:area layerDepth:depth font:font];
     }
     return self;
 }
@@ -72,7 +76,6 @@
 
 - (void) dealloc {
     [rooster release];
-    
     [skillPanel release];
     
     [super dealloc];

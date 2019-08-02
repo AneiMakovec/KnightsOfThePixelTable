@@ -516,7 +516,7 @@
 				B5309CBA22C256FC005CE22F /* Interface.h */,
 				B5309CBB22C256FC005CE22F /* Interface.m */,
 				B5309CC022C26A03005CE22F /* Building Interfaces */,
-				B5D9CE6922F3159600AC165A /* Stat panes */,
+				B5D9CE6922F3159600AC165A /* Panels */,
 			);
 			name = "Camelot interfaces";
 			sourceTree = "<group>";
@@ -1021,7 +1021,7 @@
 			name = Skills;
 			sourceTree = "<group>";
 		};
-		B5D9CE6922F3159600AC165A /* Stat panes */ = {
+		B5D9CE6922F3159600AC165A /* Panels */ = {
 			isa = PBXGroup;
 			children = (
 				B5D9CE6A22F315F800AC165A /* StatsPanel.h */,
@@ -1031,7 +1031,7 @@
 				B5D9CE7022F3160E00AC165A /* EquipmentPanel.h */,
 				B5D9CE7122F3160E00AC165A /* EquipmentPanel.m */,
 			);
-			name = "Stat panes";
+			name = Panels;
 			sourceTree = "<group>";
 		};
 		B5DE1244218DA53E000D6784 /* Level */ = {

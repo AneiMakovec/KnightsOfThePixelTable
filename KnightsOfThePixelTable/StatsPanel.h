@@ -10,11 +10,24 @@
 
 #import "PixEngine.GUI.h"
 
+#import "Pixlron.Knights.classes.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface StatsPanel : GuiPanel {
+    Image *statPane;
     
+    Label *statLabels[StatTypes];
+    Label *statValueLabels[StatTypes];
+    
+    Label *unitTypeLabel;
+    Image *unitTypeBorder, *unitType;
+
+    Label *hpLabel, *hpValueLabel;
+    Label *expLabel, *expCurrentLabel, *expSlashLabel, *expNextLvlLabel;
 }
+
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font;
 
 @end
 

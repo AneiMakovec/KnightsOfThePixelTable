@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
     ScrollPanel *rooster;
     
     SkillsPanel *skillPanel;
+    StatsPanel *statPanel;
+    EquipmentPanel *equipmentPanel;
 }
 
 - (id) initWithArea:(Rectangle *)area layerDepth:(float)depth font:(SpriteFont *)font;
