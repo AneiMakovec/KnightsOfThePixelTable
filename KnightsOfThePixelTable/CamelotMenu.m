@@ -8,9 +8,6 @@
 
 #import "CamelotMenu.h"
 
-#import "Retronator.Xni.Framework.Content.h"
-#import "Retronator.Xni.Framework.Content.Pipeline.Processors.h"
-
 #import "Pixlron.Knights.h"
 
 @implementation CamelotMenu
@@ -66,12 +63,8 @@
 //                                        background:buttonBackground font:font text:@"Warband camp"];
 //    [scene addItem:warbandCamp];
     
-    
-    FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
-    SpriteFont *font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
-    
     // interface test
-    interface = [[Interface alloc] initToRectangle:[Rectangle rectangleWithX:128 y:64 width:768 height:384] font:font layerDepth:0.7 type:BuildingTypeBarracks];
+    interface = [[Interface alloc] initToRectangle:[Rectangle rectangleWithX:128 y:64 width:768 height:384] layerDepth:0.7 type:BuildingTypeBarracks];
     [scene addItem:interface];
     
     
@@ -97,16 +90,9 @@
 - (void) dealloc {
     [title release];
     
-    [castle release];
-    [commandersPost release];
-    [barracks release];
-    [enchantersGuild release];
-    [blackSmith release];
-    [adventurersYard release];
-    [warbandCamp release];
     [gatehouse release];
     
-    [interface  release];
+    [interface release];
     
     [super dealloc];
 }

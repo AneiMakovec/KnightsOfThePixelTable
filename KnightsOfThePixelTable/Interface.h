@@ -22,13 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
     BuildingType interfaceType;
     
     // interface switching buttons
+    RadioButtonGroup *switchButtonGroup;
     DoubleImageLabelRadioButton *switchButtons[BuildingTypes];
+    NSString *buttonKeys[BuildingTypes];
     
     // interface content
     GuiPanel *interfaceContent[BuildingTypes];
 }
 
-- (id) initToRectangle:(Rectangle *)rect font:(SpriteFont *)font layerDepth:(float)layerDepth type:(BuildingType)type;
+- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth type:(BuildingType)type;
 
 @end
 

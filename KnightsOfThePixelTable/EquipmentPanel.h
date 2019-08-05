@@ -17,14 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EquipmentPanel : GuiPanel<ICustomUpdate> {
     Image *equipmentPane;
     
+    Label *weaponLabel;
     Image *weaponBorder, *weapon;
-    Label *weaponLvlLabel, *weaponLvlValueLabel;
+    Label *weaponNameLabel, *weaponLvlLabel, *weaponLvlValueLabel;
     
+    Label *armorLabel;
     Image *armorBorder, *armor;
-    Label *armorLvlLabel, *armorLvlValueLabel;
+    Label *armorNameLabel, *armorLvlLabel, *armorLvlValueLabel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth;
 
 @end
 

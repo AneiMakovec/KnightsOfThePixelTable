@@ -9,6 +9,7 @@
 #import "CamelotTextureComponent.h"
 
 #import "Retronator.Xni.Framework.Content.h"
+#import "Retronator.Xni.Framework.Content.Pipeline.Processors.h"
 
 #import "Constants.h"
 
@@ -30,6 +31,10 @@ CamelotTextureComponent *camelotinstance;
     return [camelotinstance getInterfaceProp:type];
 }
 
++ (SpriteFont *) getFont {
+    return [camelotinstance getFont];
+}
+
 
 
 
@@ -37,7 +42,6 @@ CamelotTextureComponent *camelotinstance;
     // load textures
     
     // interface
-    
     // background
     propTextures[InterfacePropBackground] = [self.game.content load:INTERFACE_BACKGROUND];
     
@@ -62,10 +66,20 @@ CamelotTextureComponent *camelotinstance;
     
     // tab
     propTextures[InterfacePropTab] = [self.game.content load:INTERFACE_TAB];
+    
+    
+    // font
+    FontTextureProcessor *fontProcessor = [[FontTextureProcessor alloc] init];
+    font = [self.game.content load:FONT processor:fontProcessor];
+    [fontProcessor release];
 }
 
 - (Texture2D *) getInterfaceProp:(InterfacePropType)type {
     return propTextures[type];
+}
+
+- (SpriteFont *) getFont {
+    return font;
 }
 
 
@@ -74,6 +88,8 @@ CamelotTextureComponent *camelotinstance;
     for (int i = 0; i < InterfacePropTypes; i++) {
         [propTextures[i] release];
     }
+    
+    [font release];
     
     [super dealloc];
 }

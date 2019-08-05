@@ -275,7 +275,7 @@ typedef enum {
 #define DICE_SYMBOLS @"combat_dices"
 
 // MARK: gui textures - buttons
-#define FONT @"font"
+#define FONT @"alagard"
 #define BUTTON_BACKGROUND @"button_background"
 #define MUSIC_BUTTON_ENABLED @"enabled_music_button"
 #define MUSIC_BUTTON_DISABLED @"disabled_music_button"
@@ -327,7 +327,9 @@ typedef enum {
 #define INTERFACE_LAYER_DEPTH_MIDFRONT -0.25f
 #define INTERFACE_LAYER_DEPTH_FRONT -0.3f
 
+#define INTERFACE_SCALE_FONT_SMALL 0.5f
 #define INTERFACE_SCALE_FONT_MEDIUM 0.7f
+#define INTERFACE_SCALE_FONT_BIG 1.0f
 
 // MARK: attack textures
 #define PROJECTILE_ARROW @"arrow"

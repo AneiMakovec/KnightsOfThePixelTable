@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
     Label *expLabel, *expCurrentLabel, *expSlashLabel, *expNextLvlLabel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth;
 
 @end
 

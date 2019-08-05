@@ -8,11 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Pixlron.Knights.classes.h"
+
 #import "PixEngine.GUI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TrainingYardInterface : GuiPanel
+@interface TrainingYardInterface : GuiPanel {
+    RadioButtonGroup *tabs;
+    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
+    
+    ScrollPanel *rooster;
+    
+    SkillsPanel *skillPanel;
+    StatsPanel *statPanel;
+    EquipmentPanel *equipmentPanel;
+    
+    DoubleImageLabelButton *recruitButton;
+}
+
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth;
 
 @end
 

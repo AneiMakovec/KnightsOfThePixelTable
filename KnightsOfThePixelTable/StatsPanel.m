@@ -14,7 +14,7 @@
 
 @implementation StatsPanel
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth {
     self = [super init];
     if (self != nil) {
         // init pane
@@ -26,14 +26,14 @@
         NSString *statNames[] = {@"Strength:", @"Agility:", @"Defence:", @"Insight:", @"Cunning:", @"Sturdiness:"};
         
         for (int i = 0; i < StatTypes; i++) {
-            statLabels[i] = [[Label alloc] initWithFont:font text:statNames[i] position:[Vector2 vectorWithX:area.x + 238 y:area.y + 208 + i * LABEL_SPACING]];
+            statLabels[i] = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:statNames[i] position:[Vector2 vectorWithX:area.x + 238 y:area.y + 208 + i * LABEL_SPACING]];
             statLabels[i].verticalAlign = VerticalAlignTop;
             statLabels[i].horizontalAlign = HorizontalAlignLeft;
             statLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [statLabels[i] setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
             [items addObject:statLabels[i]];
             
-            statValueLabels[i] = [[Label alloc] initWithFont:font text:@"0" position:[Vector2 vectorWithX:area.x + 368 y:area.y + 208 + i * LABEL_SPACING]];
+            statValueLabels[i] = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"0" position:[Vector2 vectorWithX:area.x + 368 y:area.y + 208 + i * LABEL_SPACING]];
             statValueLabels[i].verticalAlign = VerticalAlignTop;
             statValueLabels[i].horizontalAlign = HorizontalAlignRight;
             statValueLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -42,7 +42,7 @@
         }
         
         // init unit type info
-        unitTypeLabel = [[Label alloc] initWithFont:font text:@"Unit type:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 208]];
+        unitTypeLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"Unit type:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 208]];
         unitTypeLabel.verticalAlign = VerticalAlignTop;
         unitTypeLabel.horizontalAlign = HorizontalAlignLeft;
         unitTypeLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -59,7 +59,7 @@
         [items addObject:unitType];
         
         // init hp info
-        hpLabel = [[Label alloc] initWithFont:font text:@"HP:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 250]];
+        hpLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"HP:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 250]];
         hpLabel.verticalAlign = VerticalAlignTop;
         hpLabel.horizontalAlign = HorizontalAlignLeft;
         hpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -67,7 +67,7 @@
         hpLabel.color = [Color red];
         [items addObject:hpLabel];
         
-        hpValueLabel = [[Label alloc] initWithFont:font text:@"1000" position:[Vector2 vectorWithX:area.x + 460 y:area.y + 250]];
+        hpValueLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"1000" position:[Vector2 vectorWithX:area.x + 460 y:area.y + 250]];
         hpValueLabel.verticalAlign = VerticalAlignTop;
         hpValueLabel.horizontalAlign = HorizontalAlignLeft;
         hpValueLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -76,7 +76,7 @@
         [items addObject:hpValueLabel];
         
         // init exp info
-        expLabel = [[Label alloc] initWithFont:font text:@"Exp:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 270]];
+        expLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"Exp:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 270]];
         expLabel.verticalAlign = VerticalAlignTop;
         expLabel.horizontalAlign = HorizontalAlignLeft;
         expLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -84,7 +84,7 @@
         expLabel.color = [Color cornflowerBlue];
         [items addObject:expLabel];
         
-        expCurrentLabel = [[Label alloc] initWithFont:font text:@"100000" position:[Vector2 vectorWithX:area.x + 478 y:area.y + 270]];
+        expCurrentLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"100000" position:[Vector2 vectorWithX:area.x + 478 y:area.y + 270]];
         expCurrentLabel.verticalAlign = VerticalAlignTop;
         expCurrentLabel.horizontalAlign = HorizontalAlignRight;
         expCurrentLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -92,7 +92,7 @@
         expCurrentLabel.color = [Color cornflowerBlue];
         [items addObject:expCurrentLabel];
         
-        expSlashLabel = [[Label alloc] initWithFont:font text:@"/" position:[Vector2 vectorWithX:area.x + 480 y:area.y + 270]];
+        expSlashLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"/" position:[Vector2 vectorWithX:area.x + 480 y:area.y + 270]];
         expSlashLabel.verticalAlign = VerticalAlignTop;
         expSlashLabel.horizontalAlign = HorizontalAlignLeft;
         expSlashLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -100,7 +100,7 @@
         expSlashLabel.color = [Color cornflowerBlue];
         [items addObject:expSlashLabel];
         
-        expNextLvlLabel = [[Label alloc] initWithFont:font text:@"200000" position:[Vector2 vectorWithX:area.x + 490 y:area.y + 270]];
+        expNextLvlLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"200000" position:[Vector2 vectorWithX:area.x + 490 y:area.y + 270]];
         expNextLvlLabel.verticalAlign = VerticalAlignTop;
         expNextLvlLabel.horizontalAlign = HorizontalAlignLeft;
         expNextLvlLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;

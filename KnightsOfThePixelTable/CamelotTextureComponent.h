@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CamelotTextureComponent : GameComponent {
     Texture2D *propTextures[InterfacePropTypes];
+    
+    SpriteFont *font;
 }
 
 + (void) activateWithGame:(Game *)game;
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) deactivate;
 
 + (Texture2D *) getInterfaceProp:(InterfacePropType)type;
+
++ (SpriteFont *) getFont;
 
 @end
 

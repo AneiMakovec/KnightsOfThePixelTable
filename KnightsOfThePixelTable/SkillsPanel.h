@@ -15,6 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SkillsPanel : GuiPanel<ICustomUpdate> {
+    BOOL displayUpgradeButtons;
+    
     Image *skillPane;
     
     Image *firstSkill, *secondSkill, *thirdSkill;
@@ -26,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *upgradeFirstSkill, *upgradeSecondSkill, *upgradeThirdSkill;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;
 
 @end
 

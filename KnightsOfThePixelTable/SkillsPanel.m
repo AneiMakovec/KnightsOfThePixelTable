@@ -12,9 +12,11 @@
 
 @implementation SkillsPanel
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth font:(SpriteFont *)font {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display {
     self = [super init];
     if (self != nil) {
+        displayUpgradeButtons = display;
+        
         // init pane
         skillPane = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneSkills] position:[Vector2 vectorWithX:area.x + 220 y:area.y + 199]];
         skillPane.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
@@ -73,26 +75,28 @@
         [items addObject:thirdSkillCombo4];
         
         // init upgrade buttons
-        upgradeFirstSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 216 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:font text:@"100 G"];
-        upgradeFirstSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeFirstSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeFirstSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [upgradeFirstSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
-        [items addObject:upgradeFirstSkill];
-        
-        upgradeSecondSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 272 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:font text:@"100 G"];
-        upgradeSecondSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeSecondSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeSecondSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [upgradeSecondSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
-        [items addObject:upgradeSecondSkill];
-        
-        upgradeThirdSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 327 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:font text:@"100 G"];
-        upgradeThirdSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeThirdSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-        upgradeThirdSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [upgradeThirdSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
-        [items addObject:upgradeThirdSkill];
+        if (displayUpgradeButtons) {
+            upgradeFirstSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 216 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeFirstSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeFirstSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeFirstSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            [upgradeFirstSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+            [items addObject:upgradeFirstSkill];
+            
+            upgradeSecondSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 272 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeSecondSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeSecondSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeSecondSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            [upgradeSecondSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+            [items addObject:upgradeSecondSkill];
+            
+            upgradeThirdSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 327 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeThirdSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeThirdSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            upgradeThirdSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            [upgradeThirdSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+            [items addObject:upgradeThirdSkill];
+        }
     }
     return self;
 }
@@ -120,9 +124,11 @@
     [thirdSkillCombo3 release];
     [thirdSkillCombo4 release];
     
-    [upgradeFirstSkill release];
-    [upgradeSecondSkill release];
-    [upgradeThirdSkill release];
+    if (displayUpgradeButtons) {
+        [upgradeFirstSkill release];
+        [upgradeSecondSkill release];
+        [upgradeThirdSkill release];
+    }
     
     [super dealloc];
 }
