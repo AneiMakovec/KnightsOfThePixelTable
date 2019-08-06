@@ -86,12 +86,32 @@
         sidePaneBorder.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
         [items addObject:sidePaneBorder];
         
+        // init rooster
+        rooster = [[ScrollPanel alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:32];
+        
+        // TODO: implement real rooster entries
+        Image *firstLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44]];
+        firstLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
+        Image *secondLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44 + 34]];
+        secondLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
+        Image *thirdLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44 + 34 + 34]];
+        thirdLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
+        
+        [rooster addItem:firstLine];
+        [firstLine release];
+        [rooster addItem:secondLine];
+        [secondLine release];
+        [rooster addItem:thirdLine];
+        [thirdLine release];
+        
+        [items addObject:rooster];
+        
         // init interface content
-        interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] init];
-        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth];
-        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] init];
-        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth];
-        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] init];
+        interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithArea:rect layerDepth:layerDepth];
+        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
+        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
+        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
         
         [items addObject:interfaceContent[interfaceType]];
     }
@@ -105,35 +125,24 @@
         [scene removeItem:self];
     }
     
-    // check if a different switch button was pressed
-//    for (int i = 0; i < BuildingTypes; i++) {
-//        if (switchButtons[i].isDown && i != interfaceType) {
-//            // set new interface type and reset all other buttons
-//            interfaceType = i;
-//
-//            for (int j = 0; j < BuildingTypes; j++) {
-//                if (j != interfaceType)
-//                    [switchButtons[j] reset];
-//            }
-//
-//            break;
-//        }
-//    }
-    
+    // check if different switch button was pressed
     if (switchButtonGroup.pressedButtonChanged) {
         [switchButtonGroup reset];
         
         for (int i = 0; i < BuildingTypes; i++) {
             if ([switchButtonGroup.pressedButtonKey isEqualToString:buttonKeys[i]] && i != interfaceType) {
                 // remove current interface content from scene
-                [scene removeItem:interfaceContent[interfaceType]];
-                [items removeObject:interfaceContent[interfaceType]];
+                [self removeItemFromScene:interfaceContent[interfaceType]];
+                
+                if (i == BuildingTypeCastle)
+                    [self removeItemFromScene:rooster];
+                else if (interfaceType == BuildingTypeCastle)
+                    [self addItemToScene:rooster];
                 
                 interfaceType = i;
                 
                 // add new interface content to scene
-                [scene addItem:interfaceContent[interfaceType]];
-                [items addObject:interfaceContent[interfaceType]];
+                [self addItemToScene:interfaceContent[interfaceType]];
             }
         }
     }

@@ -23,6 +23,7 @@
 @class Interface;
 @class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
 @class StatsPanel, SkillsPanel, EquipmentPanel;
+@class KnightData;
 
 // Physics
 @class PhysicsEngine;

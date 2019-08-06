@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Pixlron.Knights.classes.h"
+
 #import "PixEngine.GUI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WarbandCampInterface : GuiPanel
+@interface WarbandCampInterface : GuiPanel {
+    ScrollPanel *rooster;
+    
+    DropInImage *firstSlot, *secondSlot, *thirdSlot, *fourthSlot;
+}
+
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
 
 @end
 

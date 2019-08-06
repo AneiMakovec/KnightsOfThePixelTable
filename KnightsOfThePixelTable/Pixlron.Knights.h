@@ -41,6 +41,8 @@
 #import "SkillsPanel.h"
 #import "EquipmentPanel.h"
 
+#import "KnightData.h"
+
 
 
 // Physics

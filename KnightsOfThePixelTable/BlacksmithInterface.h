@@ -8,11 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Pixlron.Knights.classes.h"
+
 #import "PixEngine.GUI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlacksmithInterface : GuiPanel
+@interface BlacksmithInterface : GuiPanel {
+    ScrollPanel *rooster;
+    
+    Image *weaponBorder, *weapon;
+    Image *armorBorder, *armor;
+    
+    DoubleImageLabelButton *upgradeWeapon, *upgradeArmor;
+}
+
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
 
 @end
 

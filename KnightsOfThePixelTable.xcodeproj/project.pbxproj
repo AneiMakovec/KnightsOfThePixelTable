@@ -157,6 +157,7 @@
 		B5E380292183ABD30007D013 /* KOTPT.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E380282183ABD30007D013 /* KOTPT.m */; };
 		B5E380542183B3E00007D013 /* ui_icons.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380432183B3E00007D013 /* ui_icons.png */; };
 		B5E380592183B3E00007D013 /* dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380512183B3E00007D013 /* dices.png */; };
+		B5E3D56D22F9D445004B574D /* KnightData.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3D56C22F9D445004B574D /* KnightData.m */; };
 		B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FE06E621CC6AF200038407 /* Dicepool.m */; };
 		B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCB8921A3603C005F15BF /* Dice.m */; };
 		B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FFCB9221A36131005F15BF /* combat_dices.png */; };
@@ -404,6 +405,8 @@
 		B5E380282183ABD30007D013 /* KOTPT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOTPT.m; sourceTree = "<group>"; };
 		B5E380432183B3E00007D013 /* ui_icons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_icons.png; sourceTree = "<group>"; };
 		B5E380512183B3E00007D013 /* dices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dices.png; sourceTree = "<group>"; };
+		B5E3D56B22F9D445004B574D /* KnightData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightData.h; sourceTree = "<group>"; };
+		B5E3D56C22F9D445004B574D /* KnightData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightData.m; sourceTree = "<group>"; };
 		B5FE06E521CC6AF200038407 /* Dicepool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dicepool.h; sourceTree = "<group>"; };
 		B5FE06E621CC6AF200038407 /* Dicepool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dicepool.m; sourceTree = "<group>"; };
 		B5FE45EE21ADEA3F00F3C177 /* IDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDice.h; sourceTree = "<group>"; };
@@ -531,6 +534,7 @@
 				B5309CBB22C256FC005CE22F /* Interface.m */,
 				B5309CC022C26A03005CE22F /* Building Interfaces */,
 				B5D9CE6922F3159600AC165A /* Panels */,
+				B5E3D56A22F9D3C9004B574D /* Data */,
 			);
 			name = "Camelot interfaces";
 			sourceTree = "<group>";
@@ -1282,6 +1286,15 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
+		B5E3D56A22F9D3C9004B574D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B5E3D56B22F9D445004B574D /* KnightData.h */,
+				B5E3D56C22F9D445004B574D /* KnightData.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		B5FFCB8B21A3607F005F15BF /* Areas */ = {
 			isa = PBXGroup;
 			children = (
@@ -1480,6 +1493,7 @@
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
 				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
+				B5E3D56D22F9D445004B574D /* KnightData.m in Sources */,
 				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
 				B5309CC322C26A32005CE22F /* CastleInterface.m in Sources */,
 				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,

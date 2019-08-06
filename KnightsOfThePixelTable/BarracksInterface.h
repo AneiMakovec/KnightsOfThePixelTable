@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     EquipmentPanel *equipmentPanel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
 
 @end
 

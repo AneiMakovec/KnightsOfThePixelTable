@@ -16,29 +16,11 @@
 
 @implementation TrainingYardInterface
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel {
     self = [super init];
     if (self != nil) {
-        
-        // init rooster
-        rooster = [[ScrollPanel alloc] initWithArea:[Rectangle rectangleWithX:area.x + 587 y:area.y + 44 width:164 height:323] itemSize:32];
-        
-        // TODO: implement real rooster entries
-        Image *firstLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:area.x + 587 y:area.y + 44]];
-        firstLine.layerDepth = depth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        Image *secondLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:area.x + 587 y:area.y + 44 + 34]];
-        secondLine.layerDepth = depth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        Image *thirdLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:area.x + 587 y:area.y + 44 + 34 + 34]];
-        thirdLine.layerDepth = depth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        
-        [rooster addItem:firstLine];
-        [firstLine release];
-        [rooster addItem:secondLine];
-        [secondLine release];
-        [rooster addItem:thirdLine];
-        [thirdLine release];
-        
-        [items addObject:rooster];
+        // retain rooster
+        rooster = [scrollPanel retain];
         
         // init tabs
         tabs = [[RadioButtonGroup alloc] init];
@@ -95,38 +77,25 @@
         
         if ([tabs.pressedButtonKey isEqualToString:KEY_STATS]) {
             // change to stats tab
-            [scene removeItem:skillPanel];
-            [items removeObject:skillPanel];
-            [scene removeItem:equipmentPanel];
-            [items removeObject:equipmentPanel];
+            [self removeItemFromScene:skillPanel];
+            [self removeItemFromScene:equipmentPanel];
             
-            [scene addItem:statPanel];
-            [items addObject:statPanel];
-            
-            [scene addItem:recruitButton];
-            [items addObject:recruitButton];
+            [self addItemToScene:statPanel];
+            [self addItemToScene:recruitButton];
         } else if ([tabs.pressedButtonKey isEqualToString:KEY_SKILLS]) {
             // change to skills tab
-            [scene removeItem:statPanel];
-            [items removeObject:statPanel];
-            [scene removeItem:equipmentPanel];
-            [items removeObject:equipmentPanel];
-            [scene removeItem:recruitButton];
-            [items removeObject:recruitButton];
+            [self removeItemFromScene:statPanel];
+            [self removeItemFromScene:equipmentPanel];
+            [self removeItemFromScene:recruitButton];
             
-            [scene addItem:skillPanel];
-            [items addObject:skillPanel];
+            [self addItemToScene:skillPanel];
         } else if ([tabs.pressedButtonKey isEqualToString:KEY_EQUIPMENT]) {
             // change to equipment tab
-            [scene removeItem:skillPanel];
-            [items removeObject:skillPanel];
-            [scene removeItem:statPanel];
-            [items removeObject:statPanel];
-            [scene removeItem:recruitButton];
-            [items removeObject:recruitButton];
+            [self removeItemFromScene:skillPanel];
+            [self removeItemFromScene:statPanel];
+            [self removeItemFromScene:recruitButton];
             
-            [scene addItem:equipmentPanel];
-            [items addObject:equipmentPanel];
+            [self addItemToScene:equipmentPanel];
         }
     }
 }
@@ -136,6 +105,7 @@
 
 - (void) dealloc {
     [rooster release];
+    
     [skillPanel release];
     [statPanel release];
     [equipmentPanel release];

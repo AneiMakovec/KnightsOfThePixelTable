@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     Image *sidePane;
     Image *sidePaneBorder;
     
+    ScrollPanel *rooster;
+    
     BuildingType interfaceType;
     
     // interface switching buttons
