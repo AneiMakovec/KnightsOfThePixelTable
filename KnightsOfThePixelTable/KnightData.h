@@ -13,11 +13,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KnightData : NSObject {
+    NSString *keyID;
+    
     KnightType *type;
     NSString *name;
     int lvl;
     int currentExp;
     int skillLvl[SkillTypes];
+    int weaponLvl;
+    int armorLvl;
 }
 
 @end

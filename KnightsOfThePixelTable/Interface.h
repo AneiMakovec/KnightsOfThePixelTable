@@ -30,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
     
     // interface content
     GuiPanel *interfaceContent[BuildingTypes];
+    
+    
+    // DEBUG
+    RoosterEntry *firstLine, *secondLine, *thirdLine;
 }
 
 - (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth type:(BuildingType)type;

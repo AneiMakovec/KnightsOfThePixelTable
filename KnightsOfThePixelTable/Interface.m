@@ -90,19 +90,16 @@
         rooster = [[ScrollPanel alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:32];
         
         // TODO: implement real rooster entries
-        Image *firstLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44]];
+        firstLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33]];
         firstLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        Image *secondLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44 + 34]];
+        secondLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 35 width:165 height:33]];
         secondLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        Image *thirdLine = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44 + 34 + 34]];
+        thirdLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 35 + 35 width:165 height:33]];
         thirdLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
         
         [rooster addItem:firstLine];
-        [firstLine release];
         [rooster addItem:secondLine];
-        [secondLine release];
         [rooster addItem:thirdLine];
-        [thirdLine release];
         
         [items addObject:rooster];
         
@@ -143,6 +140,20 @@
                 
                 // add new interface content to scene
                 [self addItemToScene:interfaceContent[interfaceType]];
+            }
+        }
+    }
+    
+    // check which item is pressed in the rooster
+    if (!rooster.scrolling) {
+        for (TouchImage *item in rooster) {
+            if (item.wasReleased) {
+                if ([item isEqual:firstLine])
+                    NSLog(@"First line pressed...");
+                else if (item == secondLine)
+                    NSLog(@"Second line pressed...");
+                else if (item == thirdLine)
+                    NSLog(@"Third line pressed...");
             }
         }
     }

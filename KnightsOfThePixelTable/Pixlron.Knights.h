@@ -41,7 +41,7 @@
 #import "SkillsPanel.h"
 #import "EquipmentPanel.h"
 
-#import "KnightData.h"
+#import "RoosterEntry.h"
 
 
 
@@ -118,6 +118,7 @@
 
 // Game progress
 #import "GameProgress.h"
+#import "KnightData.h"
 
 // Game
 #import "KOTPT.h"

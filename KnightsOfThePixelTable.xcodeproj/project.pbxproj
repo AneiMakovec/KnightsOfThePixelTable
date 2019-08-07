@@ -58,6 +58,7 @@
 		B54E88D321E2D3760040C888 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D221E2D3760040C888 /* MainMenu.m */; };
 		B54E88D621E2E0C20040C888 /* OptionsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D521E2E0C20040C888 /* OptionsMenu.m */; };
 		B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D821E2E56E0040C888 /* CamelotMenu.m */; };
+		B5511B3422FB83C700E0F51E /* RoosterEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B5511B3322FB83C700E0F51E /* RoosterEntry.m */; };
 		B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */ = {isa = PBXBuildFile; fileRef = B55FA72721D7FC0A00526790 /* background_farmlands.png */; };
 		B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */ = {isa = PBXBuildFile; fileRef = B55FA72821D7FC0A00526790 /* background_mountains.png */; };
 		B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */ = {isa = PBXBuildFile; fileRef = B55FA72921D7FC0A00526790 /* background_pinewoods.png */; };
@@ -258,6 +259,8 @@
 		B54E88D521E2E0C20040C888 /* OptionsMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsMenu.m; sourceTree = "<group>"; };
 		B54E88D721E2E56E0040C888 /* CamelotMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamelotMenu.h; sourceTree = "<group>"; };
 		B54E88D821E2E56E0040C888 /* CamelotMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamelotMenu.m; sourceTree = "<group>"; };
+		B5511B3222FB83C700E0F51E /* RoosterEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoosterEntry.h; sourceTree = "<group>"; };
+		B5511B3322FB83C700E0F51E /* RoosterEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoosterEntry.m; sourceTree = "<group>"; };
 		B55FA72721D7FC0A00526790 /* background_farmlands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_farmlands.png; sourceTree = "<group>"; };
 		B55FA72821D7FC0A00526790 /* background_mountains.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_mountains.png; sourceTree = "<group>"; };
 		B55FA72921D7FC0A00526790 /* background_pinewoods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_pinewoods.png; sourceTree = "<group>"; };
@@ -439,6 +442,7 @@
 		B50F82F721ED1D8A000C2A92 /* Game progress */ = {
 			isa = PBXGroup;
 			children = (
+				B5511B3122FB83A300E0F51E /* Data */,
 				B50F82F821ED1DAE000C2A92 /* GameProgress.h */,
 				B50F82F921ED1DAE000C2A92 /* GameProgress.m */,
 			);
@@ -534,7 +538,7 @@
 				B5309CBB22C256FC005CE22F /* Interface.m */,
 				B5309CC022C26A03005CE22F /* Building Interfaces */,
 				B5D9CE6922F3159600AC165A /* Panels */,
-				B5E3D56A22F9D3C9004B574D /* Data */,
+				B5E3D56A22F9D3C9004B574D /* Rooster */,
 			);
 			name = "Camelot interfaces";
 			sourceTree = "<group>";
@@ -624,6 +628,15 @@
 				B50F82FB21ED2A4C000C2A92 /* enabled_sound_button.png */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		B5511B3122FB83A300E0F51E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B5E3D56B22F9D445004B574D /* KnightData.h */,
+				B5E3D56C22F9D445004B574D /* KnightData.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		B55FA72621D7F2B600526790 /* GUI */ = {
@@ -1286,13 +1299,13 @@
 			path = Background;
 			sourceTree = "<group>";
 		};
-		B5E3D56A22F9D3C9004B574D /* Data */ = {
+		B5E3D56A22F9D3C9004B574D /* Rooster */ = {
 			isa = PBXGroup;
 			children = (
-				B5E3D56B22F9D445004B574D /* KnightData.h */,
-				B5E3D56C22F9D445004B574D /* KnightData.m */,
+				B5511B3222FB83C700E0F51E /* RoosterEntry.h */,
+				B5511B3322FB83C700E0F51E /* RoosterEntry.m */,
 			);
-			name = Data;
+			name = Rooster;
 			sourceTree = "<group>";
 		};
 		B5FFCB8B21A3607F005F15BF /* Areas */ = {
@@ -1528,6 +1541,7 @@
 				B57B0D0C21A5F8720064B91F /* FinalLevel.m in Sources */,
 				B5309CC922C26A9F005CE22F /* BarracksInterface.m in Sources */,
 				B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */,
+				B5511B3422FB83C700E0F51E /* RoosterEntry.m in Sources */,
 				B5CF917F2200863F006A52B5 /* DungeonEndInterface.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,
 				B5A881B02201B5C100ADCE9E /* TextureComponent.m in Sources */,
