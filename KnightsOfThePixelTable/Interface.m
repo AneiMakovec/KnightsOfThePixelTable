@@ -87,15 +87,20 @@
         [items addObject:sidePaneBorder];
         
         // init rooster
-        rooster = [[ScrollPanel alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:32];
+        rooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33];
         
         // TODO: implement real rooster entries
-        firstLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33]];
-        firstLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        secondLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 35 width:165 height:33]];
-        secondLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
-        thirdLine = [[RoosterEntry alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 35 + 35 width:165 height:33]];
-        thirdLine.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND;
+        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:0 weaponLvl:2 armorLvl:4];
+        firstLine = [[RoosterEntry alloc] initWithKnightData:firstData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        [firstData release];
+        
+        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:150 weaponLvl:3 armorLvl:6];
+        secondLine = [[RoosterEntry alloc] initWithKnightData:secondData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        [secondData release];
+        
+        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeBowman name:@"Sir Ian" level:5 currentExp:1135 weaponLvl:5 armorLvl:6];
+        thirdLine = [[RoosterEntry alloc] initWithKnightData:thirdData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 + 35 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        [thirdData release];
         
         [rooster addItem:firstLine];
         [rooster addItem:secondLine];
@@ -105,10 +110,10 @@
         
         // init interface content
         interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithArea:rect layerDepth:layerDepth];
-        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
-        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
-        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
-        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth scrollPanel:rooster];
+        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
+        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
+        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         
         [items addObject:interfaceContent[interfaceType]];
     }
@@ -146,14 +151,9 @@
     
     // check which item is pressed in the rooster
     if (!rooster.scrolling) {
-        for (TouchImage *item in rooster) {
-            if (item.wasReleased) {
-                if ([item isEqual:firstLine])
-                    NSLog(@"First line pressed...");
-                else if (item == secondLine)
-                    NSLog(@"Second line pressed...");
-                else if (item == thirdLine)
-                    NSLog(@"Third line pressed...");
+        for (RoosterEntry *item in rooster) {
+            if ([item wasSelected]) {
+                NSLog(item.data.name);
             }
         }
     }

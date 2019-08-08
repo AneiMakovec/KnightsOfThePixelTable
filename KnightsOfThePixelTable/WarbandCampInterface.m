@@ -12,11 +12,11 @@
 
 @implementation WarbandCampInterface
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster {
     self = [super init];
     if (self != nil) {
         // retain rooster
-        rooster = [scrollPanel retain];
+        rooster = [theRooster retain];
         
         // init warband slots
         firstSlot = [[DropInImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];

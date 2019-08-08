@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     Label *armorNameLabel, *armorLvlLabel, *armorLvlValueLabel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth;
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth;
 
 @end
 

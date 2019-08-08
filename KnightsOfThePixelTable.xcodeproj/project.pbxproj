@@ -91,6 +91,7 @@
 		B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376921FE844800CE7123 /* MonsterBossViking.m */; };
 		B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */ = {isa = PBXBuildFile; fileRef = B560376B21FE91B000CE7123 /* hud_wave_counter.png */; };
 		B5671A5C219A13EA009E270F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B5671A5B219A13EA009E270F /* Gameplay.m */; };
+		B57A027822FCB42D0003E509 /* Rooster.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A027722FCB42D0003E509 /* Rooster.m */; };
 		B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF621A5F64B0064B91F /* HumanPlayer.m */; };
 		B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF921A5F6590064B91F /* AIPlayer.m */; };
 		B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */; };
@@ -301,6 +302,8 @@
 		B560376B21FE91B000CE7123 /* hud_wave_counter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_wave_counter.png; sourceTree = "<group>"; };
 		B5671A5A219A13EA009E270F /* Gameplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		B5671A5B219A13EA009E270F /* Gameplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
+		B57A027622FCB42D0003E509 /* Rooster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rooster.h; sourceTree = "<group>"; };
+		B57A027722FCB42D0003E509 /* Rooster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rooster.m; sourceTree = "<group>"; };
 		B57B0CF421A5F48B0064B91F /* KOTPT_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPT_Prefix.pch; sourceTree = "<group>"; };
 		B57B0CF521A5F64B0064B91F /* HumanPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HumanPlayer.h; sourceTree = "<group>"; };
 		B57B0CF621A5F64B0064B91F /* HumanPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HumanPlayer.m; sourceTree = "<group>"; };
@@ -1302,6 +1305,8 @@
 		B5E3D56A22F9D3C9004B574D /* Rooster */ = {
 			isa = PBXGroup;
 			children = (
+				B57A027622FCB42D0003E509 /* Rooster.h */,
+				B57A027722FCB42D0003E509 /* Rooster.m */,
 				B5511B3222FB83C700E0F51E /* RoosterEntry.h */,
 				B5511B3322FB83C700E0F51E /* RoosterEntry.m */,
 			);
@@ -1488,6 +1493,7 @@
 				B54E88CA21E2B48B0040C888 /* GameState.m in Sources */,
 				B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */,
 				B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */,
+				B57A027822FCB42D0003E509 /* Rooster.m in Sources */,
 				B5309CCC22C26AB3005CE22F /* WarbandCampInterface.m in Sources */,
 				B5A493CD21CAECF0003EBB1D /* Skill.m in Sources */,
 				B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */,

@@ -12,11 +12,11 @@
 
 @implementation BlacksmithInterface
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster {
     self = [super init];
     if (self != nil) {
         // retain rooster
-        rooster = [scrollPanel retain];
+        rooster = [theRooster retain];
         
         // init weapon info
         weaponBorder = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotBronze] position:[Vector2 vectorWithX:area.x + 302 y:area.y + 200]];

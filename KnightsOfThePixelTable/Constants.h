@@ -159,7 +159,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-// alies
+// ally animations
 + (int) spritesheetWidthOfAlly:(KnightType)ally;
 + (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally;
 + (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally;
@@ -167,7 +167,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally;
 + (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally;
 
-// enemies
+// enemy animations
 + (int) spritesheetWidthOfEnemy:(MonsterType)enemy;
 + (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
 + (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
@@ -180,6 +180,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 // interface
 + (NSString *) getSwitchButtonText:(BuildingType)type;
+
+
+
+
+
+
+// calculations
++ (int) getExpNeededForNextLvl:(int)lvl;
+
+
+
+// characters stats
++ (int) getMaxKnightLvl;
++ (int) getMaxEquipmentLvl;
++ (int) getMaxSkillLvl;
 
 
 @end

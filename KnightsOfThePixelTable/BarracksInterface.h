@@ -18,14 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
     RadioButtonGroup *tabs;
     ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
     
-    ScrollPanel *rooster;
+    Rooster *rooster;
     
     SkillsPanel *skillPanel;
     StatsPanel *statPanel;
     EquipmentPanel *equipmentPanel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

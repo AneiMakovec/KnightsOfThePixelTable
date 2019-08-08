@@ -2525,4 +2525,10 @@
 }
 
 
+
++ (int) getExpNeededForNextLvl:(int)lvl {
+    return 1;
+}
+
+
 @end

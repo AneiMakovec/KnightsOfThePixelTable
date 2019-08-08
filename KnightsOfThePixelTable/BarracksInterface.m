@@ -16,11 +16,11 @@
 
 @implementation BarracksInterface
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel {
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster {
     self = [super init];
     if (self != nil) {
         // retain rooster
-        rooster = [scrollPanel retain];
+        rooster = [theRooster retain];
         
         // init tabs
         tabs = [[RadioButtonGroup alloc] init];
@@ -49,12 +49,12 @@
         [items addObject:tabs];
         
         // init pane for stats, skills and equipment
-        statPanel = [[StatsPanel alloc] initWithArea:area layerDepth:depth];
+        statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth];
         [items addObject:statPanel];
         
-        skillPanel = [[SkillsPanel alloc] initWithArea:area layerDepth:depth displayUpgradeButtons:YES];
+        skillPanel = [[SkillsPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth displayUpgradeButtons:YES];
         
-        equipmentPanel = [[EquipmentPanel alloc] initWithArea:area layerDepth:depth];
+        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth];
     }
     return self;
 }

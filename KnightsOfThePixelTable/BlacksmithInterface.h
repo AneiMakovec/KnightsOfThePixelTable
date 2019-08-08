@@ -15,7 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BlacksmithInterface : GuiPanel {
-    ScrollPanel *rooster;
+    Rooster *rooster;
     
     Image *weaponBorder, *weapon;
     Image *armorBorder, *armor;
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *upgradeWeapon, *upgradeArmor;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

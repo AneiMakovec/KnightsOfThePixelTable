@@ -23,7 +23,7 @@
 @class Interface;
 @class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
 @class StatsPanel, SkillsPanel, EquipmentPanel;
-@class RoosterEntry;
+@class Rooster, RoosterEntry;
 
 // Physics
 @class PhysicsEngine;

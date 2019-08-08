@@ -14,7 +14,7 @@
 
 @implementation StatsPanel
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth {
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth {
     self = [super init];
     if (self != nil) {
         // init pane
@@ -84,7 +84,7 @@
         expLabel.color = [Color cornflowerBlue];
         [items addObject:expLabel];
         
-        expCurrentLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"100000" position:[Vector2 vectorWithX:area.x + 478 y:area.y + 270]];
+        expCurrentLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", data.currentExp] position:[Vector2 vectorWithX:area.x + 478 y:area.y + 270]];
         expCurrentLabel.verticalAlign = VerticalAlignTop;
         expCurrentLabel.horizontalAlign = HorizontalAlignRight;
         expCurrentLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;

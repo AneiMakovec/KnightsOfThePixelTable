@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
     Label *expLabel, *expCurrentLabel, *expSlashLabel, *expNextLvlLabel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth;
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth;
 
 @end
 

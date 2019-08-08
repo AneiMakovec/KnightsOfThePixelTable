@@ -15,12 +15,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WarbandCampInterface : GuiPanel {
-    ScrollPanel *rooster;
+    Rooster *rooster;
     
     DropInImage *firstSlot, *secondSlot, *thirdSlot, *fourthSlot;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth scrollPanel:(ScrollPanel *)scrollPanel;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

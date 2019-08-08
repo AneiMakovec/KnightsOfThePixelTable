@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     Image *sidePane;
     Image *sidePaneBorder;
     
-    ScrollPanel *rooster;
+    Rooster *rooster;
     
     BuildingType interfaceType;
     

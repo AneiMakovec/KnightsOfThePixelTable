@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *upgradeFirstSkill, *upgradeSecondSkill, *upgradeThirdSkill;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;
 
 @end
 

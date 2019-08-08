@@ -12,7 +12,7 @@
 
 @implementation SkillsPanel
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display {
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display {
     self = [super init];
     if (self != nil) {
         displayUpgradeButtons = display;
@@ -76,21 +76,21 @@
         
         // init upgrade buttons
         if (displayUpgradeButtons) {
-            upgradeFirstSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 216 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeFirstSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 216 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", [data getLevelOfSkill:FirstComboSkill]]];
             upgradeFirstSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeFirstSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeFirstSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [upgradeFirstSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
             [items addObject:upgradeFirstSkill];
             
-            upgradeSecondSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 272 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeSecondSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 272 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", [data getLevelOfSkill:SecondComboSkill]]];
             upgradeSecondSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeSecondSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeSecondSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [upgradeSecondSkill.label setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
             [items addObject:upgradeSecondSkill];
             
-            upgradeThirdSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 327 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"100 G"];
+            upgradeThirdSkill = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 439 y:area.y + 327 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", [data getLevelOfSkill:ThirdComboSkill]]];
             upgradeThirdSkill.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeThirdSkill.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             upgradeThirdSkill.label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;

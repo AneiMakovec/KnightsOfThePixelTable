@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RoosterEntry : GuiPanel<IPosition> {
+@interface RoosterEntry : GuiPanel<ICustomMovable> {
     Vector2 *position;
     
     KnightData *data;
@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Vector2 *position;
 
 - (id) initWithKnightData:(KnightData *)knightData toRectangle:(Rectangle *)rectangle layerDepth:(float)depth;
+
+- (BOOL) wasSelected;
 
 @end
 

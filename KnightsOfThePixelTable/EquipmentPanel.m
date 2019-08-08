@@ -12,7 +12,7 @@
 
 @implementation EquipmentPanel
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)layerDepth {
+- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth {
     self = [super init];
     if (self != nil) {
         // init pane
@@ -50,7 +50,7 @@
         [weaponLvlLabel setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
         [items addObject:weaponLvlLabel];
         
-        weaponLvlValueLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"1" position:[Vector2 vectorWithX:area.x + 332 y:area.y + 305]];
+        weaponLvlValueLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", data.weaponLvl] position:[Vector2 vectorWithX:area.x + 332 y:area.y + 305]];
         weaponLvlValueLabel.verticalAlign = VerticalAlignMiddle;
         weaponLvlValueLabel.horizontalAlign = HorizontalAlignLeft;
         weaponLvlValueLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -87,7 +87,7 @@
         [armorLvlLabel setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
         [items addObject:armorLvlLabel];
         
-        armorLvlValueLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:@"1" position:[Vector2 vectorWithX:area.x + 455 y:area.y + 305]];
+        armorLvlValueLabel = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[NSString stringWithFormat:@"%d", data.armorLvl] position:[Vector2 vectorWithX:area.x + 455 y:area.y + 305]];
         armorLvlValueLabel.verticalAlign = VerticalAlignMiddle;
         armorLvlValueLabel.horizontalAlign = HorizontalAlignLeft;
         armorLvlValueLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;

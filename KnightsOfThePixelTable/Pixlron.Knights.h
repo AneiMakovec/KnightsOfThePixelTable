@@ -41,6 +41,7 @@
 #import "SkillsPanel.h"
 #import "EquipmentPanel.h"
 
+#import "Rooster.h"
 #import "RoosterEntry.h"
 
 
