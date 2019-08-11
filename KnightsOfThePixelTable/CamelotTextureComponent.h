@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
     Texture2D *propTextures[InterfacePropTypes];
     
     SpriteFont *font;
+    
+    Texture2D *portrait;
 }
 
 + (void) activateWithGame:(Game *)game;
@@ -27,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (Texture2D *) getInterfaceProp:(InterfacePropType)type;
 
 + (SpriteFont *) getFont;
+
++ (Texture2D *) getPortraitForUnitType:(KnightType)type;
 
 @end
 

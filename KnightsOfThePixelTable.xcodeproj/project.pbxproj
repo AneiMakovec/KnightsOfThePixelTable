@@ -160,6 +160,8 @@
 		B5E380542183B3E00007D013 /* ui_icons.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380432183B3E00007D013 /* ui_icons.png */; };
 		B5E380592183B3E00007D013 /* dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E380512183B3E00007D013 /* dices.png */; };
 		B5E3D56D22F9D445004B574D /* KnightData.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3D56C22F9D445004B574D /* KnightData.m */; };
+		B5EE0AEB22FF1E7700A291C6 /* squarebit_8px.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */; };
+		B5EE0AEC22FF1E7700A291C6 /* alagard_8px.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */; };
 		B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FE06E621CC6AF200038407 /* Dicepool.m */; };
 		B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCB8921A3603C005F15BF /* Dice.m */; };
 		B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FFCB9221A36131005F15BF /* combat_dices.png */; };
@@ -413,6 +415,8 @@
 		B5E380512183B3E00007D013 /* dices.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dices.png; sourceTree = "<group>"; };
 		B5E3D56B22F9D445004B574D /* KnightData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightData.h; sourceTree = "<group>"; };
 		B5E3D56C22F9D445004B574D /* KnightData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightData.m; sourceTree = "<group>"; };
+		B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = squarebit_8px.bmp; sourceTree = "<group>"; };
+		B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = alagard_8px.bmp; sourceTree = "<group>"; };
 		B5FE06E521CC6AF200038407 /* Dicepool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dicepool.h; sourceTree = "<group>"; };
 		B5FE06E621CC6AF200038407 /* Dicepool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dicepool.m; sourceTree = "<group>"; };
 		B5FE45EE21ADEA3F00F3C177 /* IDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDice.h; sourceTree = "<group>"; };
@@ -654,6 +658,8 @@
 		B55FA73F21D828E600526790 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */,
+				B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */,
 				B53912CF22F86553005E4686 /* alagard.bmp */,
 				B53912D222F86553005E4686 /* alkhemikal.bmp */,
 				B53912D022F86553005E4686 /* fipps.bmp */,
@@ -1411,7 +1417,9 @@
 				B53912D822F86553005E4686 /* squarebit.bmp in Resources */,
 				B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */,
 				B53912D522F86553005E4686 /* perfect_dos.bmp in Resources */,
+				B5EE0AEB22FF1E7700A291C6 /* squarebit_8px.bmp in Resources */,
 				B560372721FE707200CE7123 /* status_effect_burn.png in Resources */,
+				B5EE0AEC22FF1E7700A291C6 /* alagard_8px.bmp in Resources */,
 				B5CF9182220098FC006A52B5 /* skills.png in Resources */,
 				B50F830121ED2A4C000C2A92 /* enabled_music_button.png in Resources */,
 				B5FFCB9621A36131005F15BF /* combat_dice_animation_evil.png in Resources */,

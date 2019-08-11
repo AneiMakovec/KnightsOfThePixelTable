@@ -108,11 +108,27 @@
         
         [items addObject:rooster];
         
+        // init rooster for trained units
+        trainRooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33];
+        
+        KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeBowman name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:2 armorLvl:4];
+        firstTrainLine = [[RoosterEntry alloc] initWithKnightData:firstTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        [firstTrainData release];
+        
+        KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeFireEnchantress name:@"Sir Fritz" level:10 currentExp:150 weaponLvl:3 armorLvl:6];
+        secondTrainLine = [[RoosterEntry alloc] initWithKnightData:secondTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        [secondTrainData release];
+        
+        [trainRooster addItem:firstTrainLine];
+        [trainRooster addItem:secondTrainLine];
+        
+        
+        
         // init interface content
         interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithArea:rect layerDepth:layerDepth];
         interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
-        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:trainRooster];
         interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         
         [items addObject:interfaceContent[interfaceType]];
@@ -136,10 +152,35 @@
                 // remove current interface content from scene
                 [self removeItemFromScene:interfaceContent[interfaceType]];
                 
-                if (i == BuildingTypeCastle)
-                    [self removeItemFromScene:rooster];
-                else if (interfaceType == BuildingTypeCastle)
-                    [self addItemToScene:rooster];
+                // if switching to castle
+                if (i == BuildingTypeCastle) {
+                    // remove training rooster if switching from training yard or remove normal rooster if swithcing from other
+                    if (interfaceType == BuildingTypeTrainingYard)
+                        [self removeItemFromScene:trainRooster];
+                    else
+                        [self removeItemFromScene:rooster];
+                // if switching from castle
+                } else if (interfaceType == BuildingTypeCastle) {
+                    // add training rooster if switching to training yard or add normal rooster if swithcing to other
+                    if (i == BuildingTypeTrainingYard)
+                        [self addItemToScene:trainRooster];
+                    else
+                        [self addItemToScene:rooster];
+                // if switching to training yard
+                } else if (i == BuildingTypeTrainingYard) {
+                    // if switching from other than castle remove normal rooster and add train rooster
+                    if (interfaceType != BuildingTypeCastle)
+                        [self removeItemFromScene:rooster];
+                    
+                    [self addItemToScene:trainRooster];
+                // if switching from training yard
+                } else if (interfaceType == BuildingTypeTrainingYard) {
+                    [self removeItemFromScene:trainRooster];
+                    
+                    // if switching to other than castle add normal rooster
+                    if (i != BuildingTypeCastle)
+                        [self addItemToScene:rooster];
+                }
                 
                 interfaceType = i;
                 
@@ -150,12 +191,13 @@
     }
     
     // check which item is pressed in the rooster
-    if (!rooster.scrolling) {
-        for (RoosterEntry *item in rooster) {
-            if ([item wasSelected]) {
-                NSLog(item.data.name);
-            }
-        }
+    if (rooster.selectionChanged) {
+        NSLog([rooster getSelectedEntry].name);
+    }
+    
+    // check which item is pressed in the training rooster
+    if (trainRooster.selectionChanged) {
+        NSLog([trainRooster getSelectedEntry].name);
     }
 }
 

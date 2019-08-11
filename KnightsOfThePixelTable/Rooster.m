@@ -21,29 +21,36 @@
     return self;
 }
 
-- (RoosterEntry *) getFirstEntry {
+@synthesize selectionChanged;
+
+- (KnightData *) getFirstEntry {
     RoosterEntry *entry = [firstItem isKindOfClass:[RoosterEntry class]] ? (RoosterEntry *) firstItem : nil;
-    return entry;
+    return entry.data;
+}
+
+- (KnightData *) getSelectedEntry {
+    return selectedEntry;
 }
 
 
 
-- (void) updateWithGameTime:(GameTime *)gameTime {
-    [super updateWithGameTime:gameTime];
-    
+- (void) updateWithInverseView:(Matrix *)inverseView {
     selectionChanged = NO;
     
     // check if an entry was selected
-    for (RoosterEntry *entry in items) {
-        if ([entry wasSelected]) {
-            if (selectedEntry == nil || selectedEntry.keyID != entry.data.keyID) {
-                selectedEntry = entry.data;
-                selectionChanged = YES;
-                NSLog(@"Selection changed");
-                break;
+    if (!scrolling) {
+        for (RoosterEntry *entry in items) {
+            if ([entry wasSelected]) {
+                if (selectedEntry == nil || ![selectedEntry.keyID isEqualToString:entry.data.keyID]) {
+                    selectedEntry = entry.data;
+                    selectionChanged = YES;
+                    break;
+                }
             }
         }
     }
+    
+    [super updateWithInverseView:inverseView];
 }
 
 @end

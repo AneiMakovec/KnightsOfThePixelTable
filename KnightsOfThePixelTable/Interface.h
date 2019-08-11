@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
     Image *sidePaneBorder;
     
     Rooster *rooster;
+    Rooster *trainRooster;
     
     BuildingType interfaceType;
     
@@ -34,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     // DEBUG
     RoosterEntry *firstLine, *secondLine, *thirdLine;
+    RoosterEntry *firstTrainLine, *secondTrainLine, *thirdTrainLine;
 }
 
 - (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth type:(BuildingType)type;

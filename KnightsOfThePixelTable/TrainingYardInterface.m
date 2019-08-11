@@ -49,12 +49,12 @@
         [items addObject:tabs];
         
         // init pane for stats, skills and equipment
-        statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth];
+        statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth];
         [items addObject:statPanel];
         
-        skillPanel = [[SkillsPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth displayUpgradeButtons:NO];
+        skillPanel = [[SkillsPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth displayUpgradeButtons:NO];
         
-        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[rooster getFirstEntry].data area:area layerDepth:depth];
+        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth];
         
         
         // init recruit button

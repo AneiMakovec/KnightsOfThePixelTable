@@ -35,6 +35,10 @@ CamelotTextureComponent *camelotinstance;
     return [camelotinstance getFont];
 }
 
++ (Texture2D *) getPortraitForUnitType:(KnightType)type {
+    return [camelotinstance getPortraitForUnitType:type];
+}
+
 
 
 
@@ -72,6 +76,9 @@ CamelotTextureComponent *camelotinstance;
     FontTextureProcessor *fontProcessor = [[FontTextureProcessor alloc] init];
     font = [self.game.content load:FONT processor:fontProcessor];
     [fontProcessor release];
+    
+    // unit portraits
+    portrait = [self.game.content load:BUTTON_BACKGROUND];
 }
 
 - (Texture2D *) getInterfaceProp:(InterfacePropType)type {
@@ -80,6 +87,10 @@ CamelotTextureComponent *camelotinstance;
 
 - (SpriteFont *) getFont {
     return font;
+}
+
+- (Texture2D *) getPortraitForUnitType:(KnightType)type {
+    return portrait;
 }
 
 

@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
     KnightData *data;
     
     TouchImage *roosterLine;
+    
+    Image *portrait;
+    Label *name;
 }
 
 @property (nonatomic, retain) KnightData *data;

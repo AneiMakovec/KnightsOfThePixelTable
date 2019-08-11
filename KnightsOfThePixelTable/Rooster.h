@@ -14,14 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Rooster : ScrollPanel {
+@interface Rooster : ScrollPanel {
     KnightData *selectedEntry;
     BOOL selectionChanged;
 }
 
 @property (nonatomic, readonly) BOOL selectionChanged;
 
-- (RoosterEntry *) getFirstEntry;
+- (KnightData *) getFirstEntry;
+- (KnightData *) getSelectedEntry;
 
 @end
 
