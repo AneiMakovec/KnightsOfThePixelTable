@@ -32,6 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
     // interface content
     GuiPanel *interfaceContent[BuildingTypes];
     
+    // rooster unit info
+    Label *unitName;
+    Label *unitType;
+    NSString *unitTypes[KnightTypes];
+    
+    // train rooster unit info
+    Label *unitNameTrain;
+    Label *unitTypeTrain;
+    
     
     // DEBUG
     RoosterEntry *firstLine, *secondLine, *thirdLine;

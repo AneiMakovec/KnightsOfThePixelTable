@@ -114,6 +114,22 @@
 
 
 
+- (void) updateToKnightData:(KnightData *)data {
+    if (data) {
+        // TODO: add all other values
+        expCurrentLabel.text = [NSString stringWithFormat:@"%d", data.currentExp];
+    } else {
+        // reset all values to 0
+        for (int i = 0; i < StatTypes; i++) {
+            statValueLabels[i].text = @"0";
+        }
+        
+        hpValueLabel.text = @"0";
+        expCurrentLabel.text = @"0";
+        expNextLvlLabel.text = @"0";
+    }
+}
+
 
 
 - (void) dealloc {

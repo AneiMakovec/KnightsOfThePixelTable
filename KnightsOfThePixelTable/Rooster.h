@@ -15,14 +15,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Rooster : ScrollPanel {
-    KnightData *selectedEntry;
+    RoosterEntry *selectedEntry;
     BOOL selectionChanged;
+    BOOL dontReset;
+    
+    float layerDepth;
 }
 
 @property (nonatomic, readonly) BOOL selectionChanged;
 
-- (KnightData *) getFirstEntry;
-- (KnightData *) getSelectedEntry;
+- (id) initWithArea:(Rectangle *)theArea itemSize:(int)size layerDepth:(float)depth;
+
+- (KnightData *) getFirstData;
+- (KnightData *) getSelectedData;
+
+- (RoosterEntry *) getSelectedEntry;
 
 @end
 

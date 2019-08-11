@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
     
     Rooster *rooster;
+    Rooster *trainRooster;
     
     SkillsPanel *skillPanel;
     StatsPanel *statPanel;
@@ -27,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *recruitButton;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
+- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;
 
 @end
 

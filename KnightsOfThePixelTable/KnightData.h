@@ -18,16 +18,23 @@ NS_ASSUME_NONNULL_BEGIN
     KnightType type;
     NSString *name;
     
+    DamageType damageType;
+    
+    int hp;
     int lvl;
     int currentExp;
     int skillLvl[SkillTypes];
+    int stats[StatTypes];
     int weaponLvl;
     int armorLvl;
 }
 
 @property (nonatomic, readonly) NSString *keyID;
 @property (nonatomic, readonly) KnightType type;
+@property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic, retain) NSString *name;
+
+@property (nonatomic, readonly) int hp;
 @property (nonatomic, readonly) int lvl;
 @property (nonatomic, readonly) int currentExp;
 @property (nonatomic, readonly) int weaponLvl;
@@ -41,12 +48,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) gainExp:(int)amount;
 - (void) upgradeSkill:(SkillType)skill;
 - (int) getLevelOfSkill:(SkillType)skill;
+- (int) getValueOfStat:(StatType)stat;
 - (void) upgradeWeapon;
 - (void) upgradeArmor;
 
 
 // DEBUG METHOD
 - (void) setLevelOfSkill:(SkillType)skill lvl:(int)level;
+- (void) setValueOfStat:(StatType)stat value:(int)value;
 
 @end
 

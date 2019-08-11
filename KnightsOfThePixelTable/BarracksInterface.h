@@ -15,10 +15,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BarracksInterface : GuiPanel {
-    Label *unitName;
-    Label *unitType;
-    NSString *unitTypes[KnightTypes];
-    
     RadioButtonGroup *tabs;
     ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
     

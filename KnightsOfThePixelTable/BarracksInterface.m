@@ -49,32 +49,12 @@
         [items addObject:tabs];
         
         // init pane for stats, skills and equipment
-        statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth];
+        statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstData] area:area layerDepth:depth];
         [items addObject:statPanel];
         
-        skillPanel = [[SkillsPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth displayUpgradeButtons:YES];
+        skillPanel = [[SkillsPanel alloc] initWithKnightData:[rooster getFirstData] area:area layerDepth:depth displayUpgradeButtons:YES];
         
-        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[rooster getFirstEntry] area:area layerDepth:depth];
-        
-        // init selected unit name and type
-        unitName = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[rooster getFirstEntry].name position:[Vector2 vectorWithX:area.x + 385 y:area.y + 15]];
-        unitName.verticalAlign = VerticalAlignTop;
-        unitName.horizontalAlign = HorizontalAlignCenter;
-        unitName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitName setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
-        [items addObject:unitName];
-        
-        unitTypes[KnightTypeBrawler] = @"Brawler";
-        unitTypes[KnightTypeBowman] = @"Bowman";
-        unitTypes[KnightTypePaladin] = @"Paladin";
-        unitTypes[KnightTypeFireEnchantress] = @"Fire enchantress";
-        
-        unitType = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:unitTypes[[rooster getFirstEntry].type] position:[Vector2 vectorWithX:area.x + 385 y:area.y + 30]];
-        unitType.verticalAlign = VerticalAlignTop;
-        unitType.horizontalAlign = HorizontalAlignCenter;
-        unitType.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitType setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
-        [items addObject:unitType];
+        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[rooster getFirstData] area:area layerDepth:depth];
     }
     return self;
 }
@@ -107,19 +87,19 @@
             [self addItemToScene:equipmentPanel];
         }
     }
+    
+    // check if different unit was selected in rooster
+    if (rooster.selectionChanged) {
+        [statPanel updateToKnightData:[rooster getSelectedData]];
+        [skillPanel updateToKnightData:[rooster getSelectedData]];
+        [equipmentPanel updateToKnightData:[rooster getSelectedData]];
+    }
 }
 
 
 
 
-- (void) dealloc {
-    [unitName release];
-    [unitType release];
-    
-    for (int i = 0; i < KnightTypes; i++) {
-        [unitTypes[i] release];
-    }
-    
+- (void) dealloc {    
     [rooster release];
     
     [skillPanel release];

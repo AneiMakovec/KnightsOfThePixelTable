@@ -87,40 +87,48 @@
         [items addObject:sidePaneBorder];
         
         // init rooster
-        rooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33];
+        rooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33 layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         // TODO: implement real rooster entries
         KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:0 weaponLvl:2 armorLvl:4];
-        firstLine = [[RoosterEntry alloc] initWithKnightData:firstData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
-        [firstData release];
+//        firstLine = [[RoosterEntry alloc] initWithKnightData:firstData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:150 weaponLvl:3 armorLvl:6];
-        secondLine = [[RoosterEntry alloc] initWithKnightData:secondData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
-        [secondData release];
+//        secondLine = [[RoosterEntry alloc] initWithKnightData:secondData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeBowman name:@"Sir Ian" level:5 currentExp:1135 weaponLvl:5 armorLvl:6];
-        thirdLine = [[RoosterEntry alloc] initWithKnightData:thirdData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 + 35 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+//        thirdLine = [[RoosterEntry alloc] initWithKnightData:thirdData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 + 35 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        
+        [rooster addItem:firstData];
+        [rooster addItem:secondData];
+        [rooster addItem:thirdData];
+        
+        [firstData release];
+        [secondData release];
         [thirdData release];
         
-        [rooster addItem:firstLine];
-        [rooster addItem:secondLine];
-        [rooster addItem:thirdLine];
-        
-        [items addObject:rooster];
-        
         // init rooster for trained units
-        trainRooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33];
+        trainRooster = [[Rooster alloc] initWithArea:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:164 height:323] itemSize:33 layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeBowman name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:2 armorLvl:4];
-        firstTrainLine = [[RoosterEntry alloc] initWithKnightData:firstTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
-        [firstTrainData release];
+//        firstTrainLine = [[RoosterEntry alloc] initWithKnightData:firstTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeFireEnchantress name:@"Sir Fritz" level:10 currentExp:150 weaponLvl:3 armorLvl:6];
-        secondTrainLine = [[RoosterEntry alloc] initWithKnightData:secondTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+//        secondTrainLine = [[RoosterEntry alloc] initWithKnightData:secondTrainData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
+        
+        [trainRooster addItem:firstTrainData];
+        [trainRooster addItem:secondTrainData];
+        
+        [firstTrainData release];
         [secondTrainData release];
         
-        [trainRooster addItem:firstTrainLine];
-        [trainRooster addItem:secondTrainLine];
+        if (type != BuildingTypeCastle) {
+            if (type == BuildingTypeTrainingYard)
+                [items addObject:trainRooster];
+            else
+                [items addObject:rooster];
+        }
+            
         
         
         
@@ -128,10 +136,52 @@
         interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithArea:rect layerDepth:layerDepth];
         interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
-        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:trainRooster];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth trainRooster:trainRooster rooster:rooster];
         interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         
         [items addObject:interfaceContent[interfaceType]];
+        
+        
+        // init unit info
+        unitTypes[KnightTypeBrawler] = @"Brawler";
+        unitTypes[KnightTypeBowman] = @"Bowman";
+        unitTypes[KnightTypePaladin] = @"Paladin";
+        unitTypes[KnightTypeFireEnchantress] = @"Fire enchantress";
+        
+        unitName = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
+        unitName.verticalAlign = VerticalAlignTop;
+        unitName.horizontalAlign = HorizontalAlignCenter;
+        unitName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitName setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+        
+        unitType = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:unitTypes[[rooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
+        unitType.verticalAlign = VerticalAlignTop;
+        unitType.horizontalAlign = HorizontalAlignCenter;
+        unitType.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitType setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
+        
+        if (type == BuildingTypeBarracks || type == BuildingTypeBlacksmith) {
+            [items addObject:unitName];
+            [items addObject:unitType];
+        }
+        
+        // init train unit info
+        unitNameTrain = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
+        unitNameTrain.verticalAlign = VerticalAlignTop;
+        unitNameTrain.horizontalAlign = HorizontalAlignCenter;
+        unitNameTrain.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitNameTrain setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+        
+        unitTypeTrain = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:unitTypes[[trainRooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
+        unitTypeTrain.verticalAlign = VerticalAlignTop;
+        unitTypeTrain.horizontalAlign = HorizontalAlignCenter;
+        unitTypeTrain.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitTypeTrain setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
+        
+        if (type == BuildingTypeTrainingYard) {
+            [items addObject:unitNameTrain];
+            [items addObject:unitTypeTrain];
+        }
     }
     return self;
 }
@@ -152,34 +202,103 @@
                 // remove current interface content from scene
                 [self removeItemFromScene:interfaceContent[interfaceType]];
                 
-                // if switching to castle
-                if (i == BuildingTypeCastle) {
-                    // remove training rooster if switching from training yard or remove normal rooster if swithcing from other
-                    if (interfaceType == BuildingTypeTrainingYard)
-                        [self removeItemFromScene:trainRooster];
-                    else
-                        [self removeItemFromScene:rooster];
-                // if switching from castle
-                } else if (interfaceType == BuildingTypeCastle) {
-                    // add training rooster if switching to training yard or add normal rooster if swithcing to other
-                    if (i == BuildingTypeTrainingYard)
+                // check switching TO FROM interface content
+                switch (i) {
+                    case BuildingTypeCastle:
+                        // remove training rooster and unit info if switching from training yard or remove normal rooster if swithcing from other
+                        if (interfaceType == BuildingTypeTrainingYard) {
+                            [self removeItemFromScene:trainRooster];
+                            [self removeItemFromScene:unitNameTrain];
+                            [self removeItemFromScene:unitTypeTrain];
+                        } else {
+                            [self removeItemFromScene:rooster];
+                            
+                            // also remove rooster unit info
+                            if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
+                                [self removeItemFromScene:unitName];
+                                [self removeItemFromScene:unitType];
+                            }
+                        }
+                        break;
+                        
+                    case BuildingTypeBarracks:
+                        if (interfaceType != BuildingTypeBlacksmith) {
+                            // add rooster unit info
+                            [self addItemToScene:unitName];
+                            [self addItemToScene:unitType];
+                            
+                            if (interfaceType != BuildingTypeWarbandCamp) {
+                                // add rooster
+                                [self addItemToScene:rooster];
+                                
+                                if (interfaceType == BuildingTypeTrainingYard) {
+                                    // remove train rooster and unit info
+                                    [self removeItemFromScene:trainRooster];
+                                    [self removeItemFromScene:unitNameTrain];
+                                    [self removeItemFromScene:unitTypeTrain];
+                                }
+                            }
+                        }
+                        break;
+                        
+                    case BuildingTypeWarbandCamp:
+                        if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
+                            // remove rooster unit info
+                            [self removeItemFromScene:unitName];
+                            [self removeItemFromScene:unitType];
+                        } else {
+                            // add rooster
+                            [self addItemToScene:rooster];
+                            
+                            if (interfaceType == BuildingTypeTrainingYard) {
+                                // remove train rooster and unit info
+                                [self removeItemFromScene:trainRooster];
+                                [self removeItemFromScene:unitNameTrain];
+                                [self removeItemFromScene:unitTypeTrain];
+                            }
+                        }
+                        break;
+                        
+                    case BuildingTypeTrainingYard:
+                        // add train rooster and unit info
                         [self addItemToScene:trainRooster];
-                    else
-                        [self addItemToScene:rooster];
-                // if switching to training yard
-                } else if (i == BuildingTypeTrainingYard) {
-                    // if switching from other than castle remove normal rooster and add train rooster
-                    if (interfaceType != BuildingTypeCastle)
-                        [self removeItemFromScene:rooster];
-                    
-                    [self addItemToScene:trainRooster];
-                // if switching from training yard
-                } else if (interfaceType == BuildingTypeTrainingYard) {
-                    [self removeItemFromScene:trainRooster];
-                    
-                    // if switching to other than castle add normal rooster
-                    if (i != BuildingTypeCastle)
-                        [self addItemToScene:rooster];
+                        [self addItemToScene:unitNameTrain];
+                        [self addItemToScene:unitTypeTrain];
+                        
+                        if (interfaceType != BuildingTypeCastle) {
+                            // remove rooster
+                            [self removeItemFromScene:rooster];
+                            
+                            if (interfaceType != BuildingTypeWarbandCamp) {
+                                // remove rooster unit info
+                                [self removeItemFromScene:unitName];
+                                [self removeItemFromScene:unitType];
+                            }
+                        }
+                        break;
+                        
+                    case BuildingTypeBlacksmith:
+                        if (interfaceType != BuildingTypeBarracks) {
+                            // add rooster unit info
+                            [self addItemToScene:unitName];
+                            [self addItemToScene:unitType];
+                            
+                            if (interfaceType != BuildingTypeWarbandCamp) {
+                                // add rooster
+                                [self addItemToScene:rooster];
+                                
+                                if (interfaceType == BuildingTypeTrainingYard) {
+                                    // remove train rooster and unit info
+                                    [self removeItemFromScene:trainRooster];
+                                    [self removeItemFromScene:unitNameTrain];
+                                    [self removeItemFromScene:unitTypeTrain];
+                                }
+                            }
+                        }
+                        break;
+                        
+                    default:
+                        break;
                 }
                 
                 interfaceType = i;
@@ -190,14 +309,30 @@
         }
     }
     
-    // check which item is pressed in the rooster
+    // check if selection changed in the rooster
     if (rooster.selectionChanged) {
-        NSLog([rooster getSelectedEntry].name);
+        // change rooster unit info
+        KnightData *selectedData = [rooster getSelectedData];
+        if (selectedData) {
+            unitName.text = selectedData.name;
+            unitType.text = unitTypes[selectedData.type];
+        } else {
+            unitName.text = @"";
+            unitType.text = @"";
+        }
     }
     
-    // check which item is pressed in the training rooster
+    // check if selection changed in the training rooster
     if (trainRooster.selectionChanged) {
-        NSLog([trainRooster getSelectedEntry].name);
+        // change train rooster unit info
+        KnightData *selectedData = [trainRooster getSelectedData];
+        if (selectedData) {
+            unitNameTrain.text = selectedData.name;
+            unitTypeTrain.text = unitTypes[selectedData.type];
+        } else {
+            unitNameTrain.text = @"";
+            unitTypeTrain.text = @"";
+        }
     }
 }
 
@@ -205,11 +340,24 @@
     [background release];
     [closeButton release];
     [sidePane release];
+    [sidePaneBorder release];
     [switchButtonGroup release];
+    [rooster release];
+    [trainRooster release];
     
     for (int i = 0; i < BuildingTypes; i++) {
         [switchButtons[i] release];
         [buttonKeys[i] release];
+        [interfaceContent[i] release];
+    }
+    
+    [unitName release];
+    [unitType release];
+    [unitNameTrain release];
+    [unitTypeTrain release];
+    
+    for (int i = 0; i < KnightTypes; i++) {
+        [unitTypes[i] release];
     }
     
     [super dealloc];

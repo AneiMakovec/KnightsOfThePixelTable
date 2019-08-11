@@ -106,6 +106,19 @@
     // TODO: implement skill upgrade
 }
 
+- (void) updateToKnightData:(KnightData *)data {
+    if (data) {
+        upgradeFirstSkill.label.text = [NSString stringWithFormat:@"%d", [data getLevelOfSkill:FirstComboSkill]];
+        upgradeSecondSkill.label.text = [NSString stringWithFormat:@"%d", [data getLevelOfSkill:SecondComboSkill]];
+        upgradeThirdSkill.label.text = [NSString stringWithFormat:@"%d", [data getLevelOfSkill:ThirdComboSkill]];
+    } else {
+        // reset all values to 0
+        upgradeFirstSkill.label.text = @"0";
+        upgradeSecondSkill.label.text = @"0";
+        upgradeThirdSkill.label.text = @"0";
+    }
+}
+
 
 - (void) dealloc {
     [skillPane release];

@@ -2530,5 +2530,17 @@
     return 1;
 }
 
++ (int) getMaxSkillLvl {
+    return 10;
+}
+
++ (int) getMaxEquipmentLvl {
+    return 10;
+}
+
++ (int) getMaxKnightLvl {
+    return 10;
+}
+
 
 @end

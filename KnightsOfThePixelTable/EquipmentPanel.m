@@ -98,6 +98,18 @@
 }
 
 
+- (void) updateToKnightData:(KnightData *)data {
+    if (data) {
+        weaponLvlValueLabel.text = [NSString stringWithFormat:@"%d", data.weaponLvl];
+        armorLvlValueLabel.text = [NSString stringWithFormat:@"%d", data.armorLvl];
+    } else {
+        // reset all values to 0
+        weaponLvlValueLabel.text = @"0";
+        armorLvlValueLabel.text = @"0";
+    }
+}
+
+
 - (void) dealloc {
     [weaponLabel release];
     [weapon release];

@@ -52,6 +52,10 @@
             skillLvl[i] = 1;
         }
         
+        for (int i = 0; i < StatTypes; i++) {
+            stats[i] = 100;
+        }
+        
         weaponLvl = wLevel;
         armorLvl = aLevel;
     }
@@ -84,6 +88,10 @@
     return skillLvl[skill];
 }
 
+- (int) getValueOfStat:(StatType)stat {
+    return stats[stat];
+}
+
 - (void) upgradeWeapon {
     if (weaponLvl < [Constants getMaxEquipmentLvl])
         weaponLvl++;
@@ -98,6 +106,10 @@
 // DEBUG METHOD
 - (void) setLevelOfSkill:(SkillType)skill lvl:(int)level {
     skillLvl[skill] = level;
+}
+
+- (void) setValueOfStat:(StatType)stat value:(int)value {
+    stats[stat] = value;
 }
 
 

@@ -10,39 +10,106 @@
 
 #import "Pixlron.Knights.h"
 
+#define ENTRY_WIDTH 165
+#define ENTRY_HEIGHT 33
+#define ENTRY_SPACING 34
+
 @implementation Rooster
 
-- (id) initWithArea:(Rectangle *)theArea itemSize:(int)size {
+- (id) initWithArea:(Rectangle *)theArea itemSize:(int)size layerDepth:(float)depth {
     self = [super initWithArea:theArea itemSize:size];
     if (self != nil) {
         selectionChanged = NO;
         selectedEntry = nil;
+        dontReset = NO;
+        
+        layerDepth = depth;
     }
     return self;
 }
 
 @synthesize selectionChanged;
 
-- (KnightData *) getFirstEntry {
+- (KnightData *) getFirstData {
     RoosterEntry *entry = [firstItem isKindOfClass:[RoosterEntry class]] ? (RoosterEntry *) firstItem : nil;
-    return entry.data;
+    
+    if (entry)
+        return entry.data;
+    else
+        return nil;
 }
 
-- (KnightData *) getSelectedEntry {
+- (KnightData *) getSelectedData {
+    if (selectedEntry)
+        return selectedEntry.data;
+    else
+        return nil;
+}
+
+- (RoosterEntry *) getSelectedEntry {
     return selectedEntry;
 }
 
 
 
+- (void) addItem:(id)item {
+    KnightData *data = [item isKindOfClass:[KnightData class]] ? item : nil;
+    if (data) {
+        // calculate entry position
+        RoosterEntry *entry;
+        if (firstItem == nil) {
+            entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:area.y width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
+            selectedEntry = entry;
+        } else {
+            entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:lastItem.position.y + ENTRY_SPACING width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
+        }
+        
+        // and add it to the scroll panel
+        [super addItem:entry];
+        [entry release];
+    }
+}
+
+- (void) removeItem:(id)item {
+    RoosterEntry *entryToRemove = [item isKindOfClass:[RoosterEntry class]] ? item : nil;
+    if (entryToRemove) {
+        // recalculate positions for lower entries
+        for (RoosterEntry *entry in items) {
+            if (entry.position.y > entryToRemove.position.y) {
+                [entry moveY:-ENTRY_SPACING];
+            }
+        }
+        
+        for (RoosterEntry *entry in invisibleItems) {
+            if (entry.position.y > entryToRemove.position.y)
+                [entry moveY:-ENTRY_SPACING];
+        }
+    }
+    
+    // remove item
+    [super removeItem:item];
+    
+    // set selected entry to first entry
+    selectedEntry = (RoosterEntry *) firstItem;
+    selectionChanged = YES;
+    dontReset = YES;
+}
+
+
+
 - (void) updateWithInverseView:(Matrix *)inverseView {
-    selectionChanged = NO;
+    if (dontReset) {
+        dontReset = NO;
+    } else {
+        selectionChanged = NO;
+    }
     
     // check if an entry was selected
     if (!scrolling) {
         for (RoosterEntry *entry in items) {
             if ([entry wasSelected]) {
-                if (selectedEntry == nil || ![selectedEntry.keyID isEqualToString:entry.data.keyID]) {
-                    selectedEntry = entry.data;
+                if (selectedEntry == nil || ![selectedEntry.data.keyID isEqualToString:entry.data.keyID]) {
+                    selectedEntry = entry;
                     selectionChanged = YES;
                     break;
                 }

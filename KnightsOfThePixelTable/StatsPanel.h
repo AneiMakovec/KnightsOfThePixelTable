@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth;
 
+- (void) updateToKnightData:(KnightData *)data;
+
 @end
 
 NS_ASSUME_NONNULL_END
