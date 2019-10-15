@@ -19,32 +19,50 @@
         rooster = [theRooster retain];
         
         // init warband slots
-        firstSlot = [[DropInImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];
-        firstSlot.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        [items addObject:firstSlot];
+        warbandSlots[FirstWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];
+        warbandSlots[FirstWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:warbandSlots[FirstWarbandSlot]];
         
-        secondSlot = [[DropInImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 415 y:area.y + 300 width:42 height:42]];
-        secondSlot.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        [items addObject:secondSlot];
+        warbandSlots[SecondWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 415 y:area.y + 300 width:42 height:42]];
+        warbandSlots[SecondWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:warbandSlots[SecondWarbandSlot]];
         
-        thirdSlot = [[DropInImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 305 y:area.y + 150 width:42 height:42]];
-        thirdSlot.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        [items addObject:thirdSlot];
+        warbandSlots[ThirdWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 305 y:area.y + 150 width:42 height:42]];
+        warbandSlots[ThirdWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:warbandSlots[ThirdWarbandSlot]];
         
-        fourthSlot = [[DropInImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 265 y:area.y + 300 width:42 height:42]];
-        fourthSlot.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        [items addObject:fourthSlot];
+        warbandSlots[FourthWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 265 y:area.y + 300 width:42 height:42]];
+        warbandSlots[FourthWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:warbandSlots[FourthWarbandSlot]];
+        
+        // init colors
+        selectedColor = [[Color red] retain];
+        defaultColor = [[Color white] retain];
+        
+        selectedSlot = FirstWarbandSlot;
+        warbandSlots[selectedSlot].color = selectedColor;
     }
     return self;
+}
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+    // check if slots were selected
+    for (int i = 0; i < WarbandSlotTypes; i++) {
+        if (warbandSlots[i].wasReleased && selectedSlot != i) {
+            // reset color of previous selected slot
+            warbandSlots[selectedSlot].color = defaultColor;
+            selectedSlot = i;
+            
+            // set color of currently selected slot
+            warbandSlots[selectedSlot].color = selectedColor;
+        }
+    }
 }
 
 - (void) dealloc {
     [rooster release];
     
-    [firstSlot release];
-    [secondSlot release];
-    [thirdSlot release];
-    [fourthSlot release];
+    
     
     [super dealloc];
 }

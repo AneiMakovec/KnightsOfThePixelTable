@@ -18,6 +18,9 @@
         // init graphics device
         graphics = [[GraphicsDeviceManager alloc] initWithGame:self];
         
+        // load graphics
+        [GraphicsImporter initializeWithGame:self];
+        
         // init sound engine
         [SoundEngine initializeWithGame:self];
         

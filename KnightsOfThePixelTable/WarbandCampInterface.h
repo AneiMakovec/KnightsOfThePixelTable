@@ -12,12 +12,24 @@
 
 #import "PixEngine.GUI.h"
 
+typedef enum {
+    FirstWarbandSlot,
+    SecondWarbandSlot,
+    ThirdWarbandSlot,
+    FourthWarbandSlot,
+    WarbandSlotTypes
+} WarbandSlotType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WarbandCampInterface : GuiPanel {
     Rooster *rooster;
     
-    DropInImage *firstSlot, *secondSlot, *thirdSlot, *fourthSlot;
+    TouchImage *warbandSlots[WarbandSlotTypes];
+    
+    Color *selectedColor, *defaultColor;
+    
+    WarbandSlotType selectedSlot;
 }
 
 - (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;

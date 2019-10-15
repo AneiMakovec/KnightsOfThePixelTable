@@ -18,6 +18,8 @@
 #import "TextureComponent.h"
 #import "CamelotTextureComponent.h"
 
+#import "GraphicsImporter.h"
+
 
 // HUD
 #import "GameHud.h"

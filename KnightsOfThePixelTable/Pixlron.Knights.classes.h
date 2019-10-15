@@ -14,6 +14,8 @@
 
 @class ScreenComponent, TextureComponent, CamelotTextureComponent;
 
+@class GraphicsImporter;
+
 // HUD
 @class GameHud;
 @class Indicator, AnimatedIndicator;

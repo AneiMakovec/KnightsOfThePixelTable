@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500BBAE23563F2A005A8491 /* GraphicsImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsImporter.m */; };
+		B500BBB023564A86005A8491 /* liliput-steps-6.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */; };
+		B500BBB523567319005A8491 /* spritesheet_0.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB123567319005A8491 /* spritesheet_0.png */; };
+		B500BBB623567319005A8491 /* spritesheet_0.json in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB223567319005A8491 /* spritesheet_0.json */; };
+		B500BBB723567319005A8491 /* spritesheet_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB323567319005A8491 /* spritesheet_1.png */; };
+		B500BBB823567319005A8491 /* spritesheet_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB423567319005A8491 /* spritesheet_1.json */; };
 		B5047D4D22ED11610057866C /* interface_pane_scroll_line.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */; };
 		B5047D4E22ED11610057866C /* interface_pane_skills.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4022ED11600057866C /* interface_pane_skills.png */; };
 		B5047D4F22ED11610057866C /* interface_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4122ED11600057866C /* interface_tab.png */; };
@@ -187,6 +193,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B500BBAC23563F2A005A8491 /* GraphicsImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsImporter.h; sourceTree = "<group>"; };
+		B500BBAD23563F2A005A8491 /* GraphicsImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsImporter.m; sourceTree = "<group>"; };
+		B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "liliput-steps-6.bmp"; sourceTree = "<group>"; };
+		B500BBB123567319005A8491 /* spritesheet_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_0.png; sourceTree = "<group>"; };
+		B500BBB223567319005A8491 /* spritesheet_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_0.json; sourceTree = "<group>"; };
+		B500BBB323567319005A8491 /* spritesheet_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_1.png; sourceTree = "<group>"; };
+		B500BBB423567319005A8491 /* spritesheet_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_1.json; sourceTree = "<group>"; };
 		B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane_scroll_line.png; sourceTree = "<group>"; };
 		B5047D4022ED11600057866C /* interface_pane_skills.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane_skills.png; sourceTree = "<group>"; };
 		B5047D4122ED11600057866C /* interface_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_tab.png; sourceTree = "<group>"; };
@@ -446,6 +459,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B500BBA323563EAE005A8491 /* Spritesheet */ = {
+			isa = PBXGroup;
+			children = (
+				B500BBB223567319005A8491 /* spritesheet_0.json */,
+				B500BBB123567319005A8491 /* spritesheet_0.png */,
+				B500BBB423567319005A8491 /* spritesheet_1.json */,
+				B500BBB323567319005A8491 /* spritesheet_1.png */,
+			);
+			path = Spritesheet;
+			sourceTree = "<group>";
+		};
 		B50F82F721ED1D8A000C2A92 /* Game progress */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,13 +682,14 @@
 		B55FA73F21D828E600526790 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */,
 				B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */,
 				B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */,
 				B53912CF22F86553005E4686 /* alagard.bmp */,
 				B53912D222F86553005E4686 /* alkhemikal.bmp */,
 				B53912D022F86553005E4686 /* fipps.bmp */,
-				B53912CD22F86553005E4686 /* nice_nightie.bmp */,
 				B53912CC22F86553005E4686 /* nicer_nightie.bmp */,
+				B53912CD22F86553005E4686 /* nice_nightie.bmp */,
 				B53912CE22F86553005E4686 /* perfect_dos.bmp */,
 				B53912D122F86553005E4686 /* squarebit.bmp */,
 				B55FA74221D82F4500526790 /* font.bmp */,
@@ -1105,6 +1130,8 @@
 				B5A881AF2201B5C100ADCE9E /* TextureComponent.m */,
 				B5309CBD22C2597F005CE22F /* CamelotTextureComponent.h */,
 				B5309CBE22C2597F005CE22F /* CamelotTextureComponent.m */,
+				B500BBAC23563F2A005A8491 /* GraphicsImporter.h */,
+				B500BBAD23563F2A005A8491 /* GraphicsImporter.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1213,6 +1240,7 @@
 		B5E380372183B3060007D013 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B500BBA323563EAE005A8491 /* Spritesheet */,
 				B5AE501621BEEF8200FC5CBF /* Audio */,
 				B5E380382183B35F0007D013 /* Images */,
 			);
@@ -1411,6 +1439,7 @@
 				B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */,
 				B5D1747021FF86100033DF2C /* arrow.png in Resources */,
 				B5CF918D22009CB0006A52B5 /* button_confirm.png in Resources */,
+				B500BBB623567319005A8491 /* spritesheet_0.json in Resources */,
 				B560375921FE803A00CE7123 /* background_main_menu.png in Resources */,
 				B53912D622F86553005E4686 /* alagard.bmp in Resources */,
 				B5047D5622ED11610057866C /* interface_button_close_pressed.png in Resources */,
@@ -1430,11 +1459,14 @@
 				B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */,
 				B51722BC22F1B19F005718D4 /* interface_pane_scroll.png in Resources */,
 				B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */,
+				B500BBB723567319005A8491 /* spritesheet_1.png in Resources */,
 				B5CF91A72200F964006A52B5 /* music_battle.mp3 in Resources */,
 				B5047D5722ED11610057866C /* interface_pane.png in Resources */,
 				B560372921FE707200CE7123 /* status_effect_buff.png in Resources */,
+				B500BBB523567319005A8491 /* spritesheet_0.png in Resources */,
 				B53912D722F86553005E4686 /* fipps.bmp in Resources */,
 				B560375121FE725D00CE7123 /* character_enemy_swordsman.png in Resources */,
+				B500BBB823567319005A8491 /* spritesheet_1.json in Resources */,
 				B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */,
 				B5CF91912200C903006A52B5 /* background_world_menu.png in Resources */,
 				B5CF919E2200D8BD006A52B5 /* boss_idle.png in Resources */,
@@ -1458,6 +1490,7 @@
 				B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */,
 				B5CF91B022010795006A52B5 /* button_gate.png in Resources */,
 				B560372521FE707200CE7123 /* status_effect_stun.png in Resources */,
+				B500BBB023564A86005A8491 /* liliput-steps-6.bmp in Resources */,
 				B5047D5422ED11610057866C /* interface_slot_gold.png in Resources */,
 				B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */,
 				B53912D922F86553005E4686 /* alkhemikal.bmp in Resources */,
@@ -1518,6 +1551,7 @@
 				B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
+				B500BBAE23563F2A005A8491 /* GraphicsImporter.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
 				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
 				B5E3D56D22F9D445004B574D /* KnightData.m in Sources */,
