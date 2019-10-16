@@ -19,7 +19,7 @@
     if (self != nil) {
         
         // init textures
-        [TextureComponent activateWithGame:self.game];
+        [GameplaySpriteComponent activateWithGame:self.game];
         
         // init level
         switch (levelType) {
@@ -90,7 +90,7 @@
     [self.game.components removeComponent:turnManager];
     [self.game.components removeComponent:renderer];
     
-    [TextureComponent deactivate];
+    [GameplaySpriteComponent deactivate];
 }
 
 

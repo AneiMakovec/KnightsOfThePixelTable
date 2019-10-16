@@ -275,7 +275,7 @@ typedef enum {
 #define DICE_SYMBOLS @"combat_dices"
 
 // MARK: gui textures - buttons
-#define FONT @"squarebit"
+#define FONT @"lilliput_steps"
 #define BUTTON_BACKGROUND @"button_background"
 #define MUSIC_BUTTON_ENABLED @"enabled_music_button"
 #define MUSIC_BUTTON_DISABLED @"disabled_music_button"
@@ -330,7 +330,7 @@ typedef enum {
 
 #define INTERFACE_SCALE_FONT_TINY 0.5f
 #define INTERFACE_SCALE_FONT_SMALL 0.6f
-#define INTERFACE_SCALE_FONT_MEDIUM 0.8f
+#define INTERFACE_SCALE_FONT_MEDIUM 1.4f
 #define INTERFACE_SCALE_FONT_BIG 2.0f
 
 // MARK: attack textures
@@ -346,6 +346,8 @@ typedef enum {
 // MARK: SPRITESHEETS
 #define SPRITESHEET_0 @"spritesheet_0"
 #define SPRITESHEET_1 @"spritesheet_1"
+#define DATA_ANIMATIONS @"data_animations"
+#define DATA_CONSTANTS @"data_constants"
 
 
 // MARK: MAIN MENU
@@ -425,6 +427,8 @@ typedef enum {
 #define TOWN_MENU_INTERFACE_WINDOW_UP_LEFT @"town_menu/interface/window/up_left"
 #define TOWN_MENU_INTERFACE_WINDOW_UP_RIGHT @"town_menu/interface/window/up_right"
 #define TOWN_MENU_INTERFACE_WINDOW_UP @"town_menu/interface/window/up"
+
+#define TOWN_MENU_INTERFACE_WINDOW @"town_menu/interface/window"
 
 #define TOWN_MENU_TUTORIAL_BARRACKS @"town_menu/tutorial/barracks"
 #define TOWN_MENU_TUTORIAL_BLACKSMITH @"town_menu/tutorial/blacksmith"

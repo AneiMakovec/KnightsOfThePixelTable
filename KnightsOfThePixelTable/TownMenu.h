@@ -1,5 +1,5 @@
 //
-//  CamelotMenu.h
+//  TownMenu.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 07/01/2019.
@@ -12,14 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CamelotMenu : Menu {
+@interface TownMenu : Menu {
     Label *title;
     
     Image *background;
     
-    ImageLabelButton *castle, *commandersPost, *barracks, *enchantersGuild, *blackSmith, *adventurersYard, *warbandCamp;
-    
-    ImageButton *gatehouse;
+    ImageButton *castle, *barracks, *blacksmith, *trainingYard, *warbandCamp, *gatehouse;
     
     Interface *interface;
 }

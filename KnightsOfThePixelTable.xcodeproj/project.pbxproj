@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B500BBAE23563F2A005A8491 /* GraphicsImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsImporter.m */; };
-		B500BBB023564A86005A8491 /* liliput-steps-6.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */; };
+		B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsComponent.m */; };
+		B500BBB023564A86005A8491 /* lilliput_steps.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B500BBAF23564A86005A8491 /* lilliput_steps.bmp */; };
 		B500BBB523567319005A8491 /* spritesheet_0.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB123567319005A8491 /* spritesheet_0.png */; };
 		B500BBB623567319005A8491 /* spritesheet_0.json in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB223567319005A8491 /* spritesheet_0.json */; };
 		B500BBB723567319005A8491 /* spritesheet_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB323567319005A8491 /* spritesheet_1.png */; };
@@ -42,7 +42,7 @@
 		B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4E21EEA6A900B09A55 /* Buff.m */; };
 		B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE5121EEA6BD00B09A55 /* Debuff.m */; };
 		B5309CBC22C256FC005CE22F /* Interface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CBB22C256FC005CE22F /* Interface.m */; };
-		B5309CBF22C2597F005CE22F /* CamelotTextureComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CBE22C2597F005CE22F /* CamelotTextureComponent.m */; };
+		B5309CBF22C2597F005CE22F /* TownSpriteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CBE22C2597F005CE22F /* TownSpriteComponent.m */; };
 		B5309CC322C26A32005CE22F /* CastleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CC222C26A32005CE22F /* CastleInterface.m */; };
 		B5309CC922C26A9F005CE22F /* BarracksInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CC822C26A9F005CE22F /* BarracksInterface.m */; };
 		B5309CCC22C26AB3005CE22F /* WarbandCampInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5309CCB22C26AB3005CE22F /* WarbandCampInterface.m */; };
@@ -62,8 +62,7 @@
 		B54E88CD21E2CDFC0040C888 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88CC21E2CDFC0040C888 /* Menu.m */; };
 		B54E88D021E2D2450040C888 /* button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B54E88CF21E2D2450040C888 /* button_background.png */; };
 		B54E88D321E2D3760040C888 /* MainMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D221E2D3760040C888 /* MainMenu.m */; };
-		B54E88D621E2E0C20040C888 /* OptionsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D521E2E0C20040C888 /* OptionsMenu.m */; };
-		B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D821E2E56E0040C888 /* CamelotMenu.m */; };
+		B54E88D921E2E56E0040C888 /* TownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88D821E2E56E0040C888 /* TownMenu.m */; };
 		B5511B3422FB83C700E0F51E /* RoosterEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B5511B3322FB83C700E0F51E /* RoosterEntry.m */; };
 		B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */ = {isa = PBXBuildFile; fileRef = B55FA72721D7FC0A00526790 /* background_farmlands.png */; };
 		B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */ = {isa = PBXBuildFile; fileRef = B55FA72821D7FC0A00526790 /* background_mountains.png */; };
@@ -113,7 +112,7 @@
 		B595F9CE21D05D9800BC07C5 /* hp_pool.png in Resources */ = {isa = PBXBuildFile; fileRef = B595F9CD21D05D9700BC07C5 /* hp_pool.png */; };
 		B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493C921CAD38A003EBB1D /* Stat.m */; };
 		B5A493CD21CAECF0003EBB1D /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A493CC21CAECF0003EBB1D /* Skill.m */; };
-		B5A881B02201B5C100ADCE9E /* TextureComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A881AF2201B5C100ADCE9E /* TextureComponent.m */; };
+		B5A881B02201B5C100ADCE9E /* GameplaySpriteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A881AF2201B5C100ADCE9E /* GameplaySpriteComponent.m */; };
 		B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AE501421BEEE2800FC5CBF /* SoundEngine.m */; };
 		B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501B21BEF47300FC5CBF /* dice_hit.wav */; };
 		B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501C21BEF47300FC5CBF /* background_sounds.wav */; };
@@ -168,6 +167,8 @@
 		B5E3D56D22F9D445004B574D /* KnightData.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E3D56C22F9D445004B574D /* KnightData.m */; };
 		B5EE0AEB22FF1E7700A291C6 /* squarebit_8px.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */; };
 		B5EE0AEC22FF1E7700A291C6 /* alagard_8px.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */; };
+		B5EFF066235743CD00A71204 /* data_constants.json in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF065235743CC00A71204 /* data_constants.json */; };
+		B5EFF068235768E400A71204 /* data_animations.json in Resources */ = {isa = PBXBuildFile; fileRef = B5EFF067235768E400A71204 /* data_animations.json */; };
 		B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FE06E621CC6AF200038407 /* Dicepool.m */; };
 		B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FFCB8921A3603C005F15BF /* Dice.m */; };
 		B5FFCB9521A36131005F15BF /* combat_dices.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FFCB9221A36131005F15BF /* combat_dices.png */; };
@@ -193,9 +194,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B500BBAC23563F2A005A8491 /* GraphicsImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsImporter.h; sourceTree = "<group>"; };
-		B500BBAD23563F2A005A8491 /* GraphicsImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsImporter.m; sourceTree = "<group>"; };
-		B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = "liliput-steps-6.bmp"; sourceTree = "<group>"; };
+		B500BBAC23563F2A005A8491 /* GraphicsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsComponent.h; sourceTree = "<group>"; };
+		B500BBAD23563F2A005A8491 /* GraphicsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsComponent.m; sourceTree = "<group>"; };
+		B500BBAF23564A86005A8491 /* lilliput_steps.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = lilliput_steps.bmp; sourceTree = "<group>"; };
 		B500BBB123567319005A8491 /* spritesheet_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_0.png; sourceTree = "<group>"; };
 		B500BBB223567319005A8491 /* spritesheet_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_0.json; sourceTree = "<group>"; };
 		B500BBB323567319005A8491 /* spritesheet_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_1.png; sourceTree = "<group>"; };
@@ -239,8 +240,8 @@
 		B523BE5121EEA6BD00B09A55 /* Debuff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Debuff.m; sourceTree = "<group>"; };
 		B5309CBA22C256FC005CE22F /* Interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interface.h; sourceTree = "<group>"; };
 		B5309CBB22C256FC005CE22F /* Interface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Interface.m; sourceTree = "<group>"; };
-		B5309CBD22C2597F005CE22F /* CamelotTextureComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamelotTextureComponent.h; sourceTree = "<group>"; };
-		B5309CBE22C2597F005CE22F /* CamelotTextureComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamelotTextureComponent.m; sourceTree = "<group>"; };
+		B5309CBD22C2597F005CE22F /* TownSpriteComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TownSpriteComponent.h; sourceTree = "<group>"; };
+		B5309CBE22C2597F005CE22F /* TownSpriteComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TownSpriteComponent.m; sourceTree = "<group>"; };
 		B5309CC122C26A32005CE22F /* CastleInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CastleInterface.h; sourceTree = "<group>"; };
 		B5309CC222C26A32005CE22F /* CastleInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CastleInterface.m; sourceTree = "<group>"; };
 		B5309CC722C26A9F005CE22F /* BarracksInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarracksInterface.h; sourceTree = "<group>"; };
@@ -271,10 +272,8 @@
 		B54E88CF21E2D2450040C888 /* button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_background.png; sourceTree = "<group>"; };
 		B54E88D121E2D3760040C888 /* MainMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
 		B54E88D221E2D3760040C888 /* MainMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenu.m; sourceTree = "<group>"; };
-		B54E88D421E2E0C20040C888 /* OptionsMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsMenu.h; sourceTree = "<group>"; };
-		B54E88D521E2E0C20040C888 /* OptionsMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsMenu.m; sourceTree = "<group>"; };
-		B54E88D721E2E56E0040C888 /* CamelotMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamelotMenu.h; sourceTree = "<group>"; };
-		B54E88D821E2E56E0040C888 /* CamelotMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamelotMenu.m; sourceTree = "<group>"; };
+		B54E88D721E2E56E0040C888 /* TownMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TownMenu.h; sourceTree = "<group>"; };
+		B54E88D821E2E56E0040C888 /* TownMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TownMenu.m; sourceTree = "<group>"; };
 		B5511B3222FB83C700E0F51E /* RoosterEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoosterEntry.h; sourceTree = "<group>"; };
 		B5511B3322FB83C700E0F51E /* RoosterEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoosterEntry.m; sourceTree = "<group>"; };
 		B55FA72721D7FC0A00526790 /* background_farmlands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_farmlands.png; sourceTree = "<group>"; };
@@ -351,8 +350,8 @@
 		B5A493C921CAD38A003EBB1D /* Stat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stat.m; sourceTree = "<group>"; };
 		B5A493CB21CAECF0003EBB1D /* Skill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
 		B5A493CC21CAECF0003EBB1D /* Skill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
-		B5A881AE2201B5C100ADCE9E /* TextureComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureComponent.h; sourceTree = "<group>"; };
-		B5A881AF2201B5C100ADCE9E /* TextureComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureComponent.m; sourceTree = "<group>"; };
+		B5A881AE2201B5C100ADCE9E /* GameplaySpriteComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameplaySpriteComponent.h; sourceTree = "<group>"; };
+		B5A881AF2201B5C100ADCE9E /* GameplaySpriteComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameplaySpriteComponent.m; sourceTree = "<group>"; };
 		B5AE501321BEEE2800FC5CBF /* SoundEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundEngine.h; sourceTree = "<group>"; };
 		B5AE501421BEEE2800FC5CBF /* SoundEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundEngine.m; sourceTree = "<group>"; };
 		B5AE501B21BEF47300FC5CBF /* dice_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice_hit.wav; sourceTree = "<group>"; };
@@ -430,6 +429,8 @@
 		B5E3D56C22F9D445004B574D /* KnightData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightData.m; sourceTree = "<group>"; };
 		B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = squarebit_8px.bmp; sourceTree = "<group>"; };
 		B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = alagard_8px.bmp; sourceTree = "<group>"; };
+		B5EFF065235743CC00A71204 /* data_constants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data_constants.json; sourceTree = "<group>"; };
+		B5EFF067235768E400A71204 /* data_animations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data_animations.json; sourceTree = "<group>"; };
 		B5FE06E521CC6AF200038407 /* Dicepool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dicepool.h; sourceTree = "<group>"; };
 		B5FE06E621CC6AF200038407 /* Dicepool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dicepool.m; sourceTree = "<group>"; };
 		B5FE45EE21ADEA3F00F3C177 /* IDice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDice.h; sourceTree = "<group>"; };
@@ -562,7 +563,7 @@
 			name = "Gameplay interfaces";
 			sourceTree = "<group>";
 		};
-		B52284D521EFA0000005B3AC /* Camelot interfaces */ = {
+		B52284D521EFA0000005B3AC /* Town interfaces */ = {
 			isa = PBXGroup;
 			children = (
 				B5309CBA22C256FC005CE22F /* Interface.h */,
@@ -571,7 +572,7 @@
 				B5D9CE6922F3159600AC165A /* Panels */,
 				B5E3D56A22F9D3C9004B574D /* Rooster */,
 			);
-			name = "Camelot interfaces";
+			name = "Town interfaces";
 			sourceTree = "<group>";
 		};
 		B52284D621EFA0080005B3AC /* Indicators */ = {
@@ -640,10 +641,8 @@
 				B54E88CC21E2CDFC0040C888 /* Menu.m */,
 				B54E88D121E2D3760040C888 /* MainMenu.h */,
 				B54E88D221E2D3760040C888 /* MainMenu.m */,
-				B54E88D421E2E0C20040C888 /* OptionsMenu.h */,
-				B54E88D521E2E0C20040C888 /* OptionsMenu.m */,
-				B54E88D721E2E56E0040C888 /* CamelotMenu.h */,
-				B54E88D821E2E56E0040C888 /* CamelotMenu.m */,
+				B54E88D721E2E56E0040C888 /* TownMenu.h */,
+				B54E88D821E2E56E0040C888 /* TownMenu.m */,
 				B5CF91922200C95C006A52B5 /* WorldMenu.h */,
 				B5CF91932200C95C006A52B5 /* WorldMenu.m */,
 			);
@@ -673,7 +672,7 @@
 		B55FA72621D7F2B600526790 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				B52284D521EFA0000005B3AC /* Camelot interfaces */,
+				B52284D521EFA0000005B3AC /* Town interfaces */,
 				B52284D421EF9FDB0005B3AC /* Gameplay interfaces */,
 			);
 			name = GUI;
@@ -682,7 +681,7 @@
 		B55FA73F21D828E600526790 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				B500BBAF23564A86005A8491 /* liliput-steps-6.bmp */,
+				B500BBAF23564A86005A8491 /* lilliput_steps.bmp */,
 				B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */,
 				B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */,
 				B53912CF22F86553005E4686 /* alagard.bmp */,
@@ -1120,18 +1119,15 @@
 		B5DE1252218DA625000D6784 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				B5EFF0622357288300A71204 /* Sprite Components */,
 				B57B0D1821A602530064B91F /* GameRenderer.h */,
 				B57B0D1921A602530064B91F /* GameRenderer.m */,
 				B55FA73C21D8196100526790 /* GUIRenderer.h */,
 				B55FA73D21D8196100526790 /* GUIRenderer.m */,
 				B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */,
 				B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */,
-				B5A881AE2201B5C100ADCE9E /* TextureComponent.h */,
-				B5A881AF2201B5C100ADCE9E /* TextureComponent.m */,
-				B5309CBD22C2597F005CE22F /* CamelotTextureComponent.h */,
-				B5309CBE22C2597F005CE22F /* CamelotTextureComponent.m */,
-				B500BBAC23563F2A005A8491 /* GraphicsImporter.h */,
-				B500BBAD23563F2A005A8491 /* GraphicsImporter.m */,
+				B500BBAC23563F2A005A8491 /* GraphicsComponent.h */,
+				B500BBAD23563F2A005A8491 /* GraphicsComponent.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1240,6 +1236,7 @@
 		B5E380372183B3060007D013 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5EFF063235729E500A71204 /* Data */,
 				B500BBA323563EAE005A8491 /* Spritesheet */,
 				B5AE501621BEEF8200FC5CBF /* Audio */,
 				B5E380382183B35F0007D013 /* Images */,
@@ -1345,6 +1342,26 @@
 				B5511B3322FB83C700E0F51E /* RoosterEntry.m */,
 			);
 			name = Rooster;
+			sourceTree = "<group>";
+		};
+		B5EFF0622357288300A71204 /* Sprite Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5A881AE2201B5C100ADCE9E /* GameplaySpriteComponent.h */,
+				B5A881AF2201B5C100ADCE9E /* GameplaySpriteComponent.m */,
+				B5309CBD22C2597F005CE22F /* TownSpriteComponent.h */,
+				B5309CBE22C2597F005CE22F /* TownSpriteComponent.m */,
+			);
+			name = "Sprite Components";
+			sourceTree = "<group>";
+		};
+		B5EFF063235729E500A71204 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B5EFF067235768E400A71204 /* data_animations.json */,
+				B5EFF065235743CC00A71204 /* data_constants.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B5FFCB8B21A3607F005F15BF /* Areas */ = {
@@ -1459,6 +1476,7 @@
 				B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */,
 				B51722BC22F1B19F005718D4 /* interface_pane_scroll.png in Resources */,
 				B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */,
+				B5EFF066235743CD00A71204 /* data_constants.json in Resources */,
 				B500BBB723567319005A8491 /* spritesheet_1.png in Resources */,
 				B5CF91A72200F964006A52B5 /* music_battle.mp3 in Resources */,
 				B5047D5722ED11610057866C /* interface_pane.png in Resources */,
@@ -1475,6 +1493,7 @@
 				B5047D4F22ED11610057866C /* interface_tab.png in Resources */,
 				B5D1746F21FF86100033DF2C /* fire_ball.png in Resources */,
 				B55FA74321D82F4500526790 /* font.bmp in Resources */,
+				B5EFF068235768E400A71204 /* data_animations.json in Resources */,
 				B5CF918F22009CB0006A52B5 /* button_music_off.png in Resources */,
 				B5CF91A02200D8BD006A52B5 /* boss_move.png in Resources */,
 				B560372A21FE707200CE7123 /* heal.png in Resources */,
@@ -1490,7 +1509,7 @@
 				B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */,
 				B5CF91B022010795006A52B5 /* button_gate.png in Resources */,
 				B560372521FE707200CE7123 /* status_effect_stun.png in Resources */,
-				B500BBB023564A86005A8491 /* liliput-steps-6.bmp in Resources */,
+				B500BBB023564A86005A8491 /* lilliput_steps.bmp in Resources */,
 				B5047D5422ED11610057866C /* interface_slot_gold.png in Resources */,
 				B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */,
 				B53912D922F86553005E4686 /* alkhemikal.bmp in Resources */,
@@ -1551,7 +1570,7 @@
 				B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */,
 				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
-				B500BBAE23563F2A005A8491 /* GraphicsImporter.m in Sources */,
+				B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
 				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
 				B5E3D56D22F9D445004B574D /* KnightData.m in Sources */,
@@ -1563,7 +1582,6 @@
 				B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */,
 				B5C2800621D42D72009C657A /* TurnManager.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
-				B54E88D621E2E0C20040C888 /* OptionsMenu.m in Sources */,
 				B5CF91A42200DB42006A52B5 /* MonsterBoosKnight.m in Sources */,
 				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
 				B5309CCF22C26AC3005CE22F /* TrainingYardInterface.m in Sources */,
@@ -1573,14 +1591,14 @@
 				B54E88D321E2D3760040C888 /* MainMenu.m in Sources */,
 				B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */,
 				B5D9CE6C22F315F800AC165A /* StatsPanel.m in Sources */,
-				B54E88D921E2E56E0040C888 /* CamelotMenu.m in Sources */,
+				B54E88D921E2E56E0040C888 /* TownMenu.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */,
 				B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */,
 				B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */,
 				B560376721FE843800CE7123 /* MonsterBrute.m in Sources */,
 				B5309CBC22C256FC005CE22F /* Interface.m in Sources */,
-				B5309CBF22C2597F005CE22F /* CamelotTextureComponent.m in Sources */,
+				B5309CBF22C2597F005CE22F /* TownSpriteComponent.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
@@ -1592,7 +1610,7 @@
 				B5511B3422FB83C700E0F51E /* RoosterEntry.m in Sources */,
 				B5CF917F2200863F006A52B5 /* DungeonEndInterface.m in Sources */,
 				B57B0D0F21A5FCA80064B91F /* Level.m in Sources */,
-				B5A881B02201B5C100ADCE9E /* TextureComponent.m in Sources */,
+				B5A881B02201B5C100ADCE9E /* GameplaySpriteComponent.m in Sources */,
 				B58869A521C4430900CE4C0E /* Monster.m in Sources */,
 				B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */,
 				B5CF917C22008611006A52B5 /* RetreatInterface.m in Sources */,

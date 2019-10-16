@@ -47,7 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
     RoosterEntry *firstTrainLine, *secondTrainLine, *thirdTrainLine;
 }
 
-- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth type:(BuildingType)type;
+- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth;
+
+- (void) updateContent:(BuildingType)type;
 
 @end
 

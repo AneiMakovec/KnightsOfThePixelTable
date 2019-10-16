@@ -37,16 +37,9 @@
 }
 
 - (void) initialize {
-    // Fonts
-    FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
-    font = [self.game.content load:FONT processor:fontProcessor];
-    
     // Buttons
-    buttonBackground = [self.game.content load:BUTTON_BACKGROUND];
-    
-    Texture2D *backButtonTexture = [self.game.content load:BUTTON_BACK];
-    back = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 50 y:10 width:40 height:40]
-                                  background:backButtonTexture];
+    back = [[GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_RETURN atPosition:[Vector2 vectorWithX:[Constants backgroundWidth] - 50 y:10]] retain];
+    [back setScaleUniform:1.5];
     
     [super initialize];
 }
@@ -75,8 +68,6 @@
 - (void) dealloc
 {
     [back release];
-    [buttonBackground release];
-    [font release];
     [scene release];
     [renderer release];
     [super dealloc];

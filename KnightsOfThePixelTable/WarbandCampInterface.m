@@ -19,19 +19,19 @@
         rooster = [theRooster retain];
         
         // init warband slots
-        warbandSlots[FirstWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];
+        warbandSlots[FirstWarbandSlot] = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];
         warbandSlots[FirstWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:warbandSlots[FirstWarbandSlot]];
         
-        warbandSlots[SecondWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 415 y:area.y + 300 width:42 height:42]];
+        warbandSlots[SecondWarbandSlot] = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 415 y:area.y + 300 width:42 height:42]];
         warbandSlots[SecondWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:warbandSlots[SecondWarbandSlot]];
         
-        warbandSlots[ThirdWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 305 y:area.y + 150 width:42 height:42]];
+        warbandSlots[ThirdWarbandSlot] = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 305 y:area.y + 150 width:42 height:42]];
         warbandSlots[ThirdWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:warbandSlots[ThirdWarbandSlot]];
         
-        warbandSlots[FourthWarbandSlot] = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 265 y:area.y + 300 width:42 height:42]];
+        warbandSlots[FourthWarbandSlot] = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 265 y:area.y + 300 width:42 height:42]];
         warbandSlots[FourthWarbandSlot].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:warbandSlots[FourthWarbandSlot]];
         

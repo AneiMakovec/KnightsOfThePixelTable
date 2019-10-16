@@ -15,10 +15,10 @@
 #import "GUIRenderer.h"
 
 #import "ScreenComponent.h"
-#import "TextureComponent.h"
-#import "CamelotTextureComponent.h"
+#import "GameplaySpriteComponent.h"
+#import "TownSpriteComponent.h"
 
-#import "GraphicsImporter.h"
+#import "GraphicsComponent.h"
 
 
 // HUD
@@ -115,8 +115,7 @@
 #import "Gameplay.h"
 #import "Menu.h"
 #import "MainMenu.h"
-#import "OptionsMenu.h"
-#import "CamelotMenu.h"
+#import "TownMenu.h"
 #import "WorldMenu.h"
 
 // Game progress

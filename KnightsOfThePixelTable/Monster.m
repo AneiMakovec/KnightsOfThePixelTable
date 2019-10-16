@@ -21,7 +21,7 @@
         
         // init textures
         for (int i = 0; i < EntityStates; i++) {
-            animations[i] = [[TextureComponent getAnimationType:i forEnemy:type] retain];
+            animations[i] = [[GameplaySpriteComponent getAnimationType:i forEnemy:type] retain];
         }
     }
     return self;

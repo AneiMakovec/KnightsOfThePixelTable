@@ -13,12 +13,12 @@
 @implementation RetreatInterface
 
 - (id) initWithHud:(GameHud *)theHud contentManager:(ContentManager *)manager font:(SpriteFont *)font backgroundTextures:(NSMutableArray *)textures camera:(Matrix *)camera {
-    self = [super initWithCamera:camera];
+    self = [super init];
     if (self != nil) {
         hud = theHud;
         
         // init background
-        background = [[CompositeImage alloc] initWithImageTextures:textures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
+        background = [[GraphicsComponent getCompositeImageWithKey:TOWN_MENU_INTERFACE_WINDOW atPosition:[Vector2 vectorWithX:370 y:150] width:300 height:100] retain];
         [items addObject:background];
         
         // init message

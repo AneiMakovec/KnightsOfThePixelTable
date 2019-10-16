@@ -1,23 +1,23 @@
 //
-//  TextureComponent.m
+//  GameplaySpriteComponent.m
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 30/01/2019.
 //  Copyright © 2019 Anei Makovec. All rights reserved.
 //
 
-#import "TextureComponent.h"
+#import "GameplaySpriteComponent.h"
 
 #import "Retronator.Xni.Framework.Content.h"
 
 #import "Constants.h"
 
-TextureComponent *instance;
+GameplaySpriteComponent *instance;
 
-@implementation TextureComponent
+@implementation GameplaySpriteComponent
 
 + (void) activateWithGame:(Game *)game {
-    instance = [[TextureComponent alloc] initWithGame:game];
+    instance = [[GameplaySpriteComponent alloc] initWithGame:game];
     [game.components addComponent:instance];
 }
 

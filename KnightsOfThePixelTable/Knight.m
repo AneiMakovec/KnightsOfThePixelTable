@@ -23,7 +23,7 @@
         
         // init textures
         for (int i = 0; i < EntityStates; i++) {
-            animations[i] = [[TextureComponent getAnimationType:i forAlly:type] retain];
+            animations[i] = [[GameplaySpriteComponent getAnimationType:i forAlly:type] retain];
         }
     }
     return self;

@@ -27,28 +27,28 @@
     
     
     // Text
-    Label *farmlandsText = [[Label alloc] initWithFont:font text:@"Farmlands" position:[Vector2 vectorWithX:270 y:37]];
+    Label *farmlandsText = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Farmlands" position:[Vector2 vectorWithX:270 y:37]];
     farmlandsText.color = [Color darkBlue];
     farmlandsText.horizontalAlign = HorizontalAlignCenter;
     farmlandsText.verticalAlign = VerticalAlignMiddle;
     [scene addItem:farmlandsText];
     [farmlandsText release];
     
-    Label *mountainsText = [[Label alloc] initWithFont:font text:@"Mountains" position:[Vector2 vectorWithX:900 y:45]];
+    Label *mountainsText = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Mountains" position:[Vector2 vectorWithX:900 y:45]];
     mountainsText.color = [Color darkBlue];
     mountainsText.horizontalAlign = HorizontalAlignCenter;
     mountainsText.verticalAlign = VerticalAlignMiddle;
     [scene addItem:mountainsText];
     [mountainsText release];
     
-    Label *seashoreText = [[Label alloc] initWithFont:font text:@"Seashore" position:[Vector2 vectorWithX:132 y:400]];
+    Label *seashoreText = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Seashore" position:[Vector2 vectorWithX:132 y:400]];
     seashoreText.color = [Color darkBlue];
     seashoreText.horizontalAlign = HorizontalAlignCenter;
     seashoreText.verticalAlign = VerticalAlignMiddle;
     [scene addItem:seashoreText];
     [seashoreText release];
     
-    Label *pinewoodsText = [[Label alloc] initWithFont:font text:@"Pinewoods" position:[Vector2 vectorWithX:745 y:320]];
+    Label *pinewoodsText = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Pinewoods" position:[Vector2 vectorWithX:745 y:320]];
     pinewoodsText.color = [Color darkBlue];
     pinewoodsText.horizontalAlign = HorizontalAlignCenter;
     pinewoodsText.verticalAlign = VerticalAlignMiddle;

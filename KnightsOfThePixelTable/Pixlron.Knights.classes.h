@@ -12,9 +12,9 @@
 // Graphics
 @class GameRenderer, GUIRenderer;
 
-@class ScreenComponent, TextureComponent, CamelotTextureComponent;
+@class ScreenComponent, GameplaySpriteComponent, TownSpriteComponent;
 
-@class GraphicsImporter;
+@class GraphicsComponent;
 
 // HUD
 @class GameHud;
@@ -69,8 +69,8 @@
 // Game states
 @class GameState;
 @class Gameplay;
-@class Menu, MainMenu, OptionsMenu;
-@class CamelotMenu, WorldMenu;
+@class Menu, MainMenu;
+@class TownMenu, WorldMenu;
 
 // Game progress
 @class GameProgress;

@@ -19,16 +19,13 @@
         graphics = [[GraphicsDeviceManager alloc] initWithGame:self];
         
         // load graphics
-        [GraphicsImporter initializeWithGame:self];
+        [GraphicsComponent initializeWithGame:self];
         
         // init sound engine
         [SoundEngine initializeWithGame:self];
         
         // init camera
         [ScreenComponent initializeWithGame:self screenWidth:[Constants backgroundWidth] screenHeight:[Constants battlefieldHeight] + [Constants hudHeight]];
-        
-        // init entity textures
-        //[TextureComponent activateWithGame:self];
         
         // init touch panel helper
         [self.components addComponent:[[[TouchPanelHelper alloc] initWithGame:self] autorelease]];

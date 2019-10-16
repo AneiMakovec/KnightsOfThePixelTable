@@ -26,21 +26,21 @@
         // init tabs
         tabs = [[RadioButtonGroup alloc] init];
         
-        tabStats = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 227 y:area.y + 183 width:80 height:16] background:[CamelotTextureComponent getInterfaceProp:InterfacePropTab] font:[CamelotTextureComponent getFont] text:@"Stats" isDown:YES];
+        tabStats = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 227 y:area.y + 183 width:80 height:16] background:[TownSpriteComponent getInterfaceProp:InterfacePropTab] font:[TownSpriteComponent getFont] text:@"Stats" isDown:YES];
         tabStats.backgroundImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         tabStats.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [tabStats.label setScaleUniform:INTERFACE_SCALE_FONT_TINY];
         [tabs registerRadioButton:tabStats forKey:KEY_STATS];
         [items addObject:tabStats];
         
-        tabSkills = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 307 y:area.y + 183 width:80 height:16] background:[CamelotTextureComponent getInterfaceProp:InterfacePropTab] font:[CamelotTextureComponent getFont] text:@"Skills" isDown:NO];
+        tabSkills = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 307 y:area.y + 183 width:80 height:16] background:[TownSpriteComponent getInterfaceProp:InterfacePropTab] font:[TownSpriteComponent getFont] text:@"Skills" isDown:NO];
         tabSkills.backgroundImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         tabSkills.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [tabSkills.label setScaleUniform:INTERFACE_SCALE_FONT_TINY];
         [tabs registerRadioButton:tabSkills forKey:KEY_SKILLS];
         [items addObject:tabSkills];
         
-        tabEquipment = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 387 y:area.y + 183 width:80 height:16] background:[CamelotTextureComponent getInterfaceProp:InterfacePropTab] font:[CamelotTextureComponent getFont] text:@"Equipment" isDown:NO];
+        tabEquipment = [[ImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 387 y:area.y + 183 width:80 height:16] background:[TownSpriteComponent getInterfaceProp:InterfacePropTab] font:[TownSpriteComponent getFont] text:@"Equipment" isDown:NO];
         tabEquipment.backgroundImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         tabEquipment.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [tabEquipment.label setScaleUniform:INTERFACE_SCALE_FONT_TINY];
@@ -59,7 +59,7 @@
         
         
         // init recruit button
-        recruitButton = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 440 y:area.y + 323 width:95 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:@"Recruit"];
+        recruitButton = [[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:area.x + 440 y:area.y + 323 width:95 height:32] notPressedBackground:[TownSpriteComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[TownSpriteComponent getInterfaceProp:InterfacePropButtonPressed] font:[TownSpriteComponent getFont] text:@"Recruit"];
         recruitButton.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         recruitButton.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         recruitButton.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;

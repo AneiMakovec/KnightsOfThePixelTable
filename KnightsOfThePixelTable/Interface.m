@@ -18,18 +18,18 @@
 
 @implementation Interface
 
-- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth type:(BuildingType)type {
+- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth {
     self = [super init];
     if (self != nil) {
-        interfaceType = type;
+        interfaceType = -1;
         
         // init interface background
-        background = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropBackground] toRectangle:rect];
+        background = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACKGROUND atPosition:[Vector2 vectorWithX:rect.x y:rect.y]];
         background.layerDepth = layerDepth;
         [items addObject:background];
         
         // init close button
-        closeButton = [[DoubleImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:rect.x + 734 y:rect.y + 14 width:20 height:20] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonCloseNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonClosePressed]];
+        closeButton = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_CLOSE atPosition:[Vector2 vectorWithX:rect.x + 734 y:rect.y + 14]];
         closeButton.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
         closeButton.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:closeButton];
@@ -54,7 +54,7 @@
                 down = YES;
             
             // init button
-            switchButtons[i] = [[DoubleImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:rect.x + 31 y:rect.y + y width:135 height:32] notPressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonNotPressed] pressedBackground:[CamelotTextureComponent getInterfaceProp:InterfacePropButtonPressed] font:[CamelotTextureComponent getFont] text:[Constants getSwitchButtonText:i] isDown:down];
+            switchButtons[i] = [GraphicsComponent getDoubleImageLabelRadioButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Vector2 vectorWithX:rect.x + 31 y:rect.y + y] text:[Constants getSwitchButtonText:i] isDown:down];
             
             // disable button release
             switchButtons[i].enabled = NO;
@@ -78,11 +78,11 @@
         [items addObject:switchButtonGroup];
         
         // init side pane
-        sidePane = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScroll] position:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44]];
+        sidePane = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_SCROLL atPosition:[Vector2 vectorWithX:rect.x + 587 y:rect.y + 44]];
         sidePane.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDZERO;
         [items addObject:sidePane];
         
-        sidePaneBorder = [[Image alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollBorder] position:[Vector2 vectorWithX:rect.x + 585 y:rect.y + 42]];
+        sidePaneBorder = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_SCROLL_BORDER atPosition:[Vector2 vectorWithX:rect.x + 585 y:rect.y + 42]];
         sidePaneBorder.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
         [items addObject:sidePaneBorder];
         
@@ -122,13 +122,13 @@
         [firstTrainData release];
         [secondTrainData release];
         
-        if (type != BuildingTypeCastle) {
-            if (type == BuildingTypeTrainingYard)
-                [items addObject:trainRooster];
-            else
-                [items addObject:rooster];
-        }
-            
+//        if (type != BuildingTypeCastle) {
+//            if (type == BuildingTypeTrainingYard)
+//                [items addObject:trainRooster];
+//            else
+//                [items addObject:rooster];
+//        }
+        
         
         
         
@@ -139,7 +139,7 @@
         interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithArea:rect layerDepth:layerDepth trainRooster:trainRooster rooster:rooster];
         interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithArea:rect layerDepth:layerDepth rooster:rooster];
         
-        [items addObject:interfaceContent[interfaceType]];
+//        [items addObject:interfaceContent[interfaceType]];
         
         
         // init unit info
@@ -148,40 +148,40 @@
         unitTypes[KnightTypePaladin] = @"Paladin";
         unitTypes[KnightTypeFireEnchantress] = @"Fire enchantress";
         
-        unitName = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
+        unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
         unitName.verticalAlign = VerticalAlignTop;
         unitName.horizontalAlign = HorizontalAlignCenter;
         unitName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [unitName setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
         
-        unitType = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:unitTypes[[rooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
+        unitType = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:unitTypes[[rooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
         unitType.verticalAlign = VerticalAlignTop;
         unitType.horizontalAlign = HorizontalAlignCenter;
         unitType.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [unitType setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
         
-        if (type == BuildingTypeBarracks || type == BuildingTypeBlacksmith) {
-            [items addObject:unitName];
-            [items addObject:unitType];
-        }
+//        if (type == BuildingTypeBarracks || type == BuildingTypeBlacksmith) {
+//            [items addObject:unitName];
+//            [items addObject:unitType];
+//        }
         
         // init train unit info
-        unitNameTrain = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
+        unitNameTrain = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 15]];
         unitNameTrain.verticalAlign = VerticalAlignTop;
         unitNameTrain.horizontalAlign = HorizontalAlignCenter;
         unitNameTrain.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [unitNameTrain setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
         
-        unitTypeTrain = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:unitTypes[[trainRooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
+        unitTypeTrain = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:unitTypes[[trainRooster getFirstData].type] position:[Vector2 vectorWithX:rect.x + 385 y:rect.y + 30]];
         unitTypeTrain.verticalAlign = VerticalAlignTop;
         unitTypeTrain.horizontalAlign = HorizontalAlignCenter;
         unitTypeTrain.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [unitTypeTrain setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
         
-        if (type == BuildingTypeTrainingYard) {
-            [items addObject:unitNameTrain];
-            [items addObject:unitTypeTrain];
-        }
+//        if (type == BuildingTypeTrainingYard) {
+//            [items addObject:unitNameTrain];
+//            [items addObject:unitTypeTrain];
+//        }
     }
     return self;
 }
@@ -334,6 +334,116 @@
             unitTypeTrain.text = @"";
         }
     }
+}
+
+- (void) updateContent:(BuildingType)type {
+    // remove current interface content from scene
+    if (interfaceType >= 0)
+        [self removeItemFromScene:interfaceContent[interfaceType]];
+    
+    // check switching TO FROM interface content
+    switch (type) {
+        case BuildingTypeCastle:
+            // remove training rooster and unit info if switching from training yard or remove normal rooster if swithcing from other
+            if (interfaceType == BuildingTypeTrainingYard) {
+                [self removeItemFromScene:trainRooster];
+                [self removeItemFromScene:unitNameTrain];
+                [self removeItemFromScene:unitTypeTrain];
+            } else {
+                [self removeItemFromScene:rooster];
+                
+                // also remove rooster unit info
+                if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
+                    [self removeItemFromScene:unitName];
+                    [self removeItemFromScene:unitType];
+                }
+            }
+            break;
+            
+        case BuildingTypeBarracks:
+            if (interfaceType != BuildingTypeBlacksmith) {
+                // add rooster unit info
+                [self addItemToScene:unitName];
+                [self addItemToScene:unitType];
+                
+                if (interfaceType != BuildingTypeWarbandCamp) {
+                    // add rooster
+                    [self addItemToScene:rooster];
+                    
+                    if (interfaceType == BuildingTypeTrainingYard) {
+                        // remove train rooster and unit info
+                        [self removeItemFromScene:trainRooster];
+                        [self removeItemFromScene:unitNameTrain];
+                        [self removeItemFromScene:unitTypeTrain];
+                    }
+                }
+            }
+            break;
+            
+        case BuildingTypeWarbandCamp:
+            if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
+                // remove rooster unit info
+                [self removeItemFromScene:unitName];
+                [self removeItemFromScene:unitType];
+            } else {
+                // add rooster
+                [self addItemToScene:rooster];
+                
+                if (interfaceType == BuildingTypeTrainingYard) {
+                    // remove train rooster and unit info
+                    [self removeItemFromScene:trainRooster];
+                    [self removeItemFromScene:unitNameTrain];
+                    [self removeItemFromScene:unitTypeTrain];
+                }
+            }
+            break;
+            
+        case BuildingTypeTrainingYard:
+            // add train rooster and unit info
+            [self addItemToScene:trainRooster];
+            [self addItemToScene:unitNameTrain];
+            [self addItemToScene:unitTypeTrain];
+            
+            if (interfaceType != BuildingTypeCastle) {
+                // remove rooster
+                [self removeItemFromScene:rooster];
+                
+                if (interfaceType != BuildingTypeWarbandCamp) {
+                    // remove rooster unit info
+                    [self removeItemFromScene:unitName];
+                    [self removeItemFromScene:unitType];
+                }
+            }
+            break;
+            
+        case BuildingTypeBlacksmith:
+            if (interfaceType != BuildingTypeBarracks) {
+                // add rooster unit info
+                [self addItemToScene:unitName];
+                [self addItemToScene:unitType];
+                
+                if (interfaceType != BuildingTypeWarbandCamp) {
+                    // add rooster
+                    [self addItemToScene:rooster];
+                    
+                    if (interfaceType == BuildingTypeTrainingYard) {
+                        // remove train rooster and unit info
+                        [self removeItemFromScene:trainRooster];
+                        [self removeItemFromScene:unitNameTrain];
+                        [self removeItemFromScene:unitTypeTrain];
+                    }
+                }
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    interfaceType = type;
+    
+    // add new interface content to scene
+    [self addItemToScene:interfaceContent[interfaceType]];
 }
 
 - (void) dealloc {

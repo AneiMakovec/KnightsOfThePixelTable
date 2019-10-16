@@ -18,39 +18,46 @@
     [super initialize];
     
     // Background
-    background = [[Image alloc] initWithTexture:[self.game.content load:BACKGROUND_MAIN_MENU] position:[Vector2 vectorWithX:0 y:0]];
+    background = [[GraphicsComponent getImageWithKey:MAIN_MENU_BACKGROUND atPosition:[Vector2 vectorWithX:0 y:0]] retain];
+    background.layerDepth = 0.3;
     [scene addItem:background];
     
     // Buttons
-    play = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] width:100 height:50]
-                                     background:buttonBackground font:font text:@"Play"];
-    [scene addItem:play];
-    
-    options = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] + 70 width:100 height:50]
-                                     background:buttonBackground font:font text:@"Options"];
-    [scene addItem:options];
+    newGame = [[GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Vector2 vectorWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight]] text:@"New game"] retain];
+    newGame.label.layerDepth = 0.1;
+    newGame.pressedImage.layerDepth = 0.2;
+    newGame.notPressedImage.layerDepth = 0.2;
+    [newGame setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+    [scene addItem:newGame];
+
+    continueGame = [[GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Vector2 vectorWithX:[Constants backgroundWidth]/2 - 50 y:[Constants battlefieldHeight] + 70] text:@"Continue"] retain];
+    continueGame.label.layerDepth = 0.1;
+    continueGame.pressedImage.layerDepth = 0.2;
+    continueGame.notPressedImage.layerDepth = 0.2;
+    [continueGame setScaleUniform:INTERFACE_SCALE_FONT_MEDIUM];
+    [scene addItem:continueGame];
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     [super updateWithGameTime:gameTime];
     
     GameState *newState = nil;
-    
-    if (play.wasReleased) {
+
+    if (newGame.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
-        newState = [[[CamelotMenu alloc] initWithGame:self.game] autorelease];
-    } else if (options.wasReleased) {
+    } else if (continueGame.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
-        newState = [[[OptionsMenu alloc] initWithGame:self.game] autorelease];
+        newState = [[[TownMenu alloc] initWithGame:self.game] autorelease];
     }
-    
+
     if (newState) {
         [knightsGame pushState:newState];
     }
 }
 
 - (void) dealloc {
-    [play release];
+    [newGame release];
+    [continueGame release];
     
     [super dealloc];
 }

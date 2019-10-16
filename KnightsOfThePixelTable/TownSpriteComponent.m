@@ -1,24 +1,24 @@
 //
-//  CamelotTextureComponent.m
+//  TownSpriteComponent.m
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 25/06/2019.
 //  Copyright © 2019 Anei Makovec. All rights reserved.
 //
 
-#import "CamelotTextureComponent.h"
+#import "TownSpriteComponent.h"
 
 #import "Retronator.Xni.Framework.Content.h"
 #import "Retronator.Xni.Framework.Content.Pipeline.Processors.h"
 
 #import "Constants.h"
 
-CamelotTextureComponent *camelotinstance;
+TownSpriteComponent *camelotinstance;
 
-@implementation CamelotTextureComponent
+@implementation TownSpriteComponent
 
 + (void) activateWithGame:(Game *)game {
-    camelotinstance = [[CamelotTextureComponent alloc] initWithGame:game];
+    camelotinstance = [[TownSpriteComponent alloc] initWithGame:game];
     [game.components addComponent:camelotinstance];
 }
 

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MainMenu : Menu {
     Image *background;
     
-    ImageLabelButton *play, *options;
+    DoubleImageLabelButton *newGame, *continueGame;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  CamelotTextureComponent.h
+//  TownSpriteComponent.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 25/06/2019.
@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CamelotTextureComponent : GameComponent {
+@interface TownSpriteComponent : GameComponent {
     Texture2D *propTextures[InterfacePropTypes];
     
     SpriteFont *font;

@@ -22,18 +22,18 @@
         position = [[Vector2 alloc] initWithX:rectangle.x y:rectangle.y];
         
         // init line background
-        roosterLine = [[TouchImage alloc] initWithTexture:[CamelotTextureComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:rectangle];
+        roosterLine = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:rectangle];
         roosterLine.position = position;
         roosterLine.layerDepth = depth;
         [items addObject:roosterLine];
         
         // init unit portrait
-        portrait = [[Image alloc] initWithTexture:[CamelotTextureComponent getPortraitForUnitType:data.type] position:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
+        portrait = [[Image alloc] initWithTexture:[TownSpriteComponent getPortraitForUnitType:data.type] position:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
         portrait.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
         [items addObject:portrait];
         
         // init unit name
-        name = [[Label alloc] initWithFont:[CamelotTextureComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 35 y:position.y + 16]];
+        name = [[Label alloc] initWithFont:[TownSpriteComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 35 y:position.y + 16]];
         name.verticalAlign = VerticalAlignMiddle;
         name.horizontalAlign = HorizontalAlignLeft;
         name.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;

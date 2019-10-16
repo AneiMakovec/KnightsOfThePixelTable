@@ -1,5 +1,5 @@
 //
-//  TextureComponent.h
+//  GameplaySpriteComponent.h
 //  KnightsOfThePixelTable
 //
 //  Created by Anei Makovec on 30/01/2019.
@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TextureComponent : GameComponent {
+@interface GameplaySpriteComponent : GameComponent {
     Texture2D *allyTextures[KnightTypes];
     Texture2D *enemyTextures[MonsterTypes];
 }
