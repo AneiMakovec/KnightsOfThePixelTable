@@ -1,0 +1,679 @@
+{
+	"animations": {
+		"gameplay_menu/entities/allies/bard/action/": {
+			"frames": 8,
+			"duration": 2,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/bard/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/bard/death/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/bard/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/bard/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/battlemage/action/": {
+			"frames": 8,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/battlemage/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/battlemage/death/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/battlemage/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/battlemage/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/": {
+			"frames": 8,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/brawler/death/": {
+			"frames": 10,
+			"duration": 2,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/brawler/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/brawler/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/crossbowman/attack/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/crossbowman/death/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/crossbowman/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/crossbowman/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/longbowman/death/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/longbowman/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/longbowman/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/monk/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/monk/death/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/monk/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/monk/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/paladin/action/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/paladin/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/paladin/death/": {
+			"frames": 8,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/paladin/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/paladin/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/scout/action/": {
+			"frames": 12,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/scout/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/scout/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/scout/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/scout/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/wizard/death/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/wizard/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/allies/wizard/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/attack/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/death/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/death/": {
+			"frames": 14,
+			"duration": 2,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/": {
+			"frames": 9,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/death/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/action/": {
+			"frames": 1,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/death/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/": {
+			"frames": 12,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/action/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/attack/": {
+			"frames": 15,
+			"duration": 2,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/death/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/death/": {
+			"frames": 8,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/hit/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/idle/": {
+			"frames": 4,
+			"duration": 1,
+			"looping": true
+		},
+		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/": {
+			"frames": 5,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/blunt/": {
+			"frames": 16,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/bomb/": {
+			"frames": 16,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/electric/magic/": {
+			"frames": 8,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/electric/physical/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/fire/": {
+			"frames": 10,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/frost/": {
+			"frames": 21,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/heal/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/holy/heavy/": {
+			"frames": 6,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/holy/light/": {
+			"frames": 7,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/inspiring/": {
+			"frames": 6,
+			"duration": 0.4,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/nature/": {
+			"frames": 10,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/poison/": {
+			"frames": 13,
+			"duration": 1,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/slash/down/": {
+			"frames": 3,
+			"duration": 0.4,
+			"looping": false
+		},
+		"gameplay_menu/interface/skills/animations/slash/up/": {
+			"frames": 5,
+			"duration": 0.6,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/bleeding/": {
+			"frames": 13,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/buff/": {
+			"frames": 4,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/burning/": {
+			"frames": 6,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/frostbite/": {
+			"frames": 10,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/helping_hand/": {
+			"frames": 5,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/immune/": {
+			"frames": 6,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/invisibility/": {
+			"frames": 6,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/parry/": {
+			"frames": 5,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/poison/": {
+			"frames": 9,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/protect/": {
+			"frames": 6,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/regen/": {
+			"frames": 6,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/remove_condition/": {
+			"frames": 4,
+			"duration": 0.5,
+			"looping": false
+		},
+		"gameplay_menu/interface/status_effects/animations/stun/": {
+			"frames": 4,
+			"duration": 0.5,
+			"looping": true
+		},
+		"gameplay_menu/interface/status_effects/animations/taunt/": {
+			"frames": 5,
+			"duration": 0.5,
+			"looping": true
+		},
+		"gameplay_menu/interface/target/": {
+			"frames": 20,
+			"duration": 0.4,
+			"looping": true
+		},
+		"gameplay_menu/props/dices/animation/": {
+			"frames": 8,
+			"duration": 0.5,
+			"looping": true
+		},
+		"gameplay_menu/props/projectiles/arrow/frost/": {
+			"frames": 3,
+			"duration": 0.2,
+			"looping": true
+		},
+		"gameplay_menu/props/projectiles/dart/burn/": {
+			"frames": 4,
+			"duration": 0.2,
+			"looping": true
+		},
+		"gameplay_menu/props/projectiles/dart/poison/": {
+			"frames": 4,
+			"duration": 0.2,
+			"looping": true
+		},
+		"gameplay_menu/props/projectiles/fireball/": {
+			"frames": 4,
+			"duration": 0.2,
+			"looping": true
+		},
+	}
+}

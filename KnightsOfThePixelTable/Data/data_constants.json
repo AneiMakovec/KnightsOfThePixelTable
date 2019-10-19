@@ -1,0 +1,586 @@
+{
+	"position_data": {
+		"interface_stat_label_0": {
+			"x": 244,
+			"y": 300
+		},
+		"interface_stat_label_1": {
+			"x": 244,
+			"y": 324
+		},
+		"interface_stat_label_2": {
+			"x": 244,
+			"y": 348
+		},
+		"interface_stat_label_3": {
+			"x": 321,
+			"y": 300
+		},
+		"interface_stat_label_4": {
+			"x": 321,
+			"y": 324
+		},
+		"interface_stat_label_5": {
+			"x": 321,
+			"y": 348
+		},
+		"interface_hp_label": {
+			"x": 317,
+			"y": 264
+		},
+		"interface_lvl_label": {
+			"x": 329,
+			"y": 219
+		},
+		"interface_quirk_label": {
+			"x": 263,
+			"y": 252
+		},
+		"interface_tab_stats_text": {
+			"x": 267,
+			"y": 194
+		},
+		"interface_tab_skills_text": {
+			"x": 350,
+			"y": 194
+		},
+		"interface_type_label": {
+			"x": 247,
+			"y": 223
+		},
+		"interface_weapon_lvl_label": {
+			"x": 406,
+			"y": 273
+		},
+		"interface_armor_lvl_label": {
+			"x": 486,
+			"y": 273
+		},
+		"interface_weapon_bonus_label_0": {
+			"x": 406,
+			"y": 304
+		},
+		"interface_weapon_bonus_label_1": {
+			"x": 406,
+			"y": 313
+		},
+		"interface_weapon_bonus_label_2": {
+			"x": 406,
+			"y": 322
+		},
+		"interface_weapon_bonus_label_3": {
+			"x": 406,
+			"y": 331
+		},
+		"interface_weapon_bonus_label_4": {
+			"x": 406,
+			"y": 340
+		},
+		"interface_weapon_bonus_label_5": {
+			"x": 406,
+			"y": 349
+		},
+		"interface_armor_bonus_label_0": {
+			"x": 487,
+			"y": 304
+		},
+		"interface_armor_bonus_label_1": {
+			"x": 487,
+			"y": 313
+		},
+		"interface_armor_bonus_label_2": {
+			"x": 487,
+			"y": 322
+		},
+		"interface_armor_bonus_label_3": {
+			"x": 487,
+			"y": 331
+		},
+		"interface_armor_bonus_label_4": {
+			"x": 487,
+			"y": 340
+		},
+		"interface_armor_bonus_label_5": {
+			"x": 487,
+			"y": 349
+		},
+		"interface_weapon_bonus_0": {
+			"x": 440,
+			"y": 304
+		},
+		"interface_weapon_bonus_1": {
+			"x": 440,
+			"y": 313
+		},
+		"interface_weapon_bonus_2": {
+			"x": 440,
+			"y": 322
+		},
+		"interface_weapon_bonus_3": {
+			"x": 440,
+			"y": 331
+		},
+		"interface_weapon_bonus_4": {
+			"x": 440,
+			"y": 340
+		},
+		"interface_weapon_bonus_5": {
+			"x": 440,
+			"y": 349
+		},
+		"interface_armor_bonus_0": {
+			"x": 521,
+			"y": 304
+		},
+		"interface_armor_bonus_1": {
+			"x": 521,
+			"y": 313
+		},
+		"interface_armor_bonus_2": {
+			"x": 521,
+			"y": 322
+		},
+		"interface_armor_bonus_3": {
+			"x": 521,
+			"y": 331
+		},
+		"interface_armor_bonus_4": {
+			"x": 521,
+			"y": 340
+		},
+		"interface_armor_bonus_5": {
+			"x": 521,
+			"y": 349
+		},
+		"interface_lvl": {
+			"x": 366,
+			"y": 219
+		},
+		"interface_hp": {
+			"x": 353,
+			"y": 264
+		},
+		"interface_quirk": {
+			"x": 263,
+			"y": 270
+		},
+		"interface_stat_0": {
+			"x": 283,
+			"y": 300
+		},
+		"interface_stat_1": {
+			"x": 283,
+			"y": 324
+		},
+		"interface_stat_2": {
+			"x": 283,
+			"y": 348
+		},
+		"interface_stat_3": {
+			"x": 360,
+			"y": 300
+		},
+		"interface_stat_4": {
+			"x": 360,
+			"y": 324
+		},
+		"interface_stat_5": {
+			"x": 360,
+			"y": 348
+		},
+		"interface_weapon_lvl": {
+			"x": 432,
+			"y": 273
+		},
+		"interface_armor_lvl": {
+			"x": 512,
+			"y": 273
+		},
+		"interface_skill_lvl_0": {
+			"x": 263,
+			"y": 250
+		},
+		"interface_skill_lvl_1": {
+			"x": 343,
+			"y": 250
+		},
+		"interface_skill_lvl_2": {
+			"x": 423,
+			"y": 250
+		},
+		"interface_skill_lvl_3": {
+			"x": 503,
+			"y": 250
+		},
+		"interface_skill_combo_label_0": {
+			"x": 228,
+			"y": 253
+		},
+		"interface_skill_combo_label_1": {
+			"x": 308,
+			"y": 253
+		},
+		"interface_skill_combo_label_2": {
+			"x": 388,
+			"y": 253
+		},
+		"interface_skill_combo_label_3": {
+			"x": 468,
+			"y": 253
+		},
+		"interface_skill_upgrade_label_0": {
+			"x": 228,
+			"y": 319
+		},
+		"interface_skill_upgrade_label_1": {
+			"x": 308,
+			"y": 319
+		},
+		"interface_skill_upgrade_label_2": {
+			"x": 388,
+			"y": 319
+		},
+		"interface_skill_upgrade_label_3": {
+			"x": 468,
+			"y": 319
+		},
+		"interface_skill_upgrade_button_0": {
+			"x": 227,
+			"y": 330
+		},
+		"interface_skill_upgrade_button_1": {
+			"x": 307,
+			"y": 330
+		},
+		"interface_skill_upgrade_button_2": {
+			"x": 387,
+			"y": 330
+		},
+		"interface_skill_upgrade_button_3": {
+			"x": 467,
+			"y": 330
+		},
+		"interface_skill_0": {
+			"x": 248,
+			"y": 211
+		},
+		"interface_skill_1": {
+			"x": 328,
+			"y": 211
+		},
+		"interface_skill_2": {
+			"x": 408,
+			"y": 211
+		},
+		"interface_skill_3": {
+			"x": 488,
+			"y": 211
+		},
+		"interface_skill_combo_1_0": {
+			"x": 322,
+			"y": 283
+		},
+		"interface_skill_combo_1_1": {
+			"x": 350,
+			"y": 283
+		},
+		"interface_skill_combo_2_0": {
+			"x": 402,
+			"y": 269
+		},
+		"interface_skill_combo_2_1": {
+			"x": 430,
+			"y": 269
+		},
+		"interface_skill_combo_2_2": {
+			"x": 416,
+			"y": 297
+		},
+		"interface_skill_combo_3_0": {
+			"x": 482,
+			"y": 269
+		},
+		"interface_skill_combo_3_1": {
+			"x": 482,
+			"y": 297
+		},
+		"interface_skill_combo_3_2": {
+			"x": 510,
+			"y": 269
+		},
+		"interface_skill_combo_3_3": {
+			"x": 510,
+			"y": 297
+		},
+		"interface_scroll_background": {
+			"x": 586,
+			"y": 44
+		},
+		"interface_scroll_border": {
+			"x": 583,
+			"y": 41
+		},
+		"interface_scroll_line": {
+			"x": 587,
+			"y": 44
+		},
+		"interface_armor": {
+			"x": 488,
+			"y": 227
+		},
+		"interface_weapon": {
+			"x": 408,
+			"y": 227
+		},
+		"interface_type": {
+			"x": 275,
+			"y": 216
+		},
+		"interface_close_button": {
+			"x": 734,
+			"y": 14
+		},
+		"interface_switching_button_0": {
+			"x": 51,
+			"y": 41
+		},
+		"interface_switching_button_1": {
+			"x": 51,
+			"y": 108
+		},
+		"interface_switching_button_2": {
+			"x": 51,
+			"y": 175
+		},
+		"interface_switching_button_3": {
+			"x": 51,
+			"y": 242
+		},
+		"interface_switching_button_4": {
+			"x": 51,
+			"y": 309
+		},
+		"interface_tab_stats": {
+			"x": 227,
+			"y": 182
+		},
+		"interface_tab_skills": {
+			"x": 310,
+			"y": 182
+		},
+		"interface_xp": {
+			"x": 310,
+			"y": 235
+		},
+		"interface_pane": {
+			"x": 220,
+			"y": 183
+		},
+		"interface_background": {
+			"x": 128,
+			"y": 64
+		},
+		"interface_castle_button_upgrade": {
+			"x": 622,
+			"y": 300
+		},
+		"interface_weapon_name": {
+			"x": 423,
+			"y": 212
+		},
+		"interface_armor_name": {
+			"x": 503,
+			"y": 212
+		},
+		"interface_weapon_bonus_text": {
+			"x": 389,
+			"y": 285
+		},
+		"interface_armor_bonus_text": {
+			"x": 469,
+			"y": 285
+		},
+		"building_castle": {
+			"x": 0,
+			"y": 0
+		},
+		"building_blacksmith": {
+			"x": 67,
+			"y": 319
+		},
+		"building_gatehouse": {
+			"x": 904,
+			"y": 51
+		},
+		"building_training_yard": {
+			"x": 389,
+			"y": 362
+		},
+		"building_barracks": {
+			"x": 475,
+			"y": 5
+		},
+		"building_warband_camp": {
+			"x": 771,
+			"y": 387
+		},
+		"hud_portrait_0": {
+			"x": 326,
+			"y": 12
+		},
+		"hud_portrait_1": {
+			"x": 326,
+			"y": 104
+		},
+		"hud_portrait_2": {
+			"x": 12,
+			"y": 12
+		},
+		"hud_portrait_3": {
+			"x": 12,
+			"y": 104
+		},
+		"hud_skill_0": {
+			"x": 566,
+			"y": 12
+		},
+		"hud_skill_1": {
+			"x": 566,
+			"y": 104
+		},
+		"hud_skill_2": {
+			"x": 252,
+			"y": 12
+		},
+		"hud_skill_3": {
+			"x": 252,
+			"y": 104
+		},
+		"hud_combo_0": {
+			"x": 412,
+			"y": 18
+		},
+		"hud_combo_1": {
+			"x": 412,
+			"y": 110
+		},
+		"hud_combo_2": {
+			"x": 98,
+			"y": 18
+		},
+		"hud_combo_3": {
+			"x": 98,
+			"y": 110
+		},
+		"hud_hp_ally_0": {
+			"x": 432,
+			"y": 78
+		},
+		"hud_hp_ally_1": {
+			"x": 432,
+			"y": 170
+		},
+		"hud_hp_ally_2": {
+			"x": 118,
+			"y": 78
+		},
+		"hud_hp_ally_3": {
+			"x": 118,
+			"y": 170
+		},
+		"hud_dicepool": {
+			"x": 638,
+			"y": 4
+		},
+		"hud_status_effects_ally_0": {
+			"x": 410,
+			"y": 58
+		},
+		"hud_status_effects_ally_1": {
+			"x": 410,
+			"y": 150
+		},
+		"hud_status_effects_ally_2": {
+			"x": 96,
+			"y": 58
+		},
+		"hud_status_effects_ally_3": {
+			"x": 96,
+			"y": 150
+		},
+		"main_menu_new_game": {
+			"x": 416,
+			"y": 320
+		},
+		"main_menu_continue": {
+			"x": 416,
+			"y": 420
+		}
+	},
+	"meta_data": {
+		"interface_background": {
+			"w": 768,
+			"h": 384
+		},
+		"interface_scroll": {
+			"step": 35,
+			"w": 164,
+			"h": 323
+		},
+		"interface_tab": {
+			"h": 20,
+			"w": 81
+		},
+		"interface_xp": {
+			"w": 68,
+			"h": 4
+		},
+		"hud_combo": {
+			"step": 38
+		},
+		"hud_hp_ally": {
+			"w": 199,
+			"h": 8
+		},
+		"hud_dicepool": {
+			"w": 381,
+			"h": 183
+		},
+		"hud_status_effects_ally": {
+			"step": 18,
+			"max": 8
+		}
+
+	},
+	"value_data": {
+
+	},
+	"text_data": {
+		"main_menu_new_game": "New game",
+		"main_menu_continue": "Continue",
+		"interface_switching_button_0": "Castle",
+		"interface_switching_button_1": "Barracks",
+		"interface_switching_button_2": "Training yard",
+		"interface_switching_button_3": "Blacksmith",
+		"interface_switching_button_4": "Warband camp",
+		"interface_button_upgrade": "Upgrade",
+		"interface_stat_0": "STR",
+		"interface_stat_1": "ACC",
+		"interface_stat_2": "CUN",
+		"interface_stat_3": "DEF",
+		"interface_stat_4": "AGI",
+		"interface_stat_5": "STD",
+		"interface_unit_type": "TYPE:",
+		"interface_hp": "HP:",
+		"interface_lvl": "LVL:",
+		"interface_weapon_name": "WEAPON",
+		"interface_armor_name": "ARMOUR",
+		"interface_quirk": "QUIRK:",
+		"interface_tab_stats": "STATS",
+		"interface_tab_skills": "SKILLS",
+		"interface_skill_combo": "Combo:",
+		"interface_skill_upgrade": "Upgrade cost: %d",
+		"interface_skill_lvl": "Lvl: %d",
+		"interface_bonus_text": "BONUS:"
+	}
+}
