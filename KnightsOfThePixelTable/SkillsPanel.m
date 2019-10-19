@@ -71,6 +71,7 @@
         NSString *skillPosKey = POSITION_INTERFACE_SKILLS;
         for (int i = 0; i < SkillTypes; i++) {
             skills[i] = [GraphicsComponent getImageWithKey:[knightType stringByAppendingString:[NSString stringWithFormat:@"s%d", i + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            [items addObject:skills[i]];
         }
         
 //        firstSkill = [GraphicsComponent getImageWithKey:[knightType stringByAppendingString:<#(nonnull NSString *)#>] atPosition:<#(nonnull Vector2 *)#>]
@@ -153,17 +154,26 @@
             NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
             for (int i = 0; i < SkillTypes; i++) {
                 upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[Constants getTextForKey:TEXT_INTERFACE_BUTTON_UPGRADE]];
+                [items addObject:upgradeButtons[i]];
             }
             
             // init labels
-            NSString *comboPosKey = POSITION_INTERFACE_SKILL_COMBO_LABELS;
-            NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
             NSString *upgradePosKey = POSITION_INTERFACE_SKILL_UPGRADE_LABELS;
             for (int i = 0; i < SkillTypes; i++) {
-                comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-                lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
                 upgradeLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_UPGRADE_LABEL], 10] atPosition:[Constants getPositionDataForKey:[upgradePosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+                [items addObject:upgradeLabels[i]];
             }
+        }
+        
+        // init labels
+        NSString *comboPosKey = POSITION_INTERFACE_SKILL_COMBO_LABELS;
+        NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
+        for (int i = 0; i < SkillTypes; i++) {
+            comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            
+            [items addObject:comboLabels[i]];
+            [items addObject:lvlLabels[i]];
         }
     }
     return self;
