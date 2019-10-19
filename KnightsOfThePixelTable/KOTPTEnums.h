@@ -9,9 +9,14 @@
 // MARK: entities
 typedef enum {
     KnightTypeBrawler,
-    KnightTypeBowman,
     KnightTypePaladin,
-    KnightTypeFireEnchantress,
+    KnightTypeBard,
+    KnightTypeLongbowman,
+    KnightTypeCrossbowman,
+    KnightTypeScout,
+    KnightTypeBattlemage,
+    KnightTypeWizard,
+    KnightTypeMonk,
     KnightTypes
 } KnightType;
 
@@ -34,7 +39,7 @@ typedef enum {
     Strength,
     Agility,
     Defence,
-    Insight,
+    Accuracy,
     Cunning,
     Sturdiness,
     StatTypes
@@ -105,7 +110,7 @@ typedef enum {
 } ConditionType;
 
 typedef enum {
-    DamageTypeMelee,
+    DamageTypePhysical,
     DamageTypeRanged,
     DamageTypeMagic,
     DamageTypes,
@@ -233,7 +238,9 @@ typedef enum {
     BuildingTypeTrainingYard,
     BuildingTypeBlacksmith,
     BuildingTypeWarbandCamp,
-    BuildingTypes
+    BuildingTypeGatehouse,
+    BuildingTypes,
+    NoBuilding
 } BuildingType;
 
 // MARK: area textures
@@ -275,7 +282,6 @@ typedef enum {
 #define DICE_SYMBOLS @"combat_dices"
 
 // MARK: gui textures - buttons
-#define FONT @"lilliput_steps"
 #define BUTTON_BACKGROUND @"button_background"
 #define MUSIC_BUTTON_ENABLED @"enabled_music_button"
 #define MUSIC_BUTTON_DISABLED @"disabled_music_button"
@@ -328,10 +334,11 @@ typedef enum {
 #define INTERFACE_LAYER_DEPTH_MIDFRONT -0.25f
 #define INTERFACE_LAYER_DEPTH_FRONT -0.3f
 
-#define INTERFACE_SCALE_FONT_TINY 0.5f
-#define INTERFACE_SCALE_FONT_SMALL 0.6f
-#define INTERFACE_SCALE_FONT_MEDIUM 1.4f
-#define INTERFACE_SCALE_FONT_BIG 2.0f
+#define FONT_SCALE_TINY 0.5f
+#define FONT_SCALE_SMALL 1.0f
+#define FONT_SCALE_MEDIUM 1.5f
+#define FONT_SCALE_BIG 2.0f
+#define FONT_SCALE_MAIN_MENU 2.0f
 
 // MARK: attack textures
 #define PROJECTILE_ARROW @"arrow"
@@ -349,6 +356,18 @@ typedef enum {
 #define DATA_ANIMATIONS @"data_animations"
 #define DATA_CONSTANTS @"data_constants"
 
+// MARK: DATA FILE SEGMENTS
+#define POSITION_DATA @"position_data"
+#define VALUE_DATA @"value_data"
+#define TEXT_DATA @"text_data"
+#define META_DATA @"meta_data"
+
+#define FONT @"lilliput_steps_shadowed"
+
+
+
+
+// MARK: CONTENT KEYS
 
 // MARK: MAIN MENU
 #define MAIN_MENU_BACKGROUND @"main_menu/background"
@@ -612,38 +631,47 @@ typedef enum {
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD_FIRST @"gameplay_menu/interface/skills/icons/bard/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD_SECOND @"gameplay_menu/interface/skills/icons/bard/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD_THIRD @"gameplay_menu/interface/skills/icons/bard/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD @"gameplay_menu/interface/skills/icons/bard/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE_BASIC @"gameplay_menu/interface/skills/icons/battlemage/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE_FIRST @"gameplay_menu/interface/skills/icons/battlemage/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE_SECOND @"gameplay_menu/interface/skills/icons/battlemage/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE_THIRD @"gameplay_menu/interface/skills/icons/battlemage/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE @"gameplay_menu/interface/skills/icons/battlemage/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER_BASIC @"gameplay_menu/interface/skills/icons/brawler/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER_FIRST @"gameplay_menu/interface/skills/icons/brawler/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER_SECOND @"gameplay_menu/interface/skills/icons/brawler/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER_THIRD @"gameplay_menu/interface/skills/icons/brawler/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER @"gameplay_menu/interface/skills/icons/brawler/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN_BASIC @"gameplay_menu/interface/skills/icons/crossbowman/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN_FIRST @"gameplay_menu/interface/skills/icons/crossbowman/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN_SECOND @"gameplay_menu/interface/skills/icons/crossbowman/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN_THIRD @"gameplay_menu/interface/skills/icons/crossbowman/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN @"gameplay_menu/interface/skills/icons/crossbowman/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN_BASIC @"gameplay_menu/interface/skills/icons/longbowman/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN_FIRST @"gameplay_menu/interface/skills/icons/longbowman/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN_SECOND @"gameplay_menu/interface/skills/icons/longbowman/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN_THIRD @"gameplay_menu/interface/skills/icons/longbowman/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN @"gameplay_menu/interface/skills/icons/longbowman/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK_BASIC @"gameplay_menu/interface/skills/icons/monk/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK_FIRST @"gameplay_menu/interface/skills/icons/monk/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK_SECOND @"gameplay_menu/interface/skills/icons/monk/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK_THIRD @"gameplay_menu/interface/skills/icons/monk/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK @"gameplay_menu/interface/skills/icons/monk/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN_BASIC @"gameplay_menu/interface/skills/icons/paladin/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN_FIRST @"gameplay_menu/interface/skills/icons/paladin/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN_SECOND @"gameplay_menu/interface/skills/icons/paladin/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN_THIRD @"gameplay_menu/interface/skills/icons/paladin/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN @"gameplay_menu/interface/skills/icons/paladin/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT_BASIC @"gameplay_menu/interface/skills/icons/scout/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT_FIRST @"gameplay_menu/interface/skills/icons/scout/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT_SECOND @"gameplay_menu/interface/skills/icons/scout/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT_THIRD @"gameplay_menu/interface/skills/icons/scout/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT @"gameplay_menu/interface/skills/icons/scout/"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD_BASIC @"gameplay_menu/interface/skills/icons/wizard/s1"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD_FIRST @"gameplay_menu/interface/skills/icons/wizard/s2"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD_SECOND @"gameplay_menu/interface/skills/icons/wizard/s3"
 #define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD_THIRD @"gameplay_menu/interface/skills/icons/wizard/s4"
+#define GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD @"gameplay_menu/interface/skills/icons/wizard/"
 
 #define GAMEPLAY_MENU_INTERFACE_STATUS_EFFECTS_ANIMATIONS_BLEEDING @"gameplay_menu/interface/status_effects/animations/bleeding/"
 #define GAMEPLAY_MENU_INTERFACE_STATUS_EFFECTS_ANIMATIONS_BUFF @"gameplay_menu/interface/status_effects/animations/buff/"
@@ -707,3 +735,102 @@ typedef enum {
 #define GAMEPLAY_MENU_PROPS_PROJECTILES_FIREBALL_ANIMATION @"gameplay_menu/props/projectiles/fireball/"
 #define GAMEPLAY_MENU_PROPS_PROJECTILES_SLING_FROST @"gameplay_menu/props/projectiles/sling/frost"
 #define GAMEPLAY_MENU_PROPS_PROJECTILES_SLING_SLING @"gameplay_menu/props/projectiles/sling/sling"
+
+
+
+
+
+
+
+// MARK: DATA KEYS
+
+//MARK: POSITION
+#define POSITION_INTERFACE_STAT_LABELS @"interface_stat_label_"
+#define POSITION_INTERFACE_HP_LABEL @"interface_hp_label"
+#define POSITION_INTERFACE_LVL_LABEL @"interface_lvl_label"
+#define POSITION_INTERFACE_QUIRK_LABEL @"interface_quirk_label"
+#define POSITION_INTERFACE_TAB_STATS_TEXT @"interface_tab_stats_text"
+#define POSITION_INTERFACE_TAB_SKILLS_TEXT @"interface_tab_skills_text"
+#define POSITION_INTERFACE_TYPE_LABEL @"interface_type_label"
+#define POSITION_INTERFACE_WEAPON_LVL_LABEL @"interface_weapon_lvl_label"
+#define POSITION_INTERFACE_ARMOR_LVL_LABEL @"interface_armor_lvl_label"
+#define POSITION_INTERFACE_WEAPON_BONUS_LABELS @"interface_weapon_bonus_label_"
+#define POSITION_INTERFACE_ARMOR_BONUS_LABELS @"interface_armor_bonus_label_"
+#define POSITION_INTERFACE_WEAPON_BONUSES @"interface_weapon_bonus_"
+#define POSITION_INTERFACE_ARMOR_BONUSES @"interface_armor_bonus_"
+#define POSITION_INTERFACE_LVL @"interface_lvl"
+#define POSITION_INTERFACE_HP @"interface_hp"
+#define POSITION_INTERFACE_QUIRK @"interface_quirk"
+#define POSITION_INTERFACE_STATS @"interface_stat_"
+#define POSITION_INTERFACE_WEAPON_LVL @"interface_weapon_lvl"
+#define POSITION_INTERFACE_ARMOR_LVL @"interface_armor_lvl"
+#define POSITION_INTERFACE_SKILL_LVLS @"interface_skill_lvl_"
+#define POSITION_INTERFACE_SKILL_COMBO_LABELS @"interface_skill_combo_label_"
+#define POSITION_INTERFACE_SKILL_UPGRADE_LABELS @"interface_skill_upgrade_label_"
+#define POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS @"interface_skill_upgrade_button_"
+#define POSITION_INTERFACE_SKILLS @"interface_skill_"
+#define POSITION_INTERFACE_COMBOS @"interface_skill_combo_"
+#define POSITION_INTERFACE_SCROLL_BACKGOUND @"interface_scroll_background"
+#define POSITION_INTERFACE_SCROLL_BORDER @"interface_scroll_border"
+#define POSITION_INTERFACE_SCROLL_LINE @"interface_scroll_line"
+#define POSITION_INTERFACE_ARMOR @"interface_armor"
+#define POSITION_INTERFACE_WEAPON @"interface_weapon"
+#define POSITION_INTERFACE_TYPE @"interface_type"
+#define POSITION_INTERFACE_CLOSE_BUTTON @"interface_close_button"
+#define POSITION_INTERFACE_SWITCHING_BUTTONS @"interface_switching_button_"
+#define POSITION_INTERFACE_TAB_STATS @"interface_tab_stats"
+#define POSITION_INTERFACE_TAB_SKILLS @"interface_tab_skills"
+#define POSITION_INTERFACE_XP @"interface_xp"
+#define POSITION_INTERFACE_PANE @"interface_pane"
+#define POSITION_INTERFACE_BACKGROUND @"interface_background"
+#define POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE @"interface_castle_button_upgrade"
+#define POSITION_INTERFACE_WEAPON_NAME @"interface_weapon_name"
+#define POSITION_INTERFACE_ARMOR_NAME @"interface_armor_name"
+#define POSITION_INTERFACE_WEAPON_BONUS_TEXT @"interface_weapon_bonus_text"
+#define POSITION_INTERFACE_ARMOR_BONUS_TEXT @"interface_armor_bonus_text"
+#define POSITION_BUILDING_CASTLE @"building_castle"
+#define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
+#define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
+#define POSITION_BUILDING_TRAINING_YARD @"building_training_yard"
+#define POSITION_BUILDING_BARRACKS @"building_barracks"
+#define POSITION_BUILDING_WARBAND_CAMP @"building_warband_camp"
+#define POSITION_HUD_PORTRAITS @"hud_portrait_"
+#define POSITION_HUD_SKILLS @"hud_skill_"
+#define POSITION_HUD_COMBOS @"hud_combo_"
+#define POSITION_HUD_HP_ALLIES @"hud_hp_ally_"
+#define POSITION_HUD_DICEPOOL @"hud_dicepool"
+#define POSITION_HUD_STATUS_EFFECTS_ALLY @"hud_status_effects_ally_"
+#define POSITION_MAIN_MENU_NEW_GAME @"main_menu_new_game"
+#define POSITION_MAIN_MENU_CONTINUE @"main_menu_continue"
+
+// MARK: METADATA
+#define META_INTERFACE_BACKGROUND @"interface_background"
+#define META_INTERFACE_SCROLL @"interface_scroll"
+#define META_INTERFACE_TAB @"interface_tab"
+#define META_INTERFACE_XP @"interface_xp"
+#define META_HUD_COMBO_STEP @"hud_combo"
+#define META_HUD_HP_ALLY @"hud_hp_ally"
+#define META_HUD_DICEPOOL @"hud_dicepool"
+#define META_HUD_STATUS_EFFECT_ALLY  @"hud_status_effects_ally"
+
+// MARK: TEXT
+#define TEXT_MAIN_MENU_NEW_GAME @"main_menu_new_game"
+#define TEXT_MAIN_MENU_CONTINUE @"main_menu_continue"
+#define TEXT_INTERFACE_SWITCHING_BUTTONS @"interface_switching_button_"
+#define TEXT_INTERFACE_BUTTON_UPGRADE @"interface_button_upgrade"
+#define TEXT_INTERFACE_STAT_LABELS @"interface_stat_"
+#define TEXT_INTERFACE_UNIT_TYPE @"interface_unit_type"
+#define TEXT_INTERFACE_HP @"interface_hp"
+#define TEXT_INTERFACE_LVL @"interface_lvl"
+#define TEXT_INTERFACE_WEAPON @"interface_weapon_name"
+#define TEXT_INTERFACE_ARMOR @"interface_armor_name"
+#define TEXT_INTERFACE_QUIRK @"interface_quirk"
+#define TEXT_INTERFACE_TAB_STATS @"interface_tab_stats"
+#define TEXT_INTERFACE_TAB_SKILLS @"interface_tab_skills"
+#define TEXT_INTERFACE_SKILL_COMBO_LABEL @"interface_skill_combo"
+#define TEXT_INTERFACE_SKILL_UPGRADE_LABEL @"interface_skill_upgrade"
+#define TEXT_INTERFACE_SKILL_LVL_LABEL @"interface_skill_lvl"
+#define TEXT_INTERFACE_BONUS @"interface_bonus_text"
+
+// MARK: VALUE
+

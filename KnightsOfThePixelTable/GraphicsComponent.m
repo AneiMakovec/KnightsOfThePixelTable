@@ -31,60 +31,68 @@ GraphicsComponent *graphicsInstance;
     return [graphicsInstance getFont];
 }
 
++ (Label *) getLabelWithText:(NSString *)text atPosition:(Vector2 *)position {
+    return [[graphicsInstance getLabelWithText:text atPosition:position] retain];
+}
+
 + (Image *) getImageWithKey:(NSString *)key atPosition:(Vector2 *)position {
-    return [graphicsInstance getImageWithKey:key atPosition:position];
+    return [[graphicsInstance getImageWithKey:key atPosition:position] retain];
 }
 
 + (Image *) getImageWithKey:(NSString *)key atPosition:(Vector2 *)position width:(int)width height:(int)height {
-    return [graphicsInstance getImageWithKey:key atPosition:position width:width height:height];
+    return [[graphicsInstance getImageWithKey:key atPosition:position width:width height:height] retain];
 }
 
 + (TouchImage *) getTouchImageWithKey:(NSString *)key atPosition:(Vector2 *)position {
-    return [graphicsInstance getTouchImageWithKey:key atPosition:position];
+    return [[graphicsInstance getTouchImageWithKey:key atPosition:position] retain];
 }
 
 + (TouchImage *) getTouchImageWithKey:(NSString *)key atPosition:(Vector2 *)position width:(int)width height:(int)height {
-    return [graphicsInstance getTouchImageWithKey:key atPosition:position width:width height:height];
+    return [[graphicsInstance getTouchImageWithKey:key atPosition:position width:width height:height] retain];
 }
 
 + (CompositeImage *) getCompositeImageWithKey:(NSString *)key atPosition:(Vector2 *)position width:(int)width height:(int)height {
-    return [graphicsInstance getCompositeImageWithKey:key atPosition:position width:width height:height];
+    return [[graphicsInstance getCompositeImageWithKey:key atPosition:position width:width height:height] retain];
 }
 
 + (AnimatedImage *) getAnimatedImageWithKey:(NSString *)key atPosition:(Vector2 *)position {
-    return [graphicsInstance getAnimatedImageWithKey:key atPosition:position];
+    return [[graphicsInstance getAnimatedImageWithKey:key atPosition:position] retain];
 }
 
 + (ImageButton *) getImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position {
-    return [graphicsInstance getImageButtonWithKey:key atPosition:position];
+    return [[graphicsInstance getImageButtonWithKey:key atPosition:position] retain];
+}
+
++ (LabelButton *) getLabelButtonWithText:(NSString *)text atPosition:(Vector2 *)position width:(int)width height:(int)height {
+    return [[graphicsInstance getLabelButtonWithText:text atPosition:position width:width height:height] retain];
 }
 
 + (ImageLabelButton *) getImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text {
-    return [graphicsInstance getImageLabelButtonWithKey:key atPosition:position text:text];
+    return [[graphicsInstance getImageLabelButtonWithKey:key atPosition:position text:text] retain];
 }
 
 + (DoubleImageButton *) getDoubleImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position {
-    return [graphicsInstance getDoubleImageButtonWithKey:key atPosition:position];
+    return [[graphicsInstance getDoubleImageButtonWithKey:key atPosition:position] retain];
 }
 
 + (DoubleImageLabelButton *) getDoubleImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text {
-    return [graphicsInstance getDoubleImageLabelButtonWithKey:key atPosition:position text:text];
+    return [[graphicsInstance getDoubleImageLabelButtonWithKey:key atPosition:position text:text] retain];
 }
 
 + (ImageLabelRadioButton *) getImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown {
-    return [graphicsInstance getImageLabelRadioButtonWithKey:key atPosition:position text:text isDown:isDown];
+    return [[graphicsInstance getImageLabelRadioButtonWithKey:key atPosition:position text:text isDown:isDown] retain];
 }
 
 + (DoubleImageLabelRadioButton *) getDoubleImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown {
-    return [graphicsInstance getDoubleImageLabelRadioButtonWithKey:key atPosition:position text:text isDown:isDown];
+    return [[graphicsInstance getDoubleImageLabelRadioButtonWithKey:key atPosition:position text:text isDown:isDown] retain];
 }
 
 + (Sprite *) getSpriteWithKey:(NSString *)key {
-    return [graphicsInstance getSpriteWithKey:key];
+    return [[graphicsInstance getSpriteWithKey:key] retain];
 }
 
 + (AnimatedSprite *) getAnimatedSpriteWithKey:(NSString *)key {
-    return [graphicsInstance getAnimatedSpriteWithKey:key];
+    return [[graphicsInstance getAnimatedSpriteWithKey:key] retain];
 }
 
 
@@ -95,7 +103,7 @@ GraphicsComponent *graphicsInstance;
 
 - (void) initialize {
     [super initialize];
-    [graphicsInstance initializeData];
+    [self initializeData];
 }
 
 
@@ -103,6 +111,10 @@ GraphicsComponent *graphicsInstance;
 
 - (SpriteFont *) getFont {
     return font;
+}
+
+- (Label *) getLabelWithText:(NSString *)text atPosition:(Vector2 *)position {
+    return [[[Label alloc] initWithFont:font text:text position:position] autorelease];
 }
 
 - (Image *) getImageWithKey:(NSString *)key atPosition:(Vector2 *)position {
@@ -220,6 +232,10 @@ GraphicsComponent *graphicsInstance;
     ImageButton *button = [[[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] background:[self getImageWithKey:key atPosition:position]] autorelease];
     
     return button;
+}
+
+- (LabelButton *) getLabelButtonWithText:(NSString *)text atPosition:(Vector2 *)position width:(int)width height:(int)height {
+    return [[[LabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:width height:height] font:font text:text] autorelease];
 }
 
 - (ImageLabelButton *) getImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text {
@@ -386,6 +402,21 @@ GraphicsComponent *graphicsInstance;
     NSString *path = [[NSBundle mainBundle] pathForResource:file ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+
+
+
+
+- (void) dealloc {
+    [data_animations release];
+    [data_0 release];
+    [data_1 release];
+    [spriteSheet_0 release];
+    [spriteSheet_1 release];
+    
+    [font release];
+    
+    [super dealloc];
 }
 
 @end

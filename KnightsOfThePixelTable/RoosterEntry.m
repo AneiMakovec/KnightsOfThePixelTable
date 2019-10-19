@@ -22,22 +22,24 @@
         position = [[Vector2 alloc] initWithX:rectangle.x y:rectangle.y];
         
         // init line background
-        roosterLine = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:rectangle];
+//        roosterLine = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:rectangle];
+        roosterLine = [GraphicsComponent getTouchImageWithKey:TOWN_MENU_INTERFACE_PANE_SCROLL_LINE atPosition:[Vector2 vectorWithX:rectangle.x y:rectangle.y] width:rectangle.width height:rectangle.height];
         roosterLine.position = position;
         roosterLine.layerDepth = depth;
         [items addObject:roosterLine];
         
         // init unit portrait
-        portrait = [[Image alloc] initWithTexture:[TownSpriteComponent getPortraitForUnitType:data.type] position:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
+//        portrait = [[Image alloc] initWithTexture:[TownSpriteComponent getPortraitForUnitType:data.type] position:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
+        portrait = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_ENTITIES_ALLIES_BRAWLER_PORTRAIT atPosition:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
         portrait.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
         [items addObject:portrait];
         
         // init unit name
-        name = [[Label alloc] initWithFont:[TownSpriteComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 35 y:position.y + 16]];
+        name = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 35 y:position.y + 16]];
         name.verticalAlign = VerticalAlignMiddle;
         name.horizontalAlign = HorizontalAlignLeft;
         name.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
-        [name setScaleUniform:INTERFACE_SCALE_FONT_SMALL];
+        [name setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:name];
     }
     return self;

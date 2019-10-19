@@ -8,10 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "KOTPTEnums.h"
+#import "Pixlron.Knights.classes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Constants : NSObject
+@interface Constants : GameComponent {
+    NSDictionary *data_position;
+    NSDictionary *data_value;
+    NSDictionary *data_text;
+    NSDictionary *data_meta;
+}
+
++ (void) initializeWithGame:(Game *)game;
+
++ (Vector2 *) getPositionDataForKey:(NSString *)key;
++ (MetaData *) getMetaDataForKey:(NSString *)key;
++ (NSString *) getTextForKey:(NSString *)key;
+
++ (Rectangle *) getInterfaceScrollRect;
 
 + (NSString*) progressFilePath;
 

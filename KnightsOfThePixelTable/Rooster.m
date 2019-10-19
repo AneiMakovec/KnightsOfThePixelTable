@@ -10,9 +10,9 @@
 
 #import "Pixlron.Knights.h"
 
-#define ENTRY_WIDTH 165
-#define ENTRY_HEIGHT 33
-#define ENTRY_SPACING 34
+#define ENTRY_WIDTH 164
+#define ENTRY_HEIGHT 34
+#define ENTRY_SPACING 35
 
 @implementation Rooster
 

@@ -23,12 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
     
     SkillsPanel *skillPanel;
     StatsPanel *statPanel;
-    EquipmentPanel *equipmentPanel;
+//    EquipmentPanel *equipmentPanel;
     
     DoubleImageLabelButton *recruitButton;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;
+- (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;
 
 @end
 

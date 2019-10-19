@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
     WarbandSlotType selectedSlot;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
+- (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

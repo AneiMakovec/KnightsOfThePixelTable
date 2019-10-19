@@ -13,7 +13,7 @@
 @implementation KnightBowman
 
 - (id) initWithLevel:(Level*)theLevel gameHud:(GameHud *)hud {
-    self = [super initKnight:KnightTypeBowman level:theLevel gameHud:hud entityType:Agility health:[Constants bowmanHealthPoints] damageType:[Constants bowmanDamageType] maxRadius:60];
+    self = [super initKnight:KnightTypeLongbowman level:theLevel gameHud:hud entityType:Agility health:[Constants bowmanHealthPoints] damageType:[Constants bowmanDamageType] maxRadius:60];
     if (self != nil) {
         // init stats
         for (int i = 0; i < StatTypes; i++) {
@@ -27,7 +27,7 @@
         
         // init skill combos
         for (int i = 0; i < SkillTypes; i++) {
-            comboSkillTypes[i] = Insight;
+            comboSkillTypes[i] = Accuracy;
         }
         
 //        // init textures

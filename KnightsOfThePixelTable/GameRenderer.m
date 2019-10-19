@@ -101,10 +101,10 @@
     diceSymbols[Cunning].sourceRectangle = [Rectangle rectangleWithX:96 y:0 width:32 height:32];
     diceSymbols[Cunning].origin = [Vector2 vectorWithX:16 y:16];
     
-    diceSymbols[Insight] =[[Sprite alloc] init];
-    diceSymbols[Insight].texture = diceSymbolTexture;
-    diceSymbols[Insight].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
-    diceSymbols[Insight].origin = [Vector2 vectorWithX:16 y:16];
+    diceSymbols[Accuracy] =[[Sprite alloc] init];
+    diceSymbols[Accuracy].texture = diceSymbolTexture;
+    diceSymbols[Accuracy].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
+    diceSymbols[Accuracy].origin = [Vector2 vectorWithX:16 y:16];
     
     diceSymbols[Defence] =[[Sprite alloc] init];
     diceSymbols[Defence].texture = diceSymbolTexture;
@@ -192,7 +192,7 @@
 //                allyTextures[i] = [self.game.content load:CHARACTER_BRAWLER];
 //                break;
 //
-//            case KnightTypeBowman:
+//            case KnightTypeLongbowman:
 //                allyTextures[i] = [self.game.content load:CHARACTER_BOWMAN];
 //                break;
 //
@@ -200,7 +200,7 @@
 //                allyTextures[i] = [self.game.content load:CHARACTER_PALADIN];
 //                break;
 //
-//            case KnightTypeFireEnchantress:
+//            case KnightTypeWizard:
 //                allyTextures[i] = [self.game.content load:CHARACTER_FIRE_ENCHANTRESS];
 //                break;
 //
@@ -574,7 +574,7 @@
 //            attackDuration = 6;
 //            break;
 //
-//        case KnightTypeBowman:
+//        case KnightTypeLongbowman:
 //            attackFrames = 37;
 //            attackDuration = 6;
 //            break;
@@ -584,7 +584,7 @@
 //            attackDuration = 5;
 //            break;
 //
-//        case KnightTypeFireEnchantress:
+//        case KnightTypeWizard:
 //            moveFrames = 6;
 //            moveDuration = 1;
 //            hitFrames = 12;

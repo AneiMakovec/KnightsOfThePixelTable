@@ -169,15 +169,15 @@
 
 //- (void) calculateThreat {
 //    // calculate damage type factors
-//    float meleeDamageFactor = opponentEntityTypes[DamageTypeMelee] / ownEntityTypes[DamageTypeRanged];
+//    float meleeDamageFactor = opponentEntityTypes[DamageTypePhysical] / ownEntityTypes[DamageTypeRanged];
 //    float rangedDamageFactor = opponentEntityTypes[DamageTypeRanged] / ownEntityTypes[DamageTypeMagic];
-//    float magicDamageFactor = opponentEntityTypes[DamageTypeMagic] / ownEntityTypes[DamageTypeMelee];
+//    float magicDamageFactor = opponentEntityTypes[DamageTypeMagic] / ownEntityTypes[DamageTypePhysical];
 //
 //    // calculate the threat level by multiplying the entities damage type factor with its damage strength
 //    CombatPosition pos = FirstCombatPosition;
 //    for (Knight *knight in level.battlefield.allyEntities) {
 //        switch (knight.damageType) {
-//            case DamageTypeMelee:
+//            case DamageTypePhysical:
 //                opponentEntityThreat[pos] = meleeDamageFactor * knight.damageStrength;
 //                break;
 //            case DamageTypeRanged:
@@ -258,10 +258,10 @@
 //- (CombatPosition) getBestCounterFor:(DamageType)theType {
 //    CombatPosition bestCounterPos = FirstCombatPosition;
 //    switch (theType) {
-//        case DamageTypeMelee:
+//        case DamageTypePhysical:
 //            bestCounterPos = [self getBestDamageOfType:DamageTypeMagic];
 //            if (bestCounterPos == CombatPositions) {
-//                bestCounterPos = [self getBestDamageOfType:DamageTypeMelee];
+//                bestCounterPos = [self getBestDamageOfType:DamageTypePhysical];
 //                if (bestCounterPos == CombatPositions) {
 //                    bestCounterPos = [self getBestDamageOfType:DamageTypeRanged];
 //                }
@@ -269,7 +269,7 @@
 //
 //            break;
 //        case DamageTypeRanged:
-//            bestCounterPos = [self getBestDamageOfType:DamageTypeMelee];
+//            bestCounterPos = [self getBestDamageOfType:DamageTypePhysical];
 //            if (bestCounterPos == CombatPositions) {
 //                bestCounterPos = [self getBestDamageOfType:DamageTypeRanged];
 //                if (bestCounterPos == CombatPositions) {
@@ -283,7 +283,7 @@
 //            if (bestCounterPos == CombatPositions) {
 //                bestCounterPos = [self getBestDamageOfType:DamageTypeMagic];
 //                if (bestCounterPos == CombatPositions) {
-//                    bestCounterPos = [self getBestDamageOfType:DamageTypeMelee];
+//                    bestCounterPos = [self getBestDamageOfType:DamageTypePhysical];
 //                }
 //            }
 //

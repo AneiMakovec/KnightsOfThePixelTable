@@ -83,4 +83,4 @@
 @class SoundEngine;
 
 // Other
-@class Constants;
+@class Constants, MetaData;

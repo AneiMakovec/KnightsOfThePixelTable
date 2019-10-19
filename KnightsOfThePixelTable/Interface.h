@@ -14,6 +14,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Interface : GuiPanel {
+    TownMenu *menu;
+    
     DoubleImageButton *closeButton;
     Image *background;
     Image *sidePane;
@@ -26,20 +28,17 @@ NS_ASSUME_NONNULL_BEGIN
     
     // interface switching buttons
     RadioButtonGroup *switchButtonGroup;
-    DoubleImageLabelRadioButton *switchButtons[BuildingTypes];
-    NSString *buttonKeys[BuildingTypes];
+    DoubleImageLabelRadioButton *switchButtons[BuildingTypeGatehouse];
+    NSString *buttonKeys[BuildingTypeGatehouse];
     
     // interface content
-    GuiPanel *interfaceContent[BuildingTypes];
+    GuiPanel *interfaceContent[BuildingTypeGatehouse];
     
     // rooster unit info
     Label *unitName;
-    Label *unitType;
-    NSString *unitTypes[KnightTypes];
     
     // train rooster unit info
     Label *unitNameTrain;
-    Label *unitTypeTrain;
     
     
     // DEBUG
@@ -47,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
     RoosterEntry *firstTrainLine, *secondTrainLine, *thirdTrainLine;
 }
 
-- (id) initToRectangle:(Rectangle *)rect layerDepth:(float)layerDepth;
+- (id) initWithMenu:(TownMenu *)theMenu layerDepth:(float)layerDepth;
 
 - (void) updateContent:(BuildingType)type;
 

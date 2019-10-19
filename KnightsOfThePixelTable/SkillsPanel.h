@@ -19,18 +19,26 @@ NS_ASSUME_NONNULL_BEGIN
     
     Image *skillPane;
     
-    Image *firstSkill, *secondSkill, *thirdSkill;
+    Image *skills[SkillTypes];
     
-    Image *firstSkillCombo1, *firstSkillCombo2;
-    Image *secondSkillCombo1, *secondSkillCombo2, *secondSkillCombo3;
-    Image *thirdSkillCombo1, *thirdSkillCombo2, *thirdSkillCombo3, *thirdSkillCombo4;
+    Image *firstSkillCombo[2];
+    Image *secondSkillCombo[3];
+    Image *thirdSkillCombo[4];
     
-    DoubleImageLabelButton *upgradeFirstSkill, *upgradeSecondSkill, *upgradeThirdSkill;
+    DoubleImageLabelButton *upgradeButtons[SkillTypes];
+    
+    Label *comboLabels[SkillTypes];
+    Label *upgradeLabels[SkillTypes];
+    Label *lvlLabels[SkillTypes];
 }
 
-- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;
+- (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;
 
 - (void) updateToKnightData:(KnightData *)data;
+
+- (void) updateDepth:(float)depth;
+
+- (void) updateColor:(Color *)color;
 
 @end
 

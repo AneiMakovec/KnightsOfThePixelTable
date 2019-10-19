@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *upgradeDices;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth;
+- (id) initWithLayerDepth:(float)depth;
 
 @end
 

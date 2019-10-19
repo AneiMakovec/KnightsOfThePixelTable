@@ -297,7 +297,7 @@
     
     for (CombatEntity *theTarget in targets) {
         // calculate if attack will miss
-        if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Insight].statValue]) {
+        if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Accuracy].statValue]) {
             // hit
             NSLog(@"HIT");
             
@@ -440,8 +440,8 @@
                         text = @"Buff Defence";
                         break;
                         
-                    case Insight:
-                        text = @"Buff Insight";
+                    case Accuracy:
+                        text = @"Buff Accuracy";
                         break;
                         
                     case Cunning:
@@ -474,8 +474,8 @@
                         text = @"Debuff Defence";
                         break;
                         
-                    case Insight:
-                        text = @"Debuff Insight";
+                    case Accuracy:
+                        text = @"Debuff Accuracy";
                         break;
                         
                     case Cunning:

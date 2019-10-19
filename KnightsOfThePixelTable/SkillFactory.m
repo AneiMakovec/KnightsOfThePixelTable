@@ -54,7 +54,7 @@
             break;
         
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case BasicAttack:
                     // MARKSMAN SHOT
@@ -76,7 +76,7 @@
                 case ThirdComboSkill:
                     // ARROW VOLLEY
                     skill = [[[Skill alloc] initWithFunction:[Constants bowmanFunctionOfSkill:ThirdComboSkill] range:[Constants bowmanRangeOfSkill:ThirdComboSkill] target:[Constants bowmanTargetOfSkill:ThirdComboSkill] useOn:[Constants bowmanUseOnSkill:ThirdComboSkill] damage:[Constants bowmanDamageOfSkill:ThirdComboSkill] upgradeMargin:[Constants bowmanGainMarginOfSkill:ThirdComboSkill]] autorelease];
-                    effect = [[Debuff alloc] initWithStatType:Insight debuff:0.2f duration:2 chance:100 chanceUpgradeMargin:5];
+                    effect = [[Debuff alloc] initWithStatType:Accuracy debuff:0.2f duration:2 chance:100 chanceUpgradeMargin:5];
                     [skill addStatEffect:effect];
                     break;
                     
@@ -118,7 +118,7 @@
             }
             break;
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case BasicAttack:
                     // FLAME STRIKE

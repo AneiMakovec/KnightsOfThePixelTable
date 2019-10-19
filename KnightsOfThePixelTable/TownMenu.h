@@ -17,10 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
     
     Image *background;
     
-    ImageButton *castle, *barracks, *blacksmith, *trainingYard, *warbandCamp, *gatehouse;
+    ImageButton *buildings[BuildingTypes];
     
     Interface *interface;
 }
+
+- (void) enableBuildings;
 
 @end
 

@@ -8,7 +8,121 @@
 
 #import "Constants.h"
 
+#import "Pixlron.Knights.h"
+
+#define X @"x"
+#define Y @"y"
+#define WIDTH @"w"
+#define HEIGHT @"h"
+#define STEP @"step"
+#define MAX_STEP @"max"
+
+Constants *constantsInstance;
+
 @implementation Constants
+
+
+/*
+ MARK: INITIALIZE WITH GAME
+*/
++ (void) initializeWithGame:(Game *)game {
+    constantsInstance = [[Constants alloc] initWithGame:game];
+    [game.components addComponent:constantsInstance];
+}
+
++ (Vector2 *) getPositionDataForKey:(NSString *)key {
+    return [constantsInstance getPositionDataForKey:key];
+}
+
++ (MetaData *) getMetaDataForKey:(NSString *)key {
+    return [constantsInstance getMetaDataForKey:key];
+}
+
++ (NSString *) getTextForKey:(NSString *)key {
+    return [constantsInstance getTextForKey:key];
+}
+
++ (Rectangle *) getInterfaceScrollRect {
+    return [constantsInstance getInterfaceScrollRect];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (Vector2 *) getPositionDataForKey:(NSString *)key {
+    if (![key containsString:@"interface"]) {
+        NSDictionary *positionData = [data_position objectForKey:key];
+        
+        return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue]];
+    } else {
+        NSDictionary *positionData = [data_position objectForKey:POSITION_INTERFACE_BACKGROUND];
+        
+        if ([key isEqualToString:POSITION_INTERFACE_BACKGROUND]) {
+            return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue]];
+        }
+        
+        NSDictionary *itemPositionData = [data_position objectForKey:key];
+        
+        return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] + [[itemPositionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue] + [[itemPositionData valueForKey:Y] intValue]];
+    }
+}
+
+- (MetaData *) getMetaDataForKey:(NSString *)key {
+    NSDictionary *metaData = [data_meta objectForKey:key];
+    
+    if ([[metaData allKeys] containsObject:WIDTH] && [[metaData allKeys] containsObject:HEIGHT]) {
+        if ([[metaData allKeys] containsObject:STEP])
+            return [[[MetaData alloc] initWithStep:[[metaData valueForKey:STEP] intValue] width:[[metaData valueForKey:WIDTH] intValue] height:[[metaData valueForKey:HEIGHT] intValue]] autorelease];
+        else
+            return [[[MetaData alloc] initWithWidth:[[metaData valueForKey:WIDTH] intValue] height:[[metaData valueForKey:HEIGHT] intValue]] autorelease];
+    } else if ([[metaData allKeys] containsObject:STEP]) {
+        if ([[metaData allKeys] containsObject:MAX_STEP])
+            return [[[MetaData alloc] initWithStep:[[metaData valueForKey:STEP] intValue] max:[[metaData valueForKey:MAX_STEP] intValue]] autorelease];
+        else
+            return [[[MetaData alloc] initWithStep:[[metaData valueForKey:STEP] intValue]] autorelease];
+    }
+    
+    return nil;
+}
+
+- (NSString *) getTextForKey:(NSString *)key {
+    return [data_text objectForKey:key];
+}
+
+- (Rectangle *) getInterfaceScrollRect {
+    Vector2 *position = [self getPositionDataForKey:POSITION_INTERFACE_SCROLL_BACKGOUND];
+    MetaData *meta = [self getMetaDataForKey:META_INTERFACE_SCROLL];
+    
+    return [Rectangle rectangleWithX:position.x y:position.y width:meta.width height:meta.height];
+}
+
+- (void) initialize {
+    NSDictionary *data = [self loadData:DATA_CONSTANTS];
+    
+    // load data
+    data_position = [[data objectForKey:POSITION_DATA] retain];
+    data_value = [[data objectForKey:VALUE_DATA] retain];
+    data_text = [[data objectForKey:TEXT_DATA] retain];
+    data_meta = [[data objectForKey:META_DATA] retain];
+}
+
+- (NSDictionary *) loadData:(NSString *)file {
+    NSString *path = [[NSBundle mainBundle] pathForResource:file ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+
 
 /*
  MARK: PROGRESS FILE PATH
@@ -375,12 +489,12 @@
 */
 + (DamageType) advantageOfDamageType:(DamageType)type {
     switch (type) {
-        case DamageTypeMelee:
+        case DamageTypePhysical:
             return DamageTypeRanged;
         case DamageTypeRanged:
             return DamageTypeMagic;
         case DamageTypeMagic:
-            return DamageTypeMelee;
+            return DamageTypePhysical;
             
         default:
             break;
@@ -391,10 +505,10 @@
 
 + (DamageType) disadvantageOfDamageType:(DamageType)type {
     switch (type) {
-        case DamageTypeMelee:
+        case DamageTypePhysical:
             return DamageTypeMagic;
         case DamageTypeRanged:
-            return DamageTypeMelee;
+            return DamageTypePhysical;
         case DamageTypeMagic:
             return DamageTypeRanged;
             
@@ -447,7 +561,7 @@
 }
 
 + (DamageType) brawlerDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) brawlerValueOfStat:(StatType)stat {
@@ -458,7 +572,7 @@
             return 60;
         case Defence:
             return 60;
-        case Insight:
+        case Accuracy:
             return 60;
         case Cunning:
             return 60;
@@ -477,7 +591,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -598,7 +712,7 @@
             return 60;
         case Defence:
             return 60;
-        case Insight:
+        case Accuracy:
             return 60;
         case Cunning:
             return 60;
@@ -617,7 +731,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -727,7 +841,7 @@
 }
 
 + (DamageType) paladinDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) paladinValueOfStat:(StatType)stat {
@@ -738,7 +852,7 @@
             return 60;
         case Defence:
             return 60;
-        case Insight:
+        case Accuracy:
             return 60;
         case Cunning:
             return 60;
@@ -757,7 +871,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -880,7 +994,7 @@
             return 60;
         case Defence:
             return 60;
-        case Insight:
+        case Accuracy:
             return 60;
         case Cunning:
             return 60;
@@ -899,7 +1013,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -1014,7 +1128,7 @@
 }
 
 + (DamageType) enemyWarriorDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) enemyWarriorValueOfStat:(StatType)stat {
@@ -1025,7 +1139,7 @@
             return 30;
         case Defence:
             return 30;
-        case Insight:
+        case Accuracy:
             return 30;
         case Cunning:
             return 30;
@@ -1044,7 +1158,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -1155,7 +1269,7 @@
 }
 
 + (DamageType) enemyBruteDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) enemyBruteValueOfStat:(StatType)stat {
@@ -1166,7 +1280,7 @@
             return 30;
         case Defence:
             return 30;
-        case Insight:
+        case Accuracy:
             return 30;
         case Cunning:
             return 30;
@@ -1185,7 +1299,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -1296,7 +1410,7 @@
 }
 
 + (DamageType) enemyVikingDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) enemyVikingValueOfStat:(StatType)stat {
@@ -1307,7 +1421,7 @@
             return 30;
         case Defence:
             return 30;
-        case Insight:
+        case Accuracy:
             return 30;
         case Cunning:
             return 30;
@@ -1326,7 +1440,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -1438,7 +1552,7 @@
 }
 
 + (DamageType) enemyBossKnightDamageType {
-    return DamageTypeMelee;
+    return DamageTypePhysical;
 }
 
 + (int) enemyBossKnightValueOfStat:(StatType)stat {
@@ -1449,7 +1563,7 @@
             return 30;
         case Defence:
             return 30;
-        case Insight:
+        case Accuracy:
             return 30;
         case Cunning:
             return 30;
@@ -1468,7 +1582,7 @@
             return 4;
         case Defence:
             return 4;
-        case Insight:
+        case Accuracy:
             return 4;
         case Cunning:
             return 4;
@@ -1585,13 +1699,13 @@
         case KnightTypeBrawler:
             return 8;
             
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             return 8;
         
         case KnightTypePaladin:
             return 8;
             
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             return 8;
             
         default:
@@ -1626,7 +1740,7 @@
             }
             break;
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case AnimationTypeIdle:
                     return 64;
@@ -1671,7 +1785,7 @@
             break;
             
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case AnimationTypeIdle:
                     return 64;
@@ -1725,7 +1839,7 @@
             }
             break;
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case AnimationTypeIdle:
                     return 64;
@@ -1770,7 +1884,7 @@
             break;
             
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case AnimationTypeIdle:
                     return 64;
@@ -1824,7 +1938,7 @@
             }
             break;
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case AnimationTypeIdle:
                     return 6;
@@ -1869,7 +1983,7 @@
             break;
             
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case AnimationTypeIdle:
                     return 6;
@@ -1923,7 +2037,7 @@
             }
             break;
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case AnimationTypeIdle:
                     return 6;
@@ -1968,7 +2082,7 @@
             break;
             
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case AnimationTypeIdle:
                     return 6;
@@ -2022,7 +2136,7 @@
             }
             break;
         // BOWMAN
-        case KnightTypeBowman:
+        case KnightTypeLongbowman:
             switch (type) {
                 case AnimationTypeIdle:
                     return 0.5f;
@@ -2067,7 +2181,7 @@
             break;
             
         // FIRE ENCHANTRESS
-        case KnightTypeFireEnchantress:
+        case KnightTypeWizard:
             switch (type) {
                 case AnimationTypeIdle:
                     return 0.5f;

@@ -18,18 +18,39 @@ NS_ASSUME_NONNULL_BEGIN
     Image *statPane;
     
     Label *statLabels[StatTypes];
-    Label *statValueLabels[StatTypes];
+    Label *stats[StatTypes];
     
     Label *unitTypeLabel;
-    Image *unitTypeBorder, *unitType;
+    Image *unitType;
+    
+    Label *quirk, *quirkLabel;
+    
+    Label *lvl, *lvlLabel;
 
-    Label *hpLabel, *hpValueLabel;
-    Label *expLabel, *expCurrentLabel, *expSlashLabel, *expNextLvlLabel;
+    Label *hp, *hpLabel;
+    Label *xpLabel;
+    
+    Label *weaponLvl, *weaponLvlLabel;
+    Label *armorLvl, *armorLvlLabel;
+    
+    Image *weapon, *armor;
+    Label *weaponName, *armorName;
+    Label *weaponBonusText, *armorBonusText;
+    
+    Label *weaponBonus[StatTypes];
+    Label *weaponBonusLabel[StatTypes];
+    
+    Label *armorBonus[StatTypes];
+    Label *armorBonusLabel[StatTypes];
 }
 
-- (id) initWithKnightData:(KnightData *)data area:(Rectangle *)area layerDepth:(float)layerDepth;
+- (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth;
 
 - (void) updateToKnightData:(KnightData *)data;
+
+- (void) updateDepth:(float)depth;
+
+- (void) updateColor:(Color *)color;
 
 @end
 

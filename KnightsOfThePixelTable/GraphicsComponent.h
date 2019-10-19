@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (SpriteFont *) getFont;
 
++ (Label *) getLabelWithText:(NSString *)text atPosition:(Vector2 *)position;
+
 + (Image *) getImageWithKey:(NSString *)key atPosition:(Vector2 *)position;
 + (Image *) getImageWithKey:(NSString *)key atPosition:(Vector2 *)position width:(int)width height:(int)height;
 + (TouchImage *) getTouchImageWithKey:(NSString *)key atPosition:(Vector2 *)position;
@@ -41,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (AnimatedImage *) getAnimatedImageWithKey:(NSString *)key atPosition:(Vector2 *)position;
 
 + (ImageButton *) getImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position;
-//+ (LabelButton *) getLabelButtonWithKey:(NSString *)key;
++ (LabelButton *) getLabelButtonWithText:(NSString *)text atPosition:(Vector2 *)position width:(int)width height:(int)height;
 + (ImageLabelButton *) getImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text;
 + (DoubleImageButton *) getDoubleImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position;
 + (DoubleImageLabelButton *) getDoubleImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text;

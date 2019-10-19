@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
     DoubleImageLabelButton *upgradeWeapon, *upgradeArmor;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
+- (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

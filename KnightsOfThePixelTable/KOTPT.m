@@ -18,6 +18,9 @@
         // init graphics device
         graphics = [[GraphicsDeviceManager alloc] initWithGame:self];
         
+        // init constants data
+        [Constants initializeWithGame:self];
+        
         // load graphics
         [GraphicsComponent initializeWithGame:self];
         

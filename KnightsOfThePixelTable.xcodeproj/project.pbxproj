@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsComponent.m */; };
-		B500BBB023564A86005A8491 /* lilliput_steps.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B500BBAF23564A86005A8491 /* lilliput_steps.bmp */; };
-		B500BBB523567319005A8491 /* spritesheet_0.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB123567319005A8491 /* spritesheet_0.png */; };
-		B500BBB623567319005A8491 /* spritesheet_0.json in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB223567319005A8491 /* spritesheet_0.json */; };
-		B500BBB723567319005A8491 /* spritesheet_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB323567319005A8491 /* spritesheet_1.png */; };
-		B500BBB823567319005A8491 /* spritesheet_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B500BBB423567319005A8491 /* spritesheet_1.json */; };
 		B5047D4D22ED11610057866C /* interface_pane_scroll_line.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */; };
 		B5047D4E22ED11610057866C /* interface_pane_skills.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4022ED11600057866C /* interface_pane_skills.png */; };
 		B5047D4F22ED11610057866C /* interface_tab.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4122ED11600057866C /* interface_tab.png */; };
@@ -25,6 +20,13 @@
 		B5047D5722ED11610057866C /* interface_pane.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4922ED11610057866C /* interface_pane.png */; };
 		B5047D5922ED11610057866C /* interface_button_not_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4B22ED11610057866C /* interface_button_not_pressed.png */; };
 		B5047D5A22ED11610057866C /* interface_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4C22ED11610057866C /* interface_button_pressed.png */; };
+		B5069D41235B099E0094E0DF /* MetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = B5069D40235B099E0094E0DF /* MetaData.m */; };
+		B5069D47235B23820094E0DF /* spritesheet_0.png in Resources */ = {isa = PBXBuildFile; fileRef = B5069D43235B23820094E0DF /* spritesheet_0.png */; };
+		B5069D48235B23820094E0DF /* spritesheet_0.json in Resources */ = {isa = PBXBuildFile; fileRef = B5069D44235B23820094E0DF /* spritesheet_0.json */; };
+		B5069D49235B23820094E0DF /* spritesheet_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B5069D45235B23820094E0DF /* spritesheet_1.json */; };
+		B5069D4A235B23820094E0DF /* spritesheet_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5069D46235B23820094E0DF /* spritesheet_1.png */; };
+		B5069D4C235B91780094E0DF /* lilliput_steps.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5069D4B235B91780094E0DF /* lilliput_steps.bmp */; };
+		B5069D4E235B95D10094E0DF /* lilliput_steps_shadowed.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B5069D4D235B95D00094E0DF /* lilliput_steps_shadowed.bmp */; };
 		B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F82F921ED1DAE000C2A92 /* GameProgress.m */; };
 		B50F82FF21ED2A4C000C2A92 /* enabled_sound_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B50F82FB21ED2A4C000C2A92 /* enabled_sound_button.png */; };
 		B50F830021ED2A4C000C2A92 /* disabled_music_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B50F82FC21ED2A4C000C2A92 /* disabled_music_button.png */; };
@@ -196,11 +198,6 @@
 /* Begin PBXFileReference section */
 		B500BBAC23563F2A005A8491 /* GraphicsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsComponent.h; sourceTree = "<group>"; };
 		B500BBAD23563F2A005A8491 /* GraphicsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsComponent.m; sourceTree = "<group>"; };
-		B500BBAF23564A86005A8491 /* lilliput_steps.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = lilliput_steps.bmp; sourceTree = "<group>"; };
-		B500BBB123567319005A8491 /* spritesheet_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_0.png; sourceTree = "<group>"; };
-		B500BBB223567319005A8491 /* spritesheet_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_0.json; sourceTree = "<group>"; };
-		B500BBB323567319005A8491 /* spritesheet_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_1.png; sourceTree = "<group>"; };
-		B500BBB423567319005A8491 /* spritesheet_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_1.json; sourceTree = "<group>"; };
 		B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane_scroll_line.png; sourceTree = "<group>"; };
 		B5047D4022ED11600057866C /* interface_pane_skills.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane_skills.png; sourceTree = "<group>"; };
 		B5047D4122ED11600057866C /* interface_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_tab.png; sourceTree = "<group>"; };
@@ -213,6 +210,14 @@
 		B5047D4922ED11610057866C /* interface_pane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane.png; sourceTree = "<group>"; };
 		B5047D4B22ED11610057866C /* interface_button_not_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_button_not_pressed.png; sourceTree = "<group>"; };
 		B5047D4C22ED11610057866C /* interface_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_button_pressed.png; sourceTree = "<group>"; };
+		B5069D3F235B099E0094E0DF /* MetaData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaData.h; sourceTree = "<group>"; };
+		B5069D40235B099E0094E0DF /* MetaData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetaData.m; sourceTree = "<group>"; };
+		B5069D43235B23820094E0DF /* spritesheet_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_0.png; sourceTree = "<group>"; };
+		B5069D44235B23820094E0DF /* spritesheet_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_0.json; sourceTree = "<group>"; };
+		B5069D45235B23820094E0DF /* spritesheet_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spritesheet_1.json; sourceTree = "<group>"; };
+		B5069D46235B23820094E0DF /* spritesheet_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet_1.png; sourceTree = "<group>"; };
+		B5069D4B235B91780094E0DF /* lilliput_steps.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = lilliput_steps.bmp; sourceTree = "<group>"; };
+		B5069D4D235B95D00094E0DF /* lilliput_steps_shadowed.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = lilliput_steps_shadowed.bmp; sourceTree = "<group>"; };
 		B50F82F821ED1DAE000C2A92 /* GameProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameProgress.h; sourceTree = "<group>"; };
 		B50F82F921ED1DAE000C2A92 /* GameProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameProgress.m; sourceTree = "<group>"; };
 		B50F82FB21ED2A4C000C2A92 /* enabled_sound_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enabled_sound_button.png; sourceTree = "<group>"; };
@@ -463,12 +468,31 @@
 		B500BBA323563EAE005A8491 /* Spritesheet */ = {
 			isa = PBXGroup;
 			children = (
-				B500BBB223567319005A8491 /* spritesheet_0.json */,
-				B500BBB123567319005A8491 /* spritesheet_0.png */,
-				B500BBB423567319005A8491 /* spritesheet_1.json */,
-				B500BBB323567319005A8491 /* spritesheet_1.png */,
+				B5069D44235B23820094E0DF /* spritesheet_0.json */,
+				B5069D43235B23820094E0DF /* spritesheet_0.png */,
+				B5069D45235B23820094E0DF /* spritesheet_1.json */,
+				B5069D46235B23820094E0DF /* spritesheet_1.png */,
 			);
 			path = Spritesheet;
+			sourceTree = "<group>";
+		};
+		B5069D3E235B09740094E0DF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B5069D42235B09AD0094E0DF /* Meta */,
+				B537666521AF36E40098C44C /* Constants.h */,
+				B537666621AF36E40098C44C /* Constants.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		B5069D42235B09AD0094E0DF /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				B5069D3F235B099E0094E0DF /* MetaData.h */,
+				B5069D40235B099E0094E0DF /* MetaData.m */,
+			);
+			name = Meta;
 			sourceTree = "<group>";
 		};
 		B50F82F721ED1D8A000C2A92 /* Game progress */ = {
@@ -681,7 +705,8 @@
 		B55FA73F21D828E600526790 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				B500BBAF23564A86005A8491 /* lilliput_steps.bmp */,
+				B5069D4D235B95D00094E0DF /* lilliput_steps_shadowed.bmp */,
+				B5069D4B235B91780094E0DF /* lilliput_steps.bmp */,
 				B5EE0AEA22FF1E7700A291C6 /* alagard_8px.bmp */,
 				B5EE0AE922FF1E7700A291C6 /* squarebit_8px.bmp */,
 				B53912CF22F86553005E4686 /* alagard.bmp */,
@@ -1224,11 +1249,10 @@
 				B5671A57219A138A009E270F /* Game states */,
 				B50F82F721ED1D8A000C2A92 /* Game progress */,
 				B5AE501221BEEDE800FC5CBF /* Audio */,
+				B5069D3E235B09740094E0DF /* Data */,
 				B5E380272183ABD30007D013 /* KOTPT.h */,
 				B5E380282183ABD30007D013 /* KOTPT.m */,
 				B5DE1264218DE6BA000D6784 /* KOTPTEnums.h */,
-				B537666521AF36E40098C44C /* Constants.h */,
-				B537666621AF36E40098C44C /* Constants.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1456,13 +1480,15 @@
 				B5AE501E21BEF47300FC5CBF /* dice_hit.wav in Resources */,
 				B5D1747021FF86100033DF2C /* arrow.png in Resources */,
 				B5CF918D22009CB0006A52B5 /* button_confirm.png in Resources */,
-				B500BBB623567319005A8491 /* spritesheet_0.json in Resources */,
 				B560375921FE803A00CE7123 /* background_main_menu.png in Resources */,
 				B53912D622F86553005E4686 /* alagard.bmp in Resources */,
 				B5047D5622ED11610057866C /* interface_button_close_pressed.png in Resources */,
+				B5069D4C235B91780094E0DF /* lilliput_steps.bmp in Resources */,
 				B53912D822F86553005E4686 /* squarebit.bmp in Resources */,
 				B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */,
+				B5069D4A235B23820094E0DF /* spritesheet_1.png in Resources */,
 				B53912D522F86553005E4686 /* perfect_dos.bmp in Resources */,
+				B5069D49235B23820094E0DF /* spritesheet_1.json in Resources */,
 				B5EE0AEB22FF1E7700A291C6 /* squarebit_8px.bmp in Resources */,
 				B560372721FE707200CE7123 /* status_effect_burn.png in Resources */,
 				B5EE0AEC22FF1E7700A291C6 /* alagard_8px.bmp in Resources */,
@@ -1471,20 +1497,19 @@
 				B5FFCB9621A36131005F15BF /* combat_dice_animation_evil.png in Resources */,
 				B5CF918A22009CB0006A52B5 /* button_back.png in Resources */,
 				B5047D5122ED11610057866C /* interface_slot_green.png in Resources */,
+				B5069D47235B23820094E0DF /* spritesheet_0.png in Resources */,
+				B5069D4E235B95D10094E0DF /* lilliput_steps_shadowed.bmp in Resources */,
 				B5CF918B22009CB0006A52B5 /* button_music_on.png in Resources */,
 				B54E88D021E2D2450040C888 /* button_background.png in Resources */,
 				B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */,
 				B51722BC22F1B19F005718D4 /* interface_pane_scroll.png in Resources */,
 				B55FA72B21D7FC0A00526790 /* background_mountains.png in Resources */,
 				B5EFF066235743CD00A71204 /* data_constants.json in Resources */,
-				B500BBB723567319005A8491 /* spritesheet_1.png in Resources */,
 				B5CF91A72200F964006A52B5 /* music_battle.mp3 in Resources */,
 				B5047D5722ED11610057866C /* interface_pane.png in Resources */,
 				B560372921FE707200CE7123 /* status_effect_buff.png in Resources */,
-				B500BBB523567319005A8491 /* spritesheet_0.png in Resources */,
 				B53912D722F86553005E4686 /* fipps.bmp in Resources */,
 				B560375121FE725D00CE7123 /* character_enemy_swordsman.png in Resources */,
-				B500BBB823567319005A8491 /* spritesheet_1.json in Resources */,
 				B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */,
 				B5CF91912200C903006A52B5 /* background_world_menu.png in Resources */,
 				B5CF919E2200D8BD006A52B5 /* boss_idle.png in Resources */,
@@ -1509,7 +1534,7 @@
 				B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */,
 				B5CF91B022010795006A52B5 /* button_gate.png in Resources */,
 				B560372521FE707200CE7123 /* status_effect_stun.png in Resources */,
-				B500BBB023564A86005A8491 /* lilliput_steps.bmp in Resources */,
+				B5069D48235B23820094E0DF /* spritesheet_0.json in Resources */,
 				B5047D5422ED11610057866C /* interface_slot_gold.png in Resources */,
 				B55FA72C21D7FC0A00526790 /* background_pinewoods.png in Resources */,
 				B53912D922F86553005E4686 /* alkhemikal.bmp in Resources */,
@@ -1557,6 +1582,7 @@
 				B5309CCC22C26AB3005CE22F /* WarbandCampInterface.m in Sources */,
 				B5A493CD21CAECF0003EBB1D /* Skill.m in Sources */,
 				B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */,
+				B5069D41235B099E0094E0DF /* MetaData.m in Sources */,
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
 				B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */,

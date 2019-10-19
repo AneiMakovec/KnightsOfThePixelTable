@@ -26,7 +26,7 @@
         }
         
         for (int i = 0; i < SkillTypes; i++) {
-            comboSkillTypes[i] = Insight;
+            comboSkillTypes[i] = Accuracy;
         }
     }
     return self;

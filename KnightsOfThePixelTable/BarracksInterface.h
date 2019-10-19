@@ -15,17 +15,22 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BarracksInterface : GuiPanel {
-    RadioButtonGroup *tabs;
-    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
+//    RadioButtonGroup *tabs;
+//    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
+    
+    float showDepth, hideDepth;
+    Color *showColor, *hideColor;
     
     Rooster *rooster;
     
     SkillsPanel *skillPanel;
     StatsPanel *statPanel;
-    EquipmentPanel *equipmentPanel;
+    
+    LabelButton *statButton, *skillButton;
+//    EquipmentPanel *equipmentPanel;
 }
 
-- (id) initWithArea:(Rectangle *)area layerDepth:(float)depth rooster:(Rooster *)theRooster;
+- (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
 
 @end
 

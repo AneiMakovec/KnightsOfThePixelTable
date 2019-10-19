@@ -42,9 +42,9 @@ GameplaySpriteComponent *instance;
     
     //allies
     allyTextures[KnightTypeBrawler] = [self.game.content load:CHARACTER_BRAWLER];
-    allyTextures[KnightTypeBowman] = [self.game.content load:CHARACTER_BOWMAN];
+    allyTextures[KnightTypeLongbowman] = [self.game.content load:CHARACTER_BOWMAN];
     allyTextures[KnightTypePaladin] = [self.game.content load:CHARACTER_PALADIN];
-    allyTextures[KnightTypeFireEnchantress] = [self.game.content load:CHARACTER_FIRE_ENCHANTRESS];
+    allyTextures[KnightTypeWizard] = [self.game.content load:CHARACTER_FIRE_ENCHANTRESS];
     
     // enemies
     enemyTextures[MonsterTypeWarrior] = [self.game.content load:ENEMY_SWORDSMAN];
