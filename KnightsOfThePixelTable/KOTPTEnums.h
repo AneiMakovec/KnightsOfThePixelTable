@@ -54,6 +54,15 @@ typedef enum {
 } StatUpgrade;
 
 typedef enum {
+    CharacterTypeBrave,
+    CharacterTypeCalm,
+    CharacterTypeBold,
+    CharacterTypePrepared,
+    CharacterTypeHasty,
+    CharacterTypeCareful
+} CharacterType;
+
+typedef enum {
     BasicAttack,
     FirstComboSkill,
     SecondComboSkill,
@@ -324,15 +333,17 @@ typedef enum {
 #define INTERFACE_TAB @"interface_tab"
 
 // MARK: interface values
-#define INTERFACE_LAYER_DEPTH_GROUNDZERO 0.1f
-#define INTERFACE_LAYER_DEPTH_BEFOREGROUND 0.05f
-#define INTERFACE_LAYER_DEPTH_ALMOSTGROUND 0.02f
-#define INTERFACE_LAYER_DEPTH_GROUNDBACK -0.05f
-#define INTERFACE_LAYER_DEPTH_BACK -0.1f
-#define INTERFACE_LAYER_DEPTH_BACKMID -0.15f
-#define INTERFACE_LAYER_DEPTH_MIDDLE -0.2f
-#define INTERFACE_LAYER_DEPTH_MIDFRONT -0.25f
-#define INTERFACE_LAYER_DEPTH_FRONT -0.3f
+#define INTERFACE_LAYER_DEPTH_GROUNDZERO 0.03f
+#define INTERFACE_LAYER_DEPTH_BEFOREGROUND 0.02f
+#define INTERFACE_LAYER_DEPTH_ALMOSTGROUND 0.01f
+#define INTERFACE_LAYER_DEPTH_GROUNDBACK -0.01f
+#define INTERFACE_LAYER_DEPTH_BACK -0.02f
+#define INTERFACE_LAYER_DEPTH_BACKMID -0.03f
+#define INTERFACE_LAYER_DEPTH_MIDDLE -0.04f
+#define INTERFACE_LAYER_DEPTH_MIDFRONT -0.05f
+#define INTERFACE_LAYER_DEPTH_FRONT -0.06f
+
+#define INTERFACE_LAYER_FRONT -0.1f
 
 #define FONT_SCALE_TINY 0.5f
 #define FONT_SCALE_SMALL 1.0f
@@ -456,7 +467,7 @@ typedef enum {
 #define TOWN_MENU_TUTORIAL_MERLIN @"town_menu/tutorial/merlin"
 #define TOWN_MENU_TUTORIAL_TRAINING_YARD @"town_menu/tutorial/training_yard"
 #define TOWN_MENU_TUTORIAL_WARBAND_CAMP @"town_menu/tutorial/warband_camp"
-#define TOWN_MENU_TUTORIAL_ARROW @"town_menu/tutorial/arrow"
+#define TOWN_MENU_TUTORIAL_ARROW_ANIMATION @"town_menu/tutorial/arrow/"
 
 
 
@@ -473,9 +484,15 @@ typedef enum {
 
 #define WORLD_MENU_MAP @"world_menu/map"
 #define WORLD_MENU_MARKER_LOCKED @"world_menu/marker_locked"
+#define WORLD_MENU_MARKER_LOCKED_PRESSED @"world_menu/marker_locked_pressed"
 #define WORLD_MENU_MARKER_UNLOCKED @"world_menu/marker_unlocked"
+#define WORLD_MENU_MARKER_UNLOCKED_PRESSED @"world_menu/marker_unlocked_pressed"
 #define WORLD_MENU_PANEL_CLOSE @"world_menu/panel_close"
 #define WORLD_MENU_PANEL @"world_menu/panel"
+#define WORLD_MENU_PATH_FARMLANDS @"world_menu/path_farmlands"
+#define WORLD_MENU_PATH_PINEWOODS @"world_menu/path_pinewoods"
+#define WORLD_MENU_PATH_MOUNTAINS @"world_menu/path_mountains"
+#define WORLD_MENU_PATH_SEASHORE @"world_menu/path_seashore"
 
 
 
@@ -788,6 +805,7 @@ typedef enum {
 #define POSITION_INTERFACE_ARMOR_NAME @"interface_armor_name"
 #define POSITION_INTERFACE_WEAPON_BONUS_TEXT @"interface_weapon_bonus_text"
 #define POSITION_INTERFACE_ARMOR_BONUS_TEXT @"interface_armor_bonus_text"
+#define POSITION_INTERFACE_CASTLE_SCROLL @"interface_castle_scroll"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -802,6 +820,14 @@ typedef enum {
 #define POSITION_HUD_STATUS_EFFECTS_ALLY @"hud_status_effects_ally_"
 #define POSITION_MAIN_MENU_NEW_GAME @"main_menu_new_game"
 #define POSITION_MAIN_MENU_CONTINUE @"main_menu_continue"
+#define POSITION_WORLD_MENU_MARKER_FARMLANDS @"world_menu_marker_farmlands"
+#define POSITION_WORLD_MENU_MARKER_PINEWOODS @"world_menu_marker_pinewoods"
+#define POSITION_WORLD_MENU_MARKER_MOUNTAINS @"world_menu_marker_mountains"
+#define POSITION_WORLD_MENU_MARKER_SEASHORE @"world_menu_marker_seashore"
+#define POSITION_WORLD_MENU_PATH_FARMLANDS @"world_menu_path_farmlands"
+#define POSITION_WORLD_MENU_PATH_PINEWOODS @"world_menu_path_pinewoods"
+#define POSITION_WORLD_MENU_PATH_MOUNTAINS @"world_menu_path_mountains"
+#define POSITION_WORLD_MENU_PATH_SEASHORE @"world_menu_path_seashore"
 
 // MARK: METADATA
 #define META_INTERFACE_BACKGROUND @"interface_background"

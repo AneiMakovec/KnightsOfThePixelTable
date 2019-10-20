@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL settingEnabled[SettingTypes];
     
     NSMutableArray *knights;
-    Knight *battleKnights[CombatPositions];
+    KnightData *battleKnights[CombatPositions];
 }
 
 @property (nonatomic, retain) NSMutableArray *knights;
@@ -35,8 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //- (void) unlockLevel:(LevelType)type;
 
-- (void) addKnight:(Knight *)knight;
-- (void) removeKnight:(Knight *)knight;
+- (void) addKnight:(KnightData *)knight;
+- (void) removeKnight:(KnightData *)knight;
 
 - (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position;
 - (void) removeKnightOnPosition:(CombatPosition)position;

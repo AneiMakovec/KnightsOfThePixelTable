@@ -122,11 +122,11 @@
         
         
         // init interface content
-        interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithLayerDepth:layerDepth];
-        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithLayerDepth:layerDepth rooster:rooster];
-        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithLayerDepth:layerDepth rooster:rooster];
-        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithLayerDepth:layerDepth trainRooster:trainRooster rooster:rooster];
-        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithLayerDepth:layerDepth rooster:rooster];
+        interfaceContent[BuildingTypeCastle] = [[CastleInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT];
+        interfaceContent[BuildingTypeBarracks] = [[BarracksInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT rooster:rooster];
+        interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT rooster:rooster];
+        interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT trainRooster:trainRooster rooster:rooster];
+        interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT rooster:rooster];
         
         // init unit name
         unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];

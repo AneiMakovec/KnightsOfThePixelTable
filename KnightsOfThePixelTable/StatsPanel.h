@@ -15,6 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface StatsPanel : GuiPanel {
+    float curDepth;
+    
     Image *statPane;
     
     Label *statLabels[StatTypes];

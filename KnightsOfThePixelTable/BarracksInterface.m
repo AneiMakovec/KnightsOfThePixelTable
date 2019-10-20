@@ -14,7 +14,7 @@
 #define KEY_SKILLS @"skills"
 #define KEY_EQUIPMENT @"equipment"
 
-#define DEPTH_DIFF 0.02
+#define DEPTH_DIFF -0.1f
 
 @implementation BarracksInterface
 
@@ -22,8 +22,8 @@
     self = [super init];
     if (self != nil) {
         
-        showDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
-        hideDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK + DEPTH_DIFF;
+        showDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK + DEPTH_DIFF;
+        hideDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
         
         showColor = [[Color white] retain];
         hideColor = [[Color gray] retain];

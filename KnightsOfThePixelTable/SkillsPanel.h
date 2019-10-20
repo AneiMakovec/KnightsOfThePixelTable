@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SkillsPanel : GuiPanel<ICustomUpdate> {
     BOOL displayUpgradeButtons;
+    float curDepth;
     
     Image *skillPane;
     

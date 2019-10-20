@@ -15,6 +15,12 @@
 - (id) initWithLayerDepth:(float)depth {
     self = [super init];
     if (self != nil) {
+        // init scroll background
+        scrollBackground = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_SCROLL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_SCROLL]];
+        scrollBackground.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [scrollBackground setScaleUniform:2.0f];
+        [items addObject:scrollBackground];
+        
         // init upgrade dices button
         upgradeDices = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE] text:[Constants getTextForKey:TEXT_INTERFACE_BUTTON_UPGRADE]];
         upgradeDices.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;

@@ -54,6 +54,8 @@
         
         for (int i = 0; i < StatTypes; i++) {
             stats[i] = 100;
+            weaponBonus[i] = 1;
+            armorBonus[i] = 2;
         }
         
         weaponLvl = wLevel;
@@ -62,10 +64,30 @@
     return self;
 }
 
-@synthesize type, name, lvl, currentExp, weaponLvl, armorLvl;
+@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp;
+
+- (int) getLevelOfSkill:(SkillType)skill {
+    return skillLvl[skill];
+}
+
+- (int) getValueOfStat:(StatType)stat {
+    return stats[stat];
+}
+
+- (int) getWeaponBonusForStat:(StatType)stat {
+    return weaponBonus[stat];
+}
+
+- (int) getArmorBonusForStat:(StatType)stat {
+    return armorBonus[stat];
+}
 
 
-- (void) gainExp:(int)amount {
+
+
+
+
+- (void) gainXp:(int)amount {
     // check if reached max lvl
     if (lvl < [Constants getMaxKnightLvl]) {
         currentExp += amount;
@@ -84,22 +106,18 @@
         skillLvl[skill]++;
 }
 
-- (int) getLevelOfSkill:(SkillType)skill {
-    return skillLvl[skill];
-}
-
-- (int) getValueOfStat:(StatType)stat {
-    return stats[stat];
-}
-
-- (void) upgradeWeapon {
-    if (weaponLvl < [Constants getMaxEquipmentLvl])
+- (void) upgradeWeaponWithBonus:(StatType)stat {
+    if (weaponLvl < [Constants getMaxEquipmentLvl]) {
         weaponLvl++;
+        weaponBonus[stat]++;
+    }
 }
 
-- (void) upgradeArmor {
-    if (armorLvl < [Constants getMaxEquipmentLvl])
+- (void) upgradeArmorWithBonus:(StatType)stat {
+    if (armorLvl < [Constants getMaxEquipmentLvl]) {
         armorLvl++;
+        armorBonus[stat]++;
+    }
 }
 
 

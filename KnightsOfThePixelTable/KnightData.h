@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSString *name;
     
     DamageType damageType;
+    CharacterType characterType;
     
     int hp;
     int lvl;
@@ -26,12 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
     int skillLvl[SkillTypes];
     int stats[StatTypes];
     int weaponLvl;
+    int weaponBonus[StatTypes];
     int armorLvl;
+    int armorBonus[StatTypes];
 }
 
 @property (nonatomic, readonly) NSString *keyID;
 @property (nonatomic, readonly) KnightType type;
 @property (nonatomic, readonly) DamageType damageType;
+@property (nonatomic, readonly) CharacterType characterType;
 @property (nonatomic, retain) NSString *name;
 
 @property (nonatomic, readonly) int hp;
@@ -45,12 +49,19 @@ NS_ASSUME_NONNULL_BEGIN
 // DEBUG INIT
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType name:(NSString *)knightName level:(int)level currentExp:(int)exp weaponLvl:(int)wLevel armorLvl:(int)aLevel;
 
-- (void) gainExp:(int)amount;
-- (void) upgradeSkill:(SkillType)skill;
+// GETTER METHODS
 - (int) getLevelOfSkill:(SkillType)skill;
 - (int) getValueOfStat:(StatType)stat;
-- (void) upgradeWeapon;
-- (void) upgradeArmor;
+- (int) getWeaponBonusForStat:(StatType)stat;
+- (int) getArmorBonusForStat:(StatType)stat;
+
+
+
+// UPGRADE METHODS
+- (void) gainXp:(int)amount;
+- (void) upgradeSkill:(SkillType)skill;
+- (void) upgradeWeaponWithBonus:(StatType)stat;
+- (void) upgradeArmorWithBonus:(StatType)stat;
 
 
 // DEBUG METHOD

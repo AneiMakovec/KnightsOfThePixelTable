@@ -675,5 +675,10 @@
 			"duration": 0.2,
 			"looping": true
 		},
+        "town_menu/tutorial/arrow/": {
+            "frames": 6,
+            "duration": 0.5,
+            "looping": true
+        }
 	}
 }

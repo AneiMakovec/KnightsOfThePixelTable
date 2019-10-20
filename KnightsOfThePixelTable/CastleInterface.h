@@ -15,6 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CastleInterface : GuiPanel {
+    Image *scrollBackground;
+    
     DoubleImageLabelButton *upgradeDices;
 }
 

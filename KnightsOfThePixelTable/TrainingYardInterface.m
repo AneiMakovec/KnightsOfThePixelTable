@@ -14,11 +14,19 @@
 #define KEY_SKILLS @"skills"
 #define KEY_EQUIPMENT @"equipment"
 
+#define DEPTH_DIFF -0.1f
+
 @implementation TrainingYardInterface
 
 - (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster {
     self = [super init];
     if (self != nil) {
+        showDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK + DEPTH_DIFF;
+        hideDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        
+        showColor = [[Color white] retain];
+        hideColor = [[Color gray] retain];
+        
         // retain rooster
         rooster = [theRooster retain];
         trainRooster = [theTrainRooster retain];
@@ -49,11 +57,29 @@
 //
 //        [items addObject:tabs];
         
+//        // init pane for stats, skills and equipment
+//        statPanel = [[StatsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:depth];
+//        [items addObject:statPanel];
+//
+//        skillPanel = [[SkillsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:depth displayUpgradeButtons:NO];
+        
+        // init tab buttons
+        MetaData *data = [Constants getMetaDataForKey:META_INTERFACE_TAB];
+        statButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_STATS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_STATS] width:data.width height:data.height];
+        [items addObject:statButton];
+        
+        skillButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_SKILLS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_SKILLS] width:data.width height:data.height];
+        [items addObject:skillButton];
+        
+        
         // init pane for stats, skills and equipment
-        statPanel = [[StatsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:depth];
+        statPanel = [[StatsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:showDepth];
+        [skillPanel updateColor:showColor];
         [items addObject:statPanel];
         
-        skillPanel = [[SkillsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:depth displayUpgradeButtons:NO];
+        skillPanel = [[SkillsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:hideDepth displayUpgradeButtons:NO];
+        [skillPanel updateColor:hideColor];
+        [items addObject:skillPanel];
         
 //        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[trainRooster getFirstData] area:area layerDepth:depth];
         
@@ -110,6 +136,23 @@
         [rooster addItem:[trainRooster getSelectedData]];
         [trainRooster removeItem:[trainRooster getSelectedEntry]];
     }
+    
+    // check if different tab was pressed
+    if (statButton.wasReleased) {
+        [statPanel updateColor:showColor];
+        [statPanel updateDepth:showDepth];
+        
+        [skillPanel updateDepth:hideDepth];
+        [skillPanel updateColor:hideColor];
+    }
+    
+    if (skillButton.wasReleased) {
+        [skillPanel updateColor:showColor];
+        [skillPanel updateDepth:showDepth];
+        
+        [statPanel updateDepth:hideDepth];
+        [statPanel updateColor:hideColor];
+    }
 }
 
 
@@ -121,12 +164,6 @@
     
     [skillPanel release];
     [statPanel release];
-//    [equipmentPanel release];
-    
-    [tabs release];
-    [tabStats release];
-    [tabSkills release];
-    [tabEquipment release];
     
     [recruitButton release];
     

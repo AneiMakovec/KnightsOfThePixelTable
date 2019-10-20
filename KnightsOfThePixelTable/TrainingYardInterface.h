@@ -15,11 +15,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TrainingYardInterface : GuiPanel {
-    RadioButtonGroup *tabs;
-    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
+    
+    float showDepth, hideDepth;
+    Color *showColor, *hideColor;
+    
+//    RadioButtonGroup *tabs;
+//    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
     
     Rooster *rooster;
     Rooster *trainRooster;
+    
+    LabelButton *statButton, *skillButton;
     
     SkillsPanel *skillPanel;
     StatsPanel *statPanel;

@@ -20,9 +20,11 @@
 - (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth {
     self = [super init];
     if (self != nil) {
+        curDepth = layerDepth;
+        
         // init pane
         statPane = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_STATS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_PANE]];
-        statPane.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        statPane.layerDepth = layerDepth;
         [items addObject:statPane];
         
         // init stat labels
@@ -374,25 +376,32 @@
 - (void) updateDepth:(float)depth {
     for (id item in items) {
         Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem)
-            imageItem.layerDepth = depth;
+        if (imageItem) {
+            imageItem.layerDepth -= curDepth;
+            imageItem.layerDepth += depth;
+        }
         
         Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem)
-            labelItem.layerDepth = depth;
+        if (labelItem) {
+            labelItem.layerDepth -= curDepth;
+            labelItem.layerDepth += depth;
+        }
     }
+    
+    curDepth = depth;
 }
 
 - (void) updateColor:(Color *)color {
-    for (id item in items) {
-        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem)
-            [imageItem setColor:color];
-        
-        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem)
-            [labelItem setColor:color];
-    }
+//    for (id item in items) {
+//        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
+//        if (imageItem)
+//            [imageItem setColor:color];
+//
+//        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
+//        if (labelItem)
+//            [labelItem setColor:color];
+//    }
+    [statPane setColor:color];
 }
 
 

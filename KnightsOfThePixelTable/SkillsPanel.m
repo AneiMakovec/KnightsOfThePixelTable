@@ -16,11 +16,12 @@
     self = [super init];
     if (self != nil) {
         displayUpgradeButtons = display;
+        curDepth = layerDepth;
         
         // init pane
 //        skillPane = [[Image alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropPaneSkills] position:[Vector2 vectorWithX:area.x + 220 y:area.y + 199]];
         skillPane = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_SKILLS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_PANE]];
-        skillPane.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        skillPane.layerDepth = layerDepth;
         [items addObject:skillPane];
         
         // init skill slots
@@ -71,6 +72,7 @@
         NSString *skillPosKey = POSITION_INTERFACE_SKILLS;
         for (int i = 0; i < SkillTypes; i++) {
             skills[i] = [GraphicsComponent getImageWithKey:[knightType stringByAppendingString:[NSString stringWithFormat:@"s%d", i + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            skills[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             [items addObject:skills[i]];
         }
         
@@ -154,6 +156,9 @@
             NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
             for (int i = 0; i < SkillTypes; i++) {
                 upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[Constants getTextForKey:TEXT_INTERFACE_BUTTON_UPGRADE]];
+                upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
                 [items addObject:upgradeButtons[i]];
             }
             
@@ -161,6 +166,7 @@
             NSString *upgradePosKey = POSITION_INTERFACE_SKILL_UPGRADE_LABELS;
             for (int i = 0; i < SkillTypes; i++) {
                 upgradeLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_UPGRADE_LABEL], 10] atPosition:[Constants getPositionDataForKey:[upgradePosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+                upgradeLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
                 [items addObject:upgradeLabels[i]];
             }
         }
@@ -172,6 +178,11 @@
             comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             
+            comboLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
+            lvlLabels[i].verticalAlign = VerticalAlignMiddle;
+            
             [items addObject:comboLabels[i]];
             [items addObject:lvlLabels[i]];
         }
@@ -182,6 +193,11 @@
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     // TODO: implement skill upgrade
+    
+    for (int i = 0; i < SkillTypes; i++) {
+        if (upgradeButtons[i].wasReleased)
+            NSLog(@"Pressed!");
+    }
 }
 
 - (void) updateToKnightData:(KnightData *)data {
@@ -200,25 +216,44 @@
 - (void) updateDepth:(float)depth {
     for (id item in items) {
         Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem)
-            imageItem.layerDepth = depth;
+        if (imageItem) {
+            imageItem.layerDepth -= curDepth;
+            imageItem.layerDepth += depth;
+        }
         
         Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem)
-            labelItem.layerDepth = depth;
+        if (labelItem) {
+            labelItem.layerDepth -= curDepth;
+            labelItem.layerDepth += depth;
+        }
+        
+        DoubleImageLabelButton *btn = [item isKindOfClass:[DoubleImageLabelButton class]] ? item : nil;
+        if (btn) {
+            btn.notPressedImage.layerDepth -= curDepth;
+            btn.notPressedImage.layerDepth += depth;
+            
+            btn.pressedImage.layerDepth -= curDepth;
+            btn.pressedImage.layerDepth += depth;
+            
+            btn.label.layerDepth -= curDepth;
+            btn.label.layerDepth += depth;
+        }
     }
+    
+    curDepth = depth;
 }
 
 - (void) updateColor:(Color *)color {
-    for (id item in items) {
-        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem)
-            [imageItem setColor:color];
-        
-        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem)
-            [labelItem setColor:color];
-    }
+//    for (id item in items) {
+//        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
+//        if (imageItem)
+//            [imageItem setColor:color];
+//
+//        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
+//        if (labelItem)
+//            [labelItem setColor:color];
+//    }
+    [skillPane setColor:color];
 }
 
 
