@@ -15,9 +15,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CastleInterface : GuiPanel {
-    Image *scrollBackground;
+    Image *scrollMap;
+    Image *flags[LevelTypes];
     
     DoubleImageLabelButton *upgradeDices;
+    
+    Label *diceNumLabel, *diceNum;
+    Label *upgradeLabel;
 }
 
 - (id) initWithLayerDepth:(float)depth;

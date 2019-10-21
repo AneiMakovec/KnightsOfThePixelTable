@@ -80,9 +80,10 @@ ScreenComponent *screenComponentInstance;
 }
 
 - (void) dealloc {
-//    [screenBounds release];
     [camera release];
-//    [scales release];
+    
+    [screenComponentInstance release];
+    
     [super dealloc];
 }
 

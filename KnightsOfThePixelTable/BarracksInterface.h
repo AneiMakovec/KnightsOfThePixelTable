@@ -15,9 +15,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BarracksInterface : GuiPanel {
-//    RadioButtonGroup *tabs;
-//    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
-    
     float showDepth, hideDepth;
     Color *showColor, *hideColor;
     
@@ -27,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
     StatsPanel *statPanel;
     
     LabelButton *statButton, *skillButton;
-//    EquipmentPanel *equipmentPanel;
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;

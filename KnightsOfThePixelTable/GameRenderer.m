@@ -35,7 +35,7 @@
 //    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
 //    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
     
-    camera = [ScreenComponent getCamera];
+    camera = [[ScreenComponent getCamera] retain];
     
     // calculate hud offset
     //hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
@@ -54,7 +54,6 @@
     spriteBatch = [[SpriteBatch alloc] initWithGraphicsDevice:self.graphicsDevice];
     
     // Backgrounds
-    levelBackgrounds[LevelTypeFinal] = [self.game.content load:AREA_FARMLANDS];
     levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_SEASHORE];
     levelBackgrounds[LevelTypeFarmlands] = [self.game.content load:AREA_FARMLANDS];
     levelBackgrounds[LevelTypeMountains] = [self.game.content load:AREA_MOUNTAINS];
@@ -1032,6 +1031,8 @@
     DEALLOC
 */
 - (void) dealloc {
+    [camera  release];
+    
     [super dealloc];
 }
 

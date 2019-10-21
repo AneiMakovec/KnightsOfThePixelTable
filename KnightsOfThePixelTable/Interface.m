@@ -28,7 +28,12 @@
         // init interface background
         background = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACKGROUND atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACKGROUND]];
         background.layerDepth = layerDepth;
+//        [background setColor:[Color rosyBrown]];
         [items addObject:background];
+        
+        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
+        backImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:backImage];
         
         // init close button
         closeButton = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_CLOSE atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CLOSE_BUTTON]];
@@ -64,7 +69,7 @@
             switchButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             
             // set font size scale
-            [switchButtons[i].label setScaleUniform:FONT_SCALE_MEDIUM];
+            [switchButtons[i] setScaleUniform:FONT_SCALE_MEDIUM];
             
             // add button to scene and to button group
             [items addObject:switchButtons[i]];
@@ -388,8 +393,11 @@
     [self addItemToScene:interfaceContent[interfaceType]];
 }
 
+
+
 - (void) dealloc {
     [background release];
+    [backImage release];
     [closeButton release];
     [sidePane release];
     [sidePaneBorder release];

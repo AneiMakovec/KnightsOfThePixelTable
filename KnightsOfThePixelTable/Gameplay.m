@@ -39,10 +39,6 @@
                 currentLevel = [[PinewoodsLevel alloc] initWithGame:self.game numDices:8];
                 break;
                 
-            case LevelTypeFinal:
-                currentLevel = [[FarmlandsLevel alloc] initWithGame:self.game numDices:8];
-                break;
-                
             default:
                 currentLevel = [[FarmlandsLevel alloc] initWithGame:self.game numDices:8];
                 break;

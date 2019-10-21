@@ -205,9 +205,11 @@ GraphicsComponent *graphicsInstance;
     int frames = [[data valueForKey:FRAMES] intValue];
     for (int i = 0; i < frames; i++) {
         NSString *frameKey = [key stringByAppendingString:[NSString stringWithFormat:@"f%d", i]];
-        Image *frameImage = [[Image alloc] init];
-        frameImage.texture = [self getTextureForKey:frameKey];
+        Image *frameImage = [[Image alloc] initWithTexture:[self getTextureForKey:frameKey] position:position];
+//        frameImage.texture = [self getTextureForKey:frameKey];
         frameImage.sourceRectangle = [self getSourceRectangleForKey:frameKey];
+        
+//        frameImage.position = position;
         
         // calculate offset and determine origin
         Rectangle *offset = [self getOffsetRectangleForKey:frameKey];
@@ -415,6 +417,8 @@ GraphicsComponent *graphicsInstance;
     [spriteSheet_1 release];
     
     [font release];
+    
+    [graphicsInstance release];
     
     [super dealloc];
 }

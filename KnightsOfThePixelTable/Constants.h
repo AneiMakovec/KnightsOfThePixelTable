@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) initializeWithGame:(Game *)game;
 
 + (Vector2 *) getPositionDataForKey:(NSString *)key;
++ (Vector2 *) getPositionDataForKey:(NSString *)key withAdded:(NSString *)addKey;
 + (MetaData *) getMetaDataForKey:(NSString *)key;
 + (NSString *) getTextForKey:(NSString *)key;
 

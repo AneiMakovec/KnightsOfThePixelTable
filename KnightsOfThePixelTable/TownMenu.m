@@ -20,50 +20,17 @@
     background.layerDepth = 1.0;
     [scene addItem:background];
     
-    // Text
-//    title = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Cemelot" position:[Vector2 vectorWithX:[Constants backgroundWidth] / 2 y:20]];
-//    title.horizontalAlign = HorizontalAlignCenter;
-//    title.verticalAlign = VerticalAlignMiddle;
-//    [scene addItem:title];
-    
+    // init buildings
     NSString *textureKeys[BuildingTypes] = {TOWN_MENU_BUILDINGS_CASTLE, TOWN_MENU_BUILDINGS_BARRACKS, TOWN_MENU_BUILDINGS_TRAINING_YARD, TOWN_MENU_BUILDINGS_BLACKSMITH, TOWN_MENU_BUILDINGS_WARBAND_CAMP, TOWN_MENU_BUILDINGS_GATEHOUSE};
     NSString *buildingPosKeys[BuildingTypes] = {POSITION_BUILDING_CASTLE, POSITION_BUILDING_BARRACKS, POSITION_BUILDING_TRAINING_YARD, POSITION_BUILDING_BLACKSMITH, POSITION_BUILDING_WARBAND_CAMP, POSITION_BUILDING_GATEHOUSE};
-    
-    
-    // Buildings
     for (int i = 0; i < BuildingTypes; i++) {
         buildings[i] = [GraphicsComponent getImageButtonWithKey:textureKeys[i] atPosition:[Constants getPositionDataForKey:buildingPosKeys[i]]];
         buildings[i].backgroundImage.layerDepth = 0.9;
         [scene addItem:buildings[i]];
     }
     
-//    castle = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_CASTLE atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_CASTLE]];
-//    castle.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:castle];
-//
-//    barracks = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_BARRACKS atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_BARRACKS]];
-//    barracks.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:barracks];
-//
-//    blacksmith = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_BLACKSMITH atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_BLACKSMITH]];
-//    blacksmith.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:blacksmith];
-//
-//    trainingYard = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_TRAINING_YARD atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_TRAINING_YARD]];
-//    trainingYard.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:trainingYard];
-//
-//    warbandCamp = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_WARBAND_CAMP atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_WARBAND_CAMP]];
-//    warbandCamp.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:warbandCamp];
-//
-//    gatehouse = [GraphicsComponent getImageButtonWithKey:TOWN_MENU_BUILDINGS_GATEHOUSE atPosition:[Constants getPositionDataForKey:POSITION_BUILDING_GATEHOUSE]];
-//    gatehouse.backgroundImage.layerDepth = 0.9;
-//    [scene addItem:gatehouse];
-    
-    // interface test
+    // init interface
     interface = [[Interface alloc] initWithMenu:self layerDepth:0.5];
-//    [scene addItem:interface];
     
     
     [scene addItem:back];
@@ -103,9 +70,10 @@
         buildings[i].enabled = YES;
 }
 
+
+
+
 - (void) dealloc {
-    [title release];
-    
     for (int i = 0; i < BuildingTypes; i++)
          [buildings[i] release];
     

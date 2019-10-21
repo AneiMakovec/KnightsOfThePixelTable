@@ -26,33 +26,8 @@
         statPane = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_STATS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_PANE]];
         statPane.layerDepth = layerDepth;
         [items addObject:statPane];
-        
-        // init stat labels
-//        NSString *statNames[] = {@"STR:", @"AGI:", @"DEF:", @"INS:", @"CUN:", @"STD:"};
-//
-//        for (int i = 0; i < StatTypes; i++) {
-//            statLabels[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:statNames[i] position:[Vector2 vectorWithX:area.x + 238 y:area.y + 208 + i * LABEL_SPACING]];
-//            statLabels[i].verticalAlign = VerticalAlignTop;
-//            statLabels[i].horizontalAlign = HorizontalAlignLeft;
-//            statLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-//            [statLabels[i] setScaleUniform:FONT_SCALE_SMALL];
-//            [items addObject:statLabels[i]];
-//
-//            statValueLabels[i] = [[Label alloc] initWithFont:[TownSpriteComponent getFont] text:@"0" position:[Vector2 vectorWithX:area.x + 368 y:area.y + 208 + i * LABEL_SPACING]];
-//            statValueLabels[i].verticalAlign = VerticalAlignTop;
-//            statValueLabels[i].horizontalAlign = HorizontalAlignRight;
-//            statValueLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-//            [statValueLabels[i] setScaleUniform:FONT_SCALE_SMALL];
-//            [items addObject:statValueLabels[i]];
-//        }
-        
-//        statLabels[Strength] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"STR" position:[Vector2 vectorWithX:244 y:300]];
-//        statLabels[Accuracy] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"ACC" position:[Vector2 vectorWithX:244 y:324]];
-//        statLabels[Cunning] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"CUN" position:[Vector2 vectorWithX:244 y:348]];
-//        statLabels[Defence] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"DEF" position:[Vector2 vectorWithX:321 y:300]];
-//        statLabels[Agility] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"AGI" position:[Vector2 vectorWithX:321 y:324]];
-//        statLabels[Sturdiness] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"STD" position:[Vector2 vectorWithX:321 y:348]];
-        
+
+        // init stats
         NSString *statLabelKey = TEXT_INTERFACE_STAT_LABELS;
         NSString *statLabelPosKey = POSITION_INTERFACE_STAT_LABELS;
         NSString *statsPosKey = POSITION_INTERFACE_STATS;
@@ -71,13 +46,6 @@
             [stats[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:stats[i]];
         }
-        
-//        statValueLabels[Strength] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Strength]] position:[Vector2 vectorWithX:283 y:300]];
-//        statValueLabels[Accuracy] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Accuracy]] position:[Vector2 vectorWithX:283 y:324]];
-//        statValueLabels[Cunning] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Cunning]] position:[Vector2 vectorWithX:283 y:348]];
-//        statValueLabels[Defence] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Defence]] position:[Vector2 vectorWithX:283 y:3]];
-//        statValueLabels[Agility] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Agility]] position:[Vector2 vectorWithX:283 y:300]];
-//        statValueLabels[Sturdiness] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:Sturdiness]] position:[Vector2 vectorWithX:283 y:300]];
         
         // init lvl info
         lvl = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", data.lvl] position:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL]];
@@ -103,7 +71,6 @@
         [unitTypeLabel setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:unitTypeLabel];
         
-//        unitType = [[Image alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotDice] position:[Vector2 vectorWithX:area.x + 485 y:area.y + 208]];
         switch (data.damageType) {
             case DamageTypePhysical:
                 unitType = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_TYPE_PHYSICAL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE]];
@@ -124,16 +91,13 @@
         [items addObject:unitType];
         
         // init hp info
-//        hpLabel = [[Label alloc] initWithFont:[TownSpriteComponent getFont] text:@"HP:" position:[Vector2 vectorWithX:area.x + 395 y:area.y + 250]];
         hpLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_HP] position:[Constants getPositionDataForKey:POSITION_INTERFACE_HP_LABEL]];
         hpLabel.verticalAlign = VerticalAlignMiddle;
         hpLabel.horizontalAlign = HorizontalAlignCenter;
         hpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [hpLabel setScaleUniform:FONT_SCALE_SMALL];
-//        hpLabel.color = [Color red];
         [items addObject:hpLabel];
         
-//        hp = [[Label alloc] initWithFont:[TownSpriteComponent getFont] text:@"1000" position:[Vector2 vectorWithX:area.x + 460 y:area.y + 250]];
         hp = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", data.hp] position:[Constants getPositionDataForKey:POSITION_INTERFACE_HP]];
         hp.verticalAlign = VerticalAlignMiddle;
         hp.horizontalAlign = HorizontalAlignCenter;
@@ -354,6 +318,16 @@
         armorBonusText.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [armorBonusText setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:armorBonusText];
+        
+        // load knight animations
+        NSString *animKeys[KnightTypes] = {GAMEPLAY_MENU_ENTITIES_ALLIES_BRAWLER_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_PALADIN_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_LONGBOWMAN_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_CROSSBOWMAN_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_SCOUT_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_BATTLEMAGE_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_IDLE, GAMEPLAY_MENU_ENTITIES_ALLIES_MONK_IDLE};
+        for (int i = 0; i < KnightTypes; i++) {
+            knightAnimations[i] = [GraphicsComponent getAnimatedImageWithKey:animKeys[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_KNIGHT_ANIMATION withAdded:POSITION_INTERFACE_BACKGROUND]];
+            [knightAnimations[i] setLayerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BACK];
+            [knightAnimations[i] setScaleUniform:4.0f];
+        }
+        
+        [items addObject:knightAnimations[data.type]];
     }
     return self;
 }
@@ -362,7 +336,8 @@
 
 - (void) updateToKnightData:(KnightData *)data {
     if (data) {
-        // TODO: reset all data
+        // reset all data
+        
     } else {
         // reset all values to 0
         for (int i = 0; i < StatTypes; i++) {

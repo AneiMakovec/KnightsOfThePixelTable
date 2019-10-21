@@ -30,7 +30,7 @@
 //    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
 //    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
     
-    camera = [ScreenComponent getCamera];
+    camera = [[ScreenComponent getCamera] retain];
     
     [super initialize];
 }
@@ -86,6 +86,7 @@
 
 - (void) unloadContent {
     [spriteBatch release];
+    [camera release];
 }
 
 @end

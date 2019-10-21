@@ -22,7 +22,7 @@
 		},
 		"gameplay_menu/entities/allies/bard/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/battlemage/action/": {
@@ -47,7 +47,7 @@
 		},
 		"gameplay_menu/entities/allies/battlemage/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/brawler/attack/": {
@@ -67,7 +67,7 @@
 		},
 		"gameplay_menu/entities/allies/brawler/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/crossbowman/action/": {
@@ -92,7 +92,7 @@
 		},
 		"gameplay_menu/entities/allies/crossbowman/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/longbowman/attack/": {
@@ -112,7 +112,7 @@
 		},
 		"gameplay_menu/entities/allies/longbowman/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/monk/attack/": {
@@ -132,7 +132,7 @@
 		},
 		"gameplay_menu/entities/allies/monk/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/paladin/action/": {
@@ -157,7 +157,7 @@
 		},
 		"gameplay_menu/entities/allies/paladin/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/scout/action/": {
@@ -182,7 +182,7 @@
 		},
 		"gameplay_menu/entities/allies/scout/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/allies/wizard/attack/": {
@@ -202,7 +202,7 @@
 		},
 		"gameplay_menu/entities/allies/wizard/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/boss/farmlands/action/": {
@@ -227,7 +227,7 @@
 		},
 		"gameplay_menu/entities/enemies/boss/farmlands/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/boss/mountains/attack/": {
@@ -247,7 +247,7 @@
 		},
 		"gameplay_menu/entities/enemies/boss/mountains/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/boss/pinewoods/action/": {
@@ -272,7 +272,7 @@
 		},
 		"gameplay_menu/entities/enemies/boss/pinewoods/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/boss/seashore/action/": {
@@ -297,7 +297,7 @@
 		},
 		"gameplay_menu/entities/enemies/boss/seashore/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/axethrower/attack/": {
@@ -317,7 +317,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/axethrower/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/berserker/attack/": {
@@ -337,7 +337,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/berserker/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/hornbearer/action/": {
@@ -362,7 +362,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/hornbearer/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/huscarl/action/": {
@@ -387,7 +387,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/huscarl/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/runemaster/attack/": {
@@ -407,7 +407,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/runemaster/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/shaman/attack/": {
@@ -427,7 +427,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/shaman/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/slaver/action/": {
@@ -452,7 +452,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/slaver/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/slinger/action/": {
@@ -477,7 +477,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/slinger/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/entities/enemies/normal/sorcerer/attack/": {
@@ -497,7 +497,7 @@
 		},
 		"gameplay_menu/entities/enemies/normal/sorcerer/idle/": {
 			"frames": 4,
-			"duration": 1,
+			"duration": 0.4,
 			"looping": true
 		},
 		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/": {

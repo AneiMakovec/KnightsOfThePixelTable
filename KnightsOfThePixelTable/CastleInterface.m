@@ -16,10 +16,17 @@
     self = [super init];
     if (self != nil) {
         // init scroll background
-        scrollBackground = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_SCROLL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_SCROLL]];
-        scrollBackground.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
-        [scrollBackground setScaleUniform:2.0f];
-        [items addObject:scrollBackground];
+        scrollMap = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_SCROLL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_SCROLL]];
+        scrollMap.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:scrollMap];
+        
+        // init flags
+        NSString *flagPosKey = POSITION_INTERFACE_CASTLE_SCROLL_FLAGS;
+        for (int i = 0; i < LevelTypes; i++) {
+            flags[i] = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_FLAG atPosition:[Constants getPositionDataForKey:[flagPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            [flags[i] setColor:[Color red]];
+            [items addObject:flags[i]];
+        }
         
         // init upgrade dices button
         upgradeDices = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE] text:[Constants getTextForKey:TEXT_INTERFACE_BUTTON_UPGRADE]];
@@ -28,6 +35,28 @@
         upgradeDices.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [upgradeDices.label setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:upgradeDices];
+        
+        // init labels
+        upgradeLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_UPGRADE_LABEL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_UPGRADE_LABEL]];
+        upgradeLabel.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        upgradeLabel.horizontalAlign = HorizontalAlignCenter;
+        upgradeLabel.verticalAlign = VerticalAlignMiddle;
+        [upgradeLabel setScaleUniform:FONT_SCALE_MEDIUM];
+        [items addObject:upgradeLabel];
+        
+        diceNumLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_CASTLE_DICES_LABEL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_DICES_LABEL]];
+        diceNumLabel.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        diceNumLabel.horizontalAlign = HorizontalAlignCenter;
+        diceNumLabel.verticalAlign = VerticalAlignMiddle;
+        [diceNumLabel setScaleUniform:FONT_SCALE_MEDIUM];
+        [items addObject:diceNumLabel];
+        
+        diceNum = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", 12] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_DICES]];
+        diceNum.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        diceNum.horizontalAlign = HorizontalAlignCenter;
+        diceNum.verticalAlign = VerticalAlignMiddle;
+        [diceNum setScaleUniform:FONT_SCALE_HUGE];
+        [items addObject:diceNum];
     }
     return self;
 }
@@ -35,6 +64,15 @@
 
 - (void) dealloc {
     [upgradeDices release];
+    [diceNumLabel release];
+    [diceNum release];
+    [upgradeLabel release];
+    [scrollMap release];
+    
+    
+    for (int i = 0; i < LevelTypes; i++) {
+        [flags[i] release];
+    }
     
     [super dealloc];
 }

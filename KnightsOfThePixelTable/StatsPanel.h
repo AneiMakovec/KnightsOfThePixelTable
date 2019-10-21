@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Label *armorBonus[StatTypes];
     Label *armorBonusLabel[StatTypes];
+    
+    AnimatedImage *knightAnimations[KnightTypes];
 }
 
 - (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth;

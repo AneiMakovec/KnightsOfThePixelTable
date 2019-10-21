@@ -34,6 +34,10 @@ Constants *constantsInstance;
     return [constantsInstance getPositionDataForKey:key];
 }
 
++ (Vector2 *) getPositionDataForKey:(NSString *)key withAdded:(NSString *)addKey {
+    return [constantsInstance getPositionDataForKey:key withAdded:addKey];
+}
+
 + (MetaData *) getMetaDataForKey:(NSString *)key {
     return [constantsInstance getMetaDataForKey:key];
 }
@@ -76,6 +80,13 @@ Constants *constantsInstance;
         
         return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] + [[itemPositionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue] + [[itemPositionData valueForKey:Y] intValue]];
     }
+}
+
+- (Vector2 *) getPositionDataForKey:(NSString *)key withAdded:(NSString *)addKey {
+    NSDictionary *positionData = [data_position objectForKey:key];
+    NSDictionary *positionData1 = [data_position objectForKey:addKey];
+    
+    return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] + [[positionData1 valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue] + [[positionData1 valueForKey:Y] intValue]];
 }
 
 - (MetaData *) getMetaDataForKey:(NSString *)key {

@@ -57,7 +57,7 @@
 
 @class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking, MonsterBoosKnight;
 
-@class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel, FinalLevel;
+@class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel;
 
 // Player
 @protocol IPlayer;

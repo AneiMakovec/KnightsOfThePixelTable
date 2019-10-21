@@ -13,8 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TownMenu : Menu {
-    Label *title;
-    
     Image *background;
     
     ImageButton *buildings[BuildingTypes];

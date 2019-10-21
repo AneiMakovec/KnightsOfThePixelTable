@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     DoubleImageButton *closeButton;
     Image *background;
+    Image *backImage;
     Image *sidePane;
     Image *sidePaneBorder;
     

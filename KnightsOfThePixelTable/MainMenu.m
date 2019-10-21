@@ -56,6 +56,7 @@
 }
 
 - (void) dealloc {
+    [background release];
     [newGame release];
     [continueGame release];
     

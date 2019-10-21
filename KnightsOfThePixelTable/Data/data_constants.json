@@ -341,24 +341,24 @@
 			"y": 14
 		},
 		"interface_switching_button_0": {
-			"x": 51,
-			"y": 41
+			"x": 27,
+			"y": 44
 		},
 		"interface_switching_button_1": {
-			"x": 51,
-			"y": 108
+			"x": 27,
+			"y": 106
 		},
 		"interface_switching_button_2": {
-			"x": 51,
-			"y": 175
+			"x": 27,
+			"y": 168
 		},
 		"interface_switching_button_3": {
-			"x": 51,
-			"y": 242
+			"x": 27,
+			"y": 230
 		},
 		"interface_switching_button_4": {
-			"x": 51,
-			"y": 309
+			"x": 27,
+			"y": 292
 		},
 		"interface_tab_stats": {
 			"x": 227,
@@ -380,9 +380,13 @@
 			"x": 128,
 			"y": 64
 		},
+		"interface_back_image": {
+			"x": 198,
+			"y": 6
+		},
 		"interface_castle_button_upgrade": {
 			"x": 622,
-			"y": 300
+			"y": 250
 		},
 		"interface_weapon_name": {
 			"x": 423,
@@ -401,8 +405,40 @@
 			"y": 285
 		},
 		"interface_castle_scroll": {
-			"x": 255,
-			"y": 99
+			"x": 203,
+			"y": 61
+		},
+		"interface_castle_scroll_flag_0": {
+			"x": 329,
+			"y": 194
+		},
+		"interface_castle_scroll_flag_1": {
+			"x": 426,
+			"y": 202
+		},
+		"interface_castle_scroll_flag_2": {
+			"x": 284,
+			"y": 116
+		},
+		"interface_castle_scroll_flag_3": {
+			"x": 417,
+			"y": 117
+		},
+		"interface_castle_upgrade_label": {
+			"x": 670,
+			"y": 235
+		},
+		"interface_castle_dices_label": {
+			"x": 670,
+			"y": 150
+		},
+		"interface_castle_dices": {
+			"x": 670,
+			"y": 180
+		},
+		"interface_knight_animation": {
+			"x": 383,
+			"y": 101
 		},
 		"building_castle": {
 			"x": 0,
@@ -596,7 +632,7 @@
 		"main_menu_continue": "Continue",
 		"interface_switching_button_0": "Castle",
 		"interface_switching_button_1": "Barracks",
-		"interface_switching_button_2": "Training yard",
+		"interface_switching_button_2": "Drill grounds",
 		"interface_switching_button_3": "Blacksmith",
 		"interface_switching_button_4": "Warband camp",
 		"interface_button_upgrade": "Upgrade",
@@ -617,6 +653,7 @@
 		"interface_skill_combo": "Combo:",
 		"interface_skill_upgrade": "Upgrade:",
 		"interface_skill_lvl": "Lvl: %d",
-		"interface_bonus_text": "BONUS:"
+		"interface_bonus_text": "BONUS:",
+		"interface_castle_dices_label": "Number of dices:"
 	}
 }

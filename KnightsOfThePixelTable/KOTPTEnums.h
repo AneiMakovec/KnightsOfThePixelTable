@@ -181,7 +181,6 @@ typedef enum {
     LevelTypePinewoods,
     LevelTypeMountains,
     LevelTypeSeashore,
-    LevelTypeFinal,
     LevelTypes
 } LevelType;
 
@@ -349,6 +348,7 @@ typedef enum {
 #define FONT_SCALE_SMALL 1.0f
 #define FONT_SCALE_MEDIUM 1.5f
 #define FONT_SCALE_BIG 2.0f
+#define FONT_SCALE_HUGE 3.0f
 #define FONT_SCALE_MAIN_MENU 2.0f
 
 // MARK: attack textures
@@ -396,6 +396,7 @@ typedef enum {
 #define TOWN_MENU_BUILDINGS_WARBAND_CAMP @"town_menu/buildings/warband_camp"
 
 #define TOWN_MENU_INTERFACE_BACKGROUND @"town_menu/interface/background"
+#define TOWN_MENU_INTERFACE_BACK_IMAGE @"town_menu/interface/back_image"
 #define TOWN_MENU_INTERFACE_DIALOG @"town_menu/interface/dialog"
 #define TOWN_MENU_INTERFACE_PANE_SCROLL_BORDER @"town_menu/interface/pane_scroll_border"
 #define TOWN_MENU_INTERFACE_PANE_SCROLL_LINE @"town_menu/interface/pane_scroll_line"
@@ -444,6 +445,7 @@ typedef enum {
 #define TOWN_MENU_INTERFACE_ICONS_TYPE_MAGIC @"town_menu/interface/icons/type/magic"
 #define TOWN_MENU_INTERFACE_ICONS_TYPE_PHYSICAL @"town_menu/interface/icons/type/physical"
 #define TOWN_MENU_INTERFACE_ICONS_TYPE_RANGED @"town_menu/interface/icons/type/ranged"
+#define TOWN_MENU_INTERFACE_ICONS_FLAG @"town_menu/interface/icons/flag"
 #define TOWN_MENU_INTERFACE_SLOTS_BRONZE @"town_menu/interface/slots/bronze"
 #define TOWN_MENU_INTERFACE_SLOTS_DICE @"town_menu/interface/slots/dice"
 #define TOWN_MENU_INTERFACE_SLOTS_GOLD @"town_menu/interface/slots/gold"
@@ -800,12 +802,18 @@ typedef enum {
 #define POSITION_INTERFACE_XP @"interface_xp"
 #define POSITION_INTERFACE_PANE @"interface_pane"
 #define POSITION_INTERFACE_BACKGROUND @"interface_background"
+#define POSITION_INTERFACE_BACK_IMAGE @"interface_back_image"
 #define POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE @"interface_castle_button_upgrade"
 #define POSITION_INTERFACE_WEAPON_NAME @"interface_weapon_name"
 #define POSITION_INTERFACE_ARMOR_NAME @"interface_armor_name"
 #define POSITION_INTERFACE_WEAPON_BONUS_TEXT @"interface_weapon_bonus_text"
 #define POSITION_INTERFACE_ARMOR_BONUS_TEXT @"interface_armor_bonus_text"
 #define POSITION_INTERFACE_CASTLE_SCROLL @"interface_castle_scroll"
+#define POSITION_INTERFACE_CASTLE_SCROLL_FLAGS @"interface_castle_scroll_flag_"
+#define POSITION_INTERFACE_CASTLE_UPGRADE_LABEL @"interface_castle_upgrade_label"
+#define POSITION_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
+#define POSITION_INTERFACE_CASTLE_DICES @"interface_castle_dices"
+#define POSITION_INTERFACE_KNIGHT_ANIMATION @"interface_knight_animation"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -857,6 +865,7 @@ typedef enum {
 #define TEXT_INTERFACE_SKILL_UPGRADE_LABEL @"interface_skill_upgrade"
 #define TEXT_INTERFACE_SKILL_LVL_LABEL @"interface_skill_lvl"
 #define TEXT_INTERFACE_BONUS @"interface_bonus_text"
+#define TEXT_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
 
 // MARK: VALUE
 
