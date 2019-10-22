@@ -282,21 +282,64 @@
 }
 
 - (void) updateDepth:(float)depth {
-    for (id item in items) {
-        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem) {
-            imageItem.layerDepth -= curDepth;
-            imageItem.layerDepth += depth;
-        }
-        
-        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem) {
-            labelItem.layerDepth -= curDepth;
-            labelItem.layerDepth += depth;
-        }
+    [self updateDepth:depth toItem:statPane];
+    
+    [self updateDepth:depth toItem:unitTypeLabel];
+    
+    for (int i = 0; i < DamageTypes; i++) {
+        [self updateDepth:depth toItem:unitType[i]];
+    }
+    
+    [self updateDepth:depth toItem:quirk];
+    [self updateDepth:depth toItem:quirkLabel];
+    
+    [self updateDepth:depth toItem:lvl];
+    [self updateDepth:depth toItem:lvlLabel];
+    
+    [self updateDepth:depth toItem:hp];
+    [self updateDepth:depth toItem:hpLabel];
+//    [self updateDepth:depth toItem:xpLabel];
+    
+    [self updateDepth:depth toItem:weaponLvl];
+    [self updateDepth:depth toItem:weaponLvlLabel];
+    [self updateDepth:depth toItem:armorLvl];
+    [self updateDepth:depth toItem:armorLvlLabel];
+    
+    [self updateDepth:depth toItem:weaponName];
+    [self updateDepth:depth toItem:armorName];
+    [self updateDepth:depth toItem:weaponBonusText];
+    [self updateDepth:depth toItem:armorBonusText];
+    
+    for (int i = 0; i < StatTypes; i++) {
+        [self updateDepth:depth toItem:statLabels[i]];
+        [self updateDepth:depth toItem:stats[i]];
+        [self updateDepth:depth toItem:weaponBonus[i]];
+        [self updateDepth:depth toItem:weaponBonusLabel[i]];
+        [self updateDepth:depth toItem:armorBonus[i]];
+        [self updateDepth:depth toItem:armorBonusLabel[i]];
+    }
+    
+    for (int i = 0; i < KnightTypes; i++) {
+        [self updateDepth:depth toItem:weapon[i]];
+        [self updateDepth:depth toItem:armor[i]];
+        [self updateDepth:depth toItem:knightAnimations[i]];
     }
     
     curDepth = depth;
+}
+
+- (void) updateDepth:(float)depth toItem:(id)item {
+    Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
+    if (imageItem) {
+        imageItem.layerDepth -= curDepth;
+        imageItem.layerDepth += depth;
+    }
+        
+    Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
+    if (labelItem) {
+        labelItem.layerDepth -= curDepth;
+        labelItem.layerDepth += depth;
+    }
 }
 
 - (void) updateColor:(Color *)color {

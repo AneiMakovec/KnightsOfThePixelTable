@@ -60,6 +60,7 @@
         if (firstItem == nil) {
             entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:area.y width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
             selectedEntry = entry;
+            [selectedEntry setSelectedColor];
         } else {
             entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:lastItem.position.y + ENTRY_SPACING width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
         }
@@ -91,6 +92,7 @@
     
     // set selected entry to first entry
     selectedEntry = (RoosterEntry *) firstItem;
+    [selectedEntry setSelectedColor];
     selectionChanged = YES;
     dontReset = YES;
 }
@@ -109,7 +111,9 @@
         for (RoosterEntry *entry in items) {
             if ([entry wasSelected]) {
                 if (selectedEntry == nil || ![selectedEntry.data.keyID isEqualToString:entry.data.keyID]) {
+                    [selectedEntry setNormalColor];
                     selectedEntry = entry;
+                    [selectedEntry setSelectedColor];
                     selectionChanged = YES;
                     break;
                 }

@@ -36,7 +36,7 @@
         }
         
         // init upgrade dices button
-        upgradeDices = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE] text:[Constants getTextForKey:TEXT_INTERFACE_BUTTON_UPGRADE]];
+        upgradeDices = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_BUTTON_UPGRADE] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfDicesLvl:[GameProgress getDiceLvl]]]];
         upgradeDices.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         upgradeDices.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         upgradeDices.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -69,6 +69,11 @@
 }
 
 
+- (BOOL) upgradeButtonReleased {
+    return upgradeDices.wasReleased;
+}
+
+
 - (void) updateFlags {
     for (int i = 0; i < LevelTypes; i++) {
         if ([GameProgress isLevelUnlocked:i])
@@ -77,6 +82,19 @@
             [flags[i] setColor:[Color green]];
         else
             [flags[i] setColor:[Color red]];
+    }
+}
+
+- (void) updateDices {
+    diceNum.text = [NSString stringWithFormat:@"%d", [GameProgress getNumOfDices]];
+}
+
+- (void) updateButton {
+    if ([GameProgress areDicesMaxLvl]) {
+        upgradeDices.label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
+        upgradeDices.enabled = NO;
+    } else {
+        upgradeDices.label.text = [NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfDicesLvl:[GameProgress getDiceLvl]]];
     }
 }
 

@@ -79,6 +79,10 @@ GraphicsComponent *graphicsInstance;
     return [[graphicsInstance getDoubleImageLabelButtonWithKey:key atPosition:position text:text] retain];
 }
 
++ (ImageRadioButton *) getImageRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position isDown:(BOOL)isDown {
+    return [[graphicsInstance getImageRadioButtonWithKey:key atPosition:position isDown:isDown] retain];
+}
+
 + (ImageLabelRadioButton *) getImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown {
     return [[graphicsInstance getImageLabelRadioButtonWithKey:key atPosition:position text:text isDown:isDown] retain];
 }
@@ -262,6 +266,14 @@ GraphicsComponent *graphicsInstance;
     Vector2 *pos = [Vector2 vectorWithX:position.x y:position.y];
     
     DoubleImageLabelButton *button = [[[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:pos] font:font text:text] autorelease];
+    
+    return button;
+}
+
+- (ImageRadioButton *) getImageRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position isDown:(BOOL)isDown {
+    Rectangle *rect = [self getSourceRectangleForKey:key];
+    
+    ImageRadioButton *button = [[[ImageRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] background:[self getImageWithKey:key atPosition:position] isDown:isDown] autorelease];
     
     return button;
 }

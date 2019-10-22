@@ -26,7 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithLayerDepth:(float)depth;
 
+- (BOOL) upgradeButtonReleased;
+
 - (void) updateFlags;
+- (void) updateDices;
+- (void) updateButton;
 
 @end
 

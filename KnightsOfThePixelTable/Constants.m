@@ -54,6 +54,38 @@ Constants *constantsInstance;
     return [constantsInstance getInterfaceScrollRect];
 }
 
++ (int) getStartingGold {
+    return [constantsInstance getStartingGold];
+}
+
++ (int) getMaxSkillLvl {
+    return [constantsInstance getMaxSkillLvl];
+}
+
++ (int) getMaxUnitLvl {
+    return [constantsInstance getMaxUnitLvl];
+}
+
++ (int) getMaxEquipmentLvl {
+    return [constantsInstance getMaxEquipmentLvl];
+}
+
++ (int) getMaxDiceLvl {
+    return [constantsInstance getMaxDiceLvl];
+}
+
++ (int) getUpgradeCostOfSkillLvl:(Lvl)lvl {
+    return [constantsInstance getUpgradeCostOfSkillLvl:lvl];
+}
+
++ (int) getUpgradeCostOfDicesLvl:(Lvl)lvl {
+    return [constantsInstance getUpgradeCostOfDicesLvl:lvl];
+}
+
++ (int) getUpgradeCostOfEquipmentLvl:(Lvl)lvl {
+    return [constantsInstance getUpgradeCostOfEquipmentLvl:lvl];
+}
+
 
 
 
@@ -117,6 +149,38 @@ Constants *constantsInstance;
 
 - (NSDictionary *) getValueDataForKey:(NSString *)key {
     return [data_value objectForKey:key];
+}
+
+- (int) getStartingGold {
+    return [[data_value valueForKey:VALUE_STARTING_GOLD] intValue];
+}
+
+- (int) getMaxSkillLvl {
+    return [[data_value valueForKey:VALUE_MAX_LVL_SKILLS] intValue];
+}
+
+- (int) getMaxUnitLvl {
+    return [[data_value valueForKey:VALUE_MAX_LVL_UNIT] intValue];
+}
+
+- (int) getMaxEquipmentLvl {
+    return [[data_value valueForKey:VALUE_MAX_LVL_EQUIPMENT] intValue];
+}
+
+- (int) getMaxDiceLvl {
+    return [[data_value valueForKey:VALUE_MAX_LVL_DICE] intValue];
+}
+
+- (int) getUpgradeCostOfSkillLvl:(Lvl)lvl {
+    return [[[[data_value objectForKey:VALUE_UPGRADE_COST] objectForKey:VALUE_UPGRADE_COST_SKILL] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+}
+
+- (int) getUpgradeCostOfDicesLvl:(Lvl)lvl {
+    return [[[[data_value objectForKey:VALUE_UPGRADE_COST] objectForKey:VALUE_UPGRADE_COST_DICES] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+}
+
+- (int) getUpgradeCostOfEquipmentLvl:(Lvl)lvl {
+    return [[[[data_value objectForKey:VALUE_UPGRADE_COST] objectForKey:VALUE_UPGRADE_COST_EQUIPMENT] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
 }
 
 - (Rectangle *) getInterfaceScrollRect {
@@ -2663,13 +2727,6 @@ Constants *constantsInstance;
     return 1;
 }
 
-+ (int) getMaxSkillLvl {
-    return 10;
-}
-
-+ (int) getMaxEquipmentLvl {
-    return 10;
-}
 
 + (int) getMaxKnightLvl {
     return 10;

@@ -32,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) wasSelected;
 
+- (void) setSelectedColor;
+
+- (void) setNormalColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

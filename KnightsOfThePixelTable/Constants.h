@@ -27,6 +27,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *) getTextForKey:(NSString *)key;
 + (NSDictionary *) getValueDataForKey:(NSString *)key;
 
++ (int) getStartingGold;
++ (int) getMaxSkillLvl;
++ (int) getMaxUnitLvl;
++ (int) getMaxEquipmentLvl;
++ (int) getMaxDiceLvl;
+
++ (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
++ (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;
++ (int) getUpgradeCostOfEquipmentLvl:(Lvl)lvl;
+
 + (Rectangle *) getInterfaceScrollRect;
 
 + (NSString*) progressFilePath;

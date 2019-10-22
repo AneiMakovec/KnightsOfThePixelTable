@@ -285,6 +285,31 @@
 //            unitNameTrain.text = @"";
 //        }
 //    }
+    // check if upgrade dices was pressed
+    CastleInterface *castle = (CastleInterface *) interfaceContent[BuildingTypeCastle];
+    if ([castle upgradeButtonReleased]) {
+        if ([GameProgress getGold] >= [Constants getUpgradeCostOfDicesLvl:[GameProgress getDiceLvl]]) {
+            [GameProgress buyValue:[Constants getUpgradeCostOfDicesLvl:[GameProgress getDiceLvl]]];
+            [GameProgress upgradeNumOfDices];
+            
+            [castle updateDices];
+            [castle updateButton];
+            [self updateGoldCounter];
+        }
+    }
+    
+    // check if skill upgrade was pressed
+    BarracksInterface *barracks = (BarracksInterface *) interfaceContent[BuildingTypeBarracks];
+    for (int i = 0; i < SkillTypes; i++) {
+        if ([barracks wasSkillUpgradeButtonReleased:i]) {
+            if ([GameProgress getGold] >= [Constants getUpgradeCostOfSkillLvl:i]) {
+                [GameProgress buyValue:[Constants getUpgradeCostOfSkillLvl:i]];
+                [barracks upgradeSkill:i];
+                
+                [self updateGoldCounter];
+            }
+        }
+    }
 }
 
 - (void) updateContent:(BuildingType)type {
@@ -392,6 +417,10 @@
     [self addItemToScene:interfaceContent[interfaceType]];
 }
 
+
+- (void) updateGoldCounter {
+    goldCount.text = [NSString stringWithFormat:@"%d", [GameProgress getGold]];
+}
 
 
 - (void) dealloc {

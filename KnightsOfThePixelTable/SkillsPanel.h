@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SkillsPanel : GuiPanel<ICustomUpdate> {
+@interface SkillsPanel : GuiPanel {
     BOOL displayUpgradeButtons;
     float curDepth;
     
@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) updateDepth:(float)depth;
 
 - (void) updateColor:(Color *)color;
+
+- (BOOL) wasUpgradeBtnReleased:(SkillType)skill;
 
 @end
 

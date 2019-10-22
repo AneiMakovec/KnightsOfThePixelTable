@@ -86,6 +86,11 @@
 
 
 
+- (BOOL) isSkillAtMaxLvl:(SkillType)skill {
+    return skillLvl[skill] == [Constants getMaxSkillLvl];
+}
+
+
 
 - (void) gainXp:(int)amount {
     // check if reached max lvl

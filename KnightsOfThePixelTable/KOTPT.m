@@ -45,16 +45,21 @@
 @synthesize progress;
 
 - (void) initialize {
+    // initializa all components
+    [super initialize];
+    
+    // initialize game progress
+    if ([GameProgress wasLoadedAsNew]) {
+        [GameProgress initializeData];
+    }
+    
     // start in main menu
     MainMenu *mainMenu = [[[MainMenu alloc] initWithGame:self] autorelease];
     [self pushState:mainMenu];
     
     // debug - start in gameplay
-//    Gameplay *gameplay = [[[Gameplay alloc] initWithGame:self] autorelease];
-//    [self pushState:gameplay];
-    
-    // initializa all components
-    [super initialize];
+    //    Gameplay *gameplay = [[[Gameplay alloc] initWithGame:self] autorelease];
+    //    [self pushState:gameplay];
 }
 
 - (void) pushState:(GameState *)gameState {

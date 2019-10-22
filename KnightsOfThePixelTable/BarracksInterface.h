@@ -30,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
 
+- (BOOL) wasSkillUpgradeButtonReleased:(SkillType)skill;
+
+- (void) upgradeSkill:(SkillType)skill;
+
 @end
 
 NS_ASSUME_NONNULL_END

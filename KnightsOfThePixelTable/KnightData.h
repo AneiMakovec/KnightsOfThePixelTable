@@ -56,6 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (int) getArmorBonusForStat:(StatType)stat;
 
 
+// BOOL METHODS
+- (BOOL) isSkillAtMaxLvl:(SkillType)skill;
+
 
 // UPGRADE METHODS
 - (void) gainXp:(int)amount;

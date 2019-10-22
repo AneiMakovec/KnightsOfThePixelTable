@@ -53,6 +53,18 @@
     return roosterLine.wasReleased;
 }
 
+- (void) setSelectedColor {
+    [roosterLine setColor:[Color darkGray]];
+    [portrait setColor:[Color darkGray]];
+    [name setColor:[Color darkGray]];
+}
+
+- (void) setNormalColor {
+    [roosterLine setColor:[Color white]];
+    [portrait setColor:[Color white]];
+    [name setColor:[Color white]];
+}
+
 
 
 - (void) moveY:(float)distance {

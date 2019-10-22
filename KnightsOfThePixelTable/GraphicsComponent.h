@@ -48,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (DoubleImageButton *) getDoubleImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position;
 + (DoubleImageLabelButton *) getDoubleImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text;
 
++ (ImageRadioButton *) getImageRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position isDown:(BOOL)isDown;
 + (ImageLabelRadioButton *) getImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown;
 + (DoubleImageLabelRadioButton *) getDoubleImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown;
 

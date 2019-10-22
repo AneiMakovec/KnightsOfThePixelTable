@@ -91,6 +91,18 @@
 }
 
 
+- (BOOL) wasSkillUpgradeButtonReleased:(SkillType)skill {
+    return [skillPanel wasUpgradeBtnReleased:skill];
+}
+
+- (void) upgradeSkill:(SkillType)skill {
+    KnightData *data = [rooster getSelectedData];
+    [data upgradeSkill:skill];
+    [statPanel updateToKnightData:data];
+    [skillPanel updateToKnightData:data];
+}
+
+
 
 
 - (void) dealloc {    

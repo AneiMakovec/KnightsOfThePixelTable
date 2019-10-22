@@ -37,10 +37,10 @@ typedef enum {
 
 typedef enum {
     Strength,
-    Agility,
-    Defence,
     Accuracy,
     Cunning,
+    Defence,
+    Agility,
     Sturdiness,
     StatTypes
 } StatType;
@@ -826,6 +826,13 @@ typedef enum {
 #define POSITION_INTERFACE_GOLD_STACK @"interface_gold_stack"
 #define POSITION_INTERFACE_GOLD_COUNT @"interface_gold_count"
 #define POSITION_INTERFACE_UNIT_NAME @"interface_unit_name"
+#define POSITION_INTERFACE_BLACKSMITH_WEAPON @"interface_blacksmith_weapon"
+#define POSITION_INTERFACE_BLACKSMITH_ARMOR @"interface_blacksmith_armor"
+#define POSITION_INTERFACE_BLACKSMITH_UPGRADE_LABEL @"interface_blacksmith_upgrade_label"
+#define POSITION_INTERFACE_BLACKSMITH_UPGRADE_BUTTON @"interface_blacksmith_upgrade_button"
+#define POSITION_INTERFACE_BLACKSMITH_WEAPON_NAME @"interface_blacksmith_weapon_name"
+#define POSITION_INTERFACE_BLACKSMITH_ARMOR_NAME @"interface_blacksmith_armor_name"
+#define POSITION_INTERFACE_BLACKSMITH_STATS @"interface_blacksmith_stat_"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -884,6 +891,16 @@ typedef enum {
 #define TEXT_INTERFACE_BONUS @"interface_bonus_text"
 #define TEXT_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
 #define TEXT_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
+#define TEXT_INTERFACE_MAX_LVL @"interface_max_lvl"
 
 // MARK: VALUE
 #define VALUE_DICE_NUM @"num_of_dices"
+#define VALUE_UPGRADE_COST @"upgrade_cost"
+#define VALUE_UPGRADE_COST_SKILL @"skill"
+#define VALUE_UPGRADE_COST_DICES @"dices"
+#define VALUE_UPGRADE_COST_EQUIPMENT @"equipment"
+#define VALUE_MAX_LVL_SKILLS @"max_skill_lvl"
+#define VALUE_MAX_LVL_UNIT @"max_unit_lvl"
+#define VALUE_MAX_LVL_EQUIPMENT @"max_equipment_lvl"
+#define VALUE_MAX_LVL_DICE @"max_dice_lvl"
+#define VALUE_STARTING_GOLD @"starting_gold"

@@ -17,10 +17,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BlacksmithInterface : GuiPanel {
     Rooster *rooster;
     
-    Image *weaponBorder, *weapon;
-    Image *armorBorder, *armor;
+    RadioButtonGroup *equipmentBtnGroup;
+    RadioButtonGroup *statsBtnGroup;
     
-    DoubleImageLabelButton *upgradeWeapon, *upgradeArmor;
+    ImageRadioButton *weaponBorder, *armorBorder;
+    Image *weapon[KnightTypes], *armor[KnightTypes];
+    
+    DoubleImageLabelRadioButton *statButtons[StatTypes];
+    
+    DoubleImageLabelButton *upgrade;
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;

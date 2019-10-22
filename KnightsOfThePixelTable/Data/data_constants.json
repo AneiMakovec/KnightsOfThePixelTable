@@ -476,6 +476,54 @@
 			"x": 385,
 			"y": 15
 		},
+		"interface_blacksmith_weapon": {
+			"x": 322,
+			"y": 57
+		},
+		"interface_blacksmith_armor": {
+			"x": 402,
+			"y": 57
+		},
+		"interface_blacksmith_upgrade_label": {
+			"x": 346,
+			"y": 285
+		},
+		"interface_blacksmith_upgrade_button": {
+			"x": 346,
+			"y": 320
+		},
+		"interface_blacksmith_weapon_name": {
+			"x": 363,
+			"y": 35
+		},
+		"interface_blacksmith_armor_name": {
+			"x": 403,
+			"y": 35
+		},
+		"interface_blacksmith_stat_0": {
+			"x": 252,
+			"y": 155
+		},
+		"interface_blacksmith_stat_1": {
+			"x": 346,
+			"y": 155
+		},
+		"interface_blacksmith_stat_2": {
+			"x": 439,
+			"y": 155
+		},
+		"interface_blacksmith_stat_3": {
+			"x": 252,
+			"y": 197
+		},
+		"interface_blacksmith_stat_4": {
+			"x": 346,
+			"y": 197
+		},
+		"interface_blacksmith_stat_5": {
+			"x": 439,
+			"y": 197
+		},
 		"building_castle": {
 			"x": 0,
 			"y": 0
@@ -673,7 +721,36 @@
 			"0": 8,
 			"1": 9,
 			"2": 10
-		}
+		},
+		"upgrade_cost": {
+			"skill": {
+				"1": 2500,
+				"2": 5250,
+				"3": 8750,
+				"4": 10480
+			},
+			"dices": {
+				"0": 10000,
+				"1": 20000
+			},
+			"equipment": {
+				"0": 580,
+				"1": 1670,
+				"2": 2360,
+				"3": 3420,
+				"4": 4530,
+				"5": 5210,
+				"6": 6420,
+				"7": 7840,
+				"8": 8450,
+				"9": 9500
+			}
+		},
+		"max_skill_lvl": 5,
+		"max_unit_lvl": 10,
+		"max_equipment_lvl": 10,
+		"max_dice_lvl": 3,
+		"starting_gold": 0
 	},
 	"text_data": {
 		"main_menu_new_game": "New game",
@@ -703,6 +780,7 @@
 		"interface_skill_lvl": "Lvl: %d",
 		"interface_bonus_text": "BONUS:",
 		"interface_castle_dices_label": "Number of dices:",
-		"town_menu_week_counter_label": "Week:"
+		"town_menu_week_counter_label": "Week:",
+		"interface_max_lvl": "MAX"
 	}
 }

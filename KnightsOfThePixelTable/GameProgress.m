@@ -14,6 +14,10 @@ GameProgress *gameProgressInstance;
 
 @implementation GameProgress
 
++ (void) initializeData {
+    [gameProgressInstance initializeData];
+}
+
 + (void) loadProgress {
     // Load game progress from file.
     gameProgressInstance = nil;
@@ -27,7 +31,7 @@ GameProgress *gameProgressInstance;
     
     // If there is no progress file, create a fresh instance.
     if (!gameProgressInstance) {
-        gameProgressInstance = [[GameProgress alloc] init];
+        gameProgressInstance = [[GameProgress alloc] initWithLoaded:YES];
     }
 }
 
@@ -44,6 +48,9 @@ GameProgress *gameProgressInstance;
 }
 
 
++ (BOOL) wasLoadedAsNew {
+    return [gameProgressInstance wasLoaded];
+}
 
 + (int) getWeek {
     return [gameProgressInstance getWeek];
@@ -53,8 +60,16 @@ GameProgress *gameProgressInstance;
     return [gameProgressInstance getGold];
 }
 
++ (void) buyValue:(int)val {
+    [gameProgressInstance buyValue:val];
+}
+
 + (int) getNumOfDices {
     return [gameProgressInstance getNumOfDices];
+}
+
++ (Lvl) getDiceLvl {
+    return [gameProgressInstance getDiceLvl];
 }
 
 + (BOOL) isSoundEnabled {
@@ -69,6 +84,10 @@ GameProgress *gameProgressInstance;
     return [gameProgressInstance isLevelFinished:level];
 }
 
++ (BOOL) areDicesMaxLvl {
+    return [gameProgressInstance areDicesMaxLvl];
+}
+
 + (void) setSoundEnabled:(BOOL)isEnabled {
     [gameProgressInstance setSoundEnabled:isEnabled];
 }
@@ -77,6 +96,9 @@ GameProgress *gameProgressInstance;
     [gameProgressInstance unlockLevel:type];
 }
 
++ (void) upgradeNumOfDices {
+    [gameProgressInstance upgradeNumOfDices];
+}
 
 
 
@@ -84,24 +106,13 @@ GameProgress *gameProgressInstance;
 
 
 
-- (id) init {
+
+
+
+- (id) initWithLoaded:(BOOL)load {
     self = [super init];
     if (self != nil) {
-        // Enable settings
-        soundEnabled = YES;
-        
-        levelUnlocked[LevelTypeFarmlands] = YES;
-        
-        knights = [[NSMutableArray alloc] init];
-        
-        week = 1;
-        gold = 1000000;
-        
-        diceLvl = LvlZero;
-        NSDictionary *data = [Constants getValueDataForKey:VALUE_DICE_NUM];
-        for (int i = 0; i < LvlThree; i++) {
-            numOfDices[i] = [[data valueForKey:[NSString stringWithFormat:@"%d", i]] intValue];
-        }
+        loadedAsNew = load;
     }
     return self;
 }
@@ -118,7 +129,7 @@ GameProgress *gameProgressInstance;
     return self;
 }
 
-@synthesize knights;
+@synthesize knights, trainKnights;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 //    for (int i = 0; i < LevelTypes; i++) {
@@ -139,12 +150,41 @@ GameProgress *gameProgressInstance;
     [data writeToFile:archivePath options:NSDataWritingAtomic error:&error];
 }
 
+- (void) initializeData {
+    soundEnabled = YES;
+    
+    levelUnlocked[LevelTypeFarmlands] = YES;
+    
+    knights = [[NSMutableArray alloc] init];
+    
+    week = 1;
+    gold = 1000000;
+    
+    diceLvl = LvlZero;
+    NSDictionary *data = [Constants getValueDataForKey:VALUE_DICE_NUM];
+    for (int i = 0; i < LvlThree; i++) {
+        numOfDices[i] = [[data valueForKey:[NSString stringWithFormat:@"%d", i]] intValue];
+    }
+}
+
+- (BOOL) wasLoaded {
+    return loadedAsNew;
+}
+
 - (int) getWeek {
     return week;
 }
 
 - (int) getGold {
     return gold;
+}
+
+- (void) buyValue:(int)val {
+    gold -= val;
+}
+
+- (Lvl) getDiceLvl {
+    return diceLvl;
 }
 
 - (int) getNumOfDices {
@@ -161,6 +201,10 @@ GameProgress *gameProgressInstance;
 
 - (BOOL) isLevelFinished:(LevelType)level {
     return levelFinished[level];
+}
+
+- (BOOL) areDicesMaxLvl {
+    return diceLvl == [Constants getMaxDiceLvl] - 1;
 }
 
 
@@ -190,7 +234,7 @@ GameProgress *gameProgressInstance;
 
 
 - (void) upgradeNumOfDices {
-    if (diceLvl < LvlTwo)
+    if (diceLvl < [Constants getMaxDiceLvl] - 1)
         diceLvl++;
 }
 
