@@ -38,7 +38,7 @@
 
 - (void) initialize {
     // Buttons
-    back = [[GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_RETURN atPosition:[Vector2 vectorWithX:[Constants backgroundWidth] - 50 y:10]] retain];
+    back = [[GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_RETURN atPosition:[Constants getPositionDataForKey:POSITION_BACK_BUTTON]] retain];
     [back setScaleUniform:1.5];
     
     [super initialize];

@@ -1,5 +1,29 @@
 {
 	"position_data": {
+		"town_menu_option_panel_0": {
+			"x": 768,
+			"y": -20
+		},
+		"town_menu_option_panel_1": {
+			"x": 832,
+			"y": -20
+		},
+		"town_menu_option_panel_2": {
+			"x": 896,
+			"y": -20
+		},
+		"town_menu_option_panel_3": {
+			"x": 960,
+			"y": -20
+		},
+		"town_menu_week_counter_label": {
+			"x": 778,
+			"y": 20
+		},
+		"town_menu_week_counter": {
+			"x": 850,
+			"y": 20
+		},
 		"interface_stat_label_0": {
 			"x": 244,
 			"y": 300
@@ -440,6 +464,14 @@
 			"x": 383,
 			"y": 101
 		},
+		"interface_gold_stack": {
+			"x": 704,
+			"y": 13
+		},
+		"interface_gold_count": {
+			"x": 699,
+			"y": 23
+		},
 		"building_castle": {
 			"x": 0,
 			"y": 0
@@ -587,6 +619,14 @@
 		"world_menu_path_seashore": {
 			"x": 206,
 			"y": 86
+		},
+		"back_button": {
+			"x": 979,
+			"y": 5
+		},
+		"town_menu_settings_button": {
+			"x": 929,
+			"y": 5
 		}
 	},
 	"meta_data": {
@@ -654,6 +694,7 @@
 		"interface_skill_upgrade": "Upgrade:",
 		"interface_skill_lvl": "Lvl: %d",
 		"interface_bonus_text": "BONUS:",
-		"interface_castle_dices_label": "Number of dices:"
+		"interface_castle_dices_label": "Number of dices:",
+		"town_menu_week_counter_label": "Week:"
 	}
 }

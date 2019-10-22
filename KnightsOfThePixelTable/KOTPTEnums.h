@@ -212,12 +212,20 @@ typedef enum {
     SongTypes
 } SongType;
 
-// MARK: settings
+// MARK: upgrade stage
 typedef enum {
-    SettingTypeSound,
-    SettingTypeMusic,
-    SettingTypes
-} SettingType;
+    UpgradeStageOne,
+    UpgradeStageTwo,
+    UpgradeStageThree,
+    UpgradeStageFour,
+    UpgradeStageFive,
+    UpgradeStageSix,
+    UpgradeStageSeven,
+    UpgradeStageEight,
+    UpgradeStageNine,
+    UpgradeStageTen,
+    UpgradeStages
+} UpgradeStage;
 
 // MARK: menu interface
 typedef enum {
@@ -814,6 +822,8 @@ typedef enum {
 #define POSITION_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
 #define POSITION_INTERFACE_CASTLE_DICES @"interface_castle_dices"
 #define POSITION_INTERFACE_KNIGHT_ANIMATION @"interface_knight_animation"
+#define POSITION_INTERFACE_GOLD_STACK @"interface_gold_stack"
+#define POSITION_INTERFACE_GOLD_COUNT @"interface_gold_count"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -836,6 +846,11 @@ typedef enum {
 #define POSITION_WORLD_MENU_PATH_PINEWOODS @"world_menu_path_pinewoods"
 #define POSITION_WORLD_MENU_PATH_MOUNTAINS @"world_menu_path_mountains"
 #define POSITION_WORLD_MENU_PATH_SEASHORE @"world_menu_path_seashore"
+#define POSITION_TOWN_MENU_OPTION_PANELS @"town_menu_option_panel_"
+#define POSITION_TOWN_MENU_SETTINGS_BUTTON @"town_menu_settings_button"
+#define POSITION_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
+#define POSITION_TOWN_MENU_WEEK_COUNTER @"town_menu_week_counter"
+#define POSITION_BACK_BUTTON @"back_button"
 
 // MARK: METADATA
 #define META_INTERFACE_BACKGROUND @"interface_background"
@@ -866,6 +881,7 @@ typedef enum {
 #define TEXT_INTERFACE_SKILL_LVL_LABEL @"interface_skill_lvl"
 #define TEXT_INTERFACE_BONUS @"interface_bonus_text"
 #define TEXT_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
+#define TEXT_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
 
 // MARK: VALUE
 

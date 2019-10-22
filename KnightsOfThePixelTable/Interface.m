@@ -41,6 +41,19 @@
         closeButton.pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:closeButton];
         
+        // init gold count
+        goldStack = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_GOLD_STACK atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_GOLD_STACK]];
+        [goldStack setScaleUniform:1.5f];
+        goldStack.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:goldStack];
+        
+        goldCount = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [GameProgress getGold]] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_GOLD_COUNT]];
+        [goldCount setScaleUniform:FONT_SCALE_BIG];
+        goldCount.horizontalAlign = HorizontalAlignRight;
+        goldCount.verticalAlign = VerticalAlignMiddle;
+        goldCount.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+        [items addObject:goldCount];
+        
         // init interface switching buttons
         
         // init radio button group
@@ -413,6 +426,8 @@
     
     [unitName release];
     [unitNameTrain release];
+    [goldCount release];
+    [goldStack release];
     
     [super dealloc];
 }

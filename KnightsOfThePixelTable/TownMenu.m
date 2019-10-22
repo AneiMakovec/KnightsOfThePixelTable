@@ -10,6 +10,9 @@
 
 #import "Pixlron.Knights.h"
 
+#define SHOW_DEPTH 0.85f
+#define HIDE_DEPTH 0.95f
+
 @implementation TownMenu
 
 - (void) initialize {
@@ -17,8 +20,55 @@
     
     // Background
     background = [GraphicsComponent getImageWithKey:TOWN_MENU_BACKGROUND atPosition:[Vector2 vectorWithX:0 y:0]];
-    background.layerDepth = 1.0;
+    background.layerDepth = 1.0f;
     [scene addItem:background];
+    
+    // init option panel
+    NSString *posKey = POSITION_TOWN_MENU_OPTION_PANELS;
+    for (int i = 0; i < OPTION_PANELS; i++) {
+        if (i == 0)
+            optionPanel[i] = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_WINDOW_DOWN_LEFT atPosition:[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        else
+            optionPanel[i] = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_WINDOW_DOWN atPosition:[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        optionPanel[i].layerDepth = 0.9f;
+        [optionPanel[i] setScaleUniform:2.0f];
+        [optionPanel[i] setColor:[Color saddleBrown]];
+        [scene addItem:optionPanel[i]];
+    }
+    
+    // init option button
+    soundButtonOn = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SOUND_ON atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_SETTINGS_BUTTON]];
+    [soundButtonOn setScaleUniform:1.5f];
+    NSLog(@"Not Pressed - x: %f, y: %f", soundButtonOn.notPressedImage.position.x, soundButtonOn.notPressedImage.position.y);
+    NSLog(@"Pressed - x: %f, y: %f", soundButtonOn.pressedImage.position.x, soundButtonOn.pressedImage.position.y);
+    [scene addItem:soundButtonOn];
+    
+    soundButtonOff = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SOUND_OFF atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_SETTINGS_BUTTON]];
+    [soundButtonOff setScaleUniform:1.5f];
+    [scene addItem:soundButtonOff];
+    
+    if ([GameProgress isSoundEnabled]) {
+        soundButtonOff.enabled = NO;
+        [soundButtonOff setLayerDepth:HIDE_DEPTH];
+        [soundButtonOn setLayerDepth:SHOW_DEPTH];
+    } else {
+        soundButtonOn.enabled = NO;
+        [soundButtonOff setLayerDepth:SHOW_DEPTH];
+        [soundButtonOn setLayerDepth:HIDE_DEPTH];
+    }
+    
+    // init week counter
+    weekCounterLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_TOWN_MENU_WEEK_COUNTER_LABEL] atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_WEEK_COUNTER_LABEL]];
+    [weekCounterLabel setScaleUniform:FONT_SCALE_BIG];
+    weekCounterLabel.horizontalAlign = HorizontalAlignLeft;
+    weekCounterLabel.verticalAlign = VerticalAlignMiddle;
+    [scene addItem:weekCounterLabel];
+    
+    weekCounter = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [GameProgress getWeek]] atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_WEEK_COUNTER]];
+    [weekCounter setScaleUniform:FONT_SCALE_BIG];
+    weekCounter.horizontalAlign = HorizontalAlignLeft;
+    weekCounter.verticalAlign = VerticalAlignMiddle;
+    [scene addItem:weekCounter];
     
     // init buildings
     NSString *textureKeys[BuildingTypes] = {TOWN_MENU_BUILDINGS_CASTLE, TOWN_MENU_BUILDINGS_BARRACKS, TOWN_MENU_BUILDINGS_TRAINING_YARD, TOWN_MENU_BUILDINGS_BLACKSMITH, TOWN_MENU_BUILDINGS_WARBAND_CAMP, TOWN_MENU_BUILDINGS_GATEHOUSE};
@@ -38,6 +88,23 @@
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     [super updateWithGameTime:gameTime];
+    
+    // check if sound button was pressed
+    if (soundButtonOn.wasReleased) {
+        [GameProgress setSoundEnabled:NO];
+        soundButtonOn.enabled = NO;
+        [soundButtonOn setLayerDepth:HIDE_DEPTH];
+        soundButtonOff.enabled = YES;
+        [soundButtonOff setLayerDepth:SHOW_DEPTH];
+    }
+    
+    if (soundButtonOff.wasReleased) {
+        [GameProgress setSoundEnabled:YES];
+        soundButtonOff.enabled = NO;
+        [soundButtonOff setLayerDepth:HIDE_DEPTH];
+        soundButtonOn.enabled = YES;
+        [soundButtonOn setLayerDepth:SHOW_DEPTH];
+    }
     
     GameState *newState = nil;
     

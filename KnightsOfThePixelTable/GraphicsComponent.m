@@ -121,8 +121,8 @@ GraphicsComponent *graphicsInstance;
     // check if image is trimmed and update position accordingly
     if ([self isTrimmedByKey:key]) {
         Rectangle *offset = [self getOffsetRectangleForKey:key];
-        position.x += offset.x;
-        position.y += offset.y;
+        position.x += (float) offset.x;
+        position.y += (float) offset.y;
     }
     
     // init image
@@ -138,8 +138,8 @@ GraphicsComponent *graphicsInstance;
     // check if image is trimmed and update position accordingly
     if ([self isTrimmedByKey:key]) {
         Rectangle *offset = [self getOffsetRectangleForKey:key];
-        position.x += offset.x;
-        position.y += offset.y;
+        position.x += (float) offset.x;
+        position.y += (float) offset.y;
     }
     
     // init image
@@ -179,16 +179,16 @@ GraphicsComponent *graphicsInstance;
     if ([key isEqualToString:TOWN_MENU_INTERFACE_WINDOW]) {
         NSMutableArray *rectangles = [[NSMutableArray alloc] initWithCapacity:ImageLocations];
         rectangles[ImageLocationUpLeft] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_UP_LEFT];
-        rectangles[ImageLocationUpRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_UP_RIGHT];
         rectangles[ImageLocationUpCenter] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_UP];
+        rectangles[ImageLocationUpRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_UP_RIGHT];
         rectangles[ImageLocationMiddleLeft] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_LEFT];
-        rectangles[ImageLocationMiddleRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_RIGHT];
         rectangles[ImageLocationMiddleCenter] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_CENTER];
+        rectangles[ImageLocationMiddleRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_RIGHT];
         rectangles[ImageLocationDownLeft] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_DOWN_LEFT];
-        rectangles[ImageLocationDownRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_DOWN_RIGHT];
         rectangles[ImageLocationDownCenter] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_DOWN];
+        rectangles[ImageLocationDownRight] = [self getSourceRectangleForKey:TOWN_MENU_INTERFACE_WINDOW_DOWN_RIGHT];
         
-        image = [[[CompositeImage alloc] initWithImageTexture:spriteSheet_0 sourceRectangles:rectangles color:[Color brown] x:370 y:150 width:300 height:100] autorelease];
+        image = [[[CompositeImage alloc] initWithImageTexture:spriteSheet_0 sourceRectangles:rectangles color:[Color saddleBrown] x:position.x y:position.y width:width height:height] autorelease];
     }
     
     return image;
@@ -250,16 +250,18 @@ GraphicsComponent *graphicsInstance;
 
 - (DoubleImageButton *) getDoubleImageButtonWithKey:(NSString *)key atPosition:(Vector2 *)position {
     Rectangle *rect = [self getSourceRectangleForKey:key];
+    Vector2 *pos = [Vector2 vectorWithX:position.x y:position.y];
     
-    DoubleImageButton *button = [[[DoubleImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:position]] autorelease];
+    DoubleImageButton *button = [[[DoubleImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:pos]] autorelease];
     
     return button;
 }
 
 - (DoubleImageLabelButton *) getDoubleImageLabelButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text {
     Rectangle *rect = [self getSourceRectangleForKey:key];
+    Vector2 *pos = [Vector2 vectorWithX:position.x y:position.y];
     
-    DoubleImageLabelButton *button = [[[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:position] font:font text:text] autorelease];
+    DoubleImageLabelButton *button = [[[DoubleImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:pos] font:font text:text] autorelease];
     
     return button;
 }
@@ -274,8 +276,9 @@ GraphicsComponent *graphicsInstance;
 
 - (DoubleImageLabelRadioButton *) getDoubleImageLabelRadioButtonWithKey:(NSString *)key atPosition:(Vector2 *)position text:(NSString *)text isDown:(BOOL)isDown {
     Rectangle *rect = [self getSourceRectangleForKey:key];
+    Vector2 *pos = [Vector2 vectorWithX:position.x y:position.y];
     
-    DoubleImageLabelRadioButton *button = [[[DoubleImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:position] font:font text:text isDown:isDown] autorelease];
+    DoubleImageLabelRadioButton *button = [[[DoubleImageLabelRadioButton alloc] initWithInputArea:[Rectangle rectangleWithX:position.x y:position.y width:rect.width height:rect.height] notPressedBackground:[self getImageWithKey:key atPosition:position] pressedBackground:[self getImageWithKey:[key stringByAppendingString:@"_pressed"] atPosition:pos] font:font text:text isDown:isDown] autorelease];
     
     return button;
 }

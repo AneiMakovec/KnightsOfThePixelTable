@@ -24,7 +24,14 @@
         NSString *flagPosKey = POSITION_INTERFACE_CASTLE_SCROLL_FLAGS;
         for (int i = 0; i < LevelTypes; i++) {
             flags[i] = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_FLAG atPosition:[Constants getPositionDataForKey:[flagPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-            [flags[i] setColor:[Color red]];
+            
+            if ([GameProgress isLevelUnlocked:i])
+                [flags[i] setColor:[Color blue]];
+            else if ([GameProgress isLevelFinished:i])
+                [flags[i] setColor:[Color green]];
+            else
+                [flags[i] setColor:[Color red]];
+            
             [items addObject:flags[i]];
         }
         
@@ -51,7 +58,7 @@
         [diceNumLabel setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:diceNumLabel];
         
-        diceNum = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", 12] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_DICES]];
+        diceNum = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [GameProgress getNumOfDices]] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_DICES]];
         diceNum.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         diceNum.horizontalAlign = HorizontalAlignCenter;
         diceNum.verticalAlign = VerticalAlignMiddle;
@@ -59,6 +66,18 @@
         [items addObject:diceNum];
     }
     return self;
+}
+
+
+- (void) updateFlags {
+    for (int i = 0; i < LevelTypes; i++) {
+        if ([GameProgress isLevelUnlocked:i])
+            [flags[i] setColor:[Color blue]];
+        else if ([GameProgress isLevelFinished:i])
+            [flags[i] setColor:[Color green]];
+        else
+            [flags[i] setColor:[Color red]];
+    }
 }
 
 

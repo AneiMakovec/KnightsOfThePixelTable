@@ -2612,13 +2612,13 @@
 				"h": 19,
 				"w": 20,
 				"x": 0,
-				"y": 0
+				"y": 1
 			},
 			"sourceSize": {
-				"h": 19,
+				"h": 20,
 				"w": 20
 			},
-			"trimmed": false
+			"trimmed": true
 		},
 		"town_menu/interface/buttons/return": {
 			"frame": {
@@ -2652,13 +2652,13 @@
 				"h": 19,
 				"w": 20,
 				"x": 0,
-				"y": 0
+				"y": 1
 			},
 			"sourceSize": {
-				"h": 19,
+				"h": 20,
 				"w": 20
 			},
-			"trimmed": false
+			"trimmed": true
 		},
 		"town_menu/interface/buttons/settings": {
 			"frame": {
@@ -2692,13 +2692,13 @@
 				"h": 19,
 				"w": 20,
 				"x": 0,
-				"y": 0
+				"y": 1
 			},
 			"sourceSize": {
-				"h": 19,
+				"h": 20,
 				"w": 20
 			},
-			"trimmed": false
+			"trimmed": true
 		},
 		"town_menu/interface/buttons/sound_off": {
 			"frame": {
@@ -2732,13 +2732,13 @@
 				"h": 19,
 				"w": 20,
 				"x": 0,
-				"y": 0
+				"y": 1
 			},
 			"sourceSize": {
-				"h": 19,
+				"h": 20,
 				"w": 20
 			},
-			"trimmed": false
+			"trimmed": true
 		},
 		"town_menu/interface/buttons/sound_on": {
 			"frame": {
@@ -2772,13 +2772,13 @@
 				"h": 19,
 				"w": 20,
 				"x": 0,
-				"y": 0
+				"y": 1
 			},
 			"sourceSize": {
-				"h": 19,
+				"h": 20,
 				"w": 20
 			},
-			"trimmed": false
+			"trimmed": true
 		},
 		"town_menu/interface/icons/equipment/armor/monk": {
 			"frame": {

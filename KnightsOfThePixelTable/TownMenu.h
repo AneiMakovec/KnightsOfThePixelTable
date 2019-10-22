@@ -10,10 +10,19 @@
 
 #import "Menu.h"
 
+#define OPTION_PANELS 4
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TownMenu : Menu {
     Image *background;
+    Image *optionPanel[OPTION_PANELS];
+    Label *weekCounterLabel;
+    Label *weekCounter;
+    
+    CompositeImage *window;
+
+    DoubleImageButton *soundButtonOn, *soundButtonOff;
     
     ImageButton *buildings[BuildingTypes];
     

@@ -37,7 +37,7 @@
         stateStack = [[NSMutableArray alloc] init];
         
         // load game progress
-        progress = [[GameProgress loadProgress] retain];
+        [GameProgress loadProgress];
     }
     return self;
 }

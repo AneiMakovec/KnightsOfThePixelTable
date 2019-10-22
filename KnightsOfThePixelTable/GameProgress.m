@@ -10,17 +10,93 @@
 
 #import "Pixlron.Knights.h"
 
+GameProgress *gameProgressInstance;
+
 @implementation GameProgress
+
++ (void) loadProgress {
+    // Load game progress from file.
+    gameProgressInstance = nil;
+    
+    NSError *error = nil;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
+    NSData *data = [NSData dataWithContentsOfFile:archivePath];
+//    gameProgressInstance = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+    gameProgressInstance = [NSKeyedUnarchiver unarchivedObjectOfClass:[GameProgress class] fromData:data error:&error];
+    
+    // If there is no progress file, create a fresh instance.
+    if (!gameProgressInstance) {
+        gameProgressInstance = [[GameProgress alloc] init];
+    }
+}
+
++ (void) deleteProgress {
+    // Delete game progress file.
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:archivePath error:&error];
+}
+
++ (void) saveProgress {
+    [gameProgressInstance saveProgress];
+}
+
+
+
++ (int) getWeek {
+    return [gameProgressInstance getWeek];
+}
+
++ (int) getGold {
+    return [gameProgressInstance getGold];
+}
+
++ (int) getNumOfDices {
+    return [gameProgressInstance getNumOfDices];
+}
+
++ (BOOL) isSoundEnabled {
+    return [gameProgressInstance isSoundEnabled];
+}
+
++ (BOOL) isLevelUnlocked:(LevelType)level {
+    return [gameProgressInstance isLevelUnlocked:level];
+}
+
++ (BOOL) isLevelFinished:(LevelType)level {
+    return [gameProgressInstance isLevelFinished:level];
+}
+
++ (void) setSoundEnabled:(BOOL)isEnabled {
+    [gameProgressInstance setSoundEnabled:isEnabled];
+}
+
++ (void) unlockLevel:(LevelType)type {
+    [gameProgressInstance unlockLevel:type];
+}
+
+
+
+
+
+
+
 
 - (id) init {
     self = [super init];
     if (self != nil) {
         // Enable settings
-        settingEnabled[SettingTypeSound] = YES;
-        settingEnabled[SettingTypeMusic] = YES;
-        //levelUnlocked[LevelTypeFarmlands] = YES;
+        soundEnabled = YES;
+        
+        levelUnlocked[LevelTypeFarmlands] = YES;
         
         knights = [[NSMutableArray alloc] init];
+        
+        week = 1;
+        gold = 1000000;
+        numOfDices = 8;
     }
     return self;
 }
@@ -32,76 +108,69 @@
 //            levelUnlocked[i] = [aDecoder decodeBoolForKey:[NSString stringWithFormat:@"levelUnlocked%i", i]];
 //        }
         
-        for (int i = 0; i < SettingTypes; i++) {
-            settingEnabled[i] = [aDecoder decodeBoolForKey:[NSString stringWithFormat:@"settingEnabled%i", i]];
-        }
+        soundEnabled = [aDecoder decodeBoolForKey:@"soundEnabled"];
     }
     return self;
 }
+
+@synthesize knights;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {
 //    for (int i = 0; i < LevelTypes; i++) {
 //        [aCoder encodeBool:levelUnlocked[i] forKey:[NSString stringWithFormat:@"levelUnlocked%i", i]];
 //    }
     
-    for (int i = 0; i < SettingTypes; i++) {
-        [aCoder encodeBool:settingEnabled[i] forKey:[NSString stringWithFormat:@"settingEnabled%i", i]];
-    }
-}
-
-+ (GameProgress *) loadProgress {
-    // Load game progress from file.
-    GameProgress *progress = nil;
-    
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
-    progress = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
-    
-    // If there is no progress file, create a fresh instance.
-    if (!progress) {
-        progress = [[[GameProgress alloc] init] autorelease];
-    }
-    
-    return progress;
-}
-
-+ (void) deleteProgress {
-    // Delete game progress file.
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
-    NSError *error;
-    [[NSFileManager defaultManager] removeItemAtPath:archivePath error:&error];
+    [aCoder encodeBool:soundEnabled forKey:@"soundEnabled"];
 }
 
 - (void) saveProgress {
     // Save game progress to file.
+    NSError *error = nil;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *archivePath = [rootPath stringByAppendingPathComponent:[Constants progressFilePath]];
-    [NSKeyedArchiver archiveRootObject:self toFile:archivePath];
+//    [NSKeyedArchiver archiveRootObject:self toFile:archivePath];     // OLD
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:&error];   // NEW
+    [data writeToFile:archivePath options:NSDataWritingAtomic error:&error];
 }
 
-//- (BOOL) isLevelUnlocked:(LevelType)type {
-//    return levelUnlocked[type];
-//}
-
-- (BOOL) isSettingEnabled:(SettingType)setting {
-    return settingEnabled[setting];
+- (int) getWeek {
+    return week;
 }
 
-//- (void) unlockLevel:(LevelType)type {
-//    levelUnlocked[type] = YES;
-//    [self saveProgress];
-//}
-
-- (void) enableSetting:(SettingType)setting {
-    settingEnabled[setting] = YES;
-    [self saveProgress];
+- (int) getGold {
+    return gold;
 }
 
-- (void) disableSetting:(SettingType)setting {
-    settingEnabled[setting] = NO;
-    [self saveProgress];
+- (int) getNumOfDices {
+    return numOfDices;
 }
+
+- (BOOL) isSoundEnabled {
+    return soundEnabled;
+}
+
+- (BOOL) isLevelUnlocked:(LevelType)level {
+    return levelUnlocked[level];
+}
+
+- (BOOL) isLevelFinished:(LevelType)level {
+    return levelFinished[level];
+}
+
+
+
+
+- (void) setSoundEnabled:(BOOL)isEnabled {
+    soundEnabled = isEnabled;
+}
+
+- (void) unlockLevel:(LevelType)type {
+    levelUnlocked[type] = YES;
+}
+
+
+
 
 
 - (void) addKnight:(Knight *)knight {
@@ -113,7 +182,14 @@
 }
 
 
-- (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position {
+
+
+- (void) upgradeNumOfDices {
+    numOfDices++;
+}
+
+
+- (void) setBattleKnight:(KnightData *)knight onPosition:(CombatPosition)position {
     battleKnights[position] = knight;
 }
 

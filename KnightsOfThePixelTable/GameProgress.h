@@ -13,8 +13,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GameProgress : NSObject <NSCoding> {
-    //BOOL levelUnlocked[LevelTypes];
-    BOOL settingEnabled[SettingTypes];
+    int week;
+    int gold;
+    int numOfDices;
+    
+    BOOL levelUnlocked[LevelTypes];
+    BOOL levelFinished[LevelTypes];
+    BOOL soundEnabled;
     
     NSMutableArray *knights;
     KnightData *battleKnights[CombatPositions];
@@ -22,25 +27,40 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) NSMutableArray *knights;
 
-+ (GameProgress *) loadProgress;
++ (void) loadProgress;
 + (void) deleteProgress;
-- (void) saveProgress;
++ (void) saveProgress;
 
-- (BOOL) isSettingEnabled:(SettingType)setting;
 
-- (void) enableSetting:(SettingType)setting;
-- (void) disableSetting:(SettingType)setting;
++ (int) getWeek;
++ (int) getGold;
++ (int) getNumOfDices;
++ (BOOL) isSoundEnabled;
++ (BOOL) isLevelUnlocked:(LevelType)level;
++ (BOOL) isLevelFinished:(LevelType)level;
+
++ (void) setSoundEnabled:(BOOL)isEnabled;
++ (void) unlockLevel:(LevelType)type;
+
++ (void) upgradeNumOfDices;
+
+//- (void) saveProgress;
+//
+//- (BOOL) isSettingEnabled:(SettingType)setting;
+//
+//- (void) enableSetting:(SettingType)setting;
+//- (void) disableSetting:(SettingType)setting;
 
 //- (BOOL) isLevelUnlocked:(LevelType)type;
 
 //- (void) unlockLevel:(LevelType)type;
 
-- (void) addKnight:(KnightData *)knight;
-- (void) removeKnight:(KnightData *)knight;
-
-- (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position;
-- (void) removeKnightOnPosition:(CombatPosition)position;
-- (void) removeAllBattleKnights;
+//- (void) addKnight:(KnightData *)knight;
+//- (void) removeKnight:(KnightData *)knight;
+//
+//- (void) setBattleKnight:(Knight *)knight onPosition:(CombatPosition)position;
+//- (void) removeKnightOnPosition:(CombatPosition)position;
+//- (void) removeAllBattleKnights;
 
 @end
 

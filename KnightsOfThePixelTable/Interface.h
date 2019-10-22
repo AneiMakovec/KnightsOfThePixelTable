@@ -41,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
     // train rooster unit info
     Label *unitNameTrain;
     
+    Label *goldCount;
+    Image *goldStack;
+    
     
     // DEBUG
     RoosterEntry *firstLine, *secondLine, *thirdLine;
