@@ -145,20 +145,6 @@
         interfaceContent[BuildingTypeWarbandCamp] = [[WarbandCampInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT rooster:rooster];
         interfaceContent[BuildingTypeTrainingYard] = [[TrainingYardInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT trainRooster:trainRooster rooster:rooster];
         interfaceContent[BuildingTypeBlacksmith] = [[BlacksmithInterface alloc] initWithLayerDepth:layerDepth + INTERFACE_LAYER_FRONT rooster:rooster];
-        
-        // init unit name
-        unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];
-        unitName.verticalAlign = VerticalAlignTop;
-        unitName.horizontalAlign = HorizontalAlignCenter;
-        unitName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitName setScaleUniform:FONT_SCALE_MEDIUM];
-        
-        // init train unit info
-        unitNameTrain = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];
-        unitNameTrain.verticalAlign = VerticalAlignTop;
-        unitNameTrain.horizontalAlign = HorizontalAlignCenter;
-        unitNameTrain.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitNameTrain setScaleUniform:FONT_SCALE_MEDIUM];
     }
     return self;
 }
@@ -187,13 +173,13 @@
                         // remove training rooster and unit info if switching from training yard or remove normal rooster if swithcing from other
                         if (interfaceType == BuildingTypeTrainingYard) {
                             [self removeItemFromScene:trainRooster];
-                            [self removeItemFromScene:unitNameTrain];
+//                            [self removeItemFromScene:unitNameTrain];
                         } else {
                             [self removeItemFromScene:rooster];
                             
                             // also remove rooster unit info
                             if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
-                                [self removeItemFromScene:unitName];
+//                                [self removeItemFromScene:unitName];
                             }
                         }
                         break;
@@ -201,7 +187,7 @@
                     case BuildingTypeBarracks:
                         if (interfaceType != BuildingTypeBlacksmith) {
                             // add rooster unit info
-                            [self addItemToScene:unitName];
+//                            [self addItemToScene:unitName];
                             
                             if (interfaceType != BuildingTypeWarbandCamp) {
                                 // add rooster
@@ -210,7 +196,7 @@
                                 if (interfaceType == BuildingTypeTrainingYard) {
                                     // remove train rooster and unit info
                                     [self removeItemFromScene:trainRooster];
-                                    [self removeItemFromScene:unitNameTrain];
+//                                    [self removeItemFromScene:unitNameTrain];
                                 }
                             }
                         }
@@ -219,7 +205,7 @@
                     case BuildingTypeWarbandCamp:
                         if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
                             // remove rooster unit info
-                            [self removeItemFromScene:unitName];
+//                            [self removeItemFromScene:unitName];
                         } else {
                             // add rooster
                             [self addItemToScene:rooster];
@@ -227,7 +213,7 @@
                             if (interfaceType == BuildingTypeTrainingYard) {
                                 // remove train rooster and unit info
                                 [self removeItemFromScene:trainRooster];
-                                [self removeItemFromScene:unitNameTrain];
+//                                [self removeItemFromScene:unitNameTrain];
                             }
                         }
                         break;
@@ -235,7 +221,7 @@
                     case BuildingTypeTrainingYard:
                         // add train rooster and unit info
                         [self addItemToScene:trainRooster];
-                        [self addItemToScene:unitNameTrain];
+//                        [self addItemToScene:unitNameTrain];
                         
                         if (interfaceType != BuildingTypeCastle) {
                             // remove rooster
@@ -243,7 +229,7 @@
                             
                             if (interfaceType != BuildingTypeWarbandCamp) {
                                 // remove rooster unit info
-                                [self removeItemFromScene:unitName];
+//                                [self removeItemFromScene:unitName];
                             }
                         }
                         break;
@@ -251,7 +237,7 @@
                     case BuildingTypeBlacksmith:
                         if (interfaceType != BuildingTypeBarracks) {
                             // add rooster unit info
-                            [self addItemToScene:unitName];
+//                            [self addItemToScene:unitName];
                             
                             if (interfaceType != BuildingTypeWarbandCamp) {
                                 // add rooster
@@ -260,7 +246,7 @@
                                 if (interfaceType == BuildingTypeTrainingYard) {
                                     // remove train rooster and unit info
                                     [self removeItemFromScene:trainRooster];
-                                    [self removeItemFromScene:unitNameTrain];
+//                                    [self removeItemFromScene:unitNameTrain];
                                 }
                             }
                         }
@@ -279,26 +265,26 @@
     }
     
     // check if selection changed in the rooster
-    if (rooster.selectionChanged) {
-        // change rooster unit info
-        KnightData *selectedData = [rooster getSelectedData];
-        if (selectedData) {
-            unitName.text = selectedData.name;
-        } else {
-            unitName.text = @"";
-        }
-    }
+//    if (rooster.selectionChanged) {
+//        // change rooster unit info
+//        KnightData *selectedData = [rooster getSelectedData];
+//        if (selectedData) {
+//            unitName.text = selectedData.name;
+//        } else {
+//            unitName.text = @"";
+//        }
+//    }
     
     // check if selection changed in the training rooster
-    if (trainRooster.selectionChanged) {
-        // change train rooster unit info
-        KnightData *selectedData = [trainRooster getSelectedData];
-        if (selectedData) {
-            unitNameTrain.text = selectedData.name;
-        } else {
-            unitNameTrain.text = @"";
-        }
-    }
+//    if (trainRooster.selectionChanged) {
+//        // change train rooster unit info
+//        KnightData *selectedData = [trainRooster getSelectedData];
+//        if (selectedData) {
+//            unitNameTrain.text = selectedData.name;
+//        } else {
+//            unitNameTrain.text = @"";
+//        }
+//    }
 }
 
 - (void) updateContent:(BuildingType)type {
@@ -312,13 +298,13 @@
             // remove training rooster and unit info if switching from training yard or remove normal rooster if swithcing from other
             if (interfaceType == BuildingTypeTrainingYard) {
                 [self removeItemFromScene:trainRooster];
-                [self removeItemFromScene:unitNameTrain];
+//                [self removeItemFromScene:unitNameTrain];
             } else {
                 [self removeItemFromScene:rooster];
                 
                 // also remove rooster unit info
                 if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
-                    [self removeItemFromScene:unitName];
+//                    [self removeItemFromScene:unitName];
                 }
             }
             break;
@@ -326,7 +312,7 @@
         case BuildingTypeBarracks:
             if (interfaceType != BuildingTypeBlacksmith) {
                 // add rooster unit info
-                [self addItemToScene:unitName];
+//                [self addItemToScene:unitName];
                 
                 if (interfaceType != BuildingTypeWarbandCamp) {
                     // add rooster
@@ -335,7 +321,7 @@
                     if (interfaceType == BuildingTypeTrainingYard) {
                         // remove train rooster and unit info
                         [self removeItemFromScene:trainRooster];
-                        [self removeItemFromScene:unitNameTrain];
+//                        [self removeItemFromScene:unitNameTrain];
                     }
                 }
             }
@@ -344,7 +330,7 @@
         case BuildingTypeWarbandCamp:
             if (interfaceType == BuildingTypeBarracks || interfaceType == BuildingTypeBlacksmith) {
                 // remove rooster unit info
-                [self removeItemFromScene:unitName];
+//                [self removeItemFromScene:unitName];
             } else {
                 // add rooster
                 [self addItemToScene:rooster];
@@ -352,7 +338,7 @@
                 if (interfaceType == BuildingTypeTrainingYard) {
                     // remove train rooster and unit info
                     [self removeItemFromScene:trainRooster];
-                    [self removeItemFromScene:unitNameTrain];
+//                    [self removeItemFromScene:unitNameTrain];
                 }
             }
             break;
@@ -360,7 +346,7 @@
         case BuildingTypeTrainingYard:
             // add train rooster and unit info
             [self addItemToScene:trainRooster];
-            [self addItemToScene:unitNameTrain];
+//            [self addItemToScene:unitNameTrain];
             
             if (interfaceType != BuildingTypeCastle) {
                 // remove rooster
@@ -368,7 +354,7 @@
                 
                 if (interfaceType != BuildingTypeWarbandCamp) {
                     // remove rooster unit info
-                    [self removeItemFromScene:unitName];
+//                    [self removeItemFromScene:unitName];
                 }
             }
             break;
@@ -376,7 +362,7 @@
         case BuildingTypeBlacksmith:
             if (interfaceType != BuildingTypeBarracks) {
                 // add rooster unit info
-                [self addItemToScene:unitName];
+//                [self addItemToScene:unitName];
                 
                 if (interfaceType != BuildingTypeWarbandCamp) {
                     // add rooster
@@ -385,7 +371,7 @@
                     if (interfaceType == BuildingTypeTrainingYard) {
                         // remove train rooster and unit info
                         [self removeItemFromScene:trainRooster];
-                        [self removeItemFromScene:unitNameTrain];
+//                        [self removeItemFromScene:unitNameTrain];
                     }
                 }
             }
@@ -424,8 +410,8 @@
         [interfaceContent[i] release];
     }
     
-    [unitName release];
-    [unitNameTrain release];
+//    [unitName release];
+//    [unitNameTrain release];
     [goldCount release];
     [goldStack release];
     

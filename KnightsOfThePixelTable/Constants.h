@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (Vector2 *) getPositionDataForKey:(NSString *)key withAdded:(NSString *)addKey;
 + (MetaData *) getMetaDataForKey:(NSString *)key;
 + (NSString *) getTextForKey:(NSString *)key;
++ (NSDictionary *) getValueDataForKey:(NSString *)key;
 
 + (Rectangle *) getInterfaceScrollRect;
 

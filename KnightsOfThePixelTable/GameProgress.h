@@ -15,17 +15,20 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GameProgress : NSObject <NSCoding> {
     int week;
     int gold;
-    int numOfDices;
+    int numOfDices[LvlThree];
+    Lvl diceLvl;
     
     BOOL levelUnlocked[LevelTypes];
     BOOL levelFinished[LevelTypes];
     BOOL soundEnabled;
     
     NSMutableArray *knights;
+    NSMutableArray *trainKnights;
     KnightData *battleKnights[CombatPositions];
 }
 
 @property (nonatomic, retain) NSMutableArray *knights;
+@property (nonatomic, retain) NSMutableArray *trainKnights;
 
 + (void) loadProgress;
 + (void) deleteProgress;

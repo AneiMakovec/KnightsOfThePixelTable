@@ -472,6 +472,10 @@
 			"x": 699,
 			"y": 23
 		},
+		"interface_unit_name": {
+			"x": 385,
+			"y": 15
+		},
 		"building_castle": {
 			"x": 0,
 			"y": 0
@@ -665,7 +669,11 @@
 
 	},
 	"value_data": {
-
+		"num_of_dices": {
+			"0": 8,
+			"1": 9,
+			"2": 10
+		}
 	},
 	"text_data": {
 		"main_menu_new_game": "New game",

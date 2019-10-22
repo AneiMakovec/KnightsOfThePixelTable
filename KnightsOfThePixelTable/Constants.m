@@ -46,6 +46,10 @@ Constants *constantsInstance;
     return [constantsInstance getTextForKey:key];
 }
 
++ (NSDictionary *) getValueDataForKey:(NSString *)key {
+    return [constantsInstance getValueDataForKey:key];
+}
+
 + (Rectangle *) getInterfaceScrollRect {
     return [constantsInstance getInterfaceScrollRect];
 }
@@ -109,6 +113,10 @@ Constants *constantsInstance;
 
 - (NSString *) getTextForKey:(NSString *)key {
     return [data_text objectForKey:key];
+}
+
+- (NSDictionary *) getValueDataForKey:(NSString *)key {
+    return [data_value objectForKey:key];
 }
 
 - (Rectangle *) getInterfaceScrollRect {

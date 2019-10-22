@@ -71,24 +71,13 @@
         [unitTypeLabel setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:unitTypeLabel];
         
-        switch (data.damageType) {
-            case DamageTypePhysical:
-                unitType = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_TYPE_PHYSICAL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE]];
-                break;
-                
-            case DamageTypeRanged:
-                unitType = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_TYPE_RANGED atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE]];
-                break;
-                
-            case DamageTypeMagic:
-                unitType = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_ICONS_TYPE_MAGIC atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE]];
-                break;
-                
-            default:
-                break;
+        NSString *dmgTypes[DamageTypes] = {TOWN_MENU_INTERFACE_ICONS_TYPE_PHYSICAL, TOWN_MENU_INTERFACE_ICONS_TYPE_RANGED, TOWN_MENU_INTERFACE_ICONS_TYPE_MAGIC};
+        for (int i = 0; i < DamageTypes; i++) {
+            unitType[i] = [GraphicsComponent getImageWithKey:dmgTypes[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE]];
+            unitType[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         }
-        unitType.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [items addObject:unitType];
+        [items addObject:unitType[data.damageType]];
+        currentDmgType = data.damageType;
         
         // init hp info
         hpLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_HP] position:[Constants getPositionDataForKey:POSITION_INTERFACE_HP_LABEL]];
@@ -152,51 +141,19 @@
         [weaponName setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:weaponName];
         
-        NSString *knightType = @"";
-        switch (data.type) {
-            case KnightTypeBrawler:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BRAWLER;
-                break;
-                
-            case KnightTypePaladin:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_PALADIN;
-                break;
-                
-            case KnightTypeBard:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BARD;
-                break;
-                
-            case KnightTypeLongbowman:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_LONGBOWMAN;
-                break;
-                
-            case KnightTypeCrossbowman:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_CROSSBOWMAN;
-                break;
-                
-            case KnightTypeScout:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_SCOUT;
-                break;
-                
-            case KnightTypeBattlemage:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BATTLEMAGE;
-                break;
-                
-            case KnightTypeWizard:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_WIZARD;
-                break;
-                
-            case KnightTypeMonk:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_MONK;
-                break;
-                
-            default:
-                break;
+        NSString *weaponKeys[KnightTypes] = {TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BRAWLER, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_PALADIN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_LONGBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_CROSSBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_SCOUT, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BATTLEMAGE, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_WIZARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_MONK};
+        NSString *armorKeys[KnightTypes] = {TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BRAWLER, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_PALADIN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_LONGBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_CROSSBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_SCOUT, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BATTLEMAGE, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_WIZARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_MONK};
+        for (int i = 0; i < KnightTypes; i++) {
+            weapon[i] = [GraphicsComponent getImageWithKey:weaponKeys[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON]];
+            weapon[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            
+            armor[i] = [GraphicsComponent getImageWithKey:armorKeys[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR]];
+            armor[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         }
         
-        weapon = [GraphicsComponent getImageWithKey:knightType atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON]];
-        weapon.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [items addObject:weapon];
+        currentType = data.type;
+        [items addObject:weapon[currentType]];
+        [items addObject:armor[currentType]];
         
         NSString *weaponBonusPosKey = POSITION_INTERFACE_WEAPON_BONUSES;
         NSString *weaponBonusLabelPosKey = POSITION_INTERFACE_WEAPON_BONUS_LABELS;
@@ -247,52 +204,6 @@
         [armorName setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:armorName];
         
-        knightType = @"";
-        switch (data.type) {
-            case KnightTypeBrawler:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BRAWLER;
-                break;
-                
-            case KnightTypePaladin:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_PALADIN;
-                break;
-                
-            case KnightTypeBard:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BARD;
-                break;
-                
-            case KnightTypeLongbowman:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_LONGBOWMAN;
-                break;
-                
-            case KnightTypeCrossbowman:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_CROSSBOWMAN;
-                break;
-                
-            case KnightTypeScout:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_SCOUT;
-                break;
-                
-            case KnightTypeBattlemage:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BATTLEMAGE;
-                break;
-                
-            case KnightTypeWizard:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_WIZARD;
-                break;
-                
-            case KnightTypeMonk:
-                knightType = TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_MONK;
-                break;
-                
-            default:
-                break;
-        }
-        
-        armor = [GraphicsComponent getImageWithKey:knightType atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR]];
-        armor.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [items addObject:armor];
-        
         NSString *armorBonusPosKey = POSITION_INTERFACE_ARMOR_BONUSES;
         NSString *armorBonusLabelPosKey = POSITION_INTERFACE_ARMOR_BONUS_LABELS;
         NSString *armorBonusTextKey = TEXT_INTERFACE_STAT_LABELS;
@@ -337,7 +248,29 @@
 - (void) updateToKnightData:(KnightData *)data {
     if (data) {
         // reset all data
+        [self removeItemFromScene:unitType[currentDmgType]];
+        currentDmgType = data.damageType;
+        [self addItemToScene:unitType[currentDmgType]];
         
+        lvl.text = [NSString stringWithFormat:@"%d", data.lvl];
+        
+        // TODO: character
+        
+        hp.text = [NSString stringWithFormat:@"%d", data.hp];
+        
+        for (int i = 0; i < StatTypes; i++) {
+            stats[i].text = [NSString stringWithFormat:@"%d", [data getValueOfStat:i]];
+            weaponBonus[i].text = [NSString stringWithFormat:@"%d", [data getWeaponBonusForStat:i]];
+            armorBonus[i].text = [NSString stringWithFormat:@"%d", [data getArmorBonusForStat:i]];
+        }
+        
+        [self removeItemFromScene:weapon[currentType]];
+        [self removeItemFromScene:armor[currentType]];
+        [self removeItemFromScene:knightAnimations[currentType]];
+        currentType = data.type;
+        [self addItemToScene:weapon[currentType]];
+        [self addItemToScene:armor[currentType]];
+        [self addItemToScene:knightAnimations[currentType]];
     } else {
         // reset all values to 0
         for (int i = 0; i < StatTypes; i++) {
@@ -394,7 +327,9 @@
     [statPane release];
     
     [unitTypeLabel release];
-    [unitType release];
+    for (int i = 0; i < DamageTypes; i++) {
+        [unitType[i] release];
+    }
     
     [hpLabel release];
     [hp release];
@@ -405,8 +340,10 @@
     [lvl release];
     [lvlLabel release];
     
-    [weapon release];
-    [armor release];
+    for (int i = 0; i < KnightTypes; i++) {
+        [weapon[i] release];
+        [armor[i] release];
+    }
     
     [weaponLvl release];
     [weaponLvlLabel release];

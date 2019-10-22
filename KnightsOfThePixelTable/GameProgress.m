@@ -96,7 +96,12 @@ GameProgress *gameProgressInstance;
         
         week = 1;
         gold = 1000000;
-        numOfDices = 8;
+        
+        diceLvl = LvlZero;
+        NSDictionary *data = [Constants getValueDataForKey:VALUE_DICE_NUM];
+        for (int i = 0; i < LvlThree; i++) {
+            numOfDices[i] = [[data valueForKey:[NSString stringWithFormat:@"%d", i]] intValue];
+        }
     }
     return self;
 }
@@ -143,7 +148,7 @@ GameProgress *gameProgressInstance;
 }
 
 - (int) getNumOfDices {
-    return numOfDices;
+    return numOfDices[diceLvl];
 }
 
 - (BOOL) isSoundEnabled {
@@ -185,7 +190,8 @@ GameProgress *gameProgressInstance;
 
 
 - (void) upgradeNumOfDices {
-    numOfDices++;
+    if (diceLvl < LvlTwo)
+        diceLvl++;
 }
 
 

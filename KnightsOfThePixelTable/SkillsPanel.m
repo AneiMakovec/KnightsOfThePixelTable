@@ -27,56 +27,21 @@
         // init skill slots
 //        firstSkill = [[Image alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGold] position:[Vector2 vectorWithX:area.x + 238 y:area.y + 208]];
         
-        NSString *knightType = @"";
-        switch (data.type) {
-            case KnightTypeBrawler:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER;
-                break;
-                
-            case KnightTypePaladin:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN;
-                break;
-                
-            case KnightTypeBard:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD;
-                break;
-                
-            case KnightTypeLongbowman:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN;
-                break;
-                
-            case KnightTypeCrossbowman:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN;
-                break;
-                
-            case KnightTypeScout:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT;
-                break;
-                
-            case KnightTypeBattlemage:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE;
-                break;
-                
-            case KnightTypeWizard:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD;
-                break;
-                
-            case KnightTypeMonk:
-                knightType = GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK;
-                break;
-                
-            default:
-                break;
-        }
-        
+        NSString *knightTypeKeys[KnightTypes] = {GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK};
         NSString *skillPosKey = POSITION_INTERFACE_SKILLS;
-        for (int i = 0; i < SkillTypes; i++) {
-            skills[i] = [GraphicsComponent getImageWithKey:[knightType stringByAppendingString:[NSString stringWithFormat:@"s%d", i + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-            skills[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-            [items addObject:skills[i]];
+        for (int i = 0; i < KnightTypes; i++) {
+            for (int j = 0; j < SkillTypes; j++) {
+                skills[i][j] = [GraphicsComponent getImageWithKey:[knightTypeKeys[i] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", j]]]];
+                skills[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            }
         }
         
-//        firstSkill = [GraphicsComponent getImageWithKey:[knightType stringByAppendingString:<#(nonnull NSString *)#>] atPosition:<#(nonnull Vector2 *)#>]
+        currentType = data.type;
+        for (int i = 0; i < SkillTypes; i++) {
+            [items addObject:skills[currentType][i]];
+        }
+        
+//        firstSkill =
 //        firstSkill.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
 //        [items addObject:firstSkill];
 //
@@ -211,36 +176,60 @@
 //        upgradeSecondSkill.label.text = @"0";
 //        upgradeThirdSkill.label.text = @"0";
 //    }
+    
+    if (currentType != data.type) {
+        for (int i = 0; i < SkillTypes; i++) {
+            [self removeItemFromScene:skills[currentType][i]];
+            [self addItemToScene:skills[data.type][i]];
+        }
+        
+        currentType = data.type;
+    }
 }
 
 - (void) updateDepth:(float)depth {
-    for (id item in items) {
-        Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
-        if (imageItem) {
-            imageItem.layerDepth -= curDepth;
-            imageItem.layerDepth += depth;
-        }
-        
-        Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
-        if (labelItem) {
-            labelItem.layerDepth -= curDepth;
-            labelItem.layerDepth += depth;
-        }
-        
-        DoubleImageLabelButton *btn = [item isKindOfClass:[DoubleImageLabelButton class]] ? item : nil;
-        if (btn) {
-            btn.notPressedImage.layerDepth -= curDepth;
-            btn.notPressedImage.layerDepth += depth;
-            
-            btn.pressedImage.layerDepth -= curDepth;
-            btn.pressedImage.layerDepth += depth;
-            
-            btn.label.layerDepth -= curDepth;
-            btn.label.layerDepth += depth;
+    [self updateDepth:depth toItem:skillPane];
+    
+    for (int i = 0; i < KnightTypes; i++) {
+        for (int j = 0; j < SkillTypes; j++) {
+            [self updateDepth:depth toItem:skills[i][j]];
         }
     }
     
+    for (int i = 0; i < SkillTypes; i++) {
+        [self updateDepth:depth toItem:upgradeButtons[i]];
+        [self updateDepth:depth toItem:comboLabels[i]];
+        [self updateDepth:depth toItem:upgradeLabels[i]];
+        [self updateDepth:depth toItem:lvlLabels[i]];
+    }
+    
     curDepth = depth;
+}
+
+- (void) updateDepth:(float)depth toItem:(id)item {
+    Image* imageItem = [item isKindOfClass:[Image class]] ? item : nil;
+    if (imageItem) {
+        imageItem.layerDepth -= curDepth;
+        imageItem.layerDepth += depth;
+    }
+        
+    Label *labelItem = [item isKindOfClass:[Label class]] ? item : nil;
+    if (labelItem) {
+        labelItem.layerDepth -= curDepth;
+        labelItem.layerDepth += depth;
+    }
+        
+    DoubleImageLabelButton *btn = [item isKindOfClass:[DoubleImageLabelButton class]] ? item : nil;
+    if (btn) {
+        btn.notPressedImage.layerDepth -= curDepth;
+        btn.notPressedImage.layerDepth += depth;
+            
+        btn.pressedImage.layerDepth -= curDepth;
+        btn.pressedImage.layerDepth += depth;
+        
+        btn.label.layerDepth -= curDepth;
+        btn.label.layerDepth += depth;
+    }
 }
 
 - (void) updateColor:(Color *)color {

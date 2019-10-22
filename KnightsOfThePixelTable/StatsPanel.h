@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
     Label *stats[StatTypes];
     
     Label *unitTypeLabel;
-    Image *unitType;
+    Image *unitType[DamageTypes];
+    DamageType currentDmgType;
     
     Label *quirk, *quirkLabel;
     
@@ -35,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
     Label *weaponLvl, *weaponLvlLabel;
     Label *armorLvl, *armorLvlLabel;
     
-    Image *weapon, *armor;
+    Image *weapon[KnightTypes], *armor[KnightTypes];
+    KnightType currentType;
     Label *weaponName, *armorName;
     Label *weaponBonusText, *armorBonusText;
     

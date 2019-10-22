@@ -214,18 +214,19 @@ typedef enum {
 
 // MARK: upgrade stage
 typedef enum {
-    UpgradeStageOne,
-    UpgradeStageTwo,
-    UpgradeStageThree,
-    UpgradeStageFour,
-    UpgradeStageFive,
-    UpgradeStageSix,
-    UpgradeStageSeven,
-    UpgradeStageEight,
-    UpgradeStageNine,
-    UpgradeStageTen,
-    UpgradeStages
-} UpgradeStage;
+    LvlZero,
+    LvlOne,
+    LvlTwo,
+    LvlThree,
+    LvlFour,
+    LvlFive,
+    LvlSix,
+    LvlSeven,
+    LvlEight,
+    LvlNine,
+    LvlTen,
+    Lvls
+} Lvl;
 
 // MARK: menu interface
 typedef enum {
@@ -824,6 +825,7 @@ typedef enum {
 #define POSITION_INTERFACE_KNIGHT_ANIMATION @"interface_knight_animation"
 #define POSITION_INTERFACE_GOLD_STACK @"interface_gold_stack"
 #define POSITION_INTERFACE_GOLD_COUNT @"interface_gold_count"
+#define POSITION_INTERFACE_UNIT_NAME @"interface_unit_name"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -884,4 +886,4 @@ typedef enum {
 #define TEXT_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
 
 // MARK: VALUE
-
+#define VALUE_DICE_NUM @"num_of_dices"

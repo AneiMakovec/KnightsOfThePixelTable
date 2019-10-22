@@ -39,8 +39,6 @@
     // init option button
     soundButtonOn = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SOUND_ON atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_SETTINGS_BUTTON]];
     [soundButtonOn setScaleUniform:1.5f];
-    NSLog(@"Not Pressed - x: %f, y: %f", soundButtonOn.notPressedImage.position.x, soundButtonOn.notPressedImage.position.y);
-    NSLog(@"Pressed - x: %f, y: %f", soundButtonOn.pressedImage.position.x, soundButtonOn.pressedImage.position.y);
     [scene addItem:soundButtonOn];
     
     soundButtonOff = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SOUND_OFF atPosition:[Constants getPositionDataForKey:POSITION_TOWN_MENU_SETTINGS_BUTTON]];

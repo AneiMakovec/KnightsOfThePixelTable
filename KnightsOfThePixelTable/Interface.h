@@ -35,15 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
     // interface content
     GuiPanel *interfaceContent[BuildingTypeGatehouse];
     
-    // rooster unit info
-    Label *unitName;
-    
-    // train rooster unit info
-    Label *unitNameTrain;
-    
     Label *goldCount;
     Image *goldStack;
-    
     
     // DEBUG
     RoosterEntry *firstLine, *secondLine, *thirdLine;

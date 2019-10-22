@@ -22,13 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
     CharacterType characterType;
     
     int hp;
-    int lvl;
+    Lvl lvl;
     int currentExp;
-    int skillLvl[SkillTypes];
+    Lvl skillLvl[SkillTypes];
     int stats[StatTypes];
-    int weaponLvl;
+    Lvl weaponLvl;
     int weaponBonus[StatTypes];
-    int armorLvl;
+    Lvl armorLvl;
     int armorBonus[StatTypes];
 }
 
@@ -39,10 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString *name;
 
 @property (nonatomic, readonly) int hp;
-@property (nonatomic, readonly) int lvl;
+@property (nonatomic, readonly) Lvl lvl;
 @property (nonatomic, readonly) int currentExp;
-@property (nonatomic, readonly) int weaponLvl;
-@property (nonatomic, readonly) int armorLvl;
+@property (nonatomic, readonly) Lvl weaponLvl;
+@property (nonatomic, readonly) Lvl armorLvl;
 
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType name:(NSString *) knightName;
 

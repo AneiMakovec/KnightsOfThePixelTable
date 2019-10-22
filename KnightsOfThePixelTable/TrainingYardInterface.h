@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 //    EquipmentPanel *equipmentPanel;
     
     DoubleImageLabelButton *recruitButton;
+    
+     Label *unitName;
 }
 
 - (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;

@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Image *skillPane;
     
-    Image *skills[SkillTypes];
+    Image *skills[KnightTypes][SkillTypes];
+    KnightType currentType;
     
     Image *firstSkillCombo[2];
     Image *secondSkillCombo[3];

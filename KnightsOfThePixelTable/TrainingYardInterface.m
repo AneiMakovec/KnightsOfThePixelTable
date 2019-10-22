@@ -71,6 +71,15 @@
         skillButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_SKILLS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_SKILLS] width:data.width height:data.height];
         [items addObject:skillButton];
         
+        // init unit name
+//        unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];
+        unitName = [GraphicsComponent getLabelWithText:[trainRooster getFirstData].name atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_NAME]];
+        unitName.verticalAlign = VerticalAlignTop;
+        unitName.horizontalAlign = HorizontalAlignCenter;
+        unitName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitName setScaleUniform:FONT_SCALE_MEDIUM];
+        [items addObject:unitName];
+        
         
         // init pane for stats, skills and equipment
         statPanel = [[StatsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:showDepth];
@@ -127,6 +136,7 @@
     if (trainRooster.selectionChanged) {
         [statPanel updateToKnightData:[trainRooster getSelectedData]];
         [skillPanel updateToKnightData:[trainRooster getSelectedData]];
+        unitName.text = [trainRooster getSelectedData].name;
 //        [equipmentPanel updateToKnightData:[trainRooster getSelectedData]];
     }
     

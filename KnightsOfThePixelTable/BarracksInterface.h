@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
     StatsPanel *statPanel;
     
     LabelButton *statButton, *skillButton;
+    
+    Label *unitName;
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
