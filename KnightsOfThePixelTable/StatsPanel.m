@@ -32,14 +32,14 @@
         NSString *statLabelPosKey = POSITION_INTERFACE_STAT_LABELS;
         NSString *statsPosKey = POSITION_INTERFACE_STATS;
         for (int i = 0; i < StatTypes; i++) {
-            statLabels[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:[statLabelKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] position:[Constants getPositionDataForKey:[statLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            statLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:[statLabelKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] atPosition:[Constants getPositionDataForKey:[statLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             statLabels[i].verticalAlign = VerticalAlignMiddle;
             statLabels[i].horizontalAlign = HorizontalAlignCenter;
             statLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [statLabels[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:statLabels[i]];
             
-            stats[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", [data getValueOfStat:i]] position:[Constants getPositionDataForKey:[statsPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            stats[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [data getValueOfStat:i]] atPosition:[Constants getPositionDataForKey:[statsPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             stats[i].verticalAlign = VerticalAlignMiddle;
             stats[i].horizontalAlign = HorizontalAlignCenter;
             stats[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -48,14 +48,14 @@
         }
         
         // init lvl info
-        lvl = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", data.lvl] position:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL]];
+        lvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.lvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL]];
         lvl.verticalAlign = VerticalAlignMiddle;
         lvl.horizontalAlign = HorizontalAlignCenter;
         lvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [lvl setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:lvl];
         
-        lvlLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_LVL] position:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL_LABEL]];
+        lvlLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_LVL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL_LABEL]];
         lvlLabel.verticalAlign = VerticalAlignMiddle;
         lvlLabel.horizontalAlign = HorizontalAlignCenter;
         lvlLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -64,7 +64,7 @@
         
         
         // init unit type info
-        unitTypeLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_UNIT_TYPE] position:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE_LABEL]];
+        unitTypeLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_UNIT_TYPE] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TYPE_LABEL]];
         unitTypeLabel.verticalAlign = VerticalAlignMiddle;
         unitTypeLabel.horizontalAlign = HorizontalAlignCenter;
         unitTypeLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -80,14 +80,14 @@
         currentDmgType = data.damageType;
         
         // init hp info
-        hpLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_HP] position:[Constants getPositionDataForKey:POSITION_INTERFACE_HP_LABEL]];
+        hpLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_HP] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_HP_LABEL]];
         hpLabel.verticalAlign = VerticalAlignMiddle;
         hpLabel.horizontalAlign = HorizontalAlignCenter;
         hpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [hpLabel setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:hpLabel];
         
-        hp = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", data.hp] position:[Constants getPositionDataForKey:POSITION_INTERFACE_HP]];
+        hp = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.hp] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_HP]];
         hp.verticalAlign = VerticalAlignMiddle;
         hp.horizontalAlign = HorizontalAlignCenter;
         hp.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -103,38 +103,38 @@
 //        [xpLabel setScaleUniform:FONT_SCALE_SMALL];
 //        [items addObject:xpLabel];
         
-        // init quirk info
-        quirk = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"TODO" position:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK]];
-        quirk.verticalAlign = VerticalAlignMiddle;
-        quirk.horizontalAlign = HorizontalAlignCenter;
-        quirk.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [quirk setScaleUniform:FONT_SCALE_SMALL];
-        [items addObject:quirk];
+        // init character info
+        character = [GraphicsComponent getLabelWithText:data.character atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK]];
+        character.verticalAlign = VerticalAlignMiddle;
+        character.horizontalAlign = HorizontalAlignCenter;
+        character.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [character setScaleUniform:FONT_SCALE_SMALL];
+        [items addObject:character];
         
-        quirkLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_QUIRK] position:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK_LABEL]];
-        quirkLabel.verticalAlign = VerticalAlignMiddle;
-        quirkLabel.horizontalAlign = HorizontalAlignCenter;
-        quirkLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [quirkLabel setScaleUniform:FONT_SCALE_SMALL];
-        [items addObject:quirkLabel];
+        characterLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_QUIRK] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK_LABEL]];
+        characterLabel.verticalAlign = VerticalAlignMiddle;
+        characterLabel.horizontalAlign = HorizontalAlignCenter;
+        characterLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [characterLabel setScaleUniform:FONT_SCALE_SMALL];
+        [items addObject:characterLabel];
         
         
         // init weapon info
-        weaponLvl = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"0" position:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL]];
+        weaponLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.weaponLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL]];
         weaponLvl.verticalAlign = VerticalAlignMiddle;
         weaponLvl.horizontalAlign = HorizontalAlignCenter;
         weaponLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [weaponLvl setScaleUniform:FONT_SCALE_SMALL];
+        [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:weaponLvl];
         
-        weaponLvlLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_LVL] position:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL_LABEL]];
+        weaponLvlLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_LVL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL_LABEL]];
         weaponLvlLabel.verticalAlign = VerticalAlignMiddle;
         weaponLvlLabel.horizontalAlign = HorizontalAlignCenter;
         weaponLvlLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [weaponLvlLabel setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:weaponLvlLabel];
         
-        weaponName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_WEAPON] position:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_NAME]];
+        weaponName = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_WEAPON] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_NAME]];
         weaponName.verticalAlign = VerticalAlignMiddle;
         weaponName.horizontalAlign = HorizontalAlignCenter;
         weaponName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -159,17 +159,29 @@
         NSString *weaponBonusLabelPosKey = POSITION_INTERFACE_WEAPON_BONUS_LABELS;
         NSString *weaponBonusTextKey = TEXT_INTERFACE_STAT_LABELS;
         for (int i = 0; i < StatTypes; i++) {
-            weaponBonusLabel[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:[weaponBonusTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] position:[Constants getPositionDataForKey:[weaponBonusLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            NSString *format;
+            Color *color;
+            if ([data getWeaponBonusForStat:i] > 0) {
+                format = @"+%d";
+                color = [Color lightGreen];
+            } else {
+                format = @"%d";
+                color = [Color white];
+            }
+                
+            
+            weaponBonusLabel[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:[weaponBonusTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] atPosition:[Constants getPositionDataForKey:[weaponBonusLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             weaponBonusLabel[i].verticalAlign = VerticalAlignMiddle;
             weaponBonusLabel[i].horizontalAlign = HorizontalAlignCenter;
             weaponBonusLabel[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [weaponBonusLabel[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:weaponBonusLabel[i]];
             
-            weaponBonus[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", 0] position:[Constants getPositionDataForKey:[weaponBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            weaponBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getWeaponBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[weaponBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             weaponBonus[i].verticalAlign = VerticalAlignMiddle;
-            weaponBonus[i].horizontalAlign = HorizontalAlignCenter;
+            weaponBonus[i].horizontalAlign = HorizontalAlignRight;
             weaponBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            weaponBonus[i].color = color;
             [weaponBonus[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:weaponBonus[i]];
         }
@@ -183,21 +195,21 @@
         
         
         // init armor info
-        armorLvl = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"0" position:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL]];
+        armorLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.armorLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL]];
         armorLvl.verticalAlign = VerticalAlignMiddle;
         armorLvl.horizontalAlign = HorizontalAlignCenter;
         armorLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [armorLvl setScaleUniform:FONT_SCALE_SMALL];
+        [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:armorLvl];
         
-        armorLvlLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_LVL] position:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL_LABEL]];
+        armorLvlLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_LVL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL_LABEL]];
         armorLvlLabel.verticalAlign = VerticalAlignMiddle;
         armorLvlLabel.horizontalAlign = HorizontalAlignCenter;
         armorLvlLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [armorLvlLabel setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:armorLvlLabel];
         
-        armorName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:TEXT_INTERFACE_ARMOR] position:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_NAME]];
+        armorName = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_ARMOR] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_NAME]];
         armorName.verticalAlign = VerticalAlignMiddle;
         armorName.horizontalAlign = HorizontalAlignCenter;
         armorName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -208,17 +220,28 @@
         NSString *armorBonusLabelPosKey = POSITION_INTERFACE_ARMOR_BONUS_LABELS;
         NSString *armorBonusTextKey = TEXT_INTERFACE_STAT_LABELS;
         for (int i = 0; i < StatTypes; i++) {
-            armorBonusLabel[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[Constants getTextForKey:[armorBonusTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] position:[Constants getPositionDataForKey:[armorBonusLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            NSString *format;
+            Color *color;
+            if ([data getArmorBonusForStat:i] > 0) {
+                format = @"+%d";
+                color = [Color lightGreen];
+            } else {
+                format = @"%d";
+                color = [Color white];
+            }
+            
+            armorBonusLabel[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:[armorBonusTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] atPosition:[Constants getPositionDataForKey:[armorBonusLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             armorBonusLabel[i].verticalAlign = VerticalAlignMiddle;
             armorBonusLabel[i].horizontalAlign = HorizontalAlignCenter;
             armorBonusLabel[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [armorBonusLabel[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:armorBonusLabel[i]];
             
-            armorBonus[i] = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[NSString stringWithFormat:@"%d", 0] position:[Constants getPositionDataForKey:[armorBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            armorBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getArmorBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[armorBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             armorBonus[i].verticalAlign = VerticalAlignMiddle;
-            armorBonus[i].horizontalAlign = HorizontalAlignCenter;
+            armorBonus[i].horizontalAlign = HorizontalAlignRight;
             armorBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            armorBonus[i].color = color;
             [armorBonus[i] setScaleUniform:FONT_SCALE_SMALL];
             [items addObject:armorBonus[i]];
         }
@@ -259,10 +282,33 @@
         hp.text = [NSString stringWithFormat:@"%d", data.hp];
         
         for (int i = 0; i < StatTypes; i++) {
+            NSString *format;
+            Color *color;
+            if ([data getWeaponBonusForStat:i] > 0) {
+                format = @"+%d";
+                color = [Color lightGreen];
+            } else {
+                format = @"%d";
+                color = [Color white];
+            }
+            
             stats[i].text = [NSString stringWithFormat:@"%d", [data getValueOfStat:i]];
-            weaponBonus[i].text = [NSString stringWithFormat:@"%d", [data getWeaponBonusForStat:i]];
-            armorBonus[i].text = [NSString stringWithFormat:@"%d", [data getArmorBonusForStat:i]];
+            weaponBonus[i].text = [NSString stringWithFormat:format, [data getWeaponBonusForStat:i]];
+            weaponBonus[i].color = color;
+            
+            if ([data getArmorBonusForStat:i] > 0) {
+                format = @"+%d";
+                color = [Color lightGreen];
+            } else {
+                format = @"%d";
+                color = [Color white];
+            }
+            armorBonus[i].text = [NSString stringWithFormat:format, [data getArmorBonusForStat:i]];
+            armorBonus[i].color = color;
         }
+        
+        weaponLvl.text = [NSString stringWithFormat:@"%d", data.weaponLvl];
+        armorLvl.text = [NSString stringWithFormat:@"%d", data.armorLvl];
         
         [self removeItemFromScene:weapon[currentType]];
         [self removeItemFromScene:armor[currentType]];
@@ -290,8 +336,8 @@
         [self updateDepth:depth toItem:unitType[i]];
     }
     
-    [self updateDepth:depth toItem:quirk];
-    [self updateDepth:depth toItem:quirkLabel];
+    [self updateDepth:depth toItem:character];
+    [self updateDepth:depth toItem:characterLabel];
     
     [self updateDepth:depth toItem:lvl];
     [self updateDepth:depth toItem:lvlLabel];
@@ -377,8 +423,8 @@
     [hpLabel release];
     [hp release];
     
-    [quirk release];
-    [quirkLabel release];
+    [character release];
+    [characterLabel release];
     
     [lvl release];
     [lvlLabel release];

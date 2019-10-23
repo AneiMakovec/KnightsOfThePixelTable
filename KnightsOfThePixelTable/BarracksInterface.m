@@ -48,6 +48,18 @@
         [unitName setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:unitName];
         
+        NSString *classTextKey = TEXT_UNIT_CLASSES;
+        for (int i = 0; i < KnightTypes; i++) {
+            unitClassNames[i] = [Constants getTextForKey:[classTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        }
+        
+        unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[rooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        unitClassName.verticalAlign = VerticalAlignTop;
+        unitClassName.horizontalAlign = HorizontalAlignCenter;
+        unitClassName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitClassName setScaleUniform:FONT_SCALE_SMALL];
+        [items addObject:unitClassName];
+        
         
         // init pane for stats, skills and equipment
         statPanel = [[StatsPanel alloc] initWithKnightData:[rooster getFirstData] layerDepth:showDepth];
@@ -70,6 +82,7 @@
         [statPanel updateToKnightData:[rooster getSelectedData]];
         [skillPanel updateToKnightData:[rooster getSelectedData]];
         unitName.text = [rooster getSelectedData].name;
+        unitClassName.text = unitClassNames[[rooster getSelectedData].type];
     }
     
     // check if different tab was pressed
@@ -100,6 +113,14 @@
     [data upgradeSkill:skill];
     [statPanel updateToKnightData:data];
     [skillPanel updateToKnightData:data];
+}
+
+- (void) update {
+    KnightData *data = [rooster getSelectedData];
+    [statPanel updateToKnightData:data];
+    [skillPanel updateToKnightData:data];
+    unitName.text = data.name;
+    unitClassName.text = unitClassNames[data.type];
 }
 
 

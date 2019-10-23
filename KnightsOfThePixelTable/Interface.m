@@ -104,13 +104,13 @@
         rooster = [[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         // TODO: implement real rooster entries
-        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:0 weaponLvl:2 armorLvl:4];
+        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:0 weaponLvl:0 armorLvl:0];
 //        firstLine = [[RoosterEntry alloc] initWithKnightData:firstData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
-        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:150 weaponLvl:3 armorLvl:6];
+        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:150 weaponLvl:0 armorLvl:0];
 //        secondLine = [[RoosterEntry alloc] initWithKnightData:secondData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
-        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman name:@"Sir Ian" level:5 currentExp:1135 weaponLvl:5 armorLvl:6];
+        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman name:@"Sir Ian" level:5 currentExp:1135 weaponLvl:0 armorLvl:0];
 //        thirdLine = [[RoosterEntry alloc] initWithKnightData:thirdData toRectangle:[Rectangle rectangleWithX:rect.x + 587 y:rect.y + 44 + 34 + 35 width:165 height:33] layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND];
         
         [rooster addItem:firstData];
@@ -200,6 +200,9 @@
                                 }
                             }
                         }
+                        
+                        BarracksInterface *barracks = (BarracksInterface *) interfaceContent[i];
+                        [barracks update];
                         break;
                         
                     case BuildingTypeWarbandCamp:
@@ -250,6 +253,9 @@
                                 }
                             }
                         }
+                        
+                        BlacksmithInterface *blacksmith = (BlacksmithInterface *) interfaceContent[i];
+                        [blacksmith updateValues];
                         break;
                         
                     default:
@@ -308,6 +314,20 @@
                 
                 [self updateGoldCounter];
             }
+        }
+    }
+    
+    // check if equipment upgrade was pressed
+    BlacksmithInterface *blacksmith = (BlacksmithInterface *) interfaceContent[BuildingTypeBlacksmith];
+    if ([blacksmith wasUpgradeEquipmentPressed]) {
+        int cost = [Constants getUpgradeCostOfEquipmentLvl:[blacksmith getCurrentEquipmentLvl]];
+        if ([GameProgress getGold] >= cost) {
+            [GameProgress buyValue:cost];
+            
+            [blacksmith upgradeEquipment];
+            [blacksmith updateValues];
+            
+            [self updateGoldCounter];
         }
     }
 }

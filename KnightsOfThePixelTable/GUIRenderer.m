@@ -26,13 +26,12 @@
 @synthesize camera;
 
 - (void) initialize {
+    [super initialize];
 //    float scaleX = (float)self.game.gameWindow.clientBounds.width / [Constants backgroundWidth];
 //    float scaleY = (float)self.game.gameWindow.clientBounds.height / ([Constants battlefieldHeight] + [Constants hudHeight]);
 //    camera = [[Matrix createScale:[Vector3 vectorWithX:scaleX y:scaleY z:1]] retain];
     
     camera = [[ScreenComponent getCamera] retain];
-    
-    [super initialize];
 }
 
 - (void) loadContent {

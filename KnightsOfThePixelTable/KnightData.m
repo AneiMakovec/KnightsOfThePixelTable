@@ -43,6 +43,7 @@
         
         type = knightType;
         name = [knightName retain];
+        character = @"TODO";
         
         // init starting values
         lvl = level;
@@ -54,8 +55,8 @@
         
         for (int i = 0; i < StatTypes; i++) {
             stats[i] = 100;
-            weaponBonus[i] = 1;
-            armorBonus[i] = 2;
+            weaponBonus[i] = 0;
+            armorBonus[i] = 0;
         }
         
         weaponLvl = wLevel;
@@ -64,7 +65,7 @@
     return self;
 }
 
-@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp;
+@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp, character;
 
 - (int) getLevelOfSkill:(SkillType)skill {
     return skillLvl[skill];

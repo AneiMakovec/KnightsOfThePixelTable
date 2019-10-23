@@ -98,6 +98,10 @@
 		B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376921FE844800CE7123 /* MonsterBossViking.m */; };
 		B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */ = {isa = PBXBuildFile; fileRef = B560376B21FE91B000CE7123 /* hud_wave_counter.png */; };
 		B5671A5C219A13EA009E270F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B5671A5B219A13EA009E270F /* Gameplay.m */; };
+		B57252AF236109C900789568 /* theme_main_menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B57252AC236109C900789568 /* theme_main_menu.mp3 */; };
+		B57252B0236109C900789568 /* theme_town_menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B57252AD236109C900789568 /* theme_town_menu.mp3 */; };
+		B57252B1236109C900789568 /* theme_world_menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B57252AE236109C900789568 /* theme_world_menu.mp3 */; };
+		B57252BD23610F3F00789568 /* menumusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B57252BC23610F3F00789568 /* menumusic.mp3 */; };
 		B57A027822FCB42D0003E509 /* Rooster.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A027722FCB42D0003E509 /* Rooster.m */; };
 		B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF621A5F64B0064B91F /* HumanPlayer.m */; };
 		B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF921A5F6590064B91F /* AIPlayer.m */; };
@@ -320,6 +324,10 @@
 		B560376B21FE91B000CE7123 /* hud_wave_counter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_wave_counter.png; sourceTree = "<group>"; };
 		B5671A5A219A13EA009E270F /* Gameplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		B5671A5B219A13EA009E270F /* Gameplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
+		B57252AC236109C900789568 /* theme_main_menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme_main_menu.mp3; sourceTree = "<group>"; };
+		B57252AD236109C900789568 /* theme_town_menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme_town_menu.mp3; sourceTree = "<group>"; };
+		B57252AE236109C900789568 /* theme_world_menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme_world_menu.mp3; sourceTree = "<group>"; };
+		B57252BC23610F3F00789568 /* menumusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menumusic.mp3; sourceTree = "<group>"; };
 		B57A027622FCB42D0003E509 /* Rooster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rooster.h; sourceTree = "<group>"; };
 		B57A027722FCB42D0003E509 /* Rooster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rooster.m; sourceTree = "<group>"; };
 		B57B0CF421A5F48B0064B91F /* KOTPT_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KOTPT_Prefix.pch; sourceTree = "<group>"; };
@@ -947,6 +955,10 @@
 		B5AE501621BEEF8200FC5CBF /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				B57252BC23610F3F00789568 /* menumusic.mp3 */,
+				B57252AC236109C900789568 /* theme_main_menu.mp3 */,
+				B57252AE236109C900789568 /* theme_world_menu.mp3 */,
+				B57252AD236109C900789568 /* theme_town_menu.mp3 */,
 				B5AE501721BEEF8800FC5CBF /* Props */,
 			);
 			path = Audio;
@@ -1480,6 +1492,7 @@
 				B5047D5622ED11610057866C /* interface_button_close_pressed.png in Resources */,
 				B5069D4C235B91780094E0DF /* lilliput_steps.bmp in Resources */,
 				B53912D822F86553005E4686 /* squarebit.bmp in Resources */,
+				B57252AF236109C900789568 /* theme_main_menu.mp3 in Resources */,
 				B560374521FE71DD00CE7123 /* character_class_fire_enchantress.png in Resources */,
 				B53912D522F86553005E4686 /* perfect_dos.bmp in Resources */,
 				B5EE0AEB22FF1E7700A291C6 /* squarebit_8px.bmp in Resources */,
@@ -1491,6 +1504,7 @@
 				B5CF918A22009CB0006A52B5 /* button_back.png in Resources */,
 				B5047D5122ED11610057866C /* interface_slot_green.png in Resources */,
 				B5069D4E235B95D10094E0DF /* lilliput_steps_shadowed.bmp in Resources */,
+				B57252BD23610F3F00789568 /* menumusic.mp3 in Resources */,
 				B5CF918B22009CB0006A52B5 /* button_music_on.png in Resources */,
 				B54E88D021E2D2450040C888 /* button_background.png in Resources */,
 				B55FA72A21D7FC0A00526790 /* background_farmlands.png in Resources */,
@@ -1501,6 +1515,7 @@
 				B5047D5722ED11610057866C /* interface_pane.png in Resources */,
 				B560372921FE707200CE7123 /* status_effect_buff.png in Resources */,
 				B53912D722F86553005E4686 /* fipps.bmp in Resources */,
+				B57252B1236109C900789568 /* theme_world_menu.mp3 in Resources */,
 				B560375121FE725D00CE7123 /* character_enemy_swordsman.png in Resources */,
 				B560371621FE6FBD00CE7123 /* background_seashore.png in Resources */,
 				B5CF91912200C903006A52B5 /* background_world_menu.png in Resources */,
@@ -1557,6 +1572,7 @@
 				B5047D5322ED11610057866C /* interface_button_close_not_pressed.png in Resources */,
 				B5CF919D2200D8BD006A52B5 /* boss_attack.png in Resources */,
 				B5C2800221D3FF58009C657A /* hud.png in Resources */,
+				B57252B0236109C900789568 /* theme_town_menu.mp3 in Resources */,
 				B50F830221ED2A4C000C2A92 /* disabled_sound_button.png in Resources */,
 				B560372821FE707200CE7123 /* hit.png in Resources */,
 			);
@@ -1771,6 +1787,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D7J9PJY935;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KnightsOfThePixelTable/KOTPT_Prefix.pch;
 				INFOPLIST_FILE = KnightsOfThePixelTable/Info.plist;
@@ -1799,6 +1816,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D7J9PJY935;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KnightsOfThePixelTable/KOTPT_Prefix.pch;
 				INFOPLIST_FILE = KnightsOfThePixelTable/Info.plist;

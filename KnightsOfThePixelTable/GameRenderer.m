@@ -28,6 +28,7 @@
  MARK: INITIALIZE
 */
 - (void) initialize {
+    [super initialize];
     // set display camera
     //camera = [ScreenComponent getCamera];
     
@@ -40,8 +41,6 @@
     // calculate hud offset
     //hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
     hudOffset = [Constants battlefieldHeight];
-
-    [super initialize];
 }
 
 

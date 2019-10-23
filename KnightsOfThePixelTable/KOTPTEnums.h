@@ -207,8 +207,9 @@ typedef enum {
 } SoundEffectType;
 
 typedef enum {
-    SongTypeTheme,
-    SongTypeBattle,
+    SongTypeMainMenu,
+    SongTypeTownMenu,
+    SongTypeWorldMenu,
     SongTypes
 } SongType;
 
@@ -388,6 +389,11 @@ typedef enum {
 
 
 // MARK: CONTENT KEYS
+
+// MARK: MUSIC
+#define AUDIO_MUSIC_THEME_MAIN_MENU @"theme_main_menu"
+#define AUDIO_MUSIC_THEME_TOWN_MENU @"theme_town_menu"
+#define AUDIO_MUSIC_THEME_WORLD_MENU @"theme_world_menu"
 
 // MARK: MAIN MENU
 #define MAIN_MENU_BACKGROUND @"main_menu/background"
@@ -776,7 +782,7 @@ typedef enum {
 #define POSITION_INTERFACE_STAT_LABELS @"interface_stat_label_"
 #define POSITION_INTERFACE_HP_LABEL @"interface_hp_label"
 #define POSITION_INTERFACE_LVL_LABEL @"interface_lvl_label"
-#define POSITION_INTERFACE_QUIRK_LABEL @"interface_quirk_label"
+#define POSITION_INTERFACE_QUIRK_LABEL @"interface_character_label"
 #define POSITION_INTERFACE_TAB_STATS_TEXT @"interface_tab_stats_text"
 #define POSITION_INTERFACE_TAB_SKILLS_TEXT @"interface_tab_skills_text"
 #define POSITION_INTERFACE_TYPE_LABEL @"interface_type_label"
@@ -788,7 +794,7 @@ typedef enum {
 #define POSITION_INTERFACE_ARMOR_BONUSES @"interface_armor_bonus_"
 #define POSITION_INTERFACE_LVL @"interface_lvl"
 #define POSITION_INTERFACE_HP @"interface_hp"
-#define POSITION_INTERFACE_QUIRK @"interface_quirk"
+#define POSITION_INTERFACE_QUIRK @"interface_character"
 #define POSITION_INTERFACE_STATS @"interface_stat_"
 #define POSITION_INTERFACE_WEAPON_LVL @"interface_weapon_lvl"
 #define POSITION_INTERFACE_ARMOR_LVL @"interface_armor_lvl"
@@ -826,8 +832,13 @@ typedef enum {
 #define POSITION_INTERFACE_GOLD_STACK @"interface_gold_stack"
 #define POSITION_INTERFACE_GOLD_COUNT @"interface_gold_count"
 #define POSITION_INTERFACE_UNIT_NAME @"interface_unit_name"
+#define POSITION_INTERFACE_UNIT_CLASS_NAME @"interface_unit_class_name"
 #define POSITION_INTERFACE_BLACKSMITH_WEAPON @"interface_blacksmith_weapon"
 #define POSITION_INTERFACE_BLACKSMITH_ARMOR @"interface_blacksmith_armor"
+#define POSITION_INTERFACE_BLACKSMITH_WEAPON_ICON @"interface_blacksmith_weapon_icon"
+#define POSITION_INTERFACE_BLACKSMITH_ARMOR_ICON @"interface_blacksmith_armor_icon"
+#define POSITION_INTERFACE_BLACKSMITH_WEAPON_LVL @"interface_blacksmith_weapon_lvl"
+#define POSITION_INTERFACE_BLACKSMITH_ARMOR_LVL @"interface_blacksmith_armor_lvl"
 #define POSITION_INTERFACE_BLACKSMITH_UPGRADE_LABEL @"interface_blacksmith_upgrade_label"
 #define POSITION_INTERFACE_BLACKSMITH_UPGRADE_BUTTON @"interface_blacksmith_upgrade_button"
 #define POSITION_INTERFACE_BLACKSMITH_WEAPON_NAME @"interface_blacksmith_weapon_name"
@@ -882,7 +893,7 @@ typedef enum {
 #define TEXT_INTERFACE_LVL @"interface_lvl"
 #define TEXT_INTERFACE_WEAPON @"interface_weapon_name"
 #define TEXT_INTERFACE_ARMOR @"interface_armor_name"
-#define TEXT_INTERFACE_QUIRK @"interface_quirk"
+#define TEXT_INTERFACE_QUIRK @"interface_character"
 #define TEXT_INTERFACE_TAB_STATS @"interface_tab_stats"
 #define TEXT_INTERFACE_TAB_SKILLS @"interface_tab_skills"
 #define TEXT_INTERFACE_SKILL_COMBO_LABEL @"interface_skill_combo"
@@ -892,6 +903,7 @@ typedef enum {
 #define TEXT_INTERFACE_CASTLE_DICES_LABEL @"interface_castle_dices_label"
 #define TEXT_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
 #define TEXT_INTERFACE_MAX_LVL @"interface_max_lvl"
+#define TEXT_UNIT_CLASSES @"unit_class_"
 
 // MARK: VALUE
 #define VALUE_DICE_NUM @"num_of_dices"

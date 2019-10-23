@@ -24,8 +24,14 @@ SoundEngine *soundEngineInstance;
     soundEffects[SoundEffectTypeBackground] = [self.game.content load:@"background_sounds"];
     soundEffects[SoundEffectTypeClick] = [self.game.content load:@"click"];
     
-    songs[SongTypeTheme] = [self.game.content load:@"music_theme"];
-    songs[SongTypeBattle] = [self.game.content load:@"music_battle"];
+    songs[SongTypeMainMenu] = [self.game.content load:AUDIO_MUSIC_THEME_MAIN_MENU];
+    songs[SongTypeTownMenu] = [self.game.content load:AUDIO_MUSIC_THEME_TOWN_MENU];
+    songs[SongTypeWorldMenu] = [self.game.content load:AUDIO_MUSIC_THEME_WORLD_MENU];
+    
+    player = [[MediaPlayer alloc] init];
+    player.isRepeating = YES;
+    
+    [super initialize];
 }
 
 - (void) play:(SoundEffectType)type {
@@ -33,7 +39,7 @@ SoundEngine *soundEngineInstance;
 }
 
 - (void) playSong:(SongType)type {
-    [MediaPlayer playSong:songs[type]];
+    [player playSong:songs[type]];
 }
 
 + (void) play:(SoundEffectType)type {

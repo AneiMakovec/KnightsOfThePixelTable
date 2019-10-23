@@ -49,6 +49,8 @@ ScreenComponent *screenComponentInstance;
 }
 
 - (void) initialize {
+    [super initialize];
+    
 //    float aspectRatio = (float)self.game.gameWindow.clientBounds.width / (float)self.game.gameWindow.clientBounds.height;
 //    screenBounds = [[Rectangle alloc] initWithX:0 y:0 width:screenWidth height:screenHeight/aspectRatio];
 

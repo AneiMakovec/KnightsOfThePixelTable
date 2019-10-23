@@ -22,13 +22,25 @@ NS_ASSUME_NONNULL_BEGIN
     
     ImageRadioButton *weaponBorder, *armorBorder;
     Image *weapon[KnightTypes], *armor[KnightTypes];
+    KnightType currentType;
+    
+    Label *weaponLvl, *armorLvl;
     
     DoubleImageLabelRadioButton *statButtons[StatTypes];
     
+    Label *upgradeLabel;
     DoubleImageLabelButton *upgrade;
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
+
+- (BOOL) wasUpgradeEquipmentPressed;
+
+- (Lvl) getCurrentEquipmentLvl;
+
+- (void) updateValues;
+
+- (void) upgradeEquipment;
 
 @end
 

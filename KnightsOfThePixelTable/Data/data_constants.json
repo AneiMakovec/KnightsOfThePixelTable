@@ -56,7 +56,7 @@
 			"x": 329,
 			"y": 219
 		},
-		"interface_quirk_label": {
+		"interface_character_label": {
 			"x": 263,
 			"y": 252
 		},
@@ -184,7 +184,7 @@
 			"x": 353,
 			"y": 264
 		},
-		"interface_quirk": {
+		"interface_character": {
 			"x": 263,
 			"y": 270
 		},
@@ -474,22 +474,42 @@
 		},
 		"interface_unit_name": {
 			"x": 385,
-			"y": 15
+			"y": 8
+		},
+		"interface_unit_class_name": {
+			"x": 385,
+			"y": 25
 		},
 		"interface_blacksmith_weapon": {
-			"x": 322,
+			"x": 279,
 			"y": 57
 		},
 		"interface_blacksmith_armor": {
-			"x": 402,
+			"x": 403,
 			"y": 57
 		},
+		"interface_blacksmith_weapon_icon": {
+			"x": 289,
+			"y": 67
+		},
+		"interface_blacksmith_armor_icon": {
+			"x": 413,
+			"y": 67
+		},
+		"interface_blacksmith_weapon_lvl": {
+			"x": 321,
+			"y": 145
+		},
+		"interface_blacksmith_armor_lvl": {
+			"x": 445,
+			"y": 145
+		},
 		"interface_blacksmith_upgrade_label": {
-			"x": 346,
-			"y": 285
+			"x": 335,
+			"y": 295
 		},
 		"interface_blacksmith_upgrade_button": {
-			"x": 346,
+			"x": 335,
 			"y": 320
 		},
 		"interface_blacksmith_weapon_name": {
@@ -502,27 +522,27 @@
 		},
 		"interface_blacksmith_stat_0": {
 			"x": 252,
-			"y": 155
+			"y": 175
 		},
 		"interface_blacksmith_stat_1": {
 			"x": 346,
-			"y": 155
+			"y": 175
 		},
 		"interface_blacksmith_stat_2": {
 			"x": 439,
-			"y": 155
+			"y": 175
 		},
 		"interface_blacksmith_stat_3": {
 			"x": 252,
-			"y": 197
+			"y": 217
 		},
 		"interface_blacksmith_stat_4": {
 			"x": 346,
-			"y": 197
+			"y": 217
 		},
 		"interface_blacksmith_stat_5": {
 			"x": 439,
-			"y": 197
+			"y": 217
 		},
 		"building_castle": {
 			"x": 0,
@@ -772,7 +792,7 @@
 		"interface_lvl": "LVL:",
 		"interface_weapon_name": "WEAPON",
 		"interface_armor_name": "ARMOUR",
-		"interface_quirk": "CHARACTER:",
+		"interface_character": "CHARACTER:",
 		"interface_tab_stats": "STATS",
 		"interface_tab_skills": "SKILLS",
 		"interface_skill_combo": "Combo:",
@@ -781,6 +801,15 @@
 		"interface_bonus_text": "BONUS:",
 		"interface_castle_dices_label": "Number of dices:",
 		"town_menu_week_counter_label": "Week:",
-		"interface_max_lvl": "MAX"
+		"interface_max_lvl": "MAX",
+		"unit_class_0": "Brawler",
+		"unit_class_1": "Paladin",
+		"unit_class_2": "Bard",
+		"unit_class_3": "Longbowman",
+		"unit_class_4": "Crossbowman",
+		"unit_class_5": "Scout",
+		"unit_class_6": "Battlemage",
+		"unit_class_7": "Wizard",
+		"unit_class_8": "Monk"
 	}
 }

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     Image *unitType[DamageTypes];
     DamageType currentDmgType;
     
-    Label *quirk, *quirkLabel;
+    Label *character, *characterLabel;
     
     Label *lvl, *lvlLabel;
 

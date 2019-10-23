@@ -36,6 +36,8 @@
     continueGame.notPressedImage.layerDepth = 0.2;
     [continueGame setScaleUniform:FONT_SCALE_MAIN_MENU];
     [scene addItem:continueGame];
+    
+    [SoundEngine playSong:SongTypeMainMenu];
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {

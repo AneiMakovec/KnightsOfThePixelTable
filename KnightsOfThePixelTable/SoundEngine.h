@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SoundEngine : GameComponent {
     SoundEffect *soundEffects[SoundEffectTypes];
     Song *songs[SongTypes];
+    MediaPlayer *player;
 }
 
 + (void) initializeWithGame:(Game*)game;

@@ -25,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     LabelButton *statButton, *skillButton;
     
-    Label *unitName;
+    Label *unitName, *unitClassName;
+    NSString *unitClassNames[KnightTypes];
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
@@ -33,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) wasSkillUpgradeButtonReleased:(SkillType)skill;
 
 - (void) upgradeSkill:(SkillType)skill;
+
+- (void) update;
 
 @end
 

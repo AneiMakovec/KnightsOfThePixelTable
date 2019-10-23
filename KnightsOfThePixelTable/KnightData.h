@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     KnightType type;
     NSString *name;
+    NSString *character;
     
     DamageType damageType;
     CharacterType characterType;
@@ -37,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic, readonly) CharacterType characterType;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *character;
 
 @property (nonatomic, readonly) int hp;
 @property (nonatomic, readonly) Lvl lvl;
