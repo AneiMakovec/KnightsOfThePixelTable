@@ -27,10 +27,17 @@
     if (self != nil) {
         // retain rooster
         rooster = [theRooster retain];
+        [items addObject:rooster];
         
         // create radio button group
         equipmentBtnGroup = [[RadioButtonGroup alloc] init];
         statsBtnGroup = [[RadioButtonGroup alloc] init];
+        
+        // init upgrade button and label
+        upgradeLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_UPGRADE_LABEL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_UPGRADE_LABEL]];
+        upgradeLabel.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        [upgradeLabel setScaleUniform:FONT_SCALE_MEDIUM];
+        [items addObject:upgradeLabel];
         
         // init weapon and armor buttons
         weaponBorder = [GraphicsComponent getImageRadioButtonWithKey:TOWN_MENU_INTERFACE_SLOTS_BRONZE atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_WEAPON] isDown:YES];
@@ -49,7 +56,6 @@
         [equipmentBtnGroup registerRadioButton:armorBorder forKey:ARMOR_KEY];
         [items addObject:equipmentBtnGroup];
         
-        KnightData *data = [rooster getSelectedData];
         NSString *weaponKeys[KnightTypes] = {TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BRAWLER, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_PALADIN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_LONGBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_CROSSBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_SCOUT, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BATTLEMAGE, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_WIZARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_MONK};
         NSString *armorKeys[KnightTypes] = {TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BRAWLER, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_PALADIN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_LONGBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_CROSSBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_SCOUT, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_BATTLEMAGE, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_WIZARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_ARMOR_MONK};
         for (int i = 0; i < KnightTypes; i++) {
@@ -62,69 +68,111 @@
             armor[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         }
         
-        currentType = data.type;
-        
-        weapon[currentType].color = [Color lightGreen];
-        
-        [items addObject:weapon[currentType]];
-        [items addObject:armor[currentType]];
         
         
-        weaponLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"Lvl: %d", data.weaponLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_WEAPON_LVL]];
-        weaponLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        weaponLvl.horizontalAlign = HorizontalAlignCenter;
-        weaponLvl.verticalAlign = VerticalAlignTop;
-        [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
-        [items addObject:weaponLvl];
-        
-        armorLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"Lvl: %d", data.armorLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_ARMOR_LVL]];
-        armorLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        armorLvl.horizontalAlign = HorizontalAlignCenter;
-        armorLvl.verticalAlign = VerticalAlignTop;
-        [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
-        [items addObject:armorLvl];
+        KnightData *data = [rooster getSelectedData];
+        if (data) {
+            currentType = data.type;
+            
+            weapon[currentType].color = [Color lightGreen];
+            
+            [items addObject:weapon[currentType]];
+            [items addObject:armor[currentType]];
+            
+            
+            weaponLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"Lvl: %d", data.weaponLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_WEAPON_LVL]];
+            weaponLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            weaponLvl.horizontalAlign = HorizontalAlignCenter;
+            weaponLvl.verticalAlign = VerticalAlignTop;
+            [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
+            [items addObject:weaponLvl];
+            
+            armorLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"Lvl: %d", data.armorLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_ARMOR_LVL]];
+            armorLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            armorLvl.horizontalAlign = HorizontalAlignCenter;
+            armorLvl.verticalAlign = VerticalAlignTop;
+            [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
+            [items addObject:armorLvl];
 
-        
-        
-        // init stat buttons
-        NSString *posKey = POSITION_INTERFACE_BLACKSMITH_STATS;
-        NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
-        NSString *stats[StatTypes] = {STR_KEY, ACC_KEY, CUN_KEY, DEF_KEY, AGI_KEY, STD_KEY};
-        for (int i = 0; i < StatTypes; i++) {
-            BOOL down;
-            if (i == Strength)
-                down = YES;
-            else
-                down = NO;
-            statButtons[i] = [GraphicsComponent getDoubleImageLabelRadioButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getWeaponBonusForStat:i]]] isDown:down];
-            statButtons[i].notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-            statButtons[i].pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-            statButtons[i].label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [statButtons[i].label setScaleUniform:1.5f];
+            // init stat buttons
+            NSString *posKey = POSITION_INTERFACE_BLACKSMITH_STATS;
+            NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
+            NSString *stats[StatTypes] = {STR_KEY, ACC_KEY, CUN_KEY, DEF_KEY, AGI_KEY, STD_KEY};
+            for (int i = 0; i < StatTypes; i++) {
+                BOOL down;
+                if (i == Strength)
+                    down = YES;
+                else
+                    down = NO;
+                statButtons[i] = [GraphicsComponent getDoubleImageLabelRadioButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getWeaponBonusForStat:i]]] isDown:down];
+                statButtons[i].notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+                statButtons[i].pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+                statButtons[i].label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                [statButtons[i].label setScaleUniform:1.5f];
+                
+                if ([data getWeaponBonusForStat:i] > 0)
+                    statButtons[i].label.color = [Color lightGreen];
+                
+                [statsBtnGroup registerRadioButton:statButtons[i] forKey:stats[i]];
+                [items addObject:statButtons[i]];
+            }
             
-            if ([data getWeaponBonusForStat:i] > 0)
-                statButtons[i].label.color = [Color lightGreen];
+            [items addObject:statsBtnGroup];
             
-            [statsBtnGroup registerRadioButton:statButtons[i] forKey:stats[i]];
-            [items addObject:statButtons[i]];
+            // init upgrade button
+            upgrade = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_UPGRADE_BUTTON] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.weaponLvl]]];
+            upgrade.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            upgrade.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            upgrade.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            [upgrade.label setScaleUniform:FONT_SCALE_MEDIUM];
+            [items addObject:upgrade];
+        } else {
+            weaponLvl = [GraphicsComponent getLabelWithText:@"Lvl :" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_WEAPON_LVL]];
+            weaponLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            weaponLvl.horizontalAlign = HorizontalAlignCenter;
+            weaponLvl.verticalAlign = VerticalAlignTop;
+            [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
+            [items addObject:weaponLvl];
+            
+            armorLvl = [GraphicsComponent getLabelWithText:@"Lvl :" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_ARMOR_LVL]];
+            armorLvl.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            armorLvl.horizontalAlign = HorizontalAlignCenter;
+            armorLvl.verticalAlign = VerticalAlignTop;
+            [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
+            [items addObject:armorLvl];
+            
+            // init stat buttons
+            NSString *posKey = POSITION_INTERFACE_BLACKSMITH_STATS;
+            NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
+            NSString *stats[StatTypes] = {STR_KEY, ACC_KEY, CUN_KEY, DEF_KEY, AGI_KEY, STD_KEY};
+            for (int i = 0; i < StatTypes; i++) {
+                BOOL down;
+                if (i == Strength)
+                    down = YES;
+                else
+                    down = NO;
+                statButtons[i] = [GraphicsComponent getDoubleImageLabelRadioButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:@"+0"] isDown:down];
+                statButtons[i].notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+                statButtons[i].pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+                statButtons[i].label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                [statButtons[i].label setScaleUniform:1.5f];
+
+                [statsBtnGroup registerRadioButton:statButtons[i] forKey:stats[i]];
+                [items addObject:statButtons[i]];
+            }
+            
+            [items addObject:statsBtnGroup];
+            
+            
+            // init upgrade button
+            upgrade = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_UPGRADE_BUTTON] text:@"0"];
+            upgrade.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            upgrade.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            upgrade.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            [upgrade.label setScaleUniform:FONT_SCALE_MEDIUM];
+            upgrade.enabled = NO;
+            [items addObject:upgrade];
         }
-        
-        [items addObject:statsBtnGroup];
-        
-        
-        // init upgrade button and label
-        upgradeLabel = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_UPGRADE_LABEL] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_UPGRADE_LABEL]];
-        upgradeLabel.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        [upgradeLabel setScaleUniform:FONT_SCALE_MEDIUM];
-        [items addObject:upgradeLabel];
-        
-        
-        upgrade = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_UPGRADE_BUTTON] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.weaponLvl]]];
-        upgrade.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        upgrade.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
-        upgrade.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [upgrade.label setScaleUniform:FONT_SCALE_MEDIUM];
-        [items addObject:upgrade];
         
         
 //        // init weapon info
@@ -182,63 +230,65 @@
 - (void) updateValues {
     KnightData *data = [rooster getSelectedData];
     
-    // update equipment images
-    [self removeItemFromScene:weapon[currentType]];
-    [self removeItemFromScene:armor[currentType]];
-    weapon[currentType].color = [Color white];
-    armor[currentType].color = [Color white];
-    currentType = data.type;
-    
-    [self addItemToScene:weapon[currentType]];
-    [self addItemToScene:armor[currentType]];
-    
-    // update lvls
-    weaponLvl.text = [NSString stringWithFormat:@"Lvl: %d", data.weaponLvl];
-    armorLvl.text = [NSString stringWithFormat:@"Lvl: %d", data.armorLvl];
-    
-    if ([equipmentBtnGroup.pressedButtonKey isEqualToString:WEAPON_KEY]) {
-        weapon[currentType].color = [Color lightGreen];
-        armor[currentType].color = [Color white];
-        
-        // update upgrade cost
-        if (data.weaponLvl == [Constants getMaxEquipmentLvl]) {
-            upgrade.label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
-            upgrade.enabled = NO;
-        } else {
-            upgrade.label.text = [NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.weaponLvl]];
-            upgrade.enabled = YES;
-        }
-        
-        // update bonuses
-        NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
-        for (int i = 0; i < StatTypes; i++) {
-            statButtons[i].label.color = [Color white];
-            statButtons[i].label.text = [[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getWeaponBonusForStat:i]]];
-            
-            if ([data getWeaponBonusForStat:i] > 0)
-                statButtons[i].label.color = [Color lightGreen];
-        }
-    } else if ([equipmentBtnGroup.pressedButtonKey isEqualToString:ARMOR_KEY]) {
-        armor[currentType].color = [Color lightGreen];
+    if (data) {
+        // update equipment images
+        [self removeItemFromScene:weapon[currentType]];
+        [self removeItemFromScene:armor[currentType]];
         weapon[currentType].color = [Color white];
+        armor[currentType].color = [Color white];
+        currentType = data.type;
         
-        // update upgrade cost
-        if (data.armorLvl == [Constants getMaxEquipmentLvl]) {
-            upgrade.label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
-            upgrade.enabled = NO;
-        } else {
-            upgrade.label.text = [NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.armorLvl]];
-            upgrade.enabled = YES;
-        }
+        [self addItemToScene:weapon[currentType]];
+        [self addItemToScene:armor[currentType]];
         
-        // update bonuses
-        NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
-        for (int i = 0; i < StatTypes; i++) {
-            statButtons[i].label.color = [Color white];
-            statButtons[i].label.text = [[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getArmorBonusForStat:i]]];
+        // update lvls
+        weaponLvl.text = [NSString stringWithFormat:@"Lvl: %d", data.weaponLvl];
+        armorLvl.text = [NSString stringWithFormat:@"Lvl: %d", data.armorLvl];
+        
+        if ([equipmentBtnGroup.pressedButtonKey isEqualToString:WEAPON_KEY]) {
+            weapon[currentType].color = [Color lightGreen];
+            armor[currentType].color = [Color white];
             
-            if ([data getArmorBonusForStat:i] > 0)
-                statButtons[i].label.color = [Color lightGreen];
+            // update upgrade cost
+            if (data.weaponLvl == [Constants getMaxEquipmentLvl]) {
+                upgrade.label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
+                upgrade.enabled = NO;
+            } else {
+                upgrade.label.text = [NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.weaponLvl]];
+                upgrade.enabled = YES;
+            }
+            
+            // update bonuses
+            NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
+            for (int i = 0; i < StatTypes; i++) {
+                statButtons[i].label.color = [Color white];
+                statButtons[i].label.text = [[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getWeaponBonusForStat:i]]];
+                
+                if ([data getWeaponBonusForStat:i] > 0)
+                    statButtons[i].label.color = [Color lightGreen];
+            }
+        } else if ([equipmentBtnGroup.pressedButtonKey isEqualToString:ARMOR_KEY]) {
+            armor[currentType].color = [Color lightGreen];
+            weapon[currentType].color = [Color white];
+            
+            // update upgrade cost
+            if (data.armorLvl == [Constants getMaxEquipmentLvl]) {
+                upgrade.label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
+                upgrade.enabled = NO;
+            } else {
+                upgrade.label.text = [NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfEquipmentLvl:data.armorLvl]];
+                upgrade.enabled = YES;
+            }
+            
+            // update bonuses
+            NSString *textKey = TEXT_INTERFACE_STAT_LABELS;
+            for (int i = 0; i < StatTypes; i++) {
+                statButtons[i].label.color = [Color white];
+                statButtons[i].label.text = [[Constants getTextForKey:[textKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] stringByAppendingString:[NSString stringWithFormat:@"+%d", [data getArmorBonusForStat:i]]];
+                
+                if ([data getArmorBonusForStat:i] > 0)
+                    statButtons[i].label.color = [Color lightGreen];
+            }
         }
     }
 }

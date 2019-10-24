@@ -30,6 +30,7 @@
         
         // retain rooster
         rooster = [theRooster retain];
+        [items addObject:rooster];
 
         // init tab buttons
         MetaData *data = [Constants getMetaDataForKey:META_INTERFACE_TAB];
@@ -41,7 +42,11 @@
         
         // init unit name
 //        unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[rooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];
-        unitName = [GraphicsComponent getLabelWithText:[rooster getFirstData].name atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_NAME]];
+        NSString *name = @"";
+        if ([rooster getFirstData])
+            name = [rooster getFirstData].name;
+        
+        unitName = [GraphicsComponent getLabelWithText:name atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_NAME]];
         unitName.verticalAlign = VerticalAlignTop;
         unitName.horizontalAlign = HorizontalAlignCenter;
         unitName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -53,7 +58,10 @@
             unitClassNames[i] = [Constants getTextForKey:[classTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
         }
         
-        unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[rooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        if ([rooster getFirstData])
+            unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[rooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        else
+            unitClassName = [GraphicsComponent getLabelWithText:@"" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
         unitClassName.verticalAlign = VerticalAlignTop;
         unitClassName.horizontalAlign = HorizontalAlignCenter;
         unitClassName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
@@ -81,20 +89,28 @@
     if (rooster.selectionChanged) {
         [statPanel updateToKnightData:[rooster getSelectedData]];
         [skillPanel updateToKnightData:[rooster getSelectedData]];
-        unitName.text = [rooster getSelectedData].name;
-        unitClassName.text = unitClassNames[[rooster getSelectedData].type];
+        
+        if ([rooster getSelectedData] != nil) {
+            unitName.text = [rooster getSelectedData].name;
+            unitClassName.text = unitClassNames[[rooster getSelectedData].type];
+        } else {
+            unitName.text = @"";
+            unitClassName.text = @"";
+        }
     }
     
     // check if different tab was pressed
     if (statButton.wasReleased) {
         [statPanel updateColor:showColor];
         [statPanel updateDepth:showDepth];
-        
+
+//        [skillPanel setEnabled:NO];
         [skillPanel updateDepth:hideDepth];
         [skillPanel updateColor:hideColor];
     }
     
     if (skillButton.wasReleased) {
+//        [skillPanel setEnabled:YES];
         [skillPanel updateColor:showColor];
         [skillPanel updateDepth:showDepth];
         
@@ -117,10 +133,12 @@
 
 - (void) update {
     KnightData *data = [rooster getSelectedData];
-    [statPanel updateToKnightData:data];
-    [skillPanel updateToKnightData:data];
-    unitName.text = data.name;
-    unitClassName.text = unitClassNames[data.type];
+    if (data) {
+        [statPanel updateToKnightData:data];
+        [skillPanel updateToKnightData:data];
+        unitName.text = data.name;
+        unitClassName.text = unitClassNames[data.type];
+    }
 }
 
 

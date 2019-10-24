@@ -33,7 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     DoubleImageLabelButton *recruitButton;
     
-     Label *unitName;
+    Label *unitName, *unitClassName;
+    NSString *unitClassNames[KnightTypes];
 }
 
 - (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;

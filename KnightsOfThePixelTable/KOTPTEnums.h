@@ -844,6 +844,7 @@ typedef enum {
 #define POSITION_INTERFACE_BLACKSMITH_WEAPON_NAME @"interface_blacksmith_weapon_name"
 #define POSITION_INTERFACE_BLACKSMITH_ARMOR_NAME @"interface_blacksmith_armor_name"
 #define POSITION_INTERFACE_BLACKSMITH_STATS @"interface_blacksmith_stat_"
+#define POSITION_INTERFACE_TRAINING_YARD_RECRUIT @"interface_training_yard_recruit_button"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -916,3 +917,4 @@ typedef enum {
 #define VALUE_MAX_LVL_EQUIPMENT @"max_equipment_lvl"
 #define VALUE_MAX_LVL_DICE @"max_dice_lvl"
 #define VALUE_STARTING_GOLD @"starting_gold"
+#define VALUE_XP_FOR_LVL @"xp_for_lvl"

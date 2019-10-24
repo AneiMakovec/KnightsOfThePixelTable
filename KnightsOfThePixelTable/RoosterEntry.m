@@ -12,30 +12,36 @@
 
 @implementation RoosterEntry
 
-- (id) initWithKnightData:(KnightData *)knightData toRectangle:(Rectangle *)rectangle layerDepth:(float)depth {
+- (id) initWithKnightData:(KnightData *)knightData toPosition:(Vector2 *)thePosition layerDepth:(float)depth {
     self = [super init];
     if (self != nil) {
         // store knight data
         data = [knightData retain];
         
         // init a new position
-        position = [[Vector2 alloc] initWithX:rectangle.x y:rectangle.y];
+        position = [thePosition retain];
         
         // init line background
 //        roosterLine = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropPaneScrollLine] toRectangle:rectangle];
-        roosterLine = [GraphicsComponent getTouchImageWithKey:TOWN_MENU_INTERFACE_PANE_SCROLL_LINE atPosition:[Vector2 vectorWithX:rectangle.x y:rectangle.y] width:rectangle.width height:rectangle.height];
+        roosterLine = [GraphicsComponent getTouchImageWithKey:TOWN_MENU_INTERFACE_PANE_SCROLL_LINE atPosition:position];
         roosterLine.position = position;
         roosterLine.layerDepth = depth;
         [items addObject:roosterLine];
         
         // init unit portrait
 //        portrait = [[Image alloc] initWithTexture:[TownSpriteComponent getPortraitForUnitType:data.type] position:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
-        portrait = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_ENTITIES_ALLIES_BRAWLER_PORTRAIT atPosition:[Vector2 vectorWithX:position.x + 3 y:position.y + 3]];
-        portrait.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
-        [items addObject:portrait];
+        NSString *portraitKeys[KnightTypes] = {GAMEPLAY_MENU_ENTITIES_ALLIES_BRAWLER_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_PALADIN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_LONGBOWMAN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_CROSSBOWMAN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_SCOUT_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_BATTLEMAGE_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_MONK_PORTRAIT};
+        for (int i = 0; i < KnightTypes; i++) {
+            portraits[i] = [GraphicsComponent getImageWithKey:portraitKeys[i] atPosition:[Vector2 vectorWithX:position.x + 1 y:position.y]];
+            portraits[i].layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
+            [portraits[i] setScaleUniform:2.0f];
+        }
+        
+        currentType = data.type;
+        [items addObject:portraits[currentType]];
         
         // init unit name
-        name = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 35 y:position.y + 16]];
+        name = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 40 y:position.y + 16]];
         name.verticalAlign = VerticalAlignMiddle;
         name.horizontalAlign = HorizontalAlignLeft;
         name.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
@@ -55,13 +61,13 @@
 
 - (void) setSelectedColor {
     [roosterLine setColor:[Color darkGray]];
-    [portrait setColor:[Color darkGray]];
+    [portraits[currentType] setColor:[Color darkGray]];
     [name setColor:[Color darkGray]];
 }
 
 - (void) setNormalColor {
     [roosterLine setColor:[Color white]];
-    [portrait setColor:[Color white]];
+    [portraits[currentType] setColor:[Color white]];
     [name setColor:[Color white]];
 }
 
@@ -92,7 +98,6 @@
     [data release];
     [position release];
     [roosterLine release];
-    [portrait release];
     [name release];
     
     [super dealloc];

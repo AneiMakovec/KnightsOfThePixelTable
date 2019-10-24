@@ -161,9 +161,8 @@ GameProgress *gameProgressInstance;
     gold = 1000000;
     
     diceLvl = LvlZero;
-    NSDictionary *data = [Constants getValueDataForKey:VALUE_DICE_NUM];
     for (int i = 0; i < LvlThree; i++) {
-        numOfDices[i] = [[data valueForKey:[NSString stringWithFormat:@"%d", i]] intValue];
+        numOfDices[i] = [Constants getNumOfDicesForLvl:i];
     }
 }
 

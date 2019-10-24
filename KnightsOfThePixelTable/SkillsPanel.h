@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) wasUpgradeBtnReleased:(SkillType)skill;
 
+- (void) setEnabled:(BOOL)enabled;
+
 @end
 
 NS_ASSUME_NONNULL_END

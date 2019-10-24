@@ -27,9 +27,11 @@
         showColor = [[Color white] retain];
         hideColor = [[Color gray] retain];
         
-        // retain rooster
+        // retain roosters
         rooster = [theRooster retain];
+        
         trainRooster = [theTrainRooster retain];
+        [items addObject:trainRooster];
         
         // init tabs
 //        tabs = [[RadioButtonGroup alloc] init];
@@ -73,12 +75,31 @@
         
         // init unit name
 //        unitName = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:[trainRooster getFirstData].name position:[Vector2 vectorWithX:128 + 385 y:64 + 15]];
-        unitName = [GraphicsComponent getLabelWithText:[trainRooster getFirstData].name atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_NAME]];
+        NSString *name = @"";
+        if ([trainRooster getFirstData])
+            name = [trainRooster getFirstData].name;
+        
+        unitName = [GraphicsComponent getLabelWithText:name atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_NAME]];
         unitName.verticalAlign = VerticalAlignTop;
         unitName.horizontalAlign = HorizontalAlignCenter;
         unitName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         [unitName setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:unitName];
+        
+        NSString *classTextKey = TEXT_UNIT_CLASSES;
+        for (int i = 0; i < KnightTypes; i++) {
+            unitClassNames[i] = [Constants getTextForKey:[classTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        }
+        
+        if ([trainRooster getFirstData])
+            unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[trainRooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        else
+            unitClassName = [GraphicsComponent getLabelWithText:@"" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        unitClassName.verticalAlign = VerticalAlignTop;
+        unitClassName.horizontalAlign = HorizontalAlignCenter;
+        unitClassName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        [unitClassName setScaleUniform:FONT_SCALE_SMALL];
+        [items addObject:unitClassName];
         
         
         // init pane for stats, skills and equipment
@@ -89,6 +110,15 @@
         skillPanel = [[SkillsPanel alloc] initWithKnightData:[trainRooster getFirstData] layerDepth:hideDepth displayUpgradeButtons:NO];
         [skillPanel updateColor:hideColor];
         [items addObject:skillPanel];
+        
+        // init recturit button
+        recruitButton = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_DEFAULT atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TRAINING_YARD_RECRUIT] text:@"Recruit"];
+        recruitButton.pressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        recruitButton.notPressedImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+        recruitButton.label.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//        [recruitButton.label setScaleUniform:FONT_SCALE_MEDIUM];
+        [recruitButton.label setScaleUniform:FONT_SCALE_MEDIUM];
+        [items addObject:recruitButton];
         
 //        equipmentPanel = [[EquipmentPanel alloc] initWithKnightData:[trainRooster getFirstData] area:area layerDepth:depth];
         
@@ -136,15 +166,36 @@
     if (trainRooster.selectionChanged) {
         [statPanel updateToKnightData:[trainRooster getSelectedData]];
         [skillPanel updateToKnightData:[trainRooster getSelectedData]];
-        unitName.text = [trainRooster getSelectedData].name;
-//        [equipmentPanel updateToKnightData:[trainRooster getSelectedData]];
+//        unitName.text = [trainRooster getSelectedData].name;
+//        unitClassName.text = unitClassNames[[trainRooster getSelectedData].type];
+        
+        if ([trainRooster getSelectedData] != nil) {
+            unitName.text = [trainRooster getSelectedData].name;
+            unitClassName.text = unitClassNames[[trainRooster getSelectedData].type];
+        } else {
+            unitName.text = @"";
+            unitClassName.text = @"";
+        }
     }
     
     // check if recruit button was pressed
     if (recruitButton.wasReleased) {
-        // move the racruited unit from the training rooster to the battle rooster
-        [rooster addItem:[trainRooster getSelectedData]];
-        [trainRooster removeItem:[trainRooster getSelectedEntry]];
+        if ([trainRooster getSelectedData]) {
+            // move the racruited unit from the training rooster to the battle rooster
+            [rooster addItem:[trainRooster getSelectedData]];
+            [trainRooster removeItem:[trainRooster getSelectedEntry]];
+        }
+//
+//        [statPanel updateToKnightData:[trainRooster getSelectedData]];
+//        [skillPanel updateToKnightData:[trainRooster getSelectedData]];
+        
+//        if ([trainRooster getSelectedData] != nil) {
+//            unitName.text = [trainRooster getSelectedData].name;
+//            unitClassName.text = unitClassNames[[trainRooster getSelectedData].type];
+//        } else {
+//            unitName.text = @"";
+//            unitClassName.text = @"";
+//        }
     }
     
     // check if different tab was pressed
@@ -152,11 +203,13 @@
         [statPanel updateColor:showColor];
         [statPanel updateDepth:showDepth];
         
+        [skillPanel setEnabled:NO];
         [skillPanel updateDepth:hideDepth];
         [skillPanel updateColor:hideColor];
     }
     
     if (skillButton.wasReleased) {
+        [skillPanel setEnabled:YES];
         [skillPanel updateColor:showColor];
         [skillPanel updateDepth:showDepth];
         

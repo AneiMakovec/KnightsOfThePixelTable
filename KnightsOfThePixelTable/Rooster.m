@@ -58,11 +58,11 @@
         // calculate entry position
         RoosterEntry *entry;
         if (firstItem == nil) {
-            entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:area.y width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
+            entry = [[RoosterEntry alloc] initWithKnightData:data toPosition:[Vector2 vectorWithX:area.x y:area.y] layerDepth:layerDepth];
             selectedEntry = entry;
             [selectedEntry setSelectedColor];
         } else {
-            entry = [[RoosterEntry alloc] initWithKnightData:data toRectangle:[Rectangle rectangleWithX:area.x y:lastItem.position.y + ENTRY_SPACING width:ENTRY_WIDTH height:ENTRY_HEIGHT] layerDepth:layerDepth];
+            entry = [[RoosterEntry alloc] initWithKnightData:data toPosition:[Vector2 vectorWithX:area.x y:lastItem.position.y + ENTRY_SPACING] layerDepth:layerDepth];
         }
         
         // and add it to the scroll panel

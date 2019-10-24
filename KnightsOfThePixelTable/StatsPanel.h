@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     Label *hp, *hpLabel;
     Label *xpLabel;
+    Image *xpBar;
     
     Label *weaponLvl, *weaponLvlLabel;
     Label *armorLvl, *armorLvlLabel;

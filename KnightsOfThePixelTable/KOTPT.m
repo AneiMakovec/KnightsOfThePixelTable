@@ -45,6 +45,9 @@
 @synthesize progress;
 
 - (void) initialize {
+    // initializa all components
+    [super initialize];
+    
     // initialize game progress
     if ([GameProgress wasLoadedAsNew]) {
         [GameProgress initializeData];
@@ -57,9 +60,6 @@
     // debug - start in gameplay
     //    Gameplay *gameplay = [[[Gameplay alloc] initWithGame:self] autorelease];
     //    [self pushState:gameplay];
-    
-    // initializa all components
-    [super initialize];
 }
 
 - (void) pushState:(GameState *)gameState {

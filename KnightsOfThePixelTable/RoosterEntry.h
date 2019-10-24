@@ -21,14 +21,15 @@ NS_ASSUME_NONNULL_BEGIN
     
     TouchImage *roosterLine;
     
-    Image *portrait;
+    KnightType currentType;
+    Image *portraits[KnightTypes];
     Label *name;
 }
 
 @property (nonatomic, retain) KnightData *data;
 @property (nonatomic, retain) Vector2 *position;
 
-- (id) initWithKnightData:(KnightData *)knightData toRectangle:(Rectangle *)rectangle layerDepth:(float)depth;
+- (id) initWithKnightData:(KnightData *)knightData toPosition:(Vector2 *)thePosition layerDepth:(float)depth;
 
 - (BOOL) wasSelected;
 

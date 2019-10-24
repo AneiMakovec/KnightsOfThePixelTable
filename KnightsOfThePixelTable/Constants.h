@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getMaxUnitLvl;
 + (int) getMaxEquipmentLvl;
 + (int) getMaxDiceLvl;
++ (int) getXpForLvl:(Lvl)lvl;
++ (int) getNumOfDicesForLvl:(Lvl)lvl;
 
 + (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;

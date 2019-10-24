@@ -17,6 +17,7 @@
     if (self != nil) {
         // retain rooster
         rooster = [theRooster retain];
+        [items addObject:rooster];
         
         // init warband slots
 //        warbandSlots[FirstWarbandSlot] = [[TouchImage alloc] initWithTexture:[TownSpriteComponent getInterfaceProp:InterfacePropSlotGreen] toRectangle:[Rectangle rectangleWithX:area.x + 455 y:area.y + 150 width:42 height:42]];

@@ -86,6 +86,14 @@ Constants *constantsInstance;
     return [constantsInstance getUpgradeCostOfEquipmentLvl:lvl];
 }
 
++ (int) getXpForLvl:(Lvl)lvl {
+    return [constantsInstance getXpForLvl:lvl];
+}
+
++ (int) getNumOfDicesForLvl:(Lvl)lvl {
+    return [constantsInstance getNumOfDicesForLvl:lvl];
+}
+
 
 
 
@@ -181,6 +189,14 @@ Constants *constantsInstance;
 
 - (int) getUpgradeCostOfEquipmentLvl:(Lvl)lvl {
     return [[[[data_value objectForKey:VALUE_UPGRADE_COST] objectForKey:VALUE_UPGRADE_COST_EQUIPMENT] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+}
+
+- (int) getXpForLvl:(Lvl)lvl {
+    return [[[data_value objectForKey:VALUE_XP_FOR_LVL] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+}
+
+- (int) getNumOfDicesForLvl:(Lvl)lvl {
+    return [[[data_value objectForKey:@"num_of_dices"] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
 }
 
 - (Rectangle *) getInterfaceScrollRect {

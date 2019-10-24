@@ -19,7 +19,6 @@
         curDepth = layerDepth;
         
         // init pane
-
         skillPane = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_PANE_SKILLS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_PANE]];
         skillPane.layerDepth = layerDepth;
         [items addObject:skillPane];
@@ -34,25 +33,10 @@
             }
         }
         
-        currentType = data.type;
-        for (int i = 0; i < SkillTypes; i++) {
-            [items addObject:skills[currentType][i]];
-        }
-        
         // TODO: display combo slots
         
         // init upgrade buttons
         if (displayUpgradeButtons) {
-            // init upgrade buttons
-            NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
-            for (int i = 0; i < SkillTypes; i++) {
-                upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfSkillLvl:[data getLevelOfSkill:i]]]];
-                upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-                upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
-                [items addObject:upgradeButtons[i]];
-            }
-            
             // init labels
             NSString *upgradePosKey = POSITION_INTERFACE_SKILL_UPGRADE_LABELS;
             for (int i = 0; i < SkillTypes; i++) {
@@ -64,18 +48,69 @@
         
         // init labels
         NSString *comboPosKey = POSITION_INTERFACE_SKILL_COMBO_LABELS;
-        NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
         for (int i = 0; i < SkillTypes; i++) {
             comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-            lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-            
             comboLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-            lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-            lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
-            lvlLabels[i].verticalAlign = VerticalAlignMiddle;
-            
             [items addObject:comboLabels[i]];
-            [items addObject:lvlLabels[i]];
+        }
+        
+        
+        
+        
+        if (data) {
+            currentType = data.type;
+            for (int i = 0; i < SkillTypes; i++) {
+                [items addObject:skills[currentType][i]];
+            }
+            
+            // TODO: display combo slots
+            
+            // init upgrade buttons
+            if (displayUpgradeButtons) {
+                // init upgrade buttons
+                NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
+                for (int i = 0; i < SkillTypes; i++) {
+                    upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfSkillLvl:[data getLevelOfSkill:i]]]];
+                    upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                    upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
+                    [items addObject:upgradeButtons[i]];
+                }
+            }
+            
+            // init labels
+            NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
+            for (int i = 0; i < SkillTypes; i++) {
+                lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+                lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
+                lvlLabels[i].verticalAlign = VerticalAlignMiddle;
+                [items addObject:lvlLabels[i]];
+            }
+        } else {
+            // init upgrade buttons
+            if (displayUpgradeButtons) {
+                // init upgrade buttons
+                NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
+                for (int i = 0; i < SkillTypes; i++) {
+                    upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:@"0"];
+                    upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                    upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
+                    upgradeButtons[i].enabled = NO;
+                    [items addObject:upgradeButtons[i]];
+                }
+            }
+            
+            // init labels
+            NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
+            for (int i = 0; i < SkillTypes; i++) {
+                lvlLabels[i] = [GraphicsComponent getLabelWithText:@"Lvl: " atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+                lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
+                lvlLabels[i].verticalAlign = VerticalAlignMiddle;
+                [items addObject:lvlLabels[i]];
+            }
         }
     }
     return self;
@@ -109,7 +144,14 @@
             
         currentType = data.type;
     } else {
-        // TODO: handle case when there is no knights in rooster
+        for (int i = 0; i < SkillTypes; i++) {
+            [self removeItemFromScene:skills[currentType][i]];
+
+            upgradeButtons[i].label.text = @"0";
+            upgradeButtons[i].enabled = NO;
+
+            lvlLabels[i].text = @"Lvl: ";
+        }
     }
 }
 
@@ -123,10 +165,18 @@
     }
     
     for (int i = 0; i < SkillTypes; i++) {
-        [self updateDepth:depth toItem:upgradeButtons[i]];
         [self updateDepth:depth toItem:comboLabels[i]];
         [self updateDepth:depth toItem:upgradeLabels[i]];
         [self updateDepth:depth toItem:lvlLabels[i]];
+        
+        if (displayUpgradeButtons) {
+            [self updateDepth:depth toItem:upgradeButtons[i]];
+            
+            if (depth > curDepth)
+                [self removeItemFromScene:upgradeButtons[i]];
+            else
+                [self addItemToScene:upgradeButtons[i]];
+        }
     }
     
     curDepth = depth;
@@ -174,7 +224,17 @@
 
 
 - (BOOL) wasUpgradeBtnReleased:(SkillType)skill {
-    return upgradeButtons[skill].wasReleased;
+    if (upgradeButtons[skill].enabled) {
+        return upgradeButtons[skill].wasReleased;
+    } else {
+        return NO;
+    }
+}
+
+- (void) setEnabled:(BOOL)enabled {
+    for (int i = 0; i < SkillTypes; i++) {
+        upgradeButtons[i].enabled = enabled;
+    }
 }
 
 

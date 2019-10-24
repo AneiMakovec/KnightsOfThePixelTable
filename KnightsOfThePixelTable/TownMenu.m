@@ -115,8 +115,8 @@
     for (int i = 0; i < BuildingTypeGatehouse; i++) {
         if (buildings[i].enabled && buildings[i].wasReleased) {
             [self disableBuildings];
-            [scene addItem:interface];
             [interface updateContent:i];
+            [scene addItem:interface];
         }
     }
     
