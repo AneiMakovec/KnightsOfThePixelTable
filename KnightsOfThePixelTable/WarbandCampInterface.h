@@ -25,14 +25,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WarbandCampInterface : GuiPanel {
     Rooster *rooster;
     
-    TouchImage *warbandSlots[WarbandSlotTypes];
+    Image *backImage;
     
-    Color *selectedColor, *defaultColor;
+    RadioButtonGroup *slots;
+    ImageRadioButton *warbandSlots[CombatPositions];
     
-    WarbandSlotType selectedSlot;
+    AnimatedImage *knightAnimations[CombatPositions][KnightTypes];
+    
+    KnightType currentTypes[CombatPositions];
+    NSString *knightIDs[CombatPositions];
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;
+
+- (void) update;
+
+- (void) reset;
 
 @end
 

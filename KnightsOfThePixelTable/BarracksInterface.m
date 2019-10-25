@@ -31,6 +31,11 @@
         // retain rooster
         rooster = [theRooster retain];
         [items addObject:rooster];
+        
+        // init back image
+        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE_BARRACKS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
+        backImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:backImage];
 
         // init tab buttons
         MetaData *data = [Constants getMetaDataForKey:META_INTERFACE_TAB];

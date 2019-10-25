@@ -548,6 +548,38 @@
 			"x": 420,
 			"y": 160
 		},
+		"interface_warband_camp_slot_0": {
+			"x": 440,
+			"y": 285
+		},
+		"interface_warband_camp_slot_1": {
+			"x": 388,
+			"y": 325
+		},
+		"interface_warband_camp_slot_2": {
+			"x": 336,
+			"y": 285
+		},
+		"interface_warband_camp_slot_3": {
+			"x": 284,
+			"y": 325
+		},
+		"interface_warband_camp_knight_0": {
+			"x": 461,
+			"y": 175
+		},
+		"interface_warband_camp_knight_1": {
+			"x": 409,
+			"y": 225
+		},
+		"interface_warband_camp_knight_2": {
+			"x": 357,
+			"y": 175
+		},
+		"interface_warband_camp_knight_3": {
+			"x": 305,
+			"y": 225
+		},
 		"building_castle": {
 			"x": 0,
 			"y": 0

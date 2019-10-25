@@ -31,6 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (RoosterEntry *) getSelectedEntry;
 
+- (void) setSelectedEntry:(NSString *)knightID;
+
+- (void) deselect;
+
+- (void) reselect;
+
 @end
 
 NS_ASSUME_NONNULL_END

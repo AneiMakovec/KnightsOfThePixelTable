@@ -31,10 +31,6 @@
 //        [background setColor:[Color rosyBrown]];
         [items addObject:background];
         
-        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
-        backImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
-        [items addObject:backImage];
-        
         // init close button
         closeButton = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_CLOSE atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CLOSE_BUTTON]];
         closeButton.notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
@@ -104,19 +100,19 @@
         rooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
         
         // TODO: implement real rooster entries
-//        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
+        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
         
-//        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
+        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
         
-//        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
+        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
         
-//        [rooster addItem:firstData];
-//        [rooster addItem:secondData];
-//        [rooster addItem:thirdData];
-//        
-//        [firstData release];
-//        [secondData release];
-//        [thirdData release];
+        [rooster addItem:firstData];
+        [rooster addItem:secondData];
+        [rooster addItem:thirdData];
+        
+        [firstData release];
+        [secondData release];
+        [thirdData release];
         
         // init rooster for trained units
         trainRooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
@@ -156,6 +152,12 @@
     // check if different switch button was pressed
     if (switchButtonGroup.pressedButtonChanged) {
         [switchButtonGroup reset];
+        
+        if (interfaceType == BuildingTypeWarbandCamp) {
+            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+            NSLog(@"RESETING ROOSTER");
+            [warbandCamp reset];
+        }
         
         for (int i = 0; i < BuildingTypeGatehouse; i++) {
             if ([switchButtonGroup.pressedButtonKey isEqualToString:buttonKeys[i]] && i != interfaceType) {
@@ -214,6 +216,9 @@
 //                                [self removeItemFromScene:unitNameTrain];
                             }
                         }
+                        
+                        WarbandCampInterface *warbandcamp = (WarbandCampInterface *) interfaceContent[i];
+                        [warbandcamp update];
                         break;
                         
                     case BuildingTypeTrainingYard:
@@ -332,6 +337,11 @@
 - (void) updateContent:(BuildingType)type {
     // remove current interface content from scene
     if (interfaceType != NoBuilding) {
+        if (interfaceType == BuildingTypeWarbandCamp) {
+            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+            [warbandCamp reset];
+        }
+        
         [items removeObject:interfaceContent[interfaceType]];
 //        [items removeObject:rooster];
 //        [items removeObject:trainRooster];
@@ -439,6 +449,17 @@
     
     interfaceType = type;
     
+    if (interfaceType == BuildingTypeWarbandCamp) {
+        WarbandCampInterface *warbandcamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+        [warbandcamp update];
+    } else if (interfaceType == BuildingTypeBlacksmith) {
+        BlacksmithInterface *blacksmith = (BlacksmithInterface *) interfaceContent[interfaceType];
+        [blacksmith updateValues];
+    } else if (interfaceType == BuildingTypeBarracks) {
+        BarracksInterface *barracks = (BarracksInterface *) interfaceContent[interfaceType];
+        [barracks update];
+    }
+    
     // add new interface content to scene
     [items addObject:interfaceContent[interfaceType]];
 }
@@ -451,7 +472,6 @@
 
 - (void) dealloc {
     [background release];
-    [backImage release];
     [closeButton release];
     [sidePane release];
     [sidePaneBorder release];

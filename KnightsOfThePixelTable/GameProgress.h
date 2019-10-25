@@ -54,6 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) upgradeNumOfDices;
 
++ (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position;
+
++ (KnightData *) getKnightOnCombatPosition:(CombatPosition)position;
+
++ (void) removeKnightOnCombatPosition:(CombatPosition)position;
+
 
 - (id) initWithLoaded:(BOOL)load;
 

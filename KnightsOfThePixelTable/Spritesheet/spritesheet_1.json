@@ -20,12 +20,452 @@
 			},
 			"trimmed": false
 		},
+		"gameplay_menu/entities/allies/bard/action/f0": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 480,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 18,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f1": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 0,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f2": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 450,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f3": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 236,
+				"y": 581
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f4": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 60,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f5": {
+			"frame": {
+				"h": 28,
+				"w": 30,
+				"x": 94,
+				"y": 577
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 30,
+				"x": 18,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/action/f7": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 296,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/attack/f1": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 0,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/attack/f2": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 558,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/attack/f3": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 420,
+				"y": 802
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/attack/f4": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 420,
+				"y": 802
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/attack/f5": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 420,
+				"y": 802
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/death/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 478,
+				"y": 676
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/death/f1": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 584,
+				"y": 667
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 21,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/hit/f0": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 534,
+				"y": 771
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/hit/f1": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 686,
+				"y": 635
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/hit/f2": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 558,
+				"y": 754
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/hit/f3": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 686,
+				"y": 635
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/idle/f0": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 354,
+				"y": 669
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 19,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/idle/f1": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 420,
+				"y": 666
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 19,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/idle/f2": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 450,
+				"y": 675
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/bard/idle/f3": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 296,
+				"y": 729
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 19,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/bard/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 753,
-				"y": 559
+				"x": 910,
+				"y": 796
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -39,13 +479,273 @@
 				"w": 16
 			},
 			"trimmed": false
+		},
+		"gameplay_menu/entities/allies/battlemage/action/f0": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 510,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 15,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/action/f1": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 326,
+				"y": 669
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 15,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/action/f2": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 268,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 15,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/action/f3": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 268,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 15,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/action/f5": {
+			"frame": {
+				"h": 28,
+				"w": 30,
+				"x": 126,
+				"y": 577
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 30,
+				"x": 16,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/death/f0": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 0,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 16,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/death/f1": {
+			"frame": {
+				"h": 24,
+				"w": 34,
+				"x": 158,
+				"y": 577
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 34,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/hit/f1": {
+			"frame": {
+				"h": 38,
+				"w": 20,
+				"x": 128,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 38,
+				"w": 20,
+				"x": 24,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/hit/f3": {
+			"frame": {
+				"h": 38,
+				"w": 20,
+				"x": 128,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 38,
+				"w": 20,
+				"x": 24,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/idle/f0": {
+			"frame": {
+				"h": 28,
+				"w": 24,
+				"x": 530,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 24,
+				"x": 16,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/idle/f1": {
+			"frame": {
+				"h": 28,
+				"w": 24,
+				"x": 392,
+				"y": 709
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 24,
+				"x": 16,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/idle/f2": {
+			"frame": {
+				"h": 28,
+				"w": 24,
+				"x": 234,
+				"y": 764
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 24,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/battlemage/idle/f3": {
+			"frame": {
+				"h": 28,
+				"w": 24,
+				"x": 392,
+				"y": 709
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 24,
+				"x": 16,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
 		},
 		"gameplay_menu/entities/allies/battlemage/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 882,
-				"y": 516
+				"x": 910,
+				"y": 760
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -59,13 +759,493 @@
 				"w": 16
 			},
 			"trimmed": false
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f0": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 28,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 15,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f1": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 28,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 15,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f2": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 28,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 15,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f3": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 28,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 15,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f6": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 450,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/attack/f7": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 450,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f0": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 558,
+				"y": 637
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 23,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f1": {
+			"frame": {
+				"h": 29,
+				"w": 20,
+				"x": 508,
+				"y": 713
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 20,
+				"x": 23,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f2": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 532,
+				"y": 650
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 22,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f3": {
+			"frame": {
+				"h": 26,
+				"w": 28,
+				"x": 158,
+				"y": 720
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 28,
+				"x": 27,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f4": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 736,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 26,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f5": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 760,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 25,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f6": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 626,
+				"y": 750
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 25,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f7": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 822,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 25,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f8": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 822,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 25,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/death/f9": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 822,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 25,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/hit/f0": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 758,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/hit/f1": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 672,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/hit/f2": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 890,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/hit/f3": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 672,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/idle/f0": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 508,
+				"y": 681
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 23,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/idle/f1": {
+			"frame": {
+				"h": 29,
+				"w": 20,
+				"x": 450,
+				"y": 755
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 20,
+				"x": 23,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/idle/f2": {
+			"frame": {
+				"h": 28,
+				"w": 20,
+				"x": 728,
+				"y": 548
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 20,
+				"x": 23,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/brawler/idle/f3": {
+			"frame": {
+				"h": 29,
+				"w": 20,
+				"x": 450,
+				"y": 755
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 20,
+				"x": 23,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
 		},
 		"gameplay_menu/entities/allies/brawler/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 774,
-				"y": 516
+				"x": 929,
+				"y": 783
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -80,19 +1260,459 @@
 			},
 			"trimmed": false
 		},
-		"gameplay_menu/entities/allies/crossbowman/death/f4": {
+		"gameplay_menu/entities/allies/crossbowman/action/f0": {
 			"frame": {
-				"h": 18,
-				"w": 24,
-				"x": 164,
-				"y": 543
+				"h": 25,
+				"w": 22,
+				"x": 478,
+				"y": 795
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 18,
-				"w": 24,
-				"x": 25,
-				"y": 31
+				"h": 25,
+				"w": 22,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f1": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 478,
+				"y": 795
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f2": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 478,
+				"y": 795
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f3": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 392,
+				"y": 673
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f4": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 392,
+				"y": 673
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f5": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 392,
+				"y": 673
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/action/f6": {
+			"frame": {
+				"h": 34,
+				"w": 20,
+				"x": 392,
+				"y": 673
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 34,
+				"w": 20,
+				"x": 21,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/attack/f0": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 356,
+				"y": 730
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/attack/f1": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 356,
+				"y": 730
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/attack/f2": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 356,
+				"y": 730
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/attack/f3": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 420,
+				"y": 694
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/death/f0": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 636,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/death/f1": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 584,
+				"y": 693
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/death/f2": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 56,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/death/f3": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 804,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 24,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/hit/f0": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 636,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/hit/f1": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 610,
+				"y": 694
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/hit/f2": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 534,
+				"y": 744
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/hit/f3": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 610,
+				"y": 694
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/idle/f0": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 450,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/idle/f1": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 774,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/idle/f2": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 798,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 22,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/crossbowman/idle/f3": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 774,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 22,
+				"y": 23
 			},
 			"sourceSize": {
 				"h": 64,
@@ -104,8 +1724,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 770,
-				"y": 535
+				"x": 1004,
+				"y": 619
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -119,13 +1739,353 @@
 				"w": 16
 			},
 			"trimmed": false
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/f0": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 478,
+				"y": 704
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 25,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/f1": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 478,
+				"y": 704
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 25,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/f2": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 478,
+				"y": 704
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 25,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/f3": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 478,
+				"y": 704
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 25,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/attack/f4": {
+			"frame": {
+				"h": 30,
+				"w": 18,
+				"x": 184,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 18,
+				"x": 25,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/death/f0": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 584,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/death/f1": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 450,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/death/f2": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 702,
+				"y": 548
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 23,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/death/f3": {
+			"frame": {
+				"h": 23,
+				"w": 24,
+				"x": 660,
+				"y": 636
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 24,
+				"x": 23,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/hit/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 356,
+				"y": 757
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/hit/f1": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 608,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/hit/f2": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 234,
+				"y": 794
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/hit/f3": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 608,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/idle/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 652,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/idle/f1": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 634,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/idle/f2": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 392,
+				"y": 794
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 22,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/longbowman/idle/f3": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 634,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
 		},
 		"gameplay_menu/entities/allies/longbowman/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 734,
-				"y": 535
+				"x": 929,
+				"y": 747
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -140,12 +2100,92 @@
 			},
 			"trimmed": false
 		},
+		"gameplay_menu/entities/allies/monk/attack/f0": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 1004,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/attack/f1": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 1004,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/attack/f2": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 1004,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/attack/f3": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 1004,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/monk/attack/f4": {
 			"frame": {
 				"h": 24,
 				"w": 16,
-				"x": 436,
-				"y": 543
+				"x": 848,
+				"y": 723
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -164,8 +2204,8 @@
 			"frame": {
 				"h": 24,
 				"w": 16,
-				"x": 436,
-				"y": 543
+				"x": 848,
+				"y": 723
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -184,8 +2224,8 @@
 			"frame": {
 				"h": 24,
 				"w": 16,
-				"x": 436,
-				"y": 543
+				"x": 848,
+				"y": 723
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -200,19 +2240,179 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/allies/monk/death/f1": {
+		"gameplay_menu/entities/allies/monk/death/f0": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 190,
+				"y": 603
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/hit/f0": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 1011,
+				"y": 647
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 26,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/hit/f1": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 998,
+				"y": 710
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 26,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/hit/f2": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 380,
+				"y": 699
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 26,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/hit/f3": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 998,
+				"y": 710
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 26,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/idle/f0": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 850,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/idle/f1": {
+			"frame": {
+				"h": 23,
+				"w": 12,
+				"x": 948,
+				"y": 674
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 12,
+				"x": 27,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/idle/f2": {
 			"frame": {
 				"h": 22,
-				"w": 16,
-				"x": 576,
-				"y": 553
+				"w": 12,
+				"x": 1004,
+				"y": 595
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 22,
-				"w": 16,
+				"w": 12,
 				"x": 27,
 				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/monk/idle/f3": {
+			"frame": {
+				"h": 23,
+				"w": 12,
+				"x": 948,
+				"y": 674
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 12,
+				"x": 27,
+				"y": 25
 			},
 			"sourceSize": {
 				"h": 64,
@@ -224,8 +2424,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 735,
-				"y": 559
+				"x": 910,
+				"y": 742
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -240,18 +2440,38 @@
 			},
 			"trimmed": false
 		},
-		"gameplay_menu/entities/allies/paladin/action/f0": {
+		"gameplay_menu/entities/allies/paladin/attack/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 420,
+				"y": 721
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/attack/f1": {
 			"frame": {
 				"h": 25,
-				"w": 18,
-				"x": 0,
-				"y": 547
+				"w": 24,
+				"x": 420,
+				"y": 749
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
-				"w": 18,
-				"x": 24,
+				"w": 24,
+				"x": 21,
 				"y": 23
 			},
 			"sourceSize": {
@@ -260,18 +2480,18 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/allies/paladin/action/f1": {
+		"gameplay_menu/entities/allies/paladin/attack/f2": {
 			"frame": {
 				"h": 25,
-				"w": 18,
-				"x": 0,
-				"y": 547
+				"w": 20,
+				"x": 736,
+				"y": 693
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
-				"w": 18,
-				"x": 24,
+				"w": 20,
+				"x": 25,
 				"y": 23
 			},
 			"sourceSize": {
@@ -280,19 +2500,139 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/allies/paladin/action/f2": {
+		"gameplay_menu/entities/allies/paladin/attack/f3": {
 			"frame": {
 				"h": 25,
-				"w": 18,
-				"x": 0,
-				"y": 547
+				"w": 20,
+				"x": 784,
+				"y": 639
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/attack/f4": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 784,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/attack/f5": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 784,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/death/f0": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 760,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
 				"w": 18,
 				"x": 24,
-				"y": 23
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/death/f1": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 508,
+				"y": 797
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/death/f2": {
+			"frame": {
+				"h": 27,
+				"w": 24,
+				"x": 298,
+				"y": 761
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 24,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/paladin/death/f3": {
+			"frame": {
+				"h": 27,
+				"w": 22,
+				"x": 558,
+				"y": 669
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 22,
+				"x": 21,
+				"y": 22
 			},
 			"sourceSize": {
 				"h": 64,
@@ -304,8 +2644,8 @@
 			"frame": {
 				"h": 26,
 				"w": 16,
-				"x": 270,
-				"y": 516
+				"x": 828,
+				"y": 726
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -324,8 +2664,8 @@
 			"frame": {
 				"h": 26,
 				"w": 16,
-				"x": 212,
-				"y": 543
+				"x": 888,
+				"y": 657
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -344,8 +2684,8 @@
 			"frame": {
 				"h": 26,
 				"w": 16,
-				"x": 230,
-				"y": 543
+				"x": 186,
+				"y": 775
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -364,8 +2704,8 @@
 			"frame": {
 				"h": 26,
 				"w": 16,
-				"x": 212,
-				"y": 543
+				"x": 888,
+				"y": 657
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -380,19 +2720,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/allies/paladin/idle/f1": {
+		"gameplay_menu/entities/allies/paladin/idle/f0": {
 			"frame": {
-				"h": 25,
+				"h": 26,
 				"w": 18,
-				"x": 0,
-				"y": 547
+				"x": 806,
+				"y": 694
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 25,
+				"h": 26,
 				"w": 18,
 				"x": 24,
-				"y": 23
+				"y": 22
 			},
 			"sourceSize": {
 				"h": 64,
@@ -404,8 +2744,8 @@
 			"frame": {
 				"h": 24,
 				"w": 18,
-				"x": 144,
-				"y": 543
+				"x": 800,
+				"y": 755
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -420,32 +2760,12 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/allies/paladin/idle/f3": {
-			"frame": {
-				"h": 25,
-				"w": 18,
-				"x": 0,
-				"y": 547
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 25,
-				"w": 18,
-				"x": 24,
-				"y": 23
-			},
-			"sourceSize": {
-				"h": 64,
-				"w": 64
-			},
-			"trimmed": true
-		},
 		"gameplay_menu/entities/allies/paladin/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 699,
-				"y": 559
+				"x": 962,
+				"y": 674
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -460,12 +2780,372 @@
 			},
 			"trimmed": false
 		},
+		"gameplay_menu/entities/allies/scout/action/f0": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 478,
+				"y": 767
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f1": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 478,
+				"y": 767
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f10": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 96,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f11": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 478,
+				"y": 767
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f2": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 478,
+				"y": 767
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f3": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 352,
+				"y": 699
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f4": {
+			"frame": {
+				"h": 26,
+				"w": 28,
+				"x": 538,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 28,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f5": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 476,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f6": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 32,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f7": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 32,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f8": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 448,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/action/f9": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 298,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f0": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 298,
+				"y": 790
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 22,
+				"x": 16,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f1": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 298,
+				"y": 790
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 22,
+				"x": 16,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f2": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 298,
+				"y": 790
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 22,
+				"x": 16,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f3": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 298,
+				"y": 790
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 22,
+				"x": 16,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f4": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 128,
+				"y": 772
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 19,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/attack/f5": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 610,
+				"y": 666
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/scout/attack/f6": {
 			"frame": {
 				"h": 26,
 				"w": 16,
-				"x": 288,
-				"y": 516
+				"x": 780,
+				"y": 782
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -480,12 +3160,152 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/allies/scout/death/f0": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 822,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/death/f1": {
+			"frame": {
+				"h": 26,
+				"w": 22,
+				"x": 750,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 22,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/death/f2": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 28,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/hit/f0": {
+			"frame": {
+				"h": 26,
+				"w": 14,
+				"x": 188,
+				"y": 632
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 14,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/hit/f1": {
+			"frame": {
+				"h": 26,
+				"w": 14,
+				"x": 188,
+				"y": 660
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 14,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/hit/f3": {
+			"frame": {
+				"h": 26,
+				"w": 14,
+				"x": 188,
+				"y": 660
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 14,
+				"x": 23,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/scout/idle/f0": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 868,
+				"y": 599
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 20,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/scout/idle/f1": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 188,
-				"y": 516
+				"x": 718,
+				"y": 808
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -500,12 +3320,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/allies/scout/idle/f2": {
+			"frame": {
+				"h": 24,
+				"w": 18,
+				"x": 952,
+				"y": 547
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 18,
+				"x": 20,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/scout/idle/f3": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 188,
-				"y": 516
+				"x": 718,
+				"y": 808
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -524,8 +3364,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 828,
-				"y": 516
+				"x": 965,
+				"y": 747
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -540,12 +3380,232 @@
 			},
 			"trimmed": false
 		},
+		"gameplay_menu/entities/allies/wizard/attack/f0": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 626,
+				"y": 775
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/f1": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 650,
+				"y": 752
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/f2": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 626,
+				"y": 775
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/f3": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 650,
+				"y": 752
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/f4": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 626,
+				"y": 775
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/attack/f5": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 650,
+				"y": 752
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/death/f0": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 580,
+				"y": 777
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 24,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/death/f1": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 604,
+				"y": 753
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 24,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/death/f2": {
+			"frame": {
+				"h": 29,
+				"w": 22,
+				"x": 584,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 22,
+				"x": 24,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/death/f3": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 604,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 23,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/death/f4": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 828,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 24,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/wizard/hit/f0": {
 			"frame": {
 				"h": 28,
 				"w": 16,
-				"x": 80,
-				"y": 547
+				"x": 828,
+				"y": 696
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -564,8 +3624,28 @@
 			"frame": {
 				"h": 28,
 				"w": 16,
-				"x": 108,
-				"y": 543
+				"x": 848,
+				"y": 667
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 16,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/hit/f2": {
+			"frame": {
+				"h": 28,
+				"w": 16,
+				"x": 950,
+				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -584,8 +3664,8 @@
 			"frame": {
 				"h": 28,
 				"w": 16,
-				"x": 108,
-				"y": 543
+				"x": 848,
+				"y": 667
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -600,12 +3680,92 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/allies/wizard/idle/f0": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 604,
+				"y": 784
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/idle/f1": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 740,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/idle/f2": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 912,
+				"y": 545
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 24,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/allies/wizard/idle/f3": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 740,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 24,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/allies/wizard/portrait": {
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 738,
-				"y": 516
+				"x": 947,
+				"y": 729
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -620,19 +3780,19 @@
 			},
 			"trimmed": false
 		},
-		"gameplay_menu/entities/enemies/boss/mountains/death/f10": {
+		"gameplay_menu/entities/enemies/boss/farmlands/action/f0": {
 			"frame": {
-				"h": 17,
-				"w": 22,
-				"x": 552,
-				"y": 516
+				"h": 27,
+				"w": 18,
+				"x": 716,
+				"y": 751
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 17,
-				"w": 22,
-				"x": 16,
-				"y": 32
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 23
 			},
 			"sourceSize": {
 				"h": 64,
@@ -640,19 +3800,479 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/boss/mountains/death/f11": {
+		"gameplay_menu/entities/enemies/boss/farmlands/action/f1": {
 			"frame": {
-				"h": 17,
-				"w": 22,
-				"x": 520,
-				"y": 543
+				"h": 27,
+				"w": 18,
+				"x": 716,
+				"y": 751
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 17,
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/attack/f0": {
+			"frame": {
+				"h": 31,
+				"w": 28,
+				"x": 32,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 31,
+				"w": 28,
+				"x": 20,
+				"y": 17
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/attack/f1": {
+			"frame": {
+				"h": 31,
+				"w": 24,
+				"x": 90,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 31,
+				"w": 24,
+				"x": 14,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/attack/f2": {
+			"frame": {
+				"h": 28,
+				"w": 22,
+				"x": 584,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
 				"w": 22,
 				"x": 16,
-				"y": 32
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/attack/f3": {
+			"frame": {
+				"h": 28,
+				"w": 20,
+				"x": 708,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 20,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/death/f0": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 696,
+				"y": 751
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/death/f1": {
+			"frame": {
+				"h": 29,
+				"w": 22,
+				"x": 508,
+				"y": 650
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 22,
+				"x": 17,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/death/f3": {
+			"frame": {
+				"h": 30,
+				"w": 24,
+				"x": 128,
+				"y": 740
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 24,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/hit/f0": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 806,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/hit/f1": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 784,
+				"y": 666
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/hit/f2": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 826,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/hit/f3": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 784,
+				"y": 666
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 22,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/idle/f0": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 868,
+				"y": 570
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/idle/f1": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 716,
+				"y": 751
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/idle/f2": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 846,
+				"y": 598
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/farmlands/idle/f3": {
+			"frame": {
+				"h": 27,
+				"w": 18,
+				"x": 716,
+				"y": 751
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 18,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/f0": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 326,
+				"y": 730
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/f1": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 268,
+				"y": 761
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/f2": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 478,
+				"y": 650
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/f3": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 90,
+				"y": 792
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/attack/f4": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 622,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/death/f0": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 734,
+				"y": 665
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/death/f1": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 780,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/death/f12": {
+			"frame": {
+				"h": 13,
+				"w": 22,
+				"x": 886,
+				"y": 742
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 13,
+				"w": 22,
+				"x": 16,
+				"y": 36
 			},
 			"sourceSize": {
 				"h": 64,
@@ -664,8 +4284,8 @@
 			"frame": {
 				"h": 15,
 				"w": 22,
-				"x": 634,
-				"y": 516
+				"x": 842,
+				"y": 755
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -680,19 +4300,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/boss/mountains/death/f7": {
+		"gameplay_menu/entities/enemies/boss/mountains/death/f2": {
 			"frame": {
-				"h": 19,
+				"h": 27,
 				"w": 22,
-				"x": 306,
-				"y": 516
+				"x": 678,
+				"y": 548
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 19,
+				"h": 27,
 				"w": 22,
 				"x": 15,
-				"y": 29
+				"y": 21
 			},
 			"sourceSize": {
 				"h": 64,
@@ -700,19 +4320,779 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/boss/mountains/death/f8": {
+		"gameplay_menu/entities/enemies/boss/mountains/death/f3": {
 			"frame": {
-				"h": 17,
-				"w": 24,
-				"x": 270,
-				"y": 544
+				"h": 31,
+				"w": 22,
+				"x": 478,
+				"y": 617
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 17,
+				"h": 31,
+				"w": 22,
+				"x": 15,
+				"y": 17
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/death/f6": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 844,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/hit/f0": {
+			"frame": {
+				"h": 24,
 				"w": 24,
-				"x": 14,
-				"y": 32
+				"x": 682,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/hit/f1": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 508,
+				"y": 744
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/hit/f2": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 558,
+				"y": 698
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/hit/f3": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 508,
+				"y": 744
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/idle/f0": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 754,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/idle/f1": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 672,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/mountains/idle/f3": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 672,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 15,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/f0": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 798,
+				"y": 542
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 21,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/f1": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 798,
+				"y": 542
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 21,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/f2": {
+			"frame": {
+				"h": 30,
+				"w": 18,
+				"x": 660,
+				"y": 661
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 18,
+				"x": 20,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/f3": {
+			"frame": {
+				"h": 30,
+				"w": 18,
+				"x": 660,
+				"y": 661
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 18,
+				"x": 20,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/action/f4": {
+			"frame": {
+				"h": 30,
+				"w": 18,
+				"x": 660,
+				"y": 661
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 18,
+				"x": 20,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/attack/f0": {
+			"frame": {
+				"h": 36,
+				"w": 20,
+				"x": 478,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 36,
+				"w": 20,
+				"x": 21,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/attack/f1": {
+			"frame": {
+				"h": 36,
+				"w": 20,
+				"x": 478,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 36,
+				"w": 20,
+				"x": 21,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/attack/f2": {
+			"frame": {
+				"h": 36,
+				"w": 20,
+				"x": 478,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 36,
+				"w": 20,
+				"x": 21,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f0": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 236,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f1": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 294,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f4": {
+			"frame": {
+				"h": 31,
+				"w": 28,
+				"x": 204,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 31,
+				"w": 28,
+				"x": 17,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f5": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 62,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f6": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 62,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f7": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 62,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/death/f8": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 62,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/hit/f0": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 32,
+				"y": 577
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 19,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/hit/f1": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 234,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 19,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/hit/f2": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 264,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 19,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/hit/f3": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 234,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 19,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/idle/f0": {
+			"frame": {
+				"h": 30,
+				"w": 28,
+				"x": 0,
+				"y": 575
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 28,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/idle/f1": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 324,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/idle/f2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 298,
+				"y": 581
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 17,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/pinewoods/idle/f3": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 324,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 17,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/action/f0": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 822,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/action/f1": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 822,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/attack/f2": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 558,
+				"y": 783
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/death/f0": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 530,
+				"y": 681
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/death/f1": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 420,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/death/f3": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 234,
+				"y": 733
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/death/f4": {
+			"frame": {
+				"h": 28,
+				"w": 24,
+				"x": 558,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 24,
+				"x": 25,
+				"y": 24
 			},
 			"sourceSize": {
 				"h": 64,
@@ -724,8 +5104,8 @@
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 20,
-				"y": 547
+				"x": 912,
+				"y": 604
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -744,8 +5124,8 @@
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 208,
-				"y": 516
+				"x": 760,
+				"y": 783
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -764,8 +5144,8 @@
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 108,
-				"y": 516
+				"x": 932,
+				"y": 574
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -784,8 +5164,8 @@
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 208,
-				"y": 516
+				"x": 760,
+				"y": 783
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -800,12 +5180,172 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/boss/seashore/idle/f0": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 696,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/idle/f1": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 822,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/idle/f2": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 672,
+				"y": 749
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/boss/seashore/idle/f3": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 822,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/attack/f0": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 538,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/attack/f1": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 538,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/attack/f2": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 538,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/attack/f3": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 530,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 16,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/axethrower/attack/f4": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 60,
-				"y": 547
+				"x": 888,
+				"y": 630
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -824,8 +5364,8 @@
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 306,
-				"y": 537
+				"x": 932,
+				"y": 601
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -840,32 +5380,12 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/normal/axethrower/death/f1": {
-			"frame": {
-				"h": 25,
-				"w": 16,
-				"x": 366,
-				"y": 516
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 25,
-				"w": 16,
-				"x": 22,
-				"y": 23
-			},
-			"sourceSize": {
-				"h": 64,
-				"w": 64
-			},
-			"trimmed": true
-		},
-		"gameplay_menu/entities/enemies/normal/axethrower/idle/f0": {
+		"gameplay_menu/entities/enemies/normal/axethrower/death/f0": {
 			"frame": {
 				"h": 25,
 				"w": 14,
-				"x": 618,
-				"y": 516
+				"x": 188,
+				"y": 748
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -880,19 +5400,719 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/normal/hornbearer/death/f0": {
+		"gameplay_menu/entities/enemies/normal/axethrower/death/f1": {
+			"frame": {
+				"h": 25,
+				"w": 16,
+				"x": 868,
+				"y": 685
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 16,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/death/f2": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 610,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/hit/f0": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 932,
+				"y": 628
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/hit/f1": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 950,
+				"y": 601
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/hit/f2": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 912,
+				"y": 658
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/hit/f3": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 950,
+				"y": 601
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/idle/f0": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 868,
+				"y": 712
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
+				"x": 24,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/idle/f1": {
+			"frame": {
+				"h": 24,
+				"w": 14,
+				"x": 820,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 14,
+				"x": 24,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/idle/f2": {
+			"frame": {
+				"h": 23,
+				"w": 14,
+				"x": 798,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 14,
+				"x": 24,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/axethrower/idle/f3": {
+			"frame": {
+				"h": 24,
+				"w": 14,
+				"x": 820,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 14,
+				"x": 24,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/attack/f3": {
+			"frame": {
+				"h": 33,
+				"w": 22,
+				"x": 234,
+				"y": 698
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 33,
+				"w": 22,
+				"x": 16,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/attack/f4": {
 			"frame": {
 				"h": 29,
-				"w": 16,
-				"x": 90,
-				"y": 516
+				"w": 20,
+				"x": 660,
+				"y": 579
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 29,
-				"w": 16,
+				"w": 20,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f0": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 846,
+				"y": 571
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f1": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 580,
+				"y": 808
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f2": {
+			"frame": {
+				"h": 28,
+				"w": 26,
+				"x": 176,
+				"y": 547
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 26,
+				"x": 13,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f3": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 712,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f4": {
+			"frame": {
+				"h": 23,
+				"w": 22,
+				"x": 712,
+				"y": 693
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 22,
+				"x": 17,
+				"y": 28
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/death/f5": {
+			"frame": {
+				"h": 8,
+				"w": 28,
+				"x": 500,
+				"y": 606
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 8,
+				"w": 28,
+				"x": 11,
+				"y": 43
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/hit/f0": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 650,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
 				"x": 21,
-				"y": 19
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/hit/f1": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 686,
+				"y": 690
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/hit/f2": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 712,
+				"y": 665
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/hit/f3": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 686,
+				"y": 690
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 21,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/idle/f0": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 778,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 19,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/idle/f1": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 846,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/idle/f2": {
+			"frame": {
+				"h": 24,
+				"w": 20,
+				"x": 826,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 20,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/berserker/idle/f3": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 846,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/f0": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 234,
+				"y": 670
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 14,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/f1": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 418,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 5,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/f2": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 358,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 5,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/f3": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 330,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 5,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/attack/f4": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 330,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 5,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/death/f1": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 204,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 9,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/hit/f0": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 652,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/hit/f1": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 326,
+				"y": 787
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/hit/f2": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 678,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/hornbearer/hit/f3": {
+			"frame": {
+				"h": 30,
+				"w": 20,
+				"x": 326,
+				"y": 787
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 20,
+				"x": 17,
+				"y": 18
 			},
 			"sourceSize": {
 				"h": 64,
@@ -904,8 +6124,8 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 18,
-				"y": 516
+				"x": 780,
+				"y": 724
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -924,8 +6144,8 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 0,
-				"y": 516
+				"x": 374,
+				"y": 787
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -944,8 +6164,8 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 36,
-				"y": 516
+				"x": 888,
+				"y": 599
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -964,8 +6184,8 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 0,
-				"y": 516
+				"x": 374,
+				"y": 787
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -980,11 +6200,691 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/f0": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 204,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/f1": {
+			"frame": {
+				"h": 25,
+				"w": 26,
+				"x": 204,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 26,
+				"x": 17,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/f2": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 204,
+				"y": 729
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 18,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/f3": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 204,
+				"y": 729
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 18,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/action/f4": {
+			"frame": {
+				"h": 27,
+				"w": 26,
+				"x": 204,
+				"y": 729
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 26,
+				"x": 18,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f0": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 674,
+				"y": 809
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 27,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f1": {
+			"frame": {
+				"h": 26,
+				"w": 34,
+				"x": 72,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 34,
+				"x": 8,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f2": {
+			"frame": {
+				"h": 26,
+				"w": 34,
+				"x": 0,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 34,
+				"x": 8,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f3": {
+			"frame": {
+				"h": 26,
+				"w": 34,
+				"x": 36,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 34,
+				"x": 8,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f4": {
+			"frame": {
+				"h": 26,
+				"w": 34,
+				"x": 36,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 34,
+				"x": 8,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/attack/f5": {
+			"frame": {
+				"h": 26,
+				"w": 34,
+				"x": 36,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 34,
+				"x": 8,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/death/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 626,
+				"y": 547
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/death/f1": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 392,
+				"y": 767
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 18,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/hit/f0": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 718,
+				"y": 780
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/hit/f1": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 740,
+				"y": 753
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/hit/f2": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 848,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/hit/f3": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 740,
+				"y": 753
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/idle/f0": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 392,
+				"y": 739
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 18,
+				"y": 22
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/idle/f1": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 608,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 18,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/idle/f2": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 530,
+				"y": 708
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 18,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/huscarl/idle/f3": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 608,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 18,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f0": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 983,
+				"y": 729
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f1": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 686,
+				"y": 664
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f10": {
+			"frame": {
+				"h": 27,
+				"w": 22,
+				"x": 700,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 22,
+				"x": 15,
+				"y": 21
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f11": {
+			"frame": {
+				"h": 24,
+				"w": 20,
+				"x": 784,
+				"y": 695
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 20,
+				"x": 17,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f2": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 626,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f3": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 660,
+				"y": 693
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f4": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 774,
+				"y": 543
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f5": {
+			"frame": {
+				"h": 24,
+				"w": 20,
+				"x": 806,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 20,
+				"x": 17,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f6": {
+			"frame": {
+				"h": 24,
+				"w": 20,
+				"x": 910,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 20,
+				"x": 17,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f7": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 580,
+				"y": 751
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f8": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 712,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 15,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/attack/f9": {
+			"frame": {
+				"h": 25,
+				"w": 24,
+				"x": 348,
+				"y": 787
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 24,
+				"x": 13,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/death/f0": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 828,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/runemaster/death/f1": {
 			"frame": {
 				"h": 24,
 				"w": 16,
-				"x": 468,
+				"x": 986,
 				"y": 516
 			},
 			"rotated": false,
@@ -1000,12 +6900,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/runemaster/death/f2": {
+			"frame": {
+				"h": 24,
+				"w": 20,
+				"x": 696,
+				"y": 780
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 20,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/runemaster/death/f3": {
 			"frame": {
 				"h": 15,
 				"w": 20,
-				"x": 694,
-				"y": 535
+				"x": 907,
+				"y": 705
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1020,12 +6940,272 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/runemaster/hit/f0": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 116,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/hit/f1": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 116,
+				"y": 754
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/hit/f3": {
+			"frame": {
+				"h": 24,
+				"w": 10,
+				"x": 116,
+				"y": 754
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 10,
+				"x": 27,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/idle/f1": {
+			"frame": {
+				"h": 23,
+				"w": 10,
+				"x": 965,
+				"y": 765
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 10,
+				"x": 27,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/idle/f2": {
+			"frame": {
+				"h": 22,
+				"w": 10,
+				"x": 1010,
+				"y": 710
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 22,
+				"w": 10,
+				"x": 27,
+				"y": 26
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/runemaster/idle/f3": {
+			"frame": {
+				"h": 23,
+				"w": 10,
+				"x": 965,
+				"y": 765
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 10,
+				"x": 27,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f0": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 868,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f1": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 626,
+				"y": 805
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f2": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 508,
+				"y": 770
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f3": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 750,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f4": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 580,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f5": {
+			"frame": {
+				"h": 25,
+				"w": 22,
+				"x": 730,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 22,
+				"x": 21,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/attack/f6": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 868,
+				"y": 543
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 22,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/shaman/death/f0": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 128,
-				"y": 516
+				"x": 868,
+				"y": 658
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1044,8 +7224,8 @@
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 168,
-				"y": 516
+				"x": 780,
+				"y": 755
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1060,12 +7240,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/shaman/death/f2": {
+			"frame": {
+				"h": 26,
+				"w": 20,
+				"x": 758,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 20,
+				"x": 16,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/shaman/death/f3": {
 			"frame": {
 				"h": 18,
 				"w": 20,
-				"x": 576,
-				"y": 533
+				"x": 886,
+				"y": 685
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1080,11 +7280,91 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/shaman/death/f4": {
+			"frame": {
+				"h": 8,
+				"w": 24,
+				"x": 530,
+				"y": 734
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 8,
+				"w": 24,
+				"x": 12,
+				"y": 42
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/hit/f0": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 948,
+				"y": 647
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 29,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/hit/f1": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 814,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 29,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/shaman/hit/f3": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 814,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 29,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/shaman/idle/f0": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 40,
+				"x": 932,
 				"y": 547
 			},
 			"rotated": false,
@@ -1104,8 +7384,8 @@
 			"frame": {
 				"h": 24,
 				"w": 18,
-				"x": 228,
-				"y": 516
+				"x": 848,
+				"y": 697
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1124,8 +7404,8 @@
 			"frame": {
 				"h": 23,
 				"w": 18,
-				"x": 248,
-				"y": 539
+				"x": 740,
+				"y": 812
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1144,8 +7424,8 @@
 			"frame": {
 				"h": 24,
 				"w": 18,
-				"x": 228,
-				"y": 516
+				"x": 848,
+				"y": 697
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1160,12 +7440,332 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/f0": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 158,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/f1": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 158,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/f2": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 158,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/f3": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 268,
+				"y": 671
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/action/f4": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 268,
+				"y": 671
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 20,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/death/f0": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 390,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/death/f1": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 508,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/death/f2": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 158,
+				"y": 775
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 20,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/hit/f0": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 296,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/hit/f1": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 354,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/hit/f2": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 158,
+				"y": 603
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/hit/f3": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 354,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/idle/f0": {
+			"frame": {
+				"h": 27,
+				"w": 28,
+				"x": 30,
+				"y": 728
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 28,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/idle/f1": {
+			"frame": {
+				"h": 26,
+				"w": 28,
+				"x": 362,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 28,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/idle/f2": {
+			"frame": {
+				"h": 25,
+				"w": 28,
+				"x": 420,
+				"y": 639
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 28,
+				"x": 19,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slaver/idle/f3": {
+			"frame": {
+				"h": 26,
+				"w": 28,
+				"x": 362,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 28,
+				"x": 19,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/slinger/action/f0": {
 			"frame": {
 				"h": 24,
 				"w": 14,
-				"x": 602,
-				"y": 543
+				"x": 1004,
+				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1184,8 +7784,8 @@
 			"frame": {
 				"h": 24,
 				"w": 14,
-				"x": 602,
-				"y": 543
+				"x": 1004,
+				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1200,12 +7800,72 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/slinger/action/f2": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 190,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/action/f3": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 190,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/action/f4": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 190,
+				"y": 692
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/slinger/attack/f0": {
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 384,
-				"y": 516
+				"x": 912,
+				"y": 631
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1220,18 +7880,18 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/normal/slinger/attack/f10": {
+		"gameplay_menu/entities/enemies/normal/slinger/attack/f1": {
 			"frame": {
 				"h": 25,
-				"w": 16,
-				"x": 330,
-				"y": 543
+				"w": 20,
+				"x": 650,
+				"y": 782
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
-				"w": 16,
-				"x": 23,
+				"w": 20,
+				"x": 19,
 				"y": 23
 			},
 			"sourceSize": {
@@ -1244,8 +7904,8 @@
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 348,
-				"y": 516
+				"x": 760,
+				"y": 810
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1260,12 +7920,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/slinger/attack/f13": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 718,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 18,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/slinger/attack/f14": {
 			"frame": {
 				"h": 25,
 				"w": 18,
-				"x": 148,
-				"y": 516
+				"x": 798,
+				"y": 724
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1280,32 +7960,12 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/normal/slinger/attack/f2": {
-			"frame": {
-				"h": 25,
-				"w": 16,
-				"x": 330,
-				"y": 543
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 25,
-				"w": 16,
-				"x": 23,
-				"y": 23
-			},
-			"sourceSize": {
-				"h": 64,
-				"w": 64
-			},
-			"trimmed": true
-		},
 		"gameplay_menu/entities/enemies/normal/slinger/attack/f4": {
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 384,
-				"y": 516
+				"x": 912,
+				"y": 631
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1320,18 +7980,18 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/entities/enemies/normal/slinger/attack/f6": {
+		"gameplay_menu/entities/enemies/normal/slinger/attack/f5": {
 			"frame": {
 				"h": 25,
-				"w": 16,
-				"x": 330,
-				"y": 543
+				"w": 20,
+				"x": 650,
+				"y": 782
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
-				"w": 16,
-				"x": 23,
+				"w": 20,
+				"x": 19,
 				"y": 23
 			},
 			"sourceSize": {
@@ -1344,13 +8004,53 @@
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 384,
-				"y": 516
+				"x": 912,
+				"y": 631
 			},
 			"rotated": false,
 			"spriteSourceSize": {
 				"h": 25,
 				"w": 16,
+				"x": 23,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/attack/f9": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 650,
+				"y": 782
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 19,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/death/f0": {
+			"frame": {
+				"h": 25,
+				"w": 14,
+				"x": 972,
+				"y": 562
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 14,
 				"x": 23,
 				"y": 23
 			},
@@ -1364,8 +8064,8 @@
 			"frame": {
 				"h": 25,
 				"w": 16,
-				"x": 330,
-				"y": 516
+				"x": 952,
+				"y": 573
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1380,12 +8080,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/slinger/death/f2": {
+			"frame": {
+				"h": 24,
+				"w": 22,
+				"x": 734,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 22,
+				"x": 14,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/slinger/death/f3": {
 			"frame": {
 				"h": 14,
 				"w": 20,
-				"x": 164,
-				"y": 563
+				"x": 907,
+				"y": 722
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1400,12 +8120,452 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/entities/enemies/normal/slinger/death/f4": {
+			"frame": {
+				"h": 8,
+				"w": 24,
+				"x": 508,
+				"y": 826
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 8,
+				"w": 24,
+				"x": 11,
+				"y": 42
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/hit/f0": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 868,
+				"y": 739
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 27,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/hit/f1": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 836,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 27,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/hit/f2": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 928,
+				"y": 658
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 27,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/hit/f3": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 836,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 27,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/idle/f0": {
+			"frame": {
+				"h": 25,
+				"w": 12,
+				"x": 1004,
+				"y": 542
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 12,
+				"x": 25,
+				"y": 23
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/idle/f1": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 972,
+				"y": 613
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/idle/f2": {
+			"frame": {
+				"h": 23,
+				"w": 12,
+				"x": 842,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 12,
+				"x": 25,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/slinger/idle/f3": {
+			"frame": {
+				"h": 24,
+				"w": 12,
+				"x": 972,
+				"y": 613
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 12,
+				"x": 25,
+				"y": 24
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f0": {
+			"frame": {
+				"h": 29,
+				"w": 20,
+				"x": 634,
+				"y": 606
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 20,
+				"x": 23,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f1": {
+			"frame": {
+				"h": 29,
+				"w": 22,
+				"x": 326,
+				"y": 756
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 22,
+				"x": 21,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f2": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 268,
+				"y": 730
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f3": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 90,
+				"y": 761
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f4": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 568,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f5": {
+			"frame": {
+				"h": 29,
+				"w": 26,
+				"x": 298,
+				"y": 669
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 26,
+				"x": 17,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/attack/f6": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 0,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 15,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/death/f0": {
+			"frame": {
+				"h": 29,
+				"w": 16,
+				"x": 740,
+				"y": 781
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 16,
+				"x": 27,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/death/f1": {
+			"frame": {
+				"h": 29,
+				"w": 20,
+				"x": 478,
+				"y": 736
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 20,
+				"x": 23,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/death/f2": {
+			"frame": {
+				"h": 29,
+				"w": 24,
+				"x": 326,
+				"y": 699
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 24,
+				"x": 19,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/hit/f0": {
+			"frame": {
+				"h": 29,
+				"w": 16,
+				"x": 696,
+				"y": 806
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 16,
+				"x": 27,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/hit/f2": {
+			"frame": {
+				"h": 29,
+				"w": 16,
+				"x": 912,
+				"y": 573
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 16,
+				"x": 27,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/entities/enemies/normal/sorcerer/idle/f0": {
+			"frame": {
+				"h": 29,
+				"w": 16,
+				"x": 760,
+				"y": 752
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 16,
+				"x": 27,
+				"y": 19
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/entities/enemies/normal/sorcerer/idle/f1": {
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 72,
-				"y": 516
+				"x": 868,
+				"y": 627
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1424,7 +8584,7 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 54,
+				"x": 932,
 				"y": 516
 			},
 			"rotated": false,
@@ -1444,8 +8604,8 @@
 			"frame": {
 				"h": 29,
 				"w": 16,
-				"x": 72,
-				"y": 516
+				"x": 868,
+				"y": 627
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1480,18 +8640,38 @@
 			},
 			"trimmed": false
 		},
-		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/f4": {
+		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/f0": {
 			"frame": {
-				"h": 12,
-				"w": 20,
-				"x": 348,
-				"y": 565
+				"h": 16,
+				"w": 12,
+				"x": 983,
+				"y": 803
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 12,
-				"w": 20,
-				"x": 5,
+				"h": 16,
+				"w": 12,
+				"x": 9,
+				"y": 11
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/f1": {
+			"frame": {
+				"h": 26,
+				"w": 18,
+				"x": 890,
+				"y": 571
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 18,
+				"x": 4,
 				"y": 1
 			},
 			"sourceSize": {
@@ -1500,19 +8680,39 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/skills/animations/fire/f0": {
+		"gameplay_menu/interface/skills/animations/bleeding_magic_attack/f2": {
 			"frame": {
-				"h": 12,
-				"w": 10,
-				"x": 384,
-				"y": 565
+				"h": 24,
+				"w": 20,
+				"x": 890,
+				"y": 545
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 12,
-				"w": 10,
-				"x": 27,
-				"y": 26
+				"h": 24,
+				"w": 20,
+				"x": 5,
+				"y": 0
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/bomb/f0": {
+			"frame": {
+				"h": 9,
+				"w": 12,
+				"x": 846,
+				"y": 627
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 9,
+				"w": 12,
+				"x": 20,
+				"y": 23
 			},
 			"sourceSize": {
 				"h": 64,
@@ -1520,19 +8720,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/skills/animations/fire/f1": {
+		"gameplay_menu/interface/skills/animations/bomb/f11": {
 			"frame": {
-				"h": 17,
-				"w": 16,
-				"x": 720,
-				"y": 516
+				"h": 27,
+				"w": 32,
+				"x": 142,
+				"y": 547
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 17,
-				"w": 16,
-				"x": 24,
-				"y": 24
+				"h": 27,
+				"w": 32,
+				"x": 10,
+				"y": 13
 			},
 			"sourceSize": {
 				"h": 64,
@@ -1540,23 +8740,143 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/skills/animations/holy/light/f2": {
+		"gameplay_menu/interface/skills/animations/bomb/f12": {
 			"frame": {
-				"h": 13,
-				"w": 10,
-				"x": 980,
-				"y": 552
+				"h": 27,
+				"w": 32,
+				"x": 108,
+				"y": 547
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 13,
-				"w": 10,
-				"x": 2,
-				"y": 1
+				"h": 27,
+				"w": 32,
+				"x": 10,
+				"y": 13
 			},
 			"sourceSize": {
-				"h": 15,
-				"w": 14
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/bomb/f13": {
+			"frame": {
+				"h": 26,
+				"w": 30,
+				"x": 64,
+				"y": 700
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 30,
+				"x": 11,
+				"y": 13
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/bomb/f14": {
+			"frame": {
+				"h": 25,
+				"w": 28,
+				"x": 500,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 28,
+				"x": 12,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/bomb/f15": {
+			"frame": {
+				"h": 24,
+				"w": 28,
+				"x": 596,
+				"y": 547
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 28,
+				"x": 11,
+				"y": 14
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/fire/f2": {
+			"frame": {
+				"h": 25,
+				"w": 20,
+				"x": 758,
+				"y": 665
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 20,
+				"x": 22,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/fire/f3": {
+			"frame": {
+				"h": 31,
+				"w": 28,
+				"x": 62,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 31,
+				"w": 28,
+				"x": 18,
+				"y": 17
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/holy/heavy/f0": {
+			"frame": {
+				"h": 30,
+				"w": 22,
+				"x": 128,
+				"y": 800
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 22,
+				"x": 21,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
 			},
 			"trimmed": true
 		},
@@ -1564,8 +8884,8 @@
 			"frame": {
 				"h": 15,
 				"w": 12,
-				"x": 980,
-				"y": 535
+				"x": 1012,
+				"y": 787
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1584,8 +8904,8 @@
 			"frame": {
 				"h": 15,
 				"w": 12,
-				"x": 964,
-				"y": 551
+				"x": 999,
+				"y": 806
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1600,12 +8920,52 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/skills/animations/inspiring/f2": {
+			"frame": {
+				"h": 20,
+				"w": 12,
+				"x": 929,
+				"y": 801
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 20,
+				"w": 12,
+				"x": 0,
+				"y": 7
+			},
+			"sourceSize": {
+				"h": 27,
+				"w": 12
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/inspiring/f3": {
+			"frame": {
+				"h": 22,
+				"w": 12,
+				"x": 929,
+				"y": 705
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 22,
+				"w": 12,
+				"x": 0,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 27,
+				"w": 12
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/skills/animations/poison/f0": {
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 948,
-				"y": 551
+				"x": 983,
+				"y": 755
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1624,8 +8984,8 @@
 			"frame": {
 				"h": 17,
 				"w": 18,
-				"x": 674,
-				"y": 535
+				"x": 908,
+				"y": 685
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1640,12 +9000,872 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/skills/animations/poison/f3": {
+			"frame": {
+				"h": 23,
+				"w": 24,
+				"x": 686,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 24,
+				"x": 19,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/poison/f4": {
+			"frame": {
+				"h": 24,
+				"w": 26,
+				"x": 450,
+				"y": 702
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 26,
+				"x": 18,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/poison/f6": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 204,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 17,
+				"y": 18
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/slash/down/f2": {
+			"frame": {
+				"h": 28,
+				"w": 13,
+				"x": 92,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 13,
+				"x": 0,
+				"y": 25
+			},
+			"sourceSize": {
+				"h": 53,
+				"w": 49
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/slash/up/f1": {
+			"frame": {
+				"h": 27,
+				"w": 24,
+				"x": 158,
+				"y": 803
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 24,
+				"x": 5,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/slash/up/f2": {
+			"frame": {
+				"h": 29,
+				"w": 18,
+				"x": 534,
+				"y": 800
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 18,
+				"x": 13,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/animations/slash/up/f3": {
+			"frame": {
+				"h": 23,
+				"w": 10,
+				"x": 947,
+				"y": 783
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 23,
+				"w": 10,
+				"x": 21,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/bard/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 268,
+				"y": 611
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/bard/s2": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 92,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 2,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/bard/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 32,
+				"y": 670
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/battlemage/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 0,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/battlemage/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 0,
+				"y": 698
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/battlemage/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 122,
+				"y": 636
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/battlemage/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 0,
+				"y": 638
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/brawler/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 446,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/brawler/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 158,
+				"y": 662
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/brawler/s3": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 32,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 2,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/brawler/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 204,
+				"y": 670
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/crossbowman/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 158,
+				"y": 632
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/crossbowman/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 62,
+				"y": 638
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/crossbowman/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 386,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/crossbowman/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 416,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/longbowman/s1": {
+			"frame": {
+				"h": 28,
+				"w": 30,
+				"x": 62,
+				"y": 577
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 30,
+				"x": 0,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/longbowman/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 328,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/monk/s1": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 266,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 2,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/monk/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 298,
+				"y": 611
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/monk/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 268,
+				"y": 581
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/monk/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 32,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/paladin/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 92,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/paladin/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 328,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/paladin/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 234,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/paladin/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 358,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/scout/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 122,
+				"y": 666
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/scout/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 62,
+				"y": 668
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/scout/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 388,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/scout/s4": {
+			"frame": {
+				"h": 29,
+				"w": 28,
+				"x": 204,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 28,
+				"x": 2,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/wizard/s1": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 268,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/wizard/s2": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 234,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/wizard/s3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 418,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/skills/icons/wizard/s4": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 204,
+				"y": 640
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/bleeding/f4": {
+			"frame": {
+				"h": 29,
+				"w": 30,
+				"x": 172,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 30,
+				"x": 17,
+				"y": 12
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/buff/f0": {
+			"frame": {
+				"h": 8,
+				"w": 22,
+				"x": 774,
+				"y": 569
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 8,
+				"w": 22,
+				"x": 5,
+				"y": 15
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/buff/f3": {
+			"frame": {
+				"h": 10,
+				"w": 22,
+				"x": 530,
+				"y": 637
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 10,
+				"w": 22,
+				"x": 4,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/status_effects/animations/burning/f0": {
 			"frame": {
 				"h": 17,
 				"w": 11,
-				"x": 982,
-				"y": 516
+				"x": 999,
+				"y": 787
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1660,23 +9880,83 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/status_effects/animations/helping_hand/f0": {
+		"gameplay_menu/interface/status_effects/animations/burning/f1": {
 			"frame": {
-				"h": 13,
-				"w": 18,
-				"x": 896,
-				"y": 535
+				"h": 27,
+				"w": 11,
+				"x": 988,
+				"y": 586
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 13,
-				"w": 18,
-				"x": 8,
-				"y": 17
+				"h": 27,
+				"w": 11,
+				"x": 11,
+				"y": 4
 			},
 			"sourceSize": {
-				"h": 32,
-				"w": 32
+				"h": 31,
+				"w": 31
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/burning/f3": {
+			"frame": {
+				"h": 25,
+				"w": 11,
+				"x": 962,
+				"y": 647
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 11,
+				"x": 9,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 31,
+				"w": 31
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/burning/f4": {
+			"frame": {
+				"h": 21,
+				"w": 13,
+				"x": 988,
+				"y": 615
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 21,
+				"w": 13,
+				"x": 9,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 31,
+				"w": 31
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/burning/f5": {
+			"frame": {
+				"h": 8,
+				"w": 13,
+				"x": 1004,
+				"y": 637
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 8,
+				"w": 13,
+				"x": 10,
+				"y": 0
+			},
+			"sourceSize": {
+				"h": 31,
+				"w": 31
 			},
 			"trimmed": true
 		},
@@ -1684,8 +9964,8 @@
 			"frame": {
 				"h": 25,
 				"w": 14,
-				"x": 602,
-				"y": 516
+				"x": 778,
+				"y": 810
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1700,12 +9980,112 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/status_effects/animations/helping_hand/f2": {
+			"frame": {
+				"h": 22,
+				"w": 22,
+				"x": 650,
+				"y": 809
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 22,
+				"w": 22,
+				"x": 5,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/immune/f0": {
+			"frame": {
+				"h": 10,
+				"w": 10,
+				"x": 116,
+				"y": 780
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 10,
+				"w": 10,
+				"x": 11,
+				"y": 11
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/immune/f1": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 660,
+				"y": 610
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 4,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/immune/f2": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 594,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 3,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/immune/f3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 92,
+				"y": 638
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/status_effects/animations/immune/f4": {
 			"frame": {
 				"h": 22,
 				"w": 14,
-				"x": 639,
-				"y": 543
+				"x": 972,
+				"y": 589
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1720,12 +10100,32 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/status_effects/animations/invisibility/f0": {
+			"frame": {
+				"h": 11,
+				"w": 12,
+				"x": 822,
+				"y": 596
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 11,
+				"w": 12,
+				"x": 10,
+				"y": 15
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/status_effects/animations/invisibility/f1": {
 			"frame": {
 				"h": 16,
 				"w": 18,
-				"x": 679,
-				"y": 559
+				"x": 928,
+				"y": 685
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1740,12 +10140,52 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/status_effects/animations/invisibility/f4": {
+			"frame": {
+				"h": 25,
+				"w": 28,
+				"x": 158,
+				"y": 748
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 25,
+				"w": 28,
+				"x": 1,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/invisibility/f5": {
+			"frame": {
+				"h": 27,
+				"w": 30,
+				"x": 122,
+				"y": 607
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 30,
+				"x": 0,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/status_effects/animations/parry/f1": {
 			"frame": {
 				"h": 22,
 				"w": 14,
-				"x": 658,
-				"y": 535
+				"x": 988,
+				"y": 562
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1760,19 +10200,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/status_effects/animations/poison/f0": {
+		"gameplay_menu/interface/status_effects/animations/parry/f2": {
 			"frame": {
-				"h": 20,
-				"w": 20,
-				"x": 402,
-				"y": 516
+				"h": 26,
+				"w": 14,
+				"x": 188,
+				"y": 720
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 20,
-				"w": 20,
-				"x": 5,
-				"y": 5
+				"h": 26,
+				"w": 14,
+				"x": 9,
+				"y": 3
 			},
 			"sourceSize": {
 				"h": 32,
@@ -1780,19 +10220,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/status_effects/animations/poison/f5": {
+		"gameplay_menu/interface/status_effects/animations/parry/f3": {
 			"frame": {
-				"h": 21,
-				"w": 20,
-				"x": 248,
-				"y": 516
+				"h": 26,
+				"w": 14,
+				"x": 188,
+				"y": 720
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 21,
-				"w": 20,
-				"x": 4,
-				"y": 5
+				"h": 26,
+				"w": 14,
+				"x": 9,
+				"y": 3
 			},
 			"sourceSize": {
 				"h": 32,
@@ -1800,19 +10240,59 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/status_effects/animations/poison/f6": {
+		"gameplay_menu/interface/status_effects/animations/poison/f2": {
 			"frame": {
-				"h": 21,
-				"w": 20,
-				"x": 190,
-				"y": 543
+				"h": 24,
+				"w": 24,
+				"x": 724,
+				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 21,
-				"w": 20,
-				"x": 4,
-				"y": 5
+				"h": 24,
+				"w": 24,
+				"x": 3,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/poison/f3": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 502,
+				"y": 617
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/poison/f4": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 568,
+				"y": 547
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 2,
+				"y": 2
 			},
 			"sourceSize": {
 				"h": 32,
@@ -1824,8 +10304,8 @@
 			"frame": {
 				"h": 13,
 				"w": 13,
-				"x": 995,
-				"y": 516
+				"x": 983,
+				"y": 821
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1844,8 +10324,8 @@
 			"frame": {
 				"h": 19,
 				"w": 19,
-				"x": 544,
-				"y": 558
+				"x": 798,
+				"y": 782
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1860,12 +10340,92 @@
 			},
 			"trimmed": true
 		},
+		"gameplay_menu/interface/status_effects/animations/remove_condition/f0": {
+			"frame": {
+				"h": 10,
+				"w": 10,
+				"x": 929,
+				"y": 823
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 10,
+				"w": 10,
+				"x": 11,
+				"y": 11
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/remove_condition/f1": {
+			"frame": {
+				"h": 24,
+				"w": 24,
+				"x": 420,
+				"y": 776
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 24,
+				"w": 24,
+				"x": 4,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/remove_condition/f2": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 56,
+				"y": 786
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 3,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/status_effects/animations/remove_condition/f3": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 328,
+				"y": 609
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"gameplay_menu/interface/status_effects/animations/stun/f0": {
 			"frame": {
 				"h": 13,
 				"w": 20,
-				"x": 308,
-				"y": 564
+				"x": 868,
+				"y": 783
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1884,8 +10444,8 @@
 			"frame": {
 				"h": 15,
 				"w": 24,
-				"x": 576,
-				"y": 516
+				"x": 392,
+				"y": 820
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1904,8 +10464,8 @@
 			"frame": {
 				"h": 15,
 				"w": 19,
-				"x": 618,
-				"y": 562
+				"x": 868,
+				"y": 766
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1924,8 +10484,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 860,
-				"y": 535
+				"x": 890,
+				"y": 783
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1944,8 +10504,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 789,
-				"y": 559
+				"x": 929,
+				"y": 729
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1964,8 +10524,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 861,
-				"y": 559
+				"x": 962,
+				"y": 710
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -1984,8 +10544,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 878,
-				"y": 535
+				"x": 962,
+				"y": 692
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2004,8 +10564,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 788,
-				"y": 535
+				"x": 947,
+				"y": 747
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2024,8 +10584,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 843,
-				"y": 559
+				"x": 993,
+				"y": 647
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2044,8 +10604,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 792,
-				"y": 516
+				"x": 874,
+				"y": 803
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2064,8 +10624,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 824,
-				"y": 535
+				"x": 943,
+				"y": 705
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2084,8 +10644,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 879,
-				"y": 559
+				"x": 374,
+				"y": 818
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2104,8 +10664,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 810,
-				"y": 516
+				"x": 980,
+				"y": 710
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2124,8 +10684,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 806,
-				"y": 535
+				"x": 975,
+				"y": 647
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2144,8 +10704,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 900,
-				"y": 516
+				"x": 856,
+				"y": 803
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2164,8 +10724,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 771,
-				"y": 559
+				"x": 892,
+				"y": 803
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2184,8 +10744,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 966,
-				"y": 516
+				"x": 999,
+				"y": 771
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2204,8 +10764,28 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 964,
-				"y": 535
+				"x": 983,
+				"y": 787
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 14,
+				"w": 14,
+				"x": 1,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/target/f10": {
+			"frame": {
+				"h": 14,
+				"w": 14,
+				"x": 872,
+				"y": 821
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2224,8 +10804,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 932,
-				"y": 535
+				"x": 889,
+				"y": 766
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2244,8 +10824,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 916,
-				"y": 535
+				"x": 888,
+				"y": 821
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2260,19 +10840,19 @@
 			},
 			"trimmed": true
 		},
-		"gameplay_menu/interface/target/f13": {
+		"gameplay_menu/interface/target/f14": {
 			"frame": {
-				"h": 12,
-				"w": 12,
-				"x": 370,
-				"y": 565
+				"h": 10,
+				"w": 10,
+				"x": 1014,
+				"y": 736
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 12,
-				"w": 12,
-				"x": 2,
-				"y": 2
+				"h": 10,
+				"w": 10,
+				"x": 3,
+				"y": 3
 			},
 			"sourceSize": {
 				"h": 16,
@@ -2284,8 +10864,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 897,
-				"y": 559
+				"x": 963,
+				"y": 808
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2304,8 +10884,28 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 918,
-				"y": 516
+				"x": 999,
+				"y": 755
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 14,
+				"w": 14,
+				"x": 1,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"trimmed": true
+		},
+		"gameplay_menu/interface/target/f4": {
+			"frame": {
+				"h": 14,
+				"w": 14,
+				"x": 983,
+				"y": 771
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2324,8 +10924,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 932,
-				"y": 551
+				"x": 947,
+				"y": 808
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2344,8 +10944,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 934,
-				"y": 516
+				"x": 328,
+				"y": 820
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2364,8 +10964,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 934,
-				"y": 516
+				"x": 328,
+				"y": 820
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2384,8 +10984,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 948,
-				"y": 535
+				"x": 965,
+				"y": 790
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2404,8 +11004,8 @@
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 916,
-				"y": 551
+				"x": 998,
+				"y": 736
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2424,8 +11024,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 716,
-				"y": 535
+				"x": 998,
+				"y": 692
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2444,8 +11044,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 807,
-				"y": 559
+				"x": 947,
+				"y": 765
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2464,8 +11064,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 825,
-				"y": 559
+				"x": 929,
+				"y": 765
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2484,8 +11084,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 864,
-				"y": 516
+				"x": 965,
+				"y": 729
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2504,8 +11104,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 842,
-				"y": 535
+				"x": 998,
+				"y": 674
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2524,8 +11124,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 846,
-				"y": 516
+				"x": 980,
+				"y": 692
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2540,32 +11140,12 @@
 			},
 			"trimmed": false
 		},
-		"town_menu/interface/buttons/close": {
-			"frame": {
-				"h": 20,
-				"w": 20,
-				"x": 414,
-				"y": 543
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 20,
-				"w": 20,
-				"x": 0,
-				"y": 0
-			},
-			"sourceSize": {
-				"h": 20,
-				"w": 20
-			},
-			"trimmed": false
-		},
 		"town_menu/interface/buttons/close_pressed": {
 			"frame": {
 				"h": 19,
 				"w": 20,
-				"x": 454,
-				"y": 543
+				"x": 604,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2584,8 +11164,8 @@
 			"frame": {
 				"h": 20,
 				"w": 20,
-				"x": 424,
-				"y": 516
+				"x": 44,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2604,8 +11184,8 @@
 			"frame": {
 				"h": 19,
 				"w": 20,
-				"x": 486,
-				"y": 516
+				"x": 348,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2624,8 +11204,8 @@
 			"frame": {
 				"h": 20,
 				"w": 20,
-				"x": 348,
-				"y": 543
+				"x": 0,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2644,8 +11224,8 @@
 			"frame": {
 				"h": 19,
 				"w": 20,
-				"x": 530,
-				"y": 516
+				"x": 450,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2664,8 +11244,8 @@
 			"frame": {
 				"h": 20,
 				"w": 20,
-				"x": 392,
-				"y": 543
+				"x": 22,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2684,8 +11264,8 @@
 			"frame": {
 				"h": 19,
 				"w": 20,
-				"x": 498,
-				"y": 543
+				"x": 820,
+				"y": 755
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2704,8 +11284,8 @@
 			"frame": {
 				"h": 20,
 				"w": 20,
-				"x": 370,
-				"y": 543
+				"x": 268,
+				"y": 815
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2724,8 +11304,8 @@
 			"frame": {
 				"h": 19,
 				"w": 20,
-				"x": 476,
-				"y": 543
+				"x": 558,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2744,8 +11324,8 @@
 			"frame": {
 				"h": 20,
 				"w": 20,
-				"x": 446,
-				"y": 516
+				"x": 66,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2760,23 +11340,103 @@
 			},
 			"trimmed": false
 		},
-		"town_menu/interface/buttons/sound_on_pressed": {
+		"town_menu/interface/icons/equipment/armor/bard": {
 			"frame": {
-				"h": 19,
-				"w": 20,
-				"x": 508,
+				"h": 29,
+				"w": 30,
+				"x": 140,
 				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
-				"h": 19,
-				"w": 20,
-				"x": 0,
+				"h": 29,
+				"w": 30,
+				"x": 2,
 				"y": 1
 			},
 			"sourceSize": {
-				"h": 20,
-				"w": 20
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/armor/battlemage": {
+			"frame": {
+				"h": 26,
+				"w": 24,
+				"x": 268,
+				"y": 787
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 24,
+				"x": 4,
+				"y": 4
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/armor/brawler": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 388,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/armor/crossbowman": {
+			"frame": {
+				"h": 22,
+				"w": 22,
+				"x": 204,
+				"y": 813
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 22,
+				"w": 22,
+				"x": 4,
+				"y": 6
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/armor/longbowman": {
+			"frame": {
+				"h": 29,
+				"w": 26,
+				"x": 450,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 26,
+				"x": 6,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
 			},
 			"trimmed": true
 		},
@@ -2784,8 +11444,8 @@
 			"frame": {
 				"h": 27,
 				"w": 16,
-				"x": 126,
-				"y": 543
+				"x": 968,
+				"y": 516
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2800,12 +11460,112 @@
 			},
 			"trimmed": true
 		},
+		"town_menu/interface/icons/equipment/armor/paladin": {
+			"frame": {
+				"h": 29,
+				"w": 30,
+				"x": 0,
+				"y": 544
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 30,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/armor/scout": {
+			"frame": {
+				"h": 29,
+				"w": 30,
+				"x": 108,
+				"y": 516
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 29,
+				"w": 30,
+				"x": 2,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/weapon/bard": {
+			"frame": {
+				"h": 27,
+				"w": 20,
+				"x": 636,
+				"y": 695
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 27,
+				"w": 20,
+				"x": 8,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/weapon/crossbowman": {
+			"frame": {
+				"h": 28,
+				"w": 28,
+				"x": 358,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 28,
+				"x": 1,
+				"y": 3
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/equipment/weapon/paladin": {
+			"frame": {
+				"h": 28,
+				"w": 30,
+				"x": 204,
+				"y": 549
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 30,
+				"x": 2,
+				"y": 2
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
 		"town_menu/interface/icons/equipment/weapon/scout": {
 			"frame": {
 				"h": 17,
 				"w": 18,
-				"x": 679,
-				"y": 516
+				"x": 948,
+				"y": 628
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2820,12 +11580,52 @@
 			},
 			"trimmed": true
 		},
+		"town_menu/interface/icons/equipment/weapon/wizard": {
+			"frame": {
+				"h": 30,
+				"w": 24,
+				"x": 392,
+				"y": 641
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 30,
+				"w": 24,
+				"x": 5,
+				"y": 1
+			},
+			"sourceSize": {
+				"h": 32,
+				"w": 32
+			},
+			"trimmed": true
+		},
+		"town_menu/interface/icons/flag": {
+			"frame": {
+				"h": 28,
+				"w": 20,
+				"x": 558,
+				"y": 724
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 20,
+				"x": 0,
+				"y": 0
+			},
+			"sourceSize": {
+				"h": 28,
+				"w": 20
+			},
+			"trimmed": false
+		},
 		"town_menu/interface/icons/gold/stack": {
 			"frame": {
 				"h": 14,
 				"w": 14,
-				"x": 950,
-				"y": 516
+				"x": 856,
+				"y": 821
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2844,8 +11644,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 717,
-				"y": 559
+				"x": 910,
+				"y": 814
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2864,8 +11664,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 752,
-				"y": 535
+				"x": 980,
+				"y": 674
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2884,8 +11684,8 @@
 			"frame": {
 				"h": 16,
 				"w": 16,
-				"x": 756,
-				"y": 516
+				"x": 910,
+				"y": 778
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2900,12 +11700,52 @@
 			},
 			"trimmed": false
 		},
+		"town_menu/interface/slots/dice": {
+			"frame": {
+				"h": 26,
+				"w": 26,
+				"x": 204,
+				"y": 758
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 26,
+				"w": 26,
+				"x": 0,
+				"y": 0
+			},
+			"sourceSize": {
+				"h": 26,
+				"w": 26
+			},
+			"trimmed": false
+		},
+		"town_menu/tutorial/merlin": {
+			"frame": {
+				"h": 28,
+				"w": 18,
+				"x": 800,
+				"y": 579
+			},
+			"rotated": false,
+			"spriteSourceSize": {
+				"h": 28,
+				"w": 18,
+				"x": 24,
+				"y": 20
+			},
+			"sourceSize": {
+				"h": 64,
+				"w": 64
+			},
+			"trimmed": true
+		},
 		"world_menu/buttons/easy_locked": {
 			"frame": {
 				"h": 13,
 				"w": 28,
-				"x": 248,
-				"y": 564
+				"x": 90,
+				"y": 818
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2924,8 +11764,8 @@
 			"frame": {
 				"h": 13,
 				"w": 28,
-				"x": 484,
-				"y": 564
+				"x": 972,
+				"y": 547
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2944,28 +11784,8 @@
 			"frame": {
 				"h": 13,
 				"w": 28,
-				"x": 544,
-				"y": 543
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 13,
-				"w": 28,
-				"x": 0,
-				"y": 0
-			},
-			"sourceSize": {
-				"h": 13,
-				"w": 28
-			},
-			"trimmed": false
-		},
-		"world_menu/buttons/hard_locked": {
-			"frame": {
-				"h": 13,
-				"w": 28,
-				"x": 454,
-				"y": 564
+				"x": 298,
+				"y": 820
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -2984,8 +11804,8 @@
 			"frame": {
 				"h": 13,
 				"w": 28,
-				"x": 514,
-				"y": 564
+				"x": 478,
+				"y": 822
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -3000,12 +11820,12 @@
 			},
 			"trimmed": false
 		},
-		"world_menu/buttons/medium_pressed": {
+		"world_menu/buttons/medium_locked": {
 			"frame": {
 				"h": 13,
 				"w": 28,
-				"x": 278,
-				"y": 564
+				"x": 234,
+				"y": 822
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -3024,8 +11844,8 @@
 			"frame": {
 				"h": 17,
 				"w": 19,
-				"x": 618,
-				"y": 543
+				"x": 886,
+				"y": 705
 			},
 			"rotated": false,
 			"spriteSourceSize": {
@@ -3044,48 +11864,8 @@
 			"frame": {
 				"h": 16,
 				"w": 19,
-				"x": 658,
-				"y": 559
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 16,
-				"w": 19,
-				"x": 0,
-				"y": 1
-			},
-			"sourceSize": {
-				"h": 17,
-				"w": 19
-			},
-			"trimmed": true
-		},
-		"world_menu/marker_unlocked": {
-			"frame": {
-				"h": 17,
-				"w": 19,
-				"x": 658,
-				"y": 516
-			},
-			"rotated": false,
-			"spriteSourceSize": {
-				"h": 17,
-				"w": 19,
-				"x": 0,
-				"y": 0
-			},
-			"sourceSize": {
-				"h": 17,
-				"w": 19
-			},
-			"trimmed": false
-		},
-		"world_menu/marker_unlocked_pressed": {
-			"frame": {
-				"h": 16,
-				"w": 19,
-				"x": 699,
-				"y": 516
+				"x": 886,
+				"y": 724
 			},
 			"rotated": false,
 			"spriteSourceSize": {

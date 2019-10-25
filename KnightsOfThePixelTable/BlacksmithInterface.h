@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BlacksmithInterface : GuiPanel {
     Rooster *rooster;
     
+    Image *backImage;
+    
     RadioButtonGroup *equipmentBtnGroup;
     RadioButtonGroup *statsBtnGroup;
     

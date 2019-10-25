@@ -17,8 +17,12 @@
     if (self != nil) {
         // init scroll background
         scrollMap = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_SCROLL atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_CASTLE_SCROLL]];
-        scrollMap.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        scrollMap.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:scrollMap];
+        
+        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE_BARRACKS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
+        backImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:backImage];
         
         // init flags
         NSString *flagPosKey = POSITION_INTERFACE_CASTLE_SCROLL_FLAGS;
@@ -32,6 +36,7 @@
             else
                 [flags[i] setColor:[Color red]];
             
+            flags[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
             [items addObject:flags[i]];
         }
         

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
     float showDepth, hideDepth;
     Color *showColor, *hideColor;
     
+    Image *backImage;
+    
     Rooster *rooster;
     
     SkillsPanel *skillPanel;

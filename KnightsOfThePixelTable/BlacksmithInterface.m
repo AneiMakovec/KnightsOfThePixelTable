@@ -29,6 +29,11 @@
         rooster = [theRooster retain];
         [items addObject:rooster];
         
+        // init back image
+        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE_BARRACKS atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
+        backImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:backImage];
+        
         // create radio button group
         equipmentBtnGroup = [[RadioButtonGroup alloc] init];
         statsBtnGroup = [[RadioButtonGroup alloc] init];
@@ -61,11 +66,11 @@
         for (int i = 0; i < KnightTypes; i++) {
             weapon[i] = [GraphicsComponent getImageWithKey:weaponKeys[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_WEAPON_ICON]];
             [weapon[i] setScaleUniform:2.0f];
-            weapon[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            weapon[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
             
             armor[i] = [GraphicsComponent getImageWithKey:armorKeys[i] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BLACKSMITH_ARMOR_ICON]];
             [armor[i] setScaleUniform:2.0f];
-            armor[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
+            armor[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
         }
         
         

@@ -92,7 +92,10 @@
     
     // set selected entry to first entry
     selectedEntry = (RoosterEntry *) firstItem;
-    [selectedEntry setSelectedColor];
+    
+    if (selectedEntry)
+        [selectedEntry setSelectedColor];
+    
     selectionChanged = YES;
     dontReset = YES;
 }
@@ -111,7 +114,9 @@
         for (RoosterEntry *entry in items) {
             if ([entry wasSelected]) {
                 if (selectedEntry == nil || ![selectedEntry.data.keyID isEqualToString:entry.data.keyID]) {
-                    [selectedEntry setNormalColor];
+                    if (selectedEntry)
+                        [selectedEntry setNormalColor];
+                    
                     selectedEntry = entry;
                     [selectedEntry setSelectedColor];
                     selectionChanged = YES;
@@ -122,6 +127,44 @@
     }
     
     [super updateWithInverseView:inverseView];
+}
+
+- (void) setSelectedEntry:(NSString *)knightID {
+    for (RoosterEntry *entry in items) {
+        if ([entry.data.keyID isEqualToString:knightID]) {
+            if (selectedEntry)
+                [selectedEntry setNormalColor];
+            
+            selectedEntry = entry;
+            [selectedEntry setSelectedColor];
+        }
+    }
+
+    for (RoosterEntry *entry in invisibleItems) {
+        if ([entry.data.keyID isEqualToString:knightID]) {
+            if (selectedEntry)
+                [selectedEntry setNormalColor];
+                
+            selectedEntry = entry;
+            [selectedEntry setSelectedColor];
+        }
+    }
+}
+
+- (void) deselect {
+    if (selectedEntry) {
+        [selectedEntry setNormalColor];
+        selectedEntry = nil;
+    }
+}
+
+- (void) reselect {
+    if (!selectedEntry) {
+        selectedEntry = (RoosterEntry *) firstItem;
+        
+        if (selectedEntry)
+            [selectedEntry setSelectedColor];
+    }
 }
 
 @end

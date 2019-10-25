@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
     Image *scrollMap;
     Image *flags[LevelTypes];
     
+    Image *backImage;
+    
     DoubleImageLabelButton *upgradeDices;
     
     Label *diceNumLabel, *diceNum;

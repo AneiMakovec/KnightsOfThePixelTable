@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
     float showDepth, hideDepth;
     Color *showColor, *hideColor;
     
+    Image *backImage;
+    
 //    RadioButtonGroup *tabs;
 //    ImageLabelRadioButton *tabStats, *tabEquipment, *tabSkills;
     

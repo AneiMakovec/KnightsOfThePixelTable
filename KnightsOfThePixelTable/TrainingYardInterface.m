@@ -33,6 +33,11 @@
         trainRooster = [theTrainRooster retain];
         [items addObject:trainRooster];
         
+        // init back image
+        backImage = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_BACK_IMAGE_TRAINING_YARD atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_BACK_IMAGE]];
+        backImage.layerDepth = depth + INTERFACE_LAYER_DEPTH_GROUNDBACK;
+        [items addObject:backImage];
+        
         // init tabs
 //        tabs = [[RadioButtonGroup alloc] init];
 //

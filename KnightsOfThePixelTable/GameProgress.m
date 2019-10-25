@@ -100,6 +100,18 @@ GameProgress *gameProgressInstance;
     [gameProgressInstance upgradeNumOfDices];
 }
 
++ (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position {
+    [gameProgressInstance setKnight:knight onCombatPosition:position];
+}
+
++ (KnightData *) getKnightOnCombatPosition:(CombatPosition)position {
+    return [gameProgressInstance getKnightOnCombatPosition:position];
+}
+
++ (void) removeKnightOnCombatPosition:(CombatPosition)position {
+    [gameProgressInstance removeKnightOnCombatPosition:position];
+}
+
 
 
 
@@ -156,6 +168,7 @@ GameProgress *gameProgressInstance;
     levelUnlocked[LevelTypeFarmlands] = YES;
     
     knights = [[NSMutableArray alloc] init];
+    trainKnights = [[NSMutableArray alloc] init];
     
     week = 1;
     gold = 1000000;
@@ -206,6 +219,23 @@ GameProgress *gameProgressInstance;
     return diceLvl == [Constants getMaxDiceLvl] - 1;
 }
 
+- (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position {
+    battleKnights[position] = [knight retain];
+}
+
+- (KnightData *) getKnightOnCombatPosition:(CombatPosition)position {
+    return battleKnights[position];
+}
+
+- (void) removeKnightOnCombatPosition:(CombatPosition)position {
+    [battleKnights[position] release];
+    battleKnights[position] = nil;
+}
+
+
+
+
+
 
 
 
@@ -238,19 +268,6 @@ GameProgress *gameProgressInstance;
 }
 
 
-- (void) setBattleKnight:(KnightData *)knight onPosition:(CombatPosition)position {
-    battleKnights[position] = knight;
-}
-
-- (void) removeKnightOnPosition:(CombatPosition)position {
-    battleKnights[position] = nil;
-}
-
-- (void) removeAllBattleKnights {
-    for (int i = 0; i < CombatPositions; i++) {
-        battleKnights[i] = nil;
-    }
-}
 
 
 
