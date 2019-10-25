@@ -918,3 +918,4 @@ typedef enum {
 #define VALUE_MAX_LVL_DICE @"max_dice_lvl"
 #define VALUE_STARTING_GOLD @"starting_gold"
 #define VALUE_XP_FOR_LVL @"xp_for_lvl"
+#define VALUE_COMBO_FOR_UNIT_TYPE @"combo_for_unit_type"

@@ -23,9 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
     Image *skills[KnightTypes][SkillTypes];
     KnightType currentType;
     
-    Image *firstSkillCombo[2];
-    Image *secondSkillCombo[3];
-    Image *thirdSkillCombo[4];
+    Image *firstSkillCombo[2][StatTypes];
+    Image *secondSkillCombo[3][StatTypes];
+    Image *thirdSkillCombo[4][StatTypes];
     
     DoubleImageLabelButton *upgradeButtons[SkillTypes];
     

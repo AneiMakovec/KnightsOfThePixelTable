@@ -47,11 +47,31 @@
         }
         
         // init labels
-        NSString *comboPosKey = POSITION_INTERFACE_SKILL_COMBO_LABELS;
+        NSString *comboLabelPosKey = POSITION_INTERFACE_SKILL_COMBO_LABELS;
         for (int i = 0; i < SkillTypes; i++) {
-            comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            comboLabels[i] = [GraphicsComponent getLabelWithText:[Constants getTextForKey:TEXT_INTERFACE_SKILL_COMBO_LABEL] atPosition:[Constants getPositionDataForKey:[comboLabelPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             comboLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             [items addObject:comboLabels[i]];
+        }
+        
+        // init combo images
+        NSString *diceKeys[StatTypes] = {GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_STRENGTH, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_ACCURACY, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_CUNNING, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_DEFENSE, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_AGILITY, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_STURDINESS};
+        NSString *comboPosKey = POSITION_INTERFACE_COMBOS;
+        for (int i = 0; i < SkillTypes; i++) {
+            for (int j = 0; j < StatTypes; j++) {
+                if (i < 2){
+                    firstSkillCombo[i][j] = [GraphicsComponent getImageWithKey:diceKeys[j] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"1_%d", i]]]];
+                    firstSkillCombo[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                }
+                
+                if (i < 3){
+                    secondSkillCombo[i][j] = [GraphicsComponent getImageWithKey:diceKeys[j] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"2_%d", i]]]];
+                    secondSkillCombo[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+                }
+                
+                thirdSkillCombo[i][j] = [GraphicsComponent getImageWithKey:diceKeys[j] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"3_%d", i]]]];
+                thirdSkillCombo[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            }
         }
         
         
@@ -63,7 +83,21 @@
                 [items addObject:skills[currentType][i]];
             }
             
-            // TODO: display combo slots
+            // display combo slots
+            NSArray *skillCombos = [Constants getComboForUnit:data.type forSkill:FirstComboSkill];
+            [items addObject:firstSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+            [items addObject:firstSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+            
+            skillCombos = [Constants getComboForUnit:data.type forSkill:SecondComboSkill];
+            [items addObject:secondSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+            [items addObject:secondSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+            [items addObject:secondSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+            
+            skillCombos = [Constants getComboForUnit:data.type forSkill:ThirdComboSkill];
+            [items addObject:thirdSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+            [items addObject:thirdSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+            [items addObject:thirdSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+            [items addObject:thirdSkillCombo[3][[[skillCombos objectAtIndex:3] intValue]]];
             
             // init upgrade buttons
             if (displayUpgradeButtons) {
@@ -141,6 +175,9 @@
             }
             lvlLabels[i].text = [NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]];
         }
+        
+        [self removeCurrentCombos];
+        [self displayCombosForUnit:data.type];
             
         currentType = data.type;
     } else {
@@ -152,6 +189,8 @@
 
             lvlLabels[i].text = @"Lvl: ";
         }
+        
+        [self removeCurrentCombos];
     }
 }
 
@@ -176,6 +215,16 @@
                 [self removeItemFromScene:upgradeButtons[i]];
             else
                 [self addItemToScene:upgradeButtons[i]];
+        }
+        
+        for (int j = 0; j < StatTypes; j++) {
+            if (i < 2)
+                [self updateDepth:depth toItem:firstSkillCombo[i][j]];
+            
+            if (i < 3)
+                [self updateDepth:depth toItem:secondSkillCombo[i][j]];
+            
+            [self updateDepth:depth toItem:thirdSkillCombo[i][j]];
         }
     }
     
@@ -235,6 +284,40 @@
     for (int i = 0; i < SkillTypes; i++) {
         upgradeButtons[i].enabled = enabled;
     }
+}
+
+- (void) displayCombosForUnit:(KnightType)type {
+    NSArray *skillCombos = [Constants getComboForUnit:type forSkill:FirstComboSkill];
+    [self addItemToScene:firstSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self addItemToScene:firstSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    
+    skillCombos = [Constants getComboForUnit:type forSkill:SecondComboSkill];
+    [self addItemToScene:secondSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self addItemToScene:secondSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    [self addItemToScene:secondSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+    
+    skillCombos = [Constants getComboForUnit:type forSkill:ThirdComboSkill];
+    [self addItemToScene:thirdSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self addItemToScene:thirdSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    [self addItemToScene:thirdSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+    [self addItemToScene:thirdSkillCombo[3][[[skillCombos objectAtIndex:3] intValue]]];
+}
+
+- (void) removeCurrentCombos {
+    NSArray *skillCombos = [Constants getComboForUnit:currentType forSkill:FirstComboSkill];
+    [self removeItemFromScene:firstSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self removeItemFromScene:firstSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    
+    skillCombos = [Constants getComboForUnit:currentType forSkill:SecondComboSkill];
+    [self removeItemFromScene:secondSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self removeItemFromScene:secondSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    [self removeItemFromScene:secondSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+    
+    skillCombos = [Constants getComboForUnit:currentType forSkill:ThirdComboSkill];
+    [self removeItemFromScene:thirdSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+    [self removeItemFromScene:thirdSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+    [self removeItemFromScene:thirdSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+    [self removeItemFromScene:thirdSkillCombo[3][[[skillCombos objectAtIndex:3] intValue]]];
 }
 
 

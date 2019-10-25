@@ -1030,7 +1030,7 @@
     DEALLOC
 */
 - (void) dealloc {
-    [camera  release];
+    [camera release];
     
     [super dealloc];
 }

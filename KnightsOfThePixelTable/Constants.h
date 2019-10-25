@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getMaxDiceLvl;
 + (int) getXpForLvl:(Lvl)lvl;
 + (int) getNumOfDicesForLvl:(Lvl)lvl;
++ (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill;
 
 + (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;
@@ -221,8 +222,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 // characters stats
 + (int) getMaxKnightLvl;
-+ (int) getMaxEquipmentLvl;
-+ (int) getMaxSkillLvl;
 
 
 @end

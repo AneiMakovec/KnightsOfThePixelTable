@@ -94,6 +94,10 @@ Constants *constantsInstance;
     return [constantsInstance getNumOfDicesForLvl:lvl];
 }
 
++ (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill {
+    return [constantsInstance getComboForUnit:type forSkill:skill];
+}
+
 
 
 
@@ -196,7 +200,11 @@ Constants *constantsInstance;
 }
 
 - (int) getNumOfDicesForLvl:(Lvl)lvl {
-    return [[[data_value objectForKey:@"num_of_dices"] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+    return [[[data_value objectForKey:VALUE_DICE_NUM] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
+}
+
+- (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill {
+    return [[data_value objectForKey:VALUE_COMBO_FOR_UNIT_TYPE] objectForKey:[NSString stringWithFormat:@"%d_%d", type, skill]];
 }
 
 - (Rectangle *) getInterfaceScrollRect {
