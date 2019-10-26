@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getXpForLvl:(Lvl)lvl;
 + (int) getNumOfDicesForLvl:(Lvl)lvl;
 + (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill;
++ (NSArray *) getBaseStatsForUnit:(KnightType)type;
++ (int) getBaseHpForUnit:(KnightType)type;
 
 + (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;

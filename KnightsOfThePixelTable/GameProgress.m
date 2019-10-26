@@ -112,6 +112,10 @@ GameProgress *gameProgressInstance;
     [gameProgressInstance removeKnightOnCombatPosition:position];
 }
 
++ (int) getNumOfBattleKnights {
+    return [gameProgressInstance getNumOfBattleKnights];
+}
+
 
 
 
@@ -221,6 +225,13 @@ GameProgress *gameProgressInstance;
 
 - (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position {
     battleKnights[position] = [knight retain];
+    
+    NSLog(@"BATTLE KNIGHTS:");
+    for (int i = 0; i < CombatPositions; i++) {
+        if (battleKnights[i]) {
+            NSLog([battleKnights[i].keyID stringByAppendingString:[NSString stringWithFormat:@" at position: %d", i]]);
+        }
+    }
 }
 
 - (KnightData *) getKnightOnCombatPosition:(CombatPosition)position {
@@ -230,6 +241,17 @@ GameProgress *gameProgressInstance;
 - (void) removeKnightOnCombatPosition:(CombatPosition)position {
     [battleKnights[position] release];
     battleKnights[position] = nil;
+}
+
+- (int) getNumOfBattleKnights {
+    int count = 0;
+    for (int i = 0; i < CombatPositions; i++) {
+        if (battleKnights[i]) {
+            count++;
+        }
+    }
+    
+    return count;
 }
 
 

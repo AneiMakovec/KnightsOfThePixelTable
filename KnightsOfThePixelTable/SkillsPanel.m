@@ -77,51 +77,51 @@
         
         
         
-        if (data) {
-            currentType = data.type;
-            for (int i = 0; i < SkillTypes; i++) {
-                [items addObject:skills[currentType][i]];
-            }
-            
-            // display combo slots
-            NSArray *skillCombos = [Constants getComboForUnit:data.type forSkill:FirstComboSkill];
-            [items addObject:firstSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
-            [items addObject:firstSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
-            
-            skillCombos = [Constants getComboForUnit:data.type forSkill:SecondComboSkill];
-            [items addObject:secondSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
-            [items addObject:secondSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
-            [items addObject:secondSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
-            
-            skillCombos = [Constants getComboForUnit:data.type forSkill:ThirdComboSkill];
-            [items addObject:thirdSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
-            [items addObject:thirdSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
-            [items addObject:thirdSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
-            [items addObject:thirdSkillCombo[3][[[skillCombos objectAtIndex:3] intValue]]];
-            
-            // init upgrade buttons
-            if (displayUpgradeButtons) {
-                // init upgrade buttons
-                NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
-                for (int i = 0; i < SkillTypes; i++) {
-                    upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfSkillLvl:[data getLevelOfSkill:i]]]];
-                    upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-                    upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                    upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
-                    [items addObject:upgradeButtons[i]];
-                }
-            }
-            
-            // init labels
-            NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
-            for (int i = 0; i < SkillTypes; i++) {
-                lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-                lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
-                lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
-                lvlLabels[i].verticalAlign = VerticalAlignMiddle;
-                [items addObject:lvlLabels[i]];
-            }
-        } else {
+//        if (data) {
+//            currentType = data.type;
+//            for (int i = 0; i < SkillTypes; i++) {
+//                [items addObject:skills[currentType][i]];
+//            }
+//
+//            // display combo slots
+//            NSArray *skillCombos = [Constants getComboForUnit:data.type forSkill:FirstComboSkill];
+//            [items addObject:firstSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+//            [items addObject:firstSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+//
+//            skillCombos = [Constants getComboForUnit:data.type forSkill:SecondComboSkill];
+//            [items addObject:secondSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+//            [items addObject:secondSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+//            [items addObject:secondSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+//
+//            skillCombos = [Constants getComboForUnit:data.type forSkill:ThirdComboSkill];
+//            [items addObject:thirdSkillCombo[0][[[skillCombos objectAtIndex:0] intValue]]];
+//            [items addObject:thirdSkillCombo[1][[[skillCombos objectAtIndex:1] intValue]]];
+//            [items addObject:thirdSkillCombo[2][[[skillCombos objectAtIndex:2] intValue]]];
+//            [items addObject:thirdSkillCombo[3][[[skillCombos objectAtIndex:3] intValue]]];
+//
+//            // init upgrade buttons
+//            if (displayUpgradeButtons) {
+//                // init upgrade buttons
+//                NSString *buttonPosKey = POSITION_INTERFACE_SKILL_UPGRADE_BUTTONS;
+//                for (int i = 0; i < SkillTypes; i++) {
+//                    upgradeButtons[i] = [GraphicsComponent getDoubleImageLabelButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_SKILL atPosition:[Constants getPositionDataForKey:[buttonPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] text:[NSString stringWithFormat:@"%d", [Constants getUpgradeCostOfSkillLvl:[data getLevelOfSkill:i]]]];
+//                    upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+//                    upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//                    upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
+//                    [items addObject:upgradeButtons[i]];
+//                }
+//            }
+//
+//            // init labels
+//            NSString *lvlPosKey = POSITION_INTERFACE_SKILL_LVLS;
+//            for (int i = 0; i < SkillTypes; i++) {
+//                lvlLabels[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]] atPosition:[Constants getPositionDataForKey:[lvlPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+//                lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+//                lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
+//                lvlLabels[i].verticalAlign = VerticalAlignMiddle;
+//                [items addObject:lvlLabels[i]];
+//            }
+//        } else {
             // init upgrade buttons
             if (displayUpgradeButtons) {
                 // init upgrade buttons
@@ -131,6 +131,7 @@
                     upgradeButtons[i].notPressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
                     upgradeButtons[i].pressedImage.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
                     upgradeButtons[i].label.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDFRONT;
+                    [upgradeButtons[i].label setScaleUniform:FONT_SCALE_MEDIUM];
                     upgradeButtons[i].enabled = NO;
                     [items addObject:upgradeButtons[i]];
                 }
@@ -143,9 +144,10 @@
                 lvlLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
                 lvlLabels[i].horizontalAlign = HorizontalAlignCenter;
                 lvlLabels[i].verticalAlign = VerticalAlignMiddle;
+                [lvlLabels[i] setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
                 [items addObject:lvlLabels[i]];
             }
-        }
+//        }
     }
     return self;
 }

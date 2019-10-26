@@ -40,9 +40,11 @@
         // init tab buttons
         MetaData *data = [Constants getMetaDataForKey:META_INTERFACE_TAB];
         statButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_STATS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_STATS] width:data.width height:data.height];
+        [statButton.label setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
         [items addObject:statButton];
         
         skillButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_SKILLS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_SKILLS] width:data.width height:data.height];
+        [skillButton.label setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
         [items addObject:skillButton];
         
         // init unit name
@@ -55,7 +57,8 @@
         unitName.verticalAlign = VerticalAlignTop;
         unitName.horizontalAlign = HorizontalAlignCenter;
         unitName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitName setScaleUniform:FONT_SCALE_MEDIUM];
+        unitName.color = [Color darkGray];
+        [unitName setScaleUniform:FONT_SCALE_BIG];
         [items addObject:unitName];
         
         NSString *classTextKey = TEXT_UNIT_CLASSES;
@@ -63,14 +66,20 @@
             unitClassNames[i] = [Constants getTextForKey:[classTextKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
         }
         
-        if ([rooster getFirstData])
+        classColors[DamageTypePhysical] = [[Color indianRed] retain];
+        classColors[DamageTypeRanged] = [[Color green] retain];
+        classColors[DamageTypeMagic] = [[Color blue] retain];
+        
+        if ([rooster getFirstData]) {
             unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[rooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
-        else
+            unitClassName.color = classColors[[rooster getFirstData].damageType];
+        } else {
             unitClassName = [GraphicsComponent getLabelWithText:@"" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
+        }
         unitClassName.verticalAlign = VerticalAlignTop;
         unitClassName.horizontalAlign = HorizontalAlignCenter;
         unitClassName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [unitClassName setScaleUniform:FONT_SCALE_SMALL];
+        [unitClassName setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:unitClassName];
         
         
@@ -98,6 +107,7 @@
         if ([rooster getSelectedData] != nil) {
             unitName.text = [rooster getSelectedData].name;
             unitClassName.text = unitClassNames[[rooster getSelectedData].type];
+            unitClassName.color = classColors[[rooster getSelectedData].damageType];
         } else {
             unitName.text = @"";
             unitClassName.text = @"";
@@ -143,6 +153,7 @@
         [skillPanel updateToKnightData:data];
         unitName.text = data.name;
         unitClassName.text = unitClassNames[data.type];
+        unitClassName.color = classColors[data.damageType];
     }
 }
 

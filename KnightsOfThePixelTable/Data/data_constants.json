@@ -580,6 +580,10 @@
 			"x": 305,
 			"y": 225
 		},
+		"warning": {
+			"x": 780,
+			"y": 60
+		},
 		"building_castle": {
 			"x": 0,
 			"y": 0
@@ -842,6 +846,50 @@
 			"8_2": [0, 1, 5],
 			"8_3": [3, 3, 5, 5]
 		},
+		"base_stats_allies": {
+			"0": [100, 68, 95, 75, 50, 45],
+			"1": [70, 65, 56, 94, 45, 80],
+			"2": [52, 90, 80, 57, 70, 72],
+			"3": [82, 93, 98, 45, 76, 41],
+			"4": [68, 82, 42, 74, 54, 92],
+			"5": [70, 78, 84, 44, 94, 50],
+			"6": [76, 68, 100, 55, 83, 52],
+			"7": [68, 92, 54, 84, 44, 73],
+			"8": [56, 82, 51, 70, 78, 88]
+		},
+		"base_hp_allies": {
+			"0": 67,
+			"1": 90,
+			"2": 79,
+			"3": 65,
+			"4": 88,
+			"5": 80,
+			"6": 66,
+			"7": 85,
+			"8": 75
+		},
+		"base_stats_enemies": {
+			"0": [92, 62, 73, 68, 88, 51],
+			"1": [70, 68, 58, 88, 44, 82],
+			"2": [62, 86, 82, 58, 68, 66],
+			"3": [72, 93, 86, 50, 62, 70],
+			"4": [63, 52, 50, 78, 90, 82],
+			"5": [68, 87, 72, 62, 80, 55],
+			"6": [86, 70, 90, 62, 73, 54],
+			"7": [68, 73, 55, 84, 40, 92],
+			"8": [58, 88, 68, 52, 72, 82]
+		},
+		"base_hp_enemies": {
+			"0": 66,
+			"1": 90,
+			"2": 78,
+			"3": 67,
+			"4": 85,
+			"5": 76,
+			"6": 65,
+			"7": 88,
+			"8": 80
+		},
 		"max_skill_lvl": 5,
 		"max_unit_lvl": 10,
 		"max_equipment_lvl": 10,
@@ -878,14 +926,14 @@
 		"interface_castle_dices_label": "Number of dices:",
 		"town_menu_week_counter_label": "Week:",
 		"interface_max_lvl": "MAX",
-		"unit_class_0": "Brawler",
-		"unit_class_1": "Paladin",
-		"unit_class_2": "Bard",
-		"unit_class_3": "Longbowman",
-		"unit_class_4": "Crossbowman",
-		"unit_class_5": "Scout",
-		"unit_class_6": "Battlemage",
-		"unit_class_7": "Wizard",
-		"unit_class_8": "Monk"
+		"unit_class_0": "BRAWLER",
+		"unit_class_1": "PALADIN",
+		"unit_class_2": "BARD",
+		"unit_class_3": "LONGBOWMAN",
+		"unit_class_4": "CROSSBOWMAN",
+		"unit_class_5": "SCOUT",
+		"unit_class_6": "BATTLEMAGE",
+		"unit_class_7": "WIZARD",
+		"unit_class_8": "MONK"
 	}
 }

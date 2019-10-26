@@ -46,10 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) Lvl weaponLvl;
 @property (nonatomic, readonly) Lvl armorLvl;
 
-- (id) initWithID:(NSString *)stringID type:(KnightType)knightType name:(NSString *) knightName;
+- (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *) knightName;
 
 // DEBUG INIT
-- (id) initWithID:(NSString *)stringID type:(KnightType)knightType name:(NSString *)knightName level:(int)level currentExp:(int)exp weaponLvl:(int)wLevel armorLvl:(int)aLevel;
+- (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *)knightName level:(int)level currentExp:(int)exp weaponLvl:(int)wLevel armorLvl:(int)aLevel;
 
 // GETTER METHODS
 - (int) getLevelOfSkill:(SkillType)skill;
@@ -67,6 +67,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) upgradeSkill:(SkillType)skill;
 - (void) upgradeWeaponWithBonus:(StatType)stat;
 - (void) upgradeArmorWithBonus:(StatType)stat;
+
+
+// UPDATE METHODS
+- (void) updateStats;
 
 
 // DEBUG METHOD

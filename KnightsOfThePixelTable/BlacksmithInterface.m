@@ -313,6 +313,8 @@
     } else if ([equipmentBtnGroup.pressedButtonKey isEqualToString:ARMOR_KEY]) {
         [[rooster getSelectedData] upgradeArmorWithBonus:type];
     }
+    
+    [[rooster getSelectedData] updateStats];
 }
 
 - (Lvl) getCurrentEquipmentLvl {

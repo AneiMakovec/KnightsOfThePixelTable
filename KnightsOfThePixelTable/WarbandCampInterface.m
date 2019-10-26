@@ -162,8 +162,17 @@
 }
 
 - (void) update {
-    NSLog(@"DESELECTING ROOSTER");
-    [rooster deselect];
+    NSString *slotRegKeys[CombatPositions] = {FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, FOURTH_SLOT};
+    for (int i = 0; i < CombatPositions; i++) {
+        if ([slots.pressedButtonKey isEqualToString:slotRegKeys[i]]) {
+            KnightData *data = [GameProgress getKnightOnCombatPosition:i];
+            if (data) {
+                [rooster setSelectedEntry:data.keyID];
+            } else {
+                [rooster deselect];
+            }
+        }
+    }
 }
 
 - (void) reset {

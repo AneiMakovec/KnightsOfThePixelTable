@@ -100,16 +100,16 @@
         rooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
         
         // TODO: implement real rooster entries
-        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
-        
-        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
-        
-        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
-        
+        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler characterType:CharacterTypeBrave name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
+
+        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin characterType:CharacterTypeCalm name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
+
+        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeLongbowman characterType:CharacterTypeBold name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
+
         [rooster addItem:firstData];
         [rooster addItem:secondData];
         [rooster addItem:thirdData];
-        
+
         [firstData release];
         [secondData release];
         [thirdData release];
@@ -117,15 +117,19 @@
         // init rooster for trained units
         trainRooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
         
-        KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeLongbowman name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:0 armorLvl:0];
+        KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeLongbowman characterType:CharacterTypePrepared name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:0 armorLvl:0];
 
-        KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeWizard name:@"Sir Fritz" level:10 currentExp:0 weaponLvl:0 armorLvl:0];
+        KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeWizard characterType:CharacterTypeHasty name:@"Sir Fritz" level:10 currentExp:0 weaponLvl:0 armorLvl:0];
+        
+        KnightData *thirdTrainData = [[KnightData alloc] initWithID:@"Knight6" type:KnightTypeBattlemage characterType:CharacterTypeCareful name:@"Sir Donald" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
 
         [trainRooster addItem:firstTrainData];
         [trainRooster addItem:secondTrainData];
+        [trainRooster addItem:thirdTrainData];
 
         [firstTrainData release];
         [secondTrainData release];
+        [thirdTrainData release];
         
         
         
@@ -153,11 +157,11 @@
     if (switchButtonGroup.pressedButtonChanged) {
         [switchButtonGroup reset];
         
-        if (interfaceType == BuildingTypeWarbandCamp) {
-            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
-            NSLog(@"RESETING ROOSTER");
-            [warbandCamp reset];
-        }
+//        if (interfaceType == BuildingTypeWarbandCamp) {
+//            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+//            NSLog(@"RESETING ROOSTER");
+//            [warbandCamp reset];
+//        }
         
         for (int i = 0; i < BuildingTypeGatehouse; i++) {
             if ([switchButtonGroup.pressedButtonKey isEqualToString:buttonKeys[i]] && i != interfaceType) {
@@ -179,6 +183,11 @@
 //                                [self removeItemFromScene:unitName];
 //                            }
                         }
+                        
+                        if (interfaceType == BuildingTypeWarbandCamp) {
+                            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+                            [warbandCamp reset];
+                        }
                         break;
                         
                     case BuildingTypeBarracks:
@@ -196,6 +205,11 @@
 //                                    [self removeItemFromScene:unitNameTrain];
                                 }
                             }
+                        }
+                        
+                        if (interfaceType == BuildingTypeWarbandCamp) {
+                            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+                            [warbandCamp reset];
                         }
                         
                         BarracksInterface *barracks = (BarracksInterface *) interfaceContent[i];
@@ -235,6 +249,11 @@
 //                                [self removeItemFromScene:unitName];
                             }
                         }
+                        
+                        if (interfaceType == BuildingTypeWarbandCamp) {
+                            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+                            [warbandCamp reset];
+                        }
                         break;
                         
                     case BuildingTypeBlacksmith:
@@ -252,6 +271,11 @@
 //                                    [self removeItemFromScene:unitNameTrain];
                                 }
                             }
+                        }
+                        
+                        if (interfaceType == BuildingTypeWarbandCamp) {
+                            WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
+                            [warbandCamp reset];
                         }
                         
                         BlacksmithInterface *blacksmith = (BlacksmithInterface *) interfaceContent[i];

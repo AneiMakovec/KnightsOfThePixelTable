@@ -98,6 +98,14 @@ Constants *constantsInstance;
     return [constantsInstance getComboForUnit:type forSkill:skill];
 }
 
++ (NSArray *) getBaseStatsForUnit:(KnightType)type {
+    return [constantsInstance getBaseStatsForUnit:type];
+}
+
++ (int) getBaseHpForUnit:(KnightType)type {
+    return [constantsInstance getBaseHpForUnit:type];
+}
+
 
 
 
@@ -206,6 +214,22 @@ Constants *constantsInstance;
 - (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill {
     return [[data_value objectForKey:VALUE_COMBO_FOR_UNIT_TYPE] objectForKey:[NSString stringWithFormat:@"%d_%d", type, skill]];
 }
+
+- (NSArray *) getBaseStatsForUnit:(KnightType)type {
+    return [[data_value objectForKey:VALUE_BASE_STATS_ALLIES] objectForKey:[NSString stringWithFormat:@"%d", type]];
+}
+
+- (int) getBaseHpForUnit:(KnightType)type {
+    return [[[data_value objectForKey:VALUE_BASE_HP_ALLIES] valueForKey:[NSString stringWithFormat:@"%d", type]] intValue];
+}
+
+
+
+
+
+
+
+
 
 - (Rectangle *) getInterfaceScrollRect {
     Vector2 *position = [self getPositionDataForKey:POSITION_INTERFACE_SCROLL_BACKGOUND];

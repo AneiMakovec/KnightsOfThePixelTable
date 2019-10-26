@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Label *unitName, *unitClassName;
     NSString *unitClassNames[KnightTypes];
+    
+    Color *classColors[DamageTypes];
 }
 
 - (id) initWithLayerDepth:(float)depth rooster:(Rooster *)theRooster;

@@ -35,7 +35,7 @@
             statLabels[i].verticalAlign = VerticalAlignMiddle;
             statLabels[i].horizontalAlign = HorizontalAlignCenter;
             statLabels[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [statLabels[i] setScaleUniform:FONT_SCALE_SMALL];
+            [statLabels[i] setScaleUniform:FONT_SCALE_MEDIUM];
             [items addObject:statLabels[i]];
         }
         
@@ -67,7 +67,7 @@
         hpLabel.verticalAlign = VerticalAlignMiddle;
         hpLabel.horizontalAlign = HorizontalAlignCenter;
         hpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [hpLabel setScaleUniform:FONT_SCALE_SMALL];
+        [hpLabel setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
         [items addObject:hpLabel];
         
         // init character info
@@ -91,7 +91,7 @@
         weaponName.verticalAlign = VerticalAlignMiddle;
         weaponName.horizontalAlign = HorizontalAlignCenter;
         weaponName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [weaponName setScaleUniform:FONT_SCALE_SMALL];
+        [weaponName setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:weaponName];
         
         NSString *weaponKeys[KnightTypes] = {TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BRAWLER, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_PALADIN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_LONGBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_CROSSBOWMAN, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_SCOUT, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_BATTLEMAGE, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_WIZARD, TOWN_MENU_INTERFACE_ICONS_EQUIPMENT_WEAPON_MONK};
@@ -135,7 +135,7 @@
         armorName.verticalAlign = VerticalAlignMiddle;
         armorName.horizontalAlign = HorizontalAlignCenter;
         armorName.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-        [armorName setScaleUniform:FONT_SCALE_SMALL];
+        [armorName setScaleUniform:FONT_SCALE_MEDIUM];
         [items addObject:armorName];
         
         NSString *armorBonusLabelPosKey = POSITION_INTERFACE_ARMOR_BONUS_LABELS;
@@ -168,126 +168,126 @@
         
 
         
-        if (data) {
-            // init stats
-            NSString *statsPosKey = POSITION_INTERFACE_STATS;
-            for (int i = 0; i < StatTypes; i++) {
-                stats[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [data getValueOfStat:i]] atPosition:[Constants getPositionDataForKey:[statsPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-                stats[i].verticalAlign = VerticalAlignMiddle;
-                stats[i].horizontalAlign = HorizontalAlignCenter;
-                stats[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                [stats[i] setScaleUniform:FONT_SCALE_SMALL];
-                [items addObject:stats[i]];
-            }
-            
-            // init lvl info
-            lvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.lvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL]];
-            lvl.verticalAlign = VerticalAlignMiddle;
-            lvl.horizontalAlign = HorizontalAlignCenter;
-            lvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [lvl setScaleUniform:FONT_SCALE_MEDIUM];
-            [items addObject:lvl];
-            
-            
-            // init unit type info
-            [items addObject:unitType[data.damageType]];
-            currentDmgType = data.damageType;
-            
-            // init hp info
-            hp = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.hp] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_HP]];
-            hp.verticalAlign = VerticalAlignMiddle;
-            hp.horizontalAlign = HorizontalAlignCenter;
-            hp.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [hp setScaleUniform:FONT_SCALE_SMALL];
-            hp.color = [Color red];
-            [items addObject:hp];
-            
-            // init exp info
-            //        xpLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Exp:" position:[Vector2 vectorWithX:128 + 395 y:64 + 270]];
-            //        xpLabel.verticalAlign = VerticalAlignMiddle;
-            //        xpLabel.horizontalAlign = HorizontalAlignCenter;
-            //        xpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            //        [xpLabel setScaleUniform:FONT_SCALE_SMALL];
-            //        [items addObject:xpLabel];
-            
-            Vector2 *xpData = [self calcXpBarWithData:data];
-            xpBar = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_XP atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_XP] width:xpData.x height:xpData.y];
-            xpBar.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [items addObject:xpBar];
-            
-            // init character info
-            character = [GraphicsComponent getLabelWithText:data.character atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK]];
-            character.verticalAlign = VerticalAlignMiddle;
-            character.horizontalAlign = HorizontalAlignCenter;
-            character.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [character setScaleUniform:FONT_SCALE_SMALL];
-            [items addObject:character];
-            
-            // init weapon info
-            weaponLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.weaponLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL]];
-            weaponLvl.verticalAlign = VerticalAlignMiddle;
-            weaponLvl.horizontalAlign = HorizontalAlignCenter;
-            weaponLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
-            [items addObject:weaponLvl];
-
-            currentType = data.type;
-            [items addObject:weapon[currentType]];
-            [items addObject:armor[currentType]];
-            
-            NSString *weaponBonusPosKey = POSITION_INTERFACE_WEAPON_BONUSES;
-            for (int i = 0; i < StatTypes; i++) {
-                NSString *format;
-                Color *color;
-                if ([data getWeaponBonusForStat:i] > 0) {
-                    format = @"+%d";
-                    color = [Color lightGreen];
-                } else {
-                    format = @"%d";
-                    color = [Color white];
-                }
-
-                weaponBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getWeaponBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[weaponBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-                weaponBonus[i].verticalAlign = VerticalAlignMiddle;
-                weaponBonus[i].horizontalAlign = HorizontalAlignRight;
-                weaponBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                weaponBonus[i].color = color;
-                [weaponBonus[i] setScaleUniform:FONT_SCALE_SMALL];
-                [items addObject:weaponBonus[i]];
-            }
-            
-            // init armor info
-            armorLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.armorLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL]];
-            armorLvl.verticalAlign = VerticalAlignMiddle;
-            armorLvl.horizontalAlign = HorizontalAlignCenter;
-            armorLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
-            [items addObject:armorLvl];
-            
-            NSString *armorBonusPosKey = POSITION_INTERFACE_ARMOR_BONUSES;
-            for (int i = 0; i < StatTypes; i++) {
-                NSString *format;
-                Color *color;
-                if ([data getArmorBonusForStat:i] > 0) {
-                    format = @"+%d";
-                    color = [Color lightGreen];
-                } else {
-                    format = @"%d";
-                    color = [Color white];
-                }
-
-                armorBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getArmorBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[armorBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
-                armorBonus[i].verticalAlign = VerticalAlignMiddle;
-                armorBonus[i].horizontalAlign = HorizontalAlignRight;
-                armorBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                armorBonus[i].color = color;
-                [armorBonus[i] setScaleUniform:FONT_SCALE_SMALL];
-                [items addObject:armorBonus[i]];
-            }
-            
-            // load knight animations
-            [items addObject:knightAnimations[data.type]];
-        } else {
+//        if (data) {
+//            // init stats
+//            NSString *statsPosKey = POSITION_INTERFACE_STATS;
+//            for (int i = 0; i < StatTypes; i++) {
+//                stats[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", [data getValueOfStat:i]] atPosition:[Constants getPositionDataForKey:[statsPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+//                stats[i].verticalAlign = VerticalAlignMiddle;
+//                stats[i].horizontalAlign = HorizontalAlignCenter;
+//                stats[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//                [stats[i] setScaleUniform:FONT_SCALE_MEDIUM];
+//                [items addObject:stats[i]];
+//            }
+//
+//            // init lvl info
+//            lvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.lvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_LVL]];
+//            lvl.verticalAlign = VerticalAlignMiddle;
+//            lvl.horizontalAlign = HorizontalAlignCenter;
+//            lvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [lvl setScaleUniform:FONT_SCALE_MEDIUM];
+//            [items addObject:lvl];
+//
+//
+//            // init unit type info
+//            [items addObject:unitType[data.damageType]];
+//            currentDmgType = data.damageType;
+//
+//            // init hp info
+//            hp = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.hp] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_HP]];
+//            hp.verticalAlign = VerticalAlignMiddle;
+//            hp.horizontalAlign = HorizontalAlignCenter;
+//            hp.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [hp setScaleUniform:FONT_SCALE_SMALL];
+//            hp.color = [Color red];
+//            [items addObject:hp];
+//
+//            // init exp info
+//            //        xpLabel = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:@"Exp:" position:[Vector2 vectorWithX:128 + 395 y:64 + 270]];
+//            //        xpLabel.verticalAlign = VerticalAlignMiddle;
+//            //        xpLabel.horizontalAlign = HorizontalAlignCenter;
+//            //        xpLabel.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            //        [xpLabel setScaleUniform:FONT_SCALE_SMALL];
+//            //        [items addObject:xpLabel];
+//
+//            Vector2 *xpData = [self calcXpBarWithData:data];
+//            xpBar = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_XP atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_XP] width:xpData.x height:xpData.y];
+//            xpBar.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [items addObject:xpBar];
+//
+//            // init character info
+//            character = [GraphicsComponent getLabelWithText:data.character atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_QUIRK]];
+//            character.verticalAlign = VerticalAlignMiddle;
+//            character.horizontalAlign = HorizontalAlignCenter;
+//            character.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [character setScaleUniform:FONT_SCALE_SMALL];
+//            [items addObject:character];
+//
+//            // init weapon info
+//            weaponLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.weaponLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_WEAPON_LVL]];
+//            weaponLvl.verticalAlign = VerticalAlignMiddle;
+//            weaponLvl.horizontalAlign = HorizontalAlignCenter;
+//            weaponLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [weaponLvl setScaleUniform:FONT_SCALE_MEDIUM];
+//            [items addObject:weaponLvl];
+//
+//            currentType = data.type;
+//            [items addObject:weapon[currentType]];
+//            [items addObject:armor[currentType]];
+//
+//            NSString *weaponBonusPosKey = POSITION_INTERFACE_WEAPON_BONUSES;
+//            for (int i = 0; i < StatTypes; i++) {
+//                NSString *format;
+//                Color *color;
+//                if ([data getWeaponBonusForStat:i] > 0) {
+//                    format = @"+%d";
+//                    color = [Color lightGreen];
+//                } else {
+//                    format = @"%d";
+//                    color = [Color white];
+//                }
+//
+//                weaponBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getWeaponBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[weaponBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+//                weaponBonus[i].verticalAlign = VerticalAlignMiddle;
+//                weaponBonus[i].horizontalAlign = HorizontalAlignRight;
+//                weaponBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//                weaponBonus[i].color = color;
+//                [weaponBonus[i] setScaleUniform:FONT_SCALE_SMALL];
+//                [items addObject:weaponBonus[i]];
+//            }
+//
+//            // init armor info
+//            armorLvl = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", data.armorLvl] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_ARMOR_LVL]];
+//            armorLvl.verticalAlign = VerticalAlignMiddle;
+//            armorLvl.horizontalAlign = HorizontalAlignCenter;
+//            armorLvl.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            [armorLvl setScaleUniform:FONT_SCALE_MEDIUM];
+//            [items addObject:armorLvl];
+//
+//            NSString *armorBonusPosKey = POSITION_INTERFACE_ARMOR_BONUSES;
+//            for (int i = 0; i < StatTypes; i++) {
+//                NSString *format;
+//                Color *color;
+//                if ([data getArmorBonusForStat:i] > 0) {
+//                    format = @"+%d";
+//                    color = [Color lightGreen];
+//                } else {
+//                    format = @"%d";
+//                    color = [Color white];
+//                }
+//
+//                armorBonus[i] = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:format, [data getArmorBonusForStat:i]] atPosition:[Constants getPositionDataForKey:[armorBonusPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+//                armorBonus[i].verticalAlign = VerticalAlignMiddle;
+//                armorBonus[i].horizontalAlign = HorizontalAlignRight;
+//                armorBonus[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//                armorBonus[i].color = color;
+//                [armorBonus[i] setScaleUniform:FONT_SCALE_SMALL];
+//                [items addObject:armorBonus[i]];
+//            }
+//
+//            // load knight animations
+//            [items addObject:knightAnimations[data.type]];
+//        } else {
             // init stats
             NSString *statsPosKey = POSITION_INTERFACE_STATS;
             for (int i = 0; i < StatTypes; i++) {
@@ -295,7 +295,7 @@
                 stats[i].verticalAlign = VerticalAlignMiddle;
                 stats[i].horizontalAlign = HorizontalAlignCenter;
                 stats[i].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                [stats[i] setScaleUniform:FONT_SCALE_SMALL];
+                [stats[i] setScaleUniform:FONT_SCALE_MEDIUM];
                 [items addObject:stats[i]];
             }
             
@@ -312,7 +312,7 @@
             hp.verticalAlign = VerticalAlignMiddle;
             hp.horizontalAlign = HorizontalAlignCenter;
             hp.layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            [hp setScaleUniform:FONT_SCALE_SMALL];
+            [hp setScaleUniform:FONT_SCALE_MEDIUM];
             hp.color = [Color red];
             [items addObject:hp];
             
@@ -371,7 +371,9 @@
                 [armorBonus[i] setScaleUniform:FONT_SCALE_SMALL];
                 [items addObject:armorBonus[i]];
             }
-        }
+//        }
+        
+        [self updateToKnightData:data];
     }
     return self;
 }
@@ -390,7 +392,7 @@
         Vector2 *xpData = [self calcXpBarWithData:data];
         xpBar.drawRectangle.width = xpData.x;
         
-        // TODO: character
+        character.text = data.character;
         
         hp.text = [NSString stringWithFormat:@"%d", data.hp];
         

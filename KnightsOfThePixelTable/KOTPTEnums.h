@@ -356,6 +356,7 @@ typedef enum {
 
 #define FONT_SCALE_TINY 0.5f
 #define FONT_SCALE_SMALL 1.0f
+#define FONT_SCALE_SMALL_MEDIUM 1.2f
 #define FONT_SCALE_MEDIUM 1.5f
 #define FONT_SCALE_BIG 2.0f
 #define FONT_SCALE_HUGE 3.0f
@@ -849,6 +850,7 @@ typedef enum {
 #define POSITION_INTERFACE_TRAINING_YARD_RECRUIT @"interface_training_yard_recruit_button"
 #define POSITION_INTERFACE_WARBAND_CAMP_SLOTS @"interface_warband_camp_slot_"
 #define POSITION_INTERFACE_WARBAND_CAMP_KNIGHTS @"interface_warband_camp_knight_"
+#define POSITION_WARNING @"warning"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
 #define POSITION_BUILDING_GATEHOUSE @"building_gatehouse"
@@ -923,3 +925,7 @@ typedef enum {
 #define VALUE_STARTING_GOLD @"starting_gold"
 #define VALUE_XP_FOR_LVL @"xp_for_lvl"
 #define VALUE_COMBO_FOR_UNIT_TYPE @"combo_for_unit_type"
+#define VALUE_BASE_STATS_ALLIES @"base_stats_allies"
+#define VALUE_BASE_HP_ALLIES @"base_hp_allies"
+#define VALUE_BASE_STATS_ENEMIES @"base_stats_enemies"
+#define VALUE_BASE_HP_ENEMIES @"base_hp_enemies"

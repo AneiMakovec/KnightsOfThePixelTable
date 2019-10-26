@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     Label *unitName, *unitClassName;
     NSString *unitClassNames[KnightTypes];
+    
+    Color *classColors[DamageTypes];
 }
 
 - (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;

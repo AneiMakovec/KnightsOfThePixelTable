@@ -108,8 +108,15 @@
     
     // check for actions
     if (buildings[BuildingTypeGatehouse].enabled && buildings[BuildingTypeGatehouse].wasReleased && !back.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        //newState = [[WorldMenu alloc] initWithGame:self.game];
+//        [SoundEngine play:SoundEffectTypeClick];
+
+        if ([GameProgress getNumOfBattleKnights] == CombatPositions) {
+//            newState = [[WorldMenu alloc] initWithGame:self.game];
+        } else {
+            Indicator *warning = [[Indicator alloc] initWithText:@"WARBAND IS NOT FULL!" position:[Constants getPositionDataForKey:POSITION_WARNING] font:[GraphicsComponent getFont] color:[Color red] duration:2.0f];
+            [scene addItem:warning];
+            [warning release];
+        }
     }
     
     for (int i = 0; i < BuildingTypeGatehouse; i++) {
