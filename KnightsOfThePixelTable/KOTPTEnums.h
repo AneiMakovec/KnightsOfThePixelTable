@@ -104,15 +104,25 @@ typedef enum {
     Frostbite,      // 3
     Stun,           // 4
     Invisible,      // 5
-    BBuff,          // 6
-    DDebuff,        // 7
-    Taunt,          // 8
-    Protect,        // 9
-    Parry,          // 10
-    Immune,         // 11
-    Regen,          // 12
-    HelpingHand,    // 13
-    RemoveCondition,// 14
+    BuffSTR,        // 6
+    BuffACC,        // 7
+    BuffCUN,        // 8
+    BuffDEF,        // 9
+    BuffAGI,        // 10
+    BuffSTD,        // 11
+    DebuffSTR,      // 12
+    DebuffACC,      // 13
+    DebuffCUN,      // 14
+    DebuffDEF,      // 15
+    DebuffAGI,      // 16
+    DebuffSTD,      // 17
+    Taunt,          // 18
+    Protect,        // 19
+    Parry,          // 20
+    Immune,         // 21
+    Regen,          // 22
+    HelpingHand,    // 23
+    RemoveCondition,// 24
     ConditionTypes
 } ConditionType;
 
@@ -849,6 +859,7 @@ typedef enum {
 #define POSITION_INTERFACE_WARBAND_CAMP_SLOTS @"interface_warband_camp_slot_"
 #define POSITION_INTERFACE_WARBAND_CAMP_KNIGHTS @"interface_warband_camp_knight_"
 #define POSITION_INTERFACE_SKILL_POP_UPS @"interface_skill_pop_up_"
+#define POSITION_INTERFACE_XP_POP_UP @"interface_xp_pop_up"
 #define POSITION_WARNING @"warning"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"

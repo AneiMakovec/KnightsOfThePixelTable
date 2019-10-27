@@ -581,20 +581,24 @@
 			"y": 225
 		},
 		"interface_skill_pop_up_0": {
-			"x": 248,
-			"y": 83
+			"x": 233,
+			"y": 11
 		},
 		"interface_skill_pop_up_1": {
-			"x": 328,
-			"y": 83
+			"x": 313,
+			"y": 11
 		},
 		"interface_skill_pop_up_2": {
-			"x": 408,
-			"y": 83
+			"x": 393,
+			"y": 11
 		},
 		"interface_skill_pop_up_3": {
-			"x": 488,
-			"y": 83
+			"x": 473,
+			"y": 11
+		},
+		"interface_xp_pop_up": {
+			"x": 330,
+			"y": 120
 		},
 		"warning": {
 			"x": 780,
@@ -800,6 +804,7 @@
 		},
 		"upgrade_cost": {
 			"skill": {
+				"0": 1200,
 				"1": 2500,
 				"2": 5250,
 				"3": 8750,
@@ -909,6 +914,7 @@
 		"unit_skills": {
 			"0": {
 				"0": {
+					"name": "CUT THROUGH",
 					"function": 0,
 					"damage": 1.0,
 					"target": 6,
@@ -917,7 +923,6 @@
 					"conditions": [
 						{
 							"type": 0,
-							"stat": 0,
 							"target": 6,
 							"chance": 0.2,
 							"duration": 2
@@ -925,22 +930,21 @@
 					]
 				},
 				"1": {
+					"name": "FOCUS",
 					"function": 2,
 					"damage": 0,
 					"target": 0,
-					"range": 0,
+					"range": 1,
 					"dmg_type": 0,
 					"conditions": [
 						{
-							"type": 10,
-							"stat": 0,
+							"type": 20,
 							"target": 0,
 							"chance": 1.0,
 							"duration": 0
 						},
 						{
-							"type": 6,
-							"stat": 2,
+							"type": 8,
 							"target": 0,
 							"chance": 0.3,
 							"duration": 2
@@ -948,6 +952,7 @@
 					]
 				},
 				"2": {
+					"name": "SWINGING SLASH",
 					"function": 0,
 					"damage": 2.0,
 					"target": 7,
@@ -956,14 +961,12 @@
 					"conditions": [
 						{
 							"type": 0,
-							"stat": 0,
 							"target": 7,
 							"chance": 0.4,
 							"duration": 2
 						},
 						{
-							"type": 7,
-							"stat": 3,
+							"type": 15,
 							"target": 7,
 							"chance": 0.4,
 							"duration": 2
@@ -971,6 +974,7 @@
 					]
 				},
 				"3": {
+					"name": "UNSTOPPABLE RAGE",
 					"function": 0,
 					"damage": 1.5,
 					"target": 8,
@@ -979,23 +983,1571 @@
 					"conditions": [
 						{
 							"type": 0,
-							"stat": 0,
 							"target": 8,
 							"chance": 0.6,
 							"duration": 2
 						},
 						{
-							"type": 7,
-							"stat": 3,
+							"type": 15,
 							"target": 8,
 							"chance": 0.4,
 							"duration": 2
 						},
 						{
-							"type": 7,
-							"stat": 4,
+							"type": 16,
 							"target": 8,
 							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"1": {
+				"0": {
+					"name": "RIGHTIOUS STRIKE",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 5,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "CHALLENGING BASH",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 18,
+							"target": 5,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 13,
+							"target": 5,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "GET BEHIND ME",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 19,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 9,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "COURAGEOUS CHARGE",
+					"function": 0,
+					"damage": 1.5,
+					"target": 7,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 7,
+							"chance": 0.5,
+							"duration": 2
+						},
+						{
+							"type": 9,
+							"target": 4,
+							"chance": 0.5,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"2": {
+				"0": {
+					"name": "BASH",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 10,
+							"target": 0,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "INVIGORATING TUNE",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 22,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 10,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "DISTURBING BALAD",
+					"function": 0,
+					"damage": 1.0,
+					"target": 8,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 8,
+							"chance": 0.6,
+							"duration": 2
+						},
+						{
+							"type": 12,
+							"target": 8,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "HEROIC ODE",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 6,
+							"target": 4,
+							"chance": 1.0,
+							"duration": 3
+						},
+						{
+							"type": 21,
+							"target": 4,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"3": {
+				"0": {
+					"name": "MARKSMAN SHOT",
+					"function": 0,
+					"damage": 1.5,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 5,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "FROST ARROW",
+					"function": 0,
+					"damage": 1.5,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 5,
+							"chance": 0.4,
+							"duration": 2
+						},
+						{
+							"type": 13,
+							"target": 5,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "BULLS EYE",
+					"function": 0,
+					"damage": 2.0,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 5,
+							"chance": 0.4,
+							"duration": 2
+						},
+						{
+							"type": 7,
+							"target": 0,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "NORTH WIND SHOT",
+					"function": 0,
+					"damage": 3.0,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 5,
+							"chance": 0.6,
+							"duration": 3
+						},
+						{
+							"type": 16,
+							"target": 5,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"4": {
+				"0": {
+					"name": "POISON DART",
+					"function": 0,
+					"damage": 1.0,
+					"target": 7,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 7,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"1": {
+					"name": "FIRE DART",
+					"function": 0,
+					"damage": 1.0,
+					"target": 7,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 7,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "INSPIRE TROOPS",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 10,
+							"target": 4,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 11,
+							"target": 4,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "GUNPOWDER BARRAGE",
+					"function": 0,
+					"damage": 1.5,
+					"target": 8,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 2 
+						},
+						{
+							"type": 15,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"5": {
+				"0": {
+					"name": "KNIFE THROW",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 5,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "STUN BOMB",
+					"function": 0,
+					"damage": 1.0,
+					"target": 6,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 6,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "FIELD MEDICINE",
+					"function": 1,
+					"damage": 0.4,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 24,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 0
+						},
+						{
+							"type": 6,
+							"target": 1,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "CAMOUFLAGE",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 5,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 23,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"6": {
+				"0": {
+					"name": "LIGHTNING ROD",
+					"function": 0,
+					"damage": 1.5,
+					"target": 6,
+					"range": 0,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 14,
+							"target": 6,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"1": {
+					"name": "BURNING SHOCK",
+					"function": 0,
+					"damage": 1.5,
+					"target": 7,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 7,
+							"chance": 0.4,
+							"duration": 2
+						},
+						{
+							"type": 17,
+							"target": 7,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "DAZZLING DISCHARGE",
+					"function": 0,
+					"damage": 2.0,
+					"target": 8,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "SCORTCHING THUNDER",
+					"function": 0,
+					"damage": 2.5,
+					"target": 8,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 8,
+							"chance": 0.6,
+							"duration": 3
+						},
+						{
+							"type": 15,
+							"target": 8,
+							"chance": 0.6,
+							"duration": 3
+						}
+					]
+				}
+			},
+			"7": {
+				"0": {
+					"name": "FIRE BALL",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 5,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"1": {
+					"name": "POISON CLOUD",
+					"function": 0,
+					"damage": 1.0,
+					"target": 7,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 7,
+							"chance": 0.6,
+							"duration": 2
+						},
+						{
+							"type": 3,
+							"target": 7,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "CLEANSE",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 21,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 23,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 24,
+							"target": 1,
+							"chance": 1.0,
+							"duration": 0
+						}
+					]
+				},
+				"3": {
+					"name": "PROTECTION SPELL",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 20,
+							"target": 3,
+							"chance": 1.0,
+							"duration": 0
+						},{
+							"type": 6,
+							"target": 3,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"8": {
+				"0": {
+					"name": "HOLY RETRIBUTION",
+					"function": 0,
+					"damage": 1.0,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 12,
+							"target": 5,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "HOLY PROTECTION",
+					"function": 1,
+					"damage": 0.3,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 9,
+							"target": 1,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "HOLY JUDGEMENT",
+					"function": 0,
+					"damage": 1.5,
+					"target": 6,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 6,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "HOLY RESTORATION",
+					"function": 1,
+					"damage": 0.6,
+					"target": 4,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 24,
+							"target": 4,
+							"chance": 0.6,
+							"duration": 0
+						}
+					]
+				}
+			}
+		},
+		"enemy_unit_skills": {
+			"0": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 3,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 3,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 2,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 16,
+							"target": 2,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 3,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 17,
+							"target": 3,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.5,
+					"target": 2,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 2,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"1": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 11,
+							"target": 0,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 1,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 1,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 10,
+							"target": 5,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 19,
+							"target": 5,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 10,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"2": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 10,
+							"target": 0,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 9,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 4,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 22,
+							"target": 8,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"3": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 1,
+							"chance": 0.3,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.6,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 10,
+							"target": 0,
+							"chance": 0.5,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 2.0,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 1,
+							"chance": 0.5,
+							"duration": 2
+						},
+						{
+							"type": 17,
+							"target": 1,
+							"chance": 0.5,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"4": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 16,
+							"target": 2,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 2,
+							"chance": 0.4,
+							"duration": 1 
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 17,
+							"target": 2,
+							"chance": 0.6,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 2,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				}
+			},
+			"5": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 1,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 23,
+							"target": 5,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 7,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.5,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 1,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 1,
+							"chance": 0.6,
+							"duration": 2
+						},
+						{
+							"type": 15,
+							"target": 1,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"6": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 2,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 3,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 3,
+							"chance": 0.3,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.6,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 2,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 2.0,
+					"target": 4,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 4,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"7": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 0.8,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 0.8,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 2,
+							"chance": 0.3,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 3,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 3,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 3,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 3,
+							"chance": 0.5,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"8": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 1,
+					"damage": 0.3,
+					"target": 5,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 9,
+							"target": 5,
+							"chance": 1.0,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 3,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 13,
+							"target": 3,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 24,
+							"target": 8,
+							"chance": 1.0,
+							"duration": 0
+						},
+						{
+							"type": 21,
+							"target": 8,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				}
+			}
+		},
+		"enemy_boss_unit_skills": {
+			"0": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.0,
+					"target": 2,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 20,
+							"target": 0,
+							"chance": 0.2,
+							"duration": 0
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 3,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 22,
+							"target": 0,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 9,
+							"target": 8,
+							"chance": 1.0,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.5,
+					"target": 4,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 4,
+							"chance": 0.4,
+							"duration": 1 
+						}
+					]
+				}
+			},
+			"1": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 1,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 1,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 2,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 2,
+							"target": 2,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.4,
+					"target": 3,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 3,
+							"target": 3,
+							"chance": 0.6,
+							"duration": 1
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 1.4,
+					"target": 4,
+					"range": 1,
+					"dmg_type": 2,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 4,
+							"chance": 0.8,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"2": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 1,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 1,
+							"chance": 0.2,
+							"duration": 1
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.4,
+					"target": 2,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 2,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 1,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 22,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 2
+						},
+						{
+							"type": 9,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 2.0,
+					"target": 4,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 12,
+							"target": 4,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				}
+			},
+			"3": {
+				"0": {
+					"name": "",
+					"function": 0,
+					"damage": 1.2,
+					"target": 3,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"target": 3,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"1": {
+					"name": "",
+					"function": 0,
+					"damage": 1.4,
+					"target": 2,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 4,
+							"target": 2,
+							"chance": 0.2,
+							"duration": 1
+						},
+						{
+							"type": 9,
+							"target": 0,
+							"chance": 0.4,
+							"duration": 1
+						}
+					]
+				},
+				"2": {
+					"name": "",
+					"function": 0,
+					"damage": 1.6,
+					"target": 1,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 15,
+							"target": 1,
+							"chance": 0.6,
+							"duration": 2
+						},
+						{
+							"type": 6,
+							"target": 0,
+							"chance": 0.6,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"name": "",
+					"function": 0,
+					"damage": 2.0,
+					"target": 4,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 12,
+							"target": 4,
+							"chance": 0.6,
 							"duration": 2
 						}
 					]

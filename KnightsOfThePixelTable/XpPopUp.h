@@ -8,9 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PixEngine.GUI.h"
+
+#import "Pixlron.Knights.classes.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XpPopUp : NSObject
+@interface XpPopUp : GuiPanel {
+    float curDepth;
+    
+    Image *background;
+    
+    Label *curXp, *maxXp;
+}
+
+
+- (id) initWithDepth:(float)depth;
+
+- (void) updateToKnightData:(KnightData *)data;
+
+- (void) updateDepth:(float)depth;
 
 @end
 

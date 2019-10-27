@@ -166,6 +166,14 @@
         
         
         
+        
+//        xpPopUp = [[XpPopUp alloc] initWithDepth:layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE];
+//
+//        Vector2 *xpPos = [Constants getPositionDataForKey:POSITION_INTERFACE_XP];
+//        xpPool = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:xpPos.x - 5 y:xpPos.y - 25 width:80 height:40]];
+//        [items addObject:xpPool];
+//
+//        xpPopUpVisible = NO;
 
         
 //        if (data) {
@@ -376,6 +384,17 @@
         [self updateToKnightData:data];
     }
     return self;
+}
+
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+//    if (!xpPopUpVisible && xpPool.isDown) {
+//        xpPopUpVisible = YES;
+//        [self addItemToScene:xpPopUp];
+//    } else if (xpPopUpVisible && !xpPool.isDown) {
+//        xpPopUpVisible = NO;
+//        [self removeItemFromScene:xpPopUp];
+//    }
 }
 
 

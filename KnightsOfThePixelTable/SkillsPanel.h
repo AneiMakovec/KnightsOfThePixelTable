@@ -12,6 +12,14 @@
 
 #import "Pixlron.Knights.classes.h"
 
+typedef enum {
+    BorderTypePhysical,
+    BorderTypeRanged,
+    BorderTypeMagic,
+    BorderTypeNeutral,
+    BorderTypes
+} BorderType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SkillsPanel : GuiPanel {
@@ -35,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
     Label *comboLabels[SkillTypes];
     Label *upgradeLabels[SkillTypes];
     Label *lvlLabels[SkillTypes];
+    
+    Image *skillBorder[SkillTypes][BorderTypes];
+    BorderType currentBorder[SkillTypes];
 }
 
 - (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth displayUpgradeButtons:(BOOL)display;

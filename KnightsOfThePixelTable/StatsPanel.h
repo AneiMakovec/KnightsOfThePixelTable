@@ -49,6 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
     Label *armorBonusLabel[StatTypes];
     
     AnimatedImage *knightAnimations[KnightTypes];
+    
+//    Button *xpPool;
+//    XpPopUp *xpPopUp;
+//    BOOL xpPopUpVisible;
 }
 
 - (id) initWithKnightData:(KnightData *)data layerDepth:(float)layerDepth;

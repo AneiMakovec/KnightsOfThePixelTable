@@ -12,9 +12,10 @@
 
 @implementation Skill
 
-- (id) initWithFunction:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType {
+- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType {
     self = [super init];
     if (self != nil) {
+        name = [theName retain];
         lvl = LvlZero;
         
         damage = dmg;
@@ -28,7 +29,7 @@
     return self;
 }
 
-@synthesize damage, function, range, target, damageType, lvl, conditions;
+@synthesize damage, function, range, target, damageType, lvl, name, conditions;
 
 
 - (void) addCondition:(ConditionData *)condition {
@@ -39,7 +40,12 @@
 
 - (void) upgrade {
     lvl++;
-    // TODO: upgrade dmg + status effect chances
+    
+    damage += 0.02f;
+    
+    for (ConditionData *condData in conditions) {
+        [condData upgrade];
+    }
 }
 
 - (void) dealloc {

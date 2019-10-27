@@ -81,6 +81,20 @@
         
         
         
+        // init skill borders
+        for (int i = 0; i < SkillTypes; i++) {
+            skillBorder[i][BorderTypePhysical] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_PHYSICAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            skillBorder[i][BorderTypePhysical].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            skillBorder[i][BorderTypeRanged] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_RANGED atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            skillBorder[i][BorderTypeRanged].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            skillBorder[i][BorderTypeMagic] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_MAGIC atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            skillBorder[i][BorderTypeMagic].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+            skillBorder[i][BorderTypeNeutral] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_NEUTRAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+            skillBorder[i][BorderTypeNeutral].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
+        }
+        
+        
+        
         
 //        if (data) {
 //            currentType = data.type;
@@ -163,7 +177,7 @@
         if (!popUpVisible[i] && skills[currentType][i].isTouched) {
             popUpVisible[i] = YES;
             [self addItemToScene:popUps[i]];
-        } else if (popUpVisible[i] && skills[currentType][i].wasReleased) {
+        } else if (popUpVisible[i] && !skills[currentType][i].isTouched) {
             popUpVisible[i] = NO;
             [self removeItemFromScene:popUps[i]];
         }
@@ -175,6 +189,33 @@
         for (int i = 0; i < SkillTypes; i++) {
             [self removeItemFromScene:skills[currentType][i]];
             [self addItemToScene:skills[data.type][i]];
+            
+            [self removeItemFromScene:skillBorder[i][currentBorder[i]]];
+            
+            if ([data getSkill:i].function == Damage) {
+                switch ([data getSkill:i].damageType) {
+                    case DamageTypePhysical:
+                        currentBorder[i] = BorderTypePhysical;
+                        [self addItemToScene:skillBorder[i][currentBorder[i]]];
+                        break;
+                        
+                    case DamageTypeRanged:
+                        currentBorder[i] = BorderTypeRanged;
+                        [self addItemToScene:skillBorder[i][currentBorder[i]]];
+                        break;
+                        
+                    case DamageTypeMagic:
+                        currentBorder[i] = BorderTypeMagic;
+                        [self addItemToScene:skillBorder[i][currentBorder[i]]];
+                        break;
+                        
+                    default:
+                        break;
+                }
+            } else {
+                currentBorder[i] = BorderTypeNeutral;
+                [self addItemToScene:skillBorder[i][currentBorder[i]]];
+            }
             
             if ([data isSkillAtMaxLvl:i]) {
                 upgradeButtons[i].label.text = [Constants getTextForKey:TEXT_INTERFACE_MAX_LVL];
@@ -196,7 +237,9 @@
         for (int i = 0; i < SkillTypes; i++) {
             [self removeItemFromScene:skills[currentType][i]];
             
-            [popUps[i] updateToKnight:nil];
+            [self removeItemFromScene:skillBorder[i][currentBorder[i]]];
+            
+            [popUps[i] updateToKnight:data];
 
             upgradeButtons[i].label.text = @"0";
             upgradeButtons[i].enabled = NO;
@@ -246,6 +289,10 @@
                 [self updateDepth:depth toItem:secondSkillCombo[i][j]];
             
             [self updateDepth:depth toItem:thirdSkillCombo[i][j]];
+        }
+        
+        for (int j = 0; j < BorderTypes; j++) {
+            [self updateDepth:depth toItem:skillBorder[i][j]];
         }
     }
     

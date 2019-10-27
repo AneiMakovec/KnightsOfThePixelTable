@@ -12,11 +12,11 @@
 
 @implementation ConditionData
 
-- (id) initWithType:(ConditionType)cType statType:(StatType)sType target:(Target)tTarget chance:(float)cChance duration:(int)dDuration {
+- (id) initWithType:(ConditionType)cType target:(Target)tTarget chance:(float)cChance duration:(int)dDuration {
     self = [super init];
     if (self != nil) {
         type = cType;
-        statType = sType;
+//        statType = sType;
         target = tTarget;
         chance = cChance;
         duration = dDuration;
@@ -25,6 +25,10 @@
     return self;
 }
 
-@synthesize type, statType, target, chance, duration;
+@synthesize type, target, chance, duration;
+
+- (void) upgrade {
+    chance += 0.02f;
+}
 
 @end

@@ -26,14 +26,47 @@
         position = [[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", skill]]] retain];
         
         // init background
-        background = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_POP_UP atPosition:[Vector2 vectorWithX:position.x y:position.y] width:288 height:128];
+        background = [GraphicsComponent getImageWithKey:TOWN_MENU_INTERFACE_POP_UP atPosition:[Vector2 vectorWithX:position.x y:position.y] width:288 height:200];
 //        [background setScaleUniform:2.0f];
         background.layerDepth = depth + INTERFACE_LAYER_DEPTH_BACK;
         [items addObject:background];
         
-        info = [[DynamicLabel alloc] initWithPosition:[Vector2 vectorWithX:position.x + 7 y:position.y + 12] lineWidth:28 * 10 lineSpacing:20 charWidth:10 charHeight:14];
+        // init skill name
+        skillName = [GraphicsComponent getLabelWithText:@"" atPosition:[Vector2 vectorWithX:position.x + 10 y:position.y + 12]];
+        skillName.layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
+        skillName.horizontalAlign = HorizontalAlignLeft;
+        skillName.verticalAlign = VerticalAlignMiddle;
+        [skillName setScaleUniform:FONT_SCALE_BIG];
+        [items addObject:skillName];
+        
+        
+        // init skill info
+        info = [[DynamicLabel alloc] initWithPosition:[Vector2 vectorWithX:position.x + 10 y:position.y + 37] lineWidth:268 lineSpacing:20 charWidth:10.5f charHeight:13.5f  spaceWidth:5];
         [items addObject:info];
         
+        // init colors
+        conditionColors[Bleeding] = [Color red];
+        conditionColors[Burning] = [Color orangeRed];
+        conditionColors[Poison] = [Color violet];
+        conditionColors[Frostbite] = [Color cornflowerBlue];
+        conditionColors[Stun] = [Color yellow];
+        conditionColors[Invisible] = [Color paleVioletRed];
+        
+        for (int i = BuffSTR; i < DebuffSTR; i++) {
+            conditionColors[i] = [Color skyBlue];
+        }
+        
+        for (int i = DebuffSTR; i < Taunt; i++) {
+            conditionColors[i] = [Color orangeRed];
+        }
+        
+        conditionColors[Taunt] = [Color mediumVioletRed];
+        conditionColors[Protect] = [Color lightBlue];
+        conditionColors[Parry] = [Color lightGray];
+        conditionColors[Immune] = [Color seaGreen];
+        conditionColors[Regen] = [Color greenYellow];
+        conditionColors[HelpingHand] = [Color lawnGreen];
+        conditionColors[RemoveCondition] = [Color yellowGreen];
         
         
         // init labels
@@ -66,22 +99,14 @@
             [targets[i] setScaleUniform:FONT_SCALE_MEDIUM];
         }
         
-        NSString *conditionTexts[ConditionTypes] = {@"BLEEDS", @"BURNS", @"POISONS", @"FREEZES", @"STUNS", @"MAKES INVISIBLE", @"BUFFS %@", @"DEBUFFS %@", @"TAUNTS", @"PROTECTS", @"SHIELDS", @"MAKES IMMUNE", @"REGENERATES", @"HELPS", @"REMOVES CONDITION FROM"};
+        NSString *conditionTexts[ConditionTypes] = {@"BLEED", @"BURN", @"POISON", @"FROST", @"STUN", @"INVISIBILITY", @"STR BUFF", @"ACC BUFF", @"CUN BUFF", @"DEF BUFF", @"AGI BUFF", @"STD BUFF", @"STR DEBUFF", @"ACC DEBUFF", @"CUN DEBUFF", @"DEF DEBUFF", @"AGI DEBUFF", @"STD DEBUFF", @"TAUNT", @"PROTECT", @"SHIELD", @"IMMUNITY", @"REGEN", @"HELPING HAND", @"REMOVES CONDITION"};
         for (int i = 0; i < ConditionTypes; i++) {
             conditions[i] = [GraphicsComponent getLabelWithText:conditionTexts[i] atPosition:[Vector2 vectorWithX:0 y:0]];
             conditions[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
             conditions[i].horizontalAlign = HorizontalAlignLeft;
             conditions[i].verticalAlign = VerticalAlignMiddle;
+            conditions[i].color = conditionColors[i];
             [conditions[i] setScaleUniform:FONT_SCALE_MEDIUM];
-        }
-        
-        NSString *statTexts[StatTypes] = {@"STR", @"ACC", @"CUN", @"DEF", @"AGI", @"STD"};
-        for (int i = 0; i < StatTypes; i++) {
-            stats[i] = [GraphicsComponent getLabelWithText:statTexts[i] atPosition:[Vector2 vectorWithX:0 y:0]];
-            stats[i].layerDepth = depth + INTERFACE_LAYER_DEPTH_MIDDLE;
-            stats[i].horizontalAlign = HorizontalAlignLeft;
-            stats[i].verticalAlign = VerticalAlignMiddle;
-            [stats[i] setScaleUniform:FONT_SCALE_MEDIUM];
         }
         
         
@@ -105,6 +130,8 @@
     
     if (data) {
         Skill *skill = [data getSkill:skillType];
+        
+        skillName.text = skill.name;
         
         if (skill.function == Damage) {
             Label *deals = [GraphicsComponent getLabelWithText:@"Deals" atPosition:[Vector2 zero]];
@@ -142,13 +169,68 @@
             [dmgTo release];
             
             [info addLabel:targets[skill.target]];
+        } else if (skill.function == Heal) {
+            Label *heals = [GraphicsComponent getLabelWithText:@"Heals" atPosition:[Vector2 zero]];
+            heals.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            heals.horizontalAlign = HorizontalAlignLeft;
+            heals.verticalAlign = VerticalAlignMiddle;
+            heals.color = [Color lightGreen];
+            [heals setScaleUniform:FONT_SCALE_MEDIUM];
+            [info addLabel:heals];
+            [heals release];
+            
+            Label *amount = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d%%", (int) (100 * skill.damage)] atPosition:[Vector2 zero]];
+            amount.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            amount.horizontalAlign = HorizontalAlignLeft;
+            amount.verticalAlign = VerticalAlignMiddle;
+            amount.color = [Color lightGreen];
+            [amount setScaleUniform:FONT_SCALE_MEDIUM];
+            [info addLabel:amount];
+            [amount release];
+            
+            Label *hp = [GraphicsComponent getLabelWithText:@"HP" atPosition:[Vector2 zero]];
+            hp.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            hp.horizontalAlign = HorizontalAlignLeft;
+            hp.verticalAlign = VerticalAlignMiddle;
+            hp.color = [Color lightGreen];
+            [hp setScaleUniform:FONT_SCALE_MEDIUM];
+            [info addLabel:hp];
+            [hp release];
+            
+            Label *forLabel = [GraphicsComponent getLabelWithText:@"to" atPosition:[Vector2 zero]];
+            forLabel.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+            forLabel.horizontalAlign = HorizontalAlignLeft;
+            forLabel.verticalAlign = VerticalAlignMiddle;
+            [forLabel setScaleUniform:FONT_SCALE_MEDIUM];
+            [info addLabel:forLabel];
+            [forLabel release];
+            
+            [info addLabel:targets[skill.target]];
         }
         
+        Target targetType = Targets;
         for (int i = 0; i < Targets; i++) {
-            Target targetType = Targets;
+//            Label *gives = [GraphicsComponent getLabelWithText:@"Gives" atPosition:[Vector2 zero]];
+//            gives.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//            gives.horizontalAlign = HorizontalAlignLeft;
+//            gives.verticalAlign = VerticalAlignMiddle;
+//            [gives setScaleUniform:FONT_SCALE_MEDIUM];
+//            [info addLabel:gives];
+//            [gives release];
+            targetType = Targets;
             for (ConditionData *condData in skill.conditions) {
-                if (condData.target == i) {
-                    Label *chance = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d%%", (int) (100 * condData.chance)] atPosition:[Vector2 zero]];
+                if (condData.target == i && condData.type != RemoveCondition) {
+                    [info addLabel:conditions[condData.type]];
+                    
+                    Label *chanceNum = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"(%d%%", (int) (100 * condData.chance)] atPosition:[Vector2 zero]];
+                    chanceNum.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    chanceNum.horizontalAlign = HorizontalAlignLeft;
+                    chanceNum.verticalAlign = VerticalAlignMiddle;
+                    [chanceNum setScaleUniform:FONT_SCALE_MEDIUM];
+                    [info addLabel:chanceNum];
+                    [chanceNum release];
+
+                    Label *chance = [GraphicsComponent getLabelWithText:@"chance)" atPosition:[Vector2 zero]];
                     chance.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
                     chance.horizontalAlign = HorizontalAlignLeft;
                     chance.verticalAlign = VerticalAlignMiddle;
@@ -156,40 +238,130 @@
                     [info addLabel:chance];
                     [chance release];
                     
-                    if (condData.type == BBuff || condData.type == DDebuff) {
-                        Label *buffLabel = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:conditions[condData.type].text, stats[condData.statType].text] atPosition:[Vector2 zero]];
-                        buffLabel.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
-                        buffLabel.horizontalAlign = HorizontalAlignLeft;
-                        buffLabel.verticalAlign = VerticalAlignMiddle;
-                        [buffLabel setScaleUniform:FONT_SCALE_MEDIUM];
-                        [info addLabel:buffLabel];
-                        [buffLabel release];
-                    } else {
-                        [info addLabel:conditions[condData.type]];
+                    if (condData.duration > 0) {
+                        Label *forL = [GraphicsComponent getLabelWithText:@"for" atPosition:[Vector2 zero]];
+                        forL.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                        forL.horizontalAlign = HorizontalAlignLeft;
+                        forL.verticalAlign = VerticalAlignMiddle;
+                        [forL setScaleUniform:FONT_SCALE_MEDIUM];
+                        [info addLabel:forL];
+                        [forL release];
+                        
+                        Label *duration = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d", condData.duration] atPosition:[Vector2 zero]];
+                        duration.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                        duration.horizontalAlign = HorizontalAlignLeft;
+                        duration.verticalAlign = VerticalAlignMiddle;
+                        [duration setScaleUniform:FONT_SCALE_MEDIUM];
+                        [info addLabel:duration];
+                        [duration release];
+                        
+                        Label *turns = [GraphicsComponent getLabelWithText:@"turns" atPosition:[Vector2 zero]];
+                        turns.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                        turns.horizontalAlign = HorizontalAlignLeft;
+                        turns.verticalAlign = VerticalAlignMiddle;
+                        [turns setScaleUniform:FONT_SCALE_MEDIUM];
+                        [info addLabel:turns];
+                        [turns release];
                     }
+                    
+                    // if is buff or debuff, add stat text
+//                    if (condData.type == BBuff || condData.type == DDebuff) {
+//                        Label *buffLabel = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:conditions[condData.type].text, stats[condData.statType].text] atPosition:[Vector2 zero]];
+//                        buffLabel.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+//                        buffLabel.horizontalAlign = HorizontalAlignLeft;
+//                        buffLabel.verticalAlign = VerticalAlignMiddle;
+//                        buffLabel.color = conditionColors[condData.type];
+//                        [buffLabel setScaleUniform:FONT_SCALE_MEDIUM];
+//                        [info addLabel:buffLabel];
+//                        [buffLabel release];
+//                    } else {
+//                        [info addLabel:conditions[condData.type]];
+//                    }
                     
                     targetType = condData.target;
                 }
             }
             
+            Label *to;
             if (targetType != Targets) {
                 if (skill.target == i) {
                     if (skill.function == Utility) {
+                        to = [GraphicsComponent getLabelWithText:@"to" atPosition:[Vector2 zero]];
+                        to.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                        to.horizontalAlign = HorizontalAlignLeft;
+                        to.verticalAlign = VerticalAlignMiddle;
+                        [to setScaleUniform:FONT_SCALE_MEDIUM];
+                        [info addLabel:to];
+                        [to release];
+                        
                         [info addLabel:targets[i]];
                     } else {
+                        to = [GraphicsComponent getLabelWithText:@"to" atPosition:[Vector2 zero]];
+                        to.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                        to.horizontalAlign = HorizontalAlignLeft;
+                        to.verticalAlign = VerticalAlignMiddle;
+                        [to setScaleUniform:FONT_SCALE_MEDIUM];
+                        [info addLabel:to];
+                        [to release];
+                        
                         Label *target = [GraphicsComponent getLabelWithText:@"targets." atPosition:[Vector2 zero]];
                         target.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
                         target.horizontalAlign = HorizontalAlignLeft;
                         target.verticalAlign = VerticalAlignMiddle;
+                        target.color = [Color orange];
                         [target setScaleUniform:FONT_SCALE_MEDIUM];
                         [info addLabel:target];
                         [target release];
                     }
                 } else {
+                    to = [GraphicsComponent getLabelWithText:@"to" atPosition:[Vector2 zero]];
+                    to.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    to.horizontalAlign = HorizontalAlignLeft;
+                    to.verticalAlign = VerticalAlignMiddle;
+                    [to setScaleUniform:FONT_SCALE_MEDIUM];
+                    [info addLabel:to];
+                    [to release];
+                    
                     [info addLabel:targets[i]];
                 }
             }
         }
+        
+        for (ConditionData *condData in skill.conditions) {
+            if (condData.type == RemoveCondition){
+                [info addLabel:conditions[condData.type]];
+                
+                Label *from = [GraphicsComponent getLabelWithText:@"from" atPosition:[Vector2 zero]];
+                from.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                from.horizontalAlign = HorizontalAlignLeft;
+                from.verticalAlign = VerticalAlignMiddle;
+                [from setScaleUniform:FONT_SCALE_MEDIUM];
+                [info addLabel:from];
+                [from release];
+                
+                if (skill.target == condData.target) {
+                    Label *target = [GraphicsComponent getLabelWithText:@"targets." atPosition:[Vector2 zero]];
+                    target.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    target.horizontalAlign = HorizontalAlignLeft;
+                    target.verticalAlign = VerticalAlignMiddle;
+                    target.color = [Color orange];
+                    [target setScaleUniform:FONT_SCALE_MEDIUM];
+                    [info addLabel:target];
+                    [target release];
+                } else {
+                    Label *targ = [GraphicsComponent getLabelWithText:targets[condData.target].text atPosition:[Vector2 zero]];
+                    targ.layerDepth = curDepth + INTERFACE_LAYER_DEPTH_MIDDLE;
+                    targ.horizontalAlign = HorizontalAlignLeft;
+                    targ.verticalAlign = VerticalAlignMiddle;
+                    targ.color = [Color orange];
+                    [targ setScaleUniform:FONT_SCALE_MEDIUM];
+                    [info addLabel:targ];
+                    [targ release];
+                }
+            }
+        }
+    } else {
+        skillName.text = @"";
     }
 }
 
@@ -197,6 +369,8 @@
 
 - (void) updateDepth:(float)depth {
     [self updateDepth:depth toItem:background];
+    
+    [self updateDepth:depth toItem:skillName];
     
     for (int i = 0; i < DamageTypes; i++) {
         [self updateDepth:depth toItem:dmgType[i]];
@@ -208,10 +382,6 @@
     
     for (int i = 0; i < ConditionTypes; i++) {
         [self updateDepth:depth toItem:conditions[i]];
-    }
-    
-    for (int i = 0; i < StatTypes; i++) {
-        [self updateDepth:depth toItem:stats[i]];
     }
     
     

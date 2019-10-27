@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
     KnightType currentType;
     Image *portraits[KnightTypes];
     Label *name;
+    
+    Label *fatigue;
 }
 
 @property (nonatomic, retain) KnightData *data;

@@ -19,6 +19,8 @@
     if (self != nil) {
         keyID = [stringID retain];
         
+        fatigue = 0;
+        
         type = knightType;
         switch (type) {
             case KnightTypeBrawler:
@@ -121,6 +123,8 @@
     if (self != nil) {
         keyID = [stringID retain];
         
+        fatigue = 0;
+        
         type = knightType;
         switch (type) {
             case KnightTypeBrawler:
@@ -217,7 +221,7 @@
     return self;
 }
 
-@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp, character;
+@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp, character, fatigue;
 
 - (int) getLevelOfSkill:(SkillType)skill {
     return skills[skill].lvl;
@@ -336,6 +340,21 @@
     int baseHp = [Constants getBaseHpForUnit:type];
     hp = (150 * baseHp * lvl) / maxLvl;
     hp += HP_MODIFIER * lvl;
+}
+
+
+- (void) increaseFatigue {
+    fatigue += [Random intGreaterThanOrEqual:5 lessThan:21];
+    
+    if (fatigue > 100)
+        fatigue = 100;
+}
+
+- (void) decreaseFatigue {
+    fatigue -= [Random intGreaterThanOrEqual:5 lessThan:21];
+    
+    if (fatigue < 0)
+        fatigue = 0;
 }
 
 

@@ -139,23 +139,24 @@
         for (int i = 0; i < CombatPositions; i++) {
             if ([slots.pressedButtonKey isEqualToString:slotRegKeys[i]]) {
                 KnightData *data = [rooster getSelectedData];
-                
-                // check if unit is assigned to other slots
-                for (int j = 0; j < CombatPositions; j++) {
-                    KnightData *curData = [GameProgress getKnightOnCombatPosition:j];
-                    if (curData && [data.keyID isEqualToString:curData.keyID]) {
-                        // then remove it
-                        [GameProgress removeKnightOnCombatPosition:j];
-                        [self removeItemFromScene:knightAnimations[j][currentTypes[j]]];
+                if (data.fatigue > 100) {
+                    // check if unit is assigned to other slots
+                    for (int j = 0; j < CombatPositions; j++) {
+                        KnightData *curData = [GameProgress getKnightOnCombatPosition:j];
+                        if (curData && [data.keyID isEqualToString:curData.keyID]) {
+                            // then remove it
+                            [GameProgress removeKnightOnCombatPosition:j];
+                            [self removeItemFromScene:knightAnimations[j][currentTypes[j]]];
+                        }
                     }
+                    
+                    // remove animation from slected slot
+                    [self removeItemFromScene:knightAnimations[i][currentTypes[i]]];
+                    currentTypes[i] = data.type;
+                    [self addItemToScene:knightAnimations[i][currentTypes[i]]];
+                    
+                    [GameProgress setKnight:data onCombatPosition:i];
                 }
-                
-                // remove animation from slected slot
-                [self removeItemFromScene:knightAnimations[i][currentTypes[i]]];
-                currentTypes[i] = data.type;
-                [self addItemToScene:knightAnimations[i][currentTypes[i]]];
-                
-                [GameProgress setKnight:data onCombatPosition:i];
             }
         }
     }

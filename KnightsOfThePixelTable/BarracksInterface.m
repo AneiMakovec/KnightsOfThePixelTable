@@ -122,6 +122,8 @@
         [statPanel updateDepth:showDepth];
         statButton.label.layerDepth -= hideDepth;
         statButton.label.layerDepth += showDepth;
+        
+        [statPanel updateToKnightData:[rooster getSelectedData]];
 
 //        [skillPanel setEnabled:NO];
         [skillPanel updateDepth:hideDepth];
@@ -136,6 +138,8 @@
         [skillPanel updateDepth:showDepth];
         skillButton.label.layerDepth -= hideDepth;
         skillButton.label.layerDepth += showDepth;
+        
+        [skillPanel updateToKnightData:[rooster getSelectedData]];
         
         [statPanel updateDepth:hideDepth];
         [statPanel updateColor:hideColor];
@@ -159,8 +163,11 @@
 - (void) update {
     KnightData *data = [rooster getSelectedData];
     if (data) {
-        [statPanel updateToKnightData:data];
-        [skillPanel updateToKnightData:data];
+        if (statButton.label.layerDepth < skillButton.label.layerDepth)
+            [statPanel updateToKnightData:data];
+        else
+            [skillPanel updateToKnightData:data];
+        
         unitName.text = data.name;
         unitClassName.text = unitClassNames[data.type];
         unitClassName.color = classColors[data.damageType];

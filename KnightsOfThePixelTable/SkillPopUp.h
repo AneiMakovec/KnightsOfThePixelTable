@@ -25,7 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
     
     DynamicLabel *info;
     
-    Label *dmgType[DamageTypes], *targets[Targets], *conditions[ConditionTypes], *stats[StatTypes];
+    Label *skillName;
+    
+    Label *dmgType[DamageTypes], *targets[Targets], *conditions[ConditionTypes];
+    Color *conditionColors[ConditionTypes];
 }
 
 - (id) initForSkill:(SkillType)skill layerDepth:(float)depth;

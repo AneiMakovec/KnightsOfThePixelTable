@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
     int weaponBonus[StatTypes];
     Lvl armorLvl;
     int armorBonus[StatTypes];
+    
+    int fatigue;
 }
 
 @property (nonatomic, readonly) NSString *keyID;
@@ -45,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) int currentExp;
 @property (nonatomic, readonly) Lvl weaponLvl;
 @property (nonatomic, readonly) Lvl armorLvl;
+
+@property (nonatomic, readonly) int fatigue;
 
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *) knightName;
 
@@ -72,6 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 // UPDATE METHODS
 - (void) updateStats;
+- (void) decreaseFatigue;
+- (void) increaseFatigue;
 
 
 // DEBUG METHOD

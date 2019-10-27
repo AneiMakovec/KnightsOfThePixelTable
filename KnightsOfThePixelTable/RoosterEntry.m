@@ -41,12 +41,20 @@
         [items addObject:portraits[currentType]];
         
         // init unit name
-        name = [[Label alloc] initWithFont:[GraphicsComponent getFont] text:data.name position:[Vector2 vectorWithX:position.x + 40 y:position.y + 16]];
+        name = [GraphicsComponent getLabelWithText:data.name atPosition:[Vector2 vectorWithX:position.x + 40 y:position.y + 16]];
         name.verticalAlign = VerticalAlignMiddle;
         name.horizontalAlign = HorizontalAlignLeft;
         name.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
         [name setScaleUniform:FONT_SCALE_SMALL];
         [items addObject:name];
+        
+        // int fatigue
+        fatigue = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"%d%%", data.fatigue] atPosition:[Vector2 vectorWithX:position.x + 150 y:position.y + 16]];
+        fatigue.verticalAlign = VerticalAlignMiddle;
+        fatigue.horizontalAlign = HorizontalAlignRight;
+        fatigue.layerDepth = depth - INTERFACE_LAYER_DEPTH_ALMOSTGROUND;
+        [fatigue setScaleUniform:FONT_SCALE_SMALL];
+        [items addObject:fatigue];
     }
     return self;
 }
@@ -69,6 +77,17 @@
     [roosterLine setColor:[Color white]];
     [portraits[currentType] setColor:[Color white]];
     [name setColor:[Color white]];
+}
+
+- (void) updateWithGameTime:(GameTime *)gameTime {
+    // update fatigue
+    fatigue.text = [NSString stringWithFormat:@"%d%%", data.fatigue];
+    
+    if (data.fatigue == 100) {
+        fatigue.color = [Color red];
+    } else {
+        fatigue.color = [Color white];
+    }
 }
 
 

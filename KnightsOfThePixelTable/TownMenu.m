@@ -84,6 +84,22 @@
     [scene addItem:back];
 }
 
+
+- (void) activate {
+    [super activate];
+    
+    // check if entered dungeon
+        // update rooster
+        // update train rooster
+        // increase fatigue to knights
+        // increase gold
+        // increase week counter
+        // check if unlocked any lvls
+    
+}
+
+
+
 - (void) updateWithGameTime:(GameTime *)gameTime {
     [super updateWithGameTime:gameTime];
     

@@ -10,6 +10,7 @@
 
 #import "Pixlron.Knights.h"
 
+#define NAME_KEY @"name"
 #define FUNCTION_KEY @"function"
 #define DAMAGE_KEY @"damage"
 #define TARGET_KEY @"target"
@@ -18,7 +19,7 @@
 #define CONDITIONS_KEY @"conditions"
 
 #define CONDITION_TYPE_KEY @"type"
-#define CONDITION_STAT_KEY @"stat"
+//#define CONDITION_STAT_KEY @"stat"
 #define CONDITION_TARGET_KEY @"target"
 #define CONDITION_CHANCE_KEY @"chance"
 #define CONDITION_DURATION_KEY @"duration"
@@ -28,12 +29,11 @@
 + (Skill *) createSkill:(SkillType)type forAlly:(KnightType)ally {
     NSDictionary *skillData = [[[Constants getValueDataForKey:VALUE_UNIT_SKILLS] objectForKey:[NSString stringWithFormat:@"%d", ally]] objectForKey:[NSString stringWithFormat:@"%d", type]];
     
-    
-    Skill *skill = [[[Skill alloc] initWithFunction:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue]] autorelease];
+    Skill *skill = [[[Skill alloc] initWithName:[skillData objectForKey:NAME_KEY] function:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue]] autorelease];
     
     ConditionData *condData = nil;
     for (NSDictionary *dict in [skillData objectForKey:CONDITIONS_KEY]) {
-        condData = [[ConditionData alloc] initWithType:[[dict valueForKey:CONDITION_TYPE_KEY] intValue] statType:[[dict valueForKey:CONDITION_STAT_KEY] intValue] target:[[dict valueForKey:CONDITION_TARGET_KEY] intValue] chance:[[dict valueForKey:CONDITION_CHANCE_KEY] floatValue] duration:[[dict valueForKey:CONDITION_DURATION_KEY] intValue]];
+        condData = [[ConditionData alloc] initWithType:[[dict valueForKey:CONDITION_TYPE_KEY] intValue] target:[[dict valueForKey:CONDITION_TARGET_KEY] intValue] chance:[[dict valueForKey:CONDITION_CHANCE_KEY] floatValue] duration:[[dict valueForKey:CONDITION_DURATION_KEY] intValue]];
         [skill addCondition:condData];
         [condData release];
     }

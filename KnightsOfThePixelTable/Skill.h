@@ -16,6 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Skill : NSObject<IUpgradable> {
+    NSString *name;
     Lvl lvl;
     
     float damage;
@@ -27,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *conditions;
 }
 
+@property (nonatomic, retain) NSString *name;
 @property (nonatomic, readonly) Lvl lvl;
 
 @property (nonatomic, readonly) float damage;
@@ -37,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSMutableArray *conditions;
 
 
-- (id) initWithFunction:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType;
+- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType;
 
 - (void) addCondition:(ConditionData *)condition;
 
