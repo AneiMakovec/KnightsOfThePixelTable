@@ -15,18 +15,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GameProgress : NSObject <NSCoding> {
     BOOL loadedAsNew;
     
+    BOOL finishedDungeon;
+    
     int week;
     int gold;
     int numOfDices[LvlThree];
     Lvl diceLvl;
     
     BOOL levelUnlocked[LevelTypes];
-    BOOL levelFinished[LevelTypes];
+    BOOL levelStageUnlocked[LevelTypes][StageTypes];
     BOOL soundEnabled;
     
     NSMutableArray *knights;
     NSMutableArray *trainKnights;
     KnightData *battleKnights[CombatPositions];
+    
+    int knightId;
 }
 
 @property (nonatomic, retain) NSMutableArray *knights;
@@ -47,17 +51,27 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL) areDicesMaxLvl;
 + (BOOL) isSoundEnabled;
 + (BOOL) isLevelUnlocked:(LevelType)level;
-+ (BOOL) isLevelFinished:(LevelType)level;
++ (BOOL) isStageUnlocked:(StageType)stage forLevel:(LevelType)level;
 
 + (void) setSoundEnabled:(BOOL)isEnabled;
 + (void) unlockLevel:(LevelType)type;
 
 + (void) upgradeNumOfDices;
 
++ (void) setFinishedDungeon:(BOOL)finished;
++ (BOOL) hasFinishedDungeon;
+
++ (void) generateNewKnights;
+
++ (NSMutableArray *) getKnights;
++ (NSMutableArray *) getTrainKnights;
+
 + (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position;
 + (KnightData *) getKnightOnCombatPosition:(CombatPosition)position;
 + (void) removeKnightOnCombatPosition:(CombatPosition)position;
 + (int) getNumOfBattleKnights;
+
++ (BOOL) isBattleKnight:(KnightData *)data;
 
 
 - (id) initWithLoaded:(BOOL)load;

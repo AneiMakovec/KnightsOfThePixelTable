@@ -59,7 +59,8 @@ typedef enum {
     CharacterTypeBold,
     CharacterTypePrepared,
     CharacterTypeHasty,
-    CharacterTypeCareful
+    CharacterTypeCareful,
+    CharacterTypes
 } CharacterType;
 
 typedef enum {
@@ -191,6 +192,26 @@ typedef enum {
     LevelTypeSeashore,
     LevelTypes
 } LevelType;
+
+// MARK: statge types
+typedef enum {
+    StageEasyFirst,
+    StageEasySecond,
+    StageEasyThird,
+    StageEasyFourth,
+    StageEasyFifth,
+    StageMediumFirst,
+    StageMediumSecond,
+    StageMediumThird,
+    StageMediumFourth,
+    StageMediumFifth,
+    StageHardFirst,
+    StageHardSecond,
+    StageHardThird,
+    StageHardFourth,
+    StageHardFifth,
+    StageTypes
+} StageType;
 
 // MARK: dices
 typedef enum {

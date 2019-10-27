@@ -80,10 +80,6 @@ GameProgress *gameProgressInstance;
     return [gameProgressInstance isLevelUnlocked:level];
 }
 
-+ (BOOL) isLevelFinished:(LevelType)level {
-    return [gameProgressInstance isLevelFinished:level];
-}
-
 + (BOOL) areDicesMaxLvl {
     return [gameProgressInstance areDicesMaxLvl];
 }
@@ -100,6 +96,30 @@ GameProgress *gameProgressInstance;
     [gameProgressInstance upgradeNumOfDices];
 }
 
++ (BOOL) isStageUnlocked:(StageType)stage forLevel:(LevelType)level {
+    return [gameProgressInstance isStageUnlocked:stage forLevel:level];
+}
+
++ (void) setFinishedDungeon:(BOOL)finished {
+    [gameProgressInstance setFinishedDungeon:finished];
+}
+
++ (BOOL) hasFinishedDungeon {
+    return [gameProgressInstance hasFinishedDungeon];
+}
+
++ (void) generateNewKnights {
+    [gameProgressInstance generateNewKnights];
+}
+
++ (NSMutableArray *) getKnights {
+    return gameProgressInstance.knights;
+}
+
++ (NSMutableArray *) getTrainKnights {
+    return gameProgressInstance.trainKnights;
+}
+
 + (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position {
     [gameProgressInstance setKnight:knight onCombatPosition:position];
 }
@@ -114,6 +134,10 @@ GameProgress *gameProgressInstance;
 
 + (int) getNumOfBattleKnights {
     return [gameProgressInstance getNumOfBattleKnights];
+}
+
++ (BOOL) isBattleKnight:(KnightData *)data {
+    return [gameProgressInstance isBattleKnight:data];
 }
 
 
@@ -169,6 +193,8 @@ GameProgress *gameProgressInstance;
 - (void) initializeData {
     soundEnabled = YES;
     
+    finishedDungeon = NO;
+    
     levelUnlocked[LevelTypeFarmlands] = YES;
     
     knights = [[NSMutableArray alloc] init];
@@ -176,6 +202,8 @@ GameProgress *gameProgressInstance;
     
     week = 1;
     gold = 1000000;
+    
+    knightId = 0;
     
     diceLvl = LvlZero;
     for (int i = 0; i < LvlThree; i++) {
@@ -215,23 +243,43 @@ GameProgress *gameProgressInstance;
     return levelUnlocked[level];
 }
 
-- (BOOL) isLevelFinished:(LevelType)level {
-    return levelFinished[level];
-}
-
 - (BOOL) areDicesMaxLvl {
     return diceLvl == [Constants getMaxDiceLvl] - 1;
+}
+
+- (BOOL) isStageUnlocked:(StageType)stage forLevel:(LevelType)level {
+    return levelStageUnlocked[level][stage];
+}
+
+- (void) setFinishedDungeon:(BOOL)finished {
+    finishedDungeon = finished;
+}
+
+- (BOOL) hasFinishedDungeon {
+    return finishedDungeon;
+}
+
+- (void) generateNewKnights {
+    for (int i = 0; i < 4; i++) {
+        KnightType type = [Random intLessThan:KnightTypes];
+        CharacterType charType = [Random intLessThan:CharacterTypes];
+        KnightData *newKnight = [[KnightData alloc] initWithID:[NSString stringWithFormat:@"%d", knightId] type:type characterType:charType name:@"TODO"];
+        [trainKnights addObject:newKnight];
+        [newKnight release];
+        
+        knightId++;
+    }
 }
 
 - (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position {
     battleKnights[position] = [knight retain];
     
-    NSLog(@"BATTLE KNIGHTS:");
-    for (int i = 0; i < CombatPositions; i++) {
-        if (battleKnights[i]) {
-            NSLog([battleKnights[i].keyID stringByAppendingString:[NSString stringWithFormat:@" at position: %d", i]]);
-        }
-    }
+//    NSLog(@"BATTLE KNIGHTS:");
+//    for (int i = 0; i < CombatPositions; i++) {
+//        if (battleKnights[i]) {
+//            NSLog([battleKnights[i].keyID stringByAppendingString:[NSString stringWithFormat:@" at position: %d", i]]);
+//        }
+//    }
 }
 
 - (KnightData *) getKnightOnCombatPosition:(CombatPosition)position {
@@ -254,7 +302,15 @@ GameProgress *gameProgressInstance;
     return count;
 }
 
-
+- (BOOL) isBattleKnight:(KnightData *)data {
+    for (int i = 0; i < CombatPositions; i++) {
+        if ([data.keyID isEqualToString:battleKnights[i].keyID]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 
 
 

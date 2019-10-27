@@ -100,48 +100,48 @@
         rooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
         
         // TODO: implement real rooster entries
-        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler characterType:CharacterTypeBrave name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
-
-        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin characterType:CharacterTypeCalm name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
-
-        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeBard characterType:CharacterTypeBold name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
-
-        [rooster addItem:firstData];
-        [rooster addItem:secondData];
-        [rooster addItem:thirdData];
-
-        [firstData release];
-        [secondData release];
-        [thirdData release];
+//        KnightData *firstData = [[KnightData alloc] initWithID:@"Knight1" type:KnightTypeBrawler characterType:CharacterTypeBrave name:@"Sir Lancelot" level:3 currentExp:1000 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *secondData = [[KnightData alloc] initWithID:@"Knight2" type:KnightTypePaladin characterType:CharacterTypeCalm name:@"Sir Reginald" level:10 currentExp:1500 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *thirdData = [[KnightData alloc] initWithID:@"Knight3" type:KnightTypeBard characterType:CharacterTypeBold name:@"Sir Ian" level:5 currentExp:2000 weaponLvl:0 armorLvl:0];
+//
+//        [rooster addItem:firstData];
+//        [rooster addItem:secondData];
+//        [rooster addItem:thirdData];
+//
+//        [firstData release];
+//        [secondData release];
+//        [thirdData release];
         
         // init rooster for trained units
         trainRooster = [[[Rooster alloc] initWithArea:[Constants getInterfaceScrollRect] itemSize:[Constants getMetaDataForKey:META_INTERFACE_SCROLL].step layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_BEFOREGROUND] autorelease];
         
-        KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeLongbowman characterType:CharacterTypePrepared name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:0 armorLvl:0];
-
-        KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeCrossbowman characterType:CharacterTypeHasty name:@"Sir Fritz" level:10 currentExp:0 weaponLvl:0 armorLvl:0];
-        
-        KnightData *thirdTrainData = [[KnightData alloc] initWithID:@"Knight6" type:KnightTypeScout characterType:CharacterTypeCareful name:@"Sir Donald" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
-        
-        KnightData *fourthTrainData = [[KnightData alloc] initWithID:@"Knight7" type:KnightTypeBattlemage characterType:CharacterTypeCareful name:@"Sir Ian" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
-        
-        KnightData *fifthTrainData = [[KnightData alloc] initWithID:@"Knight8" type:KnightTypeWizard characterType:CharacterTypeCareful name:@"Sir Jack" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
-        
-        KnightData *sixthTrainData = [[KnightData alloc] initWithID:@"Knight9" type:KnightTypeMonk characterType:CharacterTypeCareful name:@"Sir Henry" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
-
-        [trainRooster addItem:firstTrainData];
-        [trainRooster addItem:secondTrainData];
-        [trainRooster addItem:thirdTrainData];
-        [trainRooster addItem:fourthTrainData];
-        [trainRooster addItem:fifthTrainData];
-        [trainRooster addItem:sixthTrainData];
-
-        [firstTrainData release];
-        [secondTrainData release];
-        [thirdTrainData release];
-        [fourthTrainData release];
-        [fifthTrainData release];
-        [sixthTrainData release];
+//        KnightData *firstTrainData = [[KnightData alloc] initWithID:@"Knight4" type:KnightTypeLongbowman characterType:CharacterTypePrepared name:@"Sir Bowen" level:3 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *secondTrainData = [[KnightData alloc] initWithID:@"Knight5" type:KnightTypeCrossbowman characterType:CharacterTypeHasty name:@"Sir Fritz" level:10 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *thirdTrainData = [[KnightData alloc] initWithID:@"Knight6" type:KnightTypeScout characterType:CharacterTypeCareful name:@"Sir Donald" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *fourthTrainData = [[KnightData alloc] initWithID:@"Knight7" type:KnightTypeBattlemage characterType:CharacterTypeCareful name:@"Sir Ian" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *fifthTrainData = [[KnightData alloc] initWithID:@"Knight8" type:KnightTypeWizard characterType:CharacterTypeCareful name:@"Sir Jack" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        KnightData *sixthTrainData = [[KnightData alloc] initWithID:@"Knight9" type:KnightTypeMonk characterType:CharacterTypeCareful name:@"Sir Henry" level:7 currentExp:0 weaponLvl:0 armorLvl:0];
+//
+//        [trainRooster addItem:firstTrainData];
+//        [trainRooster addItem:secondTrainData];
+//        [trainRooster addItem:thirdTrainData];
+//        [trainRooster addItem:fourthTrainData];
+//        [trainRooster addItem:fifthTrainData];
+//        [trainRooster addItem:sixthTrainData];
+//
+//        [firstTrainData release];
+//        [secondTrainData release];
+//        [thirdTrainData release];
+//        [fourthTrainData release];
+//        [fifthTrainData release];
+//        [sixthTrainData release];
         
         
         
@@ -503,6 +503,18 @@
 
 - (void) updateGoldCounter {
     goldCount.text = [NSString stringWithFormat:@"%d", [GameProgress getGold]];
+}
+
+- (void) updateRoosters {
+    [rooster removeAllItems];
+    for (KnightData *data in [GameProgress getKnights]) {
+        [rooster addItem:data];
+    }
+    
+    [trainRooster removeAllItems];
+    for (KnightData *data in [GameProgress getTrainKnights]) {
+        [trainRooster addItem:data];
+    }
 }
 
 

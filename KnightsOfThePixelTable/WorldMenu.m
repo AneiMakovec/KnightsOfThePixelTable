@@ -57,17 +57,17 @@
     
     
     // Buttons
-    dungeonFarmlands = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:255 y:57 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
-    [scene addItem:dungeonFarmlands];
-    
-    dungeonMountains = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:885 y:65 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
-    [scene addItem:dungeonMountains];
-    
-    dungeonSeashore = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:117 y:420 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
-    [scene addItem:dungeonSeashore];
-    
-    dungeonPinewoods = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:730 y:340 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
-    [scene addItem:dungeonPinewoods];
+//    dungeonFarmlands = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:255 y:57 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
+//    [scene addItem:dungeonFarmlands];
+//    
+//    dungeonMountains = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:885 y:65 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
+//    [scene addItem:dungeonMountains];
+//    
+//    dungeonSeashore = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:117 y:420 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
+//    [scene addItem:dungeonSeashore];
+//    
+//    dungeonPinewoods = [[ImageButton alloc] initWithInputArea:[Rectangle rectangleWithX:730 y:340 width:30 height:30] background:[self.game.content load:BUTTON_DESTINATION]];
+//    [scene addItem:dungeonPinewoods];
     
     
     [scene addItem:back];
@@ -79,32 +79,32 @@
     [super updateWithGameTime:gameTime];
     
     // check if clicked any button
-    GameState *newState = nil;
-    if (dungeonFarmlands.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeFarmlands];
-    } else if (dungeonMountains.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeMountains];
-    } else if (dungeonSeashore.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeSeashore];
-    } else if (dungeonPinewoods.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypePinewoods];
-    }
+//    GameState *newState = nil;
+//    if (dungeonFarmlands.wasReleased) {
+//        [SoundEngine play:SoundEffectTypeClick];
+//        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeFarmlands];
+//    } else if (dungeonMountains.wasReleased) {
+//        [SoundEngine play:SoundEffectTypeClick];
+//        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeMountains];
+//    } else if (dungeonSeashore.wasReleased) {
+//        [SoundEngine play:SoundEffectTypeClick];
+//        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypeSeashore];
+//    } else if (dungeonPinewoods.wasReleased) {
+//        [SoundEngine play:SoundEffectTypeClick];
+//        newState = [[Gameplay alloc] initWithGame:self.game levelType:LevelTypePinewoods];
+//    }
     
-    if (newState) {
-        [knightsGame pushState:newState];
-    }
+//    if (newState) {
+//        [knightsGame pushState:newState];
+//    }
 }
 
 
 - (void) dealloc {
-    [dungeonFarmlands release];
-    [dungeonSeashore release];
-    [dungeonMountains release];
-    [dungeonPinewoods release];
+//    [dungeonFarmlands release];
+//    [dungeonSeashore release];
+//    [dungeonMountains release];
+//    [dungeonPinewoods release];
     [background release];
     
     [super dealloc];

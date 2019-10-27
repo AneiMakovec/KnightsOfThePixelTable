@@ -89,12 +89,28 @@
     [super activate];
     
     // check if entered dungeon
-        // update rooster
-        // update train rooster
-        // increase fatigue to knights
-        // increase gold
-        // increase week counter
-        // check if unlocked any lvls
+    if ([GameProgress hasFinishedDungeon]) {
+        // generate new knights
+        [GameProgress generateNewKnights];
+        
+        // update rooster and train rooster
+        [interface updateRoosters];
+        
+        // increase fatigue to knights in warband
+        for (int i = 0; i < CombatPositions; i++) {
+            KnightData *data = [GameProgress getKnightOnCombatPosition:i];
+            if (data) {
+                [data increaseFatigue];
+            }
+        }
+        
+        // decrease fatigue to knights in town
+        for (KnightData *data in [GameProgress getKnights]) {
+            if (![GameProgress isBattleKnight:data]) {
+                [data decreaseFatigue];
+            }
+        }
+    }
     
 }
 
@@ -127,7 +143,7 @@
 //        [SoundEngine play:SoundEffectTypeClick];
 
         if ([GameProgress getNumOfBattleKnights] == CombatPositions) {
-//            newState = [[WorldMenu alloc] initWithGame:self.game];
+            newState = [[WorldMenu alloc] initWithGame:self.game];
         } else {
             Indicator *warning = [[Indicator alloc] initWithText:@"WARBAND IS NOT FULL!" position:[Constants getPositionDataForKey:POSITION_WARNING] font:[GraphicsComponent getFont] color:[Color red] duration:2.0f];
             [scene addItem:warning];
