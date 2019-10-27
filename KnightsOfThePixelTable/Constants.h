@@ -100,10 +100,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) brawlerDamageType;
 + (int) brawlerValueOfStat:(StatType)stat;
 + (int) brawlerGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) brawlerRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) brawlerRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill;
 + (float) brawlerDamageOfSkill:(SkillType)skill;
 + (float) brawlerGainMarginOfSkill:(SkillType)skill;
 
@@ -111,10 +111,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) bowmanDamageType;
 + (int) bowmanValueOfStat:(StatType)stat;
 + (int) bowmanGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) bowmanRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) bowmanRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill;
 + (float) bowmanDamageOfSkill:(SkillType)skill;
 + (float) bowmanGainMarginOfSkill:(SkillType)skill;
 
@@ -122,10 +122,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) paladinDamageType;
 + (int) paladinValueOfStat:(StatType)stat;
 + (int) paladinGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) paladinRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) paladinTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) paladinUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) paladinRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) paladinTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) paladinUseOnSkill:(SkillType)skill;
 + (float) paladinDamageOfSkill:(SkillType)skill;
 + (float) paladinGainMarginOfSkill:(SkillType)skill;
 
@@ -133,10 +133,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) fireEnchantressDamageType;
 + (int) fireEnchantressValueOfStat:(StatType)stat;
 + (int) fireEnchantressGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill;
 + (float) fireEnchantressDamageOfSkill:(SkillType)skill;
 + (float) fireEnchantressGainMarginOfSkill:(SkillType)skill;
 
@@ -145,10 +145,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) enemyWarriorDamageType;
 + (int) enemyWarriorValueOfStat:(StatType)stat;
 + (int) enemyWarriorGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill;
 + (float) enemyWarriorDamageOfSkill:(SkillType)skill;
 + (float) enemyWarriorGainMarginOfSkill:(SkillType)skill;
 
@@ -156,10 +156,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) enemyBruteDamageType;
 + (int) enemyBruteValueOfStat:(StatType)stat;
 + (int) enemyBruteGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill;
 + (float) enemyBruteDamageOfSkill:(SkillType)skill;
 + (float) enemyBruteGainMarginOfSkill:(SkillType)skill;
 
@@ -167,10 +167,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) enemyVikingDamageType;
 + (int) enemyVikingValueOfStat:(StatType)stat;
 + (int) enemyVikingGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill;
 + (float) enemyVikingDamageOfSkill:(SkillType)skill;
 + (float) enemyVikingGainMarginOfSkill:(SkillType)skill;
 
@@ -178,10 +178,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (DamageType) enemyBossKnightDamageType;
 + (int) enemyBossKnightValueOfStat:(StatType)stat;
 + (int) enemyBossKnightGainMarginOfStat:(StatType)stat;
-+ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill;
-+ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill;
-+ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill;
-+ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill;
+//+ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill;
+//+ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill;
+//+ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill;
+//+ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill;
 + (float) enemyBossKnightDamageOfSkill:(SkillType)skill;
 + (float) enemyBossKnightGainMarginOfSkill:(SkillType)skill;
 

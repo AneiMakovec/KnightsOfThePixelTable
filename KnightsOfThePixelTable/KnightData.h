@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     int hp;
     Lvl lvl;
     int currentExp;
-    Lvl skillLvl[SkillTypes];
+    Skill *skills[SkillTypes];
     int stats[StatTypes];
     Lvl weaponLvl;
     int weaponBonus[StatTypes];
@@ -56,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (int) getValueOfStat:(StatType)stat;
 - (int) getWeaponBonusForStat:(StatType)stat;
 - (int) getArmorBonusForStat:(StatType)stat;
+- (Skill *) getSkill:(SkillType)skill;
 
 
 // BOOL METHODS

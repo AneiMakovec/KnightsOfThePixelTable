@@ -72,56 +72,54 @@ typedef enum {
 } SkillType;
 
 typedef enum {
-    SkillRangeMelee,
-    SkillRangeRanged,
-    SkillRanges
-} SkillRange;
+    Melee,  // 0
+    Ranged, // 1
+    Ranges  // 2
+} Range;
 
 typedef enum {
-    SkillTargetSelf,
-    SkillTargetSingle,
-    SkillTargetRow,
-    SkillTargetAll,
-    SkillTargets
-} SkillTarget;
+    Self,               // 0
+    SingleAlly,         // 1
+    RowOfAllies,        // 2
+    ColumnOfAllies,     // 3
+    AllAllies,          // 4
+    SingleEnemy,        // 5
+    RowOfEnemies,       // 6
+    ColumnOfEnemies,    // 7
+    AllEnemies,         // 8
+    Targets
+} Target;
 
 typedef enum {
-    SkillFunctionDamage,
-    SkillFunctionHeal,
-    SkillFunctionUtility,
-    SkillFunctions
-} SkillFunction;
+    Damage,     // 0
+    Heal,       // 1
+    Utility,    // 2
+    Functions
+} Function;
 
 typedef enum {
-    SkillEffectRemoveBuffs,
-    SkillEffectRemoveDebuffs,
-    SkillEffectRemoveConditions,
-    SkillEffectIncreaseBuff,
-    SkillEffectIncreaseDebuff,
-    SkillEffectDecreaseBuff,
-    SkillEffectDecreaseDebuff,
-    SkillEffects
-} SkillEffect;
-
-typedef enum {
-    SkillUseOnEnemy,
-    SkillUseOnAlly,
-    SkillUseOns
-} SkillUseOn;
-
-typedef enum {
-    ConditionTypeBleed,
-    ConditionTypeBurn,
-    ConditionTypePoison,
-    ConditionTypeFrostbite,
-    ConditionTypeStun,
+    Bleeding,       // 0
+    Burning,        // 1
+    Poison,         // 2
+    Frostbite,      // 3
+    Stun,           // 4
+    Invisible,      // 5
+    BBuff,          // 6
+    DDebuff,        // 7
+    Taunt,          // 8
+    Protect,        // 9
+    Parry,          // 10
+    Immune,         // 11
+    Regen,          // 12
+    HelpingHand,    // 13
+    RemoveCondition,// 14
     ConditionTypes
 } ConditionType;
 
 typedef enum {
-    DamageTypePhysical,
-    DamageTypeRanged,
-    DamageTypeMagic,
+    DamageTypePhysical, // 0
+    DamageTypeRanged,   // 1
+    DamageTypeMagic,    // 2
     DamageTypes,
     NoDamageType
 } DamageType;
@@ -850,6 +848,7 @@ typedef enum {
 #define POSITION_INTERFACE_TRAINING_YARD_RECRUIT @"interface_training_yard_recruit_button"
 #define POSITION_INTERFACE_WARBAND_CAMP_SLOTS @"interface_warband_camp_slot_"
 #define POSITION_INTERFACE_WARBAND_CAMP_KNIGHTS @"interface_warband_camp_knight_"
+#define POSITION_INTERFACE_SKILL_POP_UPS @"interface_skill_pop_up_"
 #define POSITION_WARNING @"warning"
 #define POSITION_BUILDING_CASTLE @"building_castle"
 #define POSITION_BUILDING_BLACKSMITH @"building_blacksmith"
@@ -929,3 +928,4 @@ typedef enum {
 #define VALUE_BASE_HP_ALLIES @"base_hp_allies"
 #define VALUE_BASE_STATS_ENEMIES @"base_stats_enemies"
 #define VALUE_BASE_HP_ENEMIES @"base_hp_enemies"
+#define VALUE_UNIT_SKILLS @"unit_skills"

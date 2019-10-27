@@ -77,12 +77,12 @@
     [scene addItem:resetDices];
     
     // End turn button
-    endTurn = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
-    [scene addItem:endTurn];
+//    endTurn = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
+//    [scene addItem:endTurn];
     
     // Retreat button
-    retreat = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:10 y:10 width:110 height:50] background:buttonBackground font:font text:@"Retreat"];
-    [scene addItem:retreat];
+//    retreat = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:10 y:10 width:110 height:50] background:buttonBackground font:font text:@"Retreat"];
+//    [scene addItem:retreat];
     
     
     // load indicator textures

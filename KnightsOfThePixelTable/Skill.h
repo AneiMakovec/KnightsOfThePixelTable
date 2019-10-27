@@ -16,36 +16,30 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Skill : NSObject<IUpgradable> {
-    int maxSkillLevel;
-    int currentSkillLevel;
+    Lvl lvl;
     
-    float upgradeMargin;
     float damage;
+    Function function;
+    Target target;
+    Range range;
+    DamageType damageType;
     
-    SkillUseOn useOn;
-    BOOL additionalEffects[SkillEffects];
-    SkillFunction function;
-    SkillTarget target;
-    SkillRange range;
-    NSMutableArray *statEffects;
+    NSMutableArray *conditions;
 }
 
+@property (nonatomic, readonly) Lvl lvl;
+
 @property (nonatomic, readonly) float damage;
-@property (nonatomic, readonly) SkillUseOn useOn;
-@property (nonatomic, readonly) SkillFunction function;
-@property (nonatomic, readonly) SkillRange range;
-@property (nonatomic, readonly) SkillTarget target;
-@property (nonatomic, retain) NSMutableArray *statEffects;
+@property (nonatomic, readonly) Function function;
+@property (nonatomic, readonly) Range range;
+@property (nonatomic, readonly) Target target;
+@property (nonatomic, readonly) DamageType damageType;
+@property (nonatomic, retain) NSMutableArray *conditions;
 
 
-- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget useOn:(SkillUseOn)theUseOn damage:(float)dmg upgradeMargin:(float)theMargin;
+- (id) initWithFunction:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType;
 
-- (void) addStatEffect:(StatEffect*)statEffect;
-
-- (void) setEffect:(SkillEffect)effect;
-- (BOOL) hasEffect:(SkillEffect)effect;
-
-- (BOOL) isMaxLevel;
+- (void) addCondition:(ConditionData *)condition;
 
 @end
 

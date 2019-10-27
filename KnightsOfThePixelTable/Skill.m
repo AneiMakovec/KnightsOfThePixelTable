@@ -12,64 +12,38 @@
 
 @implementation Skill
 
-- (id) initWithFunction:(SkillFunction)theFunction range:(SkillRange)theRange target:(SkillTarget)theTarget useOn:(SkillUseOn)theUseOn damage:(float)dmg upgradeMargin:(float)theMargin {
+- (id) initWithFunction:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType {
     self = [super init];
     if (self != nil) {
+        lvl = LvlZero;
+        
         damage = dmg;
-        upgradeMargin = theMargin;
-        
         function = theFunction;
-        
-        maxSkillLevel = [Constants maxSkillLevel];
-        currentSkillLevel = 1;
-        
-        // set parameters for healing skill
-        if (function == SkillFunctionHeal) {
-            useOn = SkillUseOnAlly;
-            range = SkillRangeRanged;
-        } else {
-            useOn = theUseOn;
-            range = theRange;
-        }
-        
         target = theTarget;
-        statEffects = [[NSMutableArray alloc] init];
+        range = theRange;
+        damageType = dType;
+        
+        conditions = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-@synthesize damage, function, range, target, statEffects, useOn;
+@synthesize damage, function, range, target, damageType, lvl, conditions;
 
 
-- (void) addStatEffect:(StatEffect *)statEffect {
-    [statEffects addObject:statEffect];
+- (void) addCondition:(ConditionData *)condition {
+    [conditions addObject:condition];
 }
 
-- (BOOL) hasEffect:(SkillEffect)effect {
-    return additionalEffects[effect];
-}
-
-- (void) setEffect:(SkillEffect)effect {
-    additionalEffects[effect] = YES;
-}
-
-- (BOOL) isMaxLevel {
-    return currentSkillLevel == maxSkillLevel;
-}
 
 
 - (void) upgrade {
-    if (currentSkillLevel < maxSkillLevel) {
-        damage += upgradeMargin;
-        
-        for (StatEffect *effect in statEffects) {
-            [effect upgrade];
-        }
-    }
+    lvl++;
+    // TODO: upgrade dmg + status effect chances
 }
 
 - (void) dealloc {
-    [statEffects release];
+    [conditions release];
     
     [super dealloc];
 }

@@ -40,10 +40,12 @@
         // init tab buttons
         MetaData *data = [Constants getMetaDataForKey:META_INTERFACE_TAB];
         statButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_STATS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_STATS] width:data.width height:data.height];
+        statButton.label.layerDepth = showDepth + INTERFACE_LAYER_DEPTH_BACK;
         [statButton.label setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
         [items addObject:statButton];
         
         skillButton = [GraphicsComponent getLabelButtonWithText:[Constants getTextForKey:TEXT_INTERFACE_TAB_SKILLS] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_TAB_SKILLS] width:data.width height:data.height];
+        skillButton.label.layerDepth = hideDepth + INTERFACE_LAYER_DEPTH_BACK;
         [skillButton.label setScaleUniform:FONT_SCALE_SMALL_MEDIUM];
         [items addObject:skillButton];
         
@@ -118,19 +120,27 @@
     if (statButton.wasReleased) {
         [statPanel updateColor:showColor];
         [statPanel updateDepth:showDepth];
+        statButton.label.layerDepth -= hideDepth;
+        statButton.label.layerDepth += showDepth;
 
 //        [skillPanel setEnabled:NO];
         [skillPanel updateDepth:hideDepth];
         [skillPanel updateColor:hideColor];
+        skillButton.label.layerDepth -= showDepth;
+        skillButton.label.layerDepth += hideDepth;
     }
     
     if (skillButton.wasReleased) {
 //        [skillPanel setEnabled:YES];
         [skillPanel updateColor:showColor];
         [skillPanel updateDepth:showDepth];
+        skillButton.label.layerDepth -= hideDepth;
+        skillButton.label.layerDepth += showDepth;
         
         [statPanel updateDepth:hideDepth];
         [statPanel updateColor:hideColor];
+        statButton.label.layerDepth -= showDepth;
+        statButton.label.layerDepth += hideDepth;
     }
 }
 

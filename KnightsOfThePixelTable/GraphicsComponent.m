@@ -156,6 +156,13 @@ GraphicsComponent *graphicsInstance;
 }
 
 - (TouchImage *) getTouchImageWithKey:(NSString *)key atPosition:(Vector2 *)position {
+    // check if image is trimmed and update position accordingly
+    if ([self isTrimmedByKey:key]) {
+        Rectangle *offset = [self getOffsetRectangleForKey:key];
+        position.x += (float) offset.x;
+        position.y += (float) offset.y;
+    }
+    
     // get image size
     Rectangle *sourceRect = [self getSourceRectangleForKey:key];
     
@@ -169,6 +176,13 @@ GraphicsComponent *graphicsInstance;
 }
 
 - (TouchImage *) getTouchImageWithKey:(NSString *)key atPosition:(Vector2 *)position width:(int)width height:(int)height {
+    // check if image is trimmed and update position accordingly
+    if ([self isTrimmedByKey:key]) {
+        Rectangle *offset = [self getOffsetRectangleForKey:key];
+        position.x += (float) offset.x;
+        position.y += (float) offset.y;
+    }
+    
     // init image
     TouchImage *image = [[[TouchImage alloc] initWithTexture:[self getTextureForKey:key] toRectangle:[Rectangle rectangleWithX:position.x y:position.y width:width height:height]] autorelease];
     

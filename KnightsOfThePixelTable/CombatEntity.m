@@ -132,231 +132,231 @@
 
 
 - (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly {
-    // check if there are any enemies
-    if ([level.battlefield hasAnyEnemyForAlly:isAlly]) {
-        
-        // check if not finished attacking
-        if (!finishedAttacking) {
-            // remove combo items
-            [combo removeAllObjects];
-
-            // check if it is healing skill or if skill is used on allies
-            BOOL ignoreTarget = NO;
-            if (skills[skillType].function == SkillFunctionHeal || skills[skillType].useOn == SkillUseOnAlly) {
-                isAlly = !isAlly;
-                ignoreTarget = YES;
-            }
-            
-            // check skill targeting
-            switch (skills[skillType].target) {
-                case SkillTargetSelf:
-                    [targets addObject:self];
-                    state = EntityStateAttacking;
-                    break;
-                    
-                case SkillTargetSingle:
-                    // single target
-                    if (!theTarget) {
-                        CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
-                        if (entity) {
-                            target = [entity.origin retain];
-                            [self addTarget:entity];
-                        }
-                    } else {
-                        target = [theTarget.origin retain];
-                        [self addTarget:theTarget];
-                    }
-                    break;
-                    
-                case SkillTargetRow:
-                    if (isAlly) {
-                        // check if has target
-                        if (!ignoreTarget && theTarget) {
-                            // check if target is in front row or back row
-                            CombatPosition pos = [level.battlefield getCombatPositionOfEnemy:(Monster *)theTarget];
-                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
-                                target = [level.battlefield.enemyFrontRow retain];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
-                            } else {
-                                target = [level.battlefield.enemyBackRow retain];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
-                            }
-                        } else {
-                            // check front row
-                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
-                                target = [level.battlefield.enemyFrontRow retain];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
-                            // check back row
-                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
-                                target = [level.battlefield.enemyBackRow retain];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
-                            }
-                        }
-                    } else {
-                        if (!ignoreTarget && theTarget) {
-                            // check if target is in front row or back row
-                            CombatPosition pos = [level.battlefield getCombatPositionOfAlly:(Knight *)theTarget];
-                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
-                                target = [level.battlefield.allyFrontRow retain];
-                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
-                            } else {
-                                target = [level.battlefield.allyBackRow retain];
-                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
-                            }
-                        } else {
-                            // check front row
-                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
-                                target = [level.battlefield.allyFrontRow retain];
-                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
-                                // check back row
-                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
-                                target = [level.battlefield.allyBackRow retain];
-                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
-                            }
-                        }
-                    }
-
-                    // check back row
+//    // check if there are any enemies
+//    if ([level.battlefield hasAnyEnemyForAlly:isAlly]) {
+//
+//        // check if not finished attacking
+//        if (!finishedAttacking) {
+//            // remove combo items
+//            [combo removeAllObjects];
+//
+//            // check if it is healing skill or if skill is used on allies
+//            BOOL ignoreTarget = NO;
+//            if (skills[skillType].function == SkillFunctionHeal || skills[skillType].useOn == SkillUseOnAlly) {
+//                isAlly = !isAlly;
+//                ignoreTarget = YES;
+//            }
+//
+//            // check skill targeting
+//            switch (skills[skillType].target) {
+//                case SkillTargetSelf:
+//                    [targets addObject:self];
+//                    state = EntityStateAttacking;
+//                    break;
+//
+//                case SkillTargetSingle:
+//                    // single target
+//                    if (!theTarget) {
+//                        CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
+//                        if (entity) {
+//                            target = [entity.origin retain];
+//                            [self addTarget:entity];
+//                        }
+//                    } else {
+//                        target = [theTarget.origin retain];
+//                        [self addTarget:theTarget];
+//                    }
+//                    break;
+//
+//                case SkillTargetRow:
 //                    if (isAlly) {
-//                        target = [level.battlefield.enemyBackRow retain];
+//                        // check if has target
+//                        if (!ignoreTarget && theTarget) {
+//                            // check if target is in front row or back row
+//                            CombatPosition pos = [level.battlefield getCombatPositionOfEnemy:(Monster *)theTarget];
+//                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
+//                                target = [level.battlefield.enemyFrontRow retain];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+//                            } else {
+//                                target = [level.battlefield.enemyBackRow retain];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+//                            }
+//                        } else {
+//                            // check front row
+//                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
+//                                target = [level.battlefield.enemyFrontRow retain];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
+//                            // check back row
+//                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
+//                                target = [level.battlefield.enemyBackRow retain];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+//                                [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+//                            }
+//                        }
+//                    } else {
+//                        if (!ignoreTarget && theTarget) {
+//                            // check if target is in front row or back row
+//                            CombatPosition pos = [level.battlefield getCombatPositionOfAlly:(Knight *)theTarget];
+//                            if (pos == FirstCombatPosition || pos == SecondCombatPosition) {
+//                                target = [level.battlefield.allyFrontRow retain];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+//                            } else {
+//                                target = [level.battlefield.allyBackRow retain];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+//                            }
+//                        } else {
+//                            // check front row
+//                            if ([level.battlefield hasAnyEnemyInFrontRowForAlly:isAlly]) {
+//                                target = [level.battlefield.allyFrontRow retain];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
+//                                // check back row
+//                            } else if ([level.battlefield hasAnyEnemyInBackRowForAlly:isAlly]) {
+//                                target = [level.battlefield.allyBackRow retain];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+//                                [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+//                            }
+//                        }
+//                    }
+//
+//                    // check back row
+////                    if (isAlly) {
+////                        target = [level.battlefield.enemyBackRow retain];
+////                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
+////                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
+////                    } else {
+////                        target = [level.battlefield.allyBackRow retain];
+////                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
+////                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
+////                    }
+//                    break;
+//
+//                case SkillTargetAll:
+//                    // all
+//                    if (isAlly) {
+//                        target = [level.battlefield.enemyFrontRow retain];
+//                        [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
+//                        [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
 //                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
 //                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
 //                    } else {
-//                        target = [level.battlefield.allyBackRow retain];
+//                        target = [level.battlefield.allyFrontRow retain];
+//                        [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
+//                        [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
 //                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
 //                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
 //                    }
-                    break;
-                    
-                case SkillTargetAll:
-                    // all
-                    if (isAlly) {
-                        target = [level.battlefield.enemyFrontRow retain];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:FirstCombatPosition]];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:SecondCombatPosition]];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:ThirdCombatPosition]];
-                        [self addTarget:[level.battlefield getEnemyAtPosition:FourthCombatPosition]];
-                    } else {
-                        target = [level.battlefield.allyFrontRow retain];
-                        [self addTarget:[level.battlefield getAllyAtPosition:FirstCombatPosition]];
-                        [self addTarget:[level.battlefield getAllyAtPosition:SecondCombatPosition]];
-                        [self addTarget:[level.battlefield getAllyAtPosition:ThirdCombatPosition]];
-                        [self addTarget:[level.battlefield getAllyAtPosition:FourthCombatPosition]];
-                    }
-                    break;
-                    
-                default:
-                    // single target
-                    if (!theTarget) {
-                        CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
-                        if (entity) {
-                            target = [entity.origin retain];
-                            [self addTarget:entity];
-                        }
-                    } else {
-                        target = [theTarget.origin retain];
-                        [self addTarget:theTarget];
-                    }
-                    break;
-            }
-            
-            if ([targets count] != 0) {
-                // if attacking with melee skill
-                if (skills[skillType].range == SkillRangeMelee) {
-                    // move towards the target
-                    state = EntityStateApproaching;
-                    
-                    radius = 60;
-                    velocity.x = (target.position.x - position.x) * 2;
-                    velocity.y = (target.position.y - position.y) * 2;
-                // or if attacking with ranged skill
-                } else if (skills[skillType].range == SkillRangeRanged) {
-                    // attack from origin
-                    state = EntityStateAttacking;
-                }
-            } else {
-                [self cancelAttack];
-            }
-        }
-    } else {
-        [self cancelAttack];
-    }
+//                    break;
+//
+//                default:
+//                    // single target
+//                    if (!theTarget) {
+//                        CombatEntity *entity = [self getRandomTargetForAlly:isAlly];
+//                        if (entity) {
+//                            target = [entity.origin retain];
+//                            [self addTarget:entity];
+//                        }
+//                    } else {
+//                        target = [theTarget.origin retain];
+//                        [self addTarget:theTarget];
+//                    }
+//                    break;
+//            }
+//
+//            if ([targets count] != 0) {
+//                // if attacking with melee skill
+//                if (skills[skillType].range == SkillRangeMelee) {
+//                    // move towards the target
+//                    state = EntityStateApproaching;
+//
+//                    radius = 60;
+//                    velocity.x = (target.position.x - position.x) * 2;
+//                    velocity.y = (target.position.y - position.y) * 2;
+//                // or if attacking with ranged skill
+//                } else if (skills[skillType].range == SkillRangeRanged) {
+//                    // attack from origin
+//                    state = EntityStateAttacking;
+//                }
+//            } else {
+//                [self cancelAttack];
+//            }
+//        }
+//    } else {
+//        [self cancelAttack];
+//    }
 }
 
 
 - (void) dealDamageToTargets {
-    NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
-    
-    for (CombatEntity *theTarget in targets) {
-        // calculate if attack will miss
-        if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Accuracy].statValue]) {
-            // hit
-            NSLog(@"HIT");
-            
-            // calculate damage
-            int damage = [self calcDamageOnTarget:theTarget];
-            NSLog(@"DAMAGE: %d", damage);
-            
-            BOOL criticalHit;
-            // calculate if damage is critical
-            if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
-                // critical
-                damage *= 2;
-                
-                criticalHit = YES;
-                NSLog(@"CRITICAL DAMAGE: %d", damage);
-            } else {
-                criticalHit = NO;
-            }
-            
-            // check if skill is ranged
-            if (skills[skillType].range == SkillRangeRanged) {
-                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
-                [level.scene addItem:projectile];
-                [projectile release];
-            } else {
-                // first deal damage
-    //        damage = 1000;  // HAX
-                [theTarget takeDamage:damage];
-                
-                // add damage and hit indicators
-                [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
-                [hud addHitIndicatorAt:theTarget.position];
-                
-                // make the target show hit animation
-                [theTarget startDefending];
-                
-                // apply skill effects
-                [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
-                
-                // then apply skill status effects
-                [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
-            }
-        } else {
-            // miss
-            
-            if (skills[skillType].range == SkillRangeRanged) {
-                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
-                [level.scene addItem:projectile];
-                [projectile release];
-                NSLog(@"MISS");
-            } else {
-                [hud addMissIndicatorAt:theTarget.position];
-                NSLog(@"MISS");
-            }
-            
-            // Debug
-//             [theTarget takeDamage:1000]; // HAX
-        }
-    }
+//    NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
+//
+//    for (CombatEntity *theTarget in targets) {
+//        // calculate if attack will miss
+//        if ([self calcChanceForSuccess:stats[Agility].statValue fail:[theTarget getStat:Accuracy].statValue]) {
+//            // hit
+//            NSLog(@"HIT");
+//
+//            // calculate damage
+//            int damage = [self calcDamageOnTarget:theTarget];
+//            NSLog(@"DAMAGE: %d", damage);
+//
+//            BOOL criticalHit;
+//            // calculate if damage is critical
+//            if ([self calcChanceForSuccess:stats[Cunning].statValue fail:[theTarget getStat:Sturdiness].statValue]) {
+//                // critical
+//                damage *= 2;
+//
+//                criticalHit = YES;
+//                NSLog(@"CRITICAL DAMAGE: %d", damage);
+//            } else {
+//                criticalHit = NO;
+//            }
+//
+//            // check if skill is ranged
+//            if (skills[skillType].range == SkillRangeRanged) {
+//                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:damage position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:criticalHit missed:NO];
+//                [level.scene addItem:projectile];
+//                [projectile release];
+//            } else {
+//                // first deal damage
+//    //        damage = 1000;  // HAX
+//                [theTarget takeDamage:damage];
+//
+//                // add damage and hit indicators
+//                [hud addDamageIndicatorAt:theTarget.position amount:damage isCrit:criticalHit];
+//                [hud addHitIndicatorAt:theTarget.position];
+//
+//                // make the target show hit animation
+//                [theTarget startDefending];
+//
+//                // apply skill effects
+//                [self applySkillEffectsToTarget:theTarget skill:skills[skillType]];
+//
+//                // then apply skill status effects
+//                [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
+//            }
+//        } else {
+//            // miss
+//
+//            if (skills[skillType].range == SkillRangeRanged) {
+//                Projectile *projectile = [[Projectile alloc] initWithSender:self target:theTarget skill:skills[skillType] damage:0 position:[Vector2 vectorWithX:position.x + 50 y:position.y] velocity:[Vector2 vectorWithX:(theTarget.position.x - position.x) * 3 y:(theTarget.position.y - position.y) * 3] radius:50 wasCrit:NO missed:YES];
+//                [level.scene addItem:projectile];
+//                [projectile release];
+//                NSLog(@"MISS");
+//            } else {
+//                [hud addMissIndicatorAt:theTarget.position];
+//                NSLog(@"MISS");
+//            }
+//
+//            // Debug
+////             [theTarget takeDamage:1000]; // HAX
+//        }
+//    }
 }
 
 - (void) healTargets {
@@ -420,162 +420,162 @@
 }
 
 - (void) applyStatEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
-    for (StatEffect *effect in skill.statEffects) {
-        if ([Random intLessThan:100] < effect.chance) {
-            [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
-            
-            if ([effect isKindOfClass:[Buff class]]) {
-                Buff *buff = (Buff *)effect;
-                NSString *text = @"";
-                switch (buff.type) {
-                    case Strength:
-                        text = @"Buff Strength";
-                        break;
-                    
-                    case Agility:
-                        text = @"Buff Agility";
-                        break;
-                        
-                    case Defence:
-                        text = @"Buff Defence";
-                        break;
-                        
-                    case Accuracy:
-                        text = @"Buff Accuracy";
-                        break;
-                        
-                    case Cunning:
-                        text = @"Buff Cunning";
-                        break;
-                        
-                    case Sturdiness:
-                        text = @"Buff Sturdiness";
-                        break;
-                        
-                    default:
-                        break;
-                }
-                
-                [hud addTextIndicatorAt:theTarget.position text:text color:[Color cornflowerBlue]];
-                [hud addBuffIndicatorAt:theTarget.position];
-            } else if ([effect isKindOfClass:[Debuff class]]) {
-                Debuff *debuff = (Debuff *)effect;
-                NSString *text = @"";
-                switch (debuff.type) {
-                    case Strength:
-                        text = @"Debuff Strength";
-                        break;
-                        
-                    case Agility:
-                        text = @"Debuff Agility";
-                        break;
-                        
-                    case Defence:
-                        text = @"Debuff Defence";
-                        break;
-                        
-                    case Accuracy:
-                        text = @"Debuff Accuracy";
-                        break;
-                        
-                    case Cunning:
-                        text = @"BDebuff Cunning";
-                        break;
-                        
-                    case Sturdiness:
-                        text = @"Debuff Sturdiness";
-                        break;
-                        
-                    default:
-                        break;
-                }
-                
-                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
-                [hud addDebuffIndicatorAt:theTarget.position];
-            } else if ([effect isKindOfClass:[Condition class]]) {
-                Condition *cond = (Condition *)effect;
-                NSString *text = @"";
-                switch (cond.type) {
-                    case ConditionTypeBurn:
-                        text = @"Burned";
-                        break;
-                        
-                    case ConditionTypeBleed:
-                        text = @"Bleeding";
-                        break;
-                        
-                    case ConditionTypeFrostbite:
-                        text = @"Frostbitten";
-                        break;
-                        
-                    case ConditionTypePoison:
-                        text = @"Poisoned";
-                        break;
-                    
-                    case ConditionTypeStun:
-                        text = @"Stunned";
-                        break;
-                        
-                    default:
-                        break;
-                }
-                
-                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
-            }
-        }
-    }
+//    for (StatEffect *effect in skill.statEffects) {
+//        if ([Random intLessThan:100] < effect.chance) {
+//            [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
+//
+//            if ([effect isKindOfClass:[Buff class]]) {
+//                Buff *buff = (Buff *)effect;
+//                NSString *text = @"";
+//                switch (buff.type) {
+//                    case Strength:
+//                        text = @"Buff Strength";
+//                        break;
+//
+//                    case Agility:
+//                        text = @"Buff Agility";
+//                        break;
+//
+//                    case Defence:
+//                        text = @"Buff Defence";
+//                        break;
+//
+//                    case Accuracy:
+//                        text = @"Buff Accuracy";
+//                        break;
+//
+//                    case Cunning:
+//                        text = @"Buff Cunning";
+//                        break;
+//
+//                    case Sturdiness:
+//                        text = @"Buff Sturdiness";
+//                        break;
+//
+//                    default:
+//                        break;
+//                }
+//
+//                [hud addTextIndicatorAt:theTarget.position text:text color:[Color cornflowerBlue]];
+//                [hud addBuffIndicatorAt:theTarget.position];
+//            } else if ([effect isKindOfClass:[Debuff class]]) {
+//                Debuff *debuff = (Debuff *)effect;
+//                NSString *text = @"";
+//                switch (debuff.type) {
+//                    case Strength:
+//                        text = @"Debuff Strength";
+//                        break;
+//
+//                    case Agility:
+//                        text = @"Debuff Agility";
+//                        break;
+//
+//                    case Defence:
+//                        text = @"Debuff Defence";
+//                        break;
+//
+//                    case Accuracy:
+//                        text = @"Debuff Accuracy";
+//                        break;
+//
+//                    case Cunning:
+//                        text = @"BDebuff Cunning";
+//                        break;
+//
+//                    case Sturdiness:
+//                        text = @"Debuff Sturdiness";
+//                        break;
+//
+//                    default:
+//                        break;
+//                }
+//
+//                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
+//                [hud addDebuffIndicatorAt:theTarget.position];
+//            } else if ([effect isKindOfClass:[Condition class]]) {
+//                Condition *cond = (Condition *)effect;
+//                NSString *text = @"";
+//                switch (cond.type) {
+//                    case ConditionTypeBurn:
+//                        text = @"Burned";
+//                        break;
+//
+//                    case ConditionTypeBleed:
+//                        text = @"Bleeding";
+//                        break;
+//
+//                    case ConditionTypeFrostbite:
+//                        text = @"Frostbitten";
+//                        break;
+//
+//                    case ConditionTypePoison:
+//                        text = @"Poisoned";
+//                        break;
+//
+//                    case ConditionTypeStun:
+//                        text = @"Stunned";
+//                        break;
+//
+//                    default:
+//                        break;
+//                }
+//
+//                [hud addTextIndicatorAt:theTarget.position text:text color:[Color darkRed]];
+//            }
+//        }
+//    }
 }
 
 - (void) applySkillEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
-    for (int i = 0; i < SkillEffects; i++) {
-        if ([skill hasEffect:i]) {
-            [self applySkillEffect:i toTarget:theTarget];
-        }
-    }
+//    for (int i = 0; i < SkillEffects; i++) {
+//        if ([skill hasEffect:i]) {
+//            [self applySkillEffect:i toTarget:theTarget];
+//        }
+//    }
 }
 
-- (void) applySkillEffect:(SkillEffect)effect toTarget:(CombatEntity*)theTarget {
-    Class statEffect;
-    switch (effect) {
-        case SkillEffectRemoveBuffs:
-            statEffect = [Buff class];
-            [self removeStatEffect:statEffect fromTarget:theTarget];
-            break;
-            
-        case SkillEffectRemoveDebuffs:
-            statEffect = [Debuff class];
-            [self removeStatEffect:statEffect fromTarget:theTarget];
-            break;
-            
-        case SkillEffectRemoveConditions:
-            statEffect = [Condition class];
-            [self removeStatEffect:statEffect fromTarget:theTarget];
-            break;
-            
-        case SkillEffectIncreaseBuff:
-            statEffect = [Buff class];
-            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:YES];
-            break;
-            
-        case SkillEffectIncreaseDebuff:
-            statEffect = [Debuff class];
-            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:YES];
-            break;
-            
-        case SkillEffectDecreaseBuff:
-            statEffect = [Buff class];
-            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:NO];
-            break;
-            
-        case SkillEffectDecreaseDebuff:
-            statEffect = [Debuff class];
-            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:NO];
-            break;
-            
-        default:
-            break;
-    }
-}
+//- (void) applySkillEffect:(SkillEffect)effect toTarget:(CombatEntity*)theTarget {
+//    Class statEffect;
+//    switch (effect) {
+//        case SkillEffectRemoveBuffs:
+//            statEffect = [Buff class];
+//            [self removeStatEffect:statEffect fromTarget:theTarget];
+//            break;
+//
+//        case SkillEffectRemoveDebuffs:
+//            statEffect = [Debuff class];
+//            [self removeStatEffect:statEffect fromTarget:theTarget];
+//            break;
+//
+//        case SkillEffectRemoveConditions:
+//            statEffect = [Condition class];
+//            [self removeStatEffect:statEffect fromTarget:theTarget];
+//            break;
+//
+//        case SkillEffectIncreaseBuff:
+//            statEffect = [Buff class];
+//            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:YES];
+//            break;
+//
+//        case SkillEffectIncreaseDebuff:
+//            statEffect = [Debuff class];
+//            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:YES];
+//            break;
+//
+//        case SkillEffectDecreaseBuff:
+//            statEffect = [Buff class];
+//            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:NO];
+//            break;
+//
+//        case SkillEffectDecreaseDebuff:
+//            statEffect = [Debuff class];
+//            [self changeDurationOfStatEffect:statEffect forTarget:theTarget increase:NO];
+//            break;
+//
+//        default:
+//            break;
+//    }
+//}
 
 - (void) removeStatEffect:(Class)effect fromTarget:(CombatEntity*)theTarget {
     for (StatEffect *statEffect in theTarget.statEffects) {
@@ -631,61 +631,61 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    
-    // check if is still alive
-    if (currentHealthPoints <= 0) {
-        state = EntityStateDead;
-    }
-
-    
-    // attack
-    if (state == EntityStateAttacking) {
-        
-        Skill *skill = skills[skillType];
-        
-        // wait for attack to end
-        if (!animations[state].isAlive) {
-            // and then deal the damage to targets and tell them to stop defending
-            // check if skill heals
-            if (skill.function == SkillFunctionHeal) {
-                [self healTargets];
-            } else {
-                [self dealDamageToTargets];
-            }
-            
-            // release targets
-            [target release];
-            target = nil;
-            [targets removeAllObjects];
-                
-            // then reset the animation
-            [animations[state] reset];
-            
-            // if attacking with melee skill
-            if (skills[skillType].range == SkillRangeMelee) {
-                // and retreat to idle position
-                state = EntityStateRetreating;
-                radius = 1;
-                velocity.x = (origin.position.x - position.x) * 2;
-                velocity.y = (origin.position.y - position.y) * 2;
-            // or if attacking with ranged skill
-            } else if (skills[skillType].range == SkillRangeRanged) {
-                // end attack
-                state = EntityStateIdle;
-                finishedAttacking = YES;
-                skillType = NoSkill;
-            }
-        }
-    }
-    
-    
-    // hit
-    if (state == EntityStateDefending) {
-        if (!animations[state].isAlive) {
-            [animations[state] reset];
-            [self stopDefending];
-        }
-    }
+//
+//    // check if is still alive
+//    if (currentHealthPoints <= 0) {
+//        state = EntityStateDead;
+//    }
+//
+//
+//    // attack
+//    if (state == EntityStateAttacking) {
+//
+//        Skill *skill = skills[skillType];
+//
+//        // wait for attack to end
+//        if (!animations[state].isAlive) {
+//            // and then deal the damage to targets and tell them to stop defending
+//            // check if skill heals
+//            if (skill.function == SkillFunctionHeal) {
+//                [self healTargets];
+//            } else {
+//                [self dealDamageToTargets];
+//            }
+//
+//            // release targets
+//            [target release];
+//            target = nil;
+//            [targets removeAllObjects];
+//
+//            // then reset the animation
+//            [animations[state] reset];
+//
+//            // if attacking with melee skill
+//            if (skills[skillType].range == SkillRangeMelee) {
+//                // and retreat to idle position
+//                state = EntityStateRetreating;
+//                radius = 1;
+//                velocity.x = (origin.position.x - position.x) * 2;
+//                velocity.y = (origin.position.y - position.y) * 2;
+//            // or if attacking with ranged skill
+//            } else if (skills[skillType].range == SkillRangeRanged) {
+//                // end attack
+//                state = EntityStateIdle;
+//                finishedAttacking = YES;
+//                skillType = NoSkill;
+//            }
+//        }
+//    }
+//
+//
+//    // hit
+//    if (state == EntityStateDefending) {
+//        if (!animations[state].isAlive) {
+//            [animations[state] reset];
+//            [self stopDefending];
+//        }
+//    }
 }
 
 
@@ -760,32 +760,32 @@
 
 
 - (void) addConditionAnimation:(ConditionType)condition {
-    switch (condition) {
-        case ConditionTypeBurn:
-            [hud addBurnIndicatorAt:position];
-            break;
-            
-        case ConditionTypeFrostbite:
-            [hud addFrostbiteIndicatorAt:position];
-            break;
-        
-        case ConditionTypeBleed:
-            [hud addBleedIndicatorAt:position];
-            break;
-            
-        case ConditionTypeStun:
-            [hud addStunIndicatorAt:position target:self];
-            break;
-            
-        case ConditionTypePoison:
-            [hud addPoisonIndicatorAt:position];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [self startDefending];
+//    switch (condition) {
+//        case ConditionTypeBurn:
+//            [hud addBurnIndicatorAt:position];
+//            break;
+//
+//        case ConditionTypeFrostbite:
+//            [hud addFrostbiteIndicatorAt:position];
+//            break;
+//
+//        case ConditionTypeBleed:
+//            [hud addBleedIndicatorAt:position];
+//            break;
+//
+//        case ConditionTypeStun:
+//            [hud addStunIndicatorAt:position target:self];
+//            break;
+//
+//        case ConditionTypePoison:
+//            [hud addPoisonIndicatorAt:position];
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    [self startDefending];
 }
 
 - (void) updateStatEffects {
@@ -871,16 +871,16 @@
     stunned = NO;
 }
 
-- (BOOL) isOnlyStunnEffect:(Condition *)condition {
-    for (StatEffect *effect in statEffects) {
-        Condition *cond = [effect isKindOfClass:[Condition class]] ? (Condition *)effect : nil;
-        if (cond && cond.type == ConditionTypeStun && cond != condition) {
-            return false;
-        }
-    }
-    
-    return true;
-}
+//- (BOOL) isOnlyStunnEffect:(Condition *)condition {
+//    for (StatEffect *effect in statEffects) {
+//        Condition *cond = [effect isKindOfClass:[Condition class]] ? (Condition *)effect : nil;
+//        if (cond && cond.type == ConditionTypeStun && cond != condition) {
+//            return false;
+//        }
+//    }
+//
+//    return true;
+//}
 
 
 - (void) addTarget:(CombatEntity *)entity {

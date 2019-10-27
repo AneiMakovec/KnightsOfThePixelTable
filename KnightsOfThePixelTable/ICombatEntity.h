@@ -64,7 +64,7 @@
 - (void) stun;
 - (void) recoverFromStun;
 
-- (BOOL) isOnlyStunnEffect:(Condition*)condition;
+//- (BOOL) isOnlyStunnEffect:(Condition*)condition;
 
 
 - (void) addConditionAnimation:(ConditionType)condition;

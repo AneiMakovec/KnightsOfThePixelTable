@@ -46,6 +46,11 @@
 #import "Rooster.h"
 #import "RoosterEntry.h"
 
+#import "SkillPopUp.h"
+#import "XpPopUp.h"
+#import "CharacterTypePopUp.h"
+#import "DamageTypePopUp.h"
+
 
 
 // Physics
@@ -120,6 +125,7 @@
 // Game progress
 #import "GameProgress.h"
 #import "KnightData.h"
+#import "ConditionData.h"
 
 // Game
 #import "KOTPT.h"

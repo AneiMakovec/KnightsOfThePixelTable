@@ -28,12 +28,10 @@
         NSString *skillPosKey = POSITION_INTERFACE_SKILLS;
         for (int i = 0; i < KnightTypes; i++) {
             for (int j = 0; j < SkillTypes; j++) {
-                skills[i][j] = [GraphicsComponent getImageWithKey:[knightTypeKeys[i] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", j]]]];
+                skills[i][j] = [GraphicsComponent getTouchImageWithKey:[knightTypeKeys[i] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", j]]]];
                 skills[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             }
         }
-        
-        // TODO: display combo slots
         
         // init upgrade buttons
         if (displayUpgradeButtons) {
@@ -72,6 +70,13 @@
                 thirdSkillCombo[i][j] = [GraphicsComponent getImageWithKey:diceKeys[j] atPosition:[Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"3_%d", i]]]];
                 thirdSkillCombo[i][j].layerDepth = layerDepth + INTERFACE_LAYER_DEPTH_BACK;
             }
+        }
+        
+        
+        // init pop ups
+        for (int i = 0; i < SkillTypes; i++) {
+            popUps[i] = [[SkillPopUp alloc] initForSkill:i layerDepth:layerDepth + INTERFACE_LAYER_DEPTH_MIDDLE];
+            popUpVisible[i] = NO;
         }
         
         
@@ -154,12 +159,15 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    // TODO: implement skill upgrade
-    
-//    for (int i = 0; i < SkillTypes; i++) {
-//        if (upgradeButtons[i].wasReleased)
-//            NSLog(@"Pressed!");
-//    }
+    for (int i = 0; i < SkillTypes; i++) {
+        if (!popUpVisible[i] && skills[currentType][i].isTouched) {
+            popUpVisible[i] = YES;
+            [self addItemToScene:popUps[i]];
+        } else if (popUpVisible[i] && skills[currentType][i].wasReleased) {
+            popUpVisible[i] = NO;
+            [self removeItemFromScene:popUps[i]];
+        }
+    }
 }
 
 - (void) updateToKnightData:(KnightData *)data {
@@ -176,6 +184,8 @@
                 upgradeButtons[i].enabled = YES;
             }
             lvlLabels[i].text = [NSString stringWithFormat:[Constants getTextForKey:TEXT_INTERFACE_SKILL_LVL_LABEL], [data getLevelOfSkill:i]];
+            
+            [popUps[i] updateToKnight:data];
         }
         
         [self removeCurrentCombos];
@@ -185,6 +195,8 @@
     } else {
         for (int i = 0; i < SkillTypes; i++) {
             [self removeItemFromScene:skills[currentType][i]];
+            
+            [popUps[i] updateToKnight:nil];
 
             upgradeButtons[i].label.text = @"0";
             upgradeButtons[i].enabled = NO;
@@ -202,6 +214,11 @@
     for (int i = 0; i < KnightTypes; i++) {
         for (int j = 0; j < SkillTypes; j++) {
             [self updateDepth:depth toItem:skills[i][j]];
+            
+            if (depth > curDepth)
+                skills[i][j].enabled = NO;
+            else
+                skills[i][j].enabled = YES;
         }
     }
     
@@ -218,6 +235,8 @@
             else
                 [self addItemToScene:upgradeButtons[i]];
         }
+        
+        [popUps[i] updateDepth:depth];
         
         for (int j = 0; j < StatTypes; j++) {
             if (i < 2)

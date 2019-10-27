@@ -33,6 +33,11 @@
 		B51722BC22F1B19F005718D4 /* interface_pane_scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = B51722BA22F1B19F005718D4 /* interface_pane_scroll.png */; };
 		B51722BE22F1B3A3005718D4 /* interface_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B51722BD22F1B3A2005718D4 /* interface_background.png */; };
 		B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D99E421CDD94E00CE6056 /* ComboSlot.m */; };
+		B520CC262364CCA90034DB81 /* SkillPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC252364CCA90034DB81 /* SkillPopUp.m */; };
+		B520CC292364CCBC0034DB81 /* XpPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC282364CCBC0034DB81 /* XpPopUp.m */; };
+		B520CC2C2364CCD30034DB81 /* CharacterTypePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC2B2364CCD30034DB81 /* CharacterTypePopUp.m */; };
+		B520CC2F2364CCE80034DB81 /* DamageTypePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC2E2364CCE80034DB81 /* DamageTypePopUp.m */; };
+		B520CC3623651A3F0034DB81 /* ConditionData.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC3523651A3F0034DB81 /* ConditionData.m */; };
 		B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightBrawler.m */; };
 		B52284D921EFA01E0005B3AC /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B52284D821EFA01E0005B3AC /* Indicator.m */; };
 		B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */; };
@@ -230,6 +235,16 @@
 		B51722BD22F1B3A2005718D4 /* interface_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_background.png; sourceTree = "<group>"; };
 		B51D99E321CDD94E00CE6056 /* ComboSlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComboSlot.h; sourceTree = "<group>"; };
 		B51D99E421CDD94E00CE6056 /* ComboSlot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComboSlot.m; sourceTree = "<group>"; };
+		B520CC242364CCA90034DB81 /* SkillPopUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillPopUp.h; sourceTree = "<group>"; };
+		B520CC252364CCA90034DB81 /* SkillPopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillPopUp.m; sourceTree = "<group>"; };
+		B520CC272364CCBC0034DB81 /* XpPopUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XpPopUp.h; sourceTree = "<group>"; };
+		B520CC282364CCBC0034DB81 /* XpPopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XpPopUp.m; sourceTree = "<group>"; };
+		B520CC2A2364CCD30034DB81 /* CharacterTypePopUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterTypePopUp.h; sourceTree = "<group>"; };
+		B520CC2B2364CCD30034DB81 /* CharacterTypePopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterTypePopUp.m; sourceTree = "<group>"; };
+		B520CC2D2364CCE80034DB81 /* DamageTypePopUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DamageTypePopUp.h; sourceTree = "<group>"; };
+		B520CC2E2364CCE80034DB81 /* DamageTypePopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DamageTypePopUp.m; sourceTree = "<group>"; };
+		B520CC3423651A3F0034DB81 /* ConditionData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionData.h; sourceTree = "<group>"; };
+		B520CC3523651A3F0034DB81 /* ConditionData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionData.m; sourceTree = "<group>"; };
 		B52192AB21C7260400637BE7 /* KnightBrawler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightBrawler.h; sourceTree = "<group>"; };
 		B52192AC21C7260400637BE7 /* KnightBrawler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightBrawler.m; sourceTree = "<group>"; };
 		B52284D721EFA01E0005B3AC /* Indicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
@@ -566,6 +581,21 @@
 			name = Combo;
 			sourceTree = "<group>";
 		};
+		B520CC232364CC670034DB81 /* Pop-ups */ = {
+			isa = PBXGroup;
+			children = (
+				B520CC242364CCA90034DB81 /* SkillPopUp.h */,
+				B520CC252364CCA90034DB81 /* SkillPopUp.m */,
+				B520CC272364CCBC0034DB81 /* XpPopUp.h */,
+				B520CC282364CCBC0034DB81 /* XpPopUp.m */,
+				B520CC2A2364CCD30034DB81 /* CharacterTypePopUp.h */,
+				B520CC2B2364CCD30034DB81 /* CharacterTypePopUp.m */,
+				B520CC2D2364CCE80034DB81 /* DamageTypePopUp.h */,
+				B520CC2E2364CCE80034DB81 /* DamageTypePopUp.m */,
+			);
+			name = "Pop-ups";
+			sourceTree = "<group>";
+		};
 		B52192AA21C725E200637BE7 /* Knights */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +630,7 @@
 				B5309CC022C26A03005CE22F /* Building Interfaces */,
 				B5D9CE6922F3159600AC165A /* Panels */,
 				B5E3D56A22F9D3C9004B574D /* Rooster */,
+				B520CC232364CC670034DB81 /* Pop-ups */,
 			);
 			name = "Town interfaces";
 			sourceTree = "<group>";
@@ -694,6 +725,10 @@
 			children = (
 				B5E3D56B22F9D445004B574D /* KnightData.h */,
 				B5E3D56C22F9D445004B574D /* KnightData.m */,
+				B5A493CB21CAECF0003EBB1D /* Skill.h */,
+				B5A493CC21CAECF0003EBB1D /* Skill.m */,
+				B520CC3423651A3F0034DB81 /* ConditionData.h */,
+				B520CC3523651A3F0034DB81 /* ConditionData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1118,8 +1153,6 @@
 		B5D1747221FF93030033DF2C /* Skills */ = {
 			isa = PBXGroup;
 			children = (
-				B5A493CB21CAECF0003EBB1D /* Skill.h */,
-				B5A493CC21CAECF0003EBB1D /* Skill.m */,
 				B5D1747321FF93150033DF2C /* SkillFactory.h */,
 				B5D1747421FF93150033DF2C /* SkillFactory.m */,
 			);
@@ -1587,15 +1620,18 @@
 			files = (
 				B5FE06E721CC6AF200038407 /* Dicepool.m in Sources */,
 				B54E88CA21E2B48B0040C888 /* GameState.m in Sources */,
+				B520CC262364CCA90034DB81 /* SkillPopUp.m in Sources */,
 				B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */,
 				B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */,
 				B57A027822FCB42D0003E509 /* Rooster.m in Sources */,
+				B520CC2F2364CCE80034DB81 /* DamageTypePopUp.m in Sources */,
 				B5309CCC22C26AB3005CE22F /* WarbandCampInterface.m in Sources */,
 				B5A493CD21CAECF0003EBB1D /* Skill.m in Sources */,
 				B51D99E521CDD94E00CE6056 /* ComboSlot.m in Sources */,
 				B5069D41235B099E0094E0DF /* MetaData.m in Sources */,
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
+				B520CC292364CCBC0034DB81 /* XpPopUp.m in Sources */,
 				B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */,
 				B52284D921EFA01E0005B3AC /* Indicator.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
@@ -1609,6 +1645,7 @@
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
 				B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
+				B520CC2C2364CCD30034DB81 /* CharacterTypePopUp.m in Sources */,
 				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
 				B5E3D56D22F9D445004B574D /* KnightData.m in Sources */,
 				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
@@ -1617,6 +1654,7 @@
 				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
 				B560376221FE82FB00CE7123 /* KnightFireEnchantress.m in Sources */,
 				B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */,
+				B520CC3623651A3F0034DB81 /* ConditionData.m in Sources */,
 				B5C2800621D42D72009C657A /* TurnManager.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
 				B5CF91A42200DB42006A52B5 /* MonsterBoosKnight.m in Sources */,

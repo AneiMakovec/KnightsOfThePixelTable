@@ -98,7 +98,7 @@
         currentExp = 0;
         
         for (int i = 0; i < SkillTypes; i++) {
-            skillLvl[i] = 1;
+            skills[i] = [SkillFactory createSkill:i forAlly:type];
         }
         
         weaponLvl = 1;
@@ -201,7 +201,7 @@
         currentExp = exp;
         
         for (int i = 0; i < SkillTypes; i++) {
-            skillLvl[i] = 1;
+            skills[i] = [SkillFactory createSkill:i forAlly:type];
         }
         
         weaponLvl = wLevel;
@@ -220,7 +220,7 @@
 @synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp, character;
 
 - (int) getLevelOfSkill:(SkillType)skill {
-    return skillLvl[skill];
+    return skills[skill].lvl;
 }
 
 - (int) getValueOfStat:(StatType)stat {
@@ -235,12 +235,16 @@
     return armorBonus[stat];
 }
 
+- (Skill *) getSkill:(SkillType)skill {
+    return skills[skill];
+}
+
 
 
 
 
 - (BOOL) isSkillAtMaxLvl:(SkillType)skill {
-    return skillLvl[skill] == [Constants getMaxSkillLvl];
+    return skills[skill].lvl == [Constants getMaxSkillLvl];
 }
 
 
@@ -261,8 +265,8 @@
 }
 
 - (void) upgradeSkill:(SkillType)skill {
-    if (skillLvl[skill] < [Constants getMaxSkillLvl])
-        skillLvl[skill]++;
+    if (skills[skill].lvl < [Constants getMaxSkillLvl])
+        [skills[skill] upgrade];
 }
 
 - (void) upgradeWeaponWithBonus:(StatType)stat {
@@ -338,7 +342,7 @@
 
 // DEBUG METHOD
 - (void) setLevelOfSkill:(SkillType)skill lvl:(int)level {
-    skillLvl[skill] = level;
+    
 }
 
 - (void) setValueOfStat:(StatType)stat value:(int)value {

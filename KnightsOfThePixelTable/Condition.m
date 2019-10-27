@@ -17,10 +17,10 @@
     if (self != nil) {
         type = theType;
         
-        if (type == ConditionTypeStun)
-            dmg = 0;
-        else
-            dmg = damage;
+//        if (type == ConditionTypeStun)
+//            dmg = 0;
+//        else
+//            dmg = damage;
     }
     return self;
 }
@@ -33,21 +33,21 @@
     [super activateWithTarget:theTarget];
     
     // stun the target
-    if (type == ConditionTypeStun && ![target isStunned]) {
-        [target stun];
-        
-        // add stun animation
-        [target addConditionAnimation:type];
-    }
+//    if (type == ConditionTypeStun && ![target isStunned]) {
+//        [target stun];
+//
+//        // add stun animation
+//        [target addConditionAnimation:type];
+//    }
 }
 
 - (void) deactivate {
-    if (type == ConditionTypeStun) {
-        if ([target isOnlyStunnEffect:self]) {
-            // remove stun from target
-            [target recoverFromStun];
-        }
-    }
+//    if (type == ConditionTypeStun) {
+//        if ([target isOnlyStunnEffect:self]) {
+//            // remove stun from target
+//            [target recoverFromStun];
+//        }
+//    }
     
     // call super method
     [super deactivate];
@@ -57,17 +57,17 @@
 - (void) update {
     if (active) {
         // stun the target
-        if (type == ConditionTypeStun && ![target isStunned]) {
-            [target stun];
-        }
-        
-        // deal damage to target
-        if (type != ConditionTypeStun) {
-            [target takeDamage:dmg];
-            
-            // add damage indicators and animations
-            [target addConditionAnimation:type];
-        }
+//        if (type == ConditionTypeStun && ![target isStunned]) {
+//            [target stun];
+//        }
+//        
+//        // deal damage to target
+//        if (type != ConditionTypeStun) {
+//            [target takeDamage:dmg];
+//
+//            // add damage indicators and animations
+//            [target addConditionAnimation:type];
+//        }
     }
     
     // call super method

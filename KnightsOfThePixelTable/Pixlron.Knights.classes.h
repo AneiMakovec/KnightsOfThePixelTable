@@ -26,6 +26,7 @@
 @class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
 @class StatsPanel, SkillsPanel, EquipmentPanel;
 @class Rooster, RoosterEntry;
+@class SkillPopUp, XpPopUp, CharacterTypePopUp, DamageTypePopUp;
 
 // Physics
 @class PhysicsEngine;
@@ -74,7 +75,7 @@
 
 // Game progress
 @class GameProgress;
-@class KnightData;
+@class KnightData, ConditionData;
 
 // Game
 @class KOTPT;

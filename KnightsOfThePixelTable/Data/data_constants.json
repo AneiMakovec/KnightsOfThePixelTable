@@ -580,6 +580,22 @@
 			"x": 305,
 			"y": 225
 		},
+		"interface_skill_pop_up_0": {
+			"x": 248,
+			"y": 83
+		},
+		"interface_skill_pop_up_1": {
+			"x": 328,
+			"y": 83
+		},
+		"interface_skill_pop_up_2": {
+			"x": 408,
+			"y": 83
+		},
+		"interface_skill_pop_up_3": {
+			"x": 488,
+			"y": 83
+		},
 		"warning": {
 			"x": 780,
 			"y": 60
@@ -889,6 +905,102 @@
 			"6": 65,
 			"7": 88,
 			"8": 80
+		},
+		"unit_skills": {
+			"0": {
+				"0": {
+					"function": 0,
+					"damage": 1.0,
+					"target": 6,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"stat": 0,
+							"target": 6,
+							"chance": 0.2,
+							"duration": 2
+						}
+					]
+				},
+				"1": {
+					"function": 2,
+					"damage": 0,
+					"target": 0,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 10,
+							"stat": 0,
+							"target": 0,
+							"chance": 1.0,
+							"duration": 0
+						},
+						{
+							"type": 6,
+							"stat": 2,
+							"target": 0,
+							"chance": 0.3,
+							"duration": 2
+						}
+					]
+				},
+				"2": {
+					"function": 0,
+					"damage": 2.0,
+					"target": 7,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"stat": 0,
+							"target": 7,
+							"chance": 0.4,
+							"duration": 2
+						},
+						{
+							"type": 7,
+							"stat": 3,
+							"target": 7,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				},
+				"3": {
+					"function": 0,
+					"damage": 1.5,
+					"target": 8,
+					"range": 0,
+					"dmg_type": 0,
+					"conditions": [
+						{
+							"type": 0,
+							"stat": 0,
+							"target": 8,
+							"chance": 0.6,
+							"duration": 2
+						},
+						{
+							"type": 7,
+							"stat": 3,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 2
+						},
+						{
+							"type": 7,
+							"stat": 4,
+							"target": 8,
+							"chance": 0.4,
+							"duration": 2
+						}
+					]
+				}
+			}
 		},
 		"max_skill_lvl": 5,
 		"max_unit_lvl": 10,

@@ -733,65 +733,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
+//+ (SkillFunction) brawlerFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
 
-+ (SkillRange) brawlerRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
+//+ (SkillRange) brawlerRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
 
-+ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetRow;
-        case ThirdComboSkill:
-            return SkillTargetAll;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillTarget) brawlerTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetRow;
+//        case ThirdComboSkill:
+//            return SkillTargetAll;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) brawlerUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) brawlerDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -873,65 +873,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) bowmanRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeRanged;
-        case FirstComboSkill:
-            return SkillRangeRanged;
-        case SecondComboSkill:
-            return SkillRangeRanged;
-        case ThirdComboSkill:
-            return SkillRangeRanged;
-        default:
-            return SkillRangeRanged;
-    }
-}
-
-+ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetRow;
-        case ThirdComboSkill:
-            return SkillTargetAll;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) bowmanFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) bowmanRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeRanged;
+//        case FirstComboSkill:
+//            return SkillRangeRanged;
+//        case SecondComboSkill:
+//            return SkillRangeRanged;
+//        case ThirdComboSkill:
+//            return SkillRangeRanged;
+//        default:
+//            return SkillRangeRanged;
+//    }
+//}
+//
+//+ (SkillTarget) bowmanTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetRow;
+//        case ThirdComboSkill:
+//            return SkillTargetAll;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) bowmanUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) bowmanDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1013,65 +1013,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) paladinRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
-
-+ (SkillTarget) paladinTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetRow;
-        case SecondComboSkill:
-            return SkillTargetSingle;
-        case ThirdComboSkill:
-            return SkillTargetAll;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) paladinUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) paladinFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) paladinRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
+//
+//+ (SkillTarget) paladinTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetRow;
+//        case SecondComboSkill:
+//            return SkillTargetSingle;
+//        case ThirdComboSkill:
+//            return SkillTargetAll;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) paladinUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) paladinDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1155,65 +1155,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
+//+ (SkillFunction) fireEnchantressFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
 
-+ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeRanged;
-        case FirstComboSkill:
-            return SkillRangeRanged;
-        case SecondComboSkill:
-            return SkillRangeRanged;
-        case ThirdComboSkill:
-            return SkillRangeRanged;
-        default:
-            return SkillRangeRanged;
-    }
-}
-
-+ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetRow;
-        case ThirdComboSkill:
-            return SkillTargetAll;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillRange) fireEnchantressRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeRanged;
+//        case FirstComboSkill:
+//            return SkillRangeRanged;
+//        case SecondComboSkill:
+//            return SkillRangeRanged;
+//        case ThirdComboSkill:
+//            return SkillRangeRanged;
+//        default:
+//            return SkillRangeRanged;
+//    }
+//}
+//
+//+ (SkillTarget) fireEnchantressTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetRow;
+//        case ThirdComboSkill:
+//            return SkillTargetAll;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) fireEnchantressUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) fireEnchantressDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1300,65 +1300,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
-
-+ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetSingle;
-        case ThirdComboSkill:
-            return SkillTargetRow;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) enemyWarriorFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) enemyWarriorRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
+//
+//+ (SkillTarget) enemyWarriorTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetSingle;
+//        case ThirdComboSkill:
+//            return SkillTargetRow;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) enemyWarriorUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) enemyWarriorDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1441,65 +1441,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
-
-+ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetSingle;
-        case ThirdComboSkill:
-            return SkillTargetRow;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) enemyBruteFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) enemyBruteRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
+//
+//+ (SkillTarget) enemyBruteTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetSingle;
+//        case ThirdComboSkill:
+//            return SkillTargetRow;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) enemyBruteUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) enemyBruteDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1582,65 +1582,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
-
-+ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetSingle;
-        case SecondComboSkill:
-            return SkillTargetSingle;
-        case ThirdComboSkill:
-            return SkillTargetRow;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) enemyVikingFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) enemyVikingRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
+//
+//+ (SkillTarget) enemyVikingTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetSingle;
+//        case SecondComboSkill:
+//            return SkillTargetSingle;
+//        case ThirdComboSkill:
+//            return SkillTargetRow;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) enemyVikingUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) enemyVikingDamageOfSkill:(SkillType)skill {
     switch (skill) {
@@ -1724,65 +1724,65 @@ Constants *constantsInstance;
     }
 }
 
-+ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillFunctionDamage;
-        case FirstComboSkill:
-            return SkillFunctionDamage;
-        case SecondComboSkill:
-            return SkillFunctionDamage;
-        case ThirdComboSkill:
-            return SkillFunctionDamage;
-        default:
-            return SkillFunctionDamage;
-    }
-}
-
-+ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillRangeMelee;
-        case FirstComboSkill:
-            return SkillRangeMelee;
-        case SecondComboSkill:
-            return SkillRangeMelee;
-        case ThirdComboSkill:
-            return SkillRangeMelee;
-        default:
-            return SkillRangeMelee;
-    }
-}
-
-+ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillTargetSingle;
-        case FirstComboSkill:
-            return SkillTargetRow;
-        case SecondComboSkill:
-            return SkillTargetRow;
-        case ThirdComboSkill:
-            return SkillTargetAll;
-        default:
-            return SkillTargetSingle;
-    }
-}
-
-+ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill {
-    switch (skill) {
-        case BasicAttack:
-            return SkillUseOnEnemy;
-        case FirstComboSkill:
-            return SkillUseOnEnemy;
-        case SecondComboSkill:
-            return SkillUseOnEnemy;
-        case ThirdComboSkill:
-            return SkillUseOnEnemy;
-        default:
-            return SkillUseOnEnemy;
-    }
-}
+//+ (SkillFunction) enemyBossKnightFunctionOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillFunctionDamage;
+//        case FirstComboSkill:
+//            return SkillFunctionDamage;
+//        case SecondComboSkill:
+//            return SkillFunctionDamage;
+//        case ThirdComboSkill:
+//            return SkillFunctionDamage;
+//        default:
+//            return SkillFunctionDamage;
+//    }
+//}
+//
+//+ (SkillRange) enemyBossKnightRangeOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillRangeMelee;
+//        case FirstComboSkill:
+//            return SkillRangeMelee;
+//        case SecondComboSkill:
+//            return SkillRangeMelee;
+//        case ThirdComboSkill:
+//            return SkillRangeMelee;
+//        default:
+//            return SkillRangeMelee;
+//    }
+//}
+//
+//+ (SkillTarget) enemyBossKnightTargetOfSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillTargetSingle;
+//        case FirstComboSkill:
+//            return SkillTargetRow;
+//        case SecondComboSkill:
+//            return SkillTargetRow;
+//        case ThirdComboSkill:
+//            return SkillTargetAll;
+//        default:
+//            return SkillTargetSingle;
+//    }
+//}
+//
+//+ (SkillUseOn) enemyBossKnightUseOnSkill:(SkillType)skill {
+//    switch (skill) {
+//        case BasicAttack:
+//            return SkillUseOnEnemy;
+//        case FirstComboSkill:
+//            return SkillUseOnEnemy;
+//        case SecondComboSkill:
+//            return SkillUseOnEnemy;
+//        case ThirdComboSkill:
+//            return SkillUseOnEnemy;
+//        default:
+//            return SkillUseOnEnemy;
+//    }
+//}
 
 + (float) enemyBossKnightDamageOfSkill:(SkillType)skill {
     switch (skill) {

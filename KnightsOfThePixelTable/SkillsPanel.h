@@ -20,8 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
     
     Image *skillPane;
     
-    Image *skills[KnightTypes][SkillTypes];
+    TouchImage *skills[KnightTypes][SkillTypes];
     KnightType currentType;
+    
+    SkillPopUp *popUps[SkillTypes];
+    BOOL popUpVisible[SkillTypes];
     
     Image *firstSkillCombo[2][StatTypes];
     Image *secondSkillCombo[3][StatTypes];
