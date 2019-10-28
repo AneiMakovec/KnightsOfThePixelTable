@@ -198,6 +198,8 @@
     // check if recruit button was pressed
     if (recruitButton.wasReleased) {
         if ([trainRooster getSelectedData]) {
+            [GameProgress recruitKnight:[trainRooster getSelectedData]];
+            
             // move the racruited unit from the training rooster to the battle rooster
             [rooster addItem:[trainRooster getSelectedData]];
             [trainRooster removeItem:[trainRooster getSelectedEntry]];
@@ -249,7 +251,19 @@
 
 
 
-
+- (void) update {
+    KnightData *data = [trainRooster getSelectedData];
+    if (data) {
+        if (statButton.label.layerDepth < skillButton.label.layerDepth)
+            [statPanel updateToKnightData:data];
+        else
+            [skillPanel updateToKnightData:data];
+        
+        unitName.text = data.name;
+        unitClassName.text = unitClassNames[data.type];
+        unitClassName.color = classColors[data.damageType];
+    }
+}
 
 
 - (void) dealloc {

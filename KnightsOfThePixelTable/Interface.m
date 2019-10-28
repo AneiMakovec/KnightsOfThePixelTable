@@ -266,6 +266,9 @@
                             WarbandCampInterface *warbandCamp = (WarbandCampInterface *) interfaceContent[interfaceType];
                             [warbandCamp reset];
                         }
+                        
+                        TrainingYardInterface *train = (TrainingYardInterface *) interfaceContent[i];
+                        [train update];
                         break;
                         
                     case BuildingTypeBlacksmith:
@@ -494,6 +497,9 @@
     } else if (interfaceType == BuildingTypeBarracks) {
         BarracksInterface *barracks = (BarracksInterface *) interfaceContent[interfaceType];
         [barracks update];
+    } else if (interfaceType == BuildingTypeTrainingYard) {
+        TrainingYardInterface *train = (TrainingYardInterface *) interfaceContent[interfaceType];
+        [train update];
     }
     
     // add new interface content to scene

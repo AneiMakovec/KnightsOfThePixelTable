@@ -41,6 +41,7 @@
 
 @protocol ICombatEntity;
 @class CombatEntity;
+@class Knight, Monster;
 
 @protocol IUpgradable;
 @class Stat, Skill;
@@ -54,11 +55,7 @@
 
 @class Projectile;
 
-@class Knight, KnightBrawler, KnightBowman, KnightPaladin, KnightFireEnchantress;
-
-@class Monster, MonsterWarrior, MonsterBrute, MonsterBossViking, MonsterBoosKnight;
-
-@class Level, FarmlandsLevel, PinewoodsLevel, MountainsLevel, SeashoreLevel;
+@class Level;
 
 // Player
 @protocol IPlayer;
@@ -75,7 +72,7 @@
 
 // Game progress
 @class GameProgress;
-@class KnightData, ConditionData;
+@class EntityData, KnightData, MonsterData, ConditionData;
 
 // Game
 @class KOTPT;

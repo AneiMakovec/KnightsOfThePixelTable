@@ -14,15 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Knight : CombatEntity<IExperienceGainer> {
-    int currentLevel;
-    int maxLevel;
-    int exp;
-    int currentExp;
+@interface Knight : CombatEntity {
+//    int currentLevel;
+//    int maxLevel;
+//    int exp;
+//    int currentExp;
     
-    int maxHpWidth;
+//    int maxHpWidth;
     
-    KnightType type;
+//    KnightType type;
     
     Rectangle *portraitArea;
     Rectangle *comboArea;
@@ -30,14 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
     Rectangle *hpPoolArea;
 }
 
-@property (nonatomic) KnightType type;
+//@property (nonatomic) KnightType type;
 
 @property (nonatomic, retain) Rectangle *portraitArea;
 @property (nonatomic, retain) Rectangle *comboArea;
 @property (nonatomic, retain) Rectangle *skillArea;
 @property (nonatomic, retain) Rectangle *hpPoolArea;
 
-- (id) initKnight:(KnightType)theKnight level:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
+- (id) initWithData:(KnightData *)data;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition;
 

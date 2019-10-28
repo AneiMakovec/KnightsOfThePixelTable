@@ -14,8 +14,6 @@
 
 @protocol ICombatEntity <IMovable, ICustomUpdate, ICustomCollider, IParticleCollider, IDamageDealer>
 
-@property (nonatomic, readonly) float maxRadius;
-
 @property (nonatomic, retain) Rectangle *entityArea;
 
 @property (nonatomic, readonly) BOOL stunned;
@@ -24,17 +22,13 @@
 
 @property (nonatomic, readonly) EntityState state;
 @property (nonatomic, readonly) SkillType skillType;
-@property (nonatomic, readonly) StatType entityType;
-@property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic) CombatPosition combatPosition;
 @property (nonatomic, readonly) BattlePosition *origin;
 
 @property (nonatomic, readonly) BattlePosition *target;
 
 @property (nonatomic, readonly) NSMutableArray *combo;
-@property (nonatomic, retain) NSMutableArray *statEffects;
-
-@property (nonatomic, retain) GameHud *hud;
+@property (nonatomic, retain) NSMutableArray *conditions;
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 

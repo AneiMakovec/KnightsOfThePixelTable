@@ -49,7 +49,9 @@
         [SoundEngine play:SoundEffectTypeClick];
     } else if (continueGame.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
-        newState = [[[TownMenu alloc] initWithGame:self.game] autorelease];
+//        newState = [[[TownMenu alloc] initWithGame:self.game] autorelease];
+        newState = [[[WorldMenu alloc] initWithGame:self.game] autorelease];
+        [GameProgress setFinishedDungeon:YES];
     }
 
     if (newState) {

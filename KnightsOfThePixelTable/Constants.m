@@ -94,6 +94,10 @@ Constants *constantsInstance;
     return [constantsInstance getNumOfDicesForLvl:lvl];
 }
 
++ (float) getDifficultyForStage:(StageType)stage {
+    return [constantsInstance getDifficultyForStage:stage];
+}
+
 + (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill {
     return [constantsInstance getComboForUnit:type forSkill:skill];
 }
@@ -104,6 +108,10 @@ Constants *constantsInstance;
 
 + (int) getBaseHpForUnit:(KnightType)type {
     return [constantsInstance getBaseHpForUnit:type];
+}
+
++ (int) getWavesForStage:(StageType)stage {
+    return [constantsInstance getWavesForStage:stage];
 }
 
 
@@ -211,6 +219,10 @@ Constants *constantsInstance;
     return [[[data_value objectForKey:VALUE_DICE_NUM] valueForKey:[NSString stringWithFormat:@"%d", lvl]] intValue];
 }
 
+- (float) getDifficultyForStage:(StageType)stage {
+    return [[[data_value objectForKey:VALUE_DIFFICULTY] valueForKey:[NSString stringWithFormat:@"%d", stage]] floatValue];
+}
+
 - (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill {
     return [[data_value objectForKey:VALUE_COMBO_FOR_UNIT_TYPE] objectForKey:[NSString stringWithFormat:@"%d_%d", type, skill]];
 }
@@ -221,6 +233,18 @@ Constants *constantsInstance;
 
 - (int) getBaseHpForUnit:(KnightType)type {
     return [[[data_value objectForKey:VALUE_BASE_HP_ALLIES] valueForKey:[NSString stringWithFormat:@"%d", type]] intValue];
+}
+
+- (NSArray *) getBaseStatsForEnemy:(MonsterType)type {
+    return [[data_value objectForKey:VALUE_BASE_STATS_ENEMIES] objectForKey:[NSString stringWithFormat:@"%d", type]];
+}
+
+- (int) getBaseHpForEnemy:(MonsterType)type {
+    return [[[data_value objectForKey:VALUE_BASE_HP_ENEMIES] valueForKey:[NSString stringWithFormat:@"%d", type]] intValue];
+}
+
+- (int) getWavesForStage:(StageType)stage {
+    return [[[data_value objectForKey:VALUE_STAGE_NUM_OF_WAVES] valueForKey:[NSString stringWithFormat:@"%d", stage]] intValue];
 }
 
 

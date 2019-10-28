@@ -167,4 +167,10 @@
     }
 }
 
+- (void) removeAllItems {
+    [super removeAllItems];
+    
+    selectedEntry = nil;
+}
+
 @end

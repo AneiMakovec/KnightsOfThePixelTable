@@ -21,10 +21,19 @@ typedef enum {
 } KnightType;
 
 typedef enum {
-    MonsterTypeWarrior,
-    MonsterTypeBrute,
-    MonsterTypeBossViking,
-    MonsterTypeBossKnight,
+    MonsterTypeBerserker,
+    MonsterTypeHuscarl,
+    MonsterTypeHornBearer,
+    MonsterTypeAxethrower,
+    MonsterTypeSlaver,
+    MonsterTypeSlinger,
+    MonsterTypeRunemaster,
+    MonsterTypeSorcerer,
+    MonsterTypeShaman,
+    MonsterTypeBossFarmlands,
+    MonsterTypeBossPinewoods,
+    MonsterTypeBossMountains,
+    MonsterTypeBossSeashore,
     MonsterTypes
 } MonsterType;
 
@@ -190,7 +199,8 @@ typedef enum {
     LevelTypePinewoods,
     LevelTypeMountains,
     LevelTypeSeashore,
-    LevelTypes
+    LevelTypes,
+    LevelTypeNoLevel
 } LevelType;
 
 // MARK: statge types
@@ -210,7 +220,8 @@ typedef enum {
     StageHardThird,
     StageHardFourth,
     StageHardFifth,
-    StageTypes
+    StageTypes,
+    StageTypeNoStage
 } StageType;
 
 // MARK: dices
@@ -896,14 +907,12 @@ typedef enum {
 #define POSITION_HUD_STATUS_EFFECTS_ALLY @"hud_status_effects_ally_"
 #define POSITION_MAIN_MENU_NEW_GAME @"main_menu_new_game"
 #define POSITION_MAIN_MENU_CONTINUE @"main_menu_continue"
-#define POSITION_WORLD_MENU_MARKER_FARMLANDS @"world_menu_marker_farmlands"
-#define POSITION_WORLD_MENU_MARKER_PINEWOODS @"world_menu_marker_pinewoods"
-#define POSITION_WORLD_MENU_MARKER_MOUNTAINS @"world_menu_marker_mountains"
-#define POSITION_WORLD_MENU_MARKER_SEASHORE @"world_menu_marker_seashore"
-#define POSITION_WORLD_MENU_PATH_FARMLANDS @"world_menu_path_farmlands"
-#define POSITION_WORLD_MENU_PATH_PINEWOODS @"world_menu_path_pinewoods"
-#define POSITION_WORLD_MENU_PATH_MOUNTAINS @"world_menu_path_mountains"
-#define POSITION_WORLD_MENU_PATH_SEASHORE @"world_menu_path_seashore"
+#define POSITION_WORLD_MENU_MARKERS @"world_menu_marker_"
+#define POSITION_WORLD_MENU_PATHS @"world_menu_path_"
+#define POSITION_WORLD_MENU_PANEL @"world_menu_panel"
+#define POSITION_WORLD_MENU_PANEL_TEXT @"world_menu_label"
+#define POSITION_WORLD_MENU_PANEL_CLOSE @"world_menu_close"
+#define POSITION_WORLD_MENU_STAGES @"world_menu_stage_"
 #define POSITION_TOWN_MENU_OPTION_PANELS @"town_menu_option_panel_"
 #define POSITION_TOWN_MENU_SETTINGS_BUTTON @"town_menu_settings_button"
 #define POSITION_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
@@ -961,3 +970,6 @@ typedef enum {
 #define VALUE_BASE_STATS_ENEMIES @"base_stats_enemies"
 #define VALUE_BASE_HP_ENEMIES @"base_hp_enemies"
 #define VALUE_UNIT_SKILLS @"unit_skills"
+#define VALUE_ENEMY_UNIT_SKILLS @"enemy_unit_skills"
+#define VALUE_DIFFICULTY @"difficulty"
+#define VALUE_STAGE_NUM_OF_WAVES @"stage_num_of_waves"

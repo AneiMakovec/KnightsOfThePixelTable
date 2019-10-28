@@ -90,11 +90,10 @@
     
     // check if entered dungeon
     if ([GameProgress hasFinishedDungeon]) {
+        [GameProgress setFinishedDungeon:NO];
+        
         // generate new knights
         [GameProgress generateNewKnights];
-        
-        // update rooster and train rooster
-        [interface updateRoosters];
         
         // increase fatigue to knights in warband
         for (int i = 0; i < CombatPositions; i++) {
@@ -112,6 +111,8 @@
         }
     }
     
+    // update rooster and train rooster
+    [interface updateRoosters];
 }
 
 

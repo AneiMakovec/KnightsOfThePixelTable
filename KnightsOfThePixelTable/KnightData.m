@@ -15,48 +15,46 @@
 @implementation KnightData
 
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *)knightName {
-    self = [super init];
+    self = [super initWithID:stringID damageType:0 hp:0 lvl:0];
     if (self != nil) {
-        keyID = [stringID retain];
-        
         fatigue = 0;
         
         type = knightType;
         switch (type) {
             case KnightTypeBrawler:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypePaladin:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypeBard:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypeLongbowman:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeCrossbowman:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeScout:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeBattlemage:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             case KnightTypeWizard:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             case KnightTypeMonk:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             default:
@@ -119,48 +117,46 @@
 
 // DEBUG INIT
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *)knightName level:(int)level currentExp:(int)exp weaponLvl:(int)wLevel armorLvl:(int)aLevel {
-    self = [super init];
+    self = [super initWithID:stringID damageType:0 hp:0 lvl:level];
     if (self != nil) {
-        keyID = [stringID retain];
-        
         fatigue = 0;
         
         type = knightType;
         switch (type) {
             case KnightTypeBrawler:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypePaladin:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypeBard:
-                damageType = DamageTypePhysical;
+                dmgType = DamageTypePhysical;
                 break;
                 
             case KnightTypeLongbowman:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeCrossbowman:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeScout:
-                damageType = DamageTypeRanged;
+                dmgType = DamageTypeRanged;
                 break;
                 
             case KnightTypeBattlemage:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             case KnightTypeWizard:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             case KnightTypeMonk:
-                damageType = DamageTypeMagic;
+                dmgType = DamageTypeMagic;
                 break;
                 
             default:
@@ -201,7 +197,6 @@
         }
         
         // init starting values
-        lvl = level;
         currentExp = exp;
         
         for (int i = 0; i < SkillTypes; i++) {
@@ -221,7 +216,7 @@
     return self;
 }
 
-@synthesize keyID, type, name, lvl, currentExp, weaponLvl, armorLvl, characterType, damageType, hp, character, fatigue;
+@synthesize type, name, currentExp, weaponLvl, armorLvl, characterType, character, fatigue;
 
 - (int) getLevelOfSkill:(SkillType)skill {
     return skills[skill].lvl;
@@ -370,7 +365,6 @@
 
 
 - (void) dealloc {
-    [keyID release];
     [name release];
     
     [super dealloc];

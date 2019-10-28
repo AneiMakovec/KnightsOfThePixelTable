@@ -16,7 +16,7 @@
     self = [super init];
     if (self != nil) {
         level = theLevel;
-        dices = [[NSMutableArray alloc] initWithCapacity:level.num_of_dices];
+        dices = [[NSMutableArray alloc] initWithCapacity:[GameProgress getNumOfDices]];
         borders = [[NSMutableArray alloc] initWithCapacity:4];
         dicepoolArea = [[Rectangle alloc] init];
         
@@ -51,7 +51,7 @@
 
 - (void) addDicesOfType:(DiceFrameType)diceType {
     if ([dices count] == 0) {
-        for (int i = 0; i < level.num_of_dices; i++) {
+        for (int i = 0; i < [GameProgress getNumOfDices]; i++) {
             Dice *dice = [[Dice alloc] init];
             dice.position.x = [Random intGreaterThanOrEqual:(int)dicepoolArea.x+(int)dice.radius*2+15 lessThan:(int)dicepoolArea.width-(int)dice.radius*2-15];
             dice.position.y = [Random intGreaterThanOrEqual:(int)dicepoolArea.y+(int)dice.radius*2+15 lessThan:(int)dicepoolArea.height-(int)dice.radius*2-15];;

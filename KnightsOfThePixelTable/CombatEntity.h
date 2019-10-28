@@ -15,13 +15,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CombatEntity : Entity<ICombatEntity> {
-    
     // physics variables
     Vector2 *position;
     Vector2 *velocity;
     float radius;
     float maxRadius;
     BattlePosition *origin;
+    
+    EntityData *entityData;
     
     // touch area
     Rectangle *entityArea;
@@ -32,15 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL isTargeted;
     
     // combo check variables
-    StatType entityType;
-    StatType comboSkillTypes[SkillTypes];
     NSMutableArray *combo;
     
     // current skill
     SkillType skillType;
-    
-    // type of unit
-    DamageType damageType;
     
     // position of unit on the battlefield
     CombatPosition combatPosition;
@@ -48,25 +44,17 @@ NS_ASSUME_NONNULL_BEGIN
     // state of unit
     EntityState state;
     
-    // stats and skills
-    Stat *stats[StatTypes];
-    Skill *skills[SkillTypes];
-    
-    // active status effects
-    NSMutableArray *statEffects;
+    // active conditions
+    NSMutableArray *conditions;
     
     // selected targets
     BattlePosition *targetPosition;
     NSMutableArray *targets;
     
-    // pointers to game components
-    GameHud *hud;
-    Level *level;
-    
     AnimatedSprite *animations[EntityStates];
 }
 
-- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
+- (id) initWithData:(EntityData *)data;
 
 @end
 

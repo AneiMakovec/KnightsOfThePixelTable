@@ -9,14 +9,40 @@
 #import "Level.h"
 #import "Pixlron.Knights.h"
 
+Level *levelInstance;
+
 @implementation Level
 
-- (id) initWithGame:(Game *)theGame numDices:(int)numDices {
+
++ (void) initializeWithGame:(Game *)game {
+    levelInstance = [[Level alloc] initWithGame:game];
+    levelInstance.updateOrder = 6;
+}
+
++ (void) activate {
+    [levelInstance activate];
+    [levelInstance.game.components addComponent:levelInstance];
+}
+
++ (void) deactivate {
+    [levelInstance deactivate];
+    [levelInstance.game.components removeComponent:levelInstance];
+}
+
+
+
+
+
+
+
+
+
+
+- (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:theGame];
-        
-        num_of_dices = numDices;
+        scene.updateOrder = 5;
         
         battlefield = [[Battlefield alloc] initWithLevel:self];
         dicepool = [[Dicepool alloc] initWithLevel:self];
@@ -24,14 +50,12 @@
     return self;
 }
 
-@synthesize scene, battlefield, dicepool, num_of_dices, levelType;
+@synthesize scene, battlefield, dicepool, levelType;
 
 - (void) initialize {
     [self reset];
     
     [super initialize];
-    
-    [self.game.components addComponent:scene];
 }
 
 - (void) reset {
@@ -39,8 +63,7 @@
     [scene clear];
     
     // play battle music
-//    [SoundEngine playSong:SongTypeBattle];
-    [SoundEngine play:SoundEffectTypeBackground];
+    // TODO
 
     // dicepool objects
     [dicepool initialize];
@@ -59,6 +82,15 @@
     }
     
     [battlefield updateWithGameTime:gameTime];
+}
+
+
+- (void) activate {
+    [self.game.components addComponent:scene];
+}
+
+- (void) deactivate {
+    [self.game.components removeComponent:scene];
 }
 
 

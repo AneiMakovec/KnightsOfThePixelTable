@@ -19,11 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
     
     int week;
     int gold;
-    int numOfDices[LvlThree];
     Lvl diceLvl;
     
     BOOL levelUnlocked[LevelTypes];
+    BOOL levelFinished[LevelTypes];
     BOOL levelStageUnlocked[LevelTypes][StageTypes];
+    LevelType curLevel;
+    StageType curStage;
+    BOOL finishedGame;
+    
     BOOL soundEnabled;
     
     NSMutableArray *knights;
@@ -51,7 +55,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL) areDicesMaxLvl;
 + (BOOL) isSoundEnabled;
 + (BOOL) isLevelUnlocked:(LevelType)level;
++ (BOOL) isLevelFinished:(LevelType)level;
 + (BOOL) isStageUnlocked:(StageType)stage forLevel:(LevelType)level;
+
++ (LevelType) currentLevel;
++ (StageType) currentStage;
++ (void) setCurrentLevel:(LevelType)level;
++ (void) setCurrentStage:(StageType)stage;
+
++ (BOOL) finishedGame;
 
 + (void) setSoundEnabled:(BOOL)isEnabled;
 + (void) unlockLevel:(LevelType)type;
@@ -66,12 +78,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSMutableArray *) getKnights;
 + (NSMutableArray *) getTrainKnights;
 
++ (void) recruitKnight:(KnightData *)knight;
+
 + (void) setKnight:(KnightData *)knight onCombatPosition:(CombatPosition)position;
 + (KnightData *) getKnightOnCombatPosition:(CombatPosition)position;
 + (void) removeKnightOnCombatPosition:(CombatPosition)position;
 + (int) getNumOfBattleKnights;
 
 + (BOOL) isBattleKnight:(KnightData *)data;
++ (void) removeBattleKnights;
 
 
 - (id) initWithLoaded:(BOOL)load;

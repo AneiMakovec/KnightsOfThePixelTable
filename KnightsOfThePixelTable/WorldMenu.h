@@ -19,11 +19,21 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WorldMenu : Menu {
     Image *background;
     
-    ImageButton *dungeons[LevelTypes];
+    DoubleImageButton *dungeonsUnlocked[LevelTypes];
+    DoubleImageButton *dungeonsLocked[LevelTypes];
     
+    BOOL isPanelVisible;
+    LevelType curLevel;
     Image *panel;
+    Label *panelText;
+    ImageButton *panelClose;
     
-    DoubleImageLabelButton *stages[StageTypes];
+    NSString *dungeonNames[LevelTypes];
+    
+    Image *stagesLocked[StageTypes];
+    DoubleImageLabelButton *stagesUnlocked[StageTypes];
+    
+    Image *paths[LevelTypes];
 }
 
 @end

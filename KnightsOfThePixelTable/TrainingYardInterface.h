@@ -43,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id) initWithLayerDepth:(float)depth trainRooster:(Rooster *)theTrainRooster rooster:(Rooster *)theRooster;
 
+- (void) update;
+
 @end
 
 NS_ASSUME_NONNULL_END

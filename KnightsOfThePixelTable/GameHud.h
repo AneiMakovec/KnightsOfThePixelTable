@@ -14,49 +14,55 @@
 
 #import "Pixlron.Knights.classes.h"
 
+typedef enum {
+    BorderTypePhysical,
+    BorderTypeRanged,
+    BorderTypeMagic,
+    BorderTypeNeutral,
+    BorderTypes
+} BorderType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GameHud : GameComponent {
     SimpleScene *scene;
     GUIRenderer *renderer;
-    Gameplay *gameplay;
-    
-    Texture2D *buttonBackground;
-    
-    SpriteFont *font;
-    
+
     int wave;
     int numWaves;
-    Label *waveCounter;
-    Label *currentHpCounters[CombatPositions];
-    Label *maxHpCounters[CombatPositions];
     
     BOOL endTurnReleased;
     BOOL paused;
     BOOL endDungeon;
     
+    
+    Image *background;
+    Image *hudBackground;
+    
+    Image *allyDicePool;
+    Image *enemyDicePool;
+    
+    Image *waveCounterPanel;
+    Label *waveCounter;
+    
+    Image *enemyTurn;
+    ImageButton *endTurn;
+    DoubleImageButton *retreat;
+    
+    Image *portraits[CombatPositions];
+    Image *skills[CombatPositions][SkillTypes];
+    Image *skillBorders[CombatPositions][BorderTypes];
+    Image *hpBars[CombatPositions];
+    Image *combos[CombatPositions][ComboItems][StatTypes];
+    
+    Image *enemyHpBarFrame[CombatPositions];
+    Image *enemyHpBar[CombatPositions];
+
+    Label *currentHpCounters[CombatPositions];
+    Label *maxHpCounters[CombatPositions];
+    
     // Debug
     LabelButton *resetDices;
-
-    ImageLabelButton *endTurn;
-    ImageLabelButton *retreat;
-    
-//    CompositeImage *interfaceBackground;
-    
-    
-    // indicator textures
-    Texture2D *hitTexture;
-    Texture2D *healTexture;
-    Texture2D *bleedTexture;
-    Texture2D *poisonTexture;
-    Texture2D *burnTexture;
-    Texture2D *frostbiteTexture;
-    Texture2D *stunTexture;
-    Texture2D *buffTexture;
-    Texture2D *debuffTexture;
-    
-    // interface tetures
-    NSMutableArray *interfaceTextures;
 }
 
 @property (nonatomic, readonly) id<IScene> scene;
@@ -64,7 +70,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL paused;
 @property (nonatomic, readonly) BOOL endDungeon;
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay waves:(int)theWaves;
+
++ (void) initializeWithGame:(Game *)game;
+
++ (void) activate;
+
++ (void) deactivate;
+
+
+
+
+
 
 - (void) increaseWaveCounter;
 
@@ -98,6 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) isLastWave;
 
 - (void) deactivate;
+- (void) activate;
 
 @end
 

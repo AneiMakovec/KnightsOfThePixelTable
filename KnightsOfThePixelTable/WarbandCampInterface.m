@@ -139,7 +139,7 @@
         for (int i = 0; i < CombatPositions; i++) {
             if ([slots.pressedButtonKey isEqualToString:slotRegKeys[i]]) {
                 KnightData *data = [rooster getSelectedData];
-                if (data.fatigue > 100) {
+                if (data.fatigue < 100) {
                     // check if unit is assigned to other slots
                     for (int j = 0; j < CombatPositions; j++) {
                         KnightData *curData = [GameProgress getKnightOnCombatPosition:j];
@@ -172,6 +172,13 @@
             } else {
                 [rooster deselect];
             }
+        }
+        
+        KnightData *knight = [GameProgress getKnightOnCombatPosition:i];
+        if (knight) {
+            [self removeItemFromScene:knightAnimations[i][currentTypes[i]]];
+            currentTypes[i] = knight.type;
+            [self addItemToScene:knightAnimations[i][currentTypes[i]]];
         }
     }
 }

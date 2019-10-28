@@ -14,7 +14,7 @@
 
 @implementation Gameplay
 
-- (id) initWithGame:(Game *)theGame levelType:(LevelType)levelType {
+- (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
         
@@ -22,71 +22,47 @@
         [GameplaySpriteComponent activateWithGame:self.game];
         
         // init level
-        switch (levelType) {
-            case LevelTypeFarmlands:
-                currentLevel = [[FarmlandsLevel alloc] initWithGame:self.game numDices:8];
-                break;
-                
-            case LevelTypeMountains:
-                currentLevel = [[MountainsLevel alloc] initWithGame:self.game numDices:8];
-                break;
-                
-            case LevelTypeSeashore:
-                currentLevel = [[SeashoreLevel alloc] initWithGame:self.game numDices:8];
-                break;
-                
-            case LevelTypePinewoods:
-                currentLevel = [[PinewoodsLevel alloc] initWithGame:self.game numDices:8];
-                break;
-                
-            default:
-                currentLevel = [[FarmlandsLevel alloc] initWithGame:self.game numDices:8];
-                break;
-        }
+        [Level initializeWithGame:self.game];
         
-        // init components
-        humanPlayer = [[HumanPlayer alloc] initWithGame:self.game level:currentLevel];
-        aiPlayer = [[AIPlayer alloc] initWithGame:self.game level:currentLevel];
-        physics = [[PhysicsEngine alloc] initWithGame:self.game level:currentLevel playSounds:[GameProgress isSoundEnabled]];
-        gameHud = [[GameHud alloc] initWithGame:self.game gameplay:self waves:1];
-        turnManager = [[TurnManager alloc] initWithGame:self.game level:currentLevel gameHud:gameHud humanPlayer:humanPlayer aiPlayer:aiPlayer];
-        renderer = [[GameRenderer alloc] initWithGame:self.game gameplay:self turnManager:turnManager];
+        // init game hud
+        [GameHud initializeWithGame:self.game];
+        
+        // init other components
+        humanPlayer = [[HumanPlayer alloc] initWithGame:self.game];
+        aiPlayer = [[AIPlayer alloc] initWithGame:self.game];
+        physics = [[PhysicsEngine alloc] initWithGame:self.game];
+        renderer = [[GameRenderer alloc] initWithGame:self.game];
+        
+        // init turn manager
+        [TurnManager initializeWithGame:self.game humanPlayer:humanPlayer aiPlayer:aiPlayer];
         
         // set correct update order
         humanPlayer.updateOrder = 1;
         aiPlayer.updateOrder = 2;
-        turnManager.updateOrder = 3;
         physics.updateOrder = 4;
-        currentLevel.updateOrder = 5;
-        currentLevel.scene.updateOrder = 6;
-        self.updateOrder = 7;
+        self.updateOrder = 9;
     }
     return self;
 }
 
-@synthesize currentLevel;
-
 - (void) activate {
+    [Level activate];
+    [GameHud activate];
+    [TurnManager activate];
     [self.game.components addComponent:humanPlayer];
     [self.game.components addComponent:aiPlayer];
     [self.game.components addComponent:physics];
-    [self.game.components addComponent:gameHud];
-    [self.game.components addComponent:currentLevel];
-    [self.game.components addComponent:turnManager];
     [self.game.components addComponent:renderer];
 }
 
 - (void) deactivate {
+    [Level deactivate];
+    [GameHud deactivate];
+    [TurnManager deactivate];
     [self.game.components removeComponent:humanPlayer];
     [self.game.components removeComponent:aiPlayer];
     [self.game.components removeComponent:physics];
-    [self.game.components removeComponent:currentLevel];
-    [gameHud deactivate];
-    [self.game.components removeComponent:gameHud];
-    [self.game.components removeComponent:turnManager];
     [self.game.components removeComponent:renderer];
-    
-    [GameplaySpriteComponent deactivate];
 }
 
 
@@ -103,6 +79,9 @@
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     if (gameHud.endDungeon) {
+        [GameProgress setFinishedDungeon:YES];
+        
+        // return to town
         [knightsGame popState];
         [knightsGame popState];
     }
@@ -116,10 +95,7 @@
     [humanPlayer release];
     [aiPlayer release];
     [physics release];
-    [currentLevel release];
-    [gameHud release];
     [renderer release];
-    [turnManager release];
     [super dealloc];
 }
 

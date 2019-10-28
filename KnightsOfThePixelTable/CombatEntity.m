@@ -12,36 +12,32 @@
 
 @implementation CombatEntity
 
-- (id) initWithLevel:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius {
-    self = [super initWithHealth:hp];
+- (id) initWithData:(EntityData *)data {
+    self = [super initWithHealth:data.hp];
     if (self != nil) {
         position = [[Vector2 alloc] init];
         velocity = [[Vector2 alloc] init];
         
-        radius = 20;
-        maxRadius = theMaxRadius;
+        entityData = [data retain];
         
-        hud = theHud;
-        level = theLevel;
+        radius = 20;
         
         stunned = NO;
         finishedAttacking = NO;
         isTargeted = NO;
         
-        entityType = theType;
         state = EntityStateIdle;
-        damageType = theDamageType;
         skillType = NoSkill;
         
         combo = [[NSMutableArray alloc] initWithCapacity:ComboItems];
         
-        statEffects = [[NSMutableArray alloc] init];
+        conditions = [[NSMutableArray alloc] init];
         targets = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-@synthesize position, velocity, radius, maxRadius, isTargeted, finishedAttacking, entityType, state, damageType, skillType, combatPosition, entityArea, origin, target, combo, hud, statEffects, stunned, targets;
+@synthesize position, velocity, radius, isTargeted, finishedAttacking, state, skillType, combatPosition, entityArea, origin, target, combo, conditions, stunned, targets;
 
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly {
@@ -420,7 +416,7 @@
 }
 
 - (void) applyStatEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
-//    for (StatEffect *effect in skill.statEffects) {
+//    for (StatEffect *effect in skill.conditions) {
 //        if ([Random intLessThan:100] < effect.chance) {
 //            [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
 //
@@ -578,7 +574,7 @@
 //}
 
 - (void) removeStatEffect:(Class)effect fromTarget:(CombatEntity*)theTarget {
-    for (StatEffect *statEffect in theTarget.statEffects) {
+    for (StatEffect *statEffect in theTarget.conditions) {
         if ([statEffect isKindOfClass:effect]) {
             [statEffect deactivate];
         }
@@ -586,7 +582,7 @@
 }
 
 - (void) changeDurationOfStatEffect:(Class)effect forTarget:(CombatEntity*)theTarget increase:(BOOL)increase {
-    for (StatEffect *statEffect in theTarget.statEffects) {
+    for (StatEffect *statEffect in theTarget.conditions) {
         if ([statEffect isKindOfClass:effect]) {
             if (increase)
                 [statEffect increaseDuration];
@@ -791,7 +787,7 @@
 - (void) updateStatEffects {
     // update status effects and check if any is disactivated
     NSMutableArray *deactivated = [[NSMutableArray alloc] init];
-    for (StatEffect *effect in statEffects) {
+    for (StatEffect *effect in conditions) {
         [effect update];
         if (!effect.active) {
             [deactivated addObject:effect];
@@ -800,7 +796,7 @@
     
     // if is deactivated remove it
     for (StatEffect *effect in deactivated) {
-        [statEffects removeObject:effect];
+        [conditions removeObject:effect];
     }
     
     [deactivated release];
@@ -842,7 +838,7 @@
 
 
 - (void) addStatEffect:(StatEffect *)effect {
-    [statEffects addObject:effect];
+    [conditions addObject:effect];
     [effect activateWithTarget:self];
 }
 
@@ -872,7 +868,7 @@
 }
 
 //- (BOOL) isOnlyStunnEffect:(Condition *)condition {
-//    for (StatEffect *effect in statEffects) {
+//    for (StatEffect *effect in conditions) {
 //        Condition *cond = [effect isKindOfClass:[Condition class]] ? (Condition *)effect : nil;
 //        if (cond && cond.type == ConditionTypeStun && cond != condition) {
 //            return false;
@@ -925,7 +921,7 @@
     
     [combo release];
     [targets release];
-    [statEffects release];
+    [conditions release];
     
     [super dealloc];
 }

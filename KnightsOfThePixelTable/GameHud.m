@@ -9,31 +9,50 @@
 #import "GameHud.h"
 
 #import "Retronator.Xni.Framework.Graphics.h"
-#import "Retronator.Xni.Framework.Content.Pipeline.Processors.h"
 #import "Pixlron.Knights.h"
+
+GameHud *hudInstance;
 
 @implementation GameHud
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay waves:(int)theWaves {
++ (void) initializeWithGame:(Game *)game {
+    hudInstance = [[GameHud alloc] initWithGame:game];
+    hudInstance.updateOrder = 8;
+}
+
++ (void) activate {
+    [hudInstance activate];
+    [hudInstance.game.components addComponent:hudInstance];
+}
+
++ (void) deactivate {
+    [hudInstance deactivate];
+    [hudInstance.game.components removeComponent:hudInstance];
+}
+
+
+
+
+
+
+
+
+
+- (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
         scene = [[SimpleScene alloc] initWithGame:self.game];
-        [self.game.components addComponent:scene];
-        
-        gameplay = theGameplay;
+        scene.updateOrder = 7;
         
         endTurnReleased = NO;
         paused = NO;
         endDungeon = NO;
         
         wave = 1;
-        numWaves = theWaves;
-        
-        interfaceTextures = [[NSMutableArray alloc] initWithCapacity:ImageLocations];
-        
+        numWaves = [Constants getWavesForStage:[GameProgress currentStage]];
+
         renderer = [[GUIRenderer alloc] initWithGame:self.game scene:scene];
         renderer.drawOrder = 1;
-        [self.game.components addComponent:renderer];
     }
     return self;
 }
@@ -41,40 +60,138 @@
 @synthesize scene, endTurnReleased, paused, endDungeon;
 
 - (void) initialize {
-    [gameplay.currentLevel.battlefield setGameHud:self];
     
-    FontTextureProcessor *fontProcessor = [[[FontTextureProcessor alloc] init] autorelease];
-    font = [[self.game.content load:FONT processor:fontProcessor] autorelease];
+    // background
+    NSString *backgroundKeys[LevelTypes] = {GAMEPLAY_MENU_BACKGROUND_FARMLANDS, GAMEPLAY_MENU_BACKGROUND_PINEWOODS, GAMEPLAY_MENU_BACKGROUND_MOUNTAINS, GAMEPLAY_MENU_BACKGROUND_SEASHORE};
+    background = [GraphicsComponent getImageWithKey:backgroundKeys[[GameProgress currentLevel]] atPosition:[Vector2 zero]];
+    background.layerDepth = 1.0f;
+    [scene addItem:background];
     
-    buttonBackground = [self.game.content load:BUTTON_BACKGROUND];
+    // hud background
+    hudBackground = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_HUD atPosition:[Vector2 vectorWithX:320 y:0]];
+    hudBackground.layerDepth = 1.0f;
+    [scene addItem:hudBackground];
     
-    // Wave counter
-    Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:490 y:20]];
-    waveText.color = [Color white];
+    // dice pool
+    allyDicePool = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_DICEPOOL_ALLY atPosition:[Constants getPositionDataForKey:POSITION_HUD_DICEPOOL]];
+    allyDicePool.layerDepth = 1.0f;
+    [scene addItem:allyDicePool];
+    
+    enemyDicePool = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_DICEPOOL_ENEMY atPosition:[Constants getPositionDataForKey:POSITION_HUD_DICEPOOL]];
+    
+    // wave counter
+    waveCounterPanel = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_WAVE_COUNTER atPosition:[Vector2 zero]];
+    waveCounterPanel.layerDepth = 0.99f;
+    [scene addItem:waveCounterPanel];
+    
+//    Label *waveText = [[Label alloc] initWithFont:font text:@"Wave:" position:[Vector2 vectorWithX:490 y:20]];
+    Label *waveText = [GraphicsComponent getLabelWithText:@"Wave" atPosition:[Vector2 vectorWithX:490 y:20]];
+    waveText.layerDepth = 0.98f;
     waveText.horizontalAlign = HorizontalAlignCenter;
     waveText.verticalAlign = VerticalAlignMiddle;
-    [waveText setScaleUniform:1.0f];
+    [waveText setScaleUniform:FONT_SCALE_MEDIUM];
     [scene addItem:waveText];
     [waveText release];
     
-    waveCounter = [[Label alloc] initWithFont:font text:@"1" position:[Vector2 vectorWithX:530 y:20]];
-    waveCounter.color = [Color white];
+//    waveCounter = [[Label alloc] initWithFont:font text:@"1" position:[Vector2 vectorWithX:530 y:20]];
+    waveCounter = [GraphicsComponent getLabelWithText:@"1" atPosition:[Vector2 vectorWithX:530 y:20]];
+    waveCounter.layerDepth = 0.98f;
     waveCounter.horizontalAlign = HorizontalAlignCenter;
     waveCounter.verticalAlign = VerticalAlignMiddle;
-    [waveCounter setScaleUniform:1.0f];
+    [waveCounter setScaleUniform:FONT_SCALE_MEDIUM];
     [scene addItem:waveCounter];
     
-    Label *waveMaxNum = [[Label alloc] initWithFont:font text:[NSString stringWithFormat:@"/ %d", numWaves] position:[Vector2 vectorWithX:555 y:20]];
-    waveMaxNum.color = [Color white];
+//    Label *waveMaxNum = [[Label alloc] initWithFont:font text:[NSString stringWithFormat:@"/ %d", numWaves] position:[Vector2 vectorWithX:555 y:20]];
+    Label *waveMaxNum = [GraphicsComponent getLabelWithText:[NSString stringWithFormat:@"/ %d", numWaves] atPosition:[Vector2 vectorWithX:555 y:20]];
+    waveMaxNum.layerDepth = 0.98f;
     waveMaxNum.horizontalAlign = HorizontalAlignCenter;
     waveMaxNum.verticalAlign = VerticalAlignMiddle;
-    [waveMaxNum setScaleUniform:1.0f];
+    [waveMaxNum setScaleUniform:FONT_SCALE_MEDIUM];
     [scene addItem:waveMaxNum];
     [waveMaxNum release];
     
     // Debug - reset dices button
-    resetDices = [[LabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] font:font text:@"Reset dices"];
+//    resetDices = [[LabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:512 y:60 width:150 height:50] font:font text:@"Reset dices"];
+    resetDices = [GraphicsComponent getLabelButtonWithText:@"RESET DICES" atPosition:[Vector2 vectorWithX:512 y:60] width:150 height:50];
     [scene addItem:resetDices];
+    
+    // end turn button
+    endTurn = [GraphicsComponent getImageButtonWithKey:GAMEPLAY_MENU_INTERFACE_HUD_WAVE_COUNTER_SYMBOL_GOOD atPosition:[Vector2 vectorWithX:485 y:64]];
+    endTurn.backgroundImage.layerDepth = 0.98f;
+    [scene addItem:endTurn];
+    
+    enemyTurn = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_WAVE_COUNTER_SYMBOL_EVIL atPosition:[Vector2 vectorWithX:485 y:64]];
+    enemyTurn.layerDepth = 0.98f;
+    
+    retreat = [GraphicsComponent getDoubleImageButtonWithKey:TOWN_MENU_INTERFACE_BUTTONS_RETURN atPosition:[Vector2 vectorWithX:974 y:10]];
+    retreat.pressedImage.layerDepth = 0.98f;
+    retreat.notPressedImage.layerDepth = 0.98f;
+    [scene addItem:retreat];
+    
+    
+    // init portraits
+    NSString *portraitKeys[KnightTypes] = {GAMEPLAY_MENU_ENTITIES_ALLIES_BRAWLER_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_PALADIN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_LONGBOWMAN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_CROSSBOWMAN_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_SCOUT_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_BATTLEMAGE_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_PORTRAIT, GAMEPLAY_MENU_ENTITIES_ALLIES_MONK_PORTRAIT};
+    NSString *portraitPosKey = POSITION_HUD_PORTRAITS;
+    for (int i = 0; i < CombatPositions; i++) {
+        portraits[i] = [GraphicsComponent getImageWithKey:portraitKeys[[GameProgress getKnightOnCombatPosition:i].type] atPosition:[Constants getPositionDataForKey:[portraitPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] width:76 height:76];
+        portraits[i].layerDepth = 0.98f;
+//        [portraits[i] setScaleUniform:2.0f];
+    }
+    
+    // init skills
+    NSString *knightTypeKeys[KnightTypes] = {GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BRAWLER, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_PALADIN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BARD, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_LONGBOWMAN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_CROSSBOWMAN, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_SCOUT, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_BATTLEMAGE, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_WIZARD, GAMEPLAY_MENU_INTERFACE_SKILLS_ICONS_MONK};
+    NSString *skillPosKey = POSITION_HUD_SKILLS;
+    for (int i = 0; i < CombatPositions; i++) {
+        for (int j = 0; j < SkillTypes; j++) {
+            skills[i][j] = [GraphicsComponent getTouchImageWithKey:[knightTypeKeys[[GameProgress getKnightOnCombatPosition:i].type] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", j]]]];
+            skills[i][j].layerDepth = 0.98f;
+        }
+    }
+    
+    // init skill borders
+    for (int i = 0; i < CombatPositions; i++) {
+        skillBorders[i][BorderTypePhysical] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_PHYSICAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        skillBorders[i][BorderTypePhysical].layerDepth = 0.98f;
+        skillBorders[i][BorderTypeRanged] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_RANGED atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        skillBorders[i][BorderTypeRanged].layerDepth = 0.98f;
+        skillBorders[i][BorderTypeMagic] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_MAGIC atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        skillBorders[i][BorderTypeMagic].layerDepth = 0.98f;
+        skillBorders[i][BorderTypeNeutral] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_NEUTRAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
+        skillBorders[i][BorderTypeNeutral].layerDepth = 0.98f;
+    }
+    
+    
+    // hp bars
+    NSString *hpBarKey = POSITION_HUD_HP_ALLIES;
+    MetaData *hpData = [Constants getMetaDataForKey:META_HUD_HP_ALLY];
+    for (int i = 0; i < CombatPositions; i++) {
+        hpBars[i] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_HP atPosition:[Constants getPositionDataForKey:[hpBarKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] width:hpData.width height:hpData.height];
+        hpBars[i].layerDepth = 0.98f;
+    }
+    
+    
+    // combos
+    NSString *comboPosKey = POSITION_HUD_COMBOS;
+    NSString *comboKeys[StatTypes] = {GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_STRENGTH, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_ACCURACY, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_CUNNING, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_DEFENSE, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_AGILITY, GAMEPLAY_MENU_PROPS_DICES_ICONS_16x16_STURDINESS};
+    MetaData *comboData = [Constants getMetaDataForKey:META_HUD_COMBO_STEP];
+    for (int i = 0; i < CombatPositions; i++) {
+        Vector2 *pos = [Constants getPositionDataForKey:[comboPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        for (int j = 0; j < ComboItems; j++) {
+            for (int k = 0; k < StatTypes; k++) {
+                combos[i][j][k] = [GraphicsComponent getImageWithKey:comboKeys[k] atPosition:[Vector2 vectorWithX:pos.x y:pos.y]];
+                combos[i][j][k].layerDepth = 0.98f;
+            }
+            
+            pos.x += comboData.step;
+        }
+    }
+    
+    
+    // enemy hp bars
+    // TODO
+    
+    // hp counters
+    // TODO
     
     // End turn button
 //    endTurn = [[ImageLabelButton alloc] initWithInputArea:[Rectangle rectangleWithX:[Constants backgroundWidth] - 120 y:10 width:110 height:50] background:buttonBackground font:font text:@"End turn"];
@@ -86,15 +203,15 @@
     
     
     // load indicator textures
-    hitTexture = [[self.game.content load:HIT] retain];
-    healTexture = [[self.game.content load:HEAL] retain];
-    stunTexture = [[self.game.content load:STAT_EFFECT_STUN] retain];
-    buffTexture = [[self.game.content load:STAT_EFFECT_BUFF] retain];
-    debuffTexture = [[self.game.content load:STAT_EFFECT_DEBUFF] retain];
-    bleedTexture = [[self.game.content load:STAT_EFFECT_BLEED] retain];
-    poisonTexture = [[self.game.content load:STAT_EFFECT_POISON] retain];
-    burnTexture = [[self.game.content load:STAT_EFFECT_BURN] retain];
-    frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
+//    hitTexture = [[self.game.content load:HIT] retain];
+//    healTexture = [[self.game.content load:HEAL] retain];
+//    stunTexture = [[self.game.content load:STAT_EFFECT_STUN] retain];
+//    buffTexture = [[self.game.content load:STAT_EFFECT_BUFF] retain];
+//    debuffTexture = [[self.game.content load:STAT_EFFECT_DEBUFF] retain];
+//    bleedTexture = [[self.game.content load:STAT_EFFECT_BLEED] retain];
+//    poisonTexture = [[self.game.content load:STAT_EFFECT_POISON] retain];
+//    burnTexture = [[self.game.content load:STAT_EFFECT_BURN] retain];
+//    frostbiteTexture = [[self.game.content load:STAT_EFFECT_FROSTBITE] retain];
     
     // load interface textures
 //    [interfaceTextures insertObject:[self.game.content load:INTERFACE_BACKGROUND_UP_LEFT] atIndex:ImageLocationUpLeft];
@@ -294,6 +411,11 @@
         [self endGameplayWithWin:YES];
     else
         waveCounter.text = [NSString stringWithFormat:@"%i", wave];
+}
+
+- (void) activate {
+    [self.game.components addComponent:scene];
+    [self.game.components addComponent:renderer];
 }
 
 - (void) deactivate {

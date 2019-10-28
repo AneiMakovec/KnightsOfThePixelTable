@@ -38,7 +38,6 @@
 		B520CC2C2364CCD30034DB81 /* CharacterTypePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC2B2364CCD30034DB81 /* CharacterTypePopUp.m */; };
 		B520CC2F2364CCE80034DB81 /* DamageTypePopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC2E2364CCE80034DB81 /* DamageTypePopUp.m */; };
 		B520CC3623651A3F0034DB81 /* ConditionData.m in Sources */ = {isa = PBXBuildFile; fileRef = B520CC3523651A3F0034DB81 /* ConditionData.m */; };
-		B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */ = {isa = PBXBuildFile; fileRef = B52192AC21C7260400637BE7 /* KnightBrawler.m */; };
 		B52284D921EFA01E0005B3AC /* Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B52284D821EFA01E0005B3AC /* Indicator.m */; };
 		B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE1221EE8B9D00B09A55 /* StatEffectFactory.m */; };
 		B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = B523BE4B21EEA69C00B09A55 /* Condition.m */; };
@@ -61,6 +60,8 @@
 		B53912D722F86553005E4686 /* fipps.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B53912D022F86553005E4686 /* fipps.bmp */; };
 		B53912D822F86553005E4686 /* squarebit.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B53912D122F86553005E4686 /* squarebit.bmp */; };
 		B53912D922F86553005E4686 /* alkhemikal.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B53912D222F86553005E4686 /* alkhemikal.bmp */; };
+		B54C66F223676F610057B854 /* EntityData.m in Sources */ = {isa = PBXBuildFile; fileRef = B54C66F123676F610057B854 /* EntityData.m */; };
+		B54C66F6236772520057B854 /* MonsterData.m in Sources */ = {isa = PBXBuildFile; fileRef = B54C66F5236772520057B854 /* MonsterData.m */; };
 		B54E88CA21E2B48B0040C888 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88C921E2B48B0040C888 /* GameState.m */; };
 		B54E88CD21E2CDFC0040C888 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E88CC21E2CDFC0040C888 /* Menu.m */; };
 		B54E88D021E2D2450040C888 /* button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B54E88CF21E2D2450040C888 /* button_background.png */; };
@@ -92,11 +93,6 @@
 		B560375321FE726300CE7123 /* character_enemy_boss_viking.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375221FE726300CE7123 /* character_enemy_boss_viking.png */; };
 		B560375721FE7ECB00CE7123 /* enemy_hp_pool.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375621FE7ECB00CE7123 /* enemy_hp_pool.png */; };
 		B560375921FE803A00CE7123 /* background_main_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = B560375821FE803A00CE7123 /* background_main_menu.png */; };
-		B560375C21FE82D600CE7123 /* KnightBowman.m in Sources */ = {isa = PBXBuildFile; fileRef = B560375B21FE82D600CE7123 /* KnightBowman.m */; };
-		B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */ = {isa = PBXBuildFile; fileRef = B560375E21FE82ED00CE7123 /* KnightPaladin.m */; };
-		B560376221FE82FB00CE7123 /* KnightFireEnchantress.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */; };
-		B560376721FE843800CE7123 /* MonsterBrute.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376621FE843800CE7123 /* MonsterBrute.m */; };
-		B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */ = {isa = PBXBuildFile; fileRef = B560376921FE844800CE7123 /* MonsterBossViking.m */; };
 		B560376C21FE91B000CE7123 /* hud_wave_counter.png in Resources */ = {isa = PBXBuildFile; fileRef = B560376B21FE91B000CE7123 /* hud_wave_counter.png */; };
 		B5671A5C219A13EA009E270F /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B5671A5B219A13EA009E270F /* Gameplay.m */; };
 		B5686CED23637056007B02CF /* spritesheet_0.json in Resources */ = {isa = PBXBuildFile; fileRef = B5686CE923637056007B02CF /* spritesheet_0.json */; };
@@ -111,10 +107,6 @@
 		B57B0CF721A5F64B0064B91F /* HumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF621A5F64B0064B91F /* HumanPlayer.m */; };
 		B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CF921A5F6590064B91F /* AIPlayer.m */; };
 		B57B0CFD21A5F72C0064B91F /* PhysicsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */; };
-		B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0CFF21A5F8130064B91F /* FarmlandsLevel.m */; };
-		B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0221A5F8270064B91F /* PinewoodsLevel.m */; };
-		B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0521A5F8580064B91F /* MountainsLevel.m */; };
-		B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0821A5F8650064B91F /* SeashoreLevel.m */; };
 		B57B0D0F21A5FCA80064B91F /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D0E21A5FCA80064B91F /* Level.m */; };
 		B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57B0D1921A602530064B91F /* GameRenderer.m */; };
 		B58869A521C4430900CE4C0E /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = B58869A421C4430900CE4C0E /* Monster.m */; };
@@ -129,7 +121,6 @@
 		B5AE502021BEF47300FC5CBF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5AE501D21BEF47300FC5CBF /* click.wav */; };
 		B5C2800221D3FF58009C657A /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C2800121D3FF58009C657A /* hud.png */; };
 		B5C2800621D42D72009C657A /* TurnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C2800521D42D72009C657A /* TurnManager.m */; };
-		B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */; };
 		B5CCC16621D02A0900AD19C5 /* ScreenComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */; };
 		B5CF917C22008611006A52B5 /* RetreatInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF917B22008611006A52B5 /* RetreatInterface.m */; };
 		B5CF917F2200863F006A52B5 /* DungeonEndInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF917E2200863F006A52B5 /* DungeonEndInterface.m */; };
@@ -148,7 +139,6 @@
 		B5CF919F2200D8BD006A52B5 /* boss_hit.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CF919A2200D8BD006A52B5 /* boss_hit.png */; };
 		B5CF91A02200D8BD006A52B5 /* boss_move.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CF919B2200D8BD006A52B5 /* boss_move.png */; };
 		B5CF91A12200D8BD006A52B5 /* boss_death.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CF919C2200D8BD006A52B5 /* boss_death.png */; };
-		B5CF91A42200DB42006A52B5 /* MonsterBoosKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF91A32200DB42006A52B5 /* MonsterBoosKnight.m */; };
 		B5CF91A72200F964006A52B5 /* music_battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5CF91A52200F964006A52B5 /* music_battle.mp3 */; };
 		B5CF91A82200F964006A52B5 /* music_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5CF91A62200F964006A52B5 /* music_theme.mp3 */; };
 		B5CF91AE2201075D006A52B5 /* background_camelot.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CF91AD2201075D006A52B5 /* background_camelot.png */; };
@@ -245,8 +235,6 @@
 		B520CC2E2364CCE80034DB81 /* DamageTypePopUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DamageTypePopUp.m; sourceTree = "<group>"; };
 		B520CC3423651A3F0034DB81 /* ConditionData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionData.h; sourceTree = "<group>"; };
 		B520CC3523651A3F0034DB81 /* ConditionData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConditionData.m; sourceTree = "<group>"; };
-		B52192AB21C7260400637BE7 /* KnightBrawler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightBrawler.h; sourceTree = "<group>"; };
-		B52192AC21C7260400637BE7 /* KnightBrawler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightBrawler.m; sourceTree = "<group>"; };
 		B52284D721EFA01E0005B3AC /* Indicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
 		B52284D821EFA01E0005B3AC /* Indicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Indicator.m; sourceTree = "<group>"; };
 		B523BE1121EE8B9D00B09A55 /* StatEffectFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatEffectFactory.h; sourceTree = "<group>"; };
@@ -284,6 +272,10 @@
 		B53912D022F86553005E4686 /* fipps.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = fipps.bmp; sourceTree = "<group>"; };
 		B53912D122F86553005E4686 /* squarebit.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = squarebit.bmp; sourceTree = "<group>"; };
 		B53912D222F86553005E4686 /* alkhemikal.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = alkhemikal.bmp; sourceTree = "<group>"; };
+		B54C66F023676F610057B854 /* EntityData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntityData.h; sourceTree = "<group>"; };
+		B54C66F123676F610057B854 /* EntityData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntityData.m; sourceTree = "<group>"; };
+		B54C66F4236772520057B854 /* MonsterData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterData.h; sourceTree = "<group>"; };
+		B54C66F5236772520057B854 /* MonsterData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterData.m; sourceTree = "<group>"; };
 		B54E88C821E2B48B0040C888 /* GameState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		B54E88C921E2B48B0040C888 /* GameState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		B54E88CB21E2CDFC0040C888 /* Menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
@@ -322,16 +314,6 @@
 		B560375221FE726300CE7123 /* character_enemy_boss_viking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_enemy_boss_viking.png; sourceTree = "<group>"; };
 		B560375621FE7ECB00CE7123 /* enemy_hp_pool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_hp_pool.png; sourceTree = "<group>"; };
 		B560375821FE803A00CE7123 /* background_main_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_main_menu.png; sourceTree = "<group>"; };
-		B560375A21FE82D600CE7123 /* KnightBowman.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightBowman.h; sourceTree = "<group>"; };
-		B560375B21FE82D600CE7123 /* KnightBowman.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightBowman.m; sourceTree = "<group>"; };
-		B560375D21FE82ED00CE7123 /* KnightPaladin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightPaladin.h; sourceTree = "<group>"; };
-		B560375E21FE82ED00CE7123 /* KnightPaladin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightPaladin.m; sourceTree = "<group>"; };
-		B560376021FE82FB00CE7123 /* KnightFireEnchantress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KnightFireEnchantress.h; sourceTree = "<group>"; };
-		B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnightFireEnchantress.m; sourceTree = "<group>"; };
-		B560376521FE843800CE7123 /* MonsterBrute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterBrute.h; sourceTree = "<group>"; };
-		B560376621FE843800CE7123 /* MonsterBrute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterBrute.m; sourceTree = "<group>"; };
-		B560376821FE844800CE7123 /* MonsterBossViking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterBossViking.h; sourceTree = "<group>"; };
-		B560376921FE844800CE7123 /* MonsterBossViking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterBossViking.m; sourceTree = "<group>"; };
 		B560376B21FE91B000CE7123 /* hud_wave_counter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud_wave_counter.png; sourceTree = "<group>"; };
 		B5671A5A219A13EA009E270F /* Gameplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		B5671A5B219A13EA009E270F /* Gameplay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gameplay.m; sourceTree = "<group>"; };
@@ -352,14 +334,6 @@
 		B57B0CF921A5F6590064B91F /* AIPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIPlayer.m; sourceTree = "<group>"; };
 		B57B0CFB21A5F72C0064B91F /* PhysicsEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsEngine.h; sourceTree = "<group>"; };
 		B57B0CFC21A5F72C0064B91F /* PhysicsEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhysicsEngine.m; sourceTree = "<group>"; };
-		B57B0CFE21A5F8130064B91F /* FarmlandsLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmlandsLevel.h; sourceTree = "<group>"; };
-		B57B0CFF21A5F8130064B91F /* FarmlandsLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmlandsLevel.m; sourceTree = "<group>"; };
-		B57B0D0121A5F8270064B91F /* PinewoodsLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinewoodsLevel.h; sourceTree = "<group>"; };
-		B57B0D0221A5F8270064B91F /* PinewoodsLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PinewoodsLevel.m; sourceTree = "<group>"; };
-		B57B0D0421A5F8580064B91F /* MountainsLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MountainsLevel.h; sourceTree = "<group>"; };
-		B57B0D0521A5F8580064B91F /* MountainsLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MountainsLevel.m; sourceTree = "<group>"; };
-		B57B0D0721A5F8640064B91F /* SeashoreLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeashoreLevel.h; sourceTree = "<group>"; };
-		B57B0D0821A5F8650064B91F /* SeashoreLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeashoreLevel.m; sourceTree = "<group>"; };
 		B57B0D0D21A5FCA80064B91F /* Level.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		B57B0D0E21A5FCA80064B91F /* Level.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		B57B0D1821A602530064B91F /* GameRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRenderer.h; sourceTree = "<group>"; };
@@ -386,8 +360,6 @@
 		B5C2800421D42D72009C657A /* TurnManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TurnManager.h; sourceTree = "<group>"; };
 		B5C2800521D42D72009C657A /* TurnManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TurnManager.m; sourceTree = "<group>"; };
 		B5C2800921D465CE009C657A /* IPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPlayer.h; sourceTree = "<group>"; };
-		B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterWarrior.h; sourceTree = "<group>"; };
-		B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterWarrior.m; sourceTree = "<group>"; };
 		B5CCC16421D02A0900AD19C5 /* ScreenComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenComponent.h; sourceTree = "<group>"; };
 		B5CCC16521D02A0900AD19C5 /* ScreenComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenComponent.m; sourceTree = "<group>"; };
 		B5CF917A22008611006A52B5 /* RetreatInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RetreatInterface.h; sourceTree = "<group>"; };
@@ -410,8 +382,6 @@
 		B5CF919A2200D8BD006A52B5 /* boss_hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss_hit.png; sourceTree = "<group>"; };
 		B5CF919B2200D8BD006A52B5 /* boss_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss_move.png; sourceTree = "<group>"; };
 		B5CF919C2200D8BD006A52B5 /* boss_death.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boss_death.png; sourceTree = "<group>"; };
-		B5CF91A22200DB42006A52B5 /* MonsterBoosKnight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonsterBoosKnight.h; sourceTree = "<group>"; };
-		B5CF91A32200DB42006A52B5 /* MonsterBoosKnight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonsterBoosKnight.m; sourceTree = "<group>"; };
 		B5CF91A52200F964006A52B5 /* music_battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music_battle.mp3; sourceTree = "<group>"; };
 		B5CF91A62200F964006A52B5 /* music_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music_theme.mp3; sourceTree = "<group>"; };
 		B5CF91AD2201075D006A52B5 /* background_camelot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_camelot.png; sourceTree = "<group>"; };
@@ -596,21 +566,6 @@
 			name = "Pop-ups";
 			sourceTree = "<group>";
 		};
-		B52192AA21C725E200637BE7 /* Knights */ = {
-			isa = PBXGroup;
-			children = (
-				B52192AB21C7260400637BE7 /* KnightBrawler.h */,
-				B52192AC21C7260400637BE7 /* KnightBrawler.m */,
-				B560375A21FE82D600CE7123 /* KnightBowman.h */,
-				B560375B21FE82D600CE7123 /* KnightBowman.m */,
-				B560375D21FE82ED00CE7123 /* KnightPaladin.h */,
-				B560375E21FE82ED00CE7123 /* KnightPaladin.m */,
-				B560376021FE82FB00CE7123 /* KnightFireEnchantress.h */,
-				B560376121FE82FB00CE7123 /* KnightFireEnchantress.m */,
-			);
-			name = Knights;
-			sourceTree = "<group>";
-		};
 		B52284D421EF9FDB0005B3AC /* Gameplay interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,6 +640,19 @@
 			name = Obstacles;
 			sourceTree = "<group>";
 		};
+		B54C66F323676F670057B854 /* Entity data */ = {
+			isa = PBXGroup;
+			children = (
+				B54C66F023676F610057B854 /* EntityData.h */,
+				B54C66F123676F610057B854 /* EntityData.m */,
+				B5E3D56B22F9D445004B574D /* KnightData.h */,
+				B5E3D56C22F9D445004B574D /* KnightData.m */,
+				B54C66F4236772520057B854 /* MonsterData.h */,
+				B54C66F5236772520057B854 /* MonsterData.m */,
+			);
+			name = "Entity data";
+			sourceTree = "<group>";
+		};
 		B54E88C621E2B46E0040C888 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,8 +691,7 @@
 		B5511B3122FB83A300E0F51E /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B5E3D56B22F9D445004B574D /* KnightData.h */,
-				B5E3D56C22F9D445004B574D /* KnightData.m */,
+				B54C66F323676F670057B854 /* Entity data */,
 				B5A493CB21CAECF0003EBB1D /* Skill.h */,
 				B5A493CC21CAECF0003EBB1D /* Skill.m */,
 				B520CC3423651A3F0034DB81 /* ConditionData.h */,
@@ -880,28 +847,6 @@
 			path = Brute;
 			sourceTree = "<group>";
 		};
-		B560376321FE841A00CE7123 /* Normal */ = {
-			isa = PBXGroup;
-			children = (
-				B5CCC15F21D0084E00AD19C5 /* MonsterWarrior.h */,
-				B5CCC16021D0084E00AD19C5 /* MonsterWarrior.m */,
-				B560376521FE843800CE7123 /* MonsterBrute.h */,
-				B560376621FE843800CE7123 /* MonsterBrute.m */,
-			);
-			name = Normal;
-			sourceTree = "<group>";
-		};
-		B560376421FE842900CE7123 /* Boss */ = {
-			isa = PBXGroup;
-			children = (
-				B560376821FE844800CE7123 /* MonsterBossViking.h */,
-				B560376921FE844800CE7123 /* MonsterBossViking.m */,
-				B5CF91A22200DB42006A52B5 /* MonsterBoosKnight.h */,
-				B5CF91A32200DB42006A52B5 /* MonsterBoosKnight.m */,
-			);
-			name = Boss;
-			sourceTree = "<group>";
-		};
 		B5671A56219A1380009E270F /* Physics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,15 +973,6 @@
 			name = Combat;
 			sourceTree = "<group>";
 		};
-		B5CCC15E21D0082E00AD19C5 /* Monsters */ = {
-			isa = PBXGroup;
-			children = (
-				B560376421FE842900CE7123 /* Boss */,
-				B560376321FE841A00CE7123 /* Normal */,
-			);
-			name = Monsters;
-			sourceTree = "<group>";
-		};
 		B5CF9179220085DE006A52B5 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,7 +1042,6 @@
 		B5D0A42521C411EC005EF3C6 /* Allies */ = {
 			isa = PBXGroup;
 			children = (
-				B52192AA21C725E200637BE7 /* Knights */,
 				B5D0A42721C41204005EF3C6 /* Knight.h */,
 				B5D0A42821C41204005EF3C6 /* Knight.m */,
 			);
@@ -1116,7 +1051,6 @@
 		B5D0A42621C411F4005EF3C6 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
-				B5CCC15E21D0082E00AD19C5 /* Monsters */,
 				B58869A321C4430900CE4C0E /* Monster.h */,
 				B58869A421C4430900CE4C0E /* Monster.m */,
 			);
@@ -1176,7 +1110,6 @@
 			isa = PBXGroup;
 			children = (
 				B5D01C5421C828C000A007DC /* Data */,
-				B5DE1256218DA933000D6784 /* Levels */,
 				B57B0D0D21A5FCA80064B91F /* Level.h */,
 				B57B0D0E21A5FCA80064B91F /* Level.m */,
 			);
@@ -1197,21 +1130,6 @@
 				B500BBAD23563F2A005A8491 /* GraphicsComponent.m */,
 			);
 			name = Graphics;
-			sourceTree = "<group>";
-		};
-		B5DE1256218DA933000D6784 /* Levels */ = {
-			isa = PBXGroup;
-			children = (
-				B57B0CFE21A5F8130064B91F /* FarmlandsLevel.h */,
-				B57B0CFF21A5F8130064B91F /* FarmlandsLevel.m */,
-				B57B0D0121A5F8270064B91F /* PinewoodsLevel.h */,
-				B57B0D0221A5F8270064B91F /* PinewoodsLevel.m */,
-				B57B0D0421A5F8580064B91F /* MountainsLevel.h */,
-				B57B0D0521A5F8580064B91F /* MountainsLevel.m */,
-				B57B0D0721A5F8640064B91F /* SeashoreLevel.h */,
-				B57B0D0821A5F8650064B91F /* SeashoreLevel.m */,
-			);
-			name = Levels;
 			sourceTree = "<group>";
 		};
 		B5E37FE12183A1EF0007D013 = {
@@ -1622,7 +1540,6 @@
 				B54E88CA21E2B48B0040C888 /* GameState.m in Sources */,
 				B520CC262364CCA90034DB81 /* SkillPopUp.m in Sources */,
 				B5FFCB8A21A3603C005F15BF /* Dice.m in Sources */,
-				B57B0D0321A5F8270064B91F /* PinewoodsLevel.m in Sources */,
 				B57A027822FCB42D0003E509 /* Rooster.m in Sources */,
 				B520CC2F2364CCE80034DB81 /* DamageTypePopUp.m in Sources */,
 				B5309CCC22C26AB3005CE22F /* WarbandCampInterface.m in Sources */,
@@ -1632,7 +1549,6 @@
 				B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */,
 				B55FA73B21D817C400526790 /* GameHud.m in Sources */,
 				B520CC292364CCBC0034DB81 /* XpPopUp.m in Sources */,
-				B560376A21FE844800CE7123 /* MonsterBossViking.m in Sources */,
 				B52284D921EFA01E0005B3AC /* Indicator.m in Sources */,
 				B5A493CA21CAD38A003EBB1D /* Stat.m in Sources */,
 				B523BE5221EEA6BD00B09A55 /* Debuff.m in Sources */,
@@ -1641,24 +1557,18 @@
 				B5309CD222C26AEA005CE22F /* BlacksmithInterface.m in Sources */,
 				B5671A5C219A13EA009E270F /* Gameplay.m in Sources */,
 				B5D1746A21FF74D20033DF2C /* Projectile.m in Sources */,
-				B57B0D0021A5F8130064B91F /* FarmlandsLevel.m in Sources */,
 				B5377CFA21F157AC00CE482A /* AnimatedIndicator.m in Sources */,
 				B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */,
 				B5E37FFD2183A1F00007D013 /* main.m in Sources */,
 				B520CC2C2364CCD30034DB81 /* CharacterTypePopUp.m in Sources */,
 				B523BE4C21EEA69C00B09A55 /* Condition.m in Sources */,
 				B5E3D56D22F9D445004B574D /* KnightData.m in Sources */,
-				B5CCC16121D0084E00AD19C5 /* MonsterWarrior.m in Sources */,
 				B5309CC322C26A32005CE22F /* CastleInterface.m in Sources */,
 				B5D01C5721C8291B00A007DC /* Battlefield.m in Sources */,
-				B57B0D0621A5F8580064B91F /* MountainsLevel.m in Sources */,
-				B560376221FE82FB00CE7123 /* KnightFireEnchantress.m in Sources */,
-				B560375F21FE82ED00CE7123 /* KnightPaladin.m in Sources */,
 				B520CC3623651A3F0034DB81 /* ConditionData.m in Sources */,
+				B54C66F6236772520057B854 /* MonsterData.m in Sources */,
 				B5C2800621D42D72009C657A /* TurnManager.m in Sources */,
 				B57B0CFA21A5F6590064B91F /* AIPlayer.m in Sources */,
-				B5CF91A42200DB42006A52B5 /* MonsterBoosKnight.m in Sources */,
-				B57B0D0921A5F8650064B91F /* SeashoreLevel.m in Sources */,
 				B5309CCF22C26AC3005CE22F /* TrainingYardInterface.m in Sources */,
 				B523BE4F21EEA6A900B09A55 /* Buff.m in Sources */,
 				B5D9CE6F22F3160200AC165A /* SkillsPanel.m in Sources */,
@@ -1669,16 +1579,13 @@
 				B54E88D921E2E56E0040C888 /* TownMenu.m in Sources */,
 				B537666D21AF62840098C44C /* DicepoolLimit.m in Sources */,
 				B523BE1321EE8B9D00B09A55 /* StatEffectFactory.m in Sources */,
-				B52192AD21C7260400637BE7 /* KnightBrawler.m in Sources */,
 				B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */,
-				B560376721FE843800CE7123 /* MonsterBrute.m in Sources */,
 				B5309CBC22C256FC005CE22F /* Interface.m in Sources */,
 				B5309CBF22C2597F005CE22F /* TownSpriteComponent.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
 				B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
 				B54E88CD21E2CDFC0040C888 /* Menu.m in Sources */,
-				B560375C21FE82D600CE7123 /* KnightBowman.m in Sources */,
 				B5309CC922C26A9F005CE22F /* BarracksInterface.m in Sources */,
 				B50F830621ED57E4000C2A92 /* StatEffect.m in Sources */,
 				B5511B3422FB83C700E0F51E /* RoosterEntry.m in Sources */,
@@ -1691,6 +1598,7 @@
 				B5CF91942200C95C006A52B5 /* WorldMenu.m in Sources */,
 				B5AE501521BEEE2800FC5CBF /* SoundEngine.m in Sources */,
 				B537666721AF36E40098C44C /* Constants.m in Sources */,
+				B54C66F223676F610057B854 /* EntityData.m in Sources */,
 				B5D9CE7222F3160E00AC165A /* EquipmentPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

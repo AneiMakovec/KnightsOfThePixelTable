@@ -68,6 +68,8 @@
 
 #import "ICombatEntity.h"
 #import "CombatEntity.h"
+#import "Knight.h"
+#import "Monster.h"
 
 #import "IUpgradable.h"
 #import "Stat.h"
@@ -84,23 +86,9 @@
 
 #import "Projectile.h"
 
-#import "Knight.h"
-#import "KnightBrawler.h"
-#import "KnightBowman.h"
-#import "KnightPaladin.h"
-#import "KnightFireEnchantress.h"
 
-#import "Monster.h"
-#import "MonsterWarrior.h"
-#import "MonsterBrute.h"
-#import "MonsterBossViking.h"
-#import "MonsterBoosKnight.h"
-
+// Level
 #import "Level.h"
-#import "FarmlandsLevel.h"
-#import "PinewoodsLevel.h"
-#import "MountainsLevel.h"
-#import "SeashoreLevel.h"
 
 
 // Player
@@ -124,7 +112,11 @@
 
 // Game progress
 #import "GameProgress.h"
+
+#import "EntityData.h"
 #import "KnightData.h"
+#import "MonsterData.h"
+
 #import "ConditionData.h"
 
 // Game

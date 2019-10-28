@@ -11,18 +11,7 @@
 
 @implementation GameRenderer
 
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)theGameplay turnManager:(TurnManager *)theTurnManager {
-    self = [super initWithGame:theGame];
-    if (self != nil) {
-        gameplay = theGameplay;
-        turnManager = theTurnManager;
-    }
-    return self;
-}
-
 @synthesize camera;
-
-
 
 /*
  MARK: INITIALIZE
@@ -40,7 +29,7 @@
     
     // calculate hud offset
     //hudOffset = [ScreenComponent getScreenBounds].height * 0.625;
-    hudOffset = [Constants battlefieldHeight];
+//    hudOffset = [Constants battlefieldHeight];
 }
 
 
@@ -53,132 +42,132 @@
     spriteBatch = [[SpriteBatch alloc] initWithGraphicsDevice:self.graphicsDevice];
     
     // Backgrounds
-    levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_SEASHORE];
-    levelBackgrounds[LevelTypeFarmlands] = [self.game.content load:AREA_FARMLANDS];
-    levelBackgrounds[LevelTypeMountains] = [self.game.content load:AREA_MOUNTAINS];
-    levelBackgrounds[LevelTypePinewoods] = [self.game.content load:AREA_PINEWOODS];
+//    levelBackgrounds[LevelTypeSeashore] = [self.game.content load:AREA_SEASHORE];
+//    levelBackgrounds[LevelTypeFarmlands] = [self.game.content load:AREA_FARMLANDS];
+//    levelBackgrounds[LevelTypeMountains] = [self.game.content load:AREA_MOUNTAINS];
+//    levelBackgrounds[LevelTypePinewoods] = [self.game.content load:AREA_PINEWOODS];
     
     // HUD
-    hud = [self.game.content load:HUD];
-    hudWaveCounter = [self.game.content load:HUD_WAVE_COUNTER];
+//    hud = [self.game.content load:HUD];
+//    hudWaveCounter = [self.game.content load:HUD_WAVE_COUNTER];
+//
+//    // Hp pool
+//    hpPool = [self.game.content load:HP_POOL];
+//    enemyHpPool = [self.game.content load:HP_ENEMY_POOL];
+//
+//    // Skills
+//    skillIconsTexture = [self.game.content load:SKILL_ICONS];
+//
+//    // Attacks
+//    projectileArrow = [self.game.content load:PROJECTILE_ARROW];
+//    projectileFireBall = [self.game.content load:PROJECTILE_FIREBALL];
+//
+//    // Dice textures
+//    diceSymbolTexture = [self.game.content load:DICE_SYMBOLS];
+//    diceGoodAnimTexture = [self.game.content load:DICE_ANIM_GOOD];
+//    diceEvilAnimTexture = [self.game.content load:DICE_ANIM_EVIL];
+//
+//    // Dice symbols
+//    diceFrames[DiceFrameTypeGood] =[[Sprite alloc] init];
+//    diceFrames[DiceFrameTypeGood].texture = diceSymbolTexture;
+//    diceFrames[DiceFrameTypeGood].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
+//    diceFrames[DiceFrameTypeGood].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceFrames[DiceFrameTypeEvil] =[[Sprite alloc] init];
+//    diceFrames[DiceFrameTypeEvil].texture = diceSymbolTexture;
+//    diceFrames[DiceFrameTypeEvil].sourceRectangle = [Rectangle rectangleWithX:32 y:0 width:32 height:32];
+//    diceFrames[DiceFrameTypeEvil].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Agility] =[[Sprite alloc] init];
+//    diceSymbols[Agility].texture = diceSymbolTexture;
+//    diceSymbols[Agility].sourceRectangle = [Rectangle rectangleWithX:64 y:0 width:32 height:32];
+//    diceSymbols[Agility].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Cunning] =[[Sprite alloc] init];
+//    diceSymbols[Cunning].texture = diceSymbolTexture;
+//    diceSymbols[Cunning].sourceRectangle = [Rectangle rectangleWithX:96 y:0 width:32 height:32];
+//    diceSymbols[Cunning].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Accuracy] =[[Sprite alloc] init];
+//    diceSymbols[Accuracy].texture = diceSymbolTexture;
+//    diceSymbols[Accuracy].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
+//    diceSymbols[Accuracy].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Defence] =[[Sprite alloc] init];
+//    diceSymbols[Defence].texture = diceSymbolTexture;
+//    diceSymbols[Defence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
+//    diceSymbols[Defence].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Strength] =[[Sprite alloc] init];
+//    diceSymbols[Strength].texture = diceSymbolTexture;
+//    diceSymbols[Strength].sourceRectangle = [Rectangle rectangleWithX:64 y:32 width:32 height:32];
+//    diceSymbols[Strength].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    diceSymbols[Sturdiness] =[[Sprite alloc] init];
+//    diceSymbols[Sturdiness].texture = diceSymbolTexture;
+//    diceSymbols[Sturdiness].sourceRectangle = [Rectangle rectangleWithX:96 y:32 width:32 height:32];
+//    diceSymbols[Sturdiness].origin = [Vector2 vectorWithX:16 y:16];
+//
+//    // Dice good animation
+//    diceGoodAnim = [[AnimatedSprite alloc] initWithDuration:1];
+//    diceGoodAnim.looping = NO;
     
-    // Hp pool
-    hpPool = [self.game.content load:HP_POOL];
-    enemyHpPool = [self.game.content load:HP_ENEMY_POOL];
-    
-    // Skills
-    skillIconsTexture = [self.game.content load:SKILL_ICONS];
-    
-    // Attacks
-    projectileArrow = [self.game.content load:PROJECTILE_ARROW];
-    projectileFireBall = [self.game.content load:PROJECTILE_FIREBALL];
-    
-    // Dice textures
-    diceSymbolTexture = [self.game.content load:DICE_SYMBOLS];
-    diceGoodAnimTexture = [self.game.content load:DICE_ANIM_GOOD];
-    diceEvilAnimTexture = [self.game.content load:DICE_ANIM_EVIL];
-    
-    // Dice symbols
-    diceFrames[DiceFrameTypeGood] =[[Sprite alloc] init];
-    diceFrames[DiceFrameTypeGood].texture = diceSymbolTexture;
-    diceFrames[DiceFrameTypeGood].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
-    diceFrames[DiceFrameTypeGood].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceFrames[DiceFrameTypeEvil] =[[Sprite alloc] init];
-    diceFrames[DiceFrameTypeEvil].texture = diceSymbolTexture;
-    diceFrames[DiceFrameTypeEvil].sourceRectangle = [Rectangle rectangleWithX:32 y:0 width:32 height:32];
-    diceFrames[DiceFrameTypeEvil].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Agility] =[[Sprite alloc] init];
-    diceSymbols[Agility].texture = diceSymbolTexture;
-    diceSymbols[Agility].sourceRectangle = [Rectangle rectangleWithX:64 y:0 width:32 height:32];
-    diceSymbols[Agility].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Cunning] =[[Sprite alloc] init];
-    diceSymbols[Cunning].texture = diceSymbolTexture;
-    diceSymbols[Cunning].sourceRectangle = [Rectangle rectangleWithX:96 y:0 width:32 height:32];
-    diceSymbols[Cunning].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Accuracy] =[[Sprite alloc] init];
-    diceSymbols[Accuracy].texture = diceSymbolTexture;
-    diceSymbols[Accuracy].sourceRectangle = [Rectangle rectangleWithX:0 y:32 width:32 height:32];
-    diceSymbols[Accuracy].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Defence] =[[Sprite alloc] init];
-    diceSymbols[Defence].texture = diceSymbolTexture;
-    diceSymbols[Defence].sourceRectangle = [Rectangle rectangleWithX:32 y:32 width:32 height:32];
-    diceSymbols[Defence].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Strength] =[[Sprite alloc] init];
-    diceSymbols[Strength].texture = diceSymbolTexture;
-    diceSymbols[Strength].sourceRectangle = [Rectangle rectangleWithX:64 y:32 width:32 height:32];
-    diceSymbols[Strength].origin = [Vector2 vectorWithX:16 y:16];
-    
-    diceSymbols[Sturdiness] =[[Sprite alloc] init];
-    diceSymbols[Sturdiness].texture = diceSymbolTexture;
-    diceSymbols[Sturdiness].sourceRectangle = [Rectangle rectangleWithX:96 y:32 width:32 height:32];
-    diceSymbols[Sturdiness].origin = [Vector2 vectorWithX:16 y:16];
-    
-    // Dice good animation
-    diceGoodAnim = [[AnimatedSprite alloc] initWithDuration:1];
-    diceGoodAnim.looping = NO;
-    
-    for (int i = 0; i < 8; i++) {
-        int x = i % 4;
-        int y = i / 4;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = diceGoodAnimTexture;
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
-        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
-        
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceGoodAnim.duration * (float) i / 8];
-        [diceGoodAnim addFrame:frame];
-    }
-    
-    diceGoodAnim.looping = YES;
+//    for (int i = 0; i < 8; i++) {
+//        int x = i % 4;
+//        int y = i / 4;
+//        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+//        frameSprite.texture = diceGoodAnimTexture;
+//        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+//        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
+//
+//        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceGoodAnim.duration * (float) i / 8];
+//        [diceGoodAnim addFrame:frame];
+//    }
+//
+//    diceGoodAnim.looping = YES;
     
     // Dice evil animation
-    diceEvilAnim = [[AnimatedSprite alloc] initWithDuration:1];
-    diceEvilAnim.looping = NO;
-    
-    for (int i = 0; i < 8; i++) {
-        int x = i % 4;
-        int y = i / 4;
-        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
-        frameSprite.texture = diceEvilAnimTexture;
-        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
-        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
-        
-        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceEvilAnim.duration * (float) i / 8];
-        [diceEvilAnim addFrame:frame];
-    }
-    
-    diceEvilAnim.looping = YES;
-    
-    
-    
-    // skill sprites
-    for (int i = 0; i < KnightTypes; i++) {
-        basicAttackSprites[i] = [[Sprite alloc] init];
-        basicAttackSprites[i].texture = skillIconsTexture;
-        basicAttackSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 0 y:32 * i width:32 height:32];
-        basicAttackSprites[i].origin = [Vector2 vectorWithX:16 y:16];
-        
-        firstComboSkillSprites[i] = [[Sprite alloc] init];
-        firstComboSkillSprites[i].texture = skillIconsTexture;
-        firstComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 1 y:32 * i width:32 height:32];
-        firstComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
-        
-        secondComboSkillSprites[i] = [[Sprite alloc] init];
-        secondComboSkillSprites[i].texture = skillIconsTexture;
-        secondComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 2 y:32 * i width:32 height:32];
-        secondComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
-        
-        thirdComboSkillSprites[i] = [[Sprite alloc] init];
-        thirdComboSkillSprites[i].texture = skillIconsTexture;
-        thirdComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 3 y:32 * i width:32 height:32];
-        thirdComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
-    }
+//    diceEvilAnim = [[AnimatedSprite alloc] initWithDuration:1];
+//    diceEvilAnim.looping = NO;
+//
+//    for (int i = 0; i < 8; i++) {
+//        int x = i % 4;
+//        int y = i / 4;
+//        Sprite *frameSprite = [[[Sprite alloc] init] autorelease];
+//        frameSprite.texture = diceEvilAnimTexture;
+//        frameSprite.sourceRectangle = [Rectangle rectangleWithX:32 * x y:32 * y width:32 height:32];
+//        frameSprite.origin = [Vector2 vectorWithX:16 y:16];
+//
+//        AnimatedSpriteFrame *frame = [AnimatedSpriteFrame frameWithSprite:frameSprite start:diceEvilAnim.duration * (float) i / 8];
+//        [diceEvilAnim addFrame:frame];
+//    }
+//
+//    diceEvilAnim.looping = YES;
+//
+//
+//
+//    // skill sprites
+//    for (int i = 0; i < KnightTypes; i++) {
+//        basicAttackSprites[i] = [[Sprite alloc] init];
+//        basicAttackSprites[i].texture = skillIconsTexture;
+//        basicAttackSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 0 y:32 * i width:32 height:32];
+//        basicAttackSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+//
+//        firstComboSkillSprites[i] = [[Sprite alloc] init];
+//        firstComboSkillSprites[i].texture = skillIconsTexture;
+//        firstComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 1 y:32 * i width:32 height:32];
+//        firstComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+//
+//        secondComboSkillSprites[i] = [[Sprite alloc] init];
+//        secondComboSkillSprites[i].texture = skillIconsTexture;
+//        secondComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 2 y:32 * i width:32 height:32];
+//        secondComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+//
+//        thirdComboSkillSprites[i] = [[Sprite alloc] init];
+//        thirdComboSkillSprites[i].texture = skillIconsTexture;
+//        thirdComboSkillSprites[i].sourceRectangle = [Rectangle rectangleWithX:32 * 3 y:32 * i width:32 height:32];
+//        thirdComboSkillSprites[i].origin = [Vector2 vectorWithX:16 y:16];
+//    }
     
     
     // characters - ALLY textures
@@ -231,15 +220,15 @@
     
     
     // portraits
-    portraitTexture = [self.game.content load:@"ui_icons"];
-    
-    for (int i = 0; i < CombatPositions; i++) {
-        portraits[i] = [[Sprite alloc] init];
-        portraits[i].texture = portraitTexture;
-        portraits[i].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
-        portraits[i].origin = [Vector2 vectorWithX:0 y:0];
-        
-    }
+//    portraitTexture = [self.game.content load:@"ui_icons"];
+//
+//    for (int i = 0; i < CombatPositions; i++) {
+//        portraits[i] = [[Sprite alloc] init];
+//        portraits[i].texture = portraitTexture;
+//        portraits[i].sourceRectangle = [Rectangle rectangleWithX:0 y:0 width:32 height:32];
+//        portraits[i].origin = [Vector2 vectorWithX:0 y:0];
+//
+//    }
 }
 
 
@@ -268,13 +257,13 @@
     // backgorund
     //[spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[ScreenComponent getScreenBounds].width height:hudOffset] tintWithColor:[Color white]];
 //    [spriteBatch draw:levelBackgrounds[LevelTypeFarmlands] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] tintWithColor:[Color white]];
-    [spriteBatch draw:levelBackgrounds[gameplay.currentLevel.levelType] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+//    [spriteBatch draw:levelBackgrounds[gameplay.currentLevel.levelType] toRectangle:[Rectangle rectangleWithX:0 y:0 width:[Constants backgroundWidth] height:hudOffset] fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
     
     // hud
     //[spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[ScreenComponent getScreenBounds].width height:[ScreenComponent getScreenBounds].height - hudOffset] tintWithColor:[Color white]];
-    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[Constants backgroundWidth] height:[Constants hudHeight]] tintWithColor:[Color white]];
+//    [spriteBatch draw:hud toRectangle:[Rectangle rectangleWithX:0 y:hudOffset width:[Constants backgroundWidth] height:[Constants hudHeight]] tintWithColor:[Color white]];
     
-    [spriteBatch draw:hudWaveCounter to:[Vector2 vectorWithX:0 y:0] tintWithColor:[Color white]];
+//    [spriteBatch draw:hudWaveCounter to:[Vector2 vectorWithX:0 y:0] tintWithColor:[Color white]];
     
     
     // scene items
@@ -999,29 +988,29 @@
 //        [enemyDeathSprites[i] release];
 //        [enemyAttackSprites[i] release];
 //    }
-    
-    for (int i = 0; i < LevelTypes; i++) {
-        [levelBackgrounds[i] release];
-    }
-    
-    [hud release];
-    [hudWaveCounter release];
-    [diceSymbolTexture release];
-    [diceGoodAnimTexture release];
-    [diceEvilAnimTexture release];
-    
-    for (int i = 0; i < StatTypes; i++) {
-        [diceSymbols[i] release];
-    }
-    
-    for (int i = 0; i < DiceFrameTypes; i++) {
-        [diceFrames[i] release];
-    }
-    
-    [diceGoodAnim release];
-    [diceEvilAnim release];
-    
-    [portraitTexture release];
+//
+//    for (int i = 0; i < LevelTypes; i++) {
+//        [levelBackgrounds[i] release];
+//    }
+//
+//    [hud release];
+//    [hudWaveCounter release];
+//    [diceSymbolTexture release];
+//    [diceGoodAnimTexture release];
+//    [diceEvilAnimTexture release];
+//
+//    for (int i = 0; i < StatTypes; i++) {
+//        [diceSymbols[i] release];
+//    }
+//
+//    for (int i = 0; i < DiceFrameTypes; i++) {
+//        [diceFrames[i] release];
+//    }
+//
+//    [diceGoodAnim release];
+//    [diceEvilAnim release];
+//
+//    [portraitTexture release];
 }
 
 
@@ -1030,7 +1019,7 @@
     DEALLOC
 */
 - (void) dealloc {
-    [camera release];
+    [camera release];
     
     [super dealloc];
 }

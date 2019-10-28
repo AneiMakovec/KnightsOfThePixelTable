@@ -720,37 +720,109 @@
 			"x": 416,
 			"y": 420
 		},
-		"world_menu_marker_farmlands": {
-			"x": 336,
-			"y": 300
+		"world_menu_marker_0": {
+			"x": 340,
+			"y": 295
 		},
-		"world_menu_marker_pinewoods": {
+		"world_menu_marker_1": {
 			"x": 724,
-			"y": 332
+			"y": 322
 		},
-		"world_menu_marker_mountains": {
-			"x": 158,
-			"y": 88
+		"world_menu_marker_2": {
+			"x": 148,
+			"y": 93
 		},
-		"world_menu_marker_seashore": {
-			"x": 678,
+		"world_menu_marker_3": {
+			"x": 670,
 			"y": 90
 		},
-		"world_menu_path_farmlands": {
+		"world_menu_path_0": {
 			"x": 254,
 			"y": 326
 		},
-		"world_menu_path_pinewoods": {
+		"world_menu_path_1": {
 			"x": 380,
 			"y": 320
 		},
-		"world_menu_path_mountains": {
+		"world_menu_path_2": {
 			"x": 174,
 			"y": 128
 		},
-		"world_menu_path_seashore": {
+		"world_menu_path_3": {
 			"x": 206,
 			"y": 86
+		},
+		"world_menu_panel": {
+			"x": 312,
+			"y": 60
+		},
+		"world_menu_label": {
+			"x": 370,
+			"y": 92
+		},
+		"world_menu_close": {
+			"x": 650,
+			"y": 78
+		},
+		"world_menu_stage_4": {
+			"x": 328,
+			"y": 134
+		},
+		"world_menu_stage_3": {
+			"x": 328,
+			"y": 195
+		},
+		"world_menu_stage_2": {
+			"x": 328,
+			"y": 256
+		},
+		"world_menu_stage_1": {
+			"x": 328,
+			"y": 317
+		},
+		"world_menu_stage_0": {
+			"x": 328,
+			"y": 378
+		},
+		"world_menu_stage_9": {
+			"x": 454,
+			"y": 134
+		},
+		"world_menu_stage_8": {
+			"x": 454,
+			"y": 195
+		},
+		"world_menu_stage_7": {
+			"x": 454,
+			"y": 256
+		},
+		"world_menu_stage_6": {
+			"x": 454,
+			"y": 317
+		},
+		"world_menu_stage_5": {
+			"x": 454,
+			"y": 378
+		},
+		"world_menu_stage_14": {
+			"x": 580,
+			"y": 134
+		},
+		"world_menu_stage_13": {
+			"x": 580,
+			"y": 195
+		},
+		"world_menu_stage_12": {
+			"x": 580,
+			"y": 256
+		},
+		"world_menu_stage_11": {
+			"x": 580,
+			"y": 317
+		},
+		"world_menu_stage_10": {
+			"x": 580,
+			"y": 378
 		},
 		"back_button": {
 			"x": 979,
@@ -2268,10 +2340,8 @@
 						}
 					]
 				}
-			}
-		},
-		"enemy_boss_unit_skills": {
-			"0": {
+			},
+			"9": {
 				"0": {
 					"name": "",
 					"function": 0,
@@ -2337,7 +2407,7 @@
 					]
 				}
 			},
-			"1": {
+			"10": {
 				"0": {
 					"name": "",
 					"function": 0,
@@ -2403,7 +2473,7 @@
 					]
 				}
 			},
-			"2": {
+			"11": {
 				"0": {
 					"name": "",
 					"function": 0,
@@ -2475,7 +2545,7 @@
 					]
 				}
 			},
-			"3": {
+			"12": {
 				"0": {
 					"name": "",
 					"function": 0,
@@ -2558,7 +2628,41 @@
 		"max_unit_lvl": 10,
 		"max_equipment_lvl": 10,
 		"max_dice_lvl": 3,
-		"starting_gold": 0
+		"starting_gold": 0,
+		"difficulty": {
+			"0": 0.8,
+			"1": 0.8,
+			"2": 0.8,
+			"3": 0.8,
+			"4": 0.8,
+			"5": 0.9,
+			"6": 0.9,
+			"7": 0.9,
+			"8": 0.9,
+			"9": 0.9,
+			"10": 1.0,
+			"11": 1.0,
+			"12": 1.0,
+			"13": 1.0,
+			"14": 1.0
+		},
+		"stage_num_of_waves": {
+			"0": 3,
+			"1": 3,
+			"2": 3,
+			"3": 3,
+			"4": 3,
+			"5": 4,
+			"6": 4,
+			"7": 4,
+			"8": 4,
+			"9": 4,
+			"10": 5,
+			"11": 5,
+			"12": 5,
+			"13": 5,
+			"14": 5
+		},
 	},
 	"text_data": {
 		"main_menu_new_game": "New game",

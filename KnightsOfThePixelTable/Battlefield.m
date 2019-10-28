@@ -28,33 +28,37 @@
 
 - (void) initialize {
     // add ally entities
-    KnightBrawler *brawler;
-    brawler = [[KnightBrawler alloc] initWithLevel:level gameHud:hud];
-    [brawler setCombatPosition:FirstCombatPosition];
-    [allyEntities insertObject:brawler atIndex:FirstCombatPosition];
-    [level.scene addItem:brawler];
-    [brawler release];
+//    KnightBrawler *brawler;
+//    brawler = [[KnightBrawler alloc] initWithLevel:level gameHud:hud];
+//    [brawler setCombatPosition:FirstCombatPosition];
+//    [allyEntities insertObject:brawler atIndex:FirstCombatPosition];
+//    [level.scene addItem:brawler];
+//    [brawler release];
+//
+//    KnightBowman *bowman;
+//    bowman = [[KnightBowman alloc] initWithLevel:level gameHud:hud];
+//    [bowman setCombatPosition:SecondCombatPosition];
+//    [allyEntities insertObject:bowman atIndex:SecondCombatPosition];
+//    [level.scene addItem:bowman];
+//    [bowman release];
+//
+//    KnightPaladin *paladin;
+//    paladin = [[KnightPaladin alloc] initWithLevel:level gameHud:hud];
+//    [paladin setCombatPosition:ThirdCombatPosition];
+//    [allyEntities insertObject:paladin atIndex:ThirdCombatPosition];
+//    [level.scene addItem:paladin];
+//    [paladin release];
+//
+//    KnightFireEnchantress *enchantress;
+//    enchantress = [[KnightFireEnchantress alloc] initWithLevel:level gameHud:hud];
+//    [enchantress setCombatPosition:FourthCombatPosition];
+//    [allyEntities insertObject:enchantress atIndex:FourthCombatPosition];
+//    [level.scene addItem:enchantress];
+//    [enchantress release];
     
-    KnightBowman *bowman;
-    bowman = [[KnightBowman alloc] initWithLevel:level gameHud:hud];
-    [bowman setCombatPosition:SecondCombatPosition];
-    [allyEntities insertObject:bowman atIndex:SecondCombatPosition];
-    [level.scene addItem:bowman];
-    [bowman release];
-    
-    KnightPaladin *paladin;
-    paladin = [[KnightPaladin alloc] initWithLevel:level gameHud:hud];
-    [paladin setCombatPosition:ThirdCombatPosition];
-    [allyEntities insertObject:paladin atIndex:ThirdCombatPosition];
-    [level.scene addItem:paladin];
-    [paladin release];
-    
-    KnightFireEnchantress *enchantress;
-    enchantress = [[KnightFireEnchantress alloc] initWithLevel:level gameHud:hud];
-    [enchantress setCombatPosition:FourthCombatPosition];
-    [allyEntities insertObject:enchantress atIndex:FourthCombatPosition];
-    [level.scene addItem:enchantress];
-    [enchantress release];
+    for (int i = 0; i < CombatPositions; i++) {
+        
+    }
     
     // add enemy entities
     [self newWave];
@@ -86,11 +90,6 @@
     x = fourthAlly.position.x + 56;
     y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
     allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
-}
-
-
-- (void) setGameHud:(GameHud *)theHud {
-    hud = theHud;
 }
 
 

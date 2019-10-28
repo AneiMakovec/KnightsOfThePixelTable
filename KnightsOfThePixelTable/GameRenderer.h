@@ -18,16 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GameRenderer : DrawableGameComponent {
     // core
     SpriteBatch *spriteBatch;
-    Gameplay *gameplay;
-    TurnManager *turnManager;
     Matrix *camera;
     
-    int hudOffset;
+//    int hudOffset;
     
     // background and hud textures
-    Texture2D *levelBackgrounds[LevelTypes];
-    Texture2D *hud;
-    Texture2D *hudWaveCounter;
+//    Texture2D *levelBackgrounds[LevelTypes];
+//    Texture2D *hud;
+//    Texture2D *hudWaveCounter;
     
     
     
@@ -65,19 +63,19 @@ NS_ASSUME_NONNULL_BEGIN
     
     
     // skill textures
-    Texture2D *skillIconsTexture;
-    Sprite *basicAttackSprites[KnightTypes];
-    Sprite *firstComboSkillSprites[KnightTypes];
-    Sprite *secondComboSkillSprites[KnightTypes];
-    Sprite *thirdComboSkillSprites[KnightTypes];
-    
-    // attack textures
-    Texture2D *projectileArrow;
-    Texture2D *projectileFireBall;
-    
-    // hp pool textures
-    Texture2D *hpPool;
-    Texture2D *enemyHpPool;
+//    Texture2D *skillIconsTexture;
+//    Sprite *basicAttackSprites[KnightTypes];
+//    Sprite *firstComboSkillSprites[KnightTypes];
+//    Sprite *secondComboSkillSprites[KnightTypes];
+//    Sprite *thirdComboSkillSprites[KnightTypes];
+//
+//    // attack textures
+//    Texture2D *projectileArrow;
+//    Texture2D *projectileFireBall;
+//
+//    // hp pool textures
+//    Texture2D *hpPool;
+//    Texture2D *enemyHpPool;
     
     
     
@@ -85,24 +83,22 @@ NS_ASSUME_NONNULL_BEGIN
     
     
     // dice textures
-    Texture2D *diceSymbolTexture;
-    Texture2D *diceGoodAnimTexture;
-    Texture2D *diceEvilAnimTexture;
-    
-    // dice animations and sprites
-    Sprite *diceSymbols[StatTypes];
-    Sprite *diceFrames[DiceFrameTypes];
-    AnimatedSprite *diceGoodAnim;
-    AnimatedSprite *diceEvilAnim;
-    
-    // portraits
-    Texture2D *portraitTexture;
-    Sprite *portraits[CombatPositions];
+//    Texture2D *diceSymbolTexture;
+//    Texture2D *diceGoodAnimTexture;
+//    Texture2D *diceEvilAnimTexture;
+//
+//    // dice animations and sprites
+//    Sprite *diceSymbols[StatTypes];
+//    Sprite *diceFrames[DiceFrameTypes];
+//    AnimatedSprite *diceGoodAnim;
+//    AnimatedSprite *diceEvilAnim;
+//
+//    // portraits
+//    Texture2D *portraitTexture;
+//    Sprite *portraits[CombatPositions];
 }
 
 @property (nonatomic, readonly) Matrix *camera;
-
-- (id) initWithGame:(Game *)theGame gameplay:(Gameplay *)gameplay turnManager:(TurnManager *)theTurnManager;
 
 @end
 

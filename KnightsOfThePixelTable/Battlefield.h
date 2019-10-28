@@ -17,9 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
     // level
     Level *level;
     
-    // Game hud
-    GameHud *hud;
-    
     // entity data
     NSMutableArray *allyEntities;
     NSMutableArray *enemyEntities;
@@ -41,8 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initWithLevel:(Level *)theLevel;
 
 - (void) initialize;
-
-- (void) setGameHud:(GameHud*)theHud;
 
 - (Knight *) getAllyAtPosition:(CombatPosition)thePosition;
 

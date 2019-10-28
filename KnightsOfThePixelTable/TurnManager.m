@@ -9,14 +9,31 @@
 #import "TurnManager.h"
 #import "Pixlron.Knights.h"
 
+TurnManager *turnManagerInastance;
+
 @implementation TurnManager
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel gameHud:(GameHud *)theHud humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer {
++ (void) initializeWithGame:(Game *)game humanPlayer:(HumanPlayer *)player aiPlayer:(AIPlayer *)aiPlayer {
+    turnManagerInastance = [[TurnManager alloc] initWithGame:game humanPlayer:player aiPlayer:aiPlayer];
+    turnManagerInastance.updateOrder = 3;
+}
+
++ (void) activate {
+    [turnManagerInastance.game.components addComponent:turnManagerInastance];
+}
+
++ (void) deactivate {
+    [turnManagerInastance.game.components removeComponent:turnManagerInastance];
+}
+
+
+
+
+
+
+- (id) initWithGame:(Game *)theGame humanPlayer:(HumanPlayer *)hPlayer aiPlayer:(AIPlayer *)theAiPlayer {
     self = [super initWithGame:theGame];
     if (self != nil) {
-        level = theLevel;
-        hud = theHud;
-        
         player = hPlayer;
         aiPlayer = theAiPlayer;
         

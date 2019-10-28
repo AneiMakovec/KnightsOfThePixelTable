@@ -34,15 +34,27 @@ NS_ASSUME_NONNULL_BEGIN
 + (int) getMaxDiceLvl;
 + (int) getXpForLvl:(Lvl)lvl;
 + (int) getNumOfDicesForLvl:(Lvl)lvl;
++ (float) getDifficultyForStage:(StageType)stage;
 + (NSArray *) getComboForUnit:(KnightType)type forSkill:(SkillType)skill;
 + (NSArray *) getBaseStatsForUnit:(KnightType)type;
 + (int) getBaseHpForUnit:(KnightType)type;
++ (NSArray *) getBaseStatsForEnemy:(MonsterType)type;
++ (int) getBaseHpForEnemy:(MonsterType)type;
++ (int) getWavesForStage:(StageType)stage;
 
 + (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfEquipmentLvl:(Lvl)lvl;
 
 + (Rectangle *) getInterfaceScrollRect;
+
+
+
+
+
+
+
+
 
 + (NSString*) progressFilePath;
 

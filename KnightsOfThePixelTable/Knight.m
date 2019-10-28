@@ -12,15 +12,13 @@
 
 @implementation Knight
 
-- (id) initKnight:(KnightType)theKnight level:(Level*)theLevel gameHud:(GameHud*)theHud entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius {
-    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType maxRadius:theMaxRadius];
+- (id) initWithData:(KnightData *)data {
+    self = [super initWithData:data];
     if (self != nil) {
-        maxLevel = 50;
-        currentLevel = 1;
-        exp = 0;
-        
-        type = theKnight;
-        
+//        maxLevel = 50;
+//        currentLevel = 1;
+//        exp = 0;
+
         // init textures
         for (int i = 0; i < EntityStates; i++) {
             animations[i] = [[GameplaySpriteComponent getAnimationType:i forAlly:type] retain];
@@ -29,7 +27,7 @@
     return self;
 }
 
-@synthesize maxLevel, currentLevel, exp, currentExp, type, comboArea, portraitArea, skillArea, hpPoolArea;
+@synthesize comboArea, portraitArea, skillArea, hpPoolArea;
 
 
 

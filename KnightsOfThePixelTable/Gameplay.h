@@ -13,20 +13,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Gameplay : GameState {
-    //Class *levels[LevelTypes];
-    
-    Level *currentLevel;
-    GameHud *gameHud;
     HumanPlayer *humanPlayer;
     AIPlayer *aiPlayer;
     PhysicsEngine *physics;
     GameRenderer *renderer;
-    TurnManager *turnManager;
 }
 
-@property (nonatomic, readonly) Level *currentLevel;
-
-- (id) initWithGame:(Game *)theGame levelType:(LevelType)levelType;
+- (id) initWithGame:(Game *)theGame;
 
 @end
 

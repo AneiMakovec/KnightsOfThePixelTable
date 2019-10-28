@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
     SimpleScene *scene;
     Battlefield *battlefield;
     Dicepool *dicepool;
-    
-    int num_of_dices;
 }
 
 @property (nonatomic, readonly) SimpleScene *scene;
@@ -31,12 +29,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) Dicepool *dicepool;
 
-@property (nonatomic, readonly) int num_of_dices;
-
 @property (nonatomic, readonly) LevelType levelType;
 
 
-- (id) initWithGame:(Game *)theGame numDices:(int) numDices;
++ (void) initializeWithGame:(Game *)game;
+
++ (void) activate;
+
++ (void) deactivate;
+
+
+
+- (id) initWithGame:(Game *)theGame;
+
+- (void) activate;
+- (void) deactivate;
 
 - (void) reset;
 

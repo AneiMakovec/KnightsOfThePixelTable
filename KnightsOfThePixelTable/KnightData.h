@@ -10,23 +10,18 @@
 
 #import "Pixlron.Knights.classes.h"
 
+#import "EntityData.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KnightData : NSObject {
-    NSString *keyID;
-    
+@interface KnightData : EntityData {
     KnightType type;
     NSString *name;
     NSString *character;
     
-    DamageType damageType;
     CharacterType characterType;
     
-    int hp;
-    Lvl lvl;
     int currentExp;
-    Skill *skills[SkillTypes];
-    int stats[StatTypes];
     Lvl weaponLvl;
     int weaponBonus[StatTypes];
     Lvl armorLvl;
@@ -35,15 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
     int fatigue;
 }
 
-@property (nonatomic, readonly) NSString *keyID;
 @property (nonatomic, readonly) KnightType type;
-@property (nonatomic, readonly) DamageType damageType;
 @property (nonatomic, readonly) CharacterType characterType;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *character;
 
-@property (nonatomic, readonly) int hp;
-@property (nonatomic, readonly) Lvl lvl;
 @property (nonatomic, readonly) int currentExp;
 @property (nonatomic, readonly) Lvl weaponLvl;
 @property (nonatomic, readonly) Lvl armorLvl;
@@ -57,10 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 // GETTER METHODS
 - (int) getLevelOfSkill:(SkillType)skill;
-- (int) getValueOfStat:(StatType)stat;
 - (int) getWeaponBonusForStat:(StatType)stat;
 - (int) getArmorBonusForStat:(StatType)stat;
-- (Skill *) getSkill:(SkillType)skill;
 
 
 // BOOL METHODS
