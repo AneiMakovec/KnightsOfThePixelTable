@@ -57,39 +57,41 @@
 //    [enchantress release];
     
     for (int i = 0; i < CombatPositions; i++) {
-        
+        Knight *knight = [[[Knight alloc] initWithData:[GameProgress getKnightOnCombatPosition:i] cobatPosition:i] autorelease];
+        [allyEntities insertObject:knight atIndex:i];
+        [Level addItemToScene:knight];
     }
     
     // add enemy entities
     [self newWave];
     
     // calculate row attack positions
-    Monster *firstEnemy = [enemyEntities objectAtIndex:FirstCombatPosition];
-    Monster *secondEnemy = [enemyEntities objectAtIndex:SecondCombatPosition];
-    Monster *thirdEnemy = [enemyEntities objectAtIndex:ThirdCombatPosition];
-    Monster *fourthEnemy = [enemyEntities objectAtIndex:FourthCombatPosition];
-    
-    int x = secondEnemy.origin.position.x - 56;
-    int y = firstEnemy.origin.position.y + ((secondEnemy.origin.position.y - firstEnemy.origin.position.y) / 2);
-    enemyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
-    
-    x = fourthEnemy.origin.position.x - 56;
-    y = thirdEnemy.origin.position.y + ((fourthEnemy.origin.position.y - thirdEnemy.origin.position.y) / 2);
-    enemyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
-    
-    
-    Knight *firstAlly = [allyEntities objectAtIndex:FirstCombatPosition];
-    Knight *secondAlly = [allyEntities objectAtIndex:SecondCombatPosition];
-    Knight *thirdAlly = [allyEntities objectAtIndex:ThirdCombatPosition];
-    Knight *fourthAlly = [allyEntities objectAtIndex:FourthCombatPosition];
-    
-    x = secondAlly.position.x + 56;
-    y = firstAlly.position.y + ((secondAlly.position.y - firstAlly.position.y) / 2);
-    allyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
-    
-    x = fourthAlly.position.x + 56;
-    y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
-    allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+//    Monster *firstEnemy = [enemyEntities objectAtIndex:FirstCombatPosition];
+//    Monster *secondEnemy = [enemyEntities objectAtIndex:SecondCombatPosition];
+//    Monster *thirdEnemy = [enemyEntities objectAtIndex:ThirdCombatPosition];
+//    Monster *fourthEnemy = [enemyEntities objectAtIndex:FourthCombatPosition];
+//
+//    int x = secondEnemy.origin.position.x - 56;
+//    int y = firstEnemy.origin.position.y + ((secondEnemy.origin.position.y - firstEnemy.origin.position.y) / 2);
+//    enemyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+//
+//    x = fourthEnemy.origin.position.x - 56;
+//    y = thirdEnemy.origin.position.y + ((fourthEnemy.origin.position.y - thirdEnemy.origin.position.y) / 2);
+//    enemyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+//
+//
+//    Knight *firstAlly = [allyEntities objectAtIndex:FirstCombatPosition];
+//    Knight *secondAlly = [allyEntities objectAtIndex:SecondCombatPosition];
+//    Knight *thirdAlly = [allyEntities objectAtIndex:ThirdCombatPosition];
+//    Knight *fourthAlly = [allyEntities objectAtIndex:FourthCombatPosition];
+//
+//    x = secondAlly.position.x + 56;
+//    y = firstAlly.position.y + ((secondAlly.position.y - firstAlly.position.y) / 2);
+//    allyFrontRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
+//
+//    x = fourthAlly.position.x + 56;
+//    y = thirdAlly.position.y + ((fourthAlly.position.y - thirdAlly.position.y) / 2);
+//    allyBackRow = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:x y:y] radius:5];
 }
 
 
@@ -130,15 +132,15 @@
 
 - (void) removeEnemy:(Monster *)theEnemy {
     // give experience to allies
-    for (Knight *knight in allyEntities) {
-        [knight gainExperience:[theEnemy giveExperience]];
-        
-        // add exp gain indicator
-        [hud addExpIndicatorAt:knight.origin.position amount:theEnemy.giveExperience];
-    }
+//    for (Knight *knight in allyEntities) {
+//        [knight gainExperience:[theEnemy giveExperience]];
+//
+//        // add exp gain indicator
+//        [hud addExpIndicatorAt:knight.origin.position amount:theEnemy.giveExperience];
+//    }
     
-    [enemyEntities removeObject:theEnemy];
     [level.scene removeItem:theEnemy];
+    [enemyEntities removeObject:theEnemy];
 }
 
 
@@ -191,59 +193,23 @@
 }
 
 - (void) newWave {
-    
-    Monster *monster;
-    switch (level.levelType) {
-        case LevelTypeFarmlands:
-            for (int i = 0; i < CombatPositions; i++) {
-                
-                // add enemy entities
-                monster = [[MonsterBrute alloc] initWithLevel:level gameHud:hud];
-                [monster setCombatPosition:i];
-                [enemyEntities insertObject:monster atIndex:i];
-                [level.scene addItem:monster];
-                [monster release];
+    for (int i = 0; i < CombatPositions; i++) {
+        MonsterData *data;
+        StageType stage = [GameProgress currentStage];
+        if (stage == StageEasyFifth || stage == StageMediumFifth || stage == StageHardFifth) {
+            if ([GameHud isLastWave] && i == ThirdCombatPosition) {
+                MonsterType types[LevelTypes] = {MonsterTypeBossFarmlands, MonsterTypeBossPinewoods, MonsterTypeBossMountains, MonsterTypeBossSeashore};
+                data = [[[MonsterData alloc] initWithType:types[[GameProgress currentLevel]] lvl:[Constants getMonsterLvlForStage:[GameProgress currentStage] ofLevel:[GameProgress currentLevel]]] autorelease];
+            } else {
+                data = [[[MonsterData alloc] initWithType:[Random intLessThan:MonsterTypeBossFarmlands] lvl:[Constants getMonsterLvlForStage:[GameProgress currentStage] ofLevel:[GameProgress currentLevel]]] autorelease];
             }
-            break;
-            
-        case LevelTypeMountains:
-            for (int i = 0; i < CombatPositions; i++) {
-                
-                // add enemy entities
-                monster = [[MonsterWarrior alloc] initWithLevel:level gameHud:hud];
-                [monster setCombatPosition:i];
-                [enemyEntities insertObject:monster atIndex:i];
-                [level.scene addItem:monster];
-                [monster release];
-            }
-            break;
-            
-        case LevelTypeSeashore:
-            for (int i = 0; i < CombatPositions; i++) {
-                
-                // add enemy entities
-                monster = [[MonsterBossViking alloc] initWithLevel:level gameHud:hud];
-                [monster setCombatPosition:i];
-                [enemyEntities insertObject:monster atIndex:i];
-                [level.scene addItem:monster];
-                [monster release];
-            }
-            break;
-            
-        case LevelTypePinewoods:
-            for (int i = 0; i < CombatPositions; i++) {
-                
-                // add enemy entities
-                monster = [[MonsterBossViking alloc] initWithLevel:level gameHud:hud];
-                [monster setCombatPosition:i];
-                [enemyEntities insertObject:monster atIndex:i];
-                [level.scene addItem:monster];
-                [monster release];
-            }
-            break;
-            
-        default:
-            break;
+        } else {
+            data = [[[MonsterData alloc] initWithType:[Random intLessThan:MonsterTypeBossFarmlands] lvl:[Constants getMonsterLvlForStage:[GameProgress currentStage] ofLevel:[GameProgress currentLevel]]] autorelease];
+        }
+        
+        Monster *monster = [[[Monster alloc] initWithData:data cobatPosition:i] autorelease];
+        [enemyEntities insertObject:monster atIndex:i];
+        [Level addItemToScene:monster];
     }
 }
 

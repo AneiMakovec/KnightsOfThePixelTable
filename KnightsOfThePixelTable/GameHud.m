@@ -30,6 +30,10 @@ GameHud *hudInstance;
     [hudInstance.game.components removeComponent:hudInstance];
 }
 
++ (BOOL) isLastWave {
+    return [hudInstance isLastWave];
+}
+
 
 
 

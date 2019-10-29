@@ -17,23 +17,23 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Monster : CombatEntity<IExperienceGiver> {
     int dicesComming;
     
-    int maxHpWidth;
-    
-    MonsterType type;
-    
-    ExpType expType;
-    
-    Rectangle *hpPoolArea;
-    Rectangle *hpArea;
+//    int maxHpWidth;
+//
+//    MonsterType type;
+//
+//    ExpType expType;
+//
+//    Rectangle *hpPoolArea;
+//    Rectangle *hpArea;
 }
 
-@property (nonatomic) MonsterType type;
-@property (nonatomic, retain) Rectangle *hpPoolArea;
-@property (nonatomic, retain) Rectangle *hpArea;
+//@property (nonatomic) MonsterType type;
+//@property (nonatomic, retain) Rectangle *hpPoolArea;
+//@property (nonatomic, retain) Rectangle *hpArea;
 
-- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius;
+- (id) initWithData:(MonsterData *)data cobatPosition:(CombatPosition)combPos;
 
-- (void) setCombatPosition:(CombatPosition)theCombatPosition;
+//- (void) setCombatPosition:(CombatPosition)theCombatPosition;
 
 - (BOOL) areDicesComming;
 

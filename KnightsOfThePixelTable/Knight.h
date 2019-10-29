@@ -24,22 +24,22 @@ NS_ASSUME_NONNULL_BEGIN
     
 //    KnightType type;
     
-    Rectangle *portraitArea;
-    Rectangle *comboArea;
-    Rectangle *skillArea;
-    Rectangle *hpPoolArea;
+//    Rectangle *portraitArea;
+//    Rectangle *comboArea;
+//    Rectangle *skillArea;
+//    Rectangle *hpPoolArea;
 }
 
 //@property (nonatomic) KnightType type;
 
-@property (nonatomic, retain) Rectangle *portraitArea;
-@property (nonatomic, retain) Rectangle *comboArea;
-@property (nonatomic, retain) Rectangle *skillArea;
-@property (nonatomic, retain) Rectangle *hpPoolArea;
+//@property (nonatomic, retain) Rectangle *portraitArea;
+//@property (nonatomic, retain) Rectangle *comboArea;
+//@property (nonatomic, retain) Rectangle *skillArea;
+//@property (nonatomic, retain) Rectangle *hpPoolArea;
 
-- (id) initWithData:(KnightData *)data;
+- (id) initWithData:(KnightData *)data cobatPosition:(CombatPosition)combPos;
 
-- (void) setCombatPosition:(CombatPosition)theCombatPosition;
+//- (void) setCombatPosition:(CombatPosition)theCombatPosition;
 
 - (Dice *) removeComboAtTouchLocation:(Vector2 *)touchLocation;
 

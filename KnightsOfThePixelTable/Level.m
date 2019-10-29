@@ -29,6 +29,10 @@ Level *levelInstance;
     [levelInstance.game.components removeComponent:levelInstance];
 }
 
++ (void) addItemToScene:(id)item {
+    [levelInstance.scene addItem:item];
+}
+
 
 
 

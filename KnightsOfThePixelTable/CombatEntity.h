@@ -20,12 +20,16 @@ NS_ASSUME_NONNULL_BEGIN
     Vector2 *velocity;
     float radius;
     float maxRadius;
-    BattlePosition *origin;
     
+    // move points
+    BattlePosition *origin;
+    BattlePosition *attackPosition;
+    
+    // class holding entity stats, skills and types
     EntityData *entityData;
     
     // touch area
-    Rectangle *entityArea;
+//    Rectangle *entityArea;
     
     // action switches
     BOOL stunned;
@@ -39,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
     SkillType skillType;
     
     // position of unit on the battlefield
-    CombatPosition combatPosition;
+//    CombatPosition combatPosition;
     
     // state of unit
     EntityState state;
@@ -48,10 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray *conditions;
     
     // selected targets
-    BattlePosition *targetPosition;
     NSMutableArray *targets;
     
-    AnimatedSprite *animations[EntityStates];
+    AnimatedSprite *animations[AnimationTypes];
 }
 
 - (id) initWithData:(EntityData *)data;

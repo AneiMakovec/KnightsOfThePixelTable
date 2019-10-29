@@ -12,7 +12,7 @@
 
 @implementation Skill
 
-- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType {
+- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType projectileType:(ProjectileType)projectile skillEffect:(SkillEffect)sEffect {
     self = [super init];
     if (self != nil) {
         name = [theName retain];
@@ -24,12 +24,15 @@
         range = theRange;
         damageType = dType;
         
+        projectileType = projectile;
+        skillEffect = sEffect;
+        
         conditions = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-@synthesize damage, function, range, target, damageType, lvl, name, conditions;
+@synthesize damage, function, range, target, damageType, lvl, name, projectileType, skillEffect, conditions;
 
 
 - (void) addCondition:(ConditionData *)condition {

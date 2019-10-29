@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) deactivate;
 
++ (void) addItemToScene:(id)item;
+
 
 
 - (id) initWithGame:(Game *)theGame;

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) MonsterType type;
 
-- (id) initWithID:(NSString *)stringID type:(MonsterType)monsterType lvl:(Lvl)level;
+- (id) initWithType:(MonsterType)monsterType lvl:(Lvl)level;
 
 @end
 

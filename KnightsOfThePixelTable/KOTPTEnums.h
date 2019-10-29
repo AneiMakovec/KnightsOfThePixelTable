@@ -154,6 +154,43 @@ typedef enum {
 } ComboItem;
 
 typedef enum {
+    ProjectileArrowBleed,
+    ProjectileArrowFrost,
+    ProjectileAxeBurn,
+    ProjectileAxePoison,
+    ProjectileBomb,
+    ProjectileDagger,
+    ProjectileDartBurn,
+    ProjectileDartPoison,
+    ProjectileDartStun,
+    ProjectileFireball,
+    ProjectileSlingFrost,
+    ProjectileSlingSling,
+    ProjectileTypes,
+    NoProjectile
+} ProjectileType;
+
+typedef enum {
+    SkillBleedingMagic,
+    SkillHitBlunt,
+    SkillExplosion,
+    SkillElectricMagic,
+    SkillElectricPhysical,
+    SkillFire,
+    SkillFrost,
+    SkillHeal,
+    SkillHolyHeavy,
+    SkillHolyLight,
+    SkillInspiring,
+    SkillNature,
+    SkillPoison,
+    SkillHitSlashDown,
+    SkillHitSlashUp,
+    SkillEffects,
+    NoEffect
+} SkillEffect;
+
+typedef enum {
     EntityStateIdle,
     EntityStateAttacking,
     EntityStateDefending,
@@ -166,10 +203,10 @@ typedef enum {
 
 typedef enum {
     AnimationTypeIdle,
-    AnimationTypeMove,
     AnimationTypeHit,
     AnimationTypeDeath,
     AnimationTypeAttack,
+    AnimationTypeAction,
     AnimationTypes
 } AnimationType;
 
@@ -562,6 +599,8 @@ typedef enum {
 #define GAMEPLAY_MENU_BACKGROUND_PINEWOODS @"gameplay_menu/background/pinewoods"
 #define GAMEPLAY_MENU_BACKGROUND_SEASHORE @"gameplay_menu/background/seashore"
 
+#define GAMEPLAY_MENU_ENTITIES_ALLIES @"gameplay_menu/entities/allies/"
+
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_ACTION @"gameplay_menu/entities/allies/bard/action/"
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_ATTACK @"gameplay_menu/entities/allies/bard/attack/"
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_BARD_DEATH @"gameplay_menu/entities/allies/bard/death/"
@@ -612,6 +651,8 @@ typedef enum {
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_HIT @"gameplay_menu/entities/allies/wizard/hit/"
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_IDLE @"gameplay_menu/entities/allies/wizard/idle/"
 #define GAMEPLAY_MENU_ENTITIES_ALLIES_WIZARD_PORTRAIT @"gameplay_menu/entities/allies/wizard/portrait"
+
+#define GAMEPLAY_MENU_ENTITIES_ENEMIES @"gameplay_menu/entities/enemies/"
 
 #define GAMEPLAY_MENU_ENTITIES_ENEMIES_BOSS_FARMLANDS_ACTION @"gameplay_menu/entities/enemies/boss/farmlands/action/"
 #define GAMEPLAY_MENU_ENTITIES_ENEMIES_BOSS_FARMLANDS_ATTACK @"gameplay_menu/entities/enemies/boss/farmlands/attack/"
@@ -918,6 +959,8 @@ typedef enum {
 #define POSITION_TOWN_MENU_WEEK_COUNTER_LABEL @"town_menu_week_counter_label"
 #define POSITION_TOWN_MENU_WEEK_COUNTER @"town_menu_week_counter"
 #define POSITION_BACK_BUTTON @"back_button"
+#define POSITION_GAMEPLAY_COMBAT_POSITION_ALLIES @"gameplay_ally_combat_position_"
+#define POSITION_GAMEPLAY_COMBAT_POSITION_ENEMIES @"gameplay_enemy_combat_position_"
 
 // MARK: METADATA
 #define META_INTERFACE_BACKGROUND @"interface_background"
@@ -973,3 +1016,4 @@ typedef enum {
 #define VALUE_ENEMY_UNIT_SKILLS @"enemy_unit_skills"
 #define VALUE_DIFFICULTY @"difficulty"
 #define VALUE_STAGE_NUM_OF_WAVES @"stage_num_of_waves"
+#define VALUE_STAGE_MONSTER_LVL @"stage_monster_lvl"

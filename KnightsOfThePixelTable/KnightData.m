@@ -15,8 +15,10 @@
 @implementation KnightData
 
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *)knightName {
-    self = [super initWithID:stringID damageType:0 hp:0 lvl:0];
+    self = [super initWithDamageType:0 hp:0 lvl:0];
     if (self != nil) {
+        keyID = [stringID retain];
+        
         fatigue = 0;
         
         type = knightType;
@@ -117,8 +119,10 @@
 
 // DEBUG INIT
 - (id) initWithID:(NSString *)stringID type:(KnightType)knightType characterType:(CharacterType)charType name:(NSString *)knightName level:(int)level currentExp:(int)exp weaponLvl:(int)wLevel armorLvl:(int)aLevel {
-    self = [super initWithID:stringID damageType:0 hp:0 lvl:level];
+    self = [super initWithDamageType:0 hp:0 lvl:level];
     if (self != nil) {
+        keyID = [stringID retain];
+        
         fatigue = 0;
         
         type = knightType;

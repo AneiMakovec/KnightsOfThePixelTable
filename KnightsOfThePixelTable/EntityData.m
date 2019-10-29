@@ -12,10 +12,9 @@
 
 @implementation EntityData
 
-- (id) initWithID:(NSString *)stringID damageType:(DamageType)dType hp:(int)health lvl:(Lvl)level {
+- (id) initWithDamageType:(DamageType)dType hp:(int)health lvl:(Lvl)level {
     self = [super init];
     if (self != nil) {
-        keyID = stringID;
         dmgType = dType;
         hp = health;
         lvl = level;
@@ -24,7 +23,7 @@
     return self;
 }
 
-@synthesize keyID, lvl, dmgType, hp;
+@synthesize lvl, dmgType, hp;
 
 - (int) getValueOfStat:(StatType)stat {
     return stats[stat];

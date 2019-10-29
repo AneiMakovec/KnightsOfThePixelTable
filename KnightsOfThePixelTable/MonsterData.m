@@ -12,8 +12,8 @@
 
 @implementation MonsterData
 
-- (id) initWithID:(NSString *)stringID type:(MonsterType)monsterType lvl:(Lvl)level {
-    self = [super initWithID:stringID damageType:0 hp:0 lvl:level];
+- (id) initWithType:(MonsterType)monsterType lvl:(Lvl)level {
+    self = [super initWithDamageType:0 hp:0 lvl:level];
     if (self != nil) {
         type = monsterType;
         

@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
     Range range;
     DamageType damageType;
     
+    ProjectileType projectileType;
+    SkillEffect skillEffect;
+    
     NSMutableArray *conditions;
 }
 
@@ -36,10 +39,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) Range range;
 @property (nonatomic, readonly) Target target;
 @property (nonatomic, readonly) DamageType damageType;
+@property (nonatomic, readonly) ProjectileType projectileType;
+@property (nonatomic, readonly) SkillEffect skillEffect;
 @property (nonatomic, retain) NSMutableArray *conditions;
 
 
-- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType;
+- (id) initWithName:(NSString *)theName function:(Function)theFunction range:(Range)theRange target:(Target)theTarget damage:(float)dmg damageType:(DamageType)dType projectileType:(ProjectileType)projectile skillEffect:(SkillEffect)sEffect;
 
 - (void) addCondition:(ConditionData *)condition;
 

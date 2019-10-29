@@ -14,7 +14,7 @@
 
 @protocol ICombatEntity <IMovable, ICustomUpdate, ICustomCollider, IParticleCollider, IDamageDealer>
 
-@property (nonatomic, retain) Rectangle *entityArea;
+//@property (nonatomic, retain) Rectangle *entityArea;
 
 @property (nonatomic, readonly) BOOL stunned;
 @property (nonatomic, readonly) BOOL finishedAttacking;
@@ -22,15 +22,15 @@
 
 @property (nonatomic, readonly) EntityState state;
 @property (nonatomic, readonly) SkillType skillType;
-@property (nonatomic) CombatPosition combatPosition;
-@property (nonatomic, readonly) BattlePosition *origin;
+//@property (nonatomic) CombatPosition combatPosition;
 
-@property (nonatomic, readonly) BattlePosition *target;
+@property (nonatomic, readonly) BattlePosition *origin;
+@property (nonatomic, readonly) BattlePosition *attackPosition;
 
 @property (nonatomic, readonly) NSMutableArray *combo;
 @property (nonatomic, retain) NSMutableArray *conditions;
 
-- (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
+//- (void) setCombatPosition:(CombatPosition)theCombatPosition ally:(BOOL)isAlly;
 
 - (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly;
 - (void) resetAttack;

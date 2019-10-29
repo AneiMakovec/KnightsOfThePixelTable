@@ -114,6 +114,10 @@ Constants *constantsInstance;
     return [constantsInstance getWavesForStage:stage];
 }
 
++ (int) getMonsterLvlForStage:(StageType)stage ofLevel:(LevelType)level {
+    return [constantsInstance getMonsterLvlForStage:stage ofLevel:level];
+}
+
 
 
 
@@ -245,6 +249,10 @@ Constants *constantsInstance;
 
 - (int) getWavesForStage:(StageType)stage {
     return [[[data_value objectForKey:VALUE_STAGE_NUM_OF_WAVES] valueForKey:[NSString stringWithFormat:@"%d", stage]] intValue];
+}
+
+- (int) getMonsterLvlForStage:(StageType)stage ofLevel:(LevelType)level {
+    return [[[[data_value objectForKey:VALUE_STAGE_MONSTER_LVL] objectForKey:[NSString stringWithFormat:@"%d", level]] valueForKey:[NSString stringWithFormat:@"%d", stage]] intValue];
 }
 
 

@@ -15,6 +15,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KnightData : EntityData {
+    NSString *keyID;
+    
     KnightType type;
     NSString *name;
     NSString *character;
@@ -29,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
     
     int fatigue;
 }
+
+@property (nonatomic, readonly) NSString *keyID;
 
 @property (nonatomic, readonly) KnightType type;
 @property (nonatomic, readonly) CharacterType characterType;

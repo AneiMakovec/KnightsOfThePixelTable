@@ -9,50 +9,87 @@
 #import "Pixlron.Knights.h"
 #import "Monster.h"
 
+#define BERSERKER @"normal/berserker/"
+#define HUSCARL @"normal/huscarl/"
+#define HORNBEARER @"normal/hornbearer/"
+#define AXETHROWER @"normal/axethrower/"
+#define SLAVER @"normal/slaver/"
+#define SLINGER @"normal/slinger/"
+#define RUNEMASTER @"normal/runemaster/"
+#define SORCERER @"normal/sorcerer/"
+#define SHAMAN @"normal/shaman/"
+#define BOSS_FARMLANDS @"boss/farmlands/"
+#define BOSS_PINEWOODS @"boss/pinewoods/"
+#define BOSS_MOUNTAINS @"boss/mountains/"
+#define BOSS_SEASHORE @"boss/seashore/"
+
+#define ACTION_ANIM @"action/"
+#define IDLE_ANIM @"idle/"
+#define HIT_ANIM @"hit/"
+#define ATTACK_ANIM @"attack/"
+#define DEATH_ANIM @"death/"
+
 @implementation Monster
 
-- (id) initMonster:(MonsterType)theMonster level:(Level*)theLevel gameHud:(GameHud*)theHud expType:(ExpType)theExpType entityType:(StatType)theType health:(int)hp damageType:(DamageType)theDamageType maxRadius:(float)theMaxRadius {
-    self = [super initWithLevel:theLevel gameHud:theHud entityType:theType health:hp damageType:theDamageType maxRadius:theMaxRadius];
+- (id) initWithData:(MonsterData *)data cobatPosition:(CombatPosition)combPos {
+    self = [super initWithData:data];
     if (self != nil) {
-        type = theMonster;
-        expType = theExpType;
+//        type = theMonster;
+//        expType = theExpType;
 
         dicesComming = 0;
         
-        // init textures
-        for (int i = 0; i < EntityStates; i++) {
-            animations[i] = [[GameplaySpriteComponent getAnimationType:i forEnemy:type] retain];
+        // init animations
+        NSString *animKey = GAMEPLAY_MENU_ENTITIES_ENEMIES;
+        NSString *entityKeys[MonsterTypes] = {BERSERKER, HUSCARL, HORNBEARER, AXETHROWER, SLAVER, SLINGER, RUNEMASTER, SORCERER, SHAMAN, BOSS_FARMLANDS, BOSS_PINEWOODS, BOSS_MOUNTAINS, BOSS_SEASHORE};
+        NSString *animationKeys[AnimationTypes] = {IDLE_ANIM, HIT_ANIM, DEATH_ANIM, ATTACK_ANIM, ACTION_ANIM};
+        for (int i = 0; i < AnimationTypes; i++) {
+            if (data.type == MonsterTypeAxethrower || data.type == MonsterTypeBerserker || data.type == MonsterTypeRunemaster || data.type == MonsterTypeShaman || data.type == MonsterTypeSorcerer || data.type == MonsterTypeBossMountains) {
+                if (i == AnimationTypeAction) {
+                    animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:ATTACK_ANIM]]];
+                }
+            }
+            
+            animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
         }
+        
+        // init position
+        NSString *posKey = POSITION_GAMEPLAY_COMBAT_POSITION_ENEMIES;
+        position = [[Constants getPositionDataForKey:[posKey stringByAppendingString:[NSString stringWithFormat:@"%d", combPos]]] retain];
+        
+        // init move points
+        origin = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:position.x y:position.y] radius:5];
+        attackPosition = [[BattlePosition alloc] initWithPosition:[Vector2 vectorWithX:position.x - 80 y:position.y] radius:5];
     }
     return self;
 }
 
-@synthesize type, hpPoolArea, hpArea;
+//@synthesize type, hpPoolArea, hpArea;
 
 
 
-- (void) setCombatPosition:(CombatPosition)theCombatPosition {
-    // invoke super method
-    [super setCombatPosition:theCombatPosition ally:NO];
-    
-    // calc entity area
-    entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
-    
-    // calc hpPoolArea
-    hpPoolArea = [[Rectangle alloc] initWithX:origin.position.x - 40 y:origin.position.y - 30 width:80 height:12];
-    hpArea = [[Rectangle alloc] initWithX:origin.position.x - 29 y:origin.position.y - 30 width:69 height:12];
-    maxHpWidth = hpArea.width;
-    
-    // move outside the view
-    position.x += 500;
-    position.y += 50;
-
-    // move to origin
-    state = EntityStateStart;
-    radius = 1;
-    velocity.x = (origin.position.x - position.x) * 2;
-    velocity.y = (origin.position.y - position.y) * 2;
-}
+//- (void) setCombatPosition:(CombatPosition)theCombatPosition {
+//    // invoke super method
+//    [super setCombatPosition:theCombatPosition ally:NO];
+//
+//    // calc entity area
+//    entityArea = [[Rectangle alloc] initWithX:position.x-56 y:position.y-56 width:112 height:112];
+//
+//    // calc hpPoolArea
+//    hpPoolArea = [[Rectangle alloc] initWithX:origin.position.x - 40 y:origin.position.y - 30 width:80 height:12];
+//    hpArea = [[Rectangle alloc] initWithX:origin.position.x - 29 y:origin.position.y - 30 width:69 height:12];
+//    maxHpWidth = hpArea.width;
+//    
+//    // move outside the view
+//    position.x += 500;
+//    position.y += 50;
+//
+//    // move to origin
+//    state = EntityStateStart;
+//    radius = 1;
+//    velocity.x = (origin.position.x - position.x) * 2;
+//    velocity.y = (origin.position.y - position.y) * 2;
+//}
 
 
 - (BOOL) collidingWithItem:(id)item {

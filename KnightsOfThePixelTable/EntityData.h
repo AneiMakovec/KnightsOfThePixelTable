@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EntityData : NSObject {
-    NSString *keyID;
+//    NSString *keyID;
     
     DamageType dmgType;
     int hp;
@@ -23,13 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
     int stats[StatTypes];
 }
 
-@property (nonatomic, readonly) NSString *keyID;
+//@property (nonatomic, readonly) NSString *keyID;
 
 @property (nonatomic, readonly) DamageType dmgType;
 @property (nonatomic, readonly) int hp;
 @property (nonatomic, readonly) Lvl lvl;
 
-- (id) initWithID:(NSString *)stringID damageType:(DamageType)dType hp:(int)health lvl:(Lvl)level;
+- (id) initWithDamageType:(DamageType)dType hp:(int)health lvl:(Lvl)level;
 
 - (int) getValueOfStat:(StatType)stat;
 

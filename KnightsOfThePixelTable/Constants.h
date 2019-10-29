@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *) getBaseStatsForEnemy:(MonsterType)type;
 + (int) getBaseHpForEnemy:(MonsterType)type;
 + (int) getWavesForStage:(StageType)stage;
++ (int) getMonsterLvlForStage:(StageType)stage ofLevel:(LevelType)level;
 
 + (int) getUpgradeCostOfSkillLvl:(Lvl)lvl;
 + (int) getUpgradeCostOfDicesLvl:(Lvl)lvl;
