@@ -403,7 +403,7 @@
     if (data) {
         // reset all data
         [self removeItemFromScene:unitType[currentDmgType]];
-        currentDmgType = data.damageType;
+        currentDmgType = data.dmgType;
         [self addItemToScene:unitType[currentDmgType]];
         
         lvl.text = [NSString stringWithFormat:@"%d", data.lvl];

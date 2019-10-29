@@ -47,10 +47,12 @@
             if (data.type == MonsterTypeAxethrower || data.type == MonsterTypeBerserker || data.type == MonsterTypeRunemaster || data.type == MonsterTypeShaman || data.type == MonsterTypeSorcerer || data.type == MonsterTypeBossMountains) {
                 if (i == AnimationTypeAction) {
                     animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:ATTACK_ANIM]]];
+                } else {
+                    animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
                 }
+            } else {
+                animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
             }
-            
-            animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
         }
         
         // init position
@@ -116,21 +118,21 @@
 }
 
 
-- (BOOL) addComboItem:(Dice *)theItem {
-    if ([combo count] < ComboItems) {
-        // add combo item
-        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition];
-        [combo addObject:comboSlot];
-        [comboSlot release];
-        
-        // update attack/skill
-        [self updateSkillType];
-        
-        return YES;
-    } else {
-        return NO;
-    }
-}
+//- (BOOL) addComboItem:(Dice *)theItem {
+//    if ([combo count] < ComboItems) {
+//        // add combo item
+//        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition];
+//        [combo addObject:comboSlot];
+//        [comboSlot release];
+//
+//        // update attack/skill
+//        [self updateSkillType];
+//
+//        return YES;
+//    } else {
+//        return NO;
+//    }
+//}
 
 - (BOOL) areDicesComming {
     return dicesComming > 0;
@@ -140,19 +142,19 @@
     dicesComming++;
 }
 
-- (int) giveExperience {
-    switch (expType) {
-        case ExpTypeNormal:
-            return [Constants expGainNormal];
-        case ExpTypeElite:
-            return [Constants expGainElite];
-        case ExpTypeBoss:
-            return [Constants expGainBoss];
-            
-        default:
-            return 0;
-    }
-}
+//- (int) giveExperience {
+//    switch (expType) {
+//        case ExpTypeNormal:
+//            return [Constants expGainNormal];
+//        case ExpTypeElite:
+//            return [Constants expGainElite];
+//        case ExpTypeBoss:
+//            return [Constants expGainBoss];
+//
+//        default:
+//            return 0;
+//    }
+//}
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
@@ -160,25 +162,25 @@
     [super updateWithGameTime:gameTime];
     
     // then update health
-    hpArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
-    
-    // move the health bar
-    hpPoolArea.x = position.x - 40;
-    hpPoolArea.y = position.y - 30;
-
-    hpArea.x = position.x - 29;
-    hpArea.y = position.y - 30;
-    
-    // death
-    if (state == EntityStateDead) {
-        if (!animations[state].isAlive) {
-            [level.battlefield removeEnemy:self];
-        }
-    }
+//    hpArea.width = (maxHpWidth * currentHealthPoints) / maxHealthPoints;
+//
+//    // move the health bar
+//    hpPoolArea.x = position.x - 40;
+//    hpPoolArea.y = position.y - 30;
+//
+//    hpArea.x = position.x - 29;
+//    hpArea.y = position.y - 30;
+//
+//    // death
+//    if (state == EntityStateDead) {
+//        if (!animations[state].isAlive) {
+//            [level.battlefield removeEnemy:self];
+//        }
+//    }
 }
 
 - (void) dealloc {
-    [hpPoolArea release];
+//    [hpPoolArea release];
     
     [super dealloc];
 }

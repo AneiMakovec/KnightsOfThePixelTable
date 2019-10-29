@@ -13,9 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Dicepool : NSObject {
-    // level
-    Level *level;
-    
     // objects
     NSMutableArray *dices;
     NSMutableArray *borders;
@@ -32,11 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Rectangle *dicepoolArea;
 @property (nonatomic, readonly) BOOL dicesAdded;
 
-- (id) initWithLevel:(Level *)theLevel;
-
 - (void) initialize;
 
-- (void) addDicesOfType:(DiceFrameType)diceType;
+- (void) addDices;
 
 - (void) removeAllDices;
 

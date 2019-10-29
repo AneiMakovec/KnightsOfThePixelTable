@@ -14,14 +14,6 @@
 
 #import "Pixlron.Knights.classes.h"
 
-typedef enum {
-    BorderTypePhysical,
-    BorderTypeRanged,
-    BorderTypeMagic,
-    BorderTypeNeutral,
-    BorderTypes
-} BorderType;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GameHud : GameComponent {
@@ -61,6 +53,10 @@ NS_ASSUME_NONNULL_BEGIN
     Label *currentHpCounters[CombatPositions];
     Label *maxHpCounters[CombatPositions];
     
+    ReleaseArea *comboAreas[CombatPositions];
+    Button *skillPresedAreas[CombatPositions];
+    Button *comboSlotAreas[CombatPositions][ComboItems];
+    
     // Debug
     LabelButton *resetDices;
 }
@@ -78,6 +74,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) deactivate;
 
 + (BOOL) isLastWave;
+
++ (BOOL) wasDiceDropped:(CombatPosition)pos;
+
++ (void) update;
 
 
 

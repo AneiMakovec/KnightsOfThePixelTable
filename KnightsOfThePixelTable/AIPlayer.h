@@ -14,8 +14,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AIPlayer : GameComponent<IPlayer> {
-    Level *level;
-    
     CombatEntity *target;
     
     // delay for assigning dices
@@ -48,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) BOOL turnEnded;
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel;
+- (id) initWithGame:(Game *)theGame;
 
 - (void) startTurnWithNewEntities:(BOOL)newWave;
 

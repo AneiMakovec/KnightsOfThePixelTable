@@ -15,18 +15,17 @@
 
 @implementation PhysicsEngine
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel playSounds:(BOOL)play {
+- (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
-        level = theLevel;
-        playSounds = play;
+        playSounds = YES;
     }
     return self;
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
     // move objects
-    for (id item in level.scene) {
+    for (id item in [Level scene]) {
         
         // movement, rotation and height for dices
         Dice *dice = [item isKindOfClass:[Dice class]] ? (Dice *) item : nil;
@@ -72,21 +71,21 @@
     }
     
     // check for collisions between objects
-    for (id item1 in level.scene) {
+    for (id item1 in [Level scene]) {
         
         // dices
         Dice *dItem = [item1 isKindOfClass:[Dice class]] ? (Dice *) item1 : nil;
         if (dItem) {
             if (!dItem.ignoreCollision) {
                 // collision with other dices
-                for (Dice *dice in level.dicepool.dices) {
+                for (Dice *dice in [Level dices]) {
                     if (item1 != dice) {
                         [Collision collisionBetween:item1 and:dice];
                     }
                 }
                 
                 // collision with borders
-                for (DicepoolLimit *border in level.dicepool.borders) {
+                for (DicepoolLimit *border in [Level dicepoolBorders]) {
                     [Collision collisionBetween:item1 and:border];
                 }
             }
@@ -101,7 +100,7 @@
         if (cEntity) {
             if (cEntity.state == EntityStateApproaching) {
                 // collision with target
-                [Collision collisionBetween:cEntity and:cEntity.target];
+                [Collision collisionBetween:cEntity and:cEntity.attackPosition];
             } else if (cEntity.state == EntityStateRetreating || cEntity.state == EntityStateStart) {
                 // collision with origin
                 [Collision collisionBetween:cEntity and:cEntity.origin];

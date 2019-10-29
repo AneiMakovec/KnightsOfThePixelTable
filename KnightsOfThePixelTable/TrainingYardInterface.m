@@ -107,7 +107,7 @@
         
         if ([trainRooster getFirstData]) {
             unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[trainRooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
-            unitClassName.color = classColors[[trainRooster getFirstData].damageType];
+            unitClassName.color = classColors[[trainRooster getFirstData].dmgType];
         } else {
             unitClassName = [GraphicsComponent getLabelWithText:@"" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
         }
@@ -188,7 +188,7 @@
         if ([trainRooster getSelectedData] != nil) {
             unitName.text = [trainRooster getSelectedData].name;
             unitClassName.text = unitClassNames[[trainRooster getSelectedData].type];
-            unitClassName.color = classColors[[trainRooster getSelectedData].damageType];
+            unitClassName.color = classColors[[trainRooster getSelectedData].dmgType];
         } else {
             unitName.text = @"";
             unitClassName.text = @"";
@@ -261,7 +261,7 @@
         
         unitName.text = data.name;
         unitClassName.text = unitClassNames[data.type];
-        unitClassName.color = classColors[data.damageType];
+        unitClassName.color = classColors[data.dmgType];
     }
 }
 

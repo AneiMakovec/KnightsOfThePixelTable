@@ -240,14 +240,14 @@
  MARK: DRAW
 */
 - (void) drawWithGameTime:(GameTime *)gameTime {
-    float allyDepth, enemyDepth;
-    if (turnManager.playersTurn) {
-        allyDepth = 0;
-        enemyDepth = 0.1f;
-    } else {
-        allyDepth = 0.1f;
-        enemyDepth = 0;
-    }
+//    float allyDepth, enemyDepth;
+//    if (turnManager.playersTurn) {
+//        allyDepth = 0;
+//        enemyDepth = 0.1f;
+//    } else {
+//        allyDepth = 0.1f;
+//        enemyDepth = 0;
+//    }
     
     
     // begin
@@ -267,23 +267,23 @@
     
     
     // scene items
-    for (id item in gameplay.currentLevel.scene) {
+    for (id item in [Level scene]) {
         
         // check if is knight entity
         Knight *knight = [item isKindOfClass:[Knight class]] ? (Knight *)item : nil;
         if (knight) {
-            CombatPosition pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
+//            CombatPosition pos = [gameplay.currentLevel.battlefield getCombatPositionOfAlly:knight];
+//
+//            // portrait
+//            Color *portraitColor;
+//            if (knight.finishedAttacking)
+//                portraitColor = [Color darkGray];
+//            else
+//                portraitColor = [Color white];
+//
+//            Sprite *portrait = portraits[pos];
+//            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:portraitColor];
             
-            // portrait
-            Color *portraitColor;
-            if (knight.finishedAttacking)
-                portraitColor = [Color darkGray];
-            else
-                portraitColor = [Color white];
-            
-            Sprite *portrait = portraits[pos];
-            [spriteBatch draw:portrait.texture toRectangle:knight.portraitArea fromRectangle:portrait.sourceRectangle tintWithColor:portraitColor];
-                
             // sprite
 //            Sprite *drawable;
 //            SpriteEffects effect;
@@ -334,64 +334,64 @@
 //                    effect = SpriteEffectsNone;
 //                    break;
 //            }
-            SpriteEffects effect = SpriteEffectsNone;
-            if (knight.state == EntityStateRetreating)
-                effect = SpriteEffectsFlipHorizontally;
+//            SpriteEffects effect = SpriteEffectsNone;
+//            if (knight.state == EntityStateRetreating)
+//                effect = SpriteEffectsFlipHorizontally;
             
             Sprite *drawable = [[knight getCurrentAnimation] spriteWithElapsedTime:gameTime.elapsedGameTime];
-            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:allyDepth];
+            [spriteBatch draw:drawable.texture to:knight.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0.8f];
                 
             // hp exp pool
-            [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
-                
+//            [spriteBatch draw:hpPool toRectangle:knight.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0.1];
+            
             // skill
-            Color *skillColor = [Color white];
-            if (knight.skillType == BasicAttack) {
-                skillColor = [Color white];
-            } else if (knight.skillType == FirstComboSkill) {
-                skillColor = [Color red];
-            } else if (knight.skillType == SecondComboSkill) {
-                skillColor = [Color green];
-            } else if (knight.skillType == ThirdComboSkill) {
-                skillColor = [Color yellow];
-            }
+//            Color *skillColor = [Color white];
+//            if (knight.skillType == BasicAttack) {
+//                skillColor = [Color white];
+//            } else if (knight.skillType == FirstComboSkill) {
+//                skillColor = [Color red];
+//            } else if (knight.skillType == SecondComboSkill) {
+//                skillColor = [Color green];
+//            } else if (knight.skillType == ThirdComboSkill) {
+//                skillColor = [Color yellow];
+//            }
             
             
-            if (knight.skillType != NoSkill) {
-                Sprite *skill = nil;
-                switch (knight.skillType) {
-                    case BasicAttack:
-                        skill = basicAttackSprites[knight.type];
-                        break;
-                        
-                    case FirstComboSkill:
-                        skill = firstComboSkillSprites[knight.type];
-                        break;
-                        
-                    case SecondComboSkill:
-                        skill = secondComboSkillSprites[knight.type];
-                        break;
-                        
-                    case ThirdComboSkill:
-                        skill = thirdComboSkillSprites[knight.type];
-                        break;
-                        
-                    default:
-                        break;
-                }
-                
-                if (skill)
-                    [spriteBatch draw:skill.texture toRectangle:knight.skillArea fromRectangle:skill.sourceRectangle tintWithColor:[Color white] rotation:0 origin:skill.origin effects:SpriteEffectsNone layerDepth:0];
-            }
-                
+//            if (knight.skillType != NoSkill) {
+//                Sprite *skill = nil;
+//                switch (knight.skillType) {
+//                    case BasicAttack:
+//                        skill = basicAttackSprites[knight.type];
+//                        break;
+//
+//                    case FirstComboSkill:
+//                        skill = firstComboSkillSprites[knight.type];
+//                        break;
+//
+//                    case SecondComboSkill:
+//                        skill = secondComboSkillSprites[knight.type];
+//                        break;
+//
+//                    case ThirdComboSkill:
+//                        skill = thirdComboSkillSprites[knight.type];
+//                        break;
+//
+//                    default:
+//                        break;
+//                }
+//
+//                if (skill)
+//                    [spriteBatch draw:skill.texture toRectangle:knight.skillArea fromRectangle:skill.sourceRectangle tintWithColor:[Color white] rotation:0 origin:skill.origin effects:SpriteEffectsNone layerDepth:0];
+//            }
+            
                 
                 
             // combo
-            for (ComboSlot *comboSlot in knight.combo) {
-                if (comboSlot.item) {
-                [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white] rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
-                }
-            }
+//            for (ComboSlot *comboSlot in knight.combo) {
+//                if (comboSlot.item) {
+//                [spriteBatch draw:diceSymbols[comboSlot.item.type].texture toRectangle:comboSlot.area fromRectangle:diceSymbols[comboSlot.item.type].sourceRectangle tintWithColor:[Color white] rotation:0 origin:diceSymbols[comboSlot.item.type].origin effects:SpriteEffectsNone layerDepth:0];
+//                }
+//            }
         }
         
         // check if is monster entity
@@ -445,72 +445,82 @@
 //            }
             
             // color changes if monster is targeted
-            Color *color;
-            if (monster.isTargeted)
-                color = [Color red];
-            else
-                color = [Color white];
-            
-            SpriteEffects effect = SpriteEffectsFlipHorizontally;
-            if (monster.state == EntityStateRetreating)
-                effect = SpriteEffectsNone;
+//            Color *color;
+//            if (monster.isTargeted)
+//                color = [Color red];
+//            else
+//                color = [Color white];
+//
+//            SpriteEffects effect = SpriteEffectsFlipHorizontally;
+//            if (monster.state == EntityStateRetreating)
+//                effect = SpriteEffectsNone;
             
             Sprite *drawable = [[monster getCurrentAnimation] spriteWithElapsedTime:gameTime.elapsedGameTime];
-            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:color rotation:0 origin:drawable.origin scaleUniform:3.5f effects:effect layerDepth:enemyDepth];
+            [spriteBatch draw:drawable.texture to:monster.position fromRectangle:drawable.sourceRectangle tintWithColor:[Color white] rotation:0 origin:drawable.origin scaleUniform:3.5f effects:SpriteEffectsNone layerDepth:0.8f];
             
             // hp pool
-            if (monster.state != EntityStateStart) {
-                [spriteBatch draw:enemyHpPool toRectangle:monster.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
-                [spriteBatch draw:hpPool toRectangle:monster.hpArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
-            }
+//            if (monster.state != EntityStateStart) {
+//                [spriteBatch draw:enemyHpPool toRectangle:monster.hpPoolArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
+//                [spriteBatch draw:hpPool toRectangle:monster.hpArea fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:nil effects:SpriteEffectsNone layerDepth:0];
+//            }
         }
         
         // check if is projectile
-        Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
-        if (projectile) {
-            if ([projectile.sender isKindOfClass:[KnightBowman class]])
-                [spriteBatch draw:projectileArrow to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
-            else if ([projectile.sender isKindOfClass:[KnightFireEnchantress class]])
-                [spriteBatch draw:projectileFireBall to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
-        }
+//        Projectile *projectile = [item isKindOfClass:[Projectile class]] ? (Projectile *)item : nil;
+//        if (projectile) {
+//            if ([projectile.sender isKindOfClass:[KnightBowman class]])
+//                [spriteBatch draw:projectileArrow to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
+//            else if ([projectile.sender isKindOfClass:[KnightFireEnchantress class]])
+//                [spriteBatch draw:projectileFireBall to:projectile.position fromRectangle:nil tintWithColor:[Color white] rotation:0 origin:[Vector2 vectorWithX:16 y:16] scaleUniform:2.0f effects:SpriteEffectsNone layerDepth:allyDepth];
+//        }
         
         // check if is dice
-        id<IDice> diceItem = [item conformsToProtocol:@protocol(IDice)] ? item : nil;
+        Dice *diceItem = [item isKindOfClass:[Dice class]] ? (Dice *) item : nil;
         
         if (diceItem) {
-            AnimatedSprite *diceAnim = nil;
-            Sprite *diceSymbol = nil;
-            Sprite *diceBorder = nil;
-            Dice *dice = nil;
             
-            if ([diceItem isKindOfClass:[Dice class]]) {
-                dice = (Dice *) diceItem;
-                // check if dice is still rolling
-                if (dice.state == DiceStateRolling) {
-                    if (dice.frameType == DiceFrameTypeGood) {
-                        diceAnim = diceGoodAnim;
-                    } else if (dice.frameType == DiceFrameTypeEvil) {
-                        diceAnim = diceEvilAnim;
-                    }
-                } else {
-                    diceSymbol = diceSymbols[dice.type];
-                    diceBorder = diceFrames[dice.frameType];
-                }
-            }
-            
-            if (diceAnim) {
-                // rolling
-                Sprite *currentSprite = [diceAnim spriteAtTime:gameTime.totalGameTime];
-                [spriteBatch draw:currentSprite.texture to:dice.position fromRectangle:currentSprite.sourceRectangle tintWithColor:[Color white]
-                         rotation:dice.rotationAngle origin:currentSprite.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
-            } else if (diceSymbol && diceBorder) {
-                // not rolling
-                [spriteBatch draw:diceBorder.texture to:dice.position fromRectangle:diceBorder.sourceRectangle tintWithColor:[Color white]
-                         rotation:dice.rotationAngle origin:diceBorder.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+            if (diceItem.state == DiceStateRolling) {
+                Sprite *tempSprite = [diceItem.animation spriteWithElapsedTime:gameTime.elapsedGameTime];
+                [spriteBatch draw:tempSprite.texture to:diceItem.position fromRectangle:tempSprite.sourceRectangle tintWithColor:[Color white] rotation:diceItem.rotationAngle origin:tempSprite.origin scaleUniform:diceItem.altitude effects:SpriteEffectsNone layerDepth:0];
+            } else {
+                [spriteBatch draw:diceItem.sprite.texture to:diceItem.position fromRectangle:diceItem.sprite.sourceRectangle tintWithColor:[Color white] rotation:diceItem.rotationAngle origin:diceItem.sprite.origin scaleUniform:diceItem.altitude effects:SpriteEffectsNone layerDepth:0];
                 
-                [spriteBatch draw:diceSymbol.texture to:dice.position fromRectangle:diceSymbol.sourceRectangle tintWithColor:[Color white]
-                         rotation:dice.rotationAngle origin:diceSymbol.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+                [spriteBatch draw:diceItem.border.texture to:diceItem.position fromRectangle:diceItem.border.sourceRectangle tintWithColor:[Color white] rotation:diceItem.rotationAngle origin:diceItem.border.origin scaleUniform:diceItem.altitude effects:SpriteEffectsNone layerDepth:0];
             }
+            
+//            AnimatedSprite *diceAnim = nil;
+//            Sprite *diceSymbol = nil;
+//            Sprite *diceBorder = nil;
+//            Dice *dice = nil;
+            
+//            if ([diceItem isKindOfClass:[Dice class]]) {
+//                dice = (Dice *) diceItem;
+//                // check if dice is still rolling
+//                if (dice.state == DiceStateRolling) {
+//                    if (dice.frameType == DiceFrameTypeGood) {
+//                        diceAnim = diceGoodAnim;
+//                    } else if (dice.frameType == DiceFrameTypeEvil) {
+//                        diceAnim = diceEvilAnim;
+//                    }
+//                } else {
+//                    diceSymbol = diceSymbols[dice.type];
+//                    diceBorder = diceFrames[dice.frameType];
+//                }
+//            }
+            
+//            if (diceAnim) {
+//                // rolling
+//                Sprite *currentSprite = [diceAnim spriteAtTime:gameTime.totalGameTime];
+//                [spriteBatch draw:currentSprite.texture to:dice.position fromRectangle:currentSprite.sourceRectangle tintWithColor:[Color white]
+//                         rotation:dice.rotationAngle origin:currentSprite.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+//            } else if (diceSymbol && diceBorder) {
+//                // not rolling
+//                [spriteBatch draw:diceBorder.texture to:dice.position fromRectangle:diceBorder.sourceRectangle tintWithColor:[Color white]
+//                         rotation:dice.rotationAngle origin:diceBorder.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+//
+//                [spriteBatch draw:diceSymbol.texture to:dice.position fromRectangle:diceSymbol.sourceRectangle tintWithColor:[Color white]
+//                         rotation:dice.rotationAngle origin:diceSymbol.origin scaleUniform:dice.altitude effects:SpriteEffectsNone layerDepth:0];
+//            }
         }
     }
     

@@ -43,10 +43,12 @@
             if (data.type == KnightTypeBrawler || data.type == KnightTypeLongbowman || data.type == KnightTypeWizard || data.type == KnightTypeMonk) {
                 if (i == AnimationTypeAction) {
                     animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:ATTACK_ANIM]]];
+                } else {
+                    animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
                 }
+            } else {
+                animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
             }
-            
-            animations[i] = [GraphicsComponent getAnimatedSpriteWithKey:[animKey stringByAppendingString:[entityKeys[data.type] stringByAppendingString:animationKeys[i]]]];
         }
         
         // init position
@@ -66,11 +68,11 @@
 
 - (void) setCombatPosition:(CombatPosition)theCombatPosition {
     // invoke super method
-    [super setCombatPosition:theCombatPosition ally:YES];
+//    [super setCombatPosition:theCombatPosition ally:YES];
     
     
     // calc entity area
-    entityArea = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:combatPosition] y:[Constants areaYOfAlly:combatPosition] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
+//    entityArea = [[Rectangle alloc] initWithX:[Constants areaXOfAlly:combatPosition] y:[Constants areaYOfAlly:combatPosition] width:[Constants allyAreaWidth] height:[Constants allyAreaHeight]];
     
 //    // calc combo area
 //    comboArea = [[Rectangle alloc] initWithX:[Constants comboAreaXOfAlly:combatPosition] y:[Constants comboAreaYOfAlly:combatPosition] width:[Constants comboAreaWidth] height:[Constants comboAreaHeight]];
@@ -91,13 +93,13 @@
 - (BOOL) addComboItem:(Dice *)theItem {
     if (!finishedAttacking && [combo count] < ComboItems) {
         // add combo item
-        ComboItem slotPosition = (ComboItem) [combo count];
-        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:slotPosition];
-        [combo addObject:comboSlot];
-        [comboSlot release];
-        
-        // update attack/skill
-        [self updateSkillType];
+//        ComboItem slotPosition = (ComboItem) [combo count];
+//        ComboSlot *comboSlot = [[ComboSlot alloc] initWithItem:theItem forPosition:combatPosition inSlot:slotPosition];
+//        [combo addObject:comboSlot];
+//        [comboSlot release];
+//
+//        // update attack/skill
+//        [self updateSkillType];
         
         return YES;
     } else {
@@ -159,7 +161,7 @@
     // death
     if (state == EntityStateDead) {
         if (!animations[state].isAlive) {
-            [level.battlefield removeAlly:self];
+//            [level.battlefield removeAlly:self];
         }
     }
 }

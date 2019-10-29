@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HumanPlayer : GameComponent<IPlayer> {
     Matrix *inverseView;
-    Level *level;
     
     CombatEntity *target;
     
@@ -26,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL myTurn;
 }
 
-- (id) initWithGame:(Game*)theGame level:(Level*)theLevel;
+- (id) initWithGame:(Game*)theGame;
 
 - (void) setCamera:(Matrix *)camera;
 

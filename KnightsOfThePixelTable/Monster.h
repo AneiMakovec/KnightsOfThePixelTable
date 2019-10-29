@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Monster : CombatEntity<IExperienceGiver> {
+@interface Monster : CombatEntity {
     int dicesComming;
     
 //    int maxHpWidth;

@@ -14,10 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PhysicsEngine : GameComponent {
     BOOL playSounds;
-    Level *level;
 }
-
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel playSounds:(BOOL)play;
 
 @end
 

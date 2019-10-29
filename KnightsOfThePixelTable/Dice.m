@@ -11,7 +11,7 @@
 
 @implementation Dice
 
-- (id) init {
+- (id) initWithType:(StatType)tType {
     self = [super init];
     if (self) {
         position = [[Vector2 alloc] init];
@@ -29,11 +29,21 @@
         ignoreCollision = NO;
         
         origin = nil;
+        
+        type = tType;
+        state = DiceStateRolling;
+        
+        border = [GraphicsComponent getSpriteWithKey:GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_BORDER];
+        
+        NSString *spriteKeys[StatTypes] = {GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_STRENGTH, GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_ACCURACY, GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_CUNNING, GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_DEFENSE, GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_AGILITY, GAMEPLAY_MENU_PROPS_DICES_ICONS_32x32_STURDINESS};
+        sprite = [GraphicsComponent getSpriteWithKey:spriteKeys[type]];
+        
+        animation = [GraphicsComponent getAnimatedSpriteWithKey:GAMEPLAY_MENU_PROPS_DICES_ANIMATION];
     }
     return self;
 }
 
-@synthesize altitude, altitudeVelocity, state, type, frameType, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision, origin, target;
+@synthesize altitude, altitudeVelocity, state, type, angularVelocity, angularMass, position, velocity, radius, rotationAngle, mass, coefficientOfRestitution, coefficientOfFriction, ignoreCollision, origin, target, sprite, border, animation;
 
 - (void) updateRadius {
     radius = 16.0f * altitude;
@@ -52,9 +62,8 @@
     origin = nil;
 }
 
-- (void) moveToTarget:(Monster *)theTarget withDicepool:(Dicepool *)pool {
+- (void) moveToTarget:(Monster *)theTarget {
     target = theTarget;
-    dicepool = pool;
     [self rememberOrigin];
     
     [target newDiceComming];
@@ -69,8 +78,8 @@
 
 - (void) resetTarget {
     target = nil;
-    [dicepool removeDice:self];
-    dicepool = nil;
+    [Level removeDice:self];
+//    dicepool = nil;
     [velocity set:[Vector2 zero]];
     coefficientOfFriction = 0.05f;
     state = DiceStateStopped;

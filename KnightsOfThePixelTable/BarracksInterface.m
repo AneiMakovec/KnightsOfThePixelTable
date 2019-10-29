@@ -74,7 +74,7 @@
         
         if ([rooster getFirstData]) {
             unitClassName = [GraphicsComponent getLabelWithText:unitClassNames[[rooster getFirstData].type] atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
-            unitClassName.color = classColors[[rooster getFirstData].damageType];
+            unitClassName.color = classColors[[rooster getFirstData].dmgType];
         } else {
             unitClassName = [GraphicsComponent getLabelWithText:@"" atPosition:[Constants getPositionDataForKey:POSITION_INTERFACE_UNIT_CLASS_NAME]];
         }
@@ -109,7 +109,7 @@
         if ([rooster getSelectedData] != nil) {
             unitName.text = [rooster getSelectedData].name;
             unitClassName.text = unitClassNames[[rooster getSelectedData].type];
-            unitClassName.color = classColors[[rooster getSelectedData].damageType];
+            unitClassName.color = classColors[[rooster getSelectedData].dmgType];
         } else {
             unitName.text = @"";
             unitClassName.text = @"";
@@ -170,7 +170,7 @@
         
         unitName.text = data.name;
         unitClassName.text = unitClassNames[data.type];
-        unitClassName.color = classColors[data.damageType];
+        unitClassName.color = classColors[data.dmgType];
     }
 }
 

@@ -29,8 +29,60 @@ Level *levelInstance;
     [levelInstance.game.components removeComponent:levelInstance];
 }
 
++ (SimpleScene *) scene {
+    return levelInstance.scene;
+}
+
 + (void) addItemToScene:(id)item {
     [levelInstance.scene addItem:item];
+}
+
++ (void) removeItemFromScene:(id)item {
+    [levelInstance.scene removeItem:item];
+}
+
++ (void) newWave {
+    [levelInstance.battlefield newWave];
+}
+
++ (void) resetDicepool {
+    [levelInstance.dicepool resetDicepool];
+}
+
++ (void) removeAllDices {
+    [levelInstance.dicepool removeAllDices];
+}
+
++ (void) removeDice:(Dice *)dice {
+    [levelInstance.dicepool removeDice:dice];
+}
+
++ (void) addDices {
+    [levelInstance.dicepool addDices];
+}
+
++ (NSMutableArray *) dices {
+    return levelInstance.dicepool.dices;
+}
+
++ (NSMutableArray *) dicepoolBorders {
+    return levelInstance.dicepool.borders;
+}
+
++ (Dice *) diceAtLocation:(Vector2 *)location {
+    return [levelInstance.dicepool getDiceAtTouchLocation:location];
+}
+
++ (BOOL) touchedDicepool:(Vector2 *)location {
+    return [levelInstance.dicepool.dicepoolArea containsX:location.x y:location.y];
+}
+
++ (BOOL) addDice:(Dice *)dice toPosition:(CombatPosition)pos {
+    return [levelInstance.battlefield addDice:dice toPosition:pos];
+}
+
++ (Knight *) knightAtPosition:(CombatPosition)pos {
+    return [levelInstance.battlefield getAllyAtPosition:pos];
 }
 
 
@@ -48,8 +100,8 @@ Level *levelInstance;
         scene = [[SimpleScene alloc] initWithGame:theGame];
         scene.updateOrder = 5;
         
-        battlefield = [[Battlefield alloc] initWithLevel:self];
-        dicepool = [[Dicepool alloc] initWithLevel:self];
+        battlefield = [[Battlefield alloc] init];
+        dicepool = [[Dicepool alloc] init];
     }
     return self;
 }

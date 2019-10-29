@@ -12,10 +12,9 @@
 
 @implementation HumanPlayer
 
-- (id) initWithGame:(Game *)theGame level:(Level *)theLevel {
+- (id) initWithGame:(Game *)theGame {
     self = [super initWithGame:theGame];
     if (self != nil) {
-        level = theLevel;
         target = nil;
         selectedDice = nil;
         
@@ -40,8 +39,8 @@
 
 - (void) startTurn {
     myTurn = YES;
-    [level.dicepool resetDicepool];
-    [level.dicepool addDicesOfType:DiceFrameTypeGood];
+    [Level resetDicepool];
+    [Level addDices];
 }
 
 - (void) endTurn {
@@ -50,8 +49,8 @@
         target.isTargeted = NO;
         target = nil;
     }
-    [level.dicepool removeAllDices];
-    [level.dicepool resetDicepool];
+    [Level removeAllDices];
+    [Level resetDicepool];
 }
 
 
@@ -76,8 +75,8 @@
         // MARK: PRESSED
         if (touch.state == TouchLocationStatePressed) {
             // if no dice is selected check if can select one
-            if (!selectedDice && [level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
-                selectedDice = [level.dicepool getDiceAtTouchLocation:touchInScene];
+            if (!selectedDice) {
+                selectedDice = [Level diceAtLocation:touchInScene];
                 [selectedDice rememberOrigin];
             }
         }
@@ -95,7 +94,7 @@
         if (touch.state == TouchLocationStateReleased) {
             
             // MARK: check if touched dicepool
-            if ([level.dicepool.dicepoolArea containsX:touchInScene.x y:touchInScene.y]) {
+            if ([Level touchedDicepool:touchInScene]) {
                 // release the selected dice if still in the dicepool
                 if (selectedDice) {
                     [selectedDice resetPositionToOrigin:NO];
@@ -103,74 +102,85 @@
                 }
             } else {
                 
-                // MARK: check if enemy touched
-                for (Monster *monster in level.battlefield.enemyEntities) {
-                    if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
-                        if (monster == target) {
-                            // if touched the same monster remove target
-                            target.isTargeted = NO;
-                            target = nil;
-                            break;
-                        } else {
-                            //check if enemy is dead
-                            if (monster.state != EntityStateDead) {
-                                // remove previous target
-                                target.isTargeted = NO;
-                                
-                                // set new target
-                                monster.isTargeted = YES;
-                                target = [monster retain];
-                                NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
-                                break;
+                if (selectedDice) {
+                    for (int i = 0; i < CombatPositions; i++) {
+                        if ([GameHud wasDiceDropped:i]) {
+                            if ([Level addDice:selectedDice toPosition:i]) {
+                                [Level removeDice:selectedDice];
+                                selectedDice = nil;
                             }
                         }
                     }
                 }
                 
+                // MARK: check if enemy touched
+//                for (Monster *monster in level.battlefield.enemyEntities) {
+//                    if ([monster.entityArea containsX:touchInScene.x y:touchInScene.y]) {
+//                        if (monster == target) {
+//                            // if touched the same monster remove target
+//                            target.isTargeted = NO;
+//                            target = nil;
+//                            break;
+//                        } else {
+//                            //check if enemy is dead
+//                            if (monster.state != EntityStateDead) {
+//                                // remove previous target
+//                                target.isTargeted = NO;
+//
+//                                // set new target
+//                                monster.isTargeted = YES;
+//                                target = [monster retain];
+//                                NSLog(@"Target is enemy on position: %d", monster.combatPosition + 1);
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+                
                 // MARK: check if ally touched
-                for (Knight *knight in level.battlefield.allyEntities) {
-                    // touched combo area
-                    if ([knight.comboArea containsX:touchInScene.x y:touchInScene.y]) {
-                        // add selected dice to combo pool
-                        if (selectedDice) {
-                            if ([knight addComboItem:selectedDice]) {
-                                NSLog(@"Added dice to ally: %d", knight.combatPosition + 1);
-                                [level.dicepool removeDice:selectedDice];
-                                selectedDice = nil;
-                            } else {
-                                // could not add dice
-                                [selectedDice resetPositionToOrigin:YES];
-                                selectedDice = nil;
-                            }
-                        // if no dice selected remove a combo slot
-                        } else {
-                            Dice *dice = [knight removeComboAtTouchLocation:touchInScene];
-                            if (dice) {
-                                [dice resetPositionToOrigin:YES];
-                                [level.dicepool addDice:dice];
-                            }
-                        }
-                        
-                        break;
-                    // touched ally attack area
-                    } else if ([knight.entityArea containsX:touchInScene.x y:touchInScene.y]) {
-                        if (!selectedDice) {
-                            NSLog(@"Touched ally: %d", knight.combatPosition + 1);
-                            
-                            if (knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
-                                if (target.state != EntityStateDead) {
-                                    [knight attackTarget:target ally:YES];
-                                } else {
-                                    target.isTargeted = NO;
-                                    target = nil;
-                                    [knight attackTarget:nil ally:YES];
-                                }
-                            }
-                            
-                            break;
-                        }
-                    }
-                }
+//                for (Knight *knight in level.battlefield.allyEntities) {
+//                    // touched combo area
+//                    if ([knight.comboArea containsX:touchInScene.x y:touchInScene.y]) {
+//                        // add selected dice to combo pool
+//                        if (selectedDice) {
+//                            if ([knight addComboItem:selectedDice]) {
+//                                NSLog(@"Added dice to ally: %d", knight.combatPosition + 1);
+//                                [level.dicepool removeDice:selectedDice];
+//                                selectedDice = nil;
+//                            } else {
+//                                // could not add dice
+//                                [selectedDice resetPositionToOrigin:YES];
+//                                selectedDice = nil;
+//                            }
+//                        // if no dice selected remove a combo slot
+//                        } else {
+//                            Dice *dice = [knight removeComboAtTouchLocation:touchInScene];
+//                            if (dice) {
+//                                [dice resetPositionToOrigin:YES];
+//                                [level.dicepool addDice:dice];
+//                            }
+//                        }
+//
+//                        break;
+//                    // touched ally attack area
+//                    } else if ([knight.entityArea containsX:touchInScene.x y:touchInScene.y]) {
+//                        if (!selectedDice) {
+//                            NSLog(@"Touched ally: %d", knight.combatPosition + 1);
+//
+//                            if (knight.state == EntityStateIdle && !knight.finishedAttacking && knight.skillType != NoSkill) {
+//                                if (target.state != EntityStateDead) {
+//                                    [knight attackTarget:target ally:YES];
+//                                } else {
+//                                    target.isTargeted = NO;
+//                                    target = nil;
+//                                    [knight attackTarget:nil ally:YES];
+//                                }
+//                            }
+//
+//                            break;
+//                        }
+//                    }
+//                }
                 
                 // return selected dice to original position
                 if (selectedDice) {

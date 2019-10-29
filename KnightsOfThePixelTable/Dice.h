@@ -29,13 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
     float altitudeVelocity;
     DiceState state;
     StatType type;
-    DiceFrameType frameType;
     BOOL ignoreCollision;
     Vector2 *origin;
     Monster *target;
     
-    Dicepool *dicepool;
+    Sprite *border;
+    Sprite *sprite;
+    
+    AnimatedSprite *animation;
 }
+
+- (id) initWithType:(StatType)tType;
 
 @end
 

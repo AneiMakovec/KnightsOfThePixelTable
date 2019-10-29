@@ -628,6 +628,10 @@
 			"x": 771,
 			"y": 387
 		},
+		"game_hud": {
+			"x": 0,
+			"y": 320
+		},
 		"hud_portrait_0": {
 			"x": 326,
 			"y": 12
@@ -711,6 +715,22 @@
 		"hud_status_effects_ally_3": {
 			"x": 96,
 			"y": 150
+		},
+		"hud_combo_area_0": {
+			"x": 322,
+			"y": 8
+		},
+		"hud_combo_area_1": {
+			"x": 322,
+			"y": 100
+		},
+		"hud_combo_area_2": {
+			"x": 8,
+			"y": 8
+		},
+		"hud_combo_area_2": {
+			"x": 8,
+			"y": 100
 		},
 		"main_menu_new_game": {
 			"x": 416,
@@ -897,6 +917,10 @@
 		"hud_status_effects_ally": {
 			"step": 18,
 			"max": 8
+		},
+		"hud_combo_area": {
+			"w": 308,  
+			"h": 84
 		}
 
 	},
@@ -1829,8 +1853,8 @@
 					"target": 3,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 0,
@@ -1847,8 +1871,8 @@
 					"target": 2,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 16,
@@ -1865,8 +1889,8 @@
 					"target": 3,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 17,
@@ -1883,8 +1907,8 @@
 					"target": 2,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 0,
@@ -1903,8 +1927,8 @@
 					"target": 1,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 14,
 					"conditions": [
 						{
 							"type": 11,
@@ -1921,8 +1945,8 @@
 					"target": 1,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 14,
 					"conditions": [
 						{
 							"type": 15,
@@ -1939,8 +1963,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 10,
@@ -1957,8 +1981,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 19,
@@ -1983,8 +2007,8 @@
 					"target": 1,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 10,
@@ -2001,8 +2025,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 9,
@@ -2019,8 +2043,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 15,
@@ -2037,8 +2061,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 22,
@@ -2057,8 +2081,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 2,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 1,
@@ -2075,8 +2099,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 3,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 2,
@@ -2093,8 +2117,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 3,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 10,
@@ -2111,8 +2135,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 2,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 1,
@@ -2137,8 +2161,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 16,
@@ -2155,8 +2179,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 3,
@@ -2173,8 +2197,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 17,
@@ -2191,8 +2215,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 4,
@@ -2211,8 +2235,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 11,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 4,
@@ -2229,8 +2253,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 10,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 3,
@@ -2247,8 +2271,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 23,
@@ -2271,8 +2295,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 1,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 11,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 4,
@@ -2297,8 +2321,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 1,
@@ -2315,8 +2339,8 @@
 					"target": 3,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 1,
@@ -2333,8 +2357,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 15,
@@ -2351,8 +2375,8 @@
 					"target": 4,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 1,
@@ -2371,8 +2395,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 6,
 					"conditions": [
 						{
 							"type": 3,
@@ -2389,8 +2413,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 1,
@@ -2407,8 +2431,8 @@
 					"target": 3,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 12,
 					"conditions": [
 						{
 							"type": 2,
@@ -2425,8 +2449,8 @@
 					"target": 3,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 0,
 					"conditions": [
 						{
 							"type": 0,
@@ -2445,8 +2469,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 12,
 					"conditions": [
 						{
 							"type": 2,
@@ -2463,8 +2487,8 @@
 					"target": 5,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 7,
 					"conditions": [
 						{
 							"type": 9,
@@ -2481,8 +2505,8 @@
 					"target": 3,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 11,
 					"conditions": [
 						{
 							"type": 13,
@@ -2499,8 +2523,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 24,
@@ -2525,8 +2549,8 @@
 					"target": 2,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 14,
 					"conditions": [
 						{
 							"type": 20,
@@ -2543,8 +2567,8 @@
 					"target": 3,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 14,
 					"conditions": [
 						{
 							"type": 22,
@@ -2561,8 +2585,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 9,
@@ -2579,8 +2603,8 @@
 					"target": 4,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 14,
 					"conditions": [
 						{
 							"type": 4,
@@ -2599,8 +2623,8 @@
 					"target": 1,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 5,
 					"conditions": [
 						{
 							"type": 1,
@@ -2617,8 +2641,8 @@
 					"target": 2,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 12,
 					"conditions": [
 						{
 							"type": 2,
@@ -2635,8 +2659,8 @@
 					"target": 3,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 6,
 					"conditions": [
 						{
 							"type": 3,
@@ -2653,8 +2677,8 @@
 					"target": 4,
 					"range": 1,
 					"dmg_type": 2,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 0,
 					"conditions": [
 						{
 							"type": 0,
@@ -2673,8 +2697,8 @@
 					"target": 1,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 1,
 					"conditions": [
 						{
 							"type": 4,
@@ -2691,8 +2715,8 @@
 					"target": 2,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 1,
 					"conditions": [
 						{
 							"type": 15,
@@ -2709,8 +2733,8 @@
 					"target": 0,
 					"range": 1,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 16,
 					"conditions": [
 						{
 							"type": 22,
@@ -2733,8 +2757,8 @@
 					"target": 4,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 1,
 					"conditions": [
 						{
 							"type": 12,
@@ -2753,8 +2777,8 @@
 					"target": 3,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 0,
@@ -2771,8 +2795,8 @@
 					"target": 2,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 4,
@@ -2795,8 +2819,8 @@
 					"target": 1,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 15,
@@ -2819,8 +2843,8 @@
 					"target": 4,
 					"range": 0,
 					"dmg_type": 0,
-					"projectile_type": ,
-					"skill_effect": ,
+					"projectile_type": 13,
+					"skill_effect": 13,
 					"conditions": [
 						{
 							"type": 12,

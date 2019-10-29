@@ -12,14 +12,6 @@
 
 #import "Pixlron.Knights.classes.h"
 
-typedef enum {
-    BorderTypePhysical,
-    BorderTypeRanged,
-    BorderTypeMagic,
-    BorderTypeNeutral,
-    BorderTypes
-} BorderType;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SkillsPanel : GuiPanel {

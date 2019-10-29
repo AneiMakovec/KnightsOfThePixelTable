@@ -327,9 +327,11 @@ GraphicsComponent *graphicsInstance;
     // set duration
     float duration = [[data valueForKey:DURATION] floatValue];
     AnimatedSprite *animation = [[[AnimatedSprite alloc] initWithDuration:duration] autorelease];
+    animation.looping = NO;
     
     // load frames
     int frames = [[data valueForKey:FRAMES] intValue];
+//    NSLog(@"%d frames for %@", frames, key);
     for (int i = 0; i < frames; i++) {
         NSString *frameKey = [key stringByAppendingString:[NSString stringWithFormat:@"f%d", i]];
         Sprite *frameSprite = [[Sprite alloc] init];

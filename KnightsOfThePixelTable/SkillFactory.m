@@ -17,6 +17,8 @@
 #define RANGE_KEY @"range"
 #define DAMAGE_TYPE_KEY @"dmg_type"
 #define CONDITIONS_KEY @"conditions"
+#define PROJECTILE_KEY @"projectile_type"
+#define EFFECT_KEY @"skill_effect"
 
 #define CONDITION_TYPE_KEY @"type"
 #define CONDITION_TARGET_KEY @"target"
@@ -28,7 +30,7 @@
 + (Skill *) createSkill:(SkillType)type forAlly:(KnightType)ally {
     NSDictionary *skillData = [[[Constants getValueDataForKey:VALUE_UNIT_SKILLS] objectForKey:[NSString stringWithFormat:@"%d", ally]] objectForKey:[NSString stringWithFormat:@"%d", type]];
     
-    Skill *skill = [[[Skill alloc] initWithName:[skillData objectForKey:NAME_KEY] function:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue]] autorelease];
+    Skill *skill = [[[Skill alloc] initWithName:[skillData objectForKey:NAME_KEY] function:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue] projectileType:[[skillData valueForKey:PROJECTILE_KEY] intValue] skillEffect:[[skillData valueForKey:EFFECT_KEY] intValue]] autorelease];
     
     ConditionData *condData = nil;
     for (NSDictionary *dict in [skillData objectForKey:CONDITIONS_KEY]) {
@@ -188,7 +190,7 @@
 + (Skill *) createSkill:(SkillType)type forEnemy:(MonsterType)enemy {
     NSDictionary *skillData = [[[Constants getValueDataForKey:VALUE_UNIT_SKILLS] objectForKey:[NSString stringWithFormat:@"%d", enemy]] objectForKey:[NSString stringWithFormat:@"%d", type]];
     
-    Skill *skill = [[[Skill alloc] initWithName:[skillData objectForKey:NAME_KEY] function:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue]] autorelease];
+    Skill *skill = [[[Skill alloc] initWithName:[skillData objectForKey:NAME_KEY] function:[[skillData valueForKey:FUNCTION_KEY] intValue] range:[[skillData valueForKey:RANGE_KEY] intValue] target:[[skillData valueForKey:TARGET_KEY] intValue] damage:[[skillData valueForKey:DAMAGE_KEY] floatValue] damageType:[[skillData valueForKey:DAMAGE_TYPE_KEY] intValue] projectileType:[[skillData valueForKey:PROJECTILE_KEY] intValue] skillEffect:[[skillData valueForKey:EFFECT_KEY] intValue]] autorelease];
     
     ConditionData *condData = nil;
     for (NSDictionary *dict in [skillData objectForKey:CONDITIONS_KEY]) {

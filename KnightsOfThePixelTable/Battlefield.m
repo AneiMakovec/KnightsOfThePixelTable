@@ -11,12 +11,9 @@
 
 @implementation Battlefield
 
-- (id) initWithLevel:(Level *)theLevel {
-    
+- (id) init {
     self = [super init];
     if (self != nil) {
-        level = theLevel;
-        
         allyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
         enemyEntities = [[NSMutableArray alloc] initWithCapacity:CombatPositions];
     }
@@ -111,8 +108,8 @@
 }
 
 - (void) removeAlly:(Knight *)theAlly {
+    [Level removeItemFromScene:theAlly];
     [allyEntities removeObject:theAlly];
-    [level.scene removeItem:theAlly];
 }
 
 - (Monster *) getEnemyAtPosition:(CombatPosition)thePosition {
@@ -139,7 +136,7 @@
 //        [hud addExpIndicatorAt:knight.origin.position amount:theEnemy.giveExperience];
 //    }
     
-    [level.scene removeItem:theEnemy];
+    [Level removeItemFromScene:theEnemy];
     [enemyEntities removeObject:theEnemy];
 }
 
@@ -262,6 +259,15 @@
     }
     
     return NO;
+}
+
+- (BOOL) addDice:(Dice *)dice toPosition:(CombatPosition)pos {
+    Knight *knight = [allyEntities objectAtIndex:pos];
+    if (knight) {
+        return [knight addComboItem:dice];
+    }
+    
+    return false;
 }
 
 

@@ -38,7 +38,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) deactivate;
 
++ (SimpleScene *) scene;
 + (void) addItemToScene:(id)item;
++ (void) removeItemFromScene:(id)item;
+
++ (void) newWave;
+
++ (void) resetDicepool;
++ (void) removeAllDices;
++ (void) removeDice:(Dice *)dice;
++ (void) addDices;
+
++ (NSMutableArray *) dices;
++ (NSMutableArray *) dicepoolBorders;
+
++ (Dice *) diceAtLocation:(Vector2 *)location;
++ (BOOL) touchedDicepool:(Vector2 *)location;
+
++ (BOOL) addDice:(Dice *)dice toPosition:(CombatPosition)pos;
+
++ (Knight *) knightAtPosition:(CombatPosition)pos;
 
 
 

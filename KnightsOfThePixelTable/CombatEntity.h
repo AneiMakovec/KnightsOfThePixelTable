@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CombatEntity : Entity<ICombatEntity> {
+@interface CombatEntity : Entity<IMovable, ICustomUpdate, ICustomCollider, IParticleCollider, IDamageDealer> {
     // physics variables
     Vector2 *position;
     Vector2 *velocity;
@@ -57,7 +57,57 @@ NS_ASSUME_NONNULL_BEGIN
     AnimatedSprite *animations[AnimationTypes];
 }
 
+@property (nonatomic, readonly) BOOL stunned;
+@property (nonatomic, readonly) BOOL finishedAttacking;
+@property (nonatomic) BOOL isTargeted;
+
+@property (nonatomic, readonly) EntityState state;
+@property (nonatomic, readonly) SkillType skillType;
+
+@property (nonatomic, readonly) BattlePosition *origin;
+@property (nonatomic, readonly) BattlePosition *attackPosition;
+
+@property (nonatomic, readonly) NSMutableArray *combo;
+@property (nonatomic, retain) NSMutableArray *conditions;
+
 - (id) initWithData:(EntityData *)data;
+
+- (void) attackTarget:(CombatEntity *)theTarget ally:(BOOL)isAlly;
+- (void) resetAttack;
+- (void) stopDefending;
+- (void) startDefending;
+
+- (BOOL) addComboItem:(Dice *)theItem;
+- (Dice *) removeCombo:(ComboItem)theItem;
+- (void) updateSkillType;
+
+- (StatType) getAttackValueForAttack:(SkillType)theAttack;
+
+//- (void) addStat:(Stat*)stat type:(StatType)type;
+//- (void) addSkill:(Skill*)skill type:(SkillType)type;
+- (Stat *) getStat:(StatType)type;
+
+- (void) addStatEffect:(StatEffect*)effect;
+- (void) updateStatEffects;
+
+- (void) buffStat:(StatType)type amount:(float)amount;
+- (void) debuffStat:(StatType)type amount:(float)amount;
+- (void) resetStat:(StatType)type;
+
+- (BOOL) isStunned;
+- (void) stun;
+- (void) recoverFromStun;
+
+//- (BOOL) isOnlyStunnEffect:(Condition*)condition;
+
+
+- (void) addConditionAnimation:(ConditionType)condition;
+
+
+- (AnimatedSprite *) getCurrentAnimation;
+
+
+- (void) cancelAttack;
 
 @end
 

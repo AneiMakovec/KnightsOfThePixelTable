@@ -15,8 +15,6 @@
 #import "GUIRenderer.h"
 
 #import "ScreenComponent.h"
-#import "GameplaySpriteComponent.h"
-#import "TownSpriteComponent.h"
 
 #import "GraphicsComponent.h"
 
@@ -41,7 +39,6 @@
 
 #import "StatsPanel.h"
 #import "SkillsPanel.h"
-#import "EquipmentPanel.h"
 
 #import "Rooster.h"
 #import "RoosterEntry.h"

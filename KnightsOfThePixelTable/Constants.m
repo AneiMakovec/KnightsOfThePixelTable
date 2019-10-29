@@ -110,6 +110,14 @@ Constants *constantsInstance;
     return [constantsInstance getBaseHpForUnit:type];
 }
 
++ (NSArray *) getBaseStatsForEnemy:(MonsterType)type {
+    return [constantsInstance getBaseStatsForEnemy:type];
+}
+
++ (int) getBaseHpForEnemy:(MonsterType)type {
+    return [constantsInstance getBaseHpForEnemy:type];
+}
+
 + (int) getWavesForStage:(StageType)stage {
     return [constantsInstance getWavesForStage:stage];
 }
@@ -134,9 +142,21 @@ Constants *constantsInstance;
 
 - (Vector2 *) getPositionDataForKey:(NSString *)key {
     if (![key containsString:@"interface"]) {
-        NSDictionary *positionData = [data_position objectForKey:key];
-        
-        return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue]];
+        if (![key containsString:@"hud"]) {
+            NSDictionary *positionData = [data_position objectForKey:key];
+            
+            return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue]];
+        } else {
+            NSDictionary *positionData = [data_position objectForKey:POSITION_HUD];
+            
+            if ([key isEqualToString:POSITION_HUD]) {
+                return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue]];
+            }
+            
+            NSDictionary *itemPositionData = [data_position objectForKey:key];
+            
+            return [Vector2 vectorWithX:[[positionData valueForKey:X] intValue] + [[itemPositionData valueForKey:X] intValue] y:[[positionData valueForKey:Y] intValue] + [[itemPositionData valueForKey:Y] intValue]];
+        }
     } else {
         NSDictionary *positionData = [data_position objectForKey:POSITION_INTERFACE_BACKGROUND];
         
@@ -1878,939 +1898,939 @@ Constants *constantsInstance;
     return -1;
 }
 
-+ (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally {
-    switch (ally) {
-        // BRAWLER
-        case KnightTypeBrawler:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BOWMAN
-        case KnightTypeLongbowman:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // PALADIN
-        case KnightTypePaladin:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        // FIRE ENCHANTRESS
-        case KnightTypeWizard:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally {
-    switch (ally) {
-        // BRAWLER
-        case KnightTypeBrawler:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BOWMAN
-        case KnightTypeLongbowman:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // PALADIN
-        case KnightTypePaladin:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        // FIRE ENCHANTRESS
-        case KnightTypeWizard:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) framePositionForAnimation:(AnimationType)type ally:(KnightType)ally {
-    switch (ally) {
-        // BRAWLER
-        case KnightTypeBrawler:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 14;
-                    
-                case AnimationTypeHit:
-                    return 20;
-                    
-                case AnimationTypeDeath:
-                    return 31;
-                    
-                case AnimationTypeAttack:
-                    return 37;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BOWMAN
-        case KnightTypeLongbowman:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 14;
-                    
-                case AnimationTypeHit:
-                    return 20;
-                    
-                case AnimationTypeDeath:
-                    return 31;
-                    
-                case AnimationTypeAttack:
-                    return 37;
-                    
-                default:
-                    break;
-            }
-            break;
-        // PALADIN
-        case KnightTypePaladin:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 14;
-                    
-                case AnimationTypeHit:
-                    return 20;
-                    
-                case AnimationTypeDeath:
-                    return 31;
-                    
-                case AnimationTypeAttack:
-                    return 36;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        // FIRE ENCHANTRESS
-        case KnightTypeWizard:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 6;
-                    
-                case AnimationTypeHit:
-                    return 12;
-                    
-                case AnimationTypeDeath:
-                    return 23;
-                    
-                case AnimationTypeAttack:
-                    return 34;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally {
-    switch (ally) {
-        // BRAWLER
-        case KnightTypeBrawler:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 6;
-                    
-                case AnimationTypeDeath:
-                    return 11;
-                    
-                case AnimationTypeAttack:
-                    return 6;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BOWMAN
-        case KnightTypeLongbowman:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 6;
-                    
-                case AnimationTypeDeath:
-                    return 11;
-                    
-                case AnimationTypeAttack:
-                    return 6;
-                    
-                default:
-                    break;
-            }
-            break;
-        // PALADIN
-        case KnightTypePaladin:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 6;
-                    
-                case AnimationTypeDeath:
-                    return 11;
-                    
-                case AnimationTypeAttack:
-                    return 5;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        // FIRE ENCHANTRESS
-        case KnightTypeWizard:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 1;
-                    
-                case AnimationTypeHit:
-                    return 6;
-                    
-                case AnimationTypeDeath:
-                    return 11;
-                    
-                case AnimationTypeAttack:
-                    return 11;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally {
-    switch (ally) {
-        // BRAWLER
-        case KnightTypeBrawler:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.5f;
-                    
-                case AnimationTypeMove:
-                    return 0.5f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 1;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BOWMAN
-        case KnightTypeLongbowman:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.5f;
-                    
-                case AnimationTypeMove:
-                    return 0.5f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 1;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-        // PALADIN
-        case KnightTypePaladin:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.5f;
-                    
-                case AnimationTypeMove:
-                    return 0.5f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 1;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        // FIRE ENCHANTRESS
-        case KnightTypeWizard:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.5f;
-                    
-                case AnimationTypeMove:
-                    return 0.5f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 1;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-
-/*
- MARK: ENEMIES
- */
-+ (int) spritesheetWidthOfEnemy:(MonsterType)enemy {
-    switch (enemy) {
-        case MonsterTypeWarrior:
-            return 8;
-            
-        case MonsterTypeBrute:
-            return 8;
-            
-        case MonsterTypeBossViking:
-            return 8;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
-    switch (enemy) {
-        // WARRIOR
-        case MonsterTypeWarrior:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BRUTE
-        case MonsterTypeBrute:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // VIKING
-        case MonsterTypeBossViking:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
-    switch (enemy) {
-        // WARRIOR
-        case MonsterTypeWarrior:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BRUTE
-        case MonsterTypeBrute:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-        // VIKING
-        case MonsterTypeBossViking:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 64;
-                    
-                case AnimationTypeMove:
-                    return 64;
-                    
-                case AnimationTypeHit:
-                    return 64;
-                    
-                case AnimationTypeDeath:
-                    return 64;
-                    
-                case AnimationTypeAttack:
-                    return 64;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) framePositionForAnimation:(AnimationType)type enemy:(MonsterType)enemy {
-    switch (enemy) {
-        // WARRIOR
-        case MonsterTypeWarrior:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 4;
-                    
-                case AnimationTypeMove:
-                    return 12;
-                    
-                case AnimationTypeHit:
-                    return 16;
-                    
-                case AnimationTypeDeath:
-                    return 39;
-                    
-                case AnimationTypeAttack:
-                    return 47;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BRUTE
-        case MonsterTypeBrute:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 14;
-                    
-                case AnimationTypeHit:
-                    return 18;
-                    
-                case AnimationTypeDeath:
-                    return 37;
-                    
-                case AnimationTypeAttack:
-                    return 47;
-                    
-                default:
-                    break;
-            }
-            break;
-        // VIKING
-        case MonsterTypeBossViking:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 4;
-                    
-                case AnimationTypeMove:
-                    return 12;
-                    
-                case AnimationTypeHit:
-                    return 17;
-                    
-                case AnimationTypeDeath:
-                    return 34;
-                    
-                case AnimationTypeAttack:
-                    return 45;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (int) numFramesInAnimation:(AnimationType)type enemy:(MonsterType)enemy {
-    switch (enemy) {
-        // WARRIOR
-        case MonsterTypeWarrior:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 4;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 4;
-                    
-                case AnimationTypeDeath:
-                    return 23;
-                    
-                case AnimationTypeAttack:
-                    return 8;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BRUTE
-        case MonsterTypeBrute:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 6;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 4;
-                    
-                case AnimationTypeDeath:
-                    return 19;
-                    
-                case AnimationTypeAttack:
-                    return 10;
-                    
-                default:
-                    break;
-            }
-            break;
-        // VIKING
-        case MonsterTypeBossViking:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 4;
-                    
-                case AnimationTypeMove:
-                    return 8;
-                    
-                case AnimationTypeHit:
-                    return 5;
-                    
-                case AnimationTypeDeath:
-                    return 17;
-                    
-                case AnimationTypeAttack:
-                    return 11;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-+ (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
-    switch (enemy) {
-        // WARRIOR
-        case MonsterTypeWarrior:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.7f;
-                    
-                case AnimationTypeMove:
-                    return 0.7f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 2;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-        // BRUTE
-        case MonsterTypeBrute:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.7f;
-                    
-                case AnimationTypeMove:
-                    return 0.7f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 2;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-        // VIKING
-        case MonsterTypeBossViking:
-            switch (type) {
-                case AnimationTypeIdle:
-                    return 0.7f;
-                    
-                case AnimationTypeMove:
-                    return 0.7f;
-                    
-                case AnimationTypeHit:
-                    return 0.4f;
-                    
-                case AnimationTypeDeath:
-                    return 2;
-                    
-                case AnimationTypeAttack:
-                    return 1;
-                    
-                default:
-                    break;
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return -1;
-}
-
-
-
-
-// MARK: interface
-+ (NSString *) getSwitchButtonText:(BuildingType)type {
-    switch (type) {
-        case BuildingTypeCastle:
-            return @"Castle";
-            
-        case BuildingTypeBarracks:
-            return @"Barracks";
-            
-        case BuildingTypeTrainingYard:
-            return @"Training yard";
-            
-        case BuildingTypeBlacksmith:
-            return @"Blacksmith";
-            
-        case BuildingTypeWarbandCamp:
-            return @"Warband camp";
-            
-        default:
-            return nil;
-    }
-}
-
-
-
-+ (int) getExpNeededForNextLvl:(int)lvl {
-    return 1;
-}
-
-
-+ (int) getMaxKnightLvl {
-    return 10;
-}
+//+ (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally {
+//    switch (ally) {
+//        // BRAWLER
+//        case KnightTypeBrawler:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BOWMAN
+//        case KnightTypeLongbowman:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // PALADIN
+//        case KnightTypePaladin:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        // FIRE ENCHANTRESS
+//        case KnightTypeWizard:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally {
+//    switch (ally) {
+//        // BRAWLER
+//        case KnightTypeBrawler:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BOWMAN
+//        case KnightTypeLongbowman:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // PALADIN
+//        case KnightTypePaladin:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        // FIRE ENCHANTRESS
+//        case KnightTypeWizard:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) framePositionForAnimation:(AnimationType)type ally:(KnightType)ally {
+//    switch (ally) {
+//        // BRAWLER
+//        case KnightTypeBrawler:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 14;
+//
+//                case AnimationTypeHit:
+//                    return 20;
+//
+//                case AnimationTypeDeath:
+//                    return 31;
+//
+//                case AnimationTypeAttack:
+//                    return 37;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BOWMAN
+//        case KnightTypeLongbowman:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 14;
+//
+//                case AnimationTypeHit:
+//                    return 20;
+//
+//                case AnimationTypeDeath:
+//                    return 31;
+//
+//                case AnimationTypeAttack:
+//                    return 37;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // PALADIN
+//        case KnightTypePaladin:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 14;
+//
+//                case AnimationTypeHit:
+//                    return 20;
+//
+//                case AnimationTypeDeath:
+//                    return 31;
+//
+//                case AnimationTypeAttack:
+//                    return 36;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        // FIRE ENCHANTRESS
+//        case KnightTypeWizard:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 6;
+//
+//                case AnimationTypeHit:
+//                    return 12;
+//
+//                case AnimationTypeDeath:
+//                    return 23;
+//
+//                case AnimationTypeAttack:
+//                    return 34;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally {
+//    switch (ally) {
+//        // BRAWLER
+//        case KnightTypeBrawler:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 6;
+//
+//                case AnimationTypeDeath:
+//                    return 11;
+//
+//                case AnimationTypeAttack:
+//                    return 6;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BOWMAN
+//        case KnightTypeLongbowman:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 6;
+//
+//                case AnimationTypeDeath:
+//                    return 11;
+//
+//                case AnimationTypeAttack:
+//                    return 6;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // PALADIN
+//        case KnightTypePaladin:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 6;
+//
+//                case AnimationTypeDeath:
+//                    return 11;
+//
+//                case AnimationTypeAttack:
+//                    return 5;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        // FIRE ENCHANTRESS
+//        case KnightTypeWizard:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 1;
+//
+//                case AnimationTypeHit:
+//                    return 6;
+//
+//                case AnimationTypeDeath:
+//                    return 11;
+//
+//                case AnimationTypeAttack:
+//                    return 11;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally {
+//    switch (ally) {
+//        // BRAWLER
+//        case KnightTypeBrawler:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.5f;
+//
+//                case AnimationTypeMove:
+//                    return 0.5f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 1;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BOWMAN
+//        case KnightTypeLongbowman:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.5f;
+//
+//                case AnimationTypeMove:
+//                    return 0.5f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 1;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // PALADIN
+//        case KnightTypePaladin:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.5f;
+//
+//                case AnimationTypeMove:
+//                    return 0.5f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 1;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        // FIRE ENCHANTRESS
+//        case KnightTypeWizard:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.5f;
+//
+//                case AnimationTypeMove:
+//                    return 0.5f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 1;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//
+///*
+// MARK: ENEMIES
+// */
+//+ (int) spritesheetWidthOfEnemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        case MonsterTypeWarrior:
+//            return 8;
+//
+//        case MonsterTypeBrute:
+//            return 8;
+//
+//        case MonsterTypeBossViking:
+//            return 8;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        // WARRIOR
+//        case MonsterTypeWarrior:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BRUTE
+//        case MonsterTypeBrute:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // VIKING
+//        case MonsterTypeBossViking:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        // WARRIOR
+//        case MonsterTypeWarrior:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BRUTE
+//        case MonsterTypeBrute:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // VIKING
+//        case MonsterTypeBossViking:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 64;
+//
+//                case AnimationTypeMove:
+//                    return 64;
+//
+//                case AnimationTypeHit:
+//                    return 64;
+//
+//                case AnimationTypeDeath:
+//                    return 64;
+//
+//                case AnimationTypeAttack:
+//                    return 64;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) framePositionForAnimation:(AnimationType)type enemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        // WARRIOR
+//        case MonsterTypeWarrior:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 4;
+//
+//                case AnimationTypeMove:
+//                    return 12;
+//
+//                case AnimationTypeHit:
+//                    return 16;
+//
+//                case AnimationTypeDeath:
+//                    return 39;
+//
+//                case AnimationTypeAttack:
+//                    return 47;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BRUTE
+//        case MonsterTypeBrute:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 14;
+//
+//                case AnimationTypeHit:
+//                    return 18;
+//
+//                case AnimationTypeDeath:
+//                    return 37;
+//
+//                case AnimationTypeAttack:
+//                    return 47;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // VIKING
+//        case MonsterTypeBossViking:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 4;
+//
+//                case AnimationTypeMove:
+//                    return 12;
+//
+//                case AnimationTypeHit:
+//                    return 17;
+//
+//                case AnimationTypeDeath:
+//                    return 34;
+//
+//                case AnimationTypeAttack:
+//                    return 45;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (int) numFramesInAnimation:(AnimationType)type enemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        // WARRIOR
+//        case MonsterTypeWarrior:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 4;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 4;
+//
+//                case AnimationTypeDeath:
+//                    return 23;
+//
+//                case AnimationTypeAttack:
+//                    return 8;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BRUTE
+//        case MonsterTypeBrute:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 6;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 4;
+//
+//                case AnimationTypeDeath:
+//                    return 19;
+//
+//                case AnimationTypeAttack:
+//                    return 10;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // VIKING
+//        case MonsterTypeBossViking:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 4;
+//
+//                case AnimationTypeMove:
+//                    return 8;
+//
+//                case AnimationTypeHit:
+//                    return 5;
+//
+//                case AnimationTypeDeath:
+//                    return 17;
+//
+//                case AnimationTypeAttack:
+//                    return 11;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//+ (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy {
+//    switch (enemy) {
+//        // WARRIOR
+//        case MonsterTypeWarrior:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.7f;
+//
+//                case AnimationTypeMove:
+//                    return 0.7f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 2;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // BRUTE
+//        case MonsterTypeBrute:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.7f;
+//
+//                case AnimationTypeMove:
+//                    return 0.7f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 2;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//        // VIKING
+//        case MonsterTypeBossViking:
+//            switch (type) {
+//                case AnimationTypeIdle:
+//                    return 0.7f;
+//
+//                case AnimationTypeMove:
+//                    return 0.7f;
+//
+//                case AnimationTypeHit:
+//                    return 0.4f;
+//
+//                case AnimationTypeDeath:
+//                    return 2;
+//
+//                case AnimationTypeAttack:
+//                    return 1;
+//
+//                default:
+//                    break;
+//            }
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return -1;
+//}
+//
+//
+//
+//
+//// MARK: interface
+//+ (NSString *) getSwitchButtonText:(BuildingType)type {
+//    switch (type) {
+//        case BuildingTypeCastle:
+//            return @"Castle";
+//
+//        case BuildingTypeBarracks:
+//            return @"Barracks";
+//
+//        case BuildingTypeTrainingYard:
+//            return @"Training yard";
+//
+//        case BuildingTypeBlacksmith:
+//            return @"Blacksmith";
+//
+//        case BuildingTypeWarbandCamp:
+//            return @"Warband camp";
+//
+//        default:
+//            return nil;
+//    }
+//}
+//
+//
+//
+//+ (int) getExpNeededForNextLvl:(int)lvl {
+//    return 1;
+//}
+//
+//
+//+ (int) getMaxKnightLvl {
+//    return 10;
+//}
 
 
 @end

@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 
 #import "PixEngine.Scene.Objects.h"
+#import "PixEngine.Graphics.h"
 #import "Pixlron.Knights.classes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Projectile : NSObject<IParticleCollider, IMovable, ISceneUser> {
+@interface Projectile : NSObject<IParticleCollider, IMovable, IRotatable, ISceneUser> {
     id<IScene> scene;
+    
+    float angularVelocity;
+    float rotationAngle;
     
     Vector2 *position;
     Vector2 *velocity;
@@ -28,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL missed;
     
     Skill *skill;
+    
+    Sprite *sprite;
+    AnimatedSprite *animation;
 }
 
 @property (nonatomic, readonly) int damage;
@@ -38,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) Skill *skill;
 
 - (id) initWithSender:(CombatEntity *)theSender target:(CombatEntity *)theTarget skill:(Skill *)theSkill damage:(int)theDamage position:(Vector2 *)thePosition velocity:(Vector2 *)theVelocity radius:(float)theRadius wasCrit:(BOOL)crit missed:(BOOL)miss;
+
+- (id) getSprite;
 
 @end
 

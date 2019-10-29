@@ -19,7 +19,7 @@
     if (self != nil) {
         
         // init textures
-        [GameplaySpriteComponent activateWithGame:self.game];
+//        [GameplaySpriteComponent activateWithGame:self.game];
         
         // init level
         [Level initializeWithGame:self.game];
@@ -41,6 +41,7 @@
         aiPlayer.updateOrder = 2;
         physics.updateOrder = 4;
         self.updateOrder = 9;
+        renderer.updateOrder = 10;
     }
     return self;
 }
@@ -78,13 +79,13 @@
 
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
-    if (gameHud.endDungeon) {
-        [GameProgress setFinishedDungeon:YES];
-        
-        // return to town
-        [knightsGame popState];
-        [knightsGame popState];
-    }
+//    if (gameHud.endDungeon) {
+//        [GameProgress setFinishedDungeon:YES];
+//
+//        // return to town
+//        [knightsGame popState];
+//        [knightsGame popState];
+//    }
     
     
 }

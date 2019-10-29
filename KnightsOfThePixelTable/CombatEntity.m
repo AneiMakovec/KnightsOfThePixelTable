@@ -97,27 +97,27 @@
             // check if miss
             if (projectile.missed) {
                 // miss
-                [hud addMissIndicatorAt:position];
+//                [hud addMissIndicatorAt:position];
             } else {
                 // take damage
                 [self takeDamage:projectile.damage];
                 
                 // add damage and hit indicators
-                [hud addDamageIndicatorAt:position amount:projectile.damage isCrit:projectile.wasCrit];
-                [hud addHitIndicatorAt:position];
+//                [hud addDamageIndicatorAt:position amount:projectile.damage isCrit:projectile.wasCrit];
+//                [hud addHitIndicatorAt:position];
                 
                 // apply skill effects
-                [self applySkillEffectsToTarget:self skill:projectile.skill];
+//                [self applySkillEffectsToTarget:self skill:projectile.skill];
                 
                 // then apply skill status effects
-                [self applyStatEffectsToTarget:self skill:projectile.skill];
+//                [self applyStatEffectsToTarget:self skill:projectile.skill];
                 
                 // show hit animation
                 [self startDefending];
             }
             
             // remove projectile from scene
-            [level.scene removeItem:projectile];
+            [Level removeItemFromScene:projectile];
         }
     }
     
@@ -288,7 +288,7 @@
 }
 
 
-- (void) dealDamageToTargets {
+//- (void) dealDamageToTargets {
 //    NSLog(@"My Strength stat is: %d", stats[Strength].statValue);
 //
 //    for (CombatEntity *theTarget in targets) {
@@ -353,9 +353,9 @@
 ////             [theTarget takeDamage:1000]; // HAX
 //        }
 //    }
-}
+//}
 
-- (void) healTargets {
+//- (void) healTargets {
 //    for (CombatEntity *theTarget in targets) {
 //        // heal target
 //        [theTarget heal:skills[skillType].damage];
@@ -369,10 +369,10 @@
 //        // then apply status effects
 //        [self applyStatEffectsToTarget:theTarget skill:skills[skillType]];
 //    }
-}
+//}
 
 
-- (BOOL) calcChanceForSuccess:(int)success fail:(int)fail {
+//- (BOOL) calcChanceForSuccess:(int)success fail:(int)fail {
 //    int sum = success + fail;
 //    float pSuccess = (float)success / (float)sum;
 //
@@ -383,18 +383,18 @@
 //        return YES;
 //    else
 //        return NO;
-}
+//}
 
-- (int) calcDamageOnTarget:(CombatEntity*)theTarget {
+//- (int) calcDamageOnTarget:(CombatEntity*)theTarget {
 //    double baseDamage = ((double)(stats[Strength].statValue * stats[Strength].statValue) / 32.0f + 32.0f) * skills[skillType].damage;
 //
 //    double defenceReduction = (730.0f - ((double)[theTarget getStat:Defence].statValue * 51.0f - (double)([theTarget getStat:Defence].statValue * [theTarget getStat:Defence].statValue) / 11.0f) / 10.0f) / 730.0f;
 //
 //    int finalDamage = baseDamage * defenceReduction;
 //    return finalDamage;
-}
+//}
 
-- (CombatEntity *) getRandomTargetForAlly:(BOOL)isAlly {
+//- (CombatEntity *) getRandomTargetForAlly:(BOOL)isAlly {
 //    CombatEntity *entity = nil;
 //    if (isAlly) {
 //        if ([level.battlefield.enemyEntities count] > 0) {
@@ -413,9 +413,9 @@
 //    }
 //
 //    return entity;
-}
+//}
 
-- (void) applyStatEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
+//- (void) applyStatEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
 //    for (StatEffect *effect in skill.conditions) {
 //        if ([Random intLessThan:100] < effect.chance) {
 //            [theTarget addStatEffect:[StatEffectFactory createStatEffect:effect]];
@@ -520,15 +520,15 @@
 //            }
 //        }
 //    }
-}
+//}
 
-- (void) applySkillEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
+//- (void) applySkillEffectsToTarget:(CombatEntity*)theTarget skill:(Skill *)skill {
 //    for (int i = 0; i < SkillEffects; i++) {
 //        if ([skill hasEffect:i]) {
 //            [self applySkillEffect:i toTarget:theTarget];
 //        }
 //    }
-}
+//}
 
 //- (void) applySkillEffect:(SkillEffect)effect toTarget:(CombatEntity*)theTarget {
 //    Class statEffect;
@@ -573,15 +573,15 @@
 //    }
 //}
 
-- (void) removeStatEffect:(Class)effect fromTarget:(CombatEntity*)theTarget {
+//- (void) removeStatEffect:(Class)effect fromTarget:(CombatEntity*)theTarget {
 //    for (StatEffect *statEffect in theTarget.conditions) {
 //        if ([statEffect isKindOfClass:effect]) {
 //            [statEffect deactivate];
 //        }
 //    }
-}
+//}
 
-- (void) changeDurationOfStatEffect:(Class)effect forTarget:(CombatEntity*)theTarget increase:(BOOL)increase {
+//- (void) changeDurationOfStatEffect:(Class)effect forTarget:(CombatEntity*)theTarget increase:(BOOL)increase {
 //    for (StatEffect *statEffect in theTarget.conditions) {
 //        if ([statEffect isKindOfClass:effect]) {
 //            if (increase)
@@ -590,16 +590,18 @@
 //                [statEffect decreaseDuration];
 //        }
 //    }
-}
+//}
 
 
 
 - (BOOL) addComboItem:(Dice *)theItem {
     // Override this in child implementations.
-    return false;
+    
+    [combo addObject:theItem];
+    return true;
 }
 
-- (Dice *) removeCombo:(ComboItem)theItem {
+//- (Dice *) removeCombo:(ComboItem)theItem {
 //    if (theItem < [combo count]) {
 //        // remember the combo dice
 //        ComboSlot *comboSlot = [combo objectAtIndex:theItem];
@@ -622,7 +624,7 @@
 //    } else {
 //        return nil;
 //    }
-}
+//}
 
 
 
@@ -802,10 +804,10 @@
 //    [deactivated release];
 }
 
-- (StatType) getAttackValueForAttack:(SkillType)theAttack {
+//- (StatType) getAttackValueForAttack:(SkillType)theAttack {
     // MARK: TODO: change the attack type to attack value in attack damages
 //    return comboSkillTypes[theAttack];
-}
+//}
 
 
 //- (void) addStat:(Stat *)stat type:(StatType)type {
@@ -832,9 +834,9 @@
 }
 
 
-- (Stat*) getStat:(StatType)type {
+//- (Stat*) getStat:(StatType)type {
 //    return stats[type];
-}
+//}
 
 
 - (void) addStatEffect:(StatEffect *)effect {
@@ -909,13 +911,22 @@
             break;
             
         case EntityStateAttacking:
-            if ([entityData getSkill:skillType].function == Damage)
+            if ([entityData getSkill:skillType].function == Damage) {
+                KnightData *data = [entityData isKindOfClass:[KnightData class]] ? (KnightData *) entityData : nil;
+                if (data && data.type == KnightTypeBattlemage) {
+                    if (skillType == FirstComboSkill || skillType == ThirdComboSkill) {
+                        return animations[AnimationTypeAction];
+                    }
+                }
+                
                 return animations[AnimationTypeAttack];
-            else
+            } else {
                 return animations[AnimationTypeAction];
+            }
             break;
             
         default:
+            return nil;
             break;
     }
 }

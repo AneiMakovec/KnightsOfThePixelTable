@@ -34,6 +34,10 @@ GameHud *hudInstance;
     return [hudInstance isLastWave];
 }
 
++ (BOOL) wasDiceDropped:(CombatPosition)pos {
+    return [hudInstance wasDiceDropped:pos];
+}
+
 
 
 
@@ -56,7 +60,7 @@ GameHud *hudInstance;
         numWaves = [Constants getWavesForStage:[GameProgress currentStage]];
 
         renderer = [[GUIRenderer alloc] initWithGame:self.game scene:scene];
-        renderer.drawOrder = 1;
+        renderer.updateOrder = 11;
     }
     return self;
 }
@@ -72,7 +76,7 @@ GameHud *hudInstance;
     [scene addItem:background];
     
     // hud background
-    hudBackground = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_HUD atPosition:[Vector2 vectorWithX:320 y:0]];
+    hudBackground = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_HUD atPosition:[Vector2 vectorWithX:0 y:320]];
     hudBackground.layerDepth = 1.0f;
     [scene addItem:hudBackground];
     
@@ -120,7 +124,7 @@ GameHud *hudInstance;
     [scene addItem:resetDices];
     
     // end turn button
-    endTurn = [GraphicsComponent getImageButtonWithKey:GAMEPLAY_MENU_INTERFACE_HUD_WAVE_COUNTER_SYMBOL_GOOD atPosition:[Vector2 vectorWithX:485 y:64]];
+    endTurn = [GraphicsComponent getImageButtonWithKey:GAMEPLAY_MENU_INTERFACE_HUD_WAVE_COUNTER_SYMBOL_GOOD atPosition:[Vector2 vectorWithX:485 y:34]];
     endTurn.backgroundImage.layerDepth = 0.98f;
     [scene addItem:endTurn];
     
@@ -140,6 +144,7 @@ GameHud *hudInstance;
         portraits[i] = [GraphicsComponent getImageWithKey:portraitKeys[[GameProgress getKnightOnCombatPosition:i].type] atPosition:[Constants getPositionDataForKey:[portraitPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] width:76 height:76];
         portraits[i].layerDepth = 0.98f;
 //        [portraits[i] setScaleUniform:2.0f];
+        [scene addItem:portraits[i]];
     }
     
     // init skills
@@ -147,21 +152,31 @@ GameHud *hudInstance;
     NSString *skillPosKey = POSITION_HUD_SKILLS;
     for (int i = 0; i < CombatPositions; i++) {
         for (int j = 0; j < SkillTypes; j++) {
-            skills[i][j] = [GraphicsComponent getTouchImageWithKey:[knightTypeKeys[[GameProgress getKnightOnCombatPosition:i].type] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", j]]]];
+            skills[i][j] = [GraphicsComponent getTouchImageWithKey:[knightTypeKeys[[GameProgress getKnightOnCombatPosition:i].type] stringByAppendingString:[NSString stringWithFormat:@"s%d", j + 1]] atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
             skills[i][j].layerDepth = 0.98f;
+            [skills[i][j] setScaleUniform:2.0f];
         }
+        
+        // skill pressed areas
+        Vector2 *pos = [Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        skillPresedAreas[i] = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:pos.x y:pos.y width:64 height:64]];
+        [scene addItem:skillPresedAreas[i]];
     }
     
     // init skill borders
     for (int i = 0; i < CombatPositions; i++) {
         skillBorders[i][BorderTypePhysical] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_PHYSICAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
         skillBorders[i][BorderTypePhysical].layerDepth = 0.98f;
+        [skillBorders[i][BorderTypePhysical] setScaleUniform:2.0f];
         skillBorders[i][BorderTypeRanged] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_RANGED atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
         skillBorders[i][BorderTypeRanged].layerDepth = 0.98f;
+        [skillBorders[i][BorderTypeRanged] setScaleUniform:2.0f];
         skillBorders[i][BorderTypeMagic] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_MAGIC atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
         skillBorders[i][BorderTypeMagic].layerDepth = 0.98f;
+        [skillBorders[i][BorderTypeMagic] setScaleUniform:2.0f];
         skillBorders[i][BorderTypeNeutral] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_SKILLS_BORDER_NEUTRAL atPosition:[Constants getPositionDataForKey:[skillPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]]];
         skillBorders[i][BorderTypeNeutral].layerDepth = 0.98f;
+        [skillBorders[i][BorderTypeNeutral] setScaleUniform:2.0f];
     }
     
     
@@ -171,6 +186,7 @@ GameHud *hudInstance;
     for (int i = 0; i < CombatPositions; i++) {
         hpBars[i] = [GraphicsComponent getImageWithKey:GAMEPLAY_MENU_INTERFACE_HUD_HP atPosition:[Constants getPositionDataForKey:[hpBarKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]] width:hpData.width height:hpData.height];
         hpBars[i].layerDepth = 0.98f;
+        [scene addItem:hpBars[i]];
     }
     
     
@@ -186,8 +202,23 @@ GameHud *hudInstance;
                 combos[i][j][k].layerDepth = 0.98f;
             }
             
+            comboSlotAreas[i][j] = [[Button alloc] initWithInputArea:[Rectangle rectangleWithX:pos.x - 2 y:pos.y - 2 width:36 height:36]];
+            [scene addItem:comboSlotAreas[i][j]];
+            
             pos.x += comboData.step;
         }
+    }
+    
+    
+    
+    
+    // init combo release areas
+    NSString *comboAreasPosKey = POSITION_HUD_COMBO_AREAS;
+    MetaData *comboAreasMeta = [Constants getMetaDataForKey:META_HUD_COMBO_AREA];
+    for (int i = 0; i < CombatPositions; i++) {
+        Vector2 *pos = [Constants getPositionDataForKey:[comboAreasPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        comboAreas[i] = [[ReleaseArea alloc] initWithInputArea:[Rectangle rectangleWithX:pos.x y:pos.y width:comboAreasMeta.width height:comboAreasMeta.height]];
+        [scene addItem:comboAreas[i]];
     }
     
     
@@ -248,143 +279,159 @@ GameHud *hudInstance;
     }
     
     if (resetDices.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        [gameplay.currentLevel.dicepool removeAllDices];
-        [gameplay.currentLevel.dicepool addDicesOfType:DiceFrameTypeGood];
+//        [SoundEngine play:SoundEffectTypeClick];
+        [Level removeAllDices];
+        [Level addDices];
     }
     
     if (endTurn.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
+//        [SoundEngine play:SoundEffectTypeClick];
         endTurnReleased = YES;
     }
     
     if (retreat.wasReleased) {
-        [SoundEngine play:SoundEffectTypeClick];
-        [self addRetreatInterface];
+//        [SoundEngine play:SoundEffectTypeClick];
+//        [self addRetreatInterface];
+    }
+    
+}
+
+- (void) update {
+    for (int i = 0; i < CombatPositions; i++) {
+        for (int j = 0; j < [[Level knightAtPosition:i].combo count]; j++) {
+            Dice *dice = (Dice *) [[Level knightAtPosition:i].combo objectAtIndex:j];
+            if (dice) {
+                [Level addItemToScene:combos[i][j][dice.type]];
+            }
+        }
     }
 }
 
 - (void) resetEndTurnButton {
     endTurnReleased = NO;
 }
+//
+//- (void) addDamageIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
+//    Indicator *indicator;
+//    if (isCrit)
+//        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color red] duration:0.5f];
+//    else
+//        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color whiteSmoke] duration:0.5f];
+//
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addHealIndicatorAt:(Vector2 *)position amount:(int)amount {
+//    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color green] duration:0.5f];
+//    [scene addItem:indicator];
+//    [indicator release];
+//
+//    AnimatedIndicator *animation = [[AnimatedIndicator alloc] initWithTexture:healTexture position:[Vector2 vectorWithX:position.x y:position.y] duration:0.3f];
+//    [animation loadHealAnimation];
+//    [scene addItem:animation];
+//    [animation release];
+//}
+//
+//- (void) addMissIndicatorAt:(Vector2 *)position {
+//    Indicator *indicator = [[Indicator alloc] initWithText:@"MISS" position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGray] duration:0.5f];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addExpIndicatorAt:(Vector2 *)position amount:(int)amount {
+//    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d EXP", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color blue] duration:0.5f];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addGoldIndicatorAt:(Vector2 *)position amount:(int)amount {
+//    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d G", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGoldenrodYellow] duration:0.5f];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//
+//
+//- (void) addTextIndicatorAt:(Vector2 *)position text:(NSString *)text color:(Color *)color {
+//    Indicator *indicator = [[Indicator alloc] initWithText:text position:[Vector2 vectorWithX:position.x y:position.y - 100] font:font color:color duration:1.5f];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//
+//
+//- (void) addHitIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:0.4f];
+//    [indicator loadHitAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addBurnIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:burnTexture position:position duration:0.5f];
+//    [indicator loadBurnAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addFrostbiteIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:frostbiteTexture position:position duration:0.5f];
+//    [indicator loadFrostbiteAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addBleedIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:bleedTexture position:position duration:0.4f];
+//    [indicator loadBleedAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addPoisonIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:poisonTexture position:position duration:0.5f];
+//    [indicator loadPoisonAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addBuffIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:buffTexture position:position duration:0.3f];
+//    [indicator loadBuffAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//-(void) addDebuffIndicatorAt:(Vector2 *)position {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:debuffTexture position:position duration:0.3f];
+//    [indicator loadDebuffAnimation];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
+//
+//- (void) addStunIndicatorAt:(Vector2 *)position target:(CombatEntity *)target {
+//    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:stunTexture position:[Vector2 vectorWithX:position.x y:position.y - 50] duration:0.5f];
+//    [indicator loadStunAnimationWithTarget:target];
+//    [scene addItem:indicator];
+//    [indicator release];
+//}
 
-- (void) addDamageIndicatorAt:(Vector2 *)position amount:(int)amount isCrit:(BOOL)isCrit {
-    Indicator *indicator;
-    if (isCrit)
-        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color red] duration:0.5f];
-    else
-        indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color whiteSmoke] duration:0.5f];
-    
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addHealIndicatorAt:(Vector2 *)position amount:(int)amount {
-    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"%d", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color green] duration:0.5f];
-    [scene addItem:indicator];
-    [indicator release];
-    
-    AnimatedIndicator *animation = [[AnimatedIndicator alloc] initWithTexture:healTexture position:[Vector2 vectorWithX:position.x y:position.y] duration:0.3f];
-    [animation loadHealAnimation];
-    [scene addItem:animation];
-    [animation release];
-}
-
-- (void) addMissIndicatorAt:(Vector2 *)position {
-    Indicator *indicator = [[Indicator alloc] initWithText:@"MISS" position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGray] duration:0.5f];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addExpIndicatorAt:(Vector2 *)position amount:(int)amount {
-    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d EXP", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color blue] duration:0.5f];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addGoldIndicatorAt:(Vector2 *)position amount:(int)amount {
-    Indicator *indicator = [[Indicator alloc] initWithText:[NSString stringWithFormat:@"+ %d G", amount] position:[Vector2 vectorWithX:position.x y:position.y - 56] font:font color:[Color lightGoldenrodYellow] duration:0.5f];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-
-
-- (void) addTextIndicatorAt:(Vector2 *)position text:(NSString *)text color:(Color *)color {
-    Indicator *indicator = [[Indicator alloc] initWithText:text position:[Vector2 vectorWithX:position.x y:position.y - 100] font:font color:color duration:1.5f];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-
-
-- (void) addHitIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:hitTexture position:position duration:0.4f];
-    [indicator loadHitAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addBurnIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:burnTexture position:position duration:0.5f];
-    [indicator loadBurnAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addFrostbiteIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:frostbiteTexture position:position duration:0.5f];
-    [indicator loadFrostbiteAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addBleedIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:bleedTexture position:position duration:0.4f];
-    [indicator loadBleedAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addPoisonIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:poisonTexture position:position duration:0.5f];
-    [indicator loadPoisonAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addBuffIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:buffTexture position:position duration:0.3f];
-    [indicator loadBuffAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
--(void) addDebuffIndicatorAt:(Vector2 *)position {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:debuffTexture position:position duration:0.3f];
-    [indicator loadDebuffAnimation];
-    [scene addItem:indicator];
-    [indicator release];
-}
-
-- (void) addStunIndicatorAt:(Vector2 *)position target:(CombatEntity *)target {
-    AnimatedIndicator *indicator = [[AnimatedIndicator alloc] initWithTexture:stunTexture position:[Vector2 vectorWithX:position.x y:position.y - 50] duration:0.5f];
-    [indicator loadStunAnimationWithTarget:target];
-    [scene addItem:indicator];
-    [indicator release];
+- (BOOL) wasDiceDropped:(CombatPosition)pos {
+    return comboAreas[pos].wasReleased;
 }
 
 
 
 
 - (void) addRetreatInterface {
-//    interfaceBackground = [[CompositeImage alloc] initWithImageTextures:interfaceTextures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
-    RetreatInterface *interface = [[RetreatInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera];
-//    [scene addItem:interfaceBackground];
-    [scene addItem:interface];
-    [interface release];
-    
-    paused = YES;
+////    interfaceBackground = [[CompositeImage alloc] initWithImageTextures:interfaceTextures color:[Color saddleBrown] x:370 y:150 width:300 height:100];
+//    RetreatInterface *interface = [[RetreatInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera];
+////    [scene addItem:interfaceBackground];
+//    [scene addItem:interface];
+//    [interface release];
+//
+//    paused = YES;
 }
 
 - (void) resumeGame {
@@ -396,11 +443,11 @@ GameHud *hudInstance;
 }
 
 - (void) endGameplayWithWin:(BOOL)isWin {
-    paused = YES;
+//    paused = YES;
     
-    DungeonEndInterface *interface = [[DungeonEndInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera win:isWin];
-    [scene addItem:interface];
-    [interface release];
+//    DungeonEndInterface *interface = [[DungeonEndInterface alloc] initWithHud:self contentManager:self.game.content font:font backgroundTextures:interfaceTextures camera:renderer.camera win:isWin];
+//    [scene addItem:interface];
+//    [interface release];
 }
 
 - (void) finishDungeon {
@@ -436,18 +483,6 @@ GameHud *hudInstance;
     [resetDices release];
     [endTurn release];
     [retreat release];
-    
-    [hitTexture release];
-    [burnTexture release];
-    [healTexture release];
-    [bleedTexture release];
-    [stunTexture release];
-    [frostbiteTexture release];
-    [poisonTexture release];
-    [buffTexture release];
-    [debuffTexture release];
-    
-    [interfaceTextures release];
     
     [super dealloc];
 }

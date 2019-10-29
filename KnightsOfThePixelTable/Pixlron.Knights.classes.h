@@ -12,7 +12,7 @@
 // Graphics
 @class GameRenderer, GUIRenderer;
 
-@class ScreenComponent, GameplaySpriteComponent, TownSpriteComponent;
+@class ScreenComponentt;
 
 @class GraphicsComponent;
 
@@ -24,7 +24,7 @@
 // Camelot interfaces
 @class Interface;
 @class CastleInterface, BarracksInterface, WarbandCampInterface, TrainingYardInterface, BlacksmithInterface;
-@class StatsPanel, SkillsPanel, EquipmentPanel;
+@class StatsPanel, SkillsPanel;
 @class Rooster, RoosterEntry;
 @class SkillPopUp, XpPopUp, CharacterTypePopUp, DamageTypePopUp;
 

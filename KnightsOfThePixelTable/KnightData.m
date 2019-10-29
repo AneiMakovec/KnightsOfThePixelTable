@@ -220,7 +220,7 @@
     return self;
 }
 
-@synthesize type, name, currentExp, weaponLvl, armorLvl, characterType, character, fatigue;
+@synthesize keyID, type, name, currentExp, weaponLvl, armorLvl, characterType, character, fatigue;
 
 - (int) getLevelOfSkill:(SkillType)skill {
     return skills[skill].lvl;

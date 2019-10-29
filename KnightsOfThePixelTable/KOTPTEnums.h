@@ -338,6 +338,14 @@ typedef enum {
     NoBuilding
 } BuildingType;
 
+typedef enum {
+    BorderTypePhysical,
+    BorderTypeRanged,
+    BorderTypeMagic,
+    BorderTypeNeutral,
+    BorderTypes
+} BorderType;
+
 // MARK: area textures
 #define AREA_FARMLANDS @"background_farmlands"
 #define AREA_MOUNTAINS @"background_mountains"
@@ -940,12 +948,14 @@ typedef enum {
 #define POSITION_BUILDING_TRAINING_YARD @"building_training_yard"
 #define POSITION_BUILDING_BARRACKS @"building_barracks"
 #define POSITION_BUILDING_WARBAND_CAMP @"building_warband_camp"
+#define POSITION_HUD @"game_hud"
 #define POSITION_HUD_PORTRAITS @"hud_portrait_"
 #define POSITION_HUD_SKILLS @"hud_skill_"
 #define POSITION_HUD_COMBOS @"hud_combo_"
 #define POSITION_HUD_HP_ALLIES @"hud_hp_ally_"
 #define POSITION_HUD_DICEPOOL @"hud_dicepool"
 #define POSITION_HUD_STATUS_EFFECTS_ALLY @"hud_status_effects_ally_"
+#define POSITION_HUD_COMBO_AREAS @"hud_combo_area_"
 #define POSITION_MAIN_MENU_NEW_GAME @"main_menu_new_game"
 #define POSITION_MAIN_MENU_CONTINUE @"main_menu_continue"
 #define POSITION_WORLD_MENU_MARKERS @"world_menu_marker_"
@@ -971,6 +981,7 @@ typedef enum {
 #define META_HUD_HP_ALLY @"hud_hp_ally"
 #define META_HUD_DICEPOOL @"hud_dicepool"
 #define META_HUD_STATUS_EFFECT_ALLY  @"hud_status_effects_ally"
+#define META_HUD_COMBO_AREA @"hud_combo_area"
 
 // MARK: TEXT
 #define TEXT_MAIN_MENU_NEW_GAME @"main_menu_new_game"

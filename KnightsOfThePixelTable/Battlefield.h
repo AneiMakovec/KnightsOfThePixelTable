@@ -14,9 +14,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Battlefield : NSObject<ICustomUpdate> {
-    // level
-    Level *level;
-    
     // entity data
     NSMutableArray *allyEntities;
     NSMutableArray *enemyEntities;
@@ -34,8 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) BattlePosition *allyFrontRow;
 @property (nonatomic, retain) BattlePosition *allyBackRow;
 
-
-- (id) initWithLevel:(Level *)theLevel;
 
 - (void) initialize;
 
@@ -62,6 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) hasAnyEnemyInFrontRowForAlly:(BOOL)isAlly;
 
 - (BOOL) hasAnyEnemyInBackRowForAlly:(BOOL)isAlly;
+
+- (BOOL) addDice:(Dice *)dice toPosition:(CombatPosition)pos;
 
 @end
 
