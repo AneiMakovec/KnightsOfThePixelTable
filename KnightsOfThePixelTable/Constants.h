@@ -204,26 +204,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 // ally animations
-+ (int) spritesheetWidthOfAlly:(KnightType)ally;
-+ (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally;
-+ (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally;
-+ (int) framePositionForAnimation:(AnimationType)type ally:(KnightType)ally;
-+ (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally;
-+ (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally;
+//+ (int) spritesheetWidthOfAlly:(KnightType)ally;
+//+ (int) frameWidthOfAnimation:(AnimationType)type ally:(KnightType)ally;
+//+ (int) frameHeightOfAnimation:(AnimationType)type ally:(KnightType)ally;
+//+ (int) framePositionForAnimation:(AnimationType)type ally:(KnightType)ally;
+//+ (int) numFramesInAnimation:(AnimationType)type ally:(KnightType)ally;
+//+ (float) durationOfAnimation:(AnimationType)type ally:(KnightType)ally;
 
 // enemy animations
-+ (int) spritesheetWidthOfEnemy:(MonsterType)enemy;
-+ (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
-+ (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
-+ (int) framePositionForAnimation:(AnimationType)type enemy:(MonsterType)enemy;
-+ (int) numFramesInAnimation:(AnimationType)type enemy:(MonsterType)enemy;
-+ (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
+//+ (int) spritesheetWidthOfEnemy:(MonsterType)enemy;
+//+ (int) frameWidthOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
+//+ (int) frameHeightOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
+//+ (int) framePositionForAnimation:(AnimationType)type enemy:(MonsterType)enemy;
+//+ (int) numFramesInAnimation:(AnimationType)type enemy:(MonsterType)enemy;
+//+ (float) durationOfAnimation:(AnimationType)type enemy:(MonsterType)enemy;
 
 
 
 
 // interface
-+ (NSString *) getSwitchButtonText:(BuildingType)type;
+//+ (NSString *) getSwitchButtonText:(BuildingType)type;
 
 
 

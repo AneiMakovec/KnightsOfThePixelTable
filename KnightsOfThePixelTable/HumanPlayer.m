@@ -28,6 +28,16 @@
 
 - (void) initialize {
     [self setCamera:[ScreenComponent getCamera]];
+    
+    // init combo release areas
+    NSString *comboAreasPosKey = POSITION_HUD_COMBO_AREAS;
+    MetaData *comboAreasMeta = [Constants getMetaDataForKey:META_HUD_COMBO_AREA];
+    for (int i = 0; i < CombatPositions; i++) {
+        Vector2 *pos = [Constants getPositionDataForKey:[comboAreasPosKey stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+        comboAreas[i] = [[ReleaseArea alloc] initWithInputArea:[Rectangle rectangleWithX:pos.x y:pos.y width:comboAreasMeta.width height:comboAreasMeta.height]];
+        [GameHud addItemToScene:comboAreas[i]];
+    }
+    
     [super initialize];
 }
 
@@ -104,7 +114,7 @@
                 
                 if (selectedDice) {
                     for (int i = 0; i < CombatPositions; i++) {
-                        if ([GameHud wasDiceDropped:i]) {
+                        if (comboAreas[i].wasReleased) {
                             if ([Level addDice:selectedDice toPosition:i]) {
                                 [Level removeDice:selectedDice];
                                 selectedDice = nil;

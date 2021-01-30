@@ -106,6 +106,7 @@
 #import "MainMenu.h"
 #import "TownMenu.h"
 #import "WorldMenu.h"
+#import "InterfaceMenu.h"
 
 // Game progress
 #import "GameProgress.h"

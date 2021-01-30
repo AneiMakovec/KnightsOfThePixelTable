@@ -68,7 +68,7 @@
 @class GameState;
 @class Gameplay;
 @class Menu, MainMenu;
-@class TownMenu, WorldMenu;
+@class TownMenu, WorldMenu, InterfaceMenu;
 
 // Game progress
 @class GameProgress;

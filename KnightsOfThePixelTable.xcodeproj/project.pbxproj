@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8247840825B4D0D400617206 /* InterfaceMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8247840725B4D0D400617206 /* InterfaceMenu.m */; };
 		B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsComponent.m */; };
 		B5047D4D22ED11610057866C /* interface_pane_scroll_line.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */; };
 		B5047D4E22ED11610057866C /* interface_pane_skills.png in Resources */ = {isa = PBXBuildFile; fileRef = B5047D4022ED11600057866C /* interface_pane_skills.png */; };
@@ -191,6 +192,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8247840625B4D0D400617206 /* InterfaceMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceMenu.h; sourceTree = "<group>"; };
+		8247840725B4D0D400617206 /* InterfaceMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceMenu.m; sourceTree = "<group>"; };
 		B500BBAC23563F2A005A8491 /* GraphicsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsComponent.h; sourceTree = "<group>"; };
 		B500BBAD23563F2A005A8491 /* GraphicsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsComponent.m; sourceTree = "<group>"; };
 		B5047D3F22ED11600057866C /* interface_pane_scroll_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interface_pane_scroll_line.png; sourceTree = "<group>"; };
@@ -664,6 +667,8 @@
 				B54E88D821E2E56E0040C888 /* TownMenu.m */,
 				B5CF91922200C95C006A52B5 /* WorldMenu.h */,
 				B5CF91932200C95C006A52B5 /* WorldMenu.m */,
+				8247840625B4D0D400617206 /* InterfaceMenu.h */,
+				8247840725B4D0D400617206 /* InterfaceMenu.m */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -1361,7 +1366,7 @@
 		B5E37FE22183A1EF0007D013 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Anei Makovec";
 				TargetAttributes = {
 					B5E37FE92183A1EF0007D013 = {
@@ -1559,6 +1564,7 @@
 				B57B0D1A21A602530064B91F /* GameRenderer.m in Sources */,
 				B5309CBC22C256FC005CE22F /* Interface.m in Sources */,
 				B58869B021C4675200CE4C0E /* CombatEntity.m in Sources */,
+				8247840825B4D0D400617206 /* InterfaceMenu.m in Sources */,
 				B55FA73E21D8196100526790 /* GUIRenderer.m in Sources */,
 				B5D0A42921C41204005EF3C6 /* Knight.m in Sources */,
 				B54E88CD21E2CDFC0040C888 /* Menu.m in Sources */,
@@ -1614,6 +1620,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1673,6 +1680,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

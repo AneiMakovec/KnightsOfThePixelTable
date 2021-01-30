@@ -73,11 +73,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) deactivate;
 
++ (void) addItemToScene:(id)item;
+
 + (BOOL) isLastWave;
 
 + (BOOL) wasDiceDropped:(CombatPosition)pos;
 
-+ (void) update;
+- (void) update;
 
 
 
@@ -88,22 +90,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) resetEndTurnButton;
 
-- (void) addDamageIndicatorAt:(Vector2*)position amount:(int)amount isCrit:(BOOL)isCrit;
-- (void) addHealIndicatorAt:(Vector2*)position amount:(int)amount;
-- (void) addMissIndicatorAt:(Vector2*)position;
-- (void) addExpIndicatorAt:(Vector2*)position amount:(int)amount;
-- (void) addGoldIndicatorAt:(Vector2*)position amount:(int)amount;
-
-- (void) addTextIndicatorAt:(Vector2*)position text:(NSString*)text color:(Color*)color;
-
-- (void) addHitIndicatorAt:(Vector2*)position;
-- (void) addBurnIndicatorAt:(Vector2*)position;
-- (void) addFrostbiteIndicatorAt:(Vector2*)position;
-- (void) addBleedIndicatorAt:(Vector2*)position;
-- (void) addPoisonIndicatorAt:(Vector2*)position;
-- (void) addBuffIndicatorAt:(Vector2*)position;
-- (void) addDebuffIndicatorAt:(Vector2*)position;
-- (void) addStunIndicatorAt:(Vector2*)position target:(CombatEntity *)target;
+//- (void) addDamageIndicatorAt:(Vector2*)position amount:(int)amount isCrit:(BOOL)isCrit;
+//- (void) addHealIndicatorAt:(Vector2*)position amount:(int)amount;
+//- (void) addMissIndicatorAt:(Vector2*)position;
+//- (void) addExpIndicatorAt:(Vector2*)position amount:(int)amount;
+//- (void) addGoldIndicatorAt:(Vector2*)position amount:(int)amount;
+//
+//- (void) addTextIndicatorAt:(Vector2*)position text:(NSString*)text color:(Color*)color;
+//
+//- (void) addHitIndicatorAt:(Vector2*)position;
+//- (void) addBurnIndicatorAt:(Vector2*)position;
+//- (void) addFrostbiteIndicatorAt:(Vector2*)position;
+//- (void) addBleedIndicatorAt:(Vector2*)position;
+//- (void) addPoisonIndicatorAt:(Vector2*)position;
+//- (void) addBuffIndicatorAt:(Vector2*)position;
+//- (void) addDebuffIndicatorAt:(Vector2*)position;
+//- (void) addStunIndicatorAt:(Vector2*)position target:(CombatEntity *)target;
 
 - (void) resumeGame;
 

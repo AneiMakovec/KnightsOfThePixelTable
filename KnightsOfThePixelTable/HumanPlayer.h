@@ -13,6 +13,8 @@
 #import "Pixlron.Knights.classes.h"
 #import "IPlayer.h"
 
+#import "PixEngine.GUI.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HumanPlayer : GameComponent<IPlayer> {
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
     Dice *selectedDice;
     
     BOOL myTurn;
+    
+    ReleaseArea *comboAreas[CombatPositions];
 }
 
 - (id) initWithGame:(Game*)theGame;

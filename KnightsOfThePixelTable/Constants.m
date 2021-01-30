@@ -298,6 +298,8 @@ Constants *constantsInstance;
     data_value = [[data objectForKey:VALUE_DATA] retain];
     data_text = [[data objectForKey:TEXT_DATA] retain];
     data_meta = [[data objectForKey:META_DATA] retain];
+    
+    [data release];
 }
 
 - (NSDictionary *) loadData:(NSString *)file {
@@ -2823,14 +2825,14 @@ Constants *constantsInstance;
 //
 //
 //
-//+ (int) getExpNeededForNextLvl:(int)lvl {
-//    return 1;
-//}
-//
-//
-//+ (int) getMaxKnightLvl {
-//    return 10;
-//}
++ (int) getExpNeededForNextLvl:(int)lvl {
+    return 1;
+}
+
+
++ (int) getMaxKnightLvl {
+    return 10;
+}
 
 
 @end

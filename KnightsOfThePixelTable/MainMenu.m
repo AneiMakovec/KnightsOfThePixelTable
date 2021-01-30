@@ -37,7 +37,7 @@
     [continueGame setScaleUniform:FONT_SCALE_MAIN_MENU];
     [scene addItem:continueGame];
     
-//    [SoundEngine playSong:SongTypeMainMenu];
+    [SoundEngine playSong:SongTypeMainMenu];
 }
 
 - (void) updateWithGameTime:(GameTime *)gameTime {
@@ -47,6 +47,7 @@
 
     if (newGame.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
+        newState = [[[InterfaceMenu alloc] initWithGame:self.game] autorelease];
     } else if (continueGame.wasReleased) {
         [SoundEngine play:SoundEffectTypeClick];
         newState = [[[TownMenu alloc] initWithGame:self.game] autorelease];

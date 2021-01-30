@@ -30,6 +30,10 @@ GameHud *hudInstance;
     [hudInstance.game.components removeComponent:hudInstance];
 }
 
++ (void) addItemToScene:(id)item {
+    [hudInstance.scene addItem:item];
+}
+
 + (BOOL) isLastWave {
     return [hudInstance isLastWave];
 }
@@ -267,7 +271,7 @@ GameHud *hudInstance;
     // Update all buttons.
     Matrix *inverseView = [Matrix invert:renderer.camera];
     for (id item in scene) {
-        Button *button = [item isKindOfClass:[Button class]] ? item : nil;
+        id<ITouchUpdate> button = [item conformsToProtocol:@protocol(ITouchUpdate)] ? item : nil;
         if (button) {
             [button updateWithInverseView:inverseView];
         }
@@ -292,6 +296,14 @@ GameHud *hudInstance;
     if (retreat.wasReleased) {
 //        [SoundEngine play:SoundEffectTypeClick];
 //        [self addRetreatInterface];
+    }
+    
+    
+    
+    for (int i = 0; i < CombatPositions; i++) {
+        if (comboAreas[i].wasReleased) {
+//            NSLog(@"DROPPED");
+        }
     }
     
 }
