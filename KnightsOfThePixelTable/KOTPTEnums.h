@@ -469,7 +469,7 @@ typedef enum {
 #define TEXT_DATA @"text_data"
 #define META_DATA @"meta_data"
 
-#define FONT @"lilliput_steps_shadowed"
+#define FONT @"font"
 
 
 

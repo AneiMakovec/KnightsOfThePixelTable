@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8247840825B4D0D400617206 /* InterfaceMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8247840725B4D0D400617206 /* InterfaceMenu.m */; };
+		8273A7AA25C60E7000C607A8 /* font.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 8273A7A925C60E7000C607A8 /* font.bmp */; };
 		B500BBAE23563F2A005A8491 /* GraphicsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BBAD23563F2A005A8491 /* GraphicsComponent.m */; };
 		B5069D41235B099E0094E0DF /* MetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = B5069D40235B099E0094E0DF /* MetaData.m */; };
 		B50F82FA21ED1DAE000C2A92 /* GameProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F82F921ED1DAE000C2A92 /* GameProgress.m */; };
@@ -114,6 +115,7 @@
 /* Begin PBXFileReference section */
 		8247840625B4D0D400617206 /* InterfaceMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceMenu.h; sourceTree = "<group>"; };
 		8247840725B4D0D400617206 /* InterfaceMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceMenu.m; sourceTree = "<group>"; };
+		8273A7A925C60E7000C607A8 /* font.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = font.bmp; sourceTree = "<group>"; };
 		B500BBAC23563F2A005A8491 /* GraphicsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsComponent.h; sourceTree = "<group>"; };
 		B500BBAD23563F2A005A8491 /* GraphicsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphicsComponent.m; sourceTree = "<group>"; };
 		B5069D3F235B099E0094E0DF /* MetaData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaData.h; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		B500BBA323563EAE005A8491 /* Spritesheet */ = {
 			isa = PBXGroup;
 			children = (
+				8273A7A925C60E7000C607A8 /* font.bmp */,
 				B5686CE923637056007B02CF /* spritesheet_0.json */,
 				B5686CEA23637056007B02CF /* spritesheet_0.png */,
 				B5686CEC23637056007B02CF /* spritesheet_1.json */,
@@ -937,6 +940,7 @@
 				B5EFF068235768E400A71204 /* data_animations.json in Resources */,
 				B5686CED23637056007B02CF /* spritesheet_0.json in Resources */,
 				B5CF91A82200F964006A52B5 /* music_theme.mp3 in Resources */,
+				8273A7AA25C60E7000C607A8 /* font.bmp in Resources */,
 				B5AE502021BEF47300FC5CBF /* click.wav in Resources */,
 				B5AE501F21BEF47300FC5CBF /* background_sounds.wav in Resources */,
 				B57252B0236109C900789568 /* theme_town_menu.mp3 in Resources */,
